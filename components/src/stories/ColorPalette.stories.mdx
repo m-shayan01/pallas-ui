@@ -1,0 +1,24 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { themeColorPalette } from '../../panda.config';
+import { generateThemeColors } from '../../colors/colors';
+
+// Generate the theme colors using the palette
+const themeColors = generateThemeColors(themeColorPalette);
+
+<Meta title="Design System/Colors" />
+
+<ColorPalette>
+  {Object.entries(themeColors.semanticTokens).map(([colorName, shades]) => (
+    <div key={colorName}>
+      <h3>{colorName}</h3>
+      {Object.entries(shades).map(([shadeName, shadeValue]) => (
+        <ColorItem
+          key={shadeName}
+          name={`${colorName}.${shadeName}`}
+          color={shadeValue.value.base}
+        />
+      ))}
+    </div>
+  ))}
+</ColorPalette>
+

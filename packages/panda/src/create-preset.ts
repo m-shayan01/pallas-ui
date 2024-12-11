@@ -1,0 +1,59 @@
+import { definePreset } from '@pandacss/dev'
+import { generateThemeColors } from './colors/colors'
+import { breakpoints } from './theme/breakpoints'
+import { conditions } from './theme/conditions'
+import { globalCss } from './theme/global-css'
+import { keyframes } from './theme/keyframes'
+import { recipes, slotRecipes } from './theme/recipes'
+import { semanticTokens } from './theme/semantic-tokens'
+import { textStyles } from './theme/text-styles'
+import { tokens } from './theme/tokens'
+import { utilities } from './theme/utilities'
+import type { ThemeOptions } from './types/theme'
+
+export const createPreset = (options: ThemeOptions) => {
+  const { colors } = options
+
+  const themeColors = generateThemeColors(colors)
+
+  const themeColorsTokens = themeColors.tokens.reduce((acc, curr) => {
+    // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
+    return { ...acc, ...curr }
+  }, {})
+
+  return definePreset({
+    name: '@pallas-ui/panda-preset',
+    presets: ['@pandacss/preset-base'],
+    conditions,
+    utilities: {
+      extend: utilities,
+    },
+    globalCss: {
+      ...globalCss,
+      html: {
+        colorPalette: colors.primary.colorName,
+      },
+    },
+    theme: {
+      extend: {
+        breakpoints,
+        keyframes,
+        recipes,
+        slotRecipes,
+        textStyles,
+        tokens: {
+          ...tokens,
+          colors: {
+            ...themeColorsTokens,
+          },
+        },
+        semanticTokens: {
+          ...semanticTokens,
+          colors: {
+            ...themeColors.semanticTokens,
+          },
+        },
+      },
+    },
+  })
+}

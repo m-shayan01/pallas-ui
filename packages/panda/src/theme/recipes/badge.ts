@@ -1,0 +1,62 @@
+import { defineRecipe } from '@pandacss/dev'
+
+export const badge = defineRecipe({
+  className: 'badge',
+  description: 'Styles for the Badge component',
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    rounded: 'full',
+    border: 'base',
+    px: '{spacing.padding.inline.md}',
+    py: '{spacing.padding.block.sm}',
+    textStyle: 'sm',
+    fontWeight: 'semibold',
+    transition: 'colors',
+    focusRingOffsetColor: 'background',
+
+    _focus: {
+      outline: '2px solid transparent',
+      outlineOffset: '2px',
+      focusRingWidth: '2',
+      focusRingColor: 'ring',
+      focusRingOffsetWidth: '2',
+    },
+  },
+  variants: {
+    variant: {
+      default: {
+        borderColor: '{colors.border.secondary}',
+        bg: '{colors.fill.secondary}',
+        color: '{colors.text}',
+
+        _hover: {
+          bg: '{colors.fill.secondary}/80',
+        },
+      },
+      primary: {
+        borderColor: '{colors.primary.border}',
+        bg: '{colors.primary.bg}',
+        color: '{colors.text}',
+
+        _hover: {
+          borderColor: '{colors.primary.borderHover}',
+          bg: '{colors.primary.bgHover}',
+        },
+      },
+      error: {
+        borderColor: '{colors.error.border}',
+        bg: '{colors.error.bg}',
+        color: '{colors.text}',
+
+        _hover: {
+          borderColor: '{colors.error.borderHover}',
+          bg: '{colors.error.bgHover}',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+})

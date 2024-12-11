@@ -1,0 +1,116 @@
+import { defineRecipe } from '@pandacss/dev'
+
+export const button = defineRecipe({
+  className: 'button',
+  description: 'The styles for the Button component',
+  base: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textStyle: 'md',
+    transition: 'background-color 0.2s ease',
+    cursor: 'pointer',
+    '&:disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.6,
+    },
+    borderRadius: '{radii.md}',
+    height: '{sizes.controlHeight.md}',
+  },
+  variants: {
+    variant: {
+      solid: {
+        bg: '{colors.primary}',
+        color: '{colors.bgSolid.text}',
+        _hover: {
+          bg: '{colors.primary.hover}',
+        },
+      },
+      outlined: {
+        bg: 'transparent',
+        border: '1px solid {colors.border}',
+        color: '{colors.text}',
+        _hover: {
+          color: '{colors.primary}',
+          borderColor: '{colors.primary.borderHover}',
+        },
+      },
+      dashed: {
+        bg: 'transparent',
+        border: '1px dashed {colors.border}',
+        color: '{colors.text}',
+        _hover: {
+          color: '{colors.primary}',
+          borderColor: '{colors.primary.borderHover}',
+        },
+      },
+      filled: {
+        bg: '{colors.primary.bg}',
+        color: '{colors.primary.text}',
+        _hover: {
+          bg: '{colors.primary.bgHover}',
+          color: '{colors.primary.textHover}',
+        },
+      },
+      text: {
+        bg: 'transparent',
+        color: '{colors.text}',
+        _hover: {
+          bg: '{colors.fill.secondary}',
+          color: '{colors.text.hover}',
+        },
+      },
+      link: {
+        bg: 'transparent',
+        color: '{colors.primary}',
+        _hover: {
+          color: '{colors.primary.hover}',
+        },
+      },
+    },
+    size: {
+      sm: {
+        textStyle: '{sm}',
+        paddingX: '{spacing.padding.inline.sm}',
+        paddingY: '{spacing.padding.block.sm}',
+        height: '{sizes.controlHeight.sm}',
+      },
+      md: {
+        textStyle: '{md}',
+        paddingX: '{spacing.padding.inline.md}',
+        paddingY: '{spacing.padding.block.md}',
+        height: '{sizes.controlHeight.md}',
+      },
+      lg: {
+        textStyle: '{lg}',
+        paddingX: '{spacing.padding.inline.lg}',
+        paddingY: '{spacing.padding.block.lg}',
+        height: '{sizes.controlHeight.lg}',
+      },
+      icon: {
+        width: '40px',
+        height: '40px',
+      },
+    },
+    shape: {
+      default: {
+        borderRadius: '0',
+      },
+      rounded: {
+        borderRadius: '{radii.4xl}',
+      },
+      circle: {
+        borderRadius: '{radii.full}',
+      },
+    },
+    width: {
+      full: {
+        width: '{sizes.full}',
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'solid',
+    size: 'md',
+  },
+})
