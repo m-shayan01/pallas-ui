@@ -7,6 +7,7 @@ import { button } from './button'
 import { card } from './card'
 import { heading } from './heading'
 import { icon } from './icons'
+import { input } from './input'
 import { modal } from './modal'
 import { paragraph } from './paragraph'
 
@@ -19,6 +20,7 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
   paragraph,
   heading,
   badge,
+  input,
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {

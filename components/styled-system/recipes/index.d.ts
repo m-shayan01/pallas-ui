@@ -7,6 +7,7 @@ export * from './alert-title';
 export * from './paragraph';
 export * from './heading';
 export * from './badge';
+export * from './input';
 export * from './card';
 export * from './modal';
 export * from './accordian';
