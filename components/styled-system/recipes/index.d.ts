@@ -10,3 +10,4 @@ export * from './badge';
 export * from './card';
 export * from './modal';
 export * from './accordian';
+export * from './tabs';

@@ -1,0 +1,112 @@
+import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
+import { createRecipe } from './create-recipe.mjs';
+
+const tabsDefaultVariants = {}
+const tabsCompoundVariants = [
+  {
+    "variant": "card",
+    "position": "bottom",
+    "css": {
+      "trigger": {
+        "borderRadius": "0",
+        "borderBottomRadius": "{radii.lg}",
+        "borderWidth": "1px",
+        "borderColor": "{colors.border}",
+        "_selected": {
+          "borderTopColor": "{colors.surface.elevated}"
+        }
+      }
+    }
+  },
+  {
+    "variant": "card",
+    "position": "left",
+    "css": {
+      "trigger": {
+        "borderRadius": "0",
+        "borderLeftRadius": "{radii.lg}",
+        "borderWidth": "1px",
+        "borderColor": "{colors.border}",
+        "_selected": {
+          "borderRightColor": "{colors.surface.elevated}"
+        }
+      }
+    }
+  },
+  {
+    "variant": "card",
+    "position": "right",
+    "css": {
+      "trigger": {
+        "borderRadius": "0",
+        "borderRightRadius": "{radii.lg}",
+        "borderWidth": "1px",
+        "borderColor": "{colors.border}",
+        "_selected": {
+          "borderLeftColor": "{colors.surface.elevated}"
+        }
+      }
+    }
+  }
+]
+
+const tabsSlotNames = [
+  [
+    "root",
+    "tabs__root"
+  ],
+  [
+    "tabList",
+    "tabs__tabList"
+  ],
+  [
+    "trigger",
+    "tabs__trigger"
+  ],
+  [
+    "content",
+    "tabs__content"
+  ]
+]
+const tabsSlotFns = /* @__PURE__ */ tabsSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, tabsDefaultVariants, getSlotCompoundVariant(tabsCompoundVariants, slotName))])
+
+const tabsFn = memo((props = {}) => {
+  return Object.fromEntries(tabsSlotFns.map(([slotName, slotFn]) => [slotName, slotFn.recipeFn(props)]))
+})
+
+const tabsVariantKeys = [
+  "size",
+  "align",
+  "position",
+  "variant"
+]
+const getVariantProps = (variants) => ({ ...tabsDefaultVariants, ...compact(variants) })
+
+export const tabs = /* @__PURE__ */ Object.assign(tabsFn, {
+  __recipe__: false,
+  __name__: 'tabs',
+  raw: (props) => props,
+  variantKeys: tabsVariantKeys,
+  variantMap: {
+  "size": [
+    "sm",
+    "lg"
+  ],
+  "align": [
+    "center",
+    "end"
+  ],
+  "position": [
+    "left",
+    "right",
+    "bottom"
+  ],
+  "variant": [
+    "card"
+  ]
+},
+  splitVariantProps(props) {
+    return splitProps(props, tabsVariantKeys)
+  },
+  getVariantProps
+})
