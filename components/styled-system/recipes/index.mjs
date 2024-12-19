@@ -7,6 +7,7 @@ export * from './paragraph.mjs';
 export * from './heading.mjs';
 export * from './badge.mjs';
 export * from './input.mjs';
+export * from './label.mjs';
 export * from './card.mjs';
 export * from './modal.mjs';
 export * from './accordian.mjs';

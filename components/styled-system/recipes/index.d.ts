@@ -8,6 +8,7 @@ export * from './paragraph';
 export * from './heading';
 export * from './badge';
 export * from './input';
+export * from './label';
 export * from './card';
 export * from './modal';
 export * from './accordian';
