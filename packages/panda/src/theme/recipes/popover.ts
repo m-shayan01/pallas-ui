@@ -3,17 +3,17 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const popover = defineSlotRecipe({
   className: 'popover',
   description: 'Styles for the Popover component',
-  slots: ['root', 'trigger', 'portal', 'content'],
+  slots: ['root', 'trigger', 'portal', 'content', 'arrow'],
   base: {
     content: {
       zIndex: 50,
       w: '72',
       rounded: '{radii.lg}',
-      border: '1px solid {colors.border}',
       bg: '{colors.surface.elevated}',
       p: '{spacing.padding.block.lg} {spacing.padding.inline.md}',
       color: '{colors.text}',
       outline: 'none',
+      boxShadow: '{shadows.lg}',
 
       _open: {
         animateIn: true,
@@ -42,6 +42,9 @@ export const popover = defineSlotRecipe({
       _right: {
         slideInFromLeft: '2',
       },
+    },
+    arrow: {
+      fill: '{colors.surface.elevated}',
     },
   },
 })

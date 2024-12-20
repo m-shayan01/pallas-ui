@@ -3,7 +3,7 @@
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import { popover } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
-import type * as React from 'react'
+import * as React from 'react'
 import { createStyleContext } from '~/utils/style-context'
 import type { Assign, WithFixedClassName } from '~/utils/types'
 
@@ -11,7 +11,7 @@ const { withProvider, withContext } = createStyleContext(popover)
 
 export const Portal = PopoverPrimitive.Portal
 
-export type RootProps = WithFixedClassName<React.ComponentProps<typeof PopoverPrimitive.Root>>
+export type RootProps = WithFixedClassName<PopoverPrimitive.PopoverProps>
 export const Root = withProvider<
   React.ElementRef<typeof PopoverPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>
@@ -19,13 +19,31 @@ export const Root = withProvider<
 
 export const Trigger = withContext<
   React.ElementRef<typeof PopoverPrimitive.Trigger>,
-  React.ComponentProps<typeof PopoverPrimitive.Trigger>
+  PopoverPrimitive.PopoverTriggerProps
 >(PopoverPrimitive.Trigger, 'trigger')
+
+const Arrow = withContext<
+  React.ElementRef<typeof PopoverPrimitive.Arrow>,
+  Assign<PopoverPrimitive.PopoverArrowProps, JsxStyleProps>
+>(PopoverPrimitive.Arrow, 'arrow')
+
+const CustomContent = React.forwardRef<
+  React.ElementRef<typeof PopoverPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
+>(({ align = 'center', sideOffset = 4, children, ...props }, ref) => (
+  <Portal>
+    <PopoverPrimitive.Content ref={ref} align={align} sideOffset={sideOffset} {...props}>
+      {children}
+      <Arrow />
+    </PopoverPrimitive.Content>
+  </Portal>
+))
+CustomContent.displayName = PopoverPrimitive.Content.displayName
 
 export const Content = withContext<
   React.ElementRef<typeof PopoverPrimitive.Content>,
-  Assign<React.ComponentProps<typeof PopoverPrimitive.Content>, JsxStyleProps>
->(PopoverPrimitive.Content, 'content')
+  Assign<PopoverPrimitive.PopoverContentProps, JsxStyleProps>
+>(CustomContent, 'content')
 
 const Popover = {
   Root,
