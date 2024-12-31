@@ -3,7 +3,7 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const popover = defineSlotRecipe({
   className: 'popover',
   description: 'Styles for the Popover component',
-  slots: ['root', 'trigger', 'portal', 'content', 'arrow'],
+  slots: ['root', 'trigger', 'portal', 'content', 'arrow', 'close'],
   base: {
     content: {
       zIndex: 50,
@@ -45,6 +45,13 @@ export const popover = defineSlotRecipe({
     },
     arrow: {
       fill: '{colors.surface.elevated}',
+    },
+    close: {
+      position: 'absolute',
+      right: 5,
+      top: 5,
+      outline: 'none',
+      cursor: 'pointer',
     },
   },
 })

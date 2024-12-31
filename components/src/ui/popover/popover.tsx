@@ -45,11 +45,17 @@ export const Content = withContext<
   Assign<PopoverPrimitive.PopoverContentProps, JsxStyleProps>
 >(CustomContent, 'content')
 
+export const Close = withContext<
+  React.ElementRef<typeof PopoverPrimitive.Close>,
+  Assign<PopoverPrimitive.PopoverCloseProps, JsxStyleProps>
+>(PopoverPrimitive.Close, 'close')
+
 const Popover = {
   Root,
   Trigger,
   Content,
   Portal,
+  Close,
 }
 
 export default Popover

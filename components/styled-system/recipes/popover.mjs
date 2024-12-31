@@ -24,6 +24,10 @@ const popoverSlotNames = [
   [
     "arrow",
     "popover__arrow"
+  ],
+  [
+    "close",
+    "popover__close"
   ]
 ]
 const popoverSlotFns = /* @__PURE__ */ popoverSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, popoverDefaultVariants, getSlotCompoundVariant(popoverCompoundVariants, slotName))])

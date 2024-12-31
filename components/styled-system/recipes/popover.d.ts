@@ -16,7 +16,7 @@ export type PopoverVariantProps = {
 
 export interface PopoverRecipe {
   __type: PopoverVariantProps
-  (props?: PopoverVariantProps): Pretty<Record<"root" | "trigger" | "portal" | "content" | "arrow", string>>
+  (props?: PopoverVariantProps): Pretty<Record<"root" | "trigger" | "portal" | "content" | "arrow" | "close", string>>
   raw: (props?: PopoverVariantProps) => PopoverVariantProps
   variantMap: PopoverVariantMap
   variantKeys: Array<keyof PopoverVariant>
