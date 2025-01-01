@@ -29,7 +29,7 @@ const Arrow = withContext<
 
 const CustomContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
+  PopoverPrimitive.PopoverContentProps
 >(({ align = 'center', sideOffset = 4, children, ...props }, ref) => (
   <Portal>
     <PopoverPrimitive.Content ref={ref} align={align} sideOffset={sideOffset} {...props}>
