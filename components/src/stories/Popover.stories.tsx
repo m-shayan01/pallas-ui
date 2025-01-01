@@ -88,7 +88,7 @@ export const Variants = () => (
             <Button>{item.triggerText}</Button>
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Content align="start" side={item.position as Side} sideOffset={5}>
+            <Popover.Content side={item.position as Side} sideOffset={5}>
               {item.content}
             </Popover.Content>
           </Popover.Portal>
