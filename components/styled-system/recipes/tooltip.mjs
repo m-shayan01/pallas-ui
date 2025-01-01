@@ -16,6 +16,10 @@ const tooltipSlotNames = [
   [
     "content",
     "tooltip__content"
+  ],
+  [
+    "arrow",
+    "tooltip__arrow"
   ]
 ]
 const tooltipSlotFns = /* @__PURE__ */ tooltipSlotNames.map(([slotName, slotKey]) => [slotName, createRecipe(slotKey, tooltipDefaultVariants, getSlotCompoundVariant(tooltipCompoundVariants, slotName))])

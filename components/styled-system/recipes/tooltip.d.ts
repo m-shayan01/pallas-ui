@@ -16,7 +16,7 @@ export type TooltipVariantProps = {
 
 export interface TooltipRecipe {
   __type: TooltipVariantProps
-  (props?: TooltipVariantProps): Pretty<Record<"root" | "trigger" | "content", string>>
+  (props?: TooltipVariantProps): Pretty<Record<"root" | "trigger" | "content" | "arrow", string>>
   raw: (props?: TooltipVariantProps) => TooltipVariantProps
   variantMap: TooltipVariantMap
   variantKeys: Array<keyof TooltipVariant>

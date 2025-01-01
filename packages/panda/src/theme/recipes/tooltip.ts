@@ -3,21 +3,21 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const tooltip = defineSlotRecipe({
   className: 'tooltip',
   description: 'Styles for the Tooltip component',
-  slots: ['root', 'trigger', 'content'],
+  slots: ['root', 'trigger', 'content', 'arrow'],
   base: {
     content: {
       zIndex: 50,
       overflow: 'hidden',
       rounded: '{radii.lg}',
-      borderColor: '{colors.border}',
-      borderWidth: '1px',
       bg: '{colors.surface.elevated}',
       px: '{spacing.padding.inline.sm}',
       py: '{spacing.padding.block.sm}',
       color: '{colors.text}',
+      boxShadow: '{shadows.lg}',
       animateIn: true,
       fadeIn: 0,
       zoomIn: 95,
+      maxWidth: 250,
 
       _closed: {
         animateOut: true,
@@ -40,6 +40,9 @@ export const tooltip = defineSlotRecipe({
       _right: {
         slideInFromLeft: '2',
       },
+    },
+    arrow: {
+      fill: '{colors.surface.elevated}',
     },
   },
 })
