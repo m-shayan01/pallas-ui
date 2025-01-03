@@ -153,7 +153,6 @@ export interface UtilityValues {
 	caretColor: Tokens["colors"];
 	scrollbar: "visible" | "hidden";
 	scrollbarColor: Tokens["colors"];
-	scrollbarGutter: Tokens["spacing"];
 	scrollbarWidth: Tokens["sizes"];
 	scrollMargin: Tokens["spacing"];
 	scrollMarginLeft: Tokens["spacing"];
@@ -191,6 +190,7 @@ export interface UtilityValues {
 	containerName: CssProperties["containerName"];
 	colorPalette: "blue.50" | "blue.100" | "blue.200" | "blue.300" | "blue.400" | "blue.500" | "blue.600" | "blue.700" | "blue.800" | "blue.900" | "green.50" | "green.100" | "green.200" | "green.300" | "green.400" | "green.500" | "green.600" | "green.700" | "green.800" | "green.900" | "yellow.50" | "yellow.100" | "yellow.200" | "yellow.300" | "yellow.400" | "yellow.500" | "yellow.600" | "yellow.700" | "yellow.800" | "yellow.900" | "red.50" | "red.100" | "red.200" | "red.300" | "red.400" | "red.500" | "red.600" | "red.700" | "red.800" | "red.900" | "primary" | "success" | "error" | "warning" | "info" | "text" | "fill" | "bgSolid" | "surface" | "border";
 	textStyle: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "7xl";
+	animationStyle: "slideIn";
 }
 
 

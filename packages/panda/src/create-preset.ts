@@ -1,5 +1,6 @@
 import { definePreset } from '@pandacss/dev'
 import { generateThemeColors } from './colors/colors'
+import { animationStyles } from './theme/animation-styles'
 import { breakpoints } from './theme/breakpoints'
 import { conditions } from './theme/conditions'
 import { globalCss } from './theme/global-css'
@@ -41,6 +42,7 @@ export const createPreset = (options: ThemeOptions) => {
         recipes,
         slotRecipes,
         textStyles,
+        animationStyles,
         tokens: {
           ...tokens,
           colors: {

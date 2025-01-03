@@ -9,6 +9,7 @@ import { heading } from './heading'
 import { icon } from './icons'
 import { modal } from './modal'
 import { paragraph } from './paragraph'
+import { toast } from './toast'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
@@ -25,4 +26,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   card,
   modal,
   accordian,
+  toast,
 }
