@@ -46,7 +46,7 @@ const toastFn = memo((props = {}) => {
 
 const toastVariantKeys = [
   "variant",
-  "type"
+  "iconType"
 ]
 const getVariantProps = (variants) => ({ ...toastDefaultVariants, ...compact(variants) })
 
@@ -59,7 +59,7 @@ export const toast = /* @__PURE__ */ Object.assign(toastFn, {
   "variant": [
     "shadow"
   ],
-  "type": [
+  "iconType": [
     "warning",
     "success",
     "error"

@@ -61,10 +61,10 @@ export type ToastPropTypes = RootProps & {
   description?: string
   closeButtonProps?: ButtonProps
   actions?: ToastAction[]
-  type?: ToastTypes
+  iconType?: IconTypes
 }
 
-export type ToastTypes = 'success' | 'error' | 'info' | 'warning'
+export type IconTypes = 'success' | 'error' | 'info' | 'warning'
 
 export type ToastAction = {
   key: string
@@ -75,7 +75,7 @@ export type ToastAction = {
 
 const Toast = ({ description, closeButtonProps, actions, ...props }: ToastPropTypes) => (
   <Root {...props}>
-    <Icon type={props.type} />
+    <Icon type={props.iconType} />
     <Title>{props.title}</Title>
     <Description>{description}</Description>
     <Close asChild>

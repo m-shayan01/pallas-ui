@@ -1,7 +1,8 @@
 import { CircleCheck, Info, type LucideProps, XCircle } from 'lucide-react'
+import type { IconTypes } from '.'
 
 export type ToastIconPropTypes = LucideProps & {
-  type?: string
+  type?: IconTypes
 }
 
 export default function Icon({ type, ...props }: ToastIconPropTypes) {

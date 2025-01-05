@@ -34,6 +34,9 @@ export const toast = defineSlotRecipe({
       _open: {
         animationStyle: 'slideIn',
       },
+      _closed: {
+        animationStyle: 'slideOut',
+      },
     },
     title: {
       gridArea: 'title',
@@ -64,11 +67,14 @@ export const toast = defineSlotRecipe({
       shadow: {
         root: {
           borderWidth: '0',
-          boxShadow: 'hsl(206 22% 7% / 35%) -10px 12px {radii.4xl} {spacing.-3}',
+          boxShadow: `
+            hsl(206 22% 7% / 35%) -10px 12px {radii.4xl} {spacing.-3}, 
+            hsl(206 22% 7% / 35%) 5px -6px {radii.4xl} {spacing.-3}
+          `,
         },
       },
     },
-    type: {
+    iconType: {
       warning: {
         icon: {
           color: '{colors.warning}',

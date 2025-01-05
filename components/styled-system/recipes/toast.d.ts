@@ -4,7 +4,7 @@ import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface ToastVariant {
   variant: "shadow"
-type: "warning" | "success" | "error"
+iconType: "warning" | "success" | "error"
 }
 
 type ToastVariantMap = {

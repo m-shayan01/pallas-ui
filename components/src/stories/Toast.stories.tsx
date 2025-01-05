@@ -48,7 +48,7 @@ export const Default: Story = {
 }
 
 export const Varients = () => (
-  <Stack gap="6">
+  <Stack gap="8">
     <Provider swipeDirection="right">
       <Toast
         open={true}
@@ -61,12 +61,17 @@ export const Varients = () => (
     </Provider>
 
     <Provider swipeDirection="right">
+      <Toast title={'Auto hides after 5s'} description={DESCRIPTION} />
+      <Viewport />
+    </Provider>
+
+    <Provider swipeDirection="right">
       <Toast
         open={true}
         title={'Toast with icon and actions'}
         description={DESCRIPTION}
         actions={ACTIONS}
-        type="info"
+        iconType="info"
       />
       <Viewport />
     </Provider>
@@ -76,7 +81,17 @@ export const Varients = () => (
         open={true}
         title={'Toast with warning icon'}
         description={DESCRIPTION}
-        type="warning"
+        iconType="warning"
+      />
+      <Viewport />
+    </Provider>
+
+    <Provider swipeDirection="right">
+      <Toast
+        open={true}
+        title={'Toast with error icon'}
+        description={DESCRIPTION}
+        iconType="error"
       />
       <Viewport />
     </Provider>
@@ -86,13 +101,8 @@ export const Varients = () => (
         open={true}
         title={'Toast with success icon'}
         description={DESCRIPTION}
-        type="success"
+        iconType="success"
       />
-      <Viewport />
-    </Provider>
-
-    <Provider swipeDirection="right">
-      <Toast open={true} title={'Toast with error icon'} description={DESCRIPTION} type="error" />
       <Viewport />
     </Provider>
   </Stack>
