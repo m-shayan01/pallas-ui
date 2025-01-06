@@ -62,6 +62,7 @@ export type ToastPropTypes = RootProps & {
   closeButtonProps?: ButtonProps
   actions?: ToastAction[]
   iconType?: IconTypes
+  showClose?: boolean
 }
 
 export type IconTypes = 'success' | 'error' | 'info' | 'warning'
@@ -77,12 +78,14 @@ const Toast = ({ description, closeButtonProps, actions, ...props }: ToastPropTy
   <Root {...props}>
     <Icon type={props.iconType} />
     <Title>{props.title}</Title>
-    <Description>{description}</Description>
-    <Close asChild>
-      <Button variant="text" aria-label="Close" {...closeButtonProps}>
-        <X aria-hidden size={20} />
-      </Button>
-    </Close>
+    {description && <Description>{description}</Description>}
+    {props.showClose && (
+      <Close asChild>
+        <Button variant="text" aria-label="Close" {...closeButtonProps}>
+          <X aria-hidden size={20} />
+        </Button>
+      </Close>
+    )}
     {actions && (
       <Actions>
         {actions.map(({ key, label, onClick, buttonProps }) => (

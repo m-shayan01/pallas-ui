@@ -23,8 +23,6 @@ export const toast = defineSlotRecipe({
       display: 'grid',
       gridTemplateAreas: `'icon title close' 'icon description description' 'icon actions actions'`,
       gridTemplateColumns: 'auto auto 20px',
-      rowGap: '{spacing.padding.block.md}',
-      columnGap: '{spacing.padding.inline.sm}',
       borderRadius: '{radii.md}',
       paddingBlock: '{spacing.padding.block.lg}',
       paddingInline: '{spacing.padding.inline.lg}',
@@ -33,7 +31,7 @@ export const toast = defineSlotRecipe({
       gridArea: 'title',
       textStyle: '{md}',
       fontWeight: 'medium',
-      paddingRight: 25,
+      paddingRight: '{spacing.padding.block.lg}',
     },
     description: {
       gridArea: 'description',
@@ -48,6 +46,9 @@ export const toast = defineSlotRecipe({
       gridArea: 'actions',
       marginTop: '{spacing.padding.block.md}',
       rowGap: '{spacing.gap.component.sm}',
+    },
+    icon: {
+      marginRight: '{spacing.padding.inline.sm}',
     },
   },
   variants: {

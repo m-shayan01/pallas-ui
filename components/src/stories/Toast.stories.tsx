@@ -6,7 +6,7 @@ const meta: Meta<typeof Toast> = {
   title: 'Components/Toast',
   tags: ['autodocs'],
   render: (props) => (
-    <Provider swipeDirection="right">
+    <Provider>
       <Toast open={true} {...props} />
       <Viewport placement={props.placement} />
     </Provider>
@@ -62,12 +62,14 @@ export const Default: Story = {
 }
 
 export const Varients = () => (
-  <Provider swipeDirection="right">
+  <Provider>
     <Viewport />
 
     <Toast title={'Auto hides after 5s'} description={DESCRIPTION} />
 
     <Toast open={true} title={'Toast with shadow'} actions={ACTIONS} variant="shadow" />
+
+    <Toast open={true} description={'Toast without title, just description text'} />
 
     <Toast
       open={true}
@@ -75,6 +77,7 @@ export const Varients = () => (
       description={DESCRIPTION}
       actions={ACTIONS}
       iconType="info"
+      showClose
     />
 
     <Toast open={true} title={'Toast with warning icon'} iconType="warning" />
