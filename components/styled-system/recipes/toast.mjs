@@ -1,7 +1,11 @@
 import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const toastDefaultVariants = {}
+const toastDefaultVariants = {
+  "variant": "bordered",
+  "placement": "topRight",
+  "iconType": "info"
+}
 const toastCompoundVariants = []
 
 const toastSlotNames = [
@@ -46,7 +50,8 @@ const toastFn = memo((props = {}) => {
 
 const toastVariantKeys = [
   "variant",
-  "iconType"
+  "iconType",
+  "placement"
 ]
 const getVariantProps = (variants) => ({ ...toastDefaultVariants, ...compact(variants) })
 
@@ -57,12 +62,20 @@ export const toast = /* @__PURE__ */ Object.assign(toastFn, {
   variantKeys: toastVariantKeys,
   variantMap: {
   "variant": [
+    "bordered",
     "shadow"
   ],
   "iconType": [
+    "info",
     "warning",
     "success",
     "error"
+  ],
+  "placement": [
+    "topLeft",
+    "topRight",
+    "bottomLeft",
+    "bottomRight"
   ]
 },
   splitVariantProps(props) {

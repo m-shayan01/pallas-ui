@@ -1,18 +1,30 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Stack } from '@styled-system/jsx/stack'
 import type { ButtonProps } from '~/ui/button'
 import Toast, { Provider, Viewport } from '~/ui/toast'
 
 const meta: Meta<typeof Toast> = {
   title: 'Components/Toast',
   tags: ['autodocs'],
-  argTypes: {},
   render: (props) => (
     <Provider swipeDirection="right">
       <Toast open={true} {...props} />
-      <Viewport />
+      <Viewport placement={props.placement} />
     </Provider>
   ),
+  argTypes: {
+    variant: {
+      options: ['shadow', 'bordered'],
+      control: 'select',
+    },
+    iconType: {
+      options: ['info', 'warning', 'success', 'error'],
+      control: 'select',
+    },
+    placement: {
+      options: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
+      control: 'select',
+    },
+  },
   decorators: [],
 }
 
@@ -44,66 +56,31 @@ export const Default: Story = {
   args: {
     title: TITLE,
     description: DESCRIPTION,
+    variant: 'bordered',
+    placement: 'topRight',
   },
 }
 
 export const Varients = () => (
-  <Stack gap="8">
-    <Provider swipeDirection="right">
-      <Toast
-        open={true}
-        title={'Toast with shadow and actions'}
-        description={DESCRIPTION}
-        actions={ACTIONS}
-        variant="shadow"
-      />
-      <Viewport />
-    </Provider>
+  <Provider swipeDirection="right">
+    <Viewport />
 
-    <Provider swipeDirection="right">
-      <Toast title={'Auto hides after 5s'} description={DESCRIPTION} />
-      <Viewport />
-    </Provider>
+    <Toast title={'Auto hides after 5s'} description={DESCRIPTION} />
 
-    <Provider swipeDirection="right">
-      <Toast
-        open={true}
-        title={'Toast with icon and actions'}
-        description={DESCRIPTION}
-        actions={ACTIONS}
-        iconType="info"
-      />
-      <Viewport />
-    </Provider>
+    <Toast open={true} title={'Toast with shadow'} actions={ACTIONS} variant="shadow" />
 
-    <Provider swipeDirection="right">
-      <Toast
-        open={true}
-        title={'Toast with warning icon'}
-        description={DESCRIPTION}
-        iconType="warning"
-      />
-      <Viewport />
-    </Provider>
+    <Toast
+      open={true}
+      title={'Toast with icon and actions'}
+      description={DESCRIPTION}
+      actions={ACTIONS}
+      iconType="info"
+    />
 
-    <Provider swipeDirection="right">
-      <Toast
-        open={true}
-        title={'Toast with error icon'}
-        description={DESCRIPTION}
-        iconType="error"
-      />
-      <Viewport />
-    </Provider>
+    <Toast open={true} title={'Toast with warning icon'} iconType="warning" />
 
-    <Provider swipeDirection="right">
-      <Toast
-        open={true}
-        title={'Toast with success icon'}
-        description={DESCRIPTION}
-        iconType="success"
-      />
-      <Viewport />
-    </Provider>
-  </Stack>
+    <Toast open={true} title={'Toast with error icon'} iconType="error" />
+
+    <Toast open={true} title={'Toast with success icon'} iconType="success" />
+  </Provider>
 )

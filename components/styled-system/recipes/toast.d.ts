@@ -3,8 +3,18 @@ import type { ConditionalValue } from '../types/index';
 import type { DistributiveOmit, Pretty } from '../types/system-types';
 
 interface ToastVariant {
-  variant: "shadow"
-iconType: "warning" | "success" | "error"
+  /**
+ * @default "bordered"
+ */
+variant: "bordered" | "shadow"
+/**
+ * @default "info"
+ */
+iconType: "info" | "warning" | "success" | "error"
+/**
+ * @default "topRight"
+ */
+placement: "topLeft" | "topRight" | "bottomLeft" | "bottomRight"
 }
 
 type ToastVariantMap = {

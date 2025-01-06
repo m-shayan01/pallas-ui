@@ -6,14 +6,12 @@ export const toast = defineSlotRecipe({
   slots: ['root', 'icon', 'title', 'description', 'close', 'action', 'actions', 'viewport'],
   base: {
     viewport: {
-      padding: '{spacing.padding.block.md}',
       position: 'fixed',
-      bottom: 0,
-      right: 0,
       display: 'flex',
       flexDirection: 'column',
-      gap: '10px',
-      width: '390px',
+      padding: '{spacing.padding.block.lg}',
+      gap: '{spacing.gap.component.md}',
+      width: '40vw',
       maxWidth: '100vw',
       margin: 0,
       listStyle: 'none',
@@ -21,22 +19,15 @@ export const toast = defineSlotRecipe({
       outline: 'none',
     },
     root: {
+      width: 'fit-content',
       display: 'grid',
       gridTemplateAreas: `'icon title close' 'icon description description' 'icon actions actions'`,
       gridTemplateColumns: 'auto auto 20px',
       rowGap: '{spacing.padding.block.md}',
       columnGap: '{spacing.padding.inline.sm}',
       borderRadius: '{radii.md}',
-      borderWidth: '1px',
-      borderColor: '{colors.border}',
       paddingBlock: '{spacing.padding.block.lg}',
       paddingInline: '{spacing.padding.inline.lg}',
-      _open: {
-        animationStyle: 'slideIn',
-      },
-      _closed: {
-        animationStyle: 'slideOut',
-      },
     },
     title: {
       gridArea: 'title',
@@ -58,12 +49,15 @@ export const toast = defineSlotRecipe({
       marginTop: '{spacing.padding.block.md}',
       rowGap: '{spacing.gap.component.sm}',
     },
-    icon: {
-      color: '{colors.info}',
-    },
   },
   variants: {
     variant: {
+      bordered: {
+        root: {
+          borderWidth: '1px',
+          borderColor: '{colors.border}',
+        },
+      },
       shadow: {
         root: {
           borderWidth: '0',
@@ -75,6 +69,11 @@ export const toast = defineSlotRecipe({
       },
     },
     iconType: {
+      info: {
+        icon: {
+          color: '{colors.info}',
+        },
+      },
       warning: {
         icon: {
           color: '{colors.warning}',
@@ -91,5 +90,70 @@ export const toast = defineSlotRecipe({
         },
       },
     },
+    placement: {
+      topLeft: {
+        viewport: {
+          top: 0,
+          left: 0,
+        },
+        root: {
+          _open: {
+            animationStyle: 'slideInLeft',
+          },
+          _closed: {
+            animationStyle: 'slideOutLeft',
+          },
+        },
+      },
+      topRight: {
+        viewport: {
+          top: 0,
+          right: 0,
+          alignItems: 'flex-end',
+        },
+        root: {
+          _open: {
+            animationStyle: 'slideInRight',
+          },
+          _closed: {
+            animationStyle: 'slideOutRight',
+          },
+        },
+      },
+      bottomLeft: {
+        viewport: {
+          bottom: 0,
+          left: 0,
+        },
+        root: {
+          _open: {
+            animationStyle: 'slideInLeft',
+          },
+          _closed: {
+            animationStyle: 'slideOutLeft',
+          },
+        },
+      },
+      bottomRight: {
+        viewport: {
+          bottom: 0,
+          right: 0,
+          alignItems: 'flex-end',
+        },
+        root: {
+          _open: {
+            animationStyle: 'slideInRight',
+          },
+          _closed: {
+            animationStyle: 'slideOutRight',
+          },
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'bordered',
+    placement: 'topRight',
+    iconType: 'info',
   },
 })

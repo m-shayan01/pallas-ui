@@ -20,6 +20,11 @@ export const Root = withProvider<
   Assign<RootProps, JsxStyleProps>
 >(RadixToast.Root, 'root')
 
+export const Viewport = withProvider<
+  React.ElementRef<typeof RadixToast.Viewport>,
+  Assign<ComponentProps<typeof RadixToast.Viewport>, JsxStyleProps>
+>(RadixToast.Viewport, 'viewport')
+
 export const Title = withContext<
   React.ElementRef<typeof RadixToast.Title>,
   Assign<ComponentProps<typeof RadixToast.Title>, JsxStyleProps>
@@ -44,11 +49,6 @@ export const Action = withContext<
   React.ElementRef<typeof RadixToast.Action>,
   Assign<ActionProps, JsxStyleProps>
 >(RadixToast.Action, 'action')
-
-export const Viewport = withContext<
-  React.ElementRef<typeof RadixToast.Viewport>,
-  Assign<ComponentProps<typeof RadixToast.Viewport>, JsxStyleProps>
->(RadixToast.Viewport, 'viewport')
 
 export const Icon = withContext<
   React.ElementRef<typeof ToastIcon>,
