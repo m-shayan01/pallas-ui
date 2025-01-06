@@ -32,8 +32,8 @@ const meta: Meta<typeof Tabs.Root> = {
       control: 'select',
     },
     variant: {
-      options: ['card'],
-      control: 'check',
+      options: ['card', 'simple'],
+      control: 'radio',
     },
   },
 }
@@ -43,7 +43,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
+  args: { size: 'md', align: 'start', position: 'top', variant: 'simple' },
 }
 
 const TABS = [

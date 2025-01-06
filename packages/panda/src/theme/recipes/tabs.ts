@@ -9,7 +9,6 @@ export const tabs = defineSlotRecipe({
       width: 'full',
     },
     trigger: {
-      textStyle: '{md}',
       overflow: 'hidden',
       py: '{spacing.padding.block.md}',
       mb: '-1.5px',
@@ -34,7 +33,7 @@ export const tabs = defineSlotRecipe({
       overflow: 'hidden',
       color: '{colors.text}',
       py: '{spacing.padding.block.lg}',
-      textStyle: 'md',
+      textStyle: '{md}',
     },
   },
   variants: {
@@ -44,6 +43,11 @@ export const tabs = defineSlotRecipe({
           textStyle: '{sm}',
         },
       },
+      md: {
+        trigger: {
+          textStyle: '{md}',
+        },
+      },
       lg: {
         trigger: {
           textStyle: '{lg}',
@@ -51,6 +55,11 @@ export const tabs = defineSlotRecipe({
       },
     },
     align: {
+      start: {
+        tabList: {
+          justifyContent: 'start',
+        },
+      },
       center: {
         tabList: {
           justifyContent: 'center',
@@ -63,6 +72,7 @@ export const tabs = defineSlotRecipe({
       },
     },
     position: {
+      top: {},
       left: {
         root: {
           display: 'flex',
@@ -124,7 +134,7 @@ export const tabs = defineSlotRecipe({
         trigger: {
           py: '{spacing.padding.block.md}',
           margin: '0',
-          mt: '-1.5px',
+          mt: '-1px',
           _selected: {
             borderWidth: '0',
             borderTopWidth: '3px',
@@ -133,6 +143,7 @@ export const tabs = defineSlotRecipe({
       },
     },
     variant: {
+      simple: {},
       card: {
         tabList: {
           gap: '{spacing.gap.inline.sm}',
@@ -141,12 +152,9 @@ export const tabs = defineSlotRecipe({
           backgroundColor: '{colors.fill.disabled}',
           borderWidth: '1px',
           borderColor: '{colors.border}',
-          borderTopRadius: '{radii.lg}',
           px: '{spacing.padding.block.lg}',
-          mb: '-1px',
           _selected: {
             color: '{colors.primary}',
-            borderBottomColor: '{colors.surface.elevated}',
             backgroundColor: '{colors.surface.elevated}',
           },
           _disabled: {
@@ -156,7 +164,29 @@ export const tabs = defineSlotRecipe({
       },
     },
   },
+  defaultVariants: {
+    size: 'md',
+    align: 'start',
+    variant: 'simple',
+    position: 'top',
+  },
   compoundVariants: [
+    {
+      variant: 'card',
+      position: 'top',
+      css: {
+        trigger: {
+          borderRadius: '0',
+          borderTopRadius: '{radii.lg}',
+          borderWidth: '1px',
+          borderColor: '{colors.border}',
+          mb: '-1.5px',
+          _selected: {
+            borderBottomColor: '{colors.surface.elevated}',
+          },
+        },
+      },
+    },
     {
       variant: 'card',
       position: 'bottom',

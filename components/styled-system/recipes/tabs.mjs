@@ -1,8 +1,29 @@
 import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mjs';
 import { createRecipe } from './create-recipe.mjs';
 
-const tabsDefaultVariants = {}
+const tabsDefaultVariants = {
+  "size": "md",
+  "align": "start",
+  "variant": "simple",
+  "position": "top"
+}
 const tabsCompoundVariants = [
+  {
+    "variant": "card",
+    "position": "top",
+    "css": {
+      "trigger": {
+        "borderRadius": "0",
+        "borderTopRadius": "{radii.lg}",
+        "borderWidth": "1px",
+        "borderColor": "{colors.border}",
+        "mb": "-1.5px",
+        "_selected": {
+          "borderBottomColor": "{colors.surface.elevated}"
+        }
+      }
+    }
+  },
   {
     "variant": "card",
     "position": "bottom",
@@ -90,18 +111,22 @@ export const tabs = /* @__PURE__ */ Object.assign(tabsFn, {
   variantMap: {
   "size": [
     "sm",
+    "md",
     "lg"
   ],
   "align": [
+    "start",
     "center",
     "end"
   ],
   "position": [
+    "top",
     "left",
     "right",
     "bottom"
   ],
   "variant": [
+    "simple",
     "card"
   ]
 },
