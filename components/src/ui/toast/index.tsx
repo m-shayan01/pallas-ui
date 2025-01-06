@@ -1,7 +1,7 @@
 'use client'
 import * as RadixToast from '@radix-ui/react-toast'
 import { HStack } from '@styled-system/jsx'
-import { toast } from '@styled-system/recipes'
+import { type ToastVariantProps, toast } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { X } from 'lucide-react'
 import type * as React from 'react'
@@ -12,17 +12,20 @@ import ToastIcon from './Icon'
 
 const { withProvider, withContext } = createStyleContext(toast)
 
-export type RootProps = WithFixedClassName<ComponentProps<typeof RadixToast.Root>>
+export type RootProps = Assign<
+  WithFixedClassName<ComponentProps<typeof RadixToast.Root>>,
+  ToastVariantProps
+>
 export type ActionProps = ComponentProps<typeof RadixToast.Action>
 
-export const Root = withProvider<
-  React.ElementRef<typeof RadixToast.Root>,
-  Assign<RootProps, JsxStyleProps>
->(RadixToast.Root, 'root')
+export const Root = withProvider<React.ElementRef<typeof RadixToast.Root>, RootProps>(
+  RadixToast.Root,
+  'root',
+)
 
 export const Viewport = withProvider<
   React.ElementRef<typeof RadixToast.Viewport>,
-  Assign<ComponentProps<typeof RadixToast.Viewport>, JsxStyleProps>
+  Assign<ComponentProps<typeof RadixToast.Viewport>, ToastVariantProps>
 >(RadixToast.Viewport, 'viewport')
 
 export const Title = withContext<

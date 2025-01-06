@@ -1,15 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import type { ButtonProps } from '~/ui/button'
-import Toast, { Provider, Viewport } from '~/ui/toast'
+import Toast, { Provider, Viewport, type ToastPropTypes } from '~/ui/toast'
 
-const meta: Meta<typeof Toast> = {
+const meta: Meta<ToastPropTypes> = {
   title: 'Components/Toast',
   tags: ['autodocs'],
   render: (props) => (
-    <Provider>
-      <Toast open={true} {...props} />
-      <Viewport placement={props.placement} />
-    </Provider>
+    <div style={{ height: 150 }}>
+      <Provider>
+        <Toast open={true} {...props} />
+        <Viewport placement={props.placement} />
+      </Provider>
+    </div>
   ),
   argTypes: {
     variant: {
@@ -17,7 +19,7 @@ const meta: Meta<typeof Toast> = {
       control: 'select',
     },
     iconType: {
-      options: ['info', 'warning', 'success', 'error'],
+      options: ['info', 'warning', 'success', 'error', undefined],
       control: 'select',
     },
     placement: {
@@ -73,7 +75,7 @@ export const Varients = () => (
 
     <Toast
       open={true}
-      title={'Toast with icon and actions'}
+      title={'Toast with icon, actions and close'}
       description={DESCRIPTION}
       actions={ACTIONS}
       iconType="info"
