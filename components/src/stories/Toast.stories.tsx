@@ -5,11 +5,11 @@ import Toast, { Provider, Viewport, type ToastPropTypes } from '~/ui/toast'
 const meta: Meta<ToastPropTypes> = {
   title: 'Components/Toast',
   tags: ['autodocs'],
-  render: (props) => (
-    <div style={{ height: 150 }}>
+  render: ({ placement, ...props }) => (
+    <div style={{ height: 300 }}>
       <Provider>
+        <Viewport placement={placement} />
         <Toast open={true} {...props} />
-        <Viewport placement={props.placement} />
       </Provider>
     </div>
   ),
@@ -63,7 +63,7 @@ export const Default: Story = {
   },
 }
 
-export const Varients = () => (
+export const Variants = () => (
   <Provider>
     <Viewport />
 

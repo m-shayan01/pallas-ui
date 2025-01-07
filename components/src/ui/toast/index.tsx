@@ -77,7 +77,7 @@ export type ToastAction = {
   buttonProps?: Partial<ButtonProps>
 }
 
-const Toast = ({ description, closeButtonProps, actions, ...props }: ToastPropTypes) => (
+const Toast = ({ description, closeButtonProps, actions, placement, ...props }: ToastPropTypes) => (
   <Root {...props}>
     <Icon type={props.iconType} />
     <Title>{props.title}</Title>

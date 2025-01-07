@@ -95,7 +95,10 @@ export const toast = defineSlotRecipe({
       topLeft: {
         viewport: {
           top: 0,
+          bottom: 'unset',
           left: 0,
+          right: 'unset',
+          alignItems: 'flex-start',
         },
         root: {
           _open: {
@@ -109,6 +112,8 @@ export const toast = defineSlotRecipe({
       topRight: {
         viewport: {
           top: 0,
+          bottom: 'unset',
+          left: 'unset',
           right: 0,
           alignItems: 'flex-end',
         },
@@ -123,8 +128,11 @@ export const toast = defineSlotRecipe({
       },
       bottomLeft: {
         viewport: {
+          top: 'unset',
           bottom: 0,
           left: 0,
+          right: 'unset',
+          alignItems: 'flex-start',
         },
         root: {
           _open: {
@@ -137,7 +145,9 @@ export const toast = defineSlotRecipe({
       },
       bottomRight: {
         viewport: {
+          top: 'unset',
           bottom: 0,
+          left: 'unset',
           right: 0,
           alignItems: 'flex-end',
         },
