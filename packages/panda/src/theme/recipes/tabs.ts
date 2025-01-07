@@ -12,6 +12,7 @@ export const tabs = defineSlotRecipe({
       overflow: 'hidden',
       py: '{spacing.padding.block.md}',
       mb: '-1.5px',
+      outline: 'none',
       _selected: {
         color: '{colors.primary}',
         borderBottomWidth: '3px',
@@ -19,6 +20,10 @@ export const tabs = defineSlotRecipe({
       },
       _disabled: {
         color: '{colors.border}',
+      },
+      _hover: {
+        cursor: 'pointer',
+        color: '{colors.primary.hover}',
       },
     },
     tabList: {

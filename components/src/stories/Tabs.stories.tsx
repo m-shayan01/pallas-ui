@@ -71,7 +71,7 @@ const TABS = [
   },
 ]
 
-export const Varients = () => (
+export const Variants = () => (
   <Stack direction="column" align="flex-start">
     {/* CENTERED - DISABLED */}
     <Tabs.Root align="center">
