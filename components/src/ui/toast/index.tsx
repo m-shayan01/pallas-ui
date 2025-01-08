@@ -12,11 +12,10 @@ import ToastIcon from './Icon'
 
 const { withProvider, withContext } = createStyleContext(toast)
 
-export type RootProps = Assign<
+type RootProps = Assign<
   WithFixedClassName<ComponentProps<typeof RadixToast.Root>>,
   ToastVariantProps
 >
-export type ActionProps = ComponentProps<typeof RadixToast.Action>
 
 export const Root = withProvider<React.ElementRef<typeof RadixToast.Root>, RootProps>(
   RadixToast.Root,
@@ -25,7 +24,7 @@ export const Root = withProvider<React.ElementRef<typeof RadixToast.Root>, RootP
 
 export const Viewport = withProvider<
   React.ElementRef<typeof RadixToast.Viewport>,
-  Assign<ComponentProps<typeof RadixToast.Viewport>, ToastVariantProps>
+  Assign<ComponentProps<typeof RadixToast.Viewport>, Pick<ToastVariantProps, 'placement'>>
 >(RadixToast.Viewport, 'viewport')
 
 export const Title = withContext<
@@ -47,6 +46,8 @@ export const Actions = withContext<
   React.ElementRef<typeof HStack>,
   Assign<ComponentProps<typeof HStack>, JsxStyleProps>
 >(HStack, 'actions')
+
+export type ActionProps = ComponentProps<typeof RadixToast.Action>
 
 export const Action = withContext<
   React.ElementRef<typeof RadixToast.Action>,
@@ -77,7 +78,7 @@ export type ToastAction = {
   buttonProps?: Partial<ButtonProps>
 }
 
-const Toast = ({ description, closeButtonProps, actions, placement, ...props }: ToastPropTypes) => (
+const Toast = ({ description, closeButtonProps, actions, ...props }: ToastPropTypes) => (
   <Root {...props}>
     <Icon type={props.iconType} />
     <Title>{props.title}</Title>

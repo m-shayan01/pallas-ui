@@ -5,10 +5,10 @@ import Toast, { Provider, Viewport, type ToastPropTypes } from '~/ui/toast'
 const meta: Meta<ToastPropTypes> = {
   title: 'Components/Toast',
   tags: ['autodocs'],
-  render: ({ placement, ...props }) => (
+  render: ({ ...props }) => (
     <div style={{ height: 300 }}>
       <Provider>
-        <Viewport placement={placement} />
+        <Viewport placement={props.placement} />
         <Toast open={true} {...props} />
       </Provider>
     </div>
@@ -88,4 +88,52 @@ export const Variants = () => (
 
     <Toast open={true} title={'Toast with success icon'} iconType="success" />
   </Provider>
+)
+
+export const Placement = () => (
+  <>
+    <Provider>
+      <Viewport placement="bottomLeft" />
+      <Toast
+        open={true}
+        title={'Toast from Bottom Left'}
+        description={DESCRIPTION}
+        iconType="info"
+        placement="bottomLeft"
+      />
+    </Provider>
+
+    <Provider>
+      <Viewport placement="bottomRight" />
+      <Toast
+        open={true}
+        title={'Toast from Bottom Right'}
+        description={DESCRIPTION}
+        iconType="info"
+        placement="bottomRight"
+      />
+    </Provider>
+
+    <Provider>
+      <Viewport placement="topRight" />
+      <Toast
+        open={true}
+        title={'Toast from Top Right'}
+        description={DESCRIPTION}
+        iconType="info"
+        placement="topRight"
+      />
+    </Provider>
+
+    <Provider>
+      <Viewport placement="topLeft" />
+      <Toast
+        open={true}
+        title={'Toast from Top Left'}
+        description={DESCRIPTION}
+        iconType="info"
+        placement="topLeft"
+      />
+    </Provider>
+  </>
 )
