@@ -1,45 +1,27 @@
 'use client'
-import { type ProgressVariantProps, progress } from '@styled-system/recipes'
+import type { ProgressVariantProps } from '@styled-system/recipes'
 import type { ComponentProps, HTMLStyledProps } from '@styled-system/types'
 import type * as React from 'react'
-import { ProgressBar } from 'react-aria-components'
+import type { ProgressBar } from 'react-aria-components'
 import type { Assign, WithFixedClassName } from '~/utils/types'
-import { createStyleContext } from '../../utils/style-context'
-const { withProvider, withContext } = createStyleContext(progress)
+import { SVG } from './SVG'
+import { CircleFill } from './circleFill'
+import { CircleTrack } from './circleTrack'
+import { LineFill } from './lineFill'
+import { LineTrack } from './lineTrack'
+import { Root, withContext } from './root'
 
 export type RootProps = Assign<
   WithFixedClassName<ComponentProps<typeof ProgressBar>>,
-  ProgressVariantProps & { width?: number; height?: number; strokeWidth?: number }
+  ProgressVariantProps &
+    Partial<{ width: number; height: number; steps: number; stepToGapRatio: number }>
 >
-
-export const Root = withProvider<React.ElementRef<typeof ProgressBar>, RootProps>(
-  ProgressBar,
-  'root',
-  { forwardProps: ['strokeWidth'] },
-)
 
 export const Label = withContext<React.ElementRef<'p'>, HTMLStyledProps<'p'>>('p', 'label')
 
-export const LineTrack = withContext<React.ElementRef<'line'>, HTMLStyledProps<'line'>>(
-  'line',
-  'lineTrack',
-)
-
-export const LineFill = withContext<React.ElementRef<'line'>, HTMLStyledProps<'line'>>(
-  'line',
-  'lineFill',
-)
-export const CircleTrack = withContext<React.ElementRef<'circle'>, HTMLStyledProps<'circle'>>(
-  'circle',
-  'circleTrack',
-)
-export const CircleFill = withContext<React.ElementRef<'circle'>, HTMLStyledProps<'circle'>>(
-  'circle',
-  'circleFill',
-)
-
 const Progress = {
   Root,
+  SVG,
   Label,
   LineTrack,
   LineFill,
