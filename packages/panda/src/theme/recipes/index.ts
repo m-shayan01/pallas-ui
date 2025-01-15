@@ -7,6 +7,7 @@ import { button } from './button'
 import { card } from './card'
 import { heading } from './heading'
 import { icon } from './icons'
+import { menubar } from './menu-bar'
 import { modal } from './modal'
 import { paragraph } from './paragraph'
 
@@ -25,4 +26,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   card,
   modal,
   accordian,
+  menubar,
 }
