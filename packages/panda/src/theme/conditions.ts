@@ -15,5 +15,9 @@ export const conditions = {
     invalid: '&:is([aria-invalid])',
     open: '&[data-state=open]',
     closed: '&[data-state=closed]',
+    left: '&[data-side=left]',
+    right: '&[data-side=right]',
+    top: '&[data-side=top]',
+    bottom: '&[data-side=bottom]',
   },
 }
