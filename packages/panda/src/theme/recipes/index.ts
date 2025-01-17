@@ -12,6 +12,7 @@ import { label } from './label'
 import { modal } from './modal'
 import { paragraph } from './paragraph'
 import { select } from './select'
+import { tooltip } from './tooltip'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
@@ -31,4 +32,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   modal,
   accordian,
   select,
+  tooltip,
 }
