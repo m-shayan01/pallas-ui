@@ -10,3 +10,4 @@ export * from './card.mjs';
 export * from './modal.mjs';
 export * from './accordian.mjs';
 export * from './popover.mjs';
+export * from './tooltip.mjs';
