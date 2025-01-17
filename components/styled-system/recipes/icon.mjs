@@ -2,17 +2,36 @@ import { memo, splitProps } from '../helpers.mjs';
 import { createRecipe, mergeRecipes } from './create-recipe.mjs';
 
 const iconFn = /* @__PURE__ */ createRecipe('icon', {
-  "size": "md"
+  "size": "md",
+  "left": "none",
+  "right": "none",
+  "fillCurrent": false,
+  "dimmed": false
 }, [])
 
 const iconVariantMap = {
   "size": [
-    "xs",
-    "sm",
-    "md",
-    "lg",
     "xl",
-    "2xl"
+    "lg",
+    "md",
+    "sm",
+    "xs"
+  ],
+  "left": [
+    "none",
+    "sm",
+    "auto"
+  ],
+  "right": [
+    "none",
+    "sm",
+    "auto"
+  ],
+  "fillCurrent": [
+    "true"
+  ],
+  "dimmed": [
+    "true"
   ]
 }
 

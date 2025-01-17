@@ -22,21 +22,25 @@ export const select = defineSlotRecipe({
       w: 'full',
       alignItems: 'center',
       justifyContent: 'space-between',
-      rounded: 'md',
-      border: 'input',
-      bg: '{colors.fill.secondary}',
+      rounded: '{radii.md}',
+      border: '1px solid {colors.border}',
+      bg: '{colors.surface.elevated}',
       px: '{spacing.padding.inline.md}',
       py: '{spacing.padding.block.md}',
       textStyle: 'sm',
       cursor: 'pointer',
-      focusRingOffsetColor: 'background',
+      focusRingOffsetColor: '{colors.fill.secondary}',
 
       _placeholder: {
         color: '{colors.text.secondary}',
       },
-
+      _hover: {
+        borderColor: '{colors.primary.hover}',
+      },
       _focus: {
-        outline: '2px solid {colors.border.primary}',
+        borderColor: '{colors.primary.hover}',
+        shadow: '0 0 0 2px {colors.primary.bgHover}',
+        outline: '2px solid {colors.primary.bgHover}',
         outlineOffset: '2px',
         focusRingWidth: '2',
         focusRingColor: 'ring',
@@ -64,10 +68,10 @@ export const select = defineSlotRecipe({
       zIndex: 50,
       minW: '8rem',
       overflow: 'hidden',
-      rounded: 'md',
-      border: 'base',
-      bg: '{colors.fill.secondary}',
-      color: '{colors.text.secondary}',
+      rounded: '{radii.md}',
+      border: '1px solid {colors.border}',
+      bg: '{colors.surface.elevated}',
+      color: '{colors.text}',
       shadow: 'md',
 
       _open: {

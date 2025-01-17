@@ -12,3 +12,4 @@ export * from './label';
 export * from './card';
 export * from './modal';
 export * from './accordian';
+export * from './select';

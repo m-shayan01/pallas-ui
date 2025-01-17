@@ -6,7 +6,23 @@ interface IconVariant {
   /**
  * @default "md"
  */
-size: "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
+size: "xl" | "lg" | "md" | "sm" | "xs"
+/**
+ * @default "none"
+ */
+left: "none" | "sm" | "auto"
+/**
+ * @default "none"
+ */
+right: "none" | "sm" | "auto"
+/**
+ * @default false
+ */
+fillCurrent: boolean
+/**
+ * @default false
+ */
+dimmed: boolean
 }
 
 type IconVariantMap = {
@@ -27,5 +43,9 @@ export interface IconRecipe {
   getVariantProps: (props?: IconVariantProps) => IconVariantProps
 }
 
+/**
+ * Styles for the icons
 
+
+ */
 export declare const icon: IconRecipe

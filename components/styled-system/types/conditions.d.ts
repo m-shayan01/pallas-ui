@@ -194,6 +194,14 @@ export interface Conditions {
 	"_today": string
 	/** `&:is([data-state="under-value"])` */
 	"_underValue": string
+	/** `&[data-side=top]` */
+	"_top": string
+	/** `&[data-side=bottom]` */
+	"_bottom": string
+	/** `&[data-side=left]` */
+	"_left": string
+	/** `&[data-side=right]` */
+	"_right": string
 	/** `@media screen and (min-width: 40rem)` */
 	"sm": string
 	/** `@media screen and (min-width: 40rem) and (max-width: 47.9975rem)` */
