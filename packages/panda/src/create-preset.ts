@@ -1,5 +1,6 @@
 import { definePreset } from '@pandacss/dev'
 import { generateThemeColors } from './colors/colors'
+import { paletteGenerator, presetPrimaryColors } from './colors/paletteGenerator'
 import { breakpoints } from './theme/breakpoints'
 import { conditions } from './theme/conditions'
 import { globalCss } from './theme/global-css'
@@ -20,6 +21,18 @@ export const createPreset = (options: ThemeOptions) => {
     // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
     return { ...acc, ...curr }
   }, {})
+
+  const presetColorPalette = paletteGenerator(presetPrimaryColors)
+
+  const presetColorPaletteTokens = Object.values(presetColorPalette).reduce((acc, curr) => {
+    // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
+    return { ...acc, ...curr }
+  }, {})
+
+  const colorTokens = {
+    ...presetColorPaletteTokens,
+    ...themeColorsTokens,
+  }
 
   return definePreset({
     name: '@pallas-ui/panda-preset',
@@ -44,7 +57,7 @@ export const createPreset = (options: ThemeOptions) => {
         tokens: {
           ...tokens,
           colors: {
-            ...themeColorsTokens,
+            ...colorTokens,
           },
         },
         semanticTokens: {
