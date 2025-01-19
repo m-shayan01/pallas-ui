@@ -15,6 +15,7 @@ import { paragraph } from './paragraph'
 import { popover } from './popover'
 import { radioGroup } from './radio-group'
 import { select } from './select'
+import { slider } from './slider'
 import { tooltip } from './tooltip'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
@@ -39,4 +40,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   tooltip,
   radioGroup,
   checkbox,
+  slider,
 }
