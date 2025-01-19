@@ -122,7 +122,7 @@ export const select = defineSlotRecipe({
     },
     label: {
       py: '{spacing.padding.block.md}',
-      pl: '{spacing.gap.inline.lg}',
+      pl: '{spacing.gap.inline.sm}',
       pr: '{spacing.gap.inline.sm}',
       textStyle: 'sm',
       fontWeight: 'semibold',
@@ -141,8 +141,8 @@ export const select = defineSlotRecipe({
       outline: '2px solid transparent',
 
       _focus: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bg}',
+        color: '{colors.text.primary}',
       },
 
       ['&[data-disabled]']: {
@@ -152,7 +152,7 @@ export const select = defineSlotRecipe({
     },
     itemIndicator: {
       position: 'absolute',
-      left: '{spacing.padding.inline.md}',
+      left: '{spacing.padding.inline.xs}',
       display: 'flex',
       h: '{sizes.iconSize.sm}',
       w: '{sizes.iconSize.sm}',

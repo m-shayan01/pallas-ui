@@ -1,4 +1,3 @@
-import { SelectGroup } from '@radix-ui/react-select'
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { Label } from '~/ui/label'

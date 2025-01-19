@@ -22,5 +22,6 @@ export const conditions = {
     bottom: '&[data-side=bottom]',
     left: '&[data-side=left]',
     right: '&[data-side=right]',
+    checked: '&:is(:checked, [data-checked], [data-state=checked], [aria-checked=true])',
   },
 }
