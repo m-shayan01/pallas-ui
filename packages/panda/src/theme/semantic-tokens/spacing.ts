@@ -25,9 +25,9 @@ export const spacing = defineSemanticTokens.spacing({
       lg: { value: '{spacing.6}' },
     },
     inline: {
-      sm: { value: '{spacing.1}' },
-      md: { value: '{spacing.2}' },
-      lg: { value: '{spacing.3}' },
+      sm: { value: '{spacing.3}' },
+      md: { value: '{spacing.4}' },
+      lg: { value: '{spacing.5}' },
     },
   },
   padding: {
@@ -37,6 +37,7 @@ export const spacing = defineSemanticTokens.spacing({
       lg: { value: '{spacing.3}' },
     },
     inline: {
+      xs: { value: '{spacing.1}' },
       sm: { value: '{spacing.2}' },
       md: { value: '{spacing.3}' },
       lg: { value: '{spacing.4}' },
