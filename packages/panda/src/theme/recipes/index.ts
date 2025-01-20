@@ -16,6 +16,8 @@ import { popover } from './popover'
 import { radioGroup } from './radio-group'
 import { select } from './select'
 import { slider } from './slider'
+import { switchRecipe } from './switch'
+import { textarea } from './textarea'
 import { tooltip } from './tooltip'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
@@ -29,6 +31,7 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
   badge,
   input,
   label,
+  textarea,
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
@@ -41,4 +44,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   radioGroup,
   checkbox,
   slider,
+  switchRecipe,
 }
