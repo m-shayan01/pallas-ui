@@ -69,28 +69,6 @@ export const toast = defineSlotRecipe({
         },
       },
     },
-    iconColor: {
-      info: {
-        icon: {
-          color: '{colors.info}',
-        },
-      },
-      warning: {
-        icon: {
-          color: '{colors.warning}',
-        },
-      },
-      success: {
-        icon: {
-          color: '{colors.success}',
-        },
-      },
-      error: {
-        icon: {
-          color: '{colors.error}',
-        },
-      },
-    },
     placement: {
       topLeft: {
         viewport: {
@@ -165,6 +143,5 @@ export const toast = defineSlotRecipe({
   defaultVariants: {
     variant: 'bordered',
     placement: 'topRight',
-    iconColor: 'info',
   },
 })

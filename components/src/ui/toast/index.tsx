@@ -2,12 +2,11 @@
 import * as RadixToast from '@radix-ui/react-toast'
 import { HStack } from '@styled-system/jsx'
 import { type ToastVariantProps, toast } from '@styled-system/recipes'
-import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
+import type { ComponentProps, HTMLStyledProps, JsxStyleProps } from '@styled-system/types'
 import type * as React from 'react'
 import type { Assign, WithFixedClassName } from '~/utils/types'
 import { createStyleContext } from '../../utils/style-context'
 import type { ButtonProps } from '../button'
-import ToastIcon from './Icon'
 
 const { withProvider, withContext } = createStyleContext(toast)
 
@@ -53,18 +52,13 @@ export const Action = withContext<
   Assign<ActionProps, JsxStyleProps>
 >(RadixToast.Action, 'action')
 
-export const Icon = withContext<
-  React.ElementRef<typeof ToastIcon>,
-  Assign<ComponentProps<typeof ToastIcon>, JsxStyleProps>
->(ToastIcon, 'icon')
+export const Icon = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'icon')
 
 export const Provider = RadixToast.Provider
 
 export type ToastPropTypes = RootProps & {
   description?: string
 }
-
-export type IconTypes = 'success' | 'error' | 'info' | 'warning'
 
 export type ToastAction = {
   key: string

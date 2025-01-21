@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { X } from 'lucide-react'
+import { token } from '@styled-system/tokens'
+import { CircleCheck, Info, X, XCircle } from 'lucide-react'
 import { Button, type ButtonProps } from '~/ui/button'
 import Toast, { Provider, Viewport, type ToastPropTypes } from '~/ui/toast'
 
@@ -26,10 +27,6 @@ const meta: Meta<ToastPropTypes> = {
     variant: {
       options: ['shadow', 'bordered'],
       control: 'inline-radio',
-    },
-    iconColor: {
-      options: ['info', 'warning', 'success', 'error', undefined],
-      control: 'select',
     },
     placement: {
       options: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
@@ -81,6 +78,11 @@ export const Variants = () => (
       <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
     </Toast.Root>
 
+    <Toast.Root duration={10000}>
+      <Toast.Title>Auto hides after 10s</Toast.Title>
+      <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
+    </Toast.Root>
+
     <Toast.Root open={true}>
       <Toast.Description>Toast without title, only description</Toast.Description>
     </Toast.Root>
@@ -104,7 +106,9 @@ export const Variants = () => (
     </Toast.Root>
 
     <Toast.Root open={true}>
-      <Toast.Icon type="info" />
+      <Toast.Icon>
+        <Info />
+      </Toast.Icon>
       <Toast.Title>Toast with icon, actions and close</Toast.Title>
       <Toast.Description>{DESCRIPTION}</Toast.Description>
       <Toast.Close asChild>
@@ -123,18 +127,24 @@ export const Variants = () => (
       </Toast.Actions>
     </Toast.Root>
 
-    <Toast.Root open={true} iconColor="warning">
-      <Toast.Icon type="warning" />
+    <Toast.Root open={true}>
+      <Toast.Icon>
+        <Info color={token('colors.warning')} />
+      </Toast.Icon>
       <Toast.Title>Toast with warning icon</Toast.Title>
     </Toast.Root>
 
-    <Toast.Root open={true} iconColor="error">
-      <Toast.Icon type="error" />
+    <Toast.Root open={true}>
+      <Toast.Icon>
+        <XCircle color={token('colors.error')} />
+      </Toast.Icon>
       <Toast.Title>Toast with error icon</Toast.Title>
     </Toast.Root>
 
-    <Toast.Root open={true} iconColor="success">
-      <Toast.Icon type="success" />
+    <Toast.Root open={true}>
+      <Toast.Icon>
+        <CircleCheck color={token('colors.success')} />
+      </Toast.Icon>
       <Toast.Title>Toast with success icon</Toast.Title>
     </Toast.Root>
   </Provider>
@@ -144,8 +154,10 @@ export const Placement = () => (
   <>
     <Provider>
       <Viewport placement="bottomLeft" />
-      <Toast.Root open={true} iconColor="info" placement="bottomLeft">
-        <Toast.Icon type="info" />
+      <Toast.Root open={true} placement="bottomLeft">
+        <Toast.Icon>
+          <Info color={token('colors.info')} />
+        </Toast.Icon>
         <Toast.Title>Toast from Bottom Left</Toast.Title>
         <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
       </Toast.Root>
@@ -153,8 +165,10 @@ export const Placement = () => (
 
     <Provider>
       <Viewport placement="bottomRight" />
-      <Toast.Root open={true} iconColor="info" placement="bottomRight">
-        <Toast.Icon type="info" />
+      <Toast.Root open={true} placement="bottomRight">
+        <Toast.Icon>
+          <Info color={token('colors.info')} />
+        </Toast.Icon>
         <Toast.Title>Toast from Bottom Right</Toast.Title>
         <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
       </Toast.Root>
@@ -162,8 +176,10 @@ export const Placement = () => (
 
     <Provider>
       <Viewport placement="topRight" />
-      <Toast.Root open={true} iconColor="info" placement="topRight">
-        <Toast.Icon type="info" />
+      <Toast.Root open={true} placement="topRight">
+        <Toast.Icon>
+          <Info color={token('colors.info')} />
+        </Toast.Icon>
         <Toast.Title>Toast from Top Right</Toast.Title>
         <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
       </Toast.Root>
@@ -171,8 +187,10 @@ export const Placement = () => (
 
     <Provider>
       <Viewport placement="topLeft" />
-      <Toast.Root open={true} iconColor="info" placement="topLeft">
-        <Toast.Icon type="info" />
+      <Toast.Root open={true} placement="topLeft">
+        <Toast.Icon>
+          <Info color={token('colors.info')} />
+        </Toast.Icon>
         <Toast.Title>Toast from Top Left</Toast.Title>
         <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
       </Toast.Root>
