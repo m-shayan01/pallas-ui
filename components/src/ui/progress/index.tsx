@@ -4,12 +4,12 @@ import type { ComponentProps, HTMLStyledProps } from '@styled-system/types'
 import type * as React from 'react'
 import type { ProgressBar } from 'react-aria-components'
 import type { Assign, WithFixedClassName } from '~/utils/types'
-import { SVG } from './SVG'
 import { CircleFill } from './circleFill'
 import { CircleTrack } from './circleTrack'
 import { LineFill } from './lineFill'
 import { LineTrack } from './lineTrack'
 import { Root, withContext } from './root'
+import { SVG } from './svg'
 
 export type RootProps = Assign<
   WithFixedClassName<ComponentProps<typeof ProgressBar>>,
