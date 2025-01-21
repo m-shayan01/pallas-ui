@@ -42,7 +42,7 @@ export const accordian = defineSlotRecipe({
         base: 'lg',
         lg: 'xl',
       },
-      bg: '{colors.fill.disabled}',
+      bg: '{colors.primary.bg}',
       fontWeight: 'semibold',
       px: '{spacing.padding.inline.lg}',
       py: '{spacing.padding.block.md}',
