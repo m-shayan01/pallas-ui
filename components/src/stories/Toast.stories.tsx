@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import type { ButtonProps } from '~/ui/button'
+import { X } from 'lucide-react'
+import { Button, type ButtonProps } from '~/ui/button'
 import Toast, { Provider, Viewport, type ToastPropTypes } from '~/ui/toast'
 
 const meta: Meta<ToastPropTypes> = {
@@ -9,22 +10,30 @@ const meta: Meta<ToastPropTypes> = {
     <div style={{ height: 300 }}>
       <Provider>
         <Viewport placement={props.placement} />
-        <Toast open={true} {...props} />
+        <Toast.Root open={true} {...props}>
+          <Toast.Title>{props.title}</Toast.Title>
+          <Toast.Description>{props.description}</Toast.Description>
+          <Toast.Close asChild>
+            <Button variant="text" aria-label="Close">
+              <X aria-hidden size={20} />
+            </Button>
+          </Toast.Close>
+        </Toast.Root>
       </Provider>
     </div>
   ),
   argTypes: {
     variant: {
       options: ['shadow', 'bordered'],
-      control: 'select',
+      control: 'inline-radio',
     },
-    iconType: {
+    iconColor: {
       options: ['info', 'warning', 'success', 'error', undefined],
       control: 'select',
     },
     placement: {
       options: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
-      control: 'select',
+      control: 'inline-radio',
     },
   },
   decorators: [],
@@ -38,11 +47,12 @@ const TITLE = 'This is a title'
 const DESCRIPTION = `when an unknown printer took a galley of type and scrambled it to make a type specimen book.
       It has survived not only five centuries. when an unknown printer took a galley of type and
       scrambled it to make a type specimen book. It has survived not only five centuries.`
+const SHORT_DESCRIPTION =
+  'when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
 const ACTIONS = [
   {
     key: '1',
     label: 'Action 1',
-    onClick: () => {},
     buttonProps: {
       variant: 'outlined',
     } as ButtonProps,
@@ -50,7 +60,6 @@ const ACTIONS = [
   {
     key: '2',
     label: 'Action 2',
-    onClick: () => {},
   },
 ]
 
@@ -67,26 +76,67 @@ export const Variants = () => (
   <Provider>
     <Viewport />
 
-    <Toast title={'Auto hides after 5s'} description={DESCRIPTION} />
+    <Toast.Root>
+      <Toast.Title>Auto hides after 5s</Toast.Title>
+      <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
+    </Toast.Root>
 
-    <Toast open={true} title={'Toast with shadow'} actions={ACTIONS} variant="shadow" />
+    <Toast.Root open={true}>
+      <Toast.Description>Toast without title, only description</Toast.Description>
+    </Toast.Root>
 
-    <Toast open={true} description={'Toast without title, just description text'} />
+    <Toast.Root open={true} variant="shadow">
+      <Toast.Title>Toast with Shadow & Actions</Toast.Title>
+      <Toast.Actions>
+        {ACTIONS.map(({ key, label, buttonProps }) => (
+          <Toast.Action key={key} asChild altText={label}>
+            <Button size="sm" {...buttonProps}>
+              {label}
+            </Button>
+          </Toast.Action>
+        ))}
+      </Toast.Actions>
+      <Toast.Close asChild>
+        <Button variant="text" aria-label="Close">
+          <X aria-hidden size={20} />
+        </Button>
+      </Toast.Close>
+    </Toast.Root>
 
-    <Toast
-      open={true}
-      title={'Toast with icon, actions and close'}
-      description={DESCRIPTION}
-      actions={ACTIONS}
-      iconType="info"
-      showClose
-    />
+    <Toast.Root open={true}>
+      <Toast.Icon type="info" />
+      <Toast.Title>Toast with icon, actions and close</Toast.Title>
+      <Toast.Description>{DESCRIPTION}</Toast.Description>
+      <Toast.Close asChild>
+        <Button variant="text" aria-label="Close">
+          <X aria-hidden size={20} />
+        </Button>
+      </Toast.Close>
+      <Toast.Actions>
+        {ACTIONS.map(({ key, label, buttonProps }) => (
+          <Toast.Action key={key} asChild altText={label}>
+            <Button size="sm" {...buttonProps}>
+              {label}
+            </Button>
+          </Toast.Action>
+        ))}
+      </Toast.Actions>
+    </Toast.Root>
 
-    <Toast open={true} title={'Toast with warning icon'} iconType="warning" />
+    <Toast.Root open={true} iconColor="warning">
+      <Toast.Icon type="warning" />
+      <Toast.Title>Toast with warning icon</Toast.Title>
+    </Toast.Root>
 
-    <Toast open={true} title={'Toast with error icon'} iconType="error" />
+    <Toast.Root open={true} iconColor="error">
+      <Toast.Icon type="error" />
+      <Toast.Title>Toast with error icon</Toast.Title>
+    </Toast.Root>
 
-    <Toast open={true} title={'Toast with success icon'} iconType="success" />
+    <Toast.Root open={true} iconColor="success">
+      <Toast.Icon type="success" />
+      <Toast.Title>Toast with success icon</Toast.Title>
+    </Toast.Root>
   </Provider>
 )
 
@@ -94,46 +144,38 @@ export const Placement = () => (
   <>
     <Provider>
       <Viewport placement="bottomLeft" />
-      <Toast
-        open={true}
-        title={'Toast from Bottom Left'}
-        description={DESCRIPTION}
-        iconType="info"
-        placement="bottomLeft"
-      />
+      <Toast.Root open={true} iconColor="info" placement="bottomLeft">
+        <Toast.Icon type="info" />
+        <Toast.Title>Toast from Bottom Left</Toast.Title>
+        <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
+      </Toast.Root>
     </Provider>
 
     <Provider>
       <Viewport placement="bottomRight" />
-      <Toast
-        open={true}
-        title={'Toast from Bottom Right'}
-        description={DESCRIPTION}
-        iconType="info"
-        placement="bottomRight"
-      />
+      <Toast.Root open={true} iconColor="info" placement="bottomRight">
+        <Toast.Icon type="info" />
+        <Toast.Title>Toast from Bottom Right</Toast.Title>
+        <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
+      </Toast.Root>
     </Provider>
 
     <Provider>
       <Viewport placement="topRight" />
-      <Toast
-        open={true}
-        title={'Toast from Top Right'}
-        description={DESCRIPTION}
-        iconType="info"
-        placement="topRight"
-      />
+      <Toast.Root open={true} iconColor="info" placement="topRight">
+        <Toast.Icon type="info" />
+        <Toast.Title>Toast from Top Right</Toast.Title>
+        <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
+      </Toast.Root>
     </Provider>
 
     <Provider>
       <Viewport placement="topLeft" />
-      <Toast
-        open={true}
-        title={'Toast from Top Left'}
-        description={DESCRIPTION}
-        iconType="info"
-        placement="topLeft"
-      />
+      <Toast.Root open={true} iconColor="info" placement="topLeft">
+        <Toast.Icon type="info" />
+        <Toast.Title>Toast from Top Left</Toast.Title>
+        <Toast.Description>{SHORT_DESCRIPTION}</Toast.Description>
+      </Toast.Root>
     </Provider>
   </>
 )

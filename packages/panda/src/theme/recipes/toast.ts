@@ -69,7 +69,7 @@ export const toast = defineSlotRecipe({
         },
       },
     },
-    iconType: {
+    iconColor: {
       info: {
         icon: {
           color: '{colors.info}',
@@ -165,6 +165,6 @@ export const toast = defineSlotRecipe({
   defaultVariants: {
     variant: 'bordered',
     placement: 'topRight',
-    iconType: 'info',
+    iconColor: 'info',
   },
 })

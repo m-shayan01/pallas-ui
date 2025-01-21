@@ -3,11 +3,10 @@ import * as RadixToast from '@radix-ui/react-toast'
 import { HStack } from '@styled-system/jsx'
 import { type ToastVariantProps, toast } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
-import { X } from 'lucide-react'
 import type * as React from 'react'
 import type { Assign, WithFixedClassName } from '~/utils/types'
 import { createStyleContext } from '../../utils/style-context'
-import { Button, type ButtonProps } from '../button'
+import type { ButtonProps } from '../button'
 import ToastIcon from './Icon'
 
 const { withProvider, withContext } = createStyleContext(toast)
@@ -63,10 +62,6 @@ export const Provider = RadixToast.Provider
 
 export type ToastPropTypes = RootProps & {
   description?: string
-  closeButtonProps?: ButtonProps
-  actions?: ToastAction[]
-  iconType?: IconTypes
-  showClose?: boolean
 }
 
 export type IconTypes = 'success' | 'error' | 'info' | 'warning'
@@ -78,30 +73,16 @@ export type ToastAction = {
   buttonProps?: Partial<ButtonProps>
 }
 
-const Toast = ({ description, closeButtonProps, actions, ...props }: ToastPropTypes) => (
-  <Root {...props}>
-    <Icon type={props.iconType} />
-    <Title>{props.title}</Title>
-    {description && <Description>{description}</Description>}
-    {props.showClose && (
-      <Close asChild>
-        <Button variant="text" aria-label="Close" {...closeButtonProps}>
-          <X aria-hidden size={20} />
-        </Button>
-      </Close>
-    )}
-    {actions && (
-      <Actions>
-        {actions.map(({ key, label, onClick, buttonProps }) => (
-          <Action key={key} asChild altText={label}>
-            <Button size="sm" {...buttonProps} onPress={() => onClick(key)}>
-              {label}
-            </Button>
-          </Action>
-        ))}
-      </Actions>
-    )}
-  </Root>
-)
+const Toast = {
+  Provider,
+  Root,
+  Viewport,
+  Icon,
+  Title,
+  Description,
+  Actions,
+  Action,
+  Close,
+}
 
 export default Toast
