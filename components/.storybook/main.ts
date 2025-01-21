@@ -1,3 +1,4 @@
+import { dirname, join } from 'node:path'
 import type { StorybookConfig } from '@storybook/react-vite'
 import { mergeConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -9,13 +10,13 @@ const config: StorybookConfig = {
       name: '@storybook/addon-essentials',
       options: { backgrounds: false, controls: false, actions: false },
     },
-    '@storybook/addon-a11y',
-    '@storybook/addon-themes',
-    '@storybook/addon-docs',
-    '@storybook/addon-controls',
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-themes'),
+    getAbsolutePath('@storybook/addon-docs'),
+    getAbsolutePath('@storybook/addon-controls'),
   ],
   framework: {
-    name: '@storybook/react-vite',
+    name: getAbsolutePath('@storybook/react-vite'),
     options: {},
   },
   core: {
@@ -32,3 +33,7 @@ const config: StorybookConfig = {
 }
 
 export default config
+
+function getAbsolutePath(value: string): string {
+  return dirname(require.resolve(join(value, 'package.json')))
+}

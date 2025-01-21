@@ -1,0 +1,169 @@
+import { defineSlotRecipe } from '@pandacss/dev'
+
+export const select = defineSlotRecipe({
+  className: 'select',
+  description: 'Styles for the Select component',
+  slots: [
+    'root',
+    'group',
+    'value',
+    'trigger',
+    'viewport',
+    'content',
+    'label',
+    'item',
+    'itemIndicator',
+    'separator',
+  ],
+  base: {
+    trigger: {
+      display: 'flex',
+      h: '{sizes.controlHeight.md}',
+      w: 'full',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      rounded: '{radii.md}',
+      border: '1px solid {colors.border}',
+      bg: '{colors.surface.elevated}',
+      px: '{spacing.padding.inline.md}',
+      py: '{spacing.padding.block.md}',
+      textStyle: 'sm',
+      cursor: 'pointer',
+      focusRingOffsetColor: '{colors.fill.secondary}',
+
+      _placeholder: {
+        color: '{colors.text.secondary}',
+      },
+      _hover: {
+        borderColor: '{colors.primary.hover}',
+      },
+      _focus: {
+        borderColor: '{colors.primary.hover}',
+        shadow: '0 0 0 2px {colors.primary.bgHover}',
+        outline: '2px solid {colors.primary.bgHover}',
+        outlineOffset: '2px',
+        focusRingWidth: '2',
+        focusRingColor: 'ring',
+        focusRingOffsetWidth: '2',
+      },
+
+      _disabled: {
+        cursor: 'not-allowed',
+        color: '{colors.text.disabled}',
+        bg: '{colors.fill.disabled}',
+        borderColor: '{colors.border.secondary}',
+      },
+    },
+    viewport: {
+      p: '1',
+
+      '&[data-position=popper]': {
+        h: 'var(--radix-select-trigger-height)',
+        w: 'full',
+        minW: 'var(--radix-select-trigger-width)',
+      },
+    },
+    content: {
+      position: 'relative',
+      zIndex: 50,
+      minW: '8rem',
+      overflow: 'hidden',
+      rounded: '{radii.md}',
+      border: '1px solid {colors.border}',
+      bg: '{colors.surface.elevated}',
+      color: '{colors.text}',
+      shadow: 'md',
+
+      _open: {
+        animateIn: true,
+        fadeIn: 0,
+        zoomIn: 95,
+      },
+
+      _closed: {
+        animateOut: true,
+        fadeOut: 0,
+        zoomOut: 95,
+      },
+
+      _top: {
+        slideInFromBottom: '2',
+      },
+
+      _bottom: {
+        slideInFromTop: '2',
+      },
+
+      _left: {
+        slideInFromRight: '2',
+      },
+
+      _right: {
+        slideInFromLeft: '2',
+      },
+
+      '&[data-position=popper]': {
+        _top: {
+          translateY: '-1',
+        },
+
+        _bottom: {
+          translateY: '1',
+        },
+
+        _left: {
+          translateX: '-1',
+        },
+
+        _right: {
+          translateX: '1',
+        },
+      },
+    },
+    label: {
+      py: '{spacing.padding.block.md}',
+      pl: '{spacing.gap.inline.sm}',
+      pr: '{spacing.gap.inline.sm}',
+      textStyle: 'sm',
+      fontWeight: 'semibold',
+    },
+    item: {
+      position: 'relative',
+      display: 'flex',
+      cursor: 'default',
+      userSelect: 'none',
+      alignItems: 'center',
+      rounded: '{radii.sm}',
+      py: '{spacing.padding.block.md}',
+      pl: '{spacing.gap.inline.lg}',
+      pr: '{spacing.gap.inline.sm}',
+      textStyle: 'sm',
+      outline: '2px solid transparent',
+
+      _focus: {
+        bg: '{colors.primary.bg}',
+        color: '{colors.text.primary}',
+      },
+
+      ['&[data-disabled]']: {
+        pointerEvents: 'none',
+        opacity: '0.5',
+      },
+    },
+    itemIndicator: {
+      position: 'absolute',
+      left: '{spacing.padding.inline.xs}',
+      display: 'flex',
+      h: '{sizes.iconSize.sm}',
+      w: '{sizes.iconSize.sm}',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    separator: {
+      mx: '-1',
+      my: '1',
+      h: '1px',
+      bg: '{colors.border.secondary}',
+    },
+  },
+})
