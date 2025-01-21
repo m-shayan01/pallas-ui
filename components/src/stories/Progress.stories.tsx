@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Stack } from '@styled-system/jsx'
+import { HStack, Stack } from '@styled-system/jsx'
 import Progress from '~/ui/progress'
 import type { RootProps } from '~/ui/progress'
 import { SVG } from '~/ui/progress/SVG'
@@ -24,8 +24,7 @@ const meta: Meta<RootProps> = {
     </Progress.Root>
   ),
   argTypes: {
-    size: {
-      control: 'select',
+    strokeWidth: {
       options: ['sm', 'md', 'lg'],
     },
     strokeLinecap: {
@@ -37,7 +36,7 @@ const meta: Meta<RootProps> = {
     },
     shape: {
       control: 'inline-radio',
-      options: ['line', 'circle'],
+      // options: ['line', 'circle'],
     },
     stepToGapRatio: {
       control: 'number',
@@ -52,7 +51,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     strokeLinecap: 'butt',
-    size: 'md',
+    strokeWidth: 'md',
     value: 50,
     shape: 'line',
     steps: 1,
@@ -62,7 +61,7 @@ export const Default: Story = {
 
 export const Variants = () => (
   <Stack gap={6}>
-    <Progress.Root value={30} size="sm">
+    <Progress.Root value={30} strokeWidth="sm">
       {({ percentage, valueText }) => {
         return (
           <>
@@ -92,7 +91,7 @@ export const Variants = () => (
       }}
     </Progress.Root>
 
-    <Progress.Root value={70} strokeLinecap="round" size="lg">
+    <Progress.Root value={70} strokeLinecap="round" strokeWidth="lg">
       {({ percentage, valueText }) => {
         return (
           <>
@@ -125,10 +124,11 @@ export const Variants = () => (
     <Progress.Root
       width={25}
       value={40}
-      size="lg"
+      strokeWidth="lg"
       color="error"
       steps={10}
       stepToGapRatio={4}
+      align="vertical"
       style={{ width: 300 }}
     >
       {({ percentage, valueText }) => {
@@ -146,42 +146,73 @@ export const Variants = () => (
     </Progress.Root>
 
     {/* CIRCLE */}
-    <Progress.Root value={40} shape="circle" style={{ width: 300 }}>
-      {({ percentage, valueText }) => {
-        return (
-          <>
-            <SVG>
-              <title>progress cricle</title>
-              <Progress.CircleTrack />
-              <Progress.CircleFill percentage={percentage} />
-            </SVG>
-            <Progress.Label>{valueText}</Progress.Label>
-          </>
-        )
-      }}
-    </Progress.Root>
+    <HStack gap={6}>
+      <Progress.Root value={40} shape="circle" align="vertical" style={{ width: 300 }}>
+        {({ percentage, valueText }) => {
+          return (
+            <>
+              <SVG>
+                <title>progress cricle</title>
+                <Progress.CircleTrack />
+                <Progress.CircleFill percentage={percentage} />
+              </SVG>
+              <Progress.Label>{valueText}</Progress.Label>
+            </>
+          )
+        }}
+      </Progress.Root>
 
-    <Progress.Root value={60} shape="circle" size="lg" strokeLinecap="round" style={{ width: 300 }}>
-      {({ percentage, valueText }) => {
-        return (
-          <>
-            <SVG>
-              <title>progress cricle large rounded</title>
-              <Progress.CircleTrack />
-              <Progress.CircleFill percentage={percentage} />
-            </SVG>
-            <Progress.Label>{valueText}</Progress.Label>
-          </>
-        )
-      }}
-    </Progress.Root>
+      <Progress.Root
+        value={60}
+        shape="circle"
+        strokeWidth="lg"
+        strokeLinecap="round"
+        align="vertical"
+        style={{ width: 300 }}
+      >
+        {({ percentage, valueText }) => {
+          return (
+            <>
+              <Progress.Label>{valueText}</Progress.Label>
+              <SVG>
+                <title>progress cricle large rounded</title>
+                <Progress.CircleTrack />
+                <Progress.CircleFill percentage={percentage} />
+              </SVG>
+            </>
+          )
+        }}
+      </Progress.Root>
 
-    <Progress.Root value={70} shape="circle" steps={10} style={{ width: 300 }}>
+      <Progress.Root value={70} shape="circle" steps={10} style={{ width: 300 }}>
+        {({ percentage, valueText }) => {
+          return (
+            <>
+              <SVG>
+                <title>progress circle steps</title>
+                <Progress.CircleTrack />
+                <Progress.CircleFill percentage={percentage} />
+              </SVG>
+              <Progress.Label>{valueText}</Progress.Label>
+            </>
+          )
+        }}
+      </Progress.Root>
+    </HStack>
+
+    <Progress.Root
+      value={40}
+      shape="circle"
+      strokeLinecap="round"
+      textInside
+      strokeWidth={20}
+      style={{ width: 300 }}
+    >
       {({ percentage, valueText }) => {
         return (
           <>
             <SVG>
-              <title>progress circle steps</title>
+              <title>progress cricle text inside</title>
               <Progress.CircleTrack />
               <Progress.CircleFill percentage={percentage} />
             </SVG>

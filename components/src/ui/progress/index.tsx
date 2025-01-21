@@ -13,8 +13,14 @@ import { Root, withContext } from './root'
 
 export type RootProps = Assign<
   WithFixedClassName<ComponentProps<typeof ProgressBar>>,
-  ProgressVariantProps &
-    Partial<{ width: number; height: number; steps: number; stepToGapRatio: number }>
+  Omit<ProgressVariantProps, 'strokeWidth'> &
+    Partial<{
+      width: number
+      height: number
+      steps: number
+      stepToGapRatio: number
+      strokeWidth: number | 'sm' | 'md' | 'lg'
+    }>
 >
 
 export const Label = withContext<React.ElementRef<'p'>, HTMLStyledProps<'p'>>('p', 'label')

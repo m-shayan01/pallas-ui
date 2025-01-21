@@ -4,14 +4,7 @@ export const progress = defineSlotRecipe({
   className: 'progress',
   description: 'Styles for the Progress component',
   slots: ['root', 'label', 'lineTrack', 'lineFill', 'circleTrack', 'circleFill'],
-  base: {
-    root: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      gap: '{spacing.gap.inline.md}',
-    },
-  },
+  base: {},
   variants: {
     strokeLinecap: {
       butt: {
@@ -43,7 +36,7 @@ export const progress = defineSlotRecipe({
         },
       },
     },
-    size: {
+    strokeWidth: {
       sm: {
         lineTrack: {
           strokeWidth: 1,
@@ -135,12 +128,47 @@ export const progress = defineSlotRecipe({
       line: {},
       circle: {},
     },
+    align: {
+      horizontal: {
+        root: {
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: '{spacing.gap.inline.md}',
+        },
+      },
+      vertical: {
+        root: {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '{spacing.gap.inline.md}',
+        },
+      },
+    },
+    textInside: {
+      true: {},
+    },
   },
-  compoundVariants: [],
+  compoundVariants: [
+    {
+      shape: 'circle',
+      textInside: true,
+      css: {
+        label: {
+          position: 'absolute',
+        },
+        root: {
+          justifyContent: 'center',
+        },
+      },
+    },
+  ],
   defaultVariants: {
-    size: 'md',
+    strokeWidth: 'md',
     strokeLinecap: 'butt',
     color: 'primary',
     shape: 'line',
+    align: 'horizontal',
   },
 })

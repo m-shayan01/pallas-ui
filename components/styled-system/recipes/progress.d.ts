@@ -10,7 +10,7 @@ strokeLinecap: "butt" | "round"
 /**
  * @default "md"
  */
-size: "sm" | "md" | "lg"
+strokeWidth: "sm" | "md" | "lg"
 /**
  * @default "primary"
  */
@@ -19,6 +19,11 @@ color: "primary" | "success" | "error"
  * @default "line"
  */
 shape: "line" | "circle"
+/**
+ * @default "horizontal"
+ */
+align: "horizontal" | "vertical"
+textInside: boolean
 }
 
 type ProgressVariantMap = {
@@ -26,7 +31,7 @@ type ProgressVariantMap = {
 }
 
 export type ProgressVariantProps = {
-  [key in keyof ProgressVariant]?: ConditionalValue<ProgressVariant[key]> | undefined
+  [key in keyof ProgressVariant]?: ProgressVariant[key] | undefined
 }
 
 export interface ProgressRecipe {

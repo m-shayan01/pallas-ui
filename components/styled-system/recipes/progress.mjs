@@ -2,12 +2,26 @@ import { compact, getSlotCompoundVariant, memo, splitProps } from '../helpers.mj
 import { createRecipe } from './create-recipe.mjs';
 
 const progressDefaultVariants = {
-  "size": "md",
+  "strokeWidth": "md",
   "strokeLinecap": "butt",
   "color": "primary",
-  "shape": "line"
+  "shape": "line",
+  "align": "horizontal"
 }
-const progressCompoundVariants = []
+const progressCompoundVariants = [
+  {
+    "shape": "circle",
+    "textInside": true,
+    "css": {
+      "label": {
+        "position": "absolute"
+      },
+      "root": {
+        "justifyContent": "center"
+      }
+    }
+  }
+]
 
 const progressSlotNames = [
   [
@@ -43,9 +57,11 @@ const progressFn = memo((props = {}) => {
 
 const progressVariantKeys = [
   "strokeLinecap",
-  "size",
+  "strokeWidth",
   "color",
-  "shape"
+  "shape",
+  "align",
+  "textInside"
 ]
 const getVariantProps = (variants) => ({ ...progressDefaultVariants, ...compact(variants) })
 
@@ -59,7 +75,7 @@ export const progress = /* @__PURE__ */ Object.assign(progressFn, {
     "butt",
     "round"
   ],
-  "size": [
+  "strokeWidth": [
     "sm",
     "md",
     "lg"
@@ -72,6 +88,13 @@ export const progress = /* @__PURE__ */ Object.assign(progressFn, {
   "shape": [
     "line",
     "circle"
+  ],
+  "align": [
+    "horizontal",
+    "vertical"
+  ],
+  "textInside": [
+    "true"
   ]
 },
   splitVariantProps(props) {

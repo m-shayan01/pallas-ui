@@ -47,6 +47,7 @@ export const CircleFill = ({
         cx={cx}
         cy={cy}
         r={radius}
+        strokeWidth={strokeWidth}
         strokeDasharray={strokeDasharray}
         strokeDashoffset={strokeDashoffset}
         transform={`rotate(-90 ${cx} ${cy})`}

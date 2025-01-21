@@ -29,6 +29,7 @@ export const LineFill = ({
       x2={x2}
       y1={y}
       y2={y}
+      strokeWidth={strokeWidth}
       strokeLinecap={strokeLinecap}
       strokeDasharray={strokeDasharray}
       {...props}

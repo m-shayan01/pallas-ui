@@ -13,13 +13,14 @@ const RootComponent = withProvider<React.ElementRef<typeof ProgressBar>, RootPro
 )
 
 export const Root = (props: RootProps) => {
-  const [variantProps, { width: w, height: h, steps, stepToGapRatio, children }] =
-    progress.splitVariantProps(props)
+  // biome-ignore format: to apply ts-ignore on props type
+  //@ts-ignore
+  const [variantProps, { width: w, height: h, steps, stepToGapRatio, children }] = progress.splitVariantProps(props)
 
   const width = w || 100
   const strokeWidth = useMemo(() => {
     if (variantProps.shape === 'circle') {
-      switch (variantProps.size) {
+      switch (variantProps.strokeWidth) {
         case 'lg':
           return 8
         case 'md':
@@ -27,10 +28,10 @@ export const Root = (props: RootProps) => {
         case 'sm':
           return 3
         default:
-          return 5
+          return variantProps.strokeWidth ? Number(variantProps.strokeWidth) : 5
       }
     }
-    switch (variantProps.size) {
+    switch (variantProps.strokeWidth) {
       case 'lg':
         return 4
       case 'md':
@@ -38,9 +39,9 @@ export const Root = (props: RootProps) => {
       case 'sm':
         return 1
       default:
-        return 2
+        return variantProps.strokeWidth ? Number(variantProps.strokeWidth) : 2
     }
-  }, [variantProps.size, variantProps.shape])
+  }, [variantProps.strokeWidth, variantProps.shape])
 
   const height = useMemo(() => {
     switch (props.shape) {
