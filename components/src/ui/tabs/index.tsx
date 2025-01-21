@@ -25,11 +25,6 @@ export const Trigger = withContext<
   Assign<WithFixedClassName<ComponentProps<typeof TabItem>>, JsxStyleProps>
 >(TabItem, 'trigger')
 
-// const InkBar = withContext<React.ElementRef<'div'>, Assign<ComponentProps<'div'>, JsxStyleProps>>(
-//   'div',
-//   'inkBar',
-// )
-
 export const Content = withContext<
   React.ElementRef<typeof TabPanel>,
   Assign<WithFixedClassName<ComponentProps<typeof TabPanel>>, JsxStyleProps>

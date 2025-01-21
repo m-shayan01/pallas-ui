@@ -21,19 +21,19 @@ const meta: Meta<typeof Tabs.Root> = {
   argTypes: {
     size: {
       options: ['sm', 'md', 'lg'],
-      control: 'select',
+      control: 'inline-radio',
     },
     align: {
       options: ['start', 'center', 'end'],
-      control: 'select',
+      control: 'inline-radio',
     },
     position: {
       options: ['top', 'left', 'right', 'bottom'],
-      control: 'select',
+      control: 'inline-radio',
     },
     variant: {
       options: ['card', 'simple'],
-      control: 'radio',
+      control: 'inline-radio',
     },
   },
 }
@@ -120,8 +120,19 @@ export const Variants = () => (
       </Collection>
     </Tabs.Root>
 
-    {/* CARD - LEFT*/}
+    {/* CARD - LEFT */}
     <Tabs.Root variant="card" position="left">
+      <Tabs.TabList>
+        <Tabs.Trigger id="1">Card 1</Tabs.Trigger>
+        <Tabs.Trigger id="2">Card 2</Tabs.Trigger>
+      </Tabs.TabList>
+      <Collection items={TABS}>
+        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
+      </Collection>
+    </Tabs.Root>
+
+    {/* CARD - RIGHT */}
+    <Tabs.Root variant="card" position="right">
       <Tabs.TabList>
         <Tabs.Trigger id="1">Card 1</Tabs.Trigger>
         <Tabs.Trigger id="2">Card 2</Tabs.Trigger>

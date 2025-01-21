@@ -11,11 +11,9 @@ export const tabs = defineSlotRecipe({
     trigger: {
       overflow: 'hidden',
       py: '{spacing.padding.block.md}',
-      mb: '-1.5px',
       outline: 'none',
       _selected: {
         color: '{colors.primary}',
-        borderBottomWidth: '3px',
         borderColor: '{colors.primary}',
       },
       _disabled: {
@@ -30,14 +28,12 @@ export const tabs = defineSlotRecipe({
       display: 'flex',
       flexWrap: 'nowrap',
       gap: '{spacing.gap.component.md}',
-      borderBottomWidth: '1px',
       borderColor: '{colors.border}',
-      fontWeight: 'medium',
+      fontWeight: '{medium}',
     },
     content: {
       overflow: 'hidden',
       color: '{colors.text}',
-      py: '{spacing.padding.block.lg}',
       textStyle: '{md}',
     },
   },
@@ -77,7 +73,27 @@ export const tabs = defineSlotRecipe({
       },
     },
     position: {
-      top: {},
+      top: {
+        root: {
+          display: 'flex',
+          flexDirection: 'column',
+        },
+        tabList: {
+          borderWidth: '0',
+          borderBottomWidth: '1px',
+        },
+        trigger: {
+          margin: '0',
+          mb: '-1.5px',
+          _selected: {
+            borderWidth: '0',
+            borderBottomWidth: '3px',
+          },
+        },
+        content: {
+          py: '{spacing.padding.block.lg}',
+        },
+      },
       left: {
         root: {
           display: 'flex',
@@ -88,10 +104,9 @@ export const tabs = defineSlotRecipe({
           borderRightWidth: '1px',
         },
         trigger: {
-          py: '{spacing.padding.block.md}',
           px: '{spacing.padding.block.lg}',
           margin: '0',
-          mr: '-1.5px',
+          mr: '-1px',
           _selected: {
             borderWidth: '0',
             borderRightWidth: '3px',
@@ -113,10 +128,9 @@ export const tabs = defineSlotRecipe({
           borderLeftWidth: '1px',
         },
         trigger: {
-          py: '{spacing.padding.block.md}',
           px: '{spacing.padding.block.lg}',
           margin: '0',
-          ml: '-1.5px',
+          ml: '-1px',
           _selected: {
             borderWidth: '0',
             borderLeftWidth: '3px',
@@ -137,13 +151,15 @@ export const tabs = defineSlotRecipe({
           borderTopWidth: '1px',
         },
         trigger: {
-          py: '{spacing.padding.block.md}',
           margin: '0',
           mt: '-1px',
           _selected: {
             borderWidth: '0',
             borderTopWidth: '3px',
           },
+        },
+        content: {
+          py: '{spacing.padding.block.lg}',
         },
       },
     },
@@ -194,21 +210,6 @@ export const tabs = defineSlotRecipe({
     },
     {
       variant: 'card',
-      position: 'bottom',
-      css: {
-        trigger: {
-          borderRadius: '0',
-          borderBottomRadius: '{radii.lg}',
-          borderWidth: '1px',
-          borderColor: '{colors.border}',
-          _selected: {
-            borderTopColor: '{colors.surface.elevated}',
-          },
-        },
-      },
-    },
-    {
-      variant: 'card',
       position: 'left',
       css: {
         trigger: {
@@ -216,6 +217,7 @@ export const tabs = defineSlotRecipe({
           borderLeftRadius: '{radii.lg}',
           borderWidth: '1px',
           borderColor: '{colors.border}',
+          mr: '-1px',
           _selected: {
             borderRightColor: '{colors.surface.elevated}',
           },
@@ -231,8 +233,25 @@ export const tabs = defineSlotRecipe({
           borderRightRadius: '{radii.lg}',
           borderWidth: '1px',
           borderColor: '{colors.border}',
+          ml: '-1px',
           _selected: {
             borderLeftColor: '{colors.surface.elevated}',
+          },
+        },
+      },
+    },
+    {
+      variant: 'card',
+      position: 'bottom',
+      css: {
+        trigger: {
+          borderRadius: '0',
+          borderBottomRadius: '{radii.lg}',
+          borderWidth: '1px',
+          borderColor: '{colors.border}',
+          mt: '-1px',
+          _selected: {
+            borderTopColor: '{colors.surface.elevated}',
           },
         },
       },
