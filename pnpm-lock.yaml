@@ -92,13 +92,13 @@ importers:
         specifier: 0.50.0
         version: 0.50.0(typescript@5.7.2)
       '@radix-ui/react-accordion':
-        specifier: ^1.2.1
+        specifier: 1.2.1
         version: 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-alert-dialog':
-        specifier: ^1.1.2
+        specifier: 1.1.2
         version: 1.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-toast':
-        specifier: ^1.2.4
+        specifier: 1.2.4
         version: 1.2.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/react':
         specifier: 18.3.12
@@ -116,7 +116,7 @@ importers:
         specifier: 18.3.1
         version: 18.3.1
       react-aria-components:
-        specifier: ^1.5.0
+        specifier: 1.5.0
         version: 1.5.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
         specifier: 18.3.1
@@ -135,10 +135,10 @@ importers:
         specifier: 3.2.2
         version: 3.2.2(react@18.3.1)(storybook@8.4.7(prettier@3.3.3))
       '@storybook/addon-controls':
-        specifier: ^8.4.7
+        specifier: 8.4.7
         version: 8.4.7(storybook@8.4.7(prettier@3.3.3))
       '@storybook/addon-docs':
-        specifier: ^8.4.7
+        specifier: 8.4.7
         version: 8.4.7(@types/react@18.3.12)(storybook@8.4.7(prettier@3.3.3))
       '@storybook/addon-essentials':
         specifier: 8.4.7
@@ -150,7 +150,7 @@ importers:
         specifier: 8.4.7
         version: 8.4.7(react@18.3.1)(storybook@8.4.7(prettier@3.3.3))
       '@storybook/addon-themes':
-        specifier: ^8.4.7
+        specifier: 8.4.7
         version: 8.4.7(storybook@8.4.7(prettier@3.3.3))
       '@storybook/blocks':
         specifier: 8.4.7
