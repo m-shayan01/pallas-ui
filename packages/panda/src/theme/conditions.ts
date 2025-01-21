@@ -15,5 +15,12 @@ export const conditions = {
     invalid: '&:is([aria-invalid])',
     open: '&[data-state=open]',
     closed: '&[data-state=closed]',
+    focusVisible: '&:is(:focus-visible, [data-focus-visible])',
+    focusWithin: '&:focus-within',
+    focus: '&:is(:focus, [data-focus])',
+    top: '&[data-side=top]',
+    bottom: '&[data-side=bottom]',
+    left: '&[data-side=left]',
+    right: '&[data-side=right]',
   },
 }
