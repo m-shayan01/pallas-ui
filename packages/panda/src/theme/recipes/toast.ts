@@ -11,7 +11,7 @@ export const toast = defineSlotRecipe({
       flexDirection: 'column',
       padding: '{spacing.padding.block.lg}',
       gap: '{spacing.gap.component.md}',
-      width: '40vw',
+      width: { base: '100%', md: '50vw', xl: '40vw' },
       maxWidth: '100vw',
       margin: 0,
       listStyle: 'none',
@@ -49,6 +49,7 @@ export const toast = defineSlotRecipe({
     },
     icon: {
       marginRight: '{spacing.padding.inline.sm}',
+      color: '{colors.primary}',
     },
   },
   variants: {
