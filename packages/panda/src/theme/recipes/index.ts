@@ -18,6 +18,7 @@ import { radioGroup } from './radio-group'
 import { select } from './select'
 import { slider } from './slider'
 import { switchRecipe } from './switch'
+import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { tooltip } from './tooltip'
 
@@ -39,6 +40,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   card,
   modal,
   accordian,
+  tabs,
   progress,
   select,
   popover,
