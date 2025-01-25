@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import { HStack } from '@styled-system/jsx'
 import { Label } from '~/ui/label'
 import RadioGroup from '../ui/radio-group'

@@ -4,7 +4,7 @@ import { mergeConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 const config: StorybookConfig = {
-  stories: ['../src/stories/*.tsx'],
+  stories: ['../src/stories/*.tsx', '../src/stories/*.mdx'],
   addons: [
     {
       name: '@storybook/addon-essentials',
@@ -12,7 +12,6 @@ const config: StorybookConfig = {
     },
     getAbsolutePath('@storybook/addon-a11y'),
     getAbsolutePath('@storybook/addon-themes'),
-    getAbsolutePath('@storybook/addon-docs'),
     getAbsolutePath('@storybook/addon-controls'),
   ],
   framework: {

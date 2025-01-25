@@ -6,6 +6,7 @@ import { badge } from './badge'
 import { button } from './button'
 import { card } from './card'
 import { checkbox } from './checkbox'
+import { daypicker } from './daypicker'
 import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
@@ -45,4 +46,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   checkbox,
   slider,
   switchRecipe,
+  daypicker,
 }
