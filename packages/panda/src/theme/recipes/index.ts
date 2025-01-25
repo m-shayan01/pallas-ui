@@ -13,6 +13,7 @@ import { label } from './label'
 import { modal } from './modal'
 import { paragraph } from './paragraph'
 import { popover } from './popover'
+import { progress } from './progress'
 import { radioGroup } from './radio-group'
 import { select } from './select'
 import { slider } from './slider'
@@ -40,6 +41,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   modal,
   accordian,
   tabs,
+  progress,
   select,
   popover,
   tooltip,
