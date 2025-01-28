@@ -28,11 +28,10 @@ export const daypicker = defineSlotRecipe({
     'week',
   ],
   base: {
-    root: { m: '{spacing.gap.component.sm}' },
+    root: { w: 'max-content', m: '{spacing.gap.component.sm}' },
     months: {
       display: 'flex',
       flexDirection: 'column',
-      spaceY: '{spacing.gap.component.md}',
     },
     month: {
       w: 'full',
@@ -59,13 +58,14 @@ export const daypicker = defineSlotRecipe({
       fontWeight: 'medium',
     },
     nav: {
+      position: 'relative',
       display: 'flex',
       alignItems: 'flex-start',
-      w: 'max-content',
+      w: 'full',
     },
     button_previous: {
       position: 'absolute',
-      left: '7',
+      left: '2',
       h: '7',
       w: '7',
       px: '0',
@@ -73,7 +73,7 @@ export const daypicker = defineSlotRecipe({
     },
     button_next: {
       position: 'absolute',
-      right: '7',
+      right: '2',
       h: '7',
       w: '7',
       px: '0',
@@ -139,7 +139,7 @@ export const daypicker = defineSlotRecipe({
       border: '1px solid {colors.primary.border}',
     },
     outside: {
-      color: '{colors.text.tertiary}',
+      color: '{colors.text.secondary}',
     },
     disabled: {
       color: '{colors.text.disabled}',
