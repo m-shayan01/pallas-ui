@@ -14,11 +14,14 @@ import { label } from './label'
 import { modal } from './modal'
 import { paragraph } from './paragraph'
 import { popover } from './popover'
+import { progress } from './progress'
 import { radioGroup } from './radio-group'
 import { select } from './select'
 import { slider } from './slider'
 import { switchRecipe } from './switch'
+import { tabs } from './tabs'
 import { textarea } from './textarea'
+import { toast } from './toast'
 import { tooltip } from './tooltip'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
@@ -39,6 +42,9 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   card,
   modal,
   accordian,
+  toast,
+  tabs,
+  progress,
   select,
   popover,
   tooltip,
