@@ -39,13 +39,13 @@ export const menubar = defineSlotRecipe({
       outline: '2px solid transparent',
 
       _focus: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bgHover}',
+        color: '{colors.primary.textActive}',
       },
 
       _open: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bgHover}',
+        color: '{colors.primary.textActive}',
       },
     },
     subTrigger: {
@@ -54,30 +54,29 @@ export const menubar = defineSlotRecipe({
       userSelect: 'none',
       alignItems: 'center',
       rounded: 'sm',
-      px: '2',
-      py: '1.5',
+      p: '{spacing.padding.block.sm} {spacing.padding.inline.sm}',
       textStyle: 'sm',
       outline: '2px solid transparent',
 
       _focus: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bgHover}',
+        color: '{colors.primary.textActive}',
       },
 
       _open: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bgHover}',
+        color: '{colors.primary.textActive}',
       },
     },
     subContent: {
       zIndex: 50,
       minW: '8rem',
       overflow: 'hidden',
-      rounded: 'md',
-      border: 'base',
-      bg: 'popover',
-      color: 'popover.foreground',
-      p: '1',
+      rounded: '{radii.lg}',
+      bg: '{colors.surface.elevated}',
+      color: '{colors.text}',
+      shadow: '{shadows.lg}',
+      p: '{spacing.padding.block.lg} {spacing.padding.inline.md}',
 
       _open: {
         animateIn: true,
@@ -146,14 +145,14 @@ export const menubar = defineSlotRecipe({
       userSelect: 'none',
       alignItems: 'center',
       rounded: 'sm',
-      px: '2',
-      py: '1.5',
+      px: '{spacing.padding.inline.sm}',
+      py: '{spacing.padding.block.sm}',
       textStyle: 'sm',
       outline: '2px solid transparent',
 
       _focus: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bgHover}',
+        color: '{colors.primary.textActive}',
       },
 
       _disabled: {
@@ -168,15 +167,15 @@ export const menubar = defineSlotRecipe({
       userSelect: 'none',
       alignItems: 'center',
       rounded: 'sm',
-      py: '1.5',
+      py: '{spacing.padding.block.sm}',
       pl: '8',
       pr: '2',
       textStyle: 'sm',
       outline: '2px solid transparent',
 
       _focus: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bgHover}',
+        color: '{colors.primary.textActive}',
       },
 
       _disabled: {
@@ -191,18 +190,18 @@ export const menubar = defineSlotRecipe({
       userSelect: 'none',
       alignItems: 'center',
       rounded: 'sm',
-      py: '1.5',
+      py: '{spacing.padding.block.sm}',
       pl: '8',
       pr: '2',
       textStyle: 'sm',
       outline: '2px solid transparent',
 
       _focus: {
-        bg: 'accent',
-        color: 'accent.foreground',
+        bg: '{colors.primary.bgHover}',
+        color: '{colors.primary.textActive}',
       },
 
-      '&[data-disabled]': {
+      _disabled: {
         pointerEvents: 'none',
         opacity: '0.5',
       },
@@ -217,22 +216,18 @@ export const menubar = defineSlotRecipe({
       justifyContent: 'center',
     },
     label: {
-      px: '2',
-      py: '1.5',
+      px: '{spacing.padding.inline.sm}',
+      py: '{spacing.padding.block.sm}',
       textStyle: 'sm',
       fontWeight: 'semibold',
     },
     separator: {
-      mx: '-1',
-      my: '1',
+      my: '{spacing.padding.block.sm}',
       h: '1px',
-      bg: 'muted',
+      bg: '{colors.border}',
     },
-    shortcut: {
-      ml: 'auto',
-      textStyle: 'xs',
-      tracking: 'widest',
-      color: 'muted.foreground',
+    arrow: {
+      fill: '{colors.surface.elevated}',
     },
   },
 })

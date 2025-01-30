@@ -33,10 +33,15 @@ const CustomSubTrigger = React.forwardRef<
 ))
 CustomSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
 
+const Arrow = withContext<
+  React.ElementRef<typeof MenubarPrimitive.Arrow>,
+  Assign<MenubarPrimitive.MenubarArrowProps, JsxStyleProps>
+>(MenubarPrimitive.Arrow, 'arrow')
+
 const CustomContent = React.forwardRef<
   React.ElementRef<typeof MenubarPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.Content>
->(({ align = 'start', alignOffset = -4, sideOffset = 8, ...props }, ref) => (
+>(({ align = 'start', alignOffset = -4, sideOffset = 8, children, ...props }, ref) => (
   <MenubarPrimitive.Portal>
     <MenubarPrimitive.Content
       ref={ref}
@@ -44,7 +49,10 @@ const CustomContent = React.forwardRef<
       alignOffset={alignOffset}
       sideOffset={sideOffset}
       {...props}
-    />
+    >
+      {children}
+      <Arrow />
+    </MenubarPrimitive.Content>
   </MenubarPrimitive.Portal>
 ))
 CustomContent.displayName = MenubarPrimitive.Content.displayName
@@ -74,7 +82,7 @@ const CustomRadioItem = React.forwardRef<
 >(({ children, ...props }, ref) => (
   <MenubarPrimitive.RadioItem ref={ref} {...props}>
     <ItemIndicator>
-      <Circle className={icon({ size: 'xs' })} />
+      <Circle className={icon({ size: 'xs', fillCurrent: true })} />
     </ItemIndicator>
     {children}
   </MenubarPrimitive.RadioItem>
@@ -111,7 +119,7 @@ export const Group = withContext<
 
 export const Portal = MenubarPrimitive.Portal
 
-export const Sub = MenubarPrimitive.Sub
+export const SubMenu = MenubarPrimitive.Sub
 
 export const RadioGroup = withContext<
   React.ElementRef<typeof MenubarPrimitive.RadioGroup>,
@@ -163,17 +171,12 @@ export const Separator = withContext<
   Assign<MenubarPrimitive.MenubarSeparatorProps, JsxStyleProps>
 >(MenubarPrimitive.Separator, 'separator')
 
-export const Shortcut = withContext<
-  HTMLSpanElement,
-  Assign<React.HTMLAttributes<HTMLSpanElement>, JsxStyleProps>
->('span', 'shortcut')
-
 const Menubar = {
   Root,
   Menu,
   Group,
   Portal,
-  Sub,
+  SubMenu,
   RadioGroup,
   Trigger,
   Content,
@@ -184,7 +187,6 @@ const Menubar = {
   RadioItem,
   Label,
   Separator,
-  Shortcut,
 }
 
 export default Menubar

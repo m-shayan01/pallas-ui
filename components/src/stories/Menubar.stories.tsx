@@ -14,39 +14,29 @@ export const Default = () => (
     <Menubar.Menu>
       <Menubar.Trigger>File</Menubar.Trigger>
       <Menubar.Content>
-        <Menubar.Item>
-          New Tab <Menubar.Shortcut>⌘T</Menubar.Shortcut>
-        </Menubar.Item>
-        <Menubar.Item>
-          New Window <Menubar.Shortcut>⌘N</Menubar.Shortcut>
-        </Menubar.Item>
+        <Menubar.Item>New Tab ⌘T</Menubar.Item>
+        <Menubar.Item>New Window ⌘N</Menubar.Item>
         <Menubar.Item disabled>New Incognito Window</Menubar.Item>
         <Menubar.Separator />
-        <Menubar.Sub>
+        <Menubar.SubMenu>
           <Menubar.SubTrigger>Share</Menubar.SubTrigger>
           <Menubar.SubContent>
             <Menubar.Item>Email link</Menubar.Item>
             <Menubar.Item>Messages</Menubar.Item>
             <Menubar.Item>Notes</Menubar.Item>
           </Menubar.SubContent>
-        </Menubar.Sub>
+        </Menubar.SubMenu>
         <Menubar.Separator />
-        <Menubar.Item>
-          Print... <Menubar.Shortcut>⌘P</Menubar.Shortcut>
-        </Menubar.Item>
+        <Menubar.Item>Print... ⌘P</Menubar.Item>
       </Menubar.Content>
     </Menubar.Menu>
     <Menubar.Menu>
       <Menubar.Trigger>Edit</Menubar.Trigger>
       <Menubar.Content>
-        <Menubar.Item>
-          Undo <Menubar.Shortcut>⌘Z</Menubar.Shortcut>
-        </Menubar.Item>
-        <Menubar.Item>
-          Redo <Menubar.Shortcut>⇧⌘Z</Menubar.Shortcut>
-        </Menubar.Item>
+        <Menubar.Item>Undo ⌘Z</Menubar.Item>
+        <Menubar.Item>Redo ⇧⌘Z</Menubar.Item>
         <Menubar.Separator />
-        <Menubar.Sub>
+        <Menubar.SubMenu>
           <Menubar.SubTrigger>Find</Menubar.SubTrigger>
           <Menubar.SubContent>
             <Menubar.Item>Search the web</Menubar.Item>
@@ -55,7 +45,7 @@ export const Default = () => (
             <Menubar.Item>Find Next</Menubar.Item>
             <Menubar.Item>Find Previous</Menubar.Item>
           </Menubar.SubContent>
-        </Menubar.Sub>
+        </Menubar.SubMenu>
         <Menubar.Separator />
         <Menubar.Item>Cut</Menubar.Item>
         <Menubar.Item>Copy</Menubar.Item>
@@ -68,12 +58,8 @@ export const Default = () => (
         <Menubar.CheckboxItem>Always Show Bookmarks Bar</Menubar.CheckboxItem>
         <Menubar.CheckboxItem checked>Always Show Full URLs</Menubar.CheckboxItem>
         <Menubar.Separator />
-        <Menubar.Item>
-          Reload <Menubar.Shortcut>⌘R</Menubar.Shortcut>
-        </Menubar.Item>
-        <Menubar.Item disabled>
-          Force Reload <Menubar.Shortcut>⇧⌘R</Menubar.Shortcut>
-        </Menubar.Item>
+        <Menubar.Item>Reload ⌘R</Menubar.Item>
+        <Menubar.Item disabled>Force Reload ⇧⌘R</Menubar.Item>
         <Menubar.Separator />
         <Menubar.Item>Toggle Fullscreen</Menubar.Item>
         <Menubar.Separator />
