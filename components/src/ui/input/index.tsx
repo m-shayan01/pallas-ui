@@ -1,8 +1,12 @@
 import { Slot } from '@radix-ui/react-slot'
 import { css, cx } from '@styled-system/css'
 import { type InputVariantProps, input } from '@styled-system/recipes'
+import { format } from 'date-fns'
 import { ChevronDown, ChevronUp } from 'lucide-react'
+import { Calendar } from 'lucide-react'
 import React from 'react'
+import { DayPicker } from '~/ui/daypicker'
+import Popover from '~/ui/popover'
 
 const InputContext = React.createContext<{ id: string } | null>(null)
 
@@ -204,10 +208,71 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
 )
 InputNumber.displayName = 'Input.Number'
 
-// Update the Input export to include the new components
+type InputDayPickerProps = Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  'value' | 'onChange'
+> & {
+  value?: Date
+  onChange?: (date: Date | undefined) => void
+  format?: string
+  placeholder?: string
+}
+
+const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
+  (
+    { className, value, onChange, format: formatStr = 'PP', placeholder = 'Pick a date', ...props },
+    ref,
+  ) => {
+    const { id } = React.useContext(InputContext) || {}
+    const { field, postfix } = input()
+    const [selected, setSelected] = React.useState<Date | undefined>(value)
+
+    // Update internal state when value prop changes
+    React.useEffect(() => {
+      setSelected(value)
+    }, [value])
+
+    const handleSelect = (date: Date | undefined) => {
+      setSelected(date)
+      onChange?.(date)
+    }
+
+    return (
+      <Popover.Root>
+        <Popover.Trigger>
+          <div className={css({ position: 'relative', width: '100%', display: 'flex' })}>
+            <Slot className={css({ flexGrow: 1 })}>
+              <input
+                id={id}
+                ref={ref}
+                type="text"
+                readOnly
+                value={selected ? format(selected, formatStr) : ''}
+                placeholder={placeholder}
+                className={cx(field, className)}
+                {...props}
+              />
+            </Slot>
+            <div className={postfix}>
+              <Calendar size={16} />
+            </div>
+          </div>
+        </Popover.Trigger>
+        <Popover.Content>
+          <DayPicker mode="single" selected={selected} onSelect={handleSelect} />
+        </Popover.Content>
+      </Popover.Root>
+    )
+  },
+)
+
+InputDayPicker.displayName = 'Input.DayPicker'
+
+// Update the Input export
 export const Input = Object.assign(InputRoot, {
   Prefix: InputPrefix,
   Postfix: InputPostfix,
   Text: InputText,
   Number: InputNumber,
+  DayPicker: InputDayPicker,
 })

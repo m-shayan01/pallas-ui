@@ -121,3 +121,14 @@ export const InputStyles = () => (
     </Stack>
   </Stack>
 )
+
+export const InputDayPicker = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Day Picker</Label>
+      <Input size="md">
+        <Input.DayPicker />
+      </Input>
+    </Stack>
+  </Stack>
+)

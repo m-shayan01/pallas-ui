@@ -8,9 +8,5 @@ export const globalCss = defineGlobalStyles({
       colorScheme: 'dark',
     },
   },
-  '*, *::before, *::after': {
-    borderColor: 'border.subtle',
-    borderStyle: 'solid',
-    boxSizing: 'border-box',
-  },
+  '*, *::before, *::after': {},
 })
