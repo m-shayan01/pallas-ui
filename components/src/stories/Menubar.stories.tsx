@@ -5,6 +5,9 @@ const meta: Meta<typeof Menubar.Root> = {
   component: Menubar.Root,
   title: 'Components/Menubar',
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 }
 
 export default meta
@@ -14,27 +17,32 @@ export const Default = () => (
     <Menubar.Menu>
       <Menubar.Trigger>File</Menubar.Trigger>
       <Menubar.Content>
-        <Menubar.Item>New Tab ⌘T</Menubar.Item>
-        <Menubar.Item>New Window ⌘N</Menubar.Item>
+        <Menubar.Label>File Operations</Menubar.Label>
+        <Menubar.Item>New Tab</Menubar.Item>
+        <Menubar.Item>New Window</Menubar.Item>
         <Menubar.Item disabled>New Incognito Window</Menubar.Item>
         <Menubar.Separator />
         <Menubar.SubMenu>
           <Menubar.SubTrigger>Share</Menubar.SubTrigger>
           <Menubar.SubContent>
+            <Menubar.Label>Share Options</Menubar.Label>
             <Menubar.Item>Email link</Menubar.Item>
             <Menubar.Item>Messages</Menubar.Item>
             <Menubar.Item>Notes</Menubar.Item>
           </Menubar.SubContent>
         </Menubar.SubMenu>
         <Menubar.Separator />
-        <Menubar.Item>Print... ⌘P</Menubar.Item>
+        <Menubar.Item>Print...</Menubar.Item>
       </Menubar.Content>
     </Menubar.Menu>
+
     <Menubar.Menu>
       <Menubar.Trigger>Edit</Menubar.Trigger>
       <Menubar.Content>
-        <Menubar.Item>Undo ⌘Z</Menubar.Item>
-        <Menubar.Item>Redo ⇧⌘Z</Menubar.Item>
+        <Menubar.Group>
+          <Menubar.Item>Undo</Menubar.Item>
+          <Menubar.Item>Redo</Menubar.Item>
+        </Menubar.Group>
         <Menubar.Separator />
         <Menubar.SubMenu>
           <Menubar.SubTrigger>Find</Menubar.SubTrigger>
@@ -47,37 +55,46 @@ export const Default = () => (
           </Menubar.SubContent>
         </Menubar.SubMenu>
         <Menubar.Separator />
-        <Menubar.Item>Cut</Menubar.Item>
-        <Menubar.Item>Copy</Menubar.Item>
-        <Menubar.Item>Paste</Menubar.Item>
+        <Menubar.Group>
+          <Menubar.Item>Cut</Menubar.Item>
+          <Menubar.Item>Copy</Menubar.Item>
+          <Menubar.Item>Paste</Menubar.Item>
+        </Menubar.Group>
       </Menubar.Content>
     </Menubar.Menu>
+
     <Menubar.Menu>
       <Menubar.Trigger>View</Menubar.Trigger>
       <Menubar.Content>
+        <Menubar.Label>Display Options</Menubar.Label>
         <Menubar.CheckboxItem>Always Show Bookmarks Bar</Menubar.CheckboxItem>
         <Menubar.CheckboxItem checked>Always Show Full URLs</Menubar.CheckboxItem>
         <Menubar.Separator />
-        <Menubar.Item>Reload ⌘R</Menubar.Item>
-        <Menubar.Item disabled>Force Reload ⇧⌘R</Menubar.Item>
+        <Menubar.Group>
+          <Menubar.Item>Reload</Menubar.Item>
+          <Menubar.Item disabled>Force Reload</Menubar.Item>
+        </Menubar.Group>
         <Menubar.Separator />
         <Menubar.Item>Toggle Fullscreen</Menubar.Item>
         <Menubar.Separator />
         <Menubar.Item>Hide Sidebar</Menubar.Item>
       </Menubar.Content>
     </Menubar.Menu>
+
     <Menubar.Menu>
       <Menubar.Trigger>Profiles</Menubar.Trigger>
       <Menubar.Content>
+        <Menubar.Label>Select Profile</Menubar.Label>
         <Menubar.RadioGroup value="benoit">
           <Menubar.RadioItem value="andy">Andy</Menubar.RadioItem>
           <Menubar.RadioItem value="benoit">Benoit</Menubar.RadioItem>
           <Menubar.RadioItem value="Luis">Luis</Menubar.RadioItem>
         </Menubar.RadioGroup>
         <Menubar.Separator />
-        <Menubar.Item>Edit...</Menubar.Item>
-        <Menubar.Separator />
-        <Menubar.Item>Add Profile...</Menubar.Item>
+        <Menubar.Group>
+          <Menubar.Item>Edit...</Menubar.Item>
+          <Menubar.Item>Add Profile...</Menubar.Item>
+        </Menubar.Group>
       </Menubar.Content>
     </Menubar.Menu>
   </Menubar.Root>
