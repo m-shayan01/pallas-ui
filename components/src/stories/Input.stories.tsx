@@ -1,6 +1,6 @@
 import type { Meta } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
-import { Heading, Search } from 'lucide-react'
+import { Search } from 'lucide-react'
 import { Label } from '~/ui/label'
 import { Input } from '../ui/input'
 
