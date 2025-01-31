@@ -6,6 +6,7 @@ import { badge } from './badge'
 import { button } from './button'
 import { card } from './card'
 import { checkbox } from './checkbox'
+import { daypicker } from './daypicker'
 import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
@@ -17,6 +18,7 @@ import { progress } from './progress'
 import { radioGroup } from './radio-group'
 import { select } from './select'
 import { slider } from './slider'
+import { spinner } from './spinner'
 import { switchRecipe } from './switch'
 import { tabs } from './tabs'
 import { textarea } from './textarea'
@@ -32,9 +34,9 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
   paragraph,
   heading,
   badge,
-  input,
   label,
   textarea,
+  spinner,
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
@@ -51,4 +53,6 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   checkbox,
   slider,
   switchRecipe,
+  daypicker,
+  input,
 }

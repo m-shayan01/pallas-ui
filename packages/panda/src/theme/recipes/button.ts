@@ -19,11 +19,14 @@ export const button = defineRecipe({
   },
   variants: {
     variant: {
-      solid: {
+      primary: {
         bg: '{colors.primary}',
         color: '{colors.bgSolid.text}',
         _hover: {
           bg: '{colors.primary.hover}',
+          _active: {
+            bg: '{colors.primary.active}',
+          },
         },
       },
       outlined: {
@@ -33,6 +36,10 @@ export const button = defineRecipe({
         _hover: {
           color: '{colors.primary}',
           borderColor: '{colors.primary.borderHover}',
+          _active: {
+            color: '{colors.primary.active}',
+            borderColor: '{colors.primary.borderActive}',
+          },
         },
       },
       dashed: {
@@ -42,14 +49,22 @@ export const button = defineRecipe({
         _hover: {
           color: '{colors.primary}',
           borderColor: '{colors.primary.borderHover}',
+          _active: {
+            color: '{colors.primary.active}',
+            borderColor: '{colors.primary.borderActive}',
+          },
         },
       },
-      filled: {
+      default: {
         bg: '{colors.primary.bg}',
         color: '{colors.primary.text}',
         _hover: {
           bg: '{colors.primary.bgHover}',
           color: '{colors.primary.textHover}',
+          _active: {
+            bg: '{colors.primary.bgActive}',
+            color: '{colors.primary.textActive}',
+          },
         },
       },
       text: {
@@ -110,7 +125,7 @@ export const button = defineRecipe({
     },
   },
   defaultVariants: {
-    variant: 'solid',
+    variant: 'primary',
     size: 'md',
   },
 })

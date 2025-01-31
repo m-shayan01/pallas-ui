@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import Modal from '~/ui/modal/modal'
 
