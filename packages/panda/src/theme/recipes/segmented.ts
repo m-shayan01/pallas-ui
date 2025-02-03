@@ -3,7 +3,7 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const segmented = defineSlotRecipe({
   className: 'segmented',
   description: 'Styles for the Segmented component',
-  slots: ['root', 'option'],
+  slots: ['root', 'option', 'text'],
   base: {
     root: {
       width: 'fit-content',
@@ -11,7 +11,6 @@ export const segmented = defineSlotRecipe({
     },
     option: {
       color: '{colors.text.secondary}',
-      textAlign: 'center',
       overflow: 'hidden',
       display: 'flex',
       alignItems: 'center',
@@ -32,6 +31,12 @@ export const segmented = defineSlotRecipe({
           cursor: 'not-allowed',
         },
       },
+    },
+    text: {
+      overflow: 'hidden',
+      textAlign: 'center',
+      textWrap: 'nowrap',
+      textOverflow: 'ellipsis',
     },
   },
   variants: {
@@ -65,7 +70,7 @@ export const segmented = defineSlotRecipe({
         option: {
           gap: '{spacing.2}',
           textStyle: '{md}',
-          borderRadius: 'calc({radii.md} - {spacing.0.5})',
+          borderRadius: 'calc({radii.md} - {spacing.1} * 0.75)',
           paddingInline: '{spacing.padding.inline.md}',
           paddingBlock: '{spacing.padding.block.sm}',
         },
@@ -81,6 +86,16 @@ export const segmented = defineSlotRecipe({
           borderRadius: 'calc({radii.lg} - {spacing.1})',
           paddingInline: '{spacing.padding.inline.lg}',
           paddingBlock: '{spacing.padding.block.md}',
+        },
+      },
+    },
+    block: {
+      true: {
+        root: {
+          width: '100%',
+        },
+        option: {
+          flex: 1,
         },
       },
     },

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { HStack, Stack } from '@styled-system/jsx'
-import { Grid, List, StretchHorizontal } from 'lucide-react'
+import { Equal, Grid, List, StretchHorizontal } from 'lucide-react'
 import Segmented from '~/ui/segmented'
 
 const meta: Meta<typeof Segmented.Root> = {
@@ -21,6 +21,9 @@ const meta: Meta<typeof Segmented.Root> = {
     size: {
       options: ['sm', 'md', 'lg'],
       control: 'inline-radio',
+    },
+    block: {
+      control: 'boolean',
     },
   },
 }
@@ -102,5 +105,40 @@ export const Variants = () => (
         </Segmented.Option>
       </Segmented.Root>
     </HStack>
+
+    {/* BLOCK */}
+    <Segmented.Root block>
+      <Segmented.Option data-selected>Option 1</Segmented.Option>
+      <Segmented.Option>Option 2</Segmented.Option>
+      <Segmented.Option>
+        <Segmented.Text>
+          Option 3 LLOOOoooooooooooooooOOOOOOOOOOOOOOooooooooooONNNNGGGG TEXT
+        </Segmented.Text>
+      </Segmented.Option>
+    </Segmented.Root>
+
+    {/* TEXT COMPONENT */}
+    <Segmented.Root orientation="vertical" css={{ width: 200 }}>
+      <Segmented.Option data-selected>Option 1</Segmented.Option>
+      <Segmented.Option>Option 2</Segmented.Option>
+      <Segmented.Option>
+        <div>
+          <Equal />
+        </div>
+        <Segmented.Text>
+          Option 3 LLOOOoooooooooooooooOOOOOOOOOOOOOOooooooooooONNNNGGGG TEXT
+        </Segmented.Text>
+      </Segmented.Option>
+    </Segmented.Root>
   </Stack>
 )
+
+// function onClickOption(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+//   const target = e.target as HTMLDivElement
+//   const children = target.parentElement?.children
+//   if (!children || children.length === 1) return
+//   for (let index = 0; index < children.length; index++) {
+//     children[index].removeAttribute('data-selected')
+//   }
+//   target.setAttribute('data-selected', 'true')
+// }
