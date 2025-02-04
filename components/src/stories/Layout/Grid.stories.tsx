@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Grid } from '@styled-system/jsx'
+import { grid } from '@styled-system/patterns'
 import { DecorativeBox } from '../../ui/render-helpers/decorative-box'
 
 const meta: Meta<typeof Grid> = {
@@ -151,18 +152,18 @@ export const Default: Story = {
   args: {
     columns: 3,
     gap: 4,
-    children: (
-      <>
-        <DecorativeBox>Item 1</DecorativeBox>
-        <DecorativeBox>Item 2</DecorativeBox>
-        <DecorativeBox>Item 3</DecorativeBox>
-        <DecorativeBox>Item 4</DecorativeBox>
-        <DecorativeBox>Item 5</DecorativeBox>
-        <DecorativeBox>Item 6</DecorativeBox>
-        <DecorativeBox>Item 7</DecorativeBox>
-        <DecorativeBox>Item 8</DecorativeBox>
-        <DecorativeBox>Item 9</DecorativeBox>
-      </>
-    ),
   },
+  render: (args: { columns: number; gap: number }) => (
+    <Grid {...args} className={grid({ columns: args.columns, gap: args.gap })}>
+      <DecorativeBox>Item 1</DecorativeBox>
+      <DecorativeBox>Item 2</DecorativeBox>
+      <DecorativeBox>Item 3</DecorativeBox>
+      <DecorativeBox>Item 4</DecorativeBox>
+      <DecorativeBox>Item 5</DecorativeBox>
+      <DecorativeBox>Item 6</DecorativeBox>
+      <DecorativeBox>Item 7</DecorativeBox>
+      <DecorativeBox>Item 8</DecorativeBox>
+      <DecorativeBox>Item 9</DecorativeBox>
+    </Grid>
+  ),
 }
