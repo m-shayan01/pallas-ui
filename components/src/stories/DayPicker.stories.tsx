@@ -5,7 +5,7 @@ import { DayPicker } from '~/ui/daypicker'
 
 const meta: Meta<typeof DayPicker> = {
   component: DayPicker,
-  title: 'Components/DayPicker',
+  title: 'Forms/DayPicker',
   tags: ['autodocs'],
 }
 

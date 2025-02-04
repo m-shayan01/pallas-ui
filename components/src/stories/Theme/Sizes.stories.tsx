@@ -5,7 +5,7 @@ import { Paragraph } from '~/ui/typography'
 import { Heading } from '~/ui/typography'
 
 const meta = {
-  title: '0-Theme/Sizes & Spacing',
+  title: 'Theme/Sizes & Spacing',
   component: Box,
 } satisfies Meta
 
@@ -22,7 +22,7 @@ const SizeBox = ({ label, width, height }: { label: string; width: string; heigh
     </Stack>
     <Box
       css={{
-        bg: '#ffec3d',
+        bg: '#1677ff',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -41,7 +41,7 @@ const SpacingBox = ({ label, size }: { label: string; size: string }) => (
     <Box
       css={{
         height: '1rem',
-        bg: '#ffec3d',
+        bg: '#1677ff',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

@@ -3,7 +3,7 @@ import { Slider } from '../ui/slider'
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
-  title: 'Components/Slider',
+  title: 'Forms/Slider',
   tags: ['autodocs'],
 }
 

@@ -6,6 +6,7 @@ import { breakpoints } from './theme/breakpoints'
 import { conditions } from './theme/conditions'
 import { globalCss } from './theme/global-css'
 import { keyframes } from './theme/keyframes'
+import { patterns } from './theme/patterns'
 import { recipes, slotRecipes } from './theme/recipes'
 import { semanticTokens } from './theme/semantic-tokens'
 import { textStyles } from './theme/text-styles'
@@ -41,6 +42,9 @@ export const createPreset = (options: ThemeOptions) => {
     conditions,
     utilities: {
       extend: utilities,
+    },
+    patterns: {
+      extend: patterns,
     },
     globalCss: {
       ...globalCss,
