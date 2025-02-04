@@ -4,7 +4,8 @@ import { mergeConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 const config: StorybookConfig = {
-  stories: ['../src/stories/*.tsx', '../src/stories/*.mdx'],
+  // add stories from nested folders as well
+  stories: ['../src/stories/**/*.tsx', '../src/stories/**/*.mdx'],
   addons: [
     {
       name: '@storybook/addon-essentials',

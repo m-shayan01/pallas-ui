@@ -5,7 +5,7 @@ import Select from '../ui/select'
 
 const meta: Meta<typeof Select.Root> = {
   component: Select.Root,
-  title: 'Components/Select',
+  title: 'Forms/Select',
   tags: ['autodocs'],
 }
 
