@@ -20,6 +20,7 @@ import { progress } from './progress'
 import { radioGroup } from './radio-group'
 import { segmented } from './segmented'
 import { select } from './select'
+import { separator } from './separator'
 import { slider } from './slider'
 import { spinner } from './spinner'
 import { switchRecipe } from './switch'
@@ -40,6 +41,7 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
   label,
   textarea,
   spinner,
+  separator,
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
