@@ -8,6 +8,7 @@ export const segmented = defineSlotRecipe({
     root: {
       width: 'fit-content',
       backgroundColor: '{colors.border.secondary}',
+      display: 'flex',
     },
     option: {
       color: '{colors.text.secondary}',
@@ -43,10 +44,14 @@ export const segmented = defineSlotRecipe({
     orientation: {
       horizontal: {
         root: {
-          display: 'flex',
+          flexDirection: 'row',
         },
       },
-      vertical: {},
+      vertical: {
+        root: {
+          flexDirection: 'column',
+        },
+      },
     },
     size: {
       sm: {

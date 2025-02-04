@@ -1,19 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx/stack'
-import { Collection } from 'react-aria-components'
 import Tabs from '~/ui/tabs'
 
 const meta: Meta<typeof Tabs.Root> = {
   render: (props) => (
-    <Tabs.Root {...props}>
+    <Tabs.Root defaultValue="1" {...props}>
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Tab 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Tab 2</Tabs.Trigger>
-        <Tabs.Trigger id="3">Tab 3</Tabs.Trigger>
+        <Tabs.Trigger value="1">Tab 1</Tabs.Trigger>
+        <Tabs.Trigger value="2">Tab 2</Tabs.Trigger>
+        <Tabs.Trigger value="3">Tab 3</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
   ),
   title: 'Components/Tabs',
@@ -74,83 +75,97 @@ const TABS = [
 export const Variants = () => (
   <Stack direction="column" align="flex-start">
     {/* CENTERED - DISABLED */}
-    <Tabs.Root align="center">
+    <Tabs.Root defaultValue="1" align="center">
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Tab 1</Tabs.Trigger>
-        <Tabs.Trigger id="2" isDisabled>
+        <Tabs.Trigger value="1">Tab 1</Tabs.Trigger>
+        <Tabs.Trigger value="2" disabled>
           Disabled
         </Tabs.Trigger>
-        <Tabs.Trigger id="3">Tab 3</Tabs.Trigger>
+        <Tabs.Trigger value="3">Tab 3</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
 
     {/* LEFT */}
-    <Tabs.Root position="left">
+    <Tabs.Root defaultValue="1" position="left">
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Left 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Left 2</Tabs.Trigger>
+        <Tabs.Trigger value="1">Left 1</Tabs.Trigger>
+        <Tabs.Trigger value="2">Left 2</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
 
     {/* RIGHT - SMALL */}
-    <Tabs.Root position="right" size="sm">
+    <Tabs.Root defaultValue="1" position="right" size="sm">
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Small 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Small 2</Tabs.Trigger>
+        <Tabs.Trigger value="1">Small 1</Tabs.Trigger>
+        <Tabs.Trigger value="2">Small 2</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
 
     {/* BOTTOM - LARGE - END */}
-    <Tabs.Root position="bottom" size="lg" align="end">
+    <Tabs.Root defaultValue="1" position="bottom" size="lg" align="end">
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Large 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Large 2</Tabs.Trigger>
+        <Tabs.Trigger value="1">Large 1</Tabs.Trigger>
+        <Tabs.Trigger value="2">Large 2</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
 
     {/* CARD - LEFT */}
-    <Tabs.Root variant="card" position="left">
+    <Tabs.Root defaultValue="1" variant="card" position="left">
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Card 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Card 2</Tabs.Trigger>
+        <Tabs.Trigger value="1">Card 1</Tabs.Trigger>
+        <Tabs.Trigger value="2">Card 2</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
 
     {/* CARD - RIGHT */}
-    <Tabs.Root variant="card" position="right">
+    <Tabs.Root defaultValue="1" variant="card" position="right">
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Card 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Card 2</Tabs.Trigger>
+        <Tabs.Trigger value="1">Card 1</Tabs.Trigger>
+        <Tabs.Trigger value="2">Card 2</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
 
     {/* CARD - BOTTOM - CENTER - LARGE */}
-    <Tabs.Root variant="card" position="bottom" size="lg" align="center">
+    <Tabs.Root defaultValue="1" variant="card" position="bottom" size="lg" align="center">
       <Tabs.TabList>
-        <Tabs.Trigger id="1">Large 1</Tabs.Trigger>
-        <Tabs.Trigger id="2">Large 2</Tabs.Trigger>
+        <Tabs.Trigger value="1">Large 1</Tabs.Trigger>
+        <Tabs.Trigger value="2">Large 2</Tabs.Trigger>
       </Tabs.TabList>
-      <Collection items={TABS}>
-        {(item) => <Tabs.Content id={item.id}>{item.content}</Tabs.Content>}
-      </Collection>
+      {TABS.map((item) => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
     </Tabs.Root>
   </Stack>
 )
