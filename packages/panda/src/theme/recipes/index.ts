@@ -17,6 +17,7 @@ import { paragraph } from './paragraph'
 import { popover } from './popover'
 import { progress } from './progress'
 import { radioGroup } from './radio-group'
+import { segmented } from './segmented'
 import { select } from './select'
 import { slider } from './slider'
 import { spinner } from './spinner'
@@ -57,4 +58,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   switchRecipe,
   daypicker,
   input,
+  segmented,
 }
