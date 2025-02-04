@@ -8,7 +8,7 @@ const meta: Meta<typeof Segmented.Root> = {
   title: 'Components/Segmented',
   tags: ['autodocs'],
   render: (props) => (
-    <Segmented.Root {...props} defaultValue="1">
+    <Segmented.Root defaultValue="1" {...props}>
       <Segmented.Option value="1">Option 1</Segmented.Option>
       <Segmented.Option value="2">Option 2</Segmented.Option>
     </Segmented.Root>
