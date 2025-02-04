@@ -22,5 +22,23 @@ export const conditions = {
     bottom: '&[data-side=bottom]',
     left: '&[data-side=left]',
     right: '&[data-side=right]',
+
+    // Base input states
+    inputHover: '&:has(input:hover:not(:disabled))',
+    inputFocus: '&:has(input:focus:not(:disabled))',
+    inputDisabled: '&:has(input:disabled)',
+
+    // Validation states
+    inputSuccess: '&:has(input[data-status=success])',
+    inputSuccessHover: '&:has(input[data-status=success]:hover:not(:disabled))',
+    inputSuccessFocus: '&:has(input[data-status=success]:focus:not(:disabled))',
+
+    inputError: '&:has(input[data-status=error])',
+    inputErrorHover: '&:has(input[data-status=error]:hover:not(:disabled))',
+    inputErrorFocus: '&:has(input[data-status=error]:focus:not(:disabled))',
+
+    inputWarning: '&:has(input[data-status=warning])',
+    inputWarningHover: '&:has(input[data-status=warning]:hover:not(:disabled))',
+    inputWarningFocus: '&:has(input[data-status=warning]:focus:not(:disabled))',
   },
 }

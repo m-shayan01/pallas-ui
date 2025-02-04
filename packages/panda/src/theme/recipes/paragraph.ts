@@ -37,6 +37,13 @@ export const paragraph = defineRecipe({
           '2xl': '{fontSizes.lg}',
         },
       },
+      subscript: {
+        fontSize: {
+          base: '{fontSizes.xs}',
+          lg: '{fontSizes.sm}',
+          '2xl': '{fontSizes.md}',
+        },
+      },
     },
     color: {
       default: { color: '{colors.text}' },
