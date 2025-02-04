@@ -5,7 +5,7 @@ import RadioGroup from '../ui/radio-group'
 
 const meta: Meta<typeof RadioGroup.Root> = {
   component: RadioGroup.Root,
-  title: 'Components/RadioGroup',
+  title: 'Forms/RadioGroup',
   tags: ['autodocs'],
 }
 
