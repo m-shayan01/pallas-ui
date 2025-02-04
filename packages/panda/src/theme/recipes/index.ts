@@ -11,6 +11,7 @@ import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
 import { label } from './label'
+import { menubar } from './menu-bar'
 import { modal } from './modal'
 import { paragraph } from './paragraph'
 import { popover } from './popover'
@@ -43,6 +44,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   card,
   modal,
   accordian,
+  menubar,
   toast,
   tabs,
   progress,
