@@ -2,6 +2,7 @@ import type { RecipeConfig, RecipeVariantRecord, SlotRecipeConfig } from '@panda
 
 import { accordian } from './accordian'
 import { alert, alertDescription, alertTitle } from './alert'
+import { avatar } from './avatar'
 import { badge } from './badge'
 import { button } from './button'
 import { card } from './card'
@@ -41,6 +42,7 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
+  avatar,
   card,
   modal,
   accordian,
