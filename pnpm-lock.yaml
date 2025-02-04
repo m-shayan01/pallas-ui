@@ -89,13 +89,13 @@ importers:
         specifier: workspace:*
         version: link:../packages/panda
       '@pandacss/dev':
-        specifier: 0.50.0
-        version: 0.50.0(typescript@5.7.2)
+        specifier: 0.48.0
+        version: 0.48.0(typescript@5.7.2)
       '@radix-ui/react-accordion':
-        specifier: 1.2.1
+        specifier: ^1.2.1
         version: 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-alert-dialog':
-        specifier: 1.1.2
+        specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-checkbox':
         specifier: 1.1.3
@@ -103,6 +103,9 @@ importers:
       '@radix-ui/react-label':
         specifier: 2.1.1
         version: 2.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-menubar':
+        specifier: ^1.1.4
+        version: 1.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-popover':
         specifier: 1.1.4
         version: 1.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -844,11 +847,11 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@floating-ui/core@1.6.8':
-    resolution: {integrity: sha512-7XJ9cPU+yI2QeLS+FCSlqNFZJq8arvswefkZrYI1yQBbftw6FyrZOxYSh+9S7z7TpeWlRt9zJ5IhM1WIL334jA==}
+  '@floating-ui/core@1.6.9':
+    resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
 
-  '@floating-ui/dom@1.6.12':
-    resolution: {integrity: sha512-NP83c0HjokcGVEMeoStg317VD9W7eDlGK7457dMBANbKA6GJZdc7rjujdgqzTaz93jkGgc5P/jeWbaCHnMNc+w==}
+  '@floating-ui/dom@1.6.13':
+    resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
 
   '@floating-ui/react-dom@2.1.2':
     resolution: {integrity: sha512-06okr5cgPzMNBy+Ycse2A6udMi4bqwW/zgBF/rwjcNqWkyr82Mcg8b0vjX8OJpZFy/FKjJmw6wV7t44kK6kW7A==}
@@ -856,8 +859,8 @@ packages:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
 
-  '@floating-ui/utils@0.2.8':
-    resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
+  '@floating-ui/utils@0.2.9':
+    resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
   '@formatjs/ecma402-abstract@2.2.4':
     resolution: {integrity: sha512-lFyiQDVvSbQOpU+WFd//ILolGj4UgA/qXrKeZxdV14uKiAUiPAtX6XAn7WBCRi7Mx6I7EybM9E5yYn4BIpZWYg==}
@@ -1091,39 +1094,76 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
+  '@pandacss/config@0.48.0':
+    resolution: {integrity: sha512-doHv/Sm7sAlZuf77xNnFAvi4gaT6LyqyuZ+jywJbovLZlH+prj+uVz/5IHHMAKAv41/H9FV6tHcjfC3kNGhVbQ==}
+
   '@pandacss/config@0.50.0':
     resolution: {integrity: sha512-SZuVsqo92V23roRZ4Swa023vpyr2fuO80cGDbUKgSb9bPw47L/U7MqnkNF3AwwYqH5sUcJU9/6/2JDFbGFReBg==}
 
+  '@pandacss/core@0.48.0':
+    resolution: {integrity: sha512-8nbzowX8BXN7mtkTE+T9b3mrUYQVN7GFbBGqLYD5NAEcxETEQfxtypqY/eKfm0kF2U5CLD2iiMrsLcwDNMnAlQ==}
+
   '@pandacss/core@0.50.0':
     resolution: {integrity: sha512-aftYuKoxHNi/2MdUI3HyJqf4WvYN8Q+VVcJruw8ujcpU+OUVOAkl1tUlW8BAB4P09qbJzeaPknOsKR7IL3W7zg==}
+
+  '@pandacss/dev@0.48.0':
+    resolution: {integrity: sha512-OqJuaShUunJo8yS0hGpYtQEmH1HVnwmBNW3wdBwE57rIPJE2H+iS/3dtp+kgCj60xioHhljgUeHlOkPkjZCSSA==}
+    hasBin: true
 
   '@pandacss/dev@0.50.0':
     resolution: {integrity: sha512-DfyzkdUZ1N3cujXBofPsB0TlKI52cXgfNrLLx0dSqUyRyA2oEeOZMVuMbmmeOMByz/xeml49tcz6pc0iBLPsOw==}
     hasBin: true
 
+  '@pandacss/extractor@0.48.0':
+    resolution: {integrity: sha512-Fnfuw1Dvx39GneuJHWeJB15QlOTyjqLXL2jfY6xhRWv7be0anGV7v6fGZ/6x92UvLDu/XhT3uZapbtfMmrKp8A==}
+
   '@pandacss/extractor@0.50.0':
     resolution: {integrity: sha512-Y4bAjF1MVMS23mjG4tHI0wX8ctZxFbS+cEKFSUcJXrKat9T5pOpFEepX8tz7Gf6Bsd8Um3TJCmpv2OKGG5eJ9w==}
+
+  '@pandacss/generator@0.48.0':
+    resolution: {integrity: sha512-6LAcs1ouT0oPqF1IAOyl3c7agciXEdsx4rzz/1cnNr+pDFpqh8MkS/g8K9Q1CStpDuXPN22DDQXYvNVoDk7d8g==}
 
   '@pandacss/generator@0.50.0':
     resolution: {integrity: sha512-Cn3l3MYNoItkHKKGRvYG4Un5RZORZ2SCjGqGnkZM4NyZhC45rty4OquIyZoW2nkVohlkyZTw4iFki585FHxuCA==}
 
+  '@pandacss/is-valid-prop@0.48.1':
+    resolution: {integrity: sha512-iil1ZCGRu2+sWx6XL/l/7melULibJH/l7ozwVy1pRYm02mCbNqmxelQcFhJT1Z+nOCDxW18QxFyKqnDPIr9JQA==}
+
   '@pandacss/is-valid-prop@0.50.0':
     resolution: {integrity: sha512-H/GS16AjEjLq13UsFtNy+Yr94MX2GkWouLqfEME82cFTCZTELtsSnVenAGtNA8OovmpUWFfgxsvoHs606D+tfA==}
+
+  '@pandacss/logger@0.48.0':
+    resolution: {integrity: sha512-T5gERmz2sMkIJFF7x0gwQzVTcGu9bnMTyqJ/IJbkjrDzAfQegLam4MbgtcqHtMaIPTVjLvIJNFkGBqFKJ9KjYw==}
 
   '@pandacss/logger@0.50.0':
     resolution: {integrity: sha512-H0R++/MjTQwDUrdTuEPfVCi5GduFXJd9v1HRR0t/NlyqLOrUSpO9c3w+9Hdxc8k5oUM9eSWN+dC/MhboRCtUxA==}
 
+  '@pandacss/node@0.48.0':
+    resolution: {integrity: sha512-5+DOkacA+ZyV3lLbpvJD+LsH0DPvF6sbU37WKjaA3E/R7XXshDaemk72+uBzd1wdg0q9IALXBkr36stANDT3yg==}
+
   '@pandacss/node@0.50.0':
     resolution: {integrity: sha512-e8QRpewhLUY48pBpP6e7fAXVD4Cb4zHpvmjI2kwWtK7dZgeTJheGnQOe+CJ5IpskkksYxDacTYuZMs6S0+tqmQ==}
+
+  '@pandacss/parser@0.48.0':
+    resolution: {integrity: sha512-id8lmewJgBvqdB3Ny0wrfS1TQIfMuAMOhQGEN5RfNk9SRaIdEhaJBD6qvQWhxGiw4hwsMj6ogCmnCXEexgTpSg==}
 
   '@pandacss/parser@0.50.0':
     resolution: {integrity: sha512-9mnF0djf2W56Ifl1yoE1DlgN6vwGG4vyJVLrLI0iRQAhOGgE5bbE/tOmsaIRCWqx6dvEiEUfhdAXzlfWdtRv8Q==}
 
+  '@pandacss/postcss@0.48.0':
+    resolution: {integrity: sha512-zEj1H8GKVuNgnYKcWjGGyAzfj6eE8IPpxcYudDhdxzOVPggM0JtOVOlaOljv0ZVeQzdmfwfpYdQtw6MKgSL4eQ==}
+
   '@pandacss/postcss@0.50.0':
     resolution: {integrity: sha512-clt3bi9+Hx+oQQ/iQI3KTbpVgpXpXyNO65r8torlZS2xnjl4XSOmQ2zZv3LmmvKs2bMpBEFfNegjLhpR9BtsoQ==}
 
+  '@pandacss/preset-base@0.48.0':
+    resolution: {integrity: sha512-SvQNy1agfbCw9rJcXxHatBqpNJU3+9WVAqYwbWCDq3KC8CHh6z03v0dYs5pvml6SE6cvhrSPQgbGWH3pWx/M7Q==}
+
   '@pandacss/preset-base@0.50.0':
     resolution: {integrity: sha512-PXzXtu4Co3c15B1g6whp2TeFQU9BwHB+zeXRX8bGyG7eSA66F2rqXFsEvariX37lbrlJ/uTsEFQgH/wg20XFKQ==}
+
+  '@pandacss/preset-panda@0.48.0':
+    resolution: {integrity: sha512-b5nygzw6y3fNJ8qDVcaFOVG/UZA4C8qzqXHSzmIAUV0g0HGN1MK0czyUXIiT+v+oyy4/NfCju2OMTn+Sktey1A==}
 
   '@pandacss/preset-panda@0.50.0':
     resolution: {integrity: sha512-ZRU6vAqI7ZVGsMAc/Zhe7u3ok1lsclWTOMPLnj72izZQpAvGbuO59rq77YHVPhX2YGUfsxJKcQ93r9Az6ZlGLQ==}
@@ -1131,11 +1171,20 @@ packages:
   '@pandacss/reporter@0.50.0':
     resolution: {integrity: sha512-m9OG36KQClnHrwyZhrQbqU+c7cKVXxy9qZ1QQ5212/5PFYAhOP0svGmc8bS6BZVaesPpAeiAzRoCVkTH6ro+Aw==}
 
+  '@pandacss/shared@0.48.0':
+    resolution: {integrity: sha512-Nh3XMIDnsdSCh/1cp0wKdLH9IYw3bzMPIMMlMgvFtUr7NmCcZaRqUkxv/mEO0ucg9bePgi77xpWTill3LoLBbw==}
+
   '@pandacss/shared@0.50.0':
     resolution: {integrity: sha512-BTHCxXJCDkNB4BA0ap7EPd+SaqDDn6THes9f0b26GtVOwTi7G690uqTHoRSY+16KXGfqeeh0w/h4ZlMV2UL8IA==}
 
+  '@pandacss/token-dictionary@0.48.0':
+    resolution: {integrity: sha512-nUSqHi3L4PPSy7QGvroMHqLV0nmOSpMv7ZPchcyPjV1jr0o8MgPtUWvt/dlT3pGSOyGKOyVoxa0Krt04a1K99Q==}
+
   '@pandacss/token-dictionary@0.50.0':
     resolution: {integrity: sha512-3M9duoWxEUQnCD01wqQj8y5D2dSVCYJJ/J88yUDg1t2Q4CUHr6YFbvEUlAN6AVAY5bt0rKW2mcl0swumzcOG2g==}
+
+  '@pandacss/types@0.48.0':
+    resolution: {integrity: sha512-Dm5DOeO/KhO2m+pBRl9NawtsRboXwUtiUl6IUvqCA3SivPGrUZWl0Y8UrtkZyEz+7ZIehZXbPkouddHnngoC4w==}
 
   '@pandacss/types@0.49.0':
     resolution: {integrity: sha512-Chmgjci8ycjxEIaL0DIs9ie0O8XW6Q0zByyuKe/NkBOFM06U+I6OrAK18qUmfseeGzpQdp3iaRirVlMvrYtJrg==}
@@ -1390,6 +1439,32 @@ packages:
 
   '@radix-ui/react-label@2.1.1':
     resolution: {integrity: sha512-UUw5E4e/2+4kFMH7+YxORXGWggtY6sM8WIwh5RZchhLuUg2H1hc98Py+pr8HMz6rdaYrK2t296ZEjYLOCO5uUw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-menu@2.1.4':
+    resolution: {integrity: sha512-BnOgVoL6YYdHAG6DtXONaR29Eq4nvbi8rutrV/xlr3RQCMMb3yqP85Qiw/3NReozrSW+4dfLkK+rc1hb4wPU/A==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@radix-ui/react-menubar@1.1.4':
+    resolution: {integrity: sha512-+KMpi7VAZuB46+1LD7a30zb5IxyzLgC8m8j42gk3N4TUCcViNQdX8FhoH1HDvYiA8quuqcek4R4bYpPn/SY1GA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -3058,6 +3133,9 @@ packages:
       picomatch:
         optional: true
 
+  file-size@1.0.0:
+    resolution: {integrity: sha512-tLIdonWTpABkU6Axg2yGChYdrOsy4V8xcm0IcyAP8fSsu6jiXLm5pgs083e4sq5fzNRZuAYolUbZyYmPvCKfwQ==}
+
   filesize@10.1.6:
     resolution: {integrity: sha512-sJslQKU2uM33qH5nqewAwVB2QgR6w1aMNsYUp3aN5rMRyXEwJGmZvaWzeJFNTOXWlHQyBFCWrdj3fV/fsTOX8w==}
     engines: {node: '>= 10.4.0'}
@@ -3390,6 +3468,9 @@ packages:
   magic-string@0.27.0:
     resolution: {integrity: sha512-8UnnX2PeRAPZuN12svgR9j7M1uWMovg/CEnIwIG0LFkXSJJe4PdfUGiTGl8V9bsBHFUtfVINcSyYxd7q+kx9fA==}
     engines: {node: '>=12'}
+
+  magic-string@0.30.12:
+    resolution: {integrity: sha512-Ea8I3sQMVXr8JhN4z+H/d8zwo+tYDgHE9+5G4Wnrwhs0gaK9fXTKx0Tw5Xwsd/bCPTTZNRAdpyzvoeORe9LYpw==}
 
   magic-string@0.30.17:
     resolution: {integrity: sha512-sNPKHvyjVf7gyjwS4xGTaW/mCnF8wnjtifKBEhxfZ7E/S8tQ0rssrwGNn6q8JH/ohItJfSQp9mBtQYuTlH5QnA==}
@@ -4777,22 +4858,22 @@ snapshots:
   '@esbuild/win32-x64@0.24.0':
     optional: true
 
-  '@floating-ui/core@1.6.8':
+  '@floating-ui/core@1.6.9':
     dependencies:
-      '@floating-ui/utils': 0.2.8
+      '@floating-ui/utils': 0.2.9
 
-  '@floating-ui/dom@1.6.12':
+  '@floating-ui/dom@1.6.13':
     dependencies:
-      '@floating-ui/core': 1.6.8
-      '@floating-ui/utils': 0.2.8
+      '@floating-ui/core': 1.6.9
+      '@floating-ui/utils': 0.2.9
 
   '@floating-ui/react-dom@2.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@floating-ui/dom': 1.6.12
+      '@floating-ui/dom': 1.6.13
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  '@floating-ui/utils@0.2.8': {}
+  '@floating-ui/utils@0.2.9': {}
 
   '@formatjs/ecma402-abstract@2.2.4':
     dependencies:
@@ -4989,6 +5070,19 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
+  '@pandacss/config@0.48.0':
+    dependencies:
+      '@pandacss/logger': 0.48.0
+      '@pandacss/preset-base': 0.48.0
+      '@pandacss/preset-panda': 0.48.0
+      '@pandacss/shared': 0.48.0
+      '@pandacss/types': 0.48.0
+      bundle-n-require: 1.1.1
+      escalade: 3.1.2
+      merge-anything: 5.1.7
+      microdiff: 1.3.2
+      typescript: 5.3.3
+
   '@pandacss/config@0.50.0':
     dependencies:
       '@pandacss/logger': 0.50.0
@@ -5001,6 +5095,29 @@ snapshots:
       merge-anything: 5.1.7
       microdiff: 1.3.2
       typescript: 5.3.3
+
+  '@pandacss/core@0.48.0':
+    dependencies:
+      '@csstools/postcss-cascade-layers': 4.0.6(postcss@8.4.49)
+      '@pandacss/is-valid-prop': 0.48.1
+      '@pandacss/logger': 0.48.0
+      '@pandacss/shared': 0.48.0
+      '@pandacss/token-dictionary': 0.48.0
+      '@pandacss/types': 0.48.0
+      browserslist: 4.23.3
+      hookable: 5.5.3
+      lightningcss: 1.25.1
+      lodash.merge: 4.6.2
+      outdent: 0.8.0
+      postcss: 8.4.49
+      postcss-discard-duplicates: 7.0.1(postcss@8.4.49)
+      postcss-discard-empty: 7.0.0(postcss@8.4.49)
+      postcss-merge-rules: 7.0.4(postcss@8.4.49)
+      postcss-minify-selectors: 7.0.4(postcss@8.4.49)
+      postcss-nested: 6.0.1(postcss@8.4.49)
+      postcss-normalize-whitespace: 7.0.0(postcss@8.4.49)
+      postcss-selector-parser: 6.1.2
+      ts-pattern: 5.0.8
 
   '@pandacss/core@0.50.0':
     dependencies:
@@ -5025,6 +5142,22 @@ snapshots:
       postcss-selector-parser: 6.1.2
       ts-pattern: 5.0.8
 
+  '@pandacss/dev@0.48.0(typescript@5.7.2)':
+    dependencies:
+      '@clack/prompts': 0.7.0
+      '@pandacss/config': 0.48.0
+      '@pandacss/logger': 0.48.0
+      '@pandacss/node': 0.48.0(typescript@5.7.2)
+      '@pandacss/postcss': 0.48.0(typescript@5.7.2)
+      '@pandacss/preset-panda': 0.48.0
+      '@pandacss/shared': 0.48.0
+      '@pandacss/token-dictionary': 0.48.0
+      '@pandacss/types': 0.48.0
+      cac: 6.7.14
+    transitivePeerDependencies:
+      - jsdom
+      - typescript
+
   '@pandacss/dev@0.50.0(typescript@5.7.2)':
     dependencies:
       '@clack/prompts': 0.7.0
@@ -5041,6 +5174,15 @@ snapshots:
       - jsdom
       - typescript
 
+  '@pandacss/extractor@0.48.0(typescript@5.7.2)':
+    dependencies:
+      '@pandacss/shared': 0.48.0
+      ts-evaluator: 1.2.0(typescript@5.7.2)
+      ts-morph: 21.0.1
+    transitivePeerDependencies:
+      - jsdom
+      - typescript
+
   '@pandacss/extractor@0.50.0(typescript@5.7.2)':
     dependencies:
       '@pandacss/shared': 0.50.0
@@ -5049,6 +5191,20 @@ snapshots:
     transitivePeerDependencies:
       - jsdom
       - typescript
+
+  '@pandacss/generator@0.48.0':
+    dependencies:
+      '@pandacss/core': 0.48.0
+      '@pandacss/is-valid-prop': 0.48.1
+      '@pandacss/logger': 0.48.0
+      '@pandacss/shared': 0.48.0
+      '@pandacss/token-dictionary': 0.48.0
+      '@pandacss/types': 0.48.0
+      javascript-stringify: 2.1.0
+      outdent: 0.8.0
+      pluralize: 8.0.0
+      postcss: 8.4.49
+      ts-pattern: 5.0.8
 
   '@pandacss/generator@0.50.0':
     dependencies:
@@ -5064,12 +5220,54 @@ snapshots:
       postcss: 8.4.49
       ts-pattern: 5.0.8
 
+  '@pandacss/is-valid-prop@0.48.1': {}
+
   '@pandacss/is-valid-prop@0.50.0': {}
+
+  '@pandacss/logger@0.48.0':
+    dependencies:
+      '@pandacss/types': 0.48.0
+      kleur: 4.1.5
 
   '@pandacss/logger@0.50.0':
     dependencies:
       '@pandacss/types': 0.50.0
       kleur: 4.1.5
+
+  '@pandacss/node@0.48.0(typescript@5.7.2)':
+    dependencies:
+      '@pandacss/config': 0.48.0
+      '@pandacss/core': 0.48.0
+      '@pandacss/extractor': 0.48.0(typescript@5.7.2)
+      '@pandacss/generator': 0.48.0
+      '@pandacss/logger': 0.48.0
+      '@pandacss/parser': 0.48.0(typescript@5.7.2)
+      '@pandacss/shared': 0.48.0
+      '@pandacss/token-dictionary': 0.48.0
+      '@pandacss/types': 0.48.0
+      browserslist: 4.23.3
+      chokidar: 3.6.0
+      fast-glob: 3.3.2
+      file-size: 1.0.0
+      filesize: 10.1.6
+      fs-extra: 11.2.0
+      glob-parent: 6.0.2
+      is-glob: 4.0.3
+      lodash.merge: 4.6.2
+      look-it-up: 2.1.0
+      outdent: 0.8.0
+      package-manager-detector: 0.1.0
+      perfect-debounce: 1.0.0
+      pkg-types: 1.0.3
+      pluralize: 8.0.0
+      postcss: 8.4.49
+      prettier: 3.2.5
+      ts-morph: 21.0.1
+      ts-pattern: 5.0.8
+      tsconfck: 3.0.2(typescript@5.7.2)
+    transitivePeerDependencies:
+      - jsdom
+      - typescript
 
   '@pandacss/node@0.50.0(typescript@5.7.2)':
     dependencies:
@@ -5104,6 +5302,22 @@ snapshots:
       - jsdom
       - typescript
 
+  '@pandacss/parser@0.48.0(typescript@5.7.2)':
+    dependencies:
+      '@pandacss/config': 0.48.0
+      '@pandacss/core': 0.48.0
+      '@pandacss/extractor': 0.48.0(typescript@5.7.2)
+      '@pandacss/logger': 0.48.0
+      '@pandacss/shared': 0.48.0
+      '@pandacss/types': 0.48.0
+      '@vue/compiler-sfc': 3.4.19
+      magic-string: 0.30.12
+      ts-morph: 21.0.1
+      ts-pattern: 5.0.8
+    transitivePeerDependencies:
+      - jsdom
+      - typescript
+
   '@pandacss/parser@0.50.0(typescript@5.7.2)':
     dependencies:
       '@pandacss/config': 0.50.0
@@ -5120,6 +5334,14 @@ snapshots:
       - jsdom
       - typescript
 
+  '@pandacss/postcss@0.48.0(typescript@5.7.2)':
+    dependencies:
+      '@pandacss/node': 0.48.0(typescript@5.7.2)
+      postcss: 8.4.49
+    transitivePeerDependencies:
+      - jsdom
+      - typescript
+
   '@pandacss/postcss@0.50.0(typescript@5.7.2)':
     dependencies:
       '@pandacss/node': 0.50.0(typescript@5.7.2)
@@ -5128,9 +5350,17 @@ snapshots:
       - jsdom
       - typescript
 
+  '@pandacss/preset-base@0.48.0':
+    dependencies:
+      '@pandacss/types': 0.48.0
+
   '@pandacss/preset-base@0.50.0':
     dependencies:
       '@pandacss/types': 0.50.0
+
+  '@pandacss/preset-panda@0.48.0':
+    dependencies:
+      '@pandacss/types': 0.48.0
 
   '@pandacss/preset-panda@0.50.0':
     dependencies:
@@ -5146,7 +5376,16 @@ snapshots:
       table: 6.9.0
       wordwrapjs: 5.1.0
 
+  '@pandacss/shared@0.48.0': {}
+
   '@pandacss/shared@0.50.0': {}
+
+  '@pandacss/token-dictionary@0.48.0':
+    dependencies:
+      '@pandacss/logger': 0.48.0
+      '@pandacss/shared': 0.48.0
+      '@pandacss/types': 0.48.0
+      ts-pattern: 5.0.8
 
   '@pandacss/token-dictionary@0.50.0':
     dependencies:
@@ -5154,6 +5393,8 @@ snapshots:
       '@pandacss/shared': 0.50.0
       '@pandacss/types': 0.50.0
       ts-pattern: 5.0.8
+
+  '@pandacss/types@0.48.0': {}
 
   '@pandacss/types@0.49.0': {}
 
@@ -5393,6 +5634,50 @@ snapshots:
   '@radix-ui/react-label@2.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@radix-ui/react-primitive': 2.0.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.12
+      '@types/react-dom': 18.3.1
+
+  '@radix-ui/react-menu@2.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@radix-ui/primitive': 1.1.1
+      '@radix-ui/react-collection': 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.1.1(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-context': 1.1.1(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-direction': 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-dismissable-layer': 1.1.3(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-focus-guards': 1.1.1(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-focus-scope': 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-id': 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-popper': 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-portal': 1.1.3(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-presence': 1.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-roving-focus': 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slot': 1.1.1(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-use-callback-ref': 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      aria-hidden: 1.2.4
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-remove-scroll: 2.6.2(@types/react@18.3.12)(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.12
+      '@types/react-dom': 18.3.1
+
+  '@radix-ui/react-menubar@1.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@radix-ui/primitive': 1.1.1
+      '@radix-ui/react-collection': 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-compose-refs': 1.1.1(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-context': 1.1.1(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-direction': 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-id': 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-menu': 2.1.4(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-primitive': 2.0.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-roving-focus': 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.1.0(@types/react@18.3.12)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
@@ -7596,6 +7881,8 @@ snapshots:
     optionalDependencies:
       picomatch: 4.0.2
 
+  file-size@1.0.0: {}
+
   filesize@10.1.6: {}
 
   fill-range@7.1.1:
@@ -7868,6 +8155,10 @@ snapshots:
   lz-string@1.5.0: {}
 
   magic-string@0.27.0:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+
+  magic-string@0.30.12:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
