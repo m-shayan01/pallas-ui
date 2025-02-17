@@ -45,33 +45,33 @@ export const Variants = () => (
       <div>Lorem ipsum</div>
       <Separator orientation="vertical" />
       <div>dolor sit amet</div>
-      <Separator orientation="vertical" css={{ borderWidth: '2' }} />
+      <Separator orientation="vertical" css={{ borderEndWidth: '4' }} />
       <div>Lorem ipsum</div>
-      <Separator orientation="vertical" css={{ borderWidth: '3' }} />
+      <Separator orientation="vertical" css={{ borderEndWidth: '6' }} />
       <div>Lorem ipsum</div>
-      <Separator orientation="vertical" css={{ borderWidth: '5' }} />
+      <Separator orientation="vertical" css={{ borderEndWidth: '8' }} />
       <div>Lorem ipsum</div>
     </Stack>
 
-    <Separator color="success.border" />
+    <Separator css={{ color: '{colors.info.border}', borderBlockEndWidth: '3' }} />
 
     <Stack direction="row">
       <div>Lorem ipsum</div>
       <Separator orientation="vertical" rounded />
       <div>dolor sit amet</div>
-      <Separator orientation="vertical" css={{ borderWidth: '2' }} rounded />
+      <Separator orientation="vertical" css={{ borderEndWidth: '4' }} rounded />
       <div>Lorem ipsum</div>
-      <Separator orientation="vertical" css={{ borderWidth: '4' }} rounded />
+      <Separator orientation="vertical" css={{ borderEndWidth: '6' }} rounded />
       <div>Lorem ipsum</div>
-      <Separator orientation="vertical" css={{ borderWidth: '5' }} rounded />
+      <Separator orientation="vertical" css={{ borderEndWidth: '8' }} rounded />
       <div>Lorem ipsum</div>
     </Stack>
 
-    <Separator color="error.border" />
+    <Separator css={{ color: '{colors.error.border}', borderBlockEndWidth: '5' }} />
 
     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
 
-    <Separator color="info.border" />
+    <Separator css={{ color: '{colors.success.border}', borderBlockEndWidth: '7' }} rounded />
 
     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
   </Stack>
