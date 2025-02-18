@@ -22,6 +22,10 @@ const meta: Meta<typeof Separator> = {
     rounded: {
       control: 'boolean',
     },
+    type: {
+      control: 'inline-radio',
+      options: ['solid', 'dotted', 'dashed'],
+    },
   },
 }
 
@@ -32,6 +36,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     orientation: 'horizontal',
+    type: 'solid',
   },
 }
 
@@ -74,5 +79,9 @@ export const Variants = () => (
     <Separator css={{ color: '{colors.success.border}', borderBlockEndWidth: '7' }} rounded />
 
     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+
+    <Separator type="dotted" />
+
+    <Separator type="dashed" />
   </Stack>
 )

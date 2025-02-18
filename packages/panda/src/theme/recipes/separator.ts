@@ -19,6 +19,15 @@ export const separator = defineRecipe({
         borderRadius: '{full}',
       },
     },
+    type: {
+      solid: {},
+      dotted: {
+        borderStyle: 'dotted',
+      },
+      dashed: {
+        borderStyle: 'dashed',
+      },
+    },
   },
   defaultVariants: {
     orientation: 'horizontal',
