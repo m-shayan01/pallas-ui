@@ -32,12 +32,20 @@ export const Root = (props: RootProps) => {
     updateItems(currentIndex)
   }, [currentIndex])
 
-  const onClickPrevious = () => {
+  const previous = () => {
     setCurrentIndex((v) => (v === 0 ? length - 1 : v - 1))
   }
 
-  const onClickNext = () => {
+  const next = () => {
     setCurrentIndex((v) => (v === length - 1 ? 0 : v + 1))
+  }
+
+  const goTo = (index: number) => {
+    if (index < 0 || index > length - 1)
+      return console.error(
+        `Index out of range: should from 0 till ${length - 1}. Received: ${index}`,
+      )
+    setCurrentIndex(index)
   }
 
   const updateItems = (index: number) => {
@@ -51,7 +59,7 @@ export const Root = (props: RootProps) => {
 
   return (
     <Component ref={RootElement} data-currentindex={currentIndex} {...rest}>
-      {children({ onClickPrevious, onClickNext })}
+      {children({ previous, next, goTo, currentIndex })}
     </Component>
   )
 }

@@ -14,7 +14,12 @@ export type RootProps = WithFixedClassName<
   >
 >
 
-export type RootChildrenProps = { onClickNext: () => void; onClickPrevious: () => void }
+export type RootChildrenProps = {
+  next: () => void
+  previous: () => void
+  goTo: (index: number) => void
+  currentIndex: number
+}
 
 export const Item = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'item')
 
@@ -25,11 +30,14 @@ export const Previous = withContext<React.ElementRef<'div'>, HTMLStyledProps<'di
 
 export const Next = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'next')
 
+export const Dots = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'dots')
+
 const Carousel = {
   Root,
   Item,
   Previous,
   Next,
+  Dots,
 }
 
 export default Carousel
