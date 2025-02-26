@@ -23,6 +23,7 @@ export const Root = (props: RootProps) => {
   const [length, setLength] = useState(0)
 
   const RootElement = useRef<HTMLDivElement>(null)
+  const direction = useRef('left')
 
   useEffect(() => {
     setLength(RootElement.current?.getElementsByClassName('carousel__item').length || 0)
@@ -33,10 +34,12 @@ export const Root = (props: RootProps) => {
   }, [currentIndex])
 
   const previous = () => {
+    direction.current = 'left'
     setCurrentIndex((v) => (v === 0 ? length - 1 : v - 1))
   }
 
   const next = () => {
+    direction.current = 'right'
     setCurrentIndex((v) => (v === length - 1 ? 0 : v + 1))
   }
 
@@ -45,16 +48,25 @@ export const Root = (props: RootProps) => {
       return console.error(
         `Index out of range: should from 0 till ${length - 1}. Received: ${index}`,
       )
+    direction.current = index > currentIndex ? 'right' : 'left'
     setCurrentIndex(index)
   }
 
   const updateItems = (index: number) => {
     const items = RootElement.current?.getElementsByClassName('carousel__item')
     if (!items) return
-    for (let i = 0; i < length; i++) {
+
+    const previousItem = RootElement.current?.querySelector('[data-visible]')
+    if (previousItem) {
+      Array.from(items).map((ele) => ele.removeAttribute('data-exit'))
+      previousItem.setAttribute('data-exit', '')
+    }
+
+    for (let i = 0; i < items.length; i++) {
       items[i].removeAttribute('data-visible')
     }
-    items[index].setAttribute('data-visible', '')
+
+    items[index].setAttribute('data-visible', direction.current)
   }
 
   return (

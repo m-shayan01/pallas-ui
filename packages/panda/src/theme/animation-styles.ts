@@ -33,4 +33,22 @@ export const animationStyles = defineAnimationStyles({
       animationName: 'slide-out-left, fade-out',
     },
   },
+  carousel: {
+    slideInLeft: {
+      value: {
+        transformOrigin: 'center',
+        animationDuration: '{durations.slowest}',
+        animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        animationName: 'slide-in-left',
+      },
+    },
+    slideInRight: {
+      value: {
+        transformOrigin: 'center',
+        animationDuration: '{durations.slowest}',
+        animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        animationName: 'slide-in-right',
+      },
+    },
+  },
 })
