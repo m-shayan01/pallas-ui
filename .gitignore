@@ -38,3 +38,7 @@ yarn-error.log*
 *.pem
 
 components/styled-system
+
+# content-collection
+
+.content-collection
