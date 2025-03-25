@@ -1,132 +1,493 @@
 'use client'
 
-// import Link from 'next/link'
-// import Image from 'next/image'
 import { MDXContent } from '@content-collections/mdx/react'
+import Accordian from '@/components/ui/accordian/accordian'
+import { Check, Copy, HashIcon } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
 import React from 'react'
-//import { HashIcon } from 'lucide-react'
+import { css } from '@styled-system/css'
+import { ComponentPreview, ComponentSource } from './component-preview'
+import { Steps } from './steps'
 
-// // Component to create anchors for headings
-// const HeadingAnchor = ({ id, level }) => {
-//   if (!id) return null
+interface MdxComponentProps {
+  code: string
+}
 
-//   return (
-//     <Link
-//       aria-label="Link to section"
-//       href={`#${id}`}
-//       className="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-gray-600"
-//     >
-//       <HashIcon
-//         className={`h-${level === 1 ? '5' : level === 2 ? '4' : '3.5'} w-${level === 1 ? '5' : level === 2 ? '4' : '3.5'}`}
-//       />
-//     </Link>
-//   )
-// }
+function HeadingAnchor({ id, level }: { id?: string; level: 1 | 2 | 3 | 4 }) {
+  if (!id) return null
 
-// // Define MDX components
-// const components = {
-//   h1: ({ id, children, ...props }) => (
-//     <h1
-//       id={id}
-//       className="mt-2 scroll-mt-20 text-3xl font-bold tracking-tight group flex items-center"
-//       {...props}
-//     >
-//       {children}
-//       <HeadingAnchor id={id} level={1} />
-//     </h1>
-//   ),
-//   h2: ({ id, children, ...props }) => (
-//     <h2
-//       id={id}
-//       className="mt-10 scroll-mt-20 text-2xl font-semibold tracking-tight group flex items-center"
-//       {...props}
-//     >
-//       {children}
-//       <HeadingAnchor id={id} level={2} />
-//     </h2>
-//   ),
-//   h3: ({ id, children, ...props }) => (
-//     <h3
-//       id={id}
-//       className="mt-8 scroll-mt-20 text-xl font-semibold tracking-tight group flex items-center"
-//       {...props}
-//     >
-//       {children}
-//       <HeadingAnchor id={id} level={3} />
-//     </h3>
-//   ),
-//   h4: ({ id, children, ...props }) => (
-//     <h4
-//       id={id}
-//       className="mt-8 scroll-mt-20 text-lg font-semibold tracking-tight group flex items-center"
-//       {...props}
-//     >
-//       {children}
-//       <HeadingAnchor id={id} level={4} />
-//     </h4>
-//   ),
-//   a: ({ href, children, ...props }) => {
-//     const isExternal = href?.startsWith('http')
+  return (
+    <Link
+      aria-label="Link to section"
+      href={`#${id}`}
+      className={css({
+        display: 'inline-block',
+        rounded: 'md',
+        mx: level > 2 ? '1' : '2',
+        color: 'gray.500',
+        opacity: '0',
+        transition: 'opacity 0.2s',
+        _groupHover: { opacity: 1 },
+        _hover: { color: 'gray.700' },
+        _dark: {
+          color: 'gray.400',
+          _hover: { color: 'gray.200' },
+        },
+      })}
+    >
+      <HashIcon
+        className={css({
+          h: level === 1 ? '5' : level === 2 ? '4' : '3',
+          w: level === 1 ? '5' : level === 2 ? '4' : '3',
+        })}
+      />
+    </Link>
+  )
+}
 
-//     if (isExternal) {
-//       return (
-//         <a
-//           href={href}
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           className="font-medium text-blue-600 hover:underline"
-//           {...props}
-//         >
-//           {children}
-//         </a>
-//       )
-//     }
 
-//     return (
-//       <Link
-//         href={href || ''}
-//         className="font-medium text-blue-600 hover:underline"
-//         {...props}
-//       >
-//         {children}
-//       </Link>
-//     )
-//   },
-//   p: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLParagraphElement> & React.HTMLAttributes<HTMLParagraphElement>) => <p className="mt-6 leading-7" {...props} />,
-//   ul: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLUListElement> & React.HTMLAttributes<HTMLUListElement>) => <ul className="my-6 ml-6 list-disc" {...props} />,
-//   ol: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLOListElement> & React.OlHTMLAttributes<HTMLOListElement>) => <ol className="my-6 ml-6 list-decimal" {...props} />,
-//   li: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLLIElement> & React.LiHTMLAttributes<HTMLLIElement>) => <li className="mt-2" {...props} />,
-//   blockquote: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLQuoteElement> & React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
-//     <blockquote
-//       className="mt-6 border-l-2 border-gray-300 pl-6 italic text-gray-700 dark:border-gray-700 dark:text-gray-400"
-//       {...props}
-//     />
-//   ),
-//   img: ({ alt, ...props }) => (
-//     // biome-ignore lint/a11y/useAltText: <explanation>
-// <img className="rounded-md" alt={alt} {...props} />
-//   ),
-//   hr: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLHRElement> & React.HTMLAttributes<HTMLHRElement>) => <hr className="my-8 border-gray-200 dark:border-gray-800" {...props} />,
-//   table: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLTableElement> & React.TableHTMLAttributes<HTMLTableElement>) => (
-//     <div className="my-6 w-full overflow-y-auto">
-//       <table className="w-full border-collapse text-sm" {...props} />
-//     </div>
-//   ),
-//   tr: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLTableRowElement> & React.HTMLAttributes<HTMLTableRowElement>) => <tr className="border-t border-gray-300 dark:border-gray-700" {...props} />,
-//   th: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLTableHeaderCellElement> & React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => <th className="border border-gray-200 px-4 py-2 text-left font-bold dark:border-gray-700" {...props} />,
-//   td: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLTableDataCellElement> & React.TdHTMLAttributes<HTMLTableDataCellElement>) => <td className="border border-gray-200 px-4 py-2 text-left dark:border-gray-700" {...props} />,
-//   pre: (props: React.JSX.IntrinsicAttributes & React.ClassAttributes<HTMLPreElement> & React.HTMLAttributes<HTMLPreElement>) => (
-//     <pre className="mt-6 mb-4 overflow-x-auto rounded-lg bg-gray-900 p-4 text-white" {...props} />
-//   ),
-//   code: ({ children, className }) => {
-//     if (className) {
-//       return <pre className={`${className} rounded p-4 overflow-x-auto`}>{children}</pre>
-//     }
-//     return <code className="rounded bg-gray-100 px-1 py-0.5 text-gray-900 dark:bg-gray-800 dark:text-gray-100">{children}</code>
-//   },
-// }
+function CopyButton({ value }: { value: string }) {
+  const [copied, setCopied] = React.useState(false)
 
-// Main MDX rendering component
-export function MdxComponent({ code }: { code: string }) {
-  return <MDXContent code={code} />
+  React.useEffect(() => {
+    if (copied) {
+      const timeout = setTimeout(() => setCopied(false), 2000)
+      return () => clearTimeout(timeout)
+    }
+  }, [copied])
+
+  const copyToClipboard = React.useCallback(() => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopied(true)
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    })
+  }, [value])
+
+  return (
+    <button
+      type="button"
+      onClick={copyToClipboard}
+      className={css({
+        position: 'absolute',
+        top: '3',
+        right: '3',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: '1.5',
+        rounded: 'md',
+        color: 'gray.400',
+        bg: 'gray.800',
+        opacity: 0.8,
+        _hover: {
+          bg: 'gray.700',
+          color: 'gray.300',
+        },
+        _focus: { outline: 'none' },
+        _dark: {
+          bg: 'gray.700',
+          color: 'gray.300',
+          _hover: { bg: 'gray.600', color: 'gray.200' },
+        },
+      })}
+    >
+      {copied ? (
+        <Check className={css({ h: '4', w: '4' })} />
+      ) : (
+        <Copy className={css({ h: '4', w: '4' })} />
+      )}
+    </button>
+  )
+}
+
+function CustomLink({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  if (href?.startsWith('/')) {
+    return (
+      <Link
+        href={href}
+        {...props}
+        className={css({
+          color: 'primary.600',
+          fontWeight: 'medium',
+          textDecoration: 'none',
+          _hover: { textDecoration: 'underline' },
+          _dark: { color: 'primary.400' },
+        })}
+      />
+    )
+  }
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+      className={css({
+        color: 'primary.600',
+        fontWeight: 'medium',
+        textDecoration: 'none',
+        _hover: { textDecoration: 'underline' },
+        _dark: { color: 'primary.400' },
+      })}
+    />
+  )
+}
+
+
+function CodeBlock({ className, children, 'data-filename': filename }: {
+  className?: string,
+  children: React.ReactNode,
+  'data-filename'?: string
+}) {
+  const language = className?.replace(/language-/, '') || '';
+  const codeString = React.Children.toArray(children)
+    .map(child => {
+      if (typeof child === 'string') return child;
+      if (React.isValidElement(child) && typeof child.props.children === 'string') {
+        return child.props.children;
+      }
+      return '';
+    })
+    .join('');
+
+  return (
+    <div className={css({ position: 'relative', my: '4' })}>
+      {filename && (
+        <div className={css({
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          right: '0',
+          bg: 'gray.800',
+          color: 'gray.300',
+          fontSize: 'xs',
+          px: '4',
+          py: '2',
+          borderBottom: '1px solid',
+          borderColor: 'gray.700',
+          fontFamily: 'mono',
+        })}>
+          {filename}
+        </div>
+      )}
+      <pre className={css({
+        p: '4',
+        pt: filename ? '12' : '4',
+        rounded: 'md',
+        bg: 'gray.900',
+        color: 'gray.100',
+        border: '1px solid',
+        borderColor: 'gray.700',
+        overflow: 'auto',
+      })}>
+        <code className={css({
+          fontFamily: 'mono',
+          fontSize: 'sm',
+          fontWeight: 'normal',
+          whiteSpace: 'pre',
+          overflowWrap: 'normal',
+          color: 'inherit'
+        })}>
+          {children}
+        </code>
+      </pre>
+      <CopyButton value={codeString} />
+      {language && !filename && (
+        <div className={css({
+          position: 'absolute',
+          top: '0',
+          right: '0',
+          bg: 'gray.800',
+          color: 'gray.300',
+          fontSize: 'xs',
+          px: '2',
+          py: '1',
+          rounded: 'md',
+        })}>
+          {language}
+        </div>
+      )}
+    </div>
+  )
+}
+
+const components = {
+  h1: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h1
+      id={id}
+      className={css({
+        mt: '8',
+        mb: '4',
+        fontSize: '3xl',
+        fontWeight: 'bold',
+        lineHeight: 'tight',
+        scrollMargin: '24',
+        display: 'flex',
+        alignItems: 'center',
+        _groupHover: { '& a': { opacity: 1 } },
+      })}
+      {...props}
+    >
+      <span className={css({ mr: '2' })}>{children}</span>
+      <HeadingAnchor id={id} level={1} />
+    </h1>
+  ),
+  h2: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h2
+      id={id}
+      className={css({
+        mt: '12',
+        mb: '3',
+        fontSize: '2xl',
+        fontWeight: 'semibold',
+        lineHeight: 'tight',
+        scrollMargin: '24',
+        display: 'flex',
+        alignItems: 'center',
+        _groupHover: { '& a': { opacity: 1 } },
+      })}
+      {...props}
+    >
+      <span className={css({ mr: '2' })}>{children}</span>
+      <HeadingAnchor id={id} level={2} />
+    </h2>
+  ),
+  h3: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h3
+      id={id}
+      className={css({
+        mt: '8',
+        mb: '2',
+        fontSize: 'xl',
+        fontWeight: 'semibold',
+        lineHeight: 'tight',
+        scrollMargin: '24',
+        display: 'flex',
+        alignItems: 'center',
+        _groupHover: { '& a': { opacity: 1 } },
+      })}
+      {...props}
+    >
+      <span className={css({ mr: '2' })}>{children}</span>
+      <HeadingAnchor id={id} level={3} />
+    </h3>
+  ),
+  h4: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <h4
+      id={id}
+      className={css({
+        mt: '6',
+        mb: '2',
+        fontSize: 'lg',
+        fontWeight: 'semibold',
+        lineHeight: 'tight',
+        scrollMargin: '24',
+        display: 'flex',
+        alignItems: 'center',
+        _groupHover: { '& a': { opacity: 1 } },
+      })}
+      {...props}
+    >
+      <span className={css({ mr: '2' })}>{children}</span>
+      <HeadingAnchor id={id} level={4} />
+    </h4>
+  ),
+  a: CustomLink,
+  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p
+      className={css({
+        mt: '4',
+        mb: '4',
+        lineHeight: 'relaxed',
+        color: 'gray.700',
+        _dark: { color: 'gray.300' },
+      })}
+      {...props}
+    />
+  ),
+  ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul
+      className={css({
+        my: '6',
+        ml: '6',
+        listStyleType: 'disc',
+        '& li': { mt: '2' },
+      })}
+      {...props}
+    />
+  ),
+  ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol
+      className={css({
+        my: '6',
+        ml: '6',
+        listStyleType: 'decimal',
+        '& li': { mt: '2' },
+      })}
+      {...props}
+    />
+  ),
+  li: (props: React.HTMLAttributes<HTMLLIElement>) => (
+    <li className={css({ mt: '2' })} {...props} />
+  ),
+  blockquote: (props: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
+    <blockquote
+      className={css({
+        mt: '6',
+        mb: '6',
+        borderLeft: '4px solid',
+        borderColor: 'gray.300',
+        pl: '6',
+        py: '2',
+        fontStyle: 'italic',
+        color: 'gray.700',
+        _dark: {
+          borderColor: 'gray.700',
+          color: 'gray.300',
+        },
+      })}
+      {...props}
+    />
+  ),
+  hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
+    <hr
+      className={css({
+        my: '8',
+        borderColor: 'gray.200',
+        _dark: { borderColor: 'gray.800' },
+      })}
+      {...props}
+    />
+  ),
+  table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
+    <div
+      className={css({
+        my: '6',
+        w: 'full',
+        overflowX: 'auto',
+      })}
+    >
+      <table
+        className={css({
+          w: 'full',
+          borderCollapse: 'collapse',
+          textAlign: 'left',
+          fontSize: 'sm',
+        })}
+        {...props}
+      />
+    </div>
+  ),
+  tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
+    <tr
+      className={css({
+        borderTop: '1px solid',
+        borderColor: 'gray.300',
+        _dark: { borderColor: 'gray.700' },
+      })}
+      {...props}
+    />
+  ),
+  th: (props: React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => (
+    <th
+      className={css({
+        py: '2',
+        px: '4',
+        fontWeight: 'semibold',
+        bg: 'gray.100',
+        _dark: { bg: 'gray.800' },
+      })}
+      {...props}
+    />
+  ),
+  td: (props: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
+    <td
+      className={css({
+        py: '2',
+        px: '4',
+        borderTop: '1px solid',
+        borderColor: 'gray.200',
+        _dark: { borderColor: 'gray.800' },
+      })}
+      {...props}
+    />
+  ),
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  code: (props: any) => {
+    if (props.className) {
+      return <CodeBlock {...props} />
+    }
+    //do this later
+    return <CodeBlock {...props} />
+  },
+
+  Accordian,
+  Badge,
+  Button,
+  ComponentPreview,
+  ComponentSource,
+  Steps,
+}
+
+export function MdxComponent({ code }: MdxComponentProps) {
+  if (!code) {
+    return (
+      <div
+        className={css({
+          p: '4',
+          border: '1px solid',
+          borderColor: 'red.300',
+          bg: 'red.50',
+          color: 'red.800',
+          rounded: 'md',
+        })}
+      >
+        <p>No content available</p>
+      </div>
+    )
+  }
+
+  try {
+    return (
+      <div
+        className={css({
+          '& [data-rehype-pretty-code-title]': {
+            roundedTop: 'md',
+            bg: 'gray.800',
+            color: 'gray.300',
+            fontSize: 'xs',
+            px: '4',
+            py: '2',
+            fontFamily: 'mono',
+            '& + div > pre': {
+              mt: '0',
+              roundedTop: '0',
+            },
+          },
+        })}
+      >
+        <MDXContent code={code} components={components} />
+      </div>
+    )
+  } catch (error) {
+    console.error('Error rendering MDX:', error)
+    return (
+      <div
+        className={css({
+          p: '4',
+          border: '1px solid',
+          borderColor: 'red.300',
+          bg: 'red.50',
+          color: 'red.800',
+          rounded: 'md',
+        })}
+      >
+        <p>Error rendering content: {String(error)}</p>
+      </div>
+    )
+  }
 }

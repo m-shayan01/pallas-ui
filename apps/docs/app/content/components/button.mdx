@@ -1,0 +1,85 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/button
+---
+
+<ComponentPreview name="button" withRecipe />
+
+## Installation
+
+<Steps>
+### Install the following dependencies
+
+```bash npm2yarn
+npm i @radix-ui/react-slot
+```
+### Copy and paste the following code into your project
+
+<ComponentSource name= "button"/>
+
+### Update the import paths to match your project setup
+
+</Steps>
+
+## Usage
+
+```tsx
+import { Button } from '@/components/ui/button/button'
+```
+
+```tsx
+<Button variant="default" size="default">
+  Button
+</Button>
+```
+
+## Recipe
+### Usage
+```tsx
+import { button, type ButtonVariantProps } from '@styled-system/recipes'
+```
+```tsx
+<button className={button({ variant: 'outline', size: 'default' })}>Button</button>
+```
+
+### Link
+
+```tsx
+import { button } from '@styled-system/recipes'
+```
+```tsx
+<Link className={button({ variant: 'outline' })}>Click here</Link>
+```
+
+Alternatively, you can set the asChild parameter and nest the link component.
+```tsx
+<Button aschild>
+  <Link href="/login">Login</Link>
+</Button>
+```
+
+## Examples
+### Default (Primary)
+
+<ComponentPreview name="button" file ="primary" />
+
+### Outline
+
+<ComponentPreview name="button" file="outlined" />
+
+### Dashed
+
+<ComponentPreview name="button" file="dashed" />
+
+### Link
+
+<ComponentPreview name="button" file="link" />
+
+### Text
+
+<ComponentPreview name="button" file="text" />
+
+
+

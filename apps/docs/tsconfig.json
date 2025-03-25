@@ -9,9 +9,15 @@
     "paths": {
       "@repo/ui/*": ["../../components/src/ui/*"],
       "content-collections": ["./.content-collections/generated"],
-      "@/*": ["./*"]
+      "@/*": ["../../*"],
+      "@/components/*": ["./components/*"],
+      "~/*": ["./components/*"],
+      "@pallas-ui/ui/*": ["../../components/src/*"],
+      "@pallas-ui/panda-preset": ["../../packages/panda/src/index.ts"],
+      "@pallas-ui/panda-preset/*": ["../../packages/panda/src/*"],
+      "@styled-system/*": ["./styled-system/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.mjs", ".next/types/**/*.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.mjs", ".next/types/**/*.ts", "plugins/rehype-component.js"],
   "exclude": ["node_modules"]
 }
