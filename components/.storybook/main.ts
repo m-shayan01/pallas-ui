@@ -11,12 +11,12 @@ const config: StorybookConfig = {
       name: '@storybook/addon-essentials',
       options: { backgrounds: false, controls: false, actions: false },
     },
-    getAbsolutePath('@storybook/addon-a11y'),
-    getAbsolutePath('@storybook/addon-themes'),
-    getAbsolutePath('@storybook/addon-controls'),
+    '@storybook/addon-a11y',
+    '@storybook/addon-themes',
+    '@storybook/addon-controls',
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: '@storybook/react-vite',
     options: {},
   },
   core: {
@@ -34,6 +34,6 @@ const config: StorybookConfig = {
 
 export default config
 
-function getAbsolutePath(value: string): string {
-  return dirname(require.resolve(join(value, 'package.json')))
-}
+// function getAbsolutePath(value: string): string {
+//   return dirname(require.resolve(join(value, 'package.json')))
+// }
