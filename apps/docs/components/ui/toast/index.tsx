@@ -5,7 +5,7 @@ import { type ToastVariantProps, toast } from '@styled-system/recipes'
 import type { ComponentProps, HTMLStyledProps, JsxStyleProps } from '@styled-system/types'
 import type * as React from 'react'
 import type { Assign, WithFixedClassName } from '~/utils/types'
-import { createStyleContext } from '../../utils/style-context'
+import { createStyleContext } from '@pallas-ui/style-context'
 import type { ButtonProps } from '../button'
 
 const { withProvider, withContext } = createStyleContext(toast)

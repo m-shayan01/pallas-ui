@@ -1,7 +1,7 @@
 import { progress } from '@styled-system/recipes'
 import { useMemo } from 'react'
 import { ProgressBar } from 'react-aria-components'
-import { createStyleContext } from '~/utils/style-context'
+import { createStyleContext } from '@pallas-ui/style-context'
 import type { RootProps } from '.'
 import { ProgressContext } from './context'
 

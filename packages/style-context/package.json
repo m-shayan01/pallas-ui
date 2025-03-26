@@ -1,0 +1,35 @@
+{
+    "name": "@pallas-ui/style-context",
+    "version": "0.1.0",
+    "private": true,
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "sideEffects": false,
+    "license": "MIT",
+    "files": [
+        "dist/**"
+    ],
+    "scripts": {
+        "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
+        "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
+        "lint": "eslint src/",
+        "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    },
+    "devDependencies": {
+        "@pallas-ui/typescript-config": "workspace:*",
+        "@types/react": "18.3.1",
+        "@types/react-dom": "18.3.0",
+        "eslint": "^8.56.0",
+        "react": "^19.0.0",
+        "tsup": "^8.0.1",
+        "typescript": "5.5.4"
+    },
+    "dependencies": {
+        "@pallas-ui/panda-preset": "workspace:*"
+    },
+    "peerDependencies": {
+        "styled-system": "*",
+        "react": "^19.0.0"
+    }
+}

@@ -7,7 +7,7 @@ import type { JsxStyleProps } from '@styled-system/types'
 import { Check, ChevronRight, Circle } from 'lucide-react'
 import * as React from 'react'
 import type { Assign, WithFixedClassName } from '~/utils/types'
-import { createStyleContext } from '../../utils/style-context'
+import { createStyleContext } from '@pallas-ui/style-context'
 
 const { withProvider, withContext } = createStyleContext(menubar)
 

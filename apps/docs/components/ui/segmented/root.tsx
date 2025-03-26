@@ -1,6 +1,6 @@
 import * as Tabs from '@radix-ui/react-tabs'
 import { segmented } from '@styled-system/recipes'
-import { createStyleContext } from '~/utils/style-context'
+import { createStyleContext } from '@pallas-ui/style-context'
 import type { RootProps } from '.'
 
 export const { withProvider, withContext } = createStyleContext(segmented)

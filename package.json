@@ -1,11 +1,17 @@
 {
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "components/*"
+  ],
   "name": "root",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "sync-components": "node ./scripts/sync-components.js"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

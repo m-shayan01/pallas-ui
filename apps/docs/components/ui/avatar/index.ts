@@ -4,7 +4,7 @@ import { avatar } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import type * as React from 'react'
 import type { Assign, WithFixedClassName } from '~/utils/types'
-import { createStyleContext } from '../../utils/style-context'
+import { createStyleContext } from '@pallas-ui/style-context'
 
 const { withProvider, withContext } = createStyleContext(avatar)
 

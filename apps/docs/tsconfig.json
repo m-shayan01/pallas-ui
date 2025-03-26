@@ -15,6 +15,7 @@
       "@pallas-ui/ui/*": ["../../components/src/*"],
       "@pallas-ui/panda-preset": ["../../packages/panda/src/index.ts"],
       "@pallas-ui/panda-preset/*": ["../../packages/panda/src/*"],
+      "@pallas-ui/style-context": ["../../packages/style-context/src"],
       "@styled-system/*": ["./styled-system/*"]
     }
   },
