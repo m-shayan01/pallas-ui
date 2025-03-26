@@ -42,3 +42,6 @@ components/styled-system
 # content-collection
 
 .content-collection
+
+#hash
+.sync-components-hash
