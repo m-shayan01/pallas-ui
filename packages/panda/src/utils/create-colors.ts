@@ -159,7 +159,8 @@ export const generateColorMap = (color: string, opts: Opts = {}): ColorMap => {
   const patterns = generate(color, opts)
   const keys: ColorMapKeys[] = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900]
   return keys.reduce((acc, key, index) => {
-    acc[key] = patterns[index] || patterns[patterns.length - 1]
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
+    acc[key] = patterns[index] || patterns[patterns.length - 1]!
     return acc
   }, {} as ColorMap)
 }
