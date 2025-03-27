@@ -3,7 +3,6 @@ import type { ThemeColorTokens } from '../types/color'
 import type { ThemeColorPalette } from '../types/theme'
 import { createColorTokens } from '../utils/create-color-tokens'
 import { getAlphaColor, getSolidColor } from '../utils/create-colors'
-import { paletteGenerator, presetPrimaryColors } from './paletteGenerator'
 
 export const generateThemeColors = ({
   primary,

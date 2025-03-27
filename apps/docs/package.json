@@ -10,11 +10,11 @@
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
-    "prepare": "panda codegen"
+    "prepare": "panda codegen --silent"
   },
   "dependencies": {
     "@pallas-ui/components": "workspace:*",
-    "@pallas-ui/style-context": "workspace:^",
+    "@pallas-ui/style-context": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
     "@radix-ui/react-avatar": "^1.1.2",
