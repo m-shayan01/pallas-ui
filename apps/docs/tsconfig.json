@@ -1,5 +1,6 @@
 {
   "extends": "@pallas-ui/typescript-config/nextjs.json",
+  "extends": "@pallas-ui/typescript-config/nextjs.json",
   "compilerOptions": {
     "plugins": [
       {
@@ -19,6 +20,13 @@
       "@styled-system/*": ["./styled-system/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", "next.config.mjs", ".next/types/**/*.ts", "plugins/rehype-component.js"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "next-env.d.ts",
+    "next.config.mjs",
+    ".next/types/**/*.ts",
+    "plugins/rehype-component.js"
+  ],
   "exclude": ["node_modules"]
 }
