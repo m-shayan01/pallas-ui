@@ -11,20 +11,23 @@ export default function DocsLayout({
       display: 'flex', 
       flexDir: { base: 'column', md: 'row' },
       minH: 'screen',
+      bg: 'surface.layout', // Using surface.layout for the background
     })}>
       <div className={css({ 
         w: { base: 'full', md: '64' }, 
         borderRight: '1px solid',
-        borderColor: 'gray.200',
-        _dark: { borderColor: 'gray.800' }
+        borderColor: 'border.DEFAULT',
+        bg: 'surface.layout', // Sidebar with layout color (gray)
+        p: 'layout.default.md', // Using layout spacing
       })}>
         <Sidebar />
       </div>
       <div className={css({
         flex: 1,
         overflow: 'auto',
-        p: { base: '4', md: '8' },
-        maxW: '100%'
+        p: { base: 'layout.internal.sm', md: 'layout.internal.md' }, // Using internal layout spacing
+        maxW: '100%',
+        bg: 'surface.container', // Main content area with container color (white)
       })}>
         {children}
       </div>

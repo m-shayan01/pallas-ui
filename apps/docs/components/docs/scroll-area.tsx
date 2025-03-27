@@ -14,7 +14,7 @@ export function ScrollArea({ className, children }: ScrollAreaProps) {
       className={`${css({
         overflow: 'auto',
         maxHeight: 'calc(100vh - 200px)',
-        pr: '4',
+        pr: 'padding.inline.md',
         '&::-webkit-scrollbar': {
           width: '2',
         },
@@ -22,11 +22,8 @@ export function ScrollArea({ className, children }: ScrollAreaProps) {
           bg: 'transparent',
         },
         '&::-webkit-scrollbar-thumb': {
-          bg: 'gray.300',
+          bg: 'fill.DEFAULT',
           rounded: 'full',
-          _dark: {
-            bg: 'gray.700',
-          },
         },
       })} ${className || ''}`}
     >

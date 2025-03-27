@@ -58,9 +58,8 @@ export function Toc({ toc }: TocProps) {
       <div
         className={css({
           fontWeight: 'medium',
-          mb: '4',
-          color: 'gray.700',
-          _dark: { color: 'gray.300' },
+          mb: 'gap.component.md',
+          color: 'text',
         })}
       >
         On This Page
@@ -69,7 +68,7 @@ export function Toc({ toc }: TocProps) {
         className={css({
           display: 'flex',
           flexDirection: 'column',
-          gap: '2',
+          gap: 'gap.inline.md',
         })}
       >
         {toc.map((item) => (
@@ -78,15 +77,11 @@ export function Toc({ toc }: TocProps) {
               href={`#${item.slug}`}
               className={css({
                 display: 'inline-block',
-                color: activeHeading === item.slug ? 'primary.600' : 'gray.600',
+                color: activeHeading === item.slug ? 'primary' : 'text.secondary',
                 textDecoration: 'none',
                 fontSize: 'sm',
                 fontWeight: activeHeading === item.slug ? 'medium' : 'normal',
-                _hover: { color: 'primary.600' },
-                _dark: {
-                  color: activeHeading === item.slug ? 'primary.400' : 'gray.400',
-                  _hover: { color: 'primary.400' },
-                },
+                _hover: { color: 'primary.hover' },
               })}
             >
               {item.text}
@@ -96,9 +91,9 @@ export function Toc({ toc }: TocProps) {
                 className={css({
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '2',
-                  mt: '2',
-                  ml: '4',
+                  gap: 'gap.inline.sm',
+                  mt: 'gap.inline.md',
+                  ml: 'padding.inline.md',
                 })}
               >
                 {item.children.map((child) => (
@@ -107,15 +102,11 @@ export function Toc({ toc }: TocProps) {
                     href={`#${child.slug}`}
                     className={css({
                       display: 'inline-block',
-                      color: activeHeading === child.slug ? 'primary.600' : 'gray.600',
+                      color: activeHeading === child.slug ? 'primary' : 'text.tertiary',
                       textDecoration: 'none',
                       fontSize: 'sm',
                       fontWeight: activeHeading === child.slug ? 'medium' : 'normal',
-                      _hover: { color: 'primary.600' },
-                      _dark: {
-                        color: activeHeading === child.slug ? 'primary.400' : 'gray.400',
-                        _hover: { color: 'primary.400' },
-                      },
+                      _hover: { color: 'primary.hover' },
                     })}
                   >
                     {child.text}

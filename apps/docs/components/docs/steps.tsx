@@ -10,11 +10,10 @@ export function Steps({ children }: StepsProps) {
     <div
       className={css({
         borderLeft: '2px solid',
-        borderColor: 'gray.300',
-        pl: '6',
-        py: '2',
-        my: '6',
-        _dark: { borderColor: 'gray.700' },
+        borderColor: 'border',
+        pl: 'padding.inline.lg',
+        py: 'padding.block.sm',
+        my: 'margin.block.md',
       })}
     >
       {children}

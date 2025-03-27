@@ -14,10 +14,10 @@ export function Preview({ className, children }: PreviewProps) {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          p: '8',
+          p: 'layout.internal.md',
           minH: '200px',
-          bg: 'white',
-          _dark: { bg: 'gray.900' },
+          bg: 'surface.elevated',
+          color: 'text',
         }),
         className,
       )}

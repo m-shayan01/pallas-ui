@@ -27,38 +27,40 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
     width: 'full',
     fontSize: 'sm',
     fontWeight: 'medium',
-    py: '1.5',
-    px: '3',
+    py: 'padding.block.sm',
+    px: 'padding.inline.md',
     rounded: 'md',
     cursor: 'pointer',
-    color: 'gray.300', 
-    _hover: { bg: 'gray.800' },
+    color: 'text.secondary', 
+    _hover: { bg: 'fill.secondary', color: 'text' },
   }
 
   const activeStyle = {
-    bg: 'gray.800',
-    color: 'gray.100',
+    bg: 'fill.secondary',
+    color: 'primary.DEFAULT',
     fontWeight: 'semibold',
+    borderLeft: '2px solid',
+    borderLeftColor: 'primary.DEFAULT',
   }
 
   const subMenuStyle = css({
-    mt: '2',
-    pl: '2',
-    ml: '4',
+    pl: 'padding.inline.sm',
+    ml: 'padding.inline.md',
     borderLeft: '1px solid',
-    borderColor: 'gray.700',
-    spaceY: '1',
+    borderColor: 'border',
+    spaceY: 'gap.inline.sm',
   })
 
   const chevronStyle = css({
     transition: 'transform 200ms',
-    color: 'gray.400',
+    color: 'text.tertiary',
+    size: 'icon.sm',
     '[data-state=open] &': { transform: 'rotate(180deg)' },
   })
   
   const headerStyle = css({ 
     fontWeight: 'medium', 
-    color: 'gray.400',
+    color: 'text.tertiary',
     fontSize: 'xs',
     textTransform: 'uppercase',
     letterSpacing: 'wider',
@@ -67,23 +69,24 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
   const accordionItemStyle = css({
     width: '100%',
     borderRadius: '0',
-    mb: '2',
+    mb: 'gap.component.sm',
+    borderWidth: '0',
   })
   
   const accordionHeaderStyle = css({
     width: '100%',
-    px: '4',
-    py: '2',
-    bg: 'gray.900',
+    px: 'padding.inline.sm',
+    py: 'padding.block.md',
+    bg: 'surface.layout',
   })
   
   const accordionContentStyle = css({
     width: '100%',
-    bg: 'gray.900',
+    bg: 'surface.layout',
   })
   
   return (
-    <Accordian.Root type="multiple" defaultValue={['guides', 'components']} style={{ width: '100%' }}>
+    <Accordian.Root type="multiple" defaultValue={['guides', 'components']} style={{ width: '100%', borderWidth: '0' }}>
       <Accordian.Item value="guides" className={accordionItemStyle}>
         <Accordian.ItemHeader className={accordionHeaderStyle}>
           <span className={headerStyle}>

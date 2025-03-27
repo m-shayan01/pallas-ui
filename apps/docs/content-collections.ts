@@ -60,7 +60,7 @@ const guides = defineCollection({
       rehypePlugins: [
         rehypeSlug,
         [rehypePrettyCode, {
-          theme: 'dark-plus',
+          theme: 'github-light',
           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           onVisitHighlightedLine(node: { properties: { className: any[] } }) {
             node.properties.className = [
@@ -119,7 +119,7 @@ const components = defineCollection({
         rehypeSlug,
         rehypeComponent,
         [rehypePrettyCode, {
-          theme: 'dark-plus',
+          theme: 'github-light',
           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           onVisitHighlightedLine(node: { properties: { className: any[] } }) {
             node.properties.className = [

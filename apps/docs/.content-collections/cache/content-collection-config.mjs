@@ -236,7 +236,7 @@ var guides = defineCollection({
       rehypePlugins: [
         rehypeSlug,
         [rehypePrettyCode, {
-          theme: "dark-plus",
+          theme: "github-light",
           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           onVisitHighlightedLine(node) {
             node.properties.className = [
@@ -288,7 +288,7 @@ var components = defineCollection({
         rehypeSlug,
         rehypeComponent,
         [rehypePrettyCode, {
-          theme: "dark-plus",
+          theme: "github-light",
           // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           onVisitHighlightedLine(node) {
             node.properties.className = [

@@ -25,22 +25,18 @@ function HeadingAnchor({ id, level }: { id?: string; level: 1 | 2 | 3 | 4 }) {
       className={css({
         display: 'inline-block',
         rounded: 'md',
-        mx: level > 2 ? '1' : '2',
-        color: 'gray.500',
+        mx: level > 2 ? 'padding.inline.xs' : 'padding.inline.sm',
+        color: 'text.tertiary',
         opacity: '0',
         transition: 'opacity 0.2s',
         _groupHover: { opacity: 1 },
-        _hover: { color: 'gray.700' },
-        _dark: {
-          color: 'gray.400',
-          _hover: { color: 'gray.200' },
-        },
+        _hover: { color: 'text.secondary' },
       })}
     >
       <HashIcon
         className={css({
-          h: level === 1 ? '5' : level === 2 ? '4' : '3',
-          w: level === 1 ? '5' : level === 2 ? '4' : '3',
+          h: level === 1 ? 'icon.md' : level === 2 ? 'icon.sm' : 'icon.sm',
+          w: level === 1 ? 'icon.md' : level === 2 ? 'icon.sm' : 'icon.sm',
         })}
       />
     </Link>
@@ -72,32 +68,27 @@ function CopyButton({ value }: { value: string }) {
       onClick={copyToClipboard}
       className={css({
         position: 'absolute',
-        top: '3',
-        right: '3',
+        top: 'padding.block.md',
+        right: 'padding.inline.md',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        p: '1.5',
+        p: 'padding.block.sm',
         rounded: 'md',
-        color: 'gray.400',
-        bg: 'gray.800',
+        color: 'text.tertiary', //change this
+        bg: 'fill.tertiary',
         opacity: 0.8,
         _hover: {
-          bg: 'gray.700',
-          color: 'gray.300',
+          bg: 'fill',
+          color: 'text',
         },
         _focus: { outline: 'none' },
-        _dark: {
-          bg: 'gray.700',
-          color: 'gray.300',
-          _hover: { bg: 'gray.600', color: 'gray.200' },
-        },
       })}
     >
       {copied ? (
-        <Check className={css({ h: '4', w: '4' })} />
+        <Check className={css({ h: 'icon.sm', w: 'icon.sm' })} />
       ) : (
-        <Copy className={css({ h: '4', w: '4' })} />
+        <Copy className={css({ h: 'icon.sm', w: 'icon.sm' })} />
       )}
     </button>
   )
@@ -110,11 +101,10 @@ function CustomLink({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorEle
         href={href}
         {...props}
         className={css({
-          color: 'primary.600',
+          color: 'primary',
           fontWeight: 'medium',
           textDecoration: 'none',
           _hover: { textDecoration: 'underline' },
-          _dark: { color: 'primary.400' },
         })}
       />
     )
@@ -127,11 +117,10 @@ function CustomLink({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorEle
       rel="noopener noreferrer"
       {...props}
       className={css({
-        color: 'primary.600',
+        color: 'primary',
         fontWeight: 'medium',
         textDecoration: 'none',
         _hover: { textDecoration: 'underline' },
-        _dark: { color: 'primary.400' },
       })}
     />
   )
@@ -155,34 +144,42 @@ function CodeBlock({ className, children, 'data-filename': filename }: {
     .join('');
 
   return (
-    <div className={css({ position: 'relative', my: '4' })}>
+    <div className={css({ 
+      position: 'relative', 
+      my: 'gap.component.md',
+      width: '100%', // Added to ensure full width
+      maxWidth: '100%', // Added to prevent overflow
+    })}>
       {filename && (
         <div className={css({
           position: 'absolute',
           top: '0',
           left: '0',
           right: '0',
-          bg: 'gray.800',
-          color: 'gray.300',
+          bg: 'fill',
+          color: 'text.secondary',
           fontSize: 'xs',
-          px: '4',
-          py: '2',
+          px: 'padding.inline.md',
+          py: 'padding.block.sm',
           borderBottom: '1px solid',
-          borderColor: 'gray.700',
+          borderColor: 'border.secondary',
           fontFamily: 'mono',
+          zIndex: 5,
         })}>
           {filename}
         </div>
       )}
       <pre className={css({
-        p: '4',
-        pt: filename ? '12' : '4',
+        p: 'padding.block.md',
+        pt: filename ? 'layout.internal.md' : 'padding.block.md',
         rounded: 'md',
-        bg: 'gray.900',
-        color: 'gray.100',
+        bg: 'fill.secondary',
+        color: 'text.secondary', // Better visibility
         border: '1px solid',
-        borderColor: 'gray.700',
+        borderColor: 'border',
         overflow: 'auto',
+        width: '100%', // Added to ensure full width
+        maxWidth: '100%', // Added to prevent overflow
       })}>
         <code className={css({
           fontFamily: 'mono',
@@ -190,7 +187,8 @@ function CodeBlock({ className, children, 'data-filename': filename }: {
           fontWeight: 'normal',
           whiteSpace: 'pre',
           overflowWrap: 'normal',
-          color: 'inherit'
+          color: 'text.primary', // Better visibility
+          display: 'block',
         })}>
           {children}
         </code>
@@ -201,12 +199,14 @@ function CodeBlock({ className, children, 'data-filename': filename }: {
           position: 'absolute',
           top: '0',
           right: '0',
-          bg: 'gray.800',
-          color: 'gray.300',
+          bg: 'fill',
+          color: 'text.secondary',
           fontSize: 'xs',
-          px: '2',
-          py: '1',
+          px: 'padding.inline.sm',
+          py: 'padding.block.xs',
           rounded: 'md',
+          mt: '12px',
+          mr: '48px', // Space for copy button
         })}>
           {language}
         </div>
@@ -220,19 +220,20 @@ const components = {
     <h1
       id={id}
       className={css({
-        mt: '8',
-        mb: '4',
+        mt: 'layout.section.md',
+        mb: 'gap.component.md',
         fontSize: '3xl',
         fontWeight: 'bold',
         lineHeight: 'tight',
         scrollMargin: '24',
         display: 'flex',
         alignItems: 'center',
+        color: 'text',
         _groupHover: { '& a': { opacity: 1 } },
       })}
       {...props}
     >
-      <span className={css({ mr: '2' })}>{children}</span>
+      <span className={css({ mr: 'gap.inline.sm' })}>{children}</span>
       <HeadingAnchor id={id} level={1} />
     </h1>
   ),
@@ -240,19 +241,20 @@ const components = {
     <h2
       id={id}
       className={css({
-        mt: '12',
-        mb: '3',
+        mt: 'layout.internal.lg',
+        mb: 'gap.component.sm',
         fontSize: '2xl',
         fontWeight: 'semibold',
         lineHeight: 'tight',
         scrollMargin: '24',
         display: 'flex',
         alignItems: 'center',
+        color: 'text',
         _groupHover: { '& a': { opacity: 1 } },
       })}
       {...props}
     >
-      <span className={css({ mr: '2' })}>{children}</span>
+      <span className={css({ mr: 'gap.inline.sm' })}>{children}</span>
       <HeadingAnchor id={id} level={2} />
     </h2>
   ),
@@ -260,19 +262,20 @@ const components = {
     <h3
       id={id}
       className={css({
-        mt: '8',
-        mb: '2',
+        mt: 'layout.internal.md',
+        mb: 'gap.inline.md',
         fontSize: 'xl',
         fontWeight: 'semibold',
         lineHeight: 'tight',
         scrollMargin: '24',
         display: 'flex',
         alignItems: 'center',
+        color: 'text',
         _groupHover: { '& a': { opacity: 1 } },
       })}
       {...props}
     >
-      <span className={css({ mr: '2' })}>{children}</span>
+      <span className={css({ mr: 'gap.inline.sm' })}>{children}</span>
       <HeadingAnchor id={id} level={3} />
     </h3>
   ),
@@ -280,19 +283,20 @@ const components = {
     <h4
       id={id}
       className={css({
-        mt: '6',
-        mb: '2',
+        mt: 'gap.component.lg',
+        mb: 'gap.inline.md',
         fontSize: 'lg',
         fontWeight: 'semibold',
         lineHeight: 'tight',
         scrollMargin: '24',
         display: 'flex',
         alignItems: 'center',
+        color: 'text',
         _groupHover: { '& a': { opacity: 1 } },
       })}
       {...props}
     >
-      <span className={css({ mr: '2' })}>{children}</span>
+      <span className={css({ mr: 'gap.inline.sm' })}>{children}</span>
       <HeadingAnchor id={id} level={4} />
     </h4>
   ),
@@ -300,11 +304,10 @@ const components = {
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={css({
-        mt: '4',
-        mb: '4',
+        mt: 'gap.component.md',
+        mb: 'gap.component.md',
         lineHeight: 'relaxed',
-        color: 'gray.700',
-        _dark: { color: 'gray.300' },
+        color: 'text.secondary',
       })}
       {...props}
     />
@@ -312,10 +315,11 @@ const components = {
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
       className={css({
-        my: '6',
-        ml: '6',
+        my: 'gap.component.lg',
+        ml: 'padding.inline.lg',
         listStyleType: 'disc',
-        '& li': { mt: '2' },
+        '& li': { mt: 'gap.inline.md' },
+        color: 'text.secondary',
       })}
       {...props}
     />
@@ -323,32 +327,29 @@ const components = {
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
     <ol
       className={css({
-        my: '6',
-        ml: '6',
+        my: 'gap.component.lg',
+        ml: 'padding.inline.lg',
         listStyleType: 'decimal',
-        '& li': { mt: '2' },
+        '& li': { mt: 'gap.inline.md' },
+        color: 'text.secondary',
       })}
       {...props}
     />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className={css({ mt: '2' })} {...props} />
+    <li className={css({ mt: 'gap.inline.md', color: 'text.secondary' })} {...props} />
   ),
   blockquote: (props: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={css({
-        mt: '6',
-        mb: '6',
+        mt: 'gap.component.lg',
+        mb: 'gap.component.lg',
         borderLeft: '4px solid',
-        borderColor: 'gray.300',
-        pl: '6',
-        py: '2',
+        borderColor: 'border.secondary',
+        pl: 'padding.inline.lg',
+        py: 'padding.block.sm',
         fontStyle: 'italic',
-        color: 'gray.700',
-        _dark: {
-          borderColor: 'gray.700',
-          color: 'gray.300',
-        },
+        color: 'text.secondary',
       })}
       {...props}
     />
@@ -356,9 +357,8 @@ const components = {
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
     <hr
       className={css({
-        my: '8',
-        borderColor: 'gray.200',
-        _dark: { borderColor: 'gray.800' },
+        my: 'layout.internal.md',
+        borderColor: 'border.secondary',
       })}
       {...props}
     />
@@ -366,7 +366,7 @@ const components = {
   table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
     <div
       className={css({
-        my: '6',
+        my: 'gap.component.lg',
         w: 'full',
         overflowX: 'auto',
       })}
@@ -377,6 +377,7 @@ const components = {
           borderCollapse: 'collapse',
           textAlign: 'left',
           fontSize: 'sm',
+          color: 'text.secondary',
         })}
         {...props}
       />
@@ -386,8 +387,7 @@ const components = {
     <tr
       className={css({
         borderTop: '1px solid',
-        borderColor: 'gray.300',
-        _dark: { borderColor: 'gray.700' },
+        borderColor: 'border.secondary',
       })}
       {...props}
     />
@@ -395,11 +395,11 @@ const components = {
   th: (props: React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => (
     <th
       className={css({
-        py: '2',
-        px: '4',
+        py: 'padding.block.sm',
+        px: 'padding.inline.md',
         fontWeight: 'semibold',
-        bg: 'gray.100',
-        _dark: { bg: 'gray.800' },
+        bg: 'fill.secondary',
+        color: 'text',
       })}
       {...props}
     />
@@ -407,11 +407,10 @@ const components = {
   td: (props: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
     <td
       className={css({
-        py: '2',
-        px: '4',
+        py: 'padding.block.sm',
+        px: 'padding.inline.md',
         borderTop: '1px solid',
-        borderColor: 'gray.200',
-        _dark: { borderColor: 'gray.800' },
+        borderColor: 'border.secondary',
       })}
       {...props}
     />
@@ -438,11 +437,11 @@ export function MdxComponent({ code }: MdxComponentProps) {
     return (
       <div
         className={css({
-          p: '4',
+          p: 'padding.block.md',
           border: '1px solid',
-          borderColor: 'red.300',
-          bg: 'red.50',
-          color: 'red.800',
+          borderColor: 'error.border',
+          bg: 'error.bg',
+          color: 'error.text',
           rounded: 'md',
         })}
       >
@@ -457,11 +456,11 @@ export function MdxComponent({ code }: MdxComponentProps) {
         className={css({
           '& [data-rehype-pretty-code-title]': {
             roundedTop: 'md',
-            bg: 'gray.800',
-            color: 'gray.300',
+            bg: 'fill',
+            color: 'text.secondary',
             fontSize: 'xs',
-            px: '4',
-            py: '2',
+            px: 'padding.inline.md',
+            py: 'padding.block.sm',
             fontFamily: 'mono',
             '& + div > pre': {
               mt: '0',
@@ -478,11 +477,11 @@ export function MdxComponent({ code }: MdxComponentProps) {
     return (
       <div
         className={css({
-          p: '4',
+          p: 'padding.block.md',
           border: '1px solid',
-          borderColor: 'red.300',
-          bg: 'red.50',
-          color: 'red.800',
+          borderColor: 'error.border',
+          bg: 'error.bg',
+          color: 'error.text',
           rounded: 'md',
         })}
       >
