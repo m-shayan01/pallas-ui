@@ -38,7 +38,6 @@ export function rehypeComponent() {
                 tagName: 'code',
                 properties: { 
                   className: ['language-tsx'],
-                  'data-filename': `components/previews/${dirName}/${fileName}.tsx`
                 },
                 children: [{ type: 'text', value: source }],
               },
@@ -47,10 +46,11 @@ export function rehypeComponent() {
 
           if (withRecipe) {
             try {
+              // Updated recipe path to point to packages/panda/src/theme/recipes
               const recipePath = path.join(
                 process.cwd(),
-                'styled-system/recipes',
-                `${dirName}.mjs`,
+                '../../packages/panda/src/theme/recipes',
+                `${dirName}.ts`  // Changed extension from .mjs to .ts
               )
 
               if (fs.existsSync(recipePath)) {
@@ -70,7 +70,10 @@ export function rehypeComponent() {
                     {
                       type: 'element',
                       tagName: 'code',
-                      properties: { className: ['language-javascript'] },
+                      properties: { 
+                        className: ['language-typescript'],  // Changed from javascript to typescript
+                        'data-filename': `packages/panda/src/theme/recipes/${dirName}.ts`  // Added filename display
+                      },
                       children: [{ type: 'text', value: recipeSource }],
                     },
                   ],

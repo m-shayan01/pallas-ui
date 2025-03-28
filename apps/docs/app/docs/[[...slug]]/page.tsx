@@ -1,5 +1,5 @@
 import { css } from '@styled-system/css'
-import { allComponents, allGuides } from 'content-collections'
+import { allComponents, allGuides, allThemings } from 'content-collections'
 import { notFound } from 'next/navigation'
 import { MdxComponent } from '../../../components/docs/mdx-components'
 import { Toc } from '../../../components/docs/toc'
@@ -14,7 +14,11 @@ export function generateStaticParams() {
     slug: ['components', component.slug],
   }))
 
-  return [...guideParams, ...componentParams]
+  const themingParams = allThemings.map((theme) => ({
+    slug: ['theming', theme.slug],
+  }))
+
+  return [...guideParams, ...componentParams, ...themingParams]
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -35,6 +39,14 @@ export async function generateMetadata({ params }: any) {
       return {
         title: component.title,
         description: component.description,
+      }
+    }
+  } else if (slug[0] === 'theming' && slug.length > 1) {
+    const theme = allThemings.find((t) => t.slug === slug[1])
+    if (theme) {
+      return {
+        title: theme.title,
+        description: theme.description,
       }
     }
   } else {
@@ -167,13 +179,13 @@ export default async function DocsPage({ params }: any) {
             <div
               className={css({
                 position: 'sticky',
-                top: '72px', 
-                height: 'calc(100vh - 72px)', 
+                top: '72px',
+                height: 'calc(100vh - 72px)',
                 p: 'padding.block.md',
                 borderLeft: '1px solid',
                 borderColor: 'border.secondary',
                 bg: 'surface.container',
-                overflowY: 'auto', 
+                overflowY: 'auto',
               })}
             >
               <Toc toc={tocData} />
@@ -184,6 +196,108 @@ export default async function DocsPage({ params }: any) {
     )
   }
 
+  // Handle theming pages
+  if (slug[0] === 'theming' && slug.length > 1) {
+    const theme = allThemings.find((t) => t.slug === slug[1])
+
+    if (!theme) {
+      notFound()
+    }
+
+    const tocData = generateToc(theme.content)
+
+    return (
+      <main
+        className={css({
+          display: 'grid',
+          gridTemplateColumns: {
+            base: '1fr',
+            xl: '1fr 250px',
+          },
+          gap: 'gap.component.lg',
+          maxWidth: '100%',
+          mx: 'auto',
+          px: { base: 'layout.internal.sm', md: 'layout.internal.md' },
+        })}
+      >
+        <div
+          className={css({
+            width: '100%',
+            overflowX: 'hidden',
+          })}
+        >
+          <header className={css({ mb: 'layout.section.sm' })}>
+            <div
+              className={css({
+                fontSize: 'sm',
+                color: 'text.tertiary',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'gap.inline.sm',
+                mb: 'gap.inline.md',
+              })}
+            >
+              <span>Theming</span>
+              <span>/</span>
+              <span className={css({ color: 'text.secondary' })}>{theme.title}</span>
+            </div>
+
+            {/* <h1
+              className={css({
+                fontSize: '3xl',
+                fontWeight: 'bold',
+                mb: 'gap.inline.md',
+                color: 'text',
+              })}
+            >
+              {theme.title}
+            </h1>
+
+            <p className={css({ color: 'text.secondary' })}>{theme.description}</p> */}
+          </header>
+
+          <div
+            className={css({
+              width: '100%',
+              overflowX: 'hidden',
+            })}
+          >
+            <MdxComponent code={theme.mdx} />
+          </div>
+        </div>
+
+        {tocData && tocData.length > 0 && (
+          <div
+            className={css({
+              display: 'none',
+              position: 'relative',
+              fontSize: 'sm',
+              xl: {
+                display: 'block',
+              },
+            })}
+          >
+            <div
+              className={css({
+                position: 'sticky',
+                top: '72px',
+                height: 'calc(100vh - 72px)',
+                p: 'padding.block.md',
+                borderLeft: '1px solid',
+                borderColor: 'border.secondary',
+                bg: 'surface.container',
+                overflowY: 'auto',
+              })}
+            >
+              <Toc toc={tocData} />
+            </div>
+          </div>
+        )}
+      </main>
+    )
+  }
+
+  // Handle guide pages
   const guide = allGuides.find((g) => g.slug === slug[0])
 
   if (!guide) {
@@ -236,13 +350,13 @@ export default async function DocsPage({ params }: any) {
           <div
             className={css({
               position: 'sticky',
-              top: '72px', 
-              height: 'calc(100vh - 72px)', 
+              top: '72px',
+              height: 'calc(100vh - 72px)',
               p: 'padding.block.md',
               borderLeft: '1px solid',
               borderColor: 'border.secondary',
               bg: 'surface.container',
-              overflowY: 'auto', 
+              overflowY: 'auto',
             })}
           >
             <Toc toc={tocData} />

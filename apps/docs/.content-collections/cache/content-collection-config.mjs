@@ -75,8 +75,7 @@ function rehypeComponent() {
                 type: "element",
                 tagName: "code",
                 properties: {
-                  className: ["language-tsx"],
-                  "data-filename": `components/previews/${dirName}/${fileName}.tsx`
+                  className: ["language-tsx"]
                 },
                 children: [{ type: "text", value: source }]
               }
@@ -86,8 +85,9 @@ function rehypeComponent() {
             try {
               const recipePath = path.join(
                 process.cwd(),
-                "styled-system/recipes",
-                `${dirName}.mjs`
+                "../../packages/panda/src/theme/recipes",
+                `${dirName}.ts`
+                // Changed extension from .mjs to .ts
               );
               if (fs.existsSync(recipePath)) {
                 const recipeSource = fs.readFileSync(recipePath, "utf8");
@@ -104,7 +104,12 @@ function rehypeComponent() {
                     {
                       type: "element",
                       tagName: "code",
-                      properties: { className: ["language-javascript"] },
+                      properties: {
+                        className: ["language-typescript"],
+                        // Changed from javascript to typescript
+                        "data-filename": `packages/panda/src/theme/recipes/${dirName}.ts`
+                        // Added filename display
+                      },
                       children: [{ type: "text", value: recipeSource }]
                     }
                   ]
@@ -319,6 +324,60 @@ var components = defineCollection({
     };
   }
 });
+var theming = defineCollection({
+  name: "theming",
+  directory: "app/content/theming",
+  include: "**/*.mdx",
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+    slug: z.string().optional(),
+    order: z.number().optional().default(999),
+    toc: z.boolean().optional().default(true)
+  }),
+  transform: async (document, context) => {
+    const tocData = generateToc(document.content, TOC_LEVEL);
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [
+        remarkGfm
+        // Enable npm2Yarn with correct configuration
+        // [
+        //   remarkNpm2Yarn,
+        //   {
+        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
+        //     tabNamesProp: 'items',
+        //     storageKey: 'selectedPackageManager',
+        //   },
+        // ],
+      ],
+      rehypePlugins: [
+        rehypeSlug,
+        rehypeComponent,
+        [
+          rehypePrettyCode,
+          {
+            theme: "github-light",
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            onVisitHighlightedLine(node) {
+              node.properties.className = [
+                ...node.properties.className || [],
+                "line--highlighted"
+              ];
+            }
+          }
+        ]
+      ]
+    });
+    const fileName = document._meta.fileName.replace(/\.mdx$/, "");
+    const slug = document.slug || fileName;
+    return {
+      ...document,
+      slug,
+      mdx,
+      tocData
+    };
+  }
+});
 async function extractHeadings(content) {
   const headingLines = content.match(/^##? .+/gm) || [];
   return headingLines.map((line) => {
@@ -329,7 +388,7 @@ async function extractHeadings(content) {
   });
 }
 var content_collections_default = defineConfig({
-  collections: [guides, components]
+  collections: [guides, components, theming]
 });
 export {
   content_collections_default as default

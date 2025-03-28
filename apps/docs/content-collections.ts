@@ -156,6 +156,66 @@ const components = defineCollection({
   },
 })
 
+
+const theming = defineCollection({
+  name: 'theming',
+  directory: 'app/content/theming',
+  include: '**/*.mdx',
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+    slug: z.string().optional(),
+    order: z.number().optional().default(999),
+    toc: z.boolean().optional().default(true),
+  }),
+  transform: async (document, context) => {
+    const tocData = generateToc(document.content, TOC_LEVEL)
+
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [
+        remarkGfm,
+        // Enable npm2Yarn with correct configuration
+        // [
+        //   remarkNpm2Yarn,
+        //   {
+        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
+        //     tabNamesProp: 'items',
+        //     storageKey: 'selectedPackageManager',
+        //   },
+        // ],
+      ],
+      rehypePlugins: [
+        rehypeSlug,
+        rehypeComponent,
+        [
+          rehypePrettyCode,
+          {
+            theme: 'github-light',
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            onVisitHighlightedLine(node: { properties: { className: any[] } }) {
+              node.properties.className = [
+                ...(node.properties.className || []),
+                'line--highlighted',
+              ]
+            },
+          },
+        ],
+      ],
+    })
+
+    const fileName = document._meta.fileName.replace(/\.mdx$/, '')
+    const slug = document.slug || fileName
+
+    return {
+      ...document,
+      slug,
+      mdx,
+      tocData,
+    }
+  },
+})
+
+
 async function extractHeadings(content: string) {
   const headingLines = content.match(/^##? .+/gm) || []
   return headingLines.map((line) => {
@@ -168,5 +228,5 @@ async function extractHeadings(content: string) {
 }
 
 export default defineConfig({
-  collections: [guides, components],
+  collections: [guides, components, theming],
 })

@@ -102,7 +102,7 @@ export function SearchDialog() {
           gap: 'gap.inline.md',
           color: 'text.secondary',
           fontWeight: 'normal',
-          px: 'padding.inline.md',
+          px: 'padding.inline.sm',
           py: 'padding.block.sm',
         })}
       >
@@ -114,6 +114,8 @@ export function SearchDialog() {
               display: 'inline',
             },
             paddingRight: 'padding.inline.lg',
+            marginRight: 'padding.inline.lg',
+            paddingLeft: 'padding.inline.sm',
           })}
         >
           Search documentation...
@@ -128,7 +130,7 @@ export function SearchDialog() {
         >
           Search...
         </span>
-        {/* <kbd
+        <kbd
           className={css({
             position: 'absolute',
             right: 'padding.inline.sm',
@@ -144,6 +146,7 @@ export function SearchDialog() {
             fontFamily: 'mono',
             fontWeight: 'normal',
             lineHeight: 'normal',
+            marginLeft: 'padding.inline.lg',
             md: {
               display: 'flex',
             },
@@ -151,7 +154,7 @@ export function SearchDialog() {
         >
           <span>⌘</span>
           <span>K</span>
-        </kbd> */}
+        </kbd>
       </Button>
 
       <Dialog.Root open={open} onOpenChange={setOpen}>

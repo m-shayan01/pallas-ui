@@ -5,11 +5,16 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { MDXContent } from '@content-collections/mdx/react'
 import { css } from '@styled-system/css'
-import { Check, Copy, HashIcon } from 'lucide-react'
+import { HashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { ComponentPreview, ComponentSource } from './component-preview'
+import { CopyButton } from './copy-button'
+import { InstallTabs } from './install-tabs'
+import { PackageTabs } from './package-tabs'
 import { Steps } from './steps'
+import { ColorPalette } from './theme/color-palette'
+import { SizeBox, SpacingBox } from './theme/size-box'
 
 interface MdxComponentProps {
   code: string
@@ -40,114 +45,6 @@ function HeadingAnchor({ id, level }: { id?: string; level: 1 | 2 | 3 | 4 }) {
         })}
       />
     </Link>
-  )
-}
-
-function CopyButton({ value }: { value: string }) {
-  const [copied, setCopied] = React.useState(false)
-  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
-
-  // Clean up any existing timeout when component unmounts
-  React.useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
-    }
-  }, [])
-
-  const copyToClipboard = React.useCallback(() => {
-    // Use a more reliable copy method
-    if (navigator.clipboard && window.isSecureContext) {
-      // Modern API for secure contexts
-      navigator.clipboard
-        .writeText(value)
-        .then(() => {
-          setCopied(true)
-
-          // Clear any existing timeout
-          if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current)
-          }
-
-          // Reset after 2 seconds
-          timeoutRef.current = setTimeout(() => {
-            setCopied(false)
-            timeoutRef.current = null
-          }, 2000)
-        })
-        .catch((err) => {
-          console.error('Failed to copy text: ', err)
-        })
-    } else {
-      // Fallback for older browsers or non-secure contexts
-      try {
-        // Create a temporary textarea element
-        const textArea = document.createElement('textarea')
-        textArea.value = value
-        textArea.style.position = 'absolute'
-        textArea.style.opacity = '0'
-        document.body.appendChild(textArea)
-        textArea.select()
-
-        // Execute copy command
-        const successful = document.execCommand('copy')
-        document.body.removeChild(textArea)
-
-        if (successful) {
-          setCopied(true)
-
-          // Clear any existing timeout
-          if (timeoutRef.current) {
-            clearTimeout(timeoutRef.current)
-          }
-
-          // Reset after 2 seconds
-          timeoutRef.current = setTimeout(() => {
-            setCopied(false)
-            timeoutRef.current = null
-          }, 2000)
-        } else {
-          console.error('Fallback copy method failed')
-        }
-      } catch (err) {
-        console.error('Fallback copy method failed:', err)
-      }
-    }
-  }, [value])
-
-  return (
-    <button
-      type="button"
-      onClick={copyToClipboard}
-      className={css({
-        position: 'absolute',
-        top: 'padding.block.md',
-        right: 'padding.inline.md',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        p: 'padding.block.sm',
-        rounded: 'md',
-        color: copied ? 'success.text' : 'text.tertiary',
-        bg: 'fill.tertiary',
-        opacity: 0.8,
-        _hover: {
-          bg: 'fill',
-          color: copied ? 'success.text' : 'text',
-          opacity: 1,
-        },
-        _focus: { outline: 'none' },
-        transition: 'all 0.2s ease',
-      })}
-      aria-label="Copy code to clipboard"
-    >
-      {copied ? (
-        <Check className={css({ h: 'icon.sm', w: 'icon.sm', color: 'success.text' })} />
-      ) : (
-        <Copy className={css({ h: 'icon.sm', w: 'icon.sm' })} />
-      )}
-    </button>
   )
 }
 
@@ -527,6 +424,11 @@ const components = {
   ComponentPreview,
   ComponentSource,
   Steps,
+  PackageTabs,
+  InstallTabs,
+  ColorPalette,
+  SizeBox,
+  SpacingBox,
 }
 
 export function MdxComponent({ code }: MdxComponentProps) {
