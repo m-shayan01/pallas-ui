@@ -50,15 +50,15 @@ import { button, type ButtonVariantProps } from '@styled-system/recipes'
 import { button } from '@styled-system/recipes'
 ```
 ```tsx
+<Button variant="link">Link Button</Button>
+```
+
+Alternatively, you can set the the className parameter for the link component.
+
+```tsx
 <Link className={button({ variant: 'outline' })}>Click here</Link>
 ```
 
-Alternatively, you can set the asChild parameter and nest the link component.
-```tsx
-<Button aschild>
-  <Link href="/login">Login</Link>
-</Button>
-```
 
 ## Examples
 ### Default (Primary)

@@ -2,7 +2,6 @@ import { css } from '@styled-system/css'
 import { allComponents, allGuides } from 'content-collections'
 import { notFound } from 'next/navigation'
 import { MdxComponent } from '../../../components/docs/mdx-components'
-import { ScrollArea } from '../../../components/docs/scroll-area'
 import { Toc } from '../../../components/docs/toc'
 import { generateToc } from '../../../lib/toc'
 
@@ -168,16 +167,16 @@ export default async function DocsPage({ params }: any) {
             <div
               className={css({
                 position: 'sticky',
-                top: 'layout.section.md',
+                top: '72px', 
+                height: 'calc(100vh - 72px)', 
                 p: 'padding.block.md',
                 borderLeft: '1px solid',
                 borderColor: 'border.secondary',
                 bg: 'surface.container',
+                overflowY: 'auto', 
               })}
             >
-              <ScrollArea className={css({ pb: 'layout.internal.md' })}>
-                <Toc toc={tocData} />
-              </ScrollArea>
+              <Toc toc={tocData} />
             </div>
           </div>
         )}
@@ -237,16 +236,16 @@ export default async function DocsPage({ params }: any) {
           <div
             className={css({
               position: 'sticky',
-              top: 'layout.section.md',
+              top: '72px', 
+              height: 'calc(100vh - 72px)', 
               p: 'padding.block.md',
               borderLeft: '1px solid',
               borderColor: 'border.secondary',
               bg: 'surface.container',
+              overflowY: 'auto', 
             })}
           >
-            <ScrollArea className={css({ pb: 'layout.internal.md' })}>
-              <Toc toc={tocData} />
-            </ScrollArea>
+            <Toc toc={tocData} />
           </div>
         </div>
       )}

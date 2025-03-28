@@ -4,31 +4,31 @@ import { remarkNpm2Yarn } from '@theguild/remark-npm2yarn'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
-import { rehypeComponent } from './plugins/rehype-component'
 import { generateToc } from './lib/toc'
+import { rehypeComponent } from './plugins/rehype-component'
 
 const TOC_LEVEL = 3
 
-const baseComputedFields = {
-  url: {
-    type: 'string',
-    resolve: (doc: { _raw: { flattenedPath: any } }) => `/content/${doc._raw.flattenedPath}`,
-  },
-  tocData: {
-    type: 'json',
-    resolve: async (doc: { body: { raw: string } }) => {
-      return generateToc(doc.body.raw, TOC_LEVEL)
-    },
-  },
-  slug: {
-    type: 'string',
-    resolve: (doc: { _raw: { flattenedPath: any } }) => `/${doc._raw.flattenedPath}`,
-  },
-  slugAsParams: {
-    type: 'string',
-    resolve: (doc: { _raw: { flattenedPath: any } }) => doc._raw.flattenedPath,
-  },
-}
+// const baseComputedFields = {
+//   url: {
+//     type: 'string',
+//     resolve: (doc: { _raw: { flattenedPath: any } }) => `/content/${doc._raw.flattenedPath}`,
+//   },
+//   tocData: {
+//     type: 'json',
+//     resolve: async (doc: { body: { raw: string } }) => {
+//       return generateToc(doc.body.raw, TOC_LEVEL)
+//     },
+//   },
+//   slug: {
+//     type: 'string',
+//     resolve: (doc: { _raw: { flattenedPath: any } }) => `/${doc._raw.flattenedPath}`,
+//   },
+//   slugAsParams: {
+//     type: 'string',
+//     resolve: (doc: { _raw: { flattenedPath: any } }) => doc._raw.flattenedPath,
+//   },
+// }
 
 const guides = defineCollection({
   name: 'guides',
@@ -43,32 +43,38 @@ const guides = defineCollection({
   transform: async (document, context) => {
     const slug = document._meta.fileName.replace(/\.mdx$/, '')
     const headings = await extractHeadings(document.content)
-    
+
     // Generate TOC data
     const tocData = generateToc(document.content, TOC_LEVEL)
-    
+
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [
         remarkGfm,
-        // Temporarily disable npm2yarn until we resolve the import issues
-        // [remarkNpm2Yarn, {
-        //   packageName: '../components/docs/tabs',
-        //   tabNamesProp: 'items',
-        //   storageKey: 'selectedPackageManager',
-        // }],
+        // Enable npm2Yarn with correct configuration
+        // [
+        //   remarkNpm2Yarn,
+        //   {
+        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
+        //     tabNamesProp: 'items',
+        //     storageKey: 'selectedPackageManager',
+        //   },
+        // ],
       ],
       rehypePlugins: [
         rehypeSlug,
-        [rehypePrettyCode, {
-          theme: 'github-light',
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-          onVisitHighlightedLine(node: { properties: { className: any[] } }) {
-            node.properties.className = [
-              ...(node.properties.className || []),
-              'line--highlighted'
-            ]
+        [
+          rehypePrettyCode,
+          {
+            theme: 'github-light',
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            onVisitHighlightedLine(node: { properties: { className: any[] } }) {
+              node.properties.className = [
+                ...(node.properties.className || []),
+                'line--highlighted',
+              ]
+            },
           },
-        }],
+        ],
       ],
     })
 
@@ -77,7 +83,7 @@ const guides = defineCollection({
       slug,
       headings,
       mdx,
-      tocData, 
+      tocData,
     }
   },
 })
@@ -105,41 +111,47 @@ const components = defineCollection({
   }),
   transform: async (document, context) => {
     const tocData = generateToc(document.content, TOC_LEVEL)
-    
+
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [
         remarkGfm,
-        // [remarkNpm2Yarn, {
-        //   packageName: '../components/docs/tabs',
-        //   tabNamesProp: 'items',
-        //   storageKey: 'selectedPackageManager',
-        // }],
+        // Enable npm2Yarn with correct configuration
+        // [
+        //   remarkNpm2Yarn,
+        //   {
+        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
+        //     tabNamesProp: 'items',
+        //     storageKey: 'selectedPackageManager',
+        //   },
+        // ],
       ],
       rehypePlugins: [
         rehypeSlug,
         rehypeComponent,
-        [rehypePrettyCode, {
-          theme: 'github-light',
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-          onVisitHighlightedLine(node: { properties: { className: any[] } }) {
-            node.properties.className = [
-              ...(node.properties.className || []),
-              'line--highlighted'
-            ]
+        [
+          rehypePrettyCode,
+          {
+            theme: 'github-light',
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            onVisitHighlightedLine(node: { properties: { className: any[] } }) {
+              node.properties.className = [
+                ...(node.properties.className || []),
+                'line--highlighted',
+              ]
+            },
           },
-        }],
+        ],
       ],
     })
 
     const fileName = document._meta.fileName.replace(/\.mdx$/, '')
-
     const slug = document.slug || fileName
 
     return {
       ...document,
       slug,
       mdx,
-      tocData, 
+      tocData,
     }
   },
 })

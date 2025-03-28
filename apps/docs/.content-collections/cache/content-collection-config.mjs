@@ -5,6 +5,45 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
+// lib/toc.ts
+import GithubSlugger from "github-slugger";
+var getTocTree = (tocData = []) => {
+  if (!tocData.length) return [];
+  const firstNode = tocData[0];
+  if (!firstNode) return [];
+  const rootNodes = [firstNode, ...tocData.slice(1).filter((node) => node.level <= firstNode.level)];
+  const rootIndices = rootNodes.map((node) => tocData.indexOf(node));
+  const chunks = rootIndices.map((rootIndex, index) => {
+    const nextRootIndex = rootIndices[index + 1];
+    return tocData.slice(rootIndex + 1, nextRootIndex);
+  });
+  const tree = rootNodes.map((node, index) => {
+    const children = chunks[index];
+    if (children?.length) {
+      node.children = getTocTree(children);
+    }
+    return node;
+  });
+  return tree;
+};
+var generateToc = (content, level = 3) => {
+  const headerRegex = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
+  const slugger = new GithubSlugger();
+  const tocNodes = Array.from(content.matchAll(headerRegex)).map(({ groups }) => {
+    const flag = groups?.flag;
+    const content2 = groups?.content ?? "";
+    if (!flag || !content2) return null;
+    if (flag.length > level) return null;
+    return {
+      level: flag.length,
+      text: content2,
+      slug: content2 ? slugger.slug(content2) : ""
+    };
+  }).filter((node) => node !== null);
+  const toc = getTocTree(tocNodes);
+  return toc;
+};
+
 // plugins/rehype-component.js
 import fs from "node:fs";
 import path from "node:path";
@@ -165,48 +204,6 @@ function rehypeComponent() {
   };
 }
 
-// lib/toc.ts
-import GithubSlugger from "github-slugger";
-var getTocTree = (tocData = []) => {
-  if (!tocData.length) return [];
-  const firstNode = tocData[0];
-  if (!firstNode) return [];
-  const rootNodes = [
-    firstNode,
-    ...tocData.slice(1).filter((node) => node.level <= firstNode.level)
-  ];
-  const rootIndices = rootNodes.map((node) => tocData.indexOf(node));
-  const chunks = rootIndices.map((rootIndex, index) => {
-    const nextRootIndex = rootIndices[index + 1];
-    return tocData.slice(rootIndex + 1, nextRootIndex);
-  });
-  const tree = rootNodes.map((node, index) => {
-    const children = chunks[index];
-    if (children?.length) {
-      node.children = getTocTree(children);
-    }
-    return node;
-  });
-  return tree;
-};
-var generateToc = (content, level = 3) => {
-  const headerRegex = /\n(?<flag>#{1,6})\s+(?<content>.+)/g;
-  const slugger = new GithubSlugger();
-  const tocNodes = Array.from(content.matchAll(headerRegex)).map(({ groups }) => {
-    const flag = groups?.flag;
-    const content2 = groups?.content ?? "";
-    if (!flag || !content2) return null;
-    if (flag.length > level) return null;
-    return {
-      level: flag.length,
-      text: content2,
-      slug: content2 ? slugger.slug(content2) : ""
-    };
-  }).filter((node) => node !== null);
-  const toc = getTocTree(tocNodes);
-  return toc;
-};
-
 // content-collections.ts
 var TOC_LEVEL = 3;
 var guides = defineCollection({
@@ -226,25 +223,31 @@ var guides = defineCollection({
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [
         remarkGfm
-        // Temporarily disable npm2yarn until we resolve the import issues
-        // [remarkNpm2Yarn, {
-        //   packageName: '../components/docs/tabs',
-        //   tabNamesProp: 'items',
-        //   storageKey: 'selectedPackageManager',
-        // }],
+        // Enable npm2Yarn with correct configuration
+        // [
+        //   remarkNpm2Yarn,
+        //   {
+        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
+        //     tabNamesProp: 'items',
+        //     storageKey: 'selectedPackageManager',
+        //   },
+        // ],
       ],
       rehypePlugins: [
         rehypeSlug,
-        [rehypePrettyCode, {
-          theme: "github-light",
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-          onVisitHighlightedLine(node) {
-            node.properties.className = [
-              ...node.properties.className || [],
-              "line--highlighted"
-            ];
+        [
+          rehypePrettyCode,
+          {
+            theme: "github-light",
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            onVisitHighlightedLine(node) {
+              node.properties.className = [
+                ...node.properties.className || [],
+                "line--highlighted"
+              ];
+            }
           }
-        }]
+        ]
       ]
     });
     return {
@@ -278,25 +281,32 @@ var components = defineCollection({
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [
         remarkGfm
-        // [remarkNpm2Yarn, {
-        //   packageName: '../components/docs/tabs',
-        //   tabNamesProp: 'items',
-        //   storageKey: 'selectedPackageManager',
-        // }],
+        // Enable npm2Yarn with correct configuration
+        // [
+        //   remarkNpm2Yarn,
+        //   {
+        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
+        //     tabNamesProp: 'items',
+        //     storageKey: 'selectedPackageManager',
+        //   },
+        // ],
       ],
       rehypePlugins: [
         rehypeSlug,
         rehypeComponent,
-        [rehypePrettyCode, {
-          theme: "github-light",
-          // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-          onVisitHighlightedLine(node) {
-            node.properties.className = [
-              ...node.properties.className || [],
-              "line--highlighted"
-            ];
+        [
+          rehypePrettyCode,
+          {
+            theme: "github-light",
+            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+            onVisitHighlightedLine(node) {
+              node.properties.className = [
+                ...node.properties.className || [],
+                "line--highlighted"
+              ];
+            }
           }
-        }]
+        ]
       ]
     });
     const fileName = document._meta.fileName.replace(/\.mdx$/, "");

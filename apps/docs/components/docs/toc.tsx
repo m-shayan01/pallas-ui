@@ -1,51 +1,84 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { css } from '@styled-system/css'
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 import type { Toc } from '../../lib/toc'
 
 interface TocProps {
   toc: Toc
 }
 
+// biome-ignore lint/suspicious/noRedeclare: <explanation>
 export function Toc({ toc }: TocProps) {
   const [activeHeading, setActiveHeading] = useState<string>('')
+  const headingElementsRef = useRef<HTMLElement[]>([])
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (!toc || toc.length === 0) return
 
-    const headingElements = toc
+    headingElementsRef.current = toc
       .flatMap((item) => [
         document.getElementById(item.slug),
         ...(item.children?.map((child) => document.getElementById(child.slug)) || []),
       ])
       .filter(Boolean) as HTMLElement[]
 
-    if (headingElements.length === 0) return
+    if (headingElementsRef.current.length === 0) return
 
-    const observer = new IntersectionObserver(
+    if (!activeHeading) {
+      setActiveHeading(headingElementsRef.current[0]?.id || '')
+    }
+
+    const getIndexFromId = (id: string) =>
+      headingElementsRef.current.findIndex((heading) => heading.id === id)
+
+    if (observerRef.current) {
+      observerRef.current.disconnect()
+    }
+
+    observerRef.current = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveHeading(entry.target.id)
+        const visibleHeadings = entries
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) => entry.target.id)
+
+        if (visibleHeadings.length > 0) {
+          const topHeading = visibleHeadings.reduce((top, current) => {
+            const topIndex = getIndexFromId(top || '')
+            const currentIndex = getIndexFromId(current || '')
+            return currentIndex < topIndex ? current : top
+          }, visibleHeadings[0])
+
+          setActiveHeading(topHeading || '')
+        } else {
+          const entryAbove = entries
+            .filter((entry) => entry.boundingClientRect.top < 0)
+            .sort((a, b) => b.boundingClientRect.top - a.boundingClientRect.top)[0]
+
+          if (entryAbove) {
+            setActiveHeading(entryAbove.target.id)
           }
-        })
+        }
       },
       {
-        rootMargin: '0px 0px -80% 0px',
-        threshold: 1.0,
-      }
+        rootMargin: '-10% 0px -70% 0px',
+        threshold: [0.1],
+      },
     )
 
-    headingElements.forEach((element) => {
-      observer.observe(element)
+    headingElementsRef.current.forEach((element) => {
+      if (observerRef.current) {
+        observerRef.current.observe(element)
+      }
     })
 
     return () => {
-      headingElements.forEach((element) => {
-        observer.unobserve(element)
-      })
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
     }
   }, [toc])
 

@@ -1,13 +1,13 @@
 'use client'
 
-import { MDXContent } from '@content-collections/mdx/react'
 import Accordian from '@/components/ui/accordian/accordian'
-import { Check, Copy, HashIcon } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { MDXContent } from '@content-collections/mdx/react'
+import { css } from '@styled-system/css'
+import { Check, Copy, HashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
-import { css } from '@styled-system/css'
 import { ComponentPreview, ComponentSource } from './component-preview'
 import { Steps } from './steps'
 
@@ -43,23 +43,77 @@ function HeadingAnchor({ id, level }: { id?: string; level: 1 | 2 | 3 | 4 }) {
   )
 }
 
-
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = React.useState(false)
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
 
+  // Clean up any existing timeout when component unmounts
   React.useEffect(() => {
-    if (copied) {
-      const timeout = setTimeout(() => setCopied(false), 2000)
-      return () => clearTimeout(timeout)
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
     }
-  }, [copied])
+  }, [])
 
   const copyToClipboard = React.useCallback(() => {
-    navigator.clipboard.writeText(value).then(() => {
-      setCopied(true)
-    }).catch(err => {
-      console.error('Failed to copy text: ', err);
-    })
+    // Use a more reliable copy method
+    if (navigator.clipboard && window.isSecureContext) {
+      // Modern API for secure contexts
+      navigator.clipboard
+        .writeText(value)
+        .then(() => {
+          setCopied(true)
+
+          // Clear any existing timeout
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+          }
+
+          // Reset after 2 seconds
+          timeoutRef.current = setTimeout(() => {
+            setCopied(false)
+            timeoutRef.current = null
+          }, 2000)
+        })
+        .catch((err) => {
+          console.error('Failed to copy text: ', err)
+        })
+    } else {
+      // Fallback for older browsers or non-secure contexts
+      try {
+        // Create a temporary textarea element
+        const textArea = document.createElement('textarea')
+        textArea.value = value
+        textArea.style.position = 'absolute'
+        textArea.style.opacity = '0'
+        document.body.appendChild(textArea)
+        textArea.select()
+
+        // Execute copy command
+        const successful = document.execCommand('copy')
+        document.body.removeChild(textArea)
+
+        if (successful) {
+          setCopied(true)
+
+          // Clear any existing timeout
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+          }
+
+          // Reset after 2 seconds
+          timeoutRef.current = setTimeout(() => {
+            setCopied(false)
+            timeoutRef.current = null
+          }, 2000)
+        } else {
+          console.error('Fallback copy method failed')
+        }
+      } catch (err) {
+        console.error('Fallback copy method failed:', err)
+      }
+    }
   }, [value])
 
   return (
@@ -75,18 +129,21 @@ function CopyButton({ value }: { value: string }) {
         justifyContent: 'center',
         p: 'padding.block.sm',
         rounded: 'md',
-        color: 'text.tertiary', //change this
+        color: copied ? 'success.text' : 'text.tertiary',
         bg: 'fill.tertiary',
         opacity: 0.8,
         _hover: {
           bg: 'fill',
-          color: 'text',
+          color: copied ? 'success.text' : 'text',
+          opacity: 1,
         },
         _focus: { outline: 'none' },
+        transition: 'all 0.2s ease',
       })}
+      aria-label="Copy code to clipboard"
     >
       {copied ? (
-        <Check className={css({ h: 'icon.sm', w: 'icon.sm' })} />
+        <Check className={css({ h: 'icon.sm', w: 'icon.sm', color: 'success.text' })} />
       ) : (
         <Copy className={css({ h: 'icon.sm', w: 'icon.sm' })} />
       )}
@@ -126,88 +183,127 @@ function CustomLink({ href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorEle
   )
 }
 
+function extractCodeString(children: React.ReactNode): string {
+  // Handle undefined or null
+  if (!children) return ''
 
-function CodeBlock({ className, children, 'data-filename': filename }: {
-  className?: string,
-  children: React.ReactNode,
+  // Handle string directly
+  if (typeof children === 'string') {
+    return children
+  }
+
+  // Handle arrays of children
+  if (Array.isArray(children)) {
+    return children.map((child) => extractCodeString(child)).join('')
+  }
+
+  // Handle React elements
+  if (React.isValidElement(children)) {
+    // If the element has props.children, extract from there
+    if (children.props?.children) {
+      return extractCodeString(children.props.children)
+    }
+
+    // If the element has a 'value' prop (like in some code highlighting components)
+    if (children.props?.value) {
+      return children.props.value
+    }
+  }
+
+  // Return empty string for other cases
+  return ''
+}
+
+function CodeBlock({
+  className,
+  children,
+  'data-filename': filename,
+}: {
+  className?: string
+  children: React.ReactNode
   'data-filename'?: string
 }) {
-  const language = className?.replace(/language-/, '') || '';
-  const codeString = React.Children.toArray(children)
-    .map(child => {
-      if (typeof child === 'string') return child;
-      if (React.isValidElement(child) && typeof child.props.children === 'string') {
-        return child.props.children;
-      }
-      return '';
-    })
-    .join('');
+  const language = className?.replace(/language-/, '') || ''
+  const codeString = extractCodeString(children)
 
   return (
-    <div className={css({ 
-      position: 'relative', 
-      my: 'gap.component.md',
-      width: '100%', // Added to ensure full width
-      maxWidth: '100%', // Added to prevent overflow
-    })}>
+    <div
+      className={css({
+        position: 'relative',
+        my: 'gap.component.md',
+        width: '100%',
+        maxWidth: '100%',
+      })}
+    >
       {filename && (
-        <div className={css({
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          right: '0',
-          bg: 'fill',
-          color: 'text.secondary',
-          fontSize: 'xs',
-          px: 'padding.inline.md',
-          py: 'padding.block.sm',
-          borderBottom: '1px solid',
-          borderColor: 'border.secondary',
-          fontFamily: 'mono',
-          zIndex: 5,
-        })}>
+        <div
+          className={css({
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            right: '0',
+            bg: 'fill',
+            color: 'text.secondary',
+            fontSize: 'xs',
+            px: 'padding.inline.md',
+            py: 'padding.block.sm',
+            borderBottom: '1px solid',
+            borderColor: 'border.secondary',
+            fontFamily: 'mono',
+            zIndex: 5,
+          })}
+        >
           {filename}
         </div>
       )}
-      <pre className={css({
-        p: 'padding.block.md',
-        pt: filename ? 'layout.internal.md' : 'padding.block.md',
-        rounded: 'md',
-        bg: 'fill.secondary',
-        color: 'text.secondary', // Better visibility
-        border: '1px solid',
-        borderColor: 'border',
-        overflow: 'auto',
-        width: '100%', // Added to ensure full width
-        maxWidth: '100%', // Added to prevent overflow
-      })}>
-        <code className={css({
-          fontFamily: 'mono',
-          fontSize: 'sm',
-          fontWeight: 'normal',
-          whiteSpace: 'pre',
-          overflowWrap: 'normal',
-          color: 'text.primary', // Better visibility
-          display: 'block',
-        })}>
+      <pre
+        className={css({
+          p: 'padding.block.md',
+          pt: filename ? 'layout.internal.md' : 'padding.block.md',
+          rounded: 'md',
+          bg: 'fill.secondary',
+          color: 'text.secondary',
+          border: '1px solid',
+          borderColor: 'border',
+          overflow: 'auto',
+          width: '100%',
+          maxWidth: '100%',
+        })}
+      >
+        <code
+          className={css({
+            fontFamily: 'mono',
+            fontSize: 'sm',
+            fontWeight: 'normal',
+            whiteSpace: 'pre',
+            overflowWrap: 'normal',
+            color: 'text.primary',
+            display: 'block',
+          })}
+        >
           {children}
         </code>
       </pre>
-      <CopyButton value={codeString} />
+
+      {/* Only add the copy button if we have content to copy */}
+      {codeString && <CopyButton value={codeString} />}
+
       {language && !filename && (
-        <div className={css({
-          position: 'absolute',
-          top: '0',
-          right: '0',
-          bg: 'fill',
-          color: 'text.secondary',
-          fontSize: 'xs',
-          px: 'padding.inline.sm',
-          py: 'padding.block.xs',
-          rounded: 'md',
-          mt: '12px',
-          mr: '48px', // Space for copy button
-        })}>
+        <div
+          className={css({
+            position: 'absolute',
+            top: '0',
+            right: '0',
+            bg: 'fill',
+            color: 'text.secondary',
+            fontSize: 'xs',
+            px: 'padding.inline.sm',
+            py: 'padding.block.xs',
+            rounded: 'md',
+            mt: '12px',
+            mr: '48px', // Space for copy button
+          })}
+        >
           {language}
         </div>
       )}
@@ -417,6 +513,7 @@ const components = {
   ),
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   code: (props: any) => {
+    // If the code has a className, it's part of a code block
     if (props.className) {
       return <CodeBlock {...props} />
     }

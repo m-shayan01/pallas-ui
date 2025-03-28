@@ -11,6 +11,7 @@ export const getSlugs = (toc: Toc = []): string[] => {
   if (!toc.length) return []
 
   const ids = toc.map((node) => node.slug)
+  // biome-ignore lint/complexity/useFlatMap: <explanation>
   const childrenIds = toc.map((node) => getSlugs(node.children)).flat()
   return [...ids, ...childrenIds]
 }
@@ -21,10 +22,7 @@ const getTocTree = (tocData: Toc = []): Toc => {
   const firstNode = tocData[0]
   if (!firstNode) return []
 
-  const rootNodes = [
-    firstNode,
-    ...tocData.slice(1).filter((node) => node.level <= firstNode.level),
-  ]
+  const rootNodes = [firstNode, ...tocData.slice(1).filter((node) => node.level <= firstNode.level)]
 
   const rootIndices = rootNodes.map((node) => tocData.indexOf(node))
 
@@ -46,7 +44,7 @@ const getTocTree = (tocData: Toc = []): Toc => {
   return tree
 }
 
-export const generateToc = (content: string, level: number = 3) => {
+export const generateToc = (content: string, level = 3) => {
   const headerRegex = /\n(?<flag>#{1,6})\s+(?<content>.+)/g
   const slugger = new GithubSlugger()
   const tocNodes = Array.from(content.matchAll(headerRegex))

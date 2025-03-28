@@ -86,6 +86,24 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
   })
   
   return (
+    <div className={css({
+      position: 'sticky',
+      top: '72px', 
+      height: 'calc(100vh - 72px)', // Viewport height minus header height
+      overflowY: 'auto',
+
+
+      '&::-webkit-scrollbar': {
+        width: '4px',
+      },
+      '&::-webkit-scrollbar-track': {
+        bg: 'transparent',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        bg: 'fill',
+        rounded: 'full',
+      },
+    })}>
     <Accordian.Root type="multiple" defaultValue={['guides', 'components']} style={{ width: '100%', borderWidth: '0' }}>
       <Accordian.Item value="guides" className={accordionItemStyle}>
         <Accordian.ItemHeader className={accordionHeaderStyle}>
@@ -145,5 +163,6 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
         </Accordian.ItemContent>
       </Accordian.Item>
     </Accordian.Root>
+    </div>
   )
 }

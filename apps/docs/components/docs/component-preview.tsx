@@ -146,7 +146,7 @@ export function ComponentPreview({
           <Content 
             value="code" 
             className={css({ 
-              p: 0,
+              p: 'padding.block.md',
               overflowX: 'auto', // Added for code block responsiveness
               maxWidth: '100%',
             })}
