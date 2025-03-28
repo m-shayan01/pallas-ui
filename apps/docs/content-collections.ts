@@ -9,26 +9,7 @@ import { rehypeComponent } from './plugins/rehype-component'
 
 const TOC_LEVEL = 3
 
-// const baseComputedFields = {
-//   url: {
-//     type: 'string',
-//     resolve: (doc: { _raw: { flattenedPath: any } }) => `/content/${doc._raw.flattenedPath}`,
-//   },
-//   tocData: {
-//     type: 'json',
-//     resolve: async (doc: { body: { raw: string } }) => {
-//       return generateToc(doc.body.raw, TOC_LEVEL)
-//     },
-//   },
-//   slug: {
-//     type: 'string',
-//     resolve: (doc: { _raw: { flattenedPath: any } }) => `/${doc._raw.flattenedPath}`,
-//   },
-//   slugAsParams: {
-//     type: 'string',
-//     resolve: (doc: { _raw: { flattenedPath: any } }) => doc._raw.flattenedPath,
-//   },
-// }
+
 
 const guides = defineCollection({
   name: 'guides',
