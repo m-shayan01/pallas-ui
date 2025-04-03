@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "apt-get update && apt-get install -y rsync && pnpm run build",
+  "buildCommand": "pnpm run vercel-build",
   "devCommand": "pnpm run dev",
   "installCommand": "pnpm install",
   "framework": "nextjs",
