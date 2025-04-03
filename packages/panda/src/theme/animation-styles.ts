@@ -1,6 +1,7 @@
 import { defineAnimationStyles } from '@pandacss/dev'
+import type { Theme } from '@pandacss/types'
 
-export const animationStyles = defineAnimationStyles({
+export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
   slideInRight: {
     value: {
       transformOrigin: 'center',

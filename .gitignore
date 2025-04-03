@@ -37,4 +37,14 @@ yarn-error.log*
 .DS_Store
 *.pem
 
+#components
 components/styled-system
+
+#packages
+packages/style-context/styled-system
+
+#docs
+apps/docs/styled-system
+
+#hash
+.sync-components-hash

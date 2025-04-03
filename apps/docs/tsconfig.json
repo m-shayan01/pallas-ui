@@ -1,20 +1,28 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@pallas-ui/typescript-config/nextjs.json",
   "compilerOptions": {
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "paths": {
+      "content-collections": ["./.content-collections/generated"],
+      "@/*": ["../../*"],
+      "@/components/*": ["./components/*"],
+      "~/*": ["./components/*"],
+      "@pallas-ui/panda-preset": ["../../packages/panda/src/index.ts"],
+      "@pallas-ui/panda-preset/*": ["../../packages/panda/src/*"],
+      "@styled-system/*": ["./styled-system/*"]
+    }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "next-env.d.ts",
-    "next.config.js",
-    ".next/types/**/*.ts"
+    "next.config.mjs",
+    ".next/types/**/*.ts",
+    "plugins/rehype-component.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
