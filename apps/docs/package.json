@@ -4,13 +4,14 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "sync-components": "node ../../scripts/sync-components.js",
-    "dev": "pnpm exec pandacss codegen && node ../../scripts/sync-components.js && next dev --turbopack",
-    "build": "pnpm exec pandacss codegen && node ../../scripts/sync-components.js && next build",
+    "prepare": "pnpm exec pandacss codegen && node ../../scripts/sync-components.js",
+    "predev": "pnpm prepare",
+    "dev": "next dev --turbopack",
+    "prebuild": "pnpm prepare",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit",
-    "prepare": "panda codegen --silent"
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@pallas-ui/components": "workspace:*",
