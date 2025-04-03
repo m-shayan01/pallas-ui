@@ -39,6 +39,7 @@ yarn-error.log*
 
 #components
 components/styled-system
+components/styled-system-studio
 
 #packages
 packages/style-context/styled-system
