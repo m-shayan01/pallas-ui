@@ -253,7 +253,7 @@ export function SearchDialog() {
               {query && filteredDocuments.length === 0 ? (
                 <div
                   className={css({
-                    p: 'padding.block.lg',
+                    p: 'gap.component.sm',
                     textAlign: 'center',
                     color: 'text.secondary',
                   })}
@@ -275,7 +275,7 @@ export function SearchDialog() {
                           fontSize: 'xs',
                           fontWeight: 'medium',
                           color: 'text.secondary',
-                          mb: 'gap.component.xs',
+                          py: 'padding.block.sm',
                           px: 'padding.inline.sm',
                         })}
                       >
@@ -290,7 +290,7 @@ export function SearchDialog() {
                             display: 'flex',
                             alignItems: 'center',
                             gap: 'gap.inline.sm',
-                            p: 'padding.block.sm',
+                            p: 'gap.inline.sm',
                             rounded: 'md',
                             textAlign: 'left',
                             cursor: 'pointer',
@@ -321,7 +321,7 @@ export function SearchDialog() {
                                 className={css({
                                   fontSize: 'xs',
                                   color: 'text.tertiary',
-                                  mt: 'gap.component.xxs',
+                                  mt: 'padding.inline.xs',
                                   lineClamp: 1,
                                 })}
                               >

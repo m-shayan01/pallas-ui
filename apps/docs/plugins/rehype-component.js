@@ -19,14 +19,13 @@ export function rehypeComponent() {
 
         try {
           const componentPath = path.join(
-            process.cwd(), 
-            `components/previews/${dirName}/${fileName}.tsx`
+            process.cwd(),
+            `components/previews/${dirName}/${fileName}.tsx`,
           )
-          
+
           const source = fs.existsSync(componentPath)
             ? fs.readFileSync(componentPath, 'utf8')
             : `// Component not found: ${dirName}/${fileName}.tsx`
-
 
           node.children.push({
             type: 'element',
@@ -36,7 +35,7 @@ export function rehypeComponent() {
               {
                 type: 'element',
                 tagName: 'code',
-                properties: { 
+                properties: {
                   className: ['language-tsx'],
                 },
                 children: [{ type: 'text', value: source }],
@@ -50,7 +49,7 @@ export function rehypeComponent() {
               const recipePath = path.join(
                 process.cwd(),
                 '../../packages/panda/src/theme/recipes',
-                `${dirName}.ts`  // Changed extension from .mjs to .ts
+                `${dirName}.ts`, // Changed extension from .mjs to .ts
               )
 
               if (fs.existsSync(recipePath)) {
@@ -70,9 +69,9 @@ export function rehypeComponent() {
                     {
                       type: 'element',
                       tagName: 'code',
-                      properties: { 
-                        className: ['language-typescript'],  // Changed from javascript to typescript
-                        'data-filename': `packages/panda/src/theme/recipes/${dirName}.ts`  // Added filename display
+                      properties: {
+                        className: ['language-typescript'], // Changed from javascript to typescript
+                        'data-filename': `packages/panda/src/theme/recipes/${dirName}.ts`, // Added filename display
                       },
                       children: [{ type: 'text', value: recipeSource }],
                     },
@@ -108,7 +107,7 @@ export function rehypeComponent() {
         try {
           let componentPath = path.join(
             process.cwd(),
-            `../../components/src/ui`,
+            '../../components/src/ui',
             dirName,
             `${fileName}.tsx`,
           )
@@ -116,7 +115,7 @@ export function rehypeComponent() {
           if (!fs.existsSync(componentPath) && fileName !== 'index') {
             componentPath = path.join(
               process.cwd(),
-              `../../components/src/ui`,
+              '../../components/src/ui',
               dirName,
               'index.tsx',
             )
@@ -124,7 +123,7 @@ export function rehypeComponent() {
           if (!fs.existsSync(componentPath)) {
             componentPath = path.join(
               process.cwd(),
-              `../../components/src/ui`,
+              '../../components/src/ui',
               dirName,
               `${dirName}.tsx`,
             )
@@ -180,4 +179,3 @@ export function rehypeComponent() {
     })
   }
 }
-

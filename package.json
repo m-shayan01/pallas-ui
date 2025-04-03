@@ -11,7 +11,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "sync-components": "node ./scripts/sync-components.js"
+    "sync-components": "rsync -av --delete ./components/src/ui/ ./apps/docs/components/ui/ && node ./scripts/process-imports.js"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",

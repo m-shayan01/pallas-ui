@@ -110,16 +110,16 @@ export const Root = withProvider<
   Assign<MenubarPrimitive.MenubarProps, JsxStyleProps>
 >(MenubarPrimitive.Root, 'root')
 
-export const Menu = MenubarPrimitive.Menu
+export const Menu: React.FC<MenubarPrimitive.MenubarMenuProps> = MenubarPrimitive.Menu //not doing this was giving error
 
 export const Group = withContext<
   React.ElementRef<typeof MenubarPrimitive.Group>,
   Assign<MenubarPrimitive.MenubarGroupProps, JsxStyleProps>
 >(MenubarPrimitive.Group, 'group')
 
-export const Portal = MenubarPrimitive.Portal
+export const Portal: React.FC<MenubarPrimitive.MenubarPortalProps> = MenubarPrimitive.Portal //not doing this was giving error
 
-export const SubMenu = MenubarPrimitive.Sub
+export const SubMenu: React.FC<MenubarPrimitive.MenubarSubProps> = MenubarPrimitive.Sub //not doing this was giving error
 
 export const RadioGroup = withContext<
   React.ElementRef<typeof MenubarPrimitive.RadioGroup>,

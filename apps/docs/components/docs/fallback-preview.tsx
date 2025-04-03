@@ -4,7 +4,7 @@ export default function FallbackPreview() {
   return (
     <div
       className={css({
-        padding: 'padding.block.md',
+        padding: 'padding.block.sm',
         backgroundColor: 'fill.secondary',
         border: '1px dashed',
         borderColor: 'border.secondary',

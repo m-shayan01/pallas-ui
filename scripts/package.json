@@ -4,6 +4,9 @@
   "type": "module",
   "private": true,
   "bin": {
-    "sync-components": "./sync-components.js"
+    "process-imports": "./process-imports.js"
+  },
+  "devDependencies": {
+    "globby": "^14.1.0"
   }
 }

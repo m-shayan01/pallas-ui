@@ -9,7 +9,7 @@
     },
     "sync-components": {
       "inputs": ["components/src/ui/**"],
-      "outputs": ["apps/docs/components/ui/**", ".sync-components-hash"]
+      "outputs": ["apps/docs/components/ui/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]

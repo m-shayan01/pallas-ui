@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "prepare": "pnpm exec pandacss codegen && node ../../scripts/sync-components.js",
+    "prepare": "pnpm exec pandacss codegen && pnpm run sync-components",
+    "sync-components": "rsync -av --delete ../../components/src/ui/ ./components/ui/ && node ../../scripts/process-imports.js",
     "predev": "pnpm prepare",
     "dev": "next dev --turbopack",
     "prebuild": "pnpm prepare",

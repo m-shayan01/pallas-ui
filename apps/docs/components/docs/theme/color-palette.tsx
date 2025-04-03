@@ -1,10 +1,10 @@
 'use client'
 
-import { css } from '@styled-system/css'
-import { token, type Token } from '@styled-system/tokens'
 import { generateThemeColors } from '@pallas-ui/panda-preset/colors/colors'
-import { themeColorPalette } from '../../../../../components/panda.config'
+import { css } from '@styled-system/css'
+import { type Token, token } from '@styled-system/tokens'
 import { useEffect, useState } from 'react'
+import { themeColorPalette } from '../../../../../components/panda.config'
 
 function cleanToken(str: string) {
   if (str.startsWith('{') && str.endsWith('}')) {
@@ -13,26 +13,33 @@ function cleanToken(str: string) {
   return str
 }
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 function generateSwatches(themeColors: any) {
-  return Object.entries(themeColors?.semanticTokens || {}).map(([colorName, shades]: [string, any]) => {
-    const swatches = Object.entries(shades).reduce(
-      (acc, [shadeName, shadeValue]: [string, any]) => {
-        if (shadeValue.value.base.startsWith('{')) {
-          acc[`${colorName}.${shadeName}`] = token(cleanToken(shadeValue.value.base) as Token)
-        } else {
-          acc[`${colorName}.${shadeName}`] = shadeValue.value.base
-        }
-        return acc
-      },
-      {} as Record<string, string>,
-    )
-    return { name: colorName, swatches }
-  })
+  return Object.entries(themeColors?.semanticTokens || {}).map(
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    ([colorName, shades]: [string, any]) => {
+      const swatches = Object.entries(shades).reduce(
+        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+        (acc, [shadeName, shadeValue]: [string, any]) => {
+          if (shadeValue.value.base.startsWith('{')) {
+            acc[`${colorName}.${shadeName}`] = token(cleanToken(shadeValue.value.base) as Token)
+          } else {
+            acc[`${colorName}.${shadeName}`] = shadeValue.value.base
+          }
+          return acc
+        },
+        {} as Record<string, string>,
+      )
+      return { name: colorName, swatches }
+    },
+  )
 }
 
 export function ColorPalette() {
-  const [swatches, setSwatches] = useState<Array<{ name: string; swatches: Record<string, string> }>>([])
-  
+  const [swatches, setSwatches] = useState<
+    Array<{ name: string; swatches: Record<string, string> }>
+  >([])
+
   useEffect(() => {
     const themeColors = generateThemeColors(themeColorPalette)
     const generatedSwatches = generateSwatches(themeColors)
@@ -40,45 +47,75 @@ export function ColorPalette() {
   }, [])
 
   return (
-    <div className={css({ display: 'flex', flexDirection: 'column', gap: 'gap.component.xl', my: 'gap.component.lg' })}>
+    <div
+      className={css({
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 'gap.inline.sm',
+        mb: 'layout.section.sm',
+      })}
+    >
       {swatches.map(({ name, swatches }) => (
-        <div key={name} className={css({ display: 'flex', flexDirection: 'column', gap: 'gap.component.md' })}>
-          <h2 className={css({ fontSize: '2xl', fontWeight: 'semibold', color: 'text', mt: 'gap.component.lg' })}>
+        <div
+          key={name}
+          className={css({ display: 'flex', flexDirection: 'column', gap: 'layout.section.sm' })}
+        >
+          <h2
+            className={css({
+              fontSize: '2xl',
+              fontWeight: 'semibold',
+              color: 'text',
+              mt: 'layout.section.lg',
+            })}
+          >
             {name.charAt(0).toUpperCase() + name.slice(1)} Colors
           </h2>
-          <div className={css({ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            gap: 'gap.component.sm',
-            p: 'padding.block.md',
-            border: '1px solid',
-            borderColor: 'border',
-            borderRadius: 'md',
-            bg: 'surface.container',
-          })}>
+          <div
+            className={css({
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'gap.component.sm',
+              p: 'gap.inline.sm',
+              border: '1px solid',
+              borderColor: 'border',
+              borderRadius: 'md',
+              bg: 'surface.container',
+            })}
+          >
             {Object.entries(swatches).map(([tokenName, color]) => (
-              <div key={tokenName} className={css({ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: 'gap.inline.md',
-                py: 'padding.block.sm',
-                borderBottom: '1px solid',
-                borderColor: 'border.secondary',
-                _last: { borderBottom: 'none' },
-              })}>
-                <div 
-                  className={css({ 
-                    width: '48px', 
-                    height: '48px', 
+              <div
+                key={tokenName}
+                className={css({
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'gap.inline.md',
+                  py: 'gap.component.sm',
+                  borderBottom: '1px solid',
+                  borderColor: 'border.secondary',
+                  _last: { borderBottom: 'none' },
+                })}
+              >
+                <div
+                  className={css({
+                    width: '48px',
+                    height: '48px',
                     borderRadius: 'md',
                     border: '1px solid',
                     borderColor: 'border',
-                  })} 
-                  style={{ backgroundColor: color }} 
+                  })}
+                  style={{ backgroundColor: color }}
                 />
-                <div className={css({ display: 'flex', flexDirection: 'column', gap: 'gap.inline.xs' })}>
+                <div
+                  className={css({
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 'padding.inline.xs',
+                  })}
+                >
                   <span className={css({ fontSize: 'sm', fontWeight: 'medium' })}>{tokenName}</span>
-                  <span className={css({ fontSize: 'xs', color: 'text.tertiary', fontFamily: 'mono' })}>
+                  <span
+                    className={css({ fontSize: 'xs', color: 'text.tertiary', fontFamily: 'mono' })}
+                  >
                     {color}
                   </span>
                 </div>

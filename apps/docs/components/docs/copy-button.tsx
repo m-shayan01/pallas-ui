@@ -90,13 +90,13 @@ export function CopyButton({ value, className }: CopyButtonProps) {
       onClick={copyToClipboard}
       className={`${css({
         position: 'absolute',
-        top: 'padding.block.md',
+        top: 'padding.inline.lg',
         right: 'padding.inline.md',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
 
-        p: 'padding.block.sm',
+        p: 'padding.inline.sm',
         color: copied ? 'success.text' : 'text.tertiary',
         bg: 'fill.tertiary',
         border: 'none',

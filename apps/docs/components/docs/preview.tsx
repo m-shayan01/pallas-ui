@@ -1,5 +1,5 @@
-import type React from 'react'
 import { css, cx } from '@styled-system/css'
+import type React from 'react'
 
 interface PreviewProps {
   className?: string
@@ -14,7 +14,7 @@ export function Preview({ className, children }: PreviewProps) {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          p: 'layout.internal.md',
+          p: 'padding.inline.lg',
           minH: '200px',
           bg: 'surface.elevated',
           color: 'text',

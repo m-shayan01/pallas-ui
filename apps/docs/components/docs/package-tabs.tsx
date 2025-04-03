@@ -9,10 +9,9 @@ interface PackageTabsProps {
   npm: string
   yarn: string
   pnpm: string
-  className?: string
 }
 
-export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
+export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
   const [activeTab, setActiveTab] = React.useState('npm')
 
   // Load preferred tab from localStorage on mount
@@ -51,14 +50,48 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
     }
   }
 
+  // Define tab options
+  const tabs = [
+    { value: 'npm', content: npm },
+    { value: 'yarn', content: yarn },
+    { value: 'pnpm', content: pnpm },
+  ]
+
+  // Reusable styles
+  const triggerStyles = (isActive: boolean) => css({
+    p: 'padding.inline.md',
+    fontWeight: isActive ? 'semibold' : 'normal',
+    borderBottom: isActive ? '2px solid' : 'none',
+    borderColor: 'primary',
+  })
+
+  const contentStyles = css({
+    p: 'padding.block.md',
+    bg: 'surface.container',
+  })
+
+  const preStyles = css({
+    bg: 'fill.secondary',
+    p: 'padding.block.lg',
+    rounded: 'md',
+    color: 'text.secondary',
+    border: '1px solid',
+    borderColor: 'border',
+    overflow: 'auto',
+    fontFamily: 'mono',
+    fontSize: 'sm',
+  })
+
   return (
-    <div className={className}>
+    <div
+      className={css({
+        py: 'gap.inline.sm',
+      })}
+    >
       <Root
         value={activeTab}
         onValueChange={handleTabChange}
         className={css({
-          mb: 'gap.component.lg',
-          mt: 'gap.component.md',
           border: '1px solid',
           borderColor: 'border',
           rounded: 'md',
@@ -72,42 +105,15 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
             borderColor: 'border',
           })}
         >
-          <Trigger
-            value="npm"
-            className={css({
-              px: 'padding.inline.md',
-              py: 'padding.block.sm',
-              fontWeight: activeTab === 'npm' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'npm' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
-            npm
-          </Trigger>
-          <Trigger
-            value="yarn"
-            className={css({
-              px: 'padding.inline.md',
-              py: 'padding.block.sm',
-              fontWeight: activeTab === 'yarn' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'yarn' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
-            yarn
-          </Trigger>
-          <Trigger
-            value="pnpm"
-            className={css({
-              px: 'padding.inline.md',
-              py: 'padding.block.sm',
-              fontWeight: activeTab === 'pnpm' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'pnpm' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
-            pnpm
-          </Trigger>
+          {tabs.map((tab) => (
+            <Trigger
+              key={tab.value}
+              value={tab.value}
+              className={triggerStyles(activeTab === tab.value)}
+            >
+              {tab.value}
+            </Trigger>
+          ))}
         </TabList>
 
         {/* Container for all content tabs with relative positioning */}
@@ -116,80 +122,27 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
           <CopyButton
             value={getCurrentTabContent()}
             className={css({
-              top: '16px', // Adjust as needed
-              right: '16px', // Adjust as needed
+              top: 'padding.inline.lg',
+              right: 'padding.inline.lg',
             })}
           />
-
-          <Content
-            value="npm"
+          <div
             className={css({
-              p: 'padding.block.md',
-              bg: 'surface.container',
+              my: 'gap.inline.sm',
             })}
           >
-            <pre
-              className={css({
-                bg: 'fill.secondary',
-                p: 'padding.block.md',
-                rounded: 'md',
-                color: 'text.secondary',
-                border: '1px solid',
-                borderColor: 'border',
-                overflow: 'auto',
-                fontFamily: 'mono',
-                fontSize: 'sm',
-              })}
-            >
-              <code>{npm}</code>
-            </pre>
-          </Content>
-          <Content
-            value="yarn"
-            className={css({
-              p: 'padding.block.md',
-              bg: 'surface.container',
-            })}
-          >
-            <pre
-              className={css({
-                bg: 'fill.secondary',
-                p: 'padding.block.md',
-                rounded: 'md',
-                color: 'text.secondary',
-                border: '1px solid',
-                borderColor: 'border',
-                overflow: 'auto',
-                fontFamily: 'mono',
-                fontSize: 'sm',
-              })}
-            >
-              <code>{yarn}</code>
-            </pre>
-          </Content>
-          <Content
-            value="pnpm"
-            className={css({
-              p: 'padding.block.md',
-              bg: 'surface.container',
-            })}
-          >
-            <pre
-              className={css({
-                bg: 'fill.secondary',
-                p: 'padding.block.md',
-                rounded: 'md',
-                color: 'text.secondary',
-                border: '1px solid',
-                borderColor: 'border',
-                overflow: 'auto',
-                fontFamily: 'mono',
-                fontSize: 'sm',
-              })}
-            >
-              <code>{pnpm}</code>
-            </pre>
-          </Content>
+            {tabs.map((tab) => (
+              <Content
+                key={tab.value}
+                value={tab.value}
+                className={contentStyles}
+              >
+                <pre className={preStyles}>
+                  <code>{tab.content}</code>
+                </pre>
+              </Content>
+            ))}
+          </div>
         </div>
       </Root>
     </div>
