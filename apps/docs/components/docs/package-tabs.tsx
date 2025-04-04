@@ -58,12 +58,13 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
   ]
 
   // Reusable styles
-  const triggerStyles = (isActive: boolean) => css({
-    p: 'padding.inline.md',
-    fontWeight: isActive ? 'semibold' : 'normal',
-    borderBottom: isActive ? '2px solid' : 'none',
-    borderColor: 'primary',
-  })
+  const triggerStyles = (isActive: boolean) =>
+    css({
+      p: 'padding.inline.md',
+      fontWeight: isActive ? 'semibold' : 'normal',
+      borderBottom: isActive ? '2px solid' : 'none',
+      borderColor: 'primary',
+    })
 
   const contentStyles = css({
     p: 'padding.block.md',
@@ -128,15 +129,11 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
           />
           <div
             className={css({
-              my: 'gap.inline.sm',
+              my: 'padding.inline.xs',
             })}
           >
             {tabs.map((tab) => (
-              <Content
-                key={tab.value}
-                value={tab.value}
-                className={contentStyles}
-              >
+              <Content key={tab.value} value={tab.value} className={contentStyles}>
                 <pre className={preStyles}>
                   <code>{tab.content}</code>
                 </pre>

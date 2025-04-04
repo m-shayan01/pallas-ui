@@ -5,8 +5,8 @@ import { format } from 'date-fns'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { Calendar } from 'lucide-react'
 import React from 'react'
-import { DayPicker } from '~/ui/daypicker'
-import Popover from '~/ui/popover'
+import { DayPicker } from '@/components/ui/daypicker'
+import Popover from '@/components/ui/popover'
 
 const InputContext = React.createContext<{ id: string } | null>(null)
 

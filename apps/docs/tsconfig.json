@@ -8,9 +8,7 @@
     ],
     "paths": {
       "content-collections": ["./.content-collections/generated"],
-      "@/*": ["../../*"],
       "@/components/*": ["./components/*"],
-      "~/*": ["./components/*"],
       "@pallas-ui/panda-preset": ["../../packages/panda/src/index.ts"],
       "@pallas-ui/panda-preset/*": ["../../packages/panda/src/*"],
       "@styled-system/*": ["./styled-system/*"]

@@ -1,0 +1,46 @@
+---
+title: Popover
+description: Displays rich content in a portal, triggered by a button.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/popover
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/popover
+    api: https://www.radix-ui.com/docs/primitives/components/popover#api-reference
+---
+
+<ComponentPreview name="popover" withRecipe />
+
+## Installation
+
+<Steps>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-popover" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="popover" />
+
+### Update the import paths to match your project setup
+
+</Steps>
+
+## Usage
+
+```tsx
+import Popover from '@/components/ui/popover'
+```
+```tsx
+<Popover.Root>
+  <Popover.Trigger>Open</Popover.Trigger>
+  <Popover.Content>Place content for the popover here.</Popover.Content>
+</Popover.Root>
+```
+
+## Examples
+### Simple
+<ComponentPreview name="popover" file = "simple" />
+
+### With Form controls
+
+<ComponentPreview name="popover" />

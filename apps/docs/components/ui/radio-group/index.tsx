@@ -5,8 +5,8 @@ import { radioGroup } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { Circle } from 'lucide-react'
 import * as React from 'react'
-import type { Assign } from '~/utils/types'
-import type { WithFixedClassName } from '~/utils/types'
+import type { Assign } from '@/components/utils/types'
+import type { WithFixedClassName } from '@/components/utils/types'
 import { createStyleContext } from '@pallas-ui/style-context'
 
 const { withProvider, withContext } = createStyleContext(radioGroup)

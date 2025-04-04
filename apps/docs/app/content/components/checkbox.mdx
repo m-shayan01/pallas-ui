@@ -1,0 +1,61 @@
+---
+title: Checkbox
+description: A control that allows the user to toggle between checked and not checked.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/checkbox
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/checkbox
+    api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
+---
+
+<ComponentPreview name="checkbox" withRecipe />
+
+## Installation
+
+<Steps>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-checkbox" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="checkbox" />
+
+### Update the import paths to match your project setup
+
+</Steps>
+
+## Usage
+
+```tsx
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '@/components/ui/label'
+
+<div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+  <Checkbox id="terms" />
+  <Label htmlFor="terms">Accept terms and conditions</Label>
+</div>
+```
+
+## Recipe
+### Usage
+```tsx
+import { checkbox, type CheckboxVariantProps } from '@styled-system/recipes'
+```
+```tsx
+<div className="peer">
+  <div className={checkbox().root}>
+    <div className={checkbox().indicator}>
+      {/* Your check icon */}
+    </div>
+  </div>
+</div>
+```
+
+## Examples
+
+### With text
+<ComponentPreview name="checkbox"/>
+
+### Disabled
+<ComponentPreview name="checkbox" file = "disabled"/>

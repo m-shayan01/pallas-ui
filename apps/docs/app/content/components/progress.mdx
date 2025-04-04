@@ -1,0 +1,63 @@
+---
+title: Progress
+description: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/progress
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/progress
+    api: https://www.radix-ui.com/docs/primitives/components/progress#api-reference
+---
+
+<ComponentPreview name="progress" withRecipe />
+
+## Installation
+
+<Steps>
+### Install the following dependencies
+
+<InstallTabs pkg="react-aria-components" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="progress" />
+
+### Update the import paths to match your project setup
+
+</Steps>
+
+## Usage
+
+```tsx
+import Progress from '@/components/ui/progress'
+```
+```tsx
+<Progress.Root value={33}>
+  <Progress.SVG>
+    <Progress.LineTrack />
+    <Progress.LineFill percentage={33} />
+  </Progress.SVG>
+  <Progress.Label>33%</Progress.Label>
+</Progress.Root>
+```
+
+## Examples
+### Default
+<ComponentPreview name="progress" />
+
+### Colors 
+<ComponentPreview name="progress" file="colors" />
+
+### Stroke width
+<ComponentPreview name="progress" file="stroke-width" />
+
+### Stroke Linecap
+<ComponentPreview name="progress" file="stroke-linecap" />
+
+### Circle
+<ComponentPreview name="progress" file="circle" />
+
+### Vertical
+<ComponentPreview name="progress" file="vertical" />
+
+### Indeterminate
+<ComponentPreview name="progress" file="indeterminate" />

@@ -24,7 +24,12 @@ const importPatterns = [
   },
   {
     from: /from\s+['"]\.\.\/\.\.\/utils\/types['"]/g,
-    to: "from '~/utils/types'",
+    to: "from '@/components/utils/types'",
+  },
+  // New pattern to convert ~/ui/ paths
+  {
+    from: /from\s+['"]~\/ui\/([^'"]+)['"]/g,
+    to: "from '@/components/ui/$1'",
   },
 ]
 

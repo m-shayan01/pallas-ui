@@ -4,7 +4,7 @@ import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { tooltip } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import * as React from 'react'
-import type { Assign, WithFixedClassName } from '~/utils/types'
+import type { Assign, WithFixedClassName } from '@/components/utils/types'
 import { createStyleContext } from '@pallas-ui/style-context'
 
 const { withProvider, withContext } = createStyleContext(tooltip)

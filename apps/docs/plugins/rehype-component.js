@@ -128,6 +128,9 @@ export function rehypeComponent() {
               `${dirName}.tsx`,
             )
           }
+          if (!fs.existsSync(componentPath)) {
+            componentPath = path.join(process.cwd(), '../../components/src/ui', dirName, 'index.ts')
+          }
 
           if (fs.existsSync(componentPath)) {
             const source = fs.readFileSync(componentPath, 'utf8')

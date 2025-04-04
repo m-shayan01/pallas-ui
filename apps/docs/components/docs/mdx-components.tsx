@@ -15,7 +15,7 @@ import { PackageTabs } from './package-tabs'
 import { Steps } from './steps'
 import { ColorPalette } from './theme/color-palette'
 import { SizeBox, SpacingBox } from './theme/size-box'
-import { ThemePreview } from './theme/theme-preview'
+//import { ThemePreview } from './theme/theme-preview'
 
 interface MdxComponentProps {
   code: string
@@ -428,7 +428,7 @@ const components = {
   ColorPalette,
   SizeBox,
   SpacingBox,
-  ThemePreview,
+  //ThemePreview,
 }
 
 export function MdxComponent({ code }: MdxComponentProps) {

@@ -5,7 +5,7 @@ import { type TabsVariantProps, tabs } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import type * as React from 'react'
 import { createStyleContext } from '@pallas-ui/style-context'
-import type { Assign, WithFixedClassName } from '~/utils/types'
+import type { Assign, WithFixedClassName } from '@/components/utils/types'
 
 const { withProvider, withContext } = createStyleContext(tabs)
 

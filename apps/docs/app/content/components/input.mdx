@@ -1,0 +1,74 @@
+---
+title: Input
+description: Displays a form input field or a component that looks like an input field.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/input
+---
+
+<ComponentPreview name="input" withRecipe />
+
+## Installation
+
+<Steps>
+### Copy and paste the following code into your project
+
+<ComponentSource name="input" />
+
+### Update the import paths to match your project setup
+
+</Steps>
+
+## Usage
+
+```tsx
+import { Input } from '@/components/ui/input'
+```
+```tsx
+// Basic text input
+<Input.Text placeholder="Email" />
+
+// Number input with controls
+<Input.Number min={0} max={100} />
+
+// Date picker input
+<Input.DayPicker placeholder="Select a date" />
+
+// Input with prefix/postfix
+<Input>
+  <Input.Prefix>https://</Input.Prefix>
+  <Input.Text placeholder="Website" />
+  <Input.Postfix>.com</Input.Postfix>
+</Input>
+```
+
+## Examples
+
+### Default
+<ComponentPreview name="input" />
+
+### Variants
+<ComponentPreview name="input" file="variants" />
+
+### With prefix/postfix
+<ComponentPreview name="input" file="with-addons" />
+
+### Number input
+<ComponentPreview name="input" file="number" />
+
+### Date picker
+<ComponentPreview name="input" file="date-picker" />
+
+### File Input
+<ComponentPreview name="input" file="file" />
+
+### Disabled
+<ComponentPreview name="input" file="disabled" />
+
+### With Label
+<ComponentPreview name="input" file="with-label" />
+
+### With Button
+<ComponentPreview name="input" file="with-button" />
+
+### Form
+<ComponentPreview name="input" file="form" />
