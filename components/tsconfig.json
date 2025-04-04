@@ -27,7 +27,8 @@
     "jsxImportSource": "react",
     "paths": {
       "~/*": ["./src/*"],
-      "@styled-system/*": ["styled-system/*"]
+      "@styled-system/*": ["styled-system/*"],
+      "@components/*": ["src/ui/*"]
     }
   },
   "include": ["src", "styled-system"]

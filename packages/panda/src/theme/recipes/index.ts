@@ -21,6 +21,7 @@ import { radioGroup } from './radio-group'
 import { segmented } from './segmented'
 import { select } from './select'
 import { separator } from './separator'
+import { sidebar } from './sidebar'
 import { slider } from './slider'
 import { spinner } from './spinner'
 import { switchRecipe } from './switch'
@@ -63,4 +64,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   daypicker,
   input,
   segmented,
+  sidebar,
 }
