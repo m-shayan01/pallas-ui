@@ -17,13 +17,13 @@ const Component = withProvider<
 >('div', 'root')
 
 export const Root = (props: RootProps) => {
-  const { children, ...rest } = props
+  const { children, itemsVisible = 1, ...rest } = props
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [length, setLength] = useState(0)
 
   const RootElement = useRef<HTMLDivElement>(null)
-  const direction = useRef('left')
+  const direction = useRef('fromLeft')
 
   useEffect(() => {
     setLength(RootElement.current?.getElementsByClassName('carousel__item').length || 0)
@@ -34,12 +34,12 @@ export const Root = (props: RootProps) => {
   }, [currentIndex])
 
   const previous = () => {
-    direction.current = 'left'
+    direction.current = 'fromLeft'
     setCurrentIndex((v) => (v === 0 ? length - 1 : v - 1))
   }
 
   const next = () => {
-    direction.current = 'right'
+    direction.current = 'fromRight'
     setCurrentIndex((v) => (v === length - 1 ? 0 : v + 1))
   }
 
@@ -48,7 +48,7 @@ export const Root = (props: RootProps) => {
       return console.error(
         `Index out of range: should from 0 till ${length - 1}. Received: ${index}`,
       )
-    direction.current = index > currentIndex ? 'right' : 'left'
+    direction.current = index > currentIndex ? 'fromRight' : 'fromLeft'
     setCurrentIndex(index)
   }
 

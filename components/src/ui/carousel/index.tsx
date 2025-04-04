@@ -10,6 +10,7 @@ export type RootProps = WithFixedClassName<
     ComponentProps<'div'> & JsxStyleProps & CarouselVariantProps,
     {
       children: (props: RootChildrenProps) => React.ReactNode
+      itemsVisible?: number
     }
   >
 >

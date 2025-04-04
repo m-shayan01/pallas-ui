@@ -27,7 +27,6 @@ const meta: Meta<RootProps> = {
         <>
           {IMAGES.map(({ color }, i) => (
             <Carousel.Item key={i}>
-              {/* <img src={src} alt={`image-${i}`} /> */}
               <div
                 style={{
                   display: 'flex',
@@ -57,7 +56,6 @@ const meta: Meta<RootProps> = {
                 key={i}
                 size={40}
                 color={i === currentIndex ? 'black' : 'gray'}
-                style={{ cursor: 'pointer' }}
                 onClick={() => goTo(i)}
               />
             ))}
@@ -79,4 +77,59 @@ export const Default: Story = {
   args: {},
 }
 
-export const Variants = () => <Stack>Hello</Stack>
+export const Variants = () => (
+  <Stack>
+    <Carousel.Root css={{ height: 300 }} itemsVisible={2}>
+      {({ previous, next, goTo, currentIndex }) => (
+        <>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              height: 'inherit',
+              width: 'fit-content',
+              translate: `-${currentIndex * 300}px 0`,
+            }}
+          >
+            {IMAGES.map(({ color }, i) => (
+              <Carousel.Item key={i}>
+                {/* <img src={src} alt={`image-${i}`} /> */}
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%',
+                    fontSize: 30,
+                    fontWeight: 'bold',
+                    backgroundColor: color,
+                  }}
+                >
+                  {i + 1}
+                </div>
+              </Carousel.Item>
+            ))}
+          </div>
+
+          <Carousel.Previous>
+            <Button onClick={previous} icon={<ChevronLeft />} variant="text" shape="circle" />
+          </Carousel.Previous>
+          <Carousel.Next>
+            <Button onClick={next} icon={<ChevronRight />} variant="text" shape="circle" />
+          </Carousel.Next>
+
+          <Carousel.Dots>
+            {IMAGES.map((_, i) => (
+              <DotIcon
+                key={i}
+                size={40}
+                color={i === currentIndex ? 'black' : 'gray'}
+                onClick={() => goTo(i)}
+              />
+            ))}
+          </Carousel.Dots>
+        </>
+      )}
+    </Carousel.Root>
+  </Stack>
+)

@@ -10,24 +10,26 @@ export const carousel = defineSlotRecipe({
       overflow: 'hidden',
     },
     item: {
-      width: '{full}',
-      position: 'absolute',
-      visibility: 'hidden',
+      // width: '{full}',
+      // position: 'absolute',
+      visibility: 'visible',
       overflow: 'hidden',
       height: 'inherit',
-      '&[data-visible=right]': {
-        visibility: 'visible',
-        animationStyle: 'carousel.slideInRight',
-        zIndex: 99,
-      },
-      '&[data-visible=left]': {
-        visibility: 'visible',
-        animationStyle: 'carousel.slideInLeft',
-        zIndex: 99,
-      },
-      '&[data-exit]': {
-        transition: 'visibility 1s',
-      },
+      // '&[data-visible=fromRight]': {
+      //   visibility: 'visible',
+      //   animationStyle: 'carousel.slideInRight',
+      //   zIndex: 99,
+      // },
+      // '&[data-visible=fromLeft]': {
+      //   visibility: 'visible',
+      //   animationStyle: 'carousel.slideInLeft',
+      //   zIndex: 99,
+      // },
+      // '&[data-exit]': {
+      //   transition: 'visibility 1s',
+      // },
+
+      width: '300px',
     },
     previous: {
       position: 'absolute',
@@ -50,6 +52,9 @@ export const carousel = defineSlotRecipe({
       translate: '-50% 0',
       display: 'flex',
       zIndex: 100,
+      '& > *': {
+        cursor: 'pointer',
+      },
     },
   },
   variants: {
