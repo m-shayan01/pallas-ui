@@ -3,7 +3,7 @@ import { styled } from '@styled-system/jsx'
 import { type ButtonVariantProps, button, icon, spinner } from '@styled-system/recipes'
 import React from 'react'
 
-type ButtonProps = ButtonVariantProps &
+export type ButtonProps = ButtonVariantProps &
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     isLoading?: boolean
     icon?: React.ReactNode
@@ -21,7 +21,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cx(button({ variant, size, width }), className)}
         {...props}
       >
-        <span className={css({ display: 'flex', alignItems: 'center', pl: 2, pr: 1 })}>
+        <span className={css({ display: 'flex', alignItems: 'center', pl: 2, pr: 1, gap: 2 })}>
           {isLoading && <Spinner size="sm" />}
           {icon && <IconWrapper size="sm">{icon}</IconWrapper>}
           {children}

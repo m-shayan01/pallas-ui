@@ -5,6 +5,7 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
@@ -61,19 +62,19 @@ export const Default: Story = {
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel>Application</SidebarGroupLabel>
-            <SidebarContent>
+            <SidebarGroupContent>
               <SidebarMenu>
-                {MENU_ITEMS.map((item) => (
+                {MENU_ITEMS.map((item, i) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton>
+                    <SidebarMenuButton icon={<item.icon />}>
                       <a href={item.url}>
-                        <item.icon />
+                        <span>{item.title}</span>
                       </a>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 ))}
               </SidebarMenu>
-            </SidebarContent>
+            </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
       </Sidebar>
