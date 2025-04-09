@@ -97,13 +97,13 @@ export function SearchDialog() {
           position: 'relative',
           display: 'flex',
           minW: '160px',
-          w: { base: 'full', md: 'auto' },
+          w: { base: 'full', md: '100%' }, // Changed from 'auto' to '100%' for md screens
           justifyContent: 'flex-start',
-          gap: 'gap.inline.md',
+          gap: '4',
           color: 'text.secondary',
           fontWeight: 'normal',
-          px: 'padding.inline.sm',
-          py: 'padding.block.sm',
+          px: '2',
+          py: '1',
         })}
       >
         <SearchIcon className={css({ h: 'icon.sm', w: 'icon.sm' })} />
@@ -113,9 +113,9 @@ export function SearchDialog() {
             md: {
               display: 'inline',
             },
-            paddingRight: 'padding.inline.lg',
-            marginRight: 'padding.inline.lg',
-            paddingLeft: 'padding.inline.sm',
+            paddingRight: '4',
+            marginRight: '4',
+            paddingLeft: '2',
           })}
         >
           Search documentation...
@@ -133,20 +133,20 @@ export function SearchDialog() {
         <kbd
           className={css({
             position: 'absolute',
-            right: 'padding.inline.sm',
+            right: '2',
             display: 'none',
             alignItems: 'center',
-            gap: 'gap.inline.sm',
+            gap: '3',
             rounded: 'sm',
             border: '1px solid',
             borderColor: 'border',
             bg: 'surface.layout',
-            px: 'padding.inline.xs',
+            px: '1',
             fontSize: 'xs',
             fontFamily: 'mono',
             fontWeight: 'normal',
             lineHeight: 'normal',
-            marginLeft: 'padding.inline.lg',
+            marginLeft: '4',
             md: {
               display: 'flex',
             },
@@ -198,14 +198,14 @@ export function SearchDialog() {
                 alignItems: 'center',
                 borderBottom: '1px solid',
                 borderColor: 'border',
-                p: 'padding.block.md',
+                p: '2',
               })}
             >
               <SearchIcon
                 className={css({
                   h: 'icon.md',
                   w: 'icon.md',
-                  mr: 'padding.inline.md',
+                  mr: '3',
                   color: 'text.secondary',
                 })}
               />
@@ -234,8 +234,8 @@ export function SearchDialog() {
                   variant="outlined"
                   size="icon"
                   className={css({
-                    ml: 'padding.inline.md',
-                    p: 'padding.block.xs',
+                    ml: '3',
+                    p: '1',
                   })}
                 >
                   <X className={css({ h: 'icon.sm', w: 'icon.sm' })} />
@@ -246,14 +246,14 @@ export function SearchDialog() {
             <div
               className={css({
                 overflowY: 'auto',
-                p: 'padding.block.md',
+                p: '2',
                 maxH: '60vh',
               })}
             >
               {query && filteredDocuments.length === 0 ? (
                 <div
                   className={css({
-                    p: 'padding.block.lg',
+                    p: '4',
                     textAlign: 'center',
                     color: 'text.secondary',
                   })}
@@ -265,7 +265,7 @@ export function SearchDialog() {
                   className={css({
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: 'gap.component.sm',
+                    gap: '4',
                   })}
                 >
                   {filteredDocuments.length > 0 && (
@@ -275,8 +275,8 @@ export function SearchDialog() {
                           fontSize: 'xs',
                           fontWeight: 'medium',
                           color: 'text.secondary',
-                          mb: 'gap.component.xs',
-                          px: 'padding.inline.sm',
+                          py: '1',
+                          px: '2',
                         })}
                       >
                         {query ? 'Results' : 'Documentation'}
@@ -289,8 +289,8 @@ export function SearchDialog() {
                           className={css({
                             display: 'flex',
                             alignItems: 'center',
-                            gap: 'gap.inline.sm',
-                            p: 'padding.block.sm',
+                            gap: '3',
+                            p: '3',
                             rounded: 'md',
                             textAlign: 'left',
                             cursor: 'pointer',
@@ -321,7 +321,7 @@ export function SearchDialog() {
                                 className={css({
                                   fontSize: 'xs',
                                   color: 'text.tertiary',
-                                  mt: 'gap.component.xxs',
+                                  mt: '1',
                                   lineClamp: 1,
                                 })}
                               >

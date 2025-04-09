@@ -29,6 +29,9 @@ importers:
       '@pallas-ui/components':
         specifier: workspace:*
         version: link:../../components
+      '@pallas-ui/panda-preset':
+        specifier: workspace:*
+        version: link:../../packages/panda
       '@pallas-ui/style-context':
         specifier: workspace:*
         version: link:../../packages/style-context
@@ -187,6 +190,9 @@ importers:
       '@pallas-ui/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda
+      '@pallas-ui/style-context':
+        specifier: workspace:*
+        version: link:../packages/style-context
       '@pandacss/dev':
         specifier: 0.50.0
         version: 0.50.0(typescript@5.7.2)

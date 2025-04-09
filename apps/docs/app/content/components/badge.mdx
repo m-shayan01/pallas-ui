@@ -4,20 +4,29 @@ description: Displays a badge or a component that looks like a badge.
 references:
   shadcnUiLink: https://ui.shadcn.com/docs/components/badge
 ---
+<ContentContainer>
 
+<Section>
+# Badge
+Displays a badge or a component that looks like a badge.
 <ComponentPreview name="badge" withRecipe />
+</Section>
 
+<Section>
 ## Installation
 
 <Steps>
+<Section>
 ### Copy and paste the following code into your project
 
 <ComponentSource name="badge" />
 
 ### Update the import paths to match your project setup
-
+</Section>
 </Steps>
+</Section>
 
+<Section>
 ## Usage
 
 ```tsx
@@ -27,7 +36,9 @@ import { Badge } from '@/components/ui/badge'
 ```tsx
 <Badge variant="default">Badge</Badge>
 ```
+</Section>
 
+<Section>
 ## Recipe
 ### Usage
 ```tsx
@@ -45,7 +56,9 @@ import { badge } from '@styled-system/recipes'
 ```tsx
 <Link className={badge({ variant: 'default' })}>Click here</Link>
 ```
+</Section>
 
+<Section>
 ## Examples
 ### Default
 
@@ -62,4 +75,6 @@ import { badge } from '@styled-system/recipes'
 ### With Icon
 
 <ComponentPreview name="badge" file="with-icon" />
+</Section>
 
+</ContentContainer>

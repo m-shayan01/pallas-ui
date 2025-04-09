@@ -1,0 +1,57 @@
+---
+title: Label
+description: Renders an accessible label associated with controls.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/label
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/label
+    api: https://www.radix-ui.com/docs/primitives/components/label#api-reference
+---
+<ContentContainer>
+<Section>
+# Label
+Renders an accessible label associated with controls.
+<ComponentPreview name="label" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-label" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="label" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Label } from '@/components/ui/label'
+```
+```tsx
+<Label htmlFor="email">Your email address</Label>
+```
+
+</Section>
+
+<Section>
+## Examples
+
+### With Input
+<ComponentPreview name="label" file= "with-input"/>
+
+### With Checkbox
+<ComponentPreview name="label"/>
+</Section>
+
+</ContentContainer>

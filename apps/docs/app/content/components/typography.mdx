@@ -1,0 +1,69 @@
+---
+title: Typography
+description: Text components for displaying content at various levels of the type hierarchy.
+---
+
+<ContentContainer>
+
+<Section>
+# Typography
+Text components for displaying content at various levels of the type hierarchy.
+
+<ComponentPreview name="typography" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Copy and paste the following code into your project
+
+<ComponentSource name="typography" file="heading" />
+<ComponentSource name="typography" file="paragraph" />
+<ComponentSource name="typography" file="index" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Heading, Paragraph } from '@/components/ui/typography'
+```
+```tsx
+<Heading level={1}>Main Heading</Heading>
+<Paragraph>This is a paragraph of text.</Paragraph>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Heading levels
+<ComponentPreview name="typography" file="heading-levels" />
+
+### Heading Variants
+<ComponentPreview name="typography" file="heading-variants" />
+
+### Heading Colors
+<ComponentPreview name="typography" file="heading-colors" />
+
+### Paragraph Sizes
+<ComponentPreview name="typography" file="paragraph-sizes" />
+
+### Paragraph Colors
+<ComponentPreview name="typography" file="paragraph-colors" />
+
+### Paragraph Text Styles
+<ComponentPreview name="typography" file="paragraph-text-styles" />
+
+### Paragraph Text Alignments
+<ComponentPreview name="typography" file="paragraph-alignment" />
+
+</Section>
+
+</ContentContainer>

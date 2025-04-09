@@ -7,7 +7,6 @@ import { ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-
 export interface SidebarProps {
   onNavigate?: (url: string) => void
 }
@@ -23,6 +22,7 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
   const themings = [...allThemings].sort((a, b) => (a.order || 999) - (b.order || 999))
 
   const linkStyle = {
+    //inner children spacing via padding
     display: 'flex',
     width: 'full',
     fontSize: 'sm',
@@ -44,11 +44,12 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
   }
 
   const subMenuStyle = css({
+    //inner children spacing via padding
     pl: 'padding.inline.sm',
     ml: 'padding.inline.md',
     borderLeft: '1px solid',
     borderColor: 'border',
-    spaceY: 'gap.inline.sm',
+    spaceY: 'padding.inline.md',
   })
 
   const chevronStyle = css({
@@ -67,6 +68,7 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
   })
 
   const accordionItemStyle = css({
+    //component root spacing via gap
     width: '100%',
     borderRadius: '0',
     mb: 'gap.component.sm',
@@ -75,8 +77,8 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
 
   const accordionHeaderStyle = css({
     width: '100%',
-    px: 'padding.inline.sm',
-    py: 'padding.block.md',
+    px: 'gap.component.sm',
+    py: 'gap.component.sm',
     bg: 'surface.layout',
   })
 

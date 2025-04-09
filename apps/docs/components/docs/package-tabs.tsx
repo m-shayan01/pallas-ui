@@ -9,10 +9,9 @@ interface PackageTabsProps {
   npm: string
   yarn: string
   pnpm: string
-  className?: string
 }
 
-export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
+export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
   const [activeTab, setActiveTab] = React.useState('npm')
 
   // Load preferred tab from localStorage on mount
@@ -52,13 +51,11 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
   }
 
   return (
-    <div className={className}>
+    <div>
       <Root
         value={activeTab}
         onValueChange={handleTabChange}
         className={css({
-          mb: 'gap.component.lg',
-          mt: 'gap.component.md',
           border: '1px solid',
           borderColor: 'border',
           rounded: 'md',
@@ -75,8 +72,7 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
           <Trigger
             value="npm"
             className={css({
-              px: 'padding.inline.md',
-              py: 'padding.block.sm',
+              p: '3', // Changed from padding.inline.md
               fontWeight: activeTab === 'npm' ? 'semibold' : 'normal',
               borderBottom: activeTab === 'npm' ? '2px solid' : 'none',
               borderColor: 'primary',
@@ -87,8 +83,7 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
           <Trigger
             value="yarn"
             className={css({
-              px: 'padding.inline.md',
-              py: 'padding.block.sm',
+              p: '3', // Changed from padding.inline.md
               fontWeight: activeTab === 'yarn' ? 'semibold' : 'normal',
               borderBottom: activeTab === 'yarn' ? '2px solid' : 'none',
               borderColor: 'primary',
@@ -99,8 +94,7 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
           <Trigger
             value="pnpm"
             className={css({
-              px: 'padding.inline.md',
-              py: 'padding.block.sm',
+              p: '3', // Changed from padding.inline.md
               fontWeight: activeTab === 'pnpm' ? 'semibold' : 'normal',
               borderBottom: activeTab === 'pnpm' ? '2px solid' : 'none',
               borderColor: 'primary',
@@ -116,80 +110,85 @@ export function PackageTabs({ npm, yarn, pnpm, className }: PackageTabsProps) {
           <CopyButton
             value={getCurrentTabContent()}
             className={css({
-              top: '16px', // Adjust as needed
-              right: '16px', // Adjust as needed
+              top: '4', // Changed from padding.inline.lg
+              right: '4', // Changed from padding.inline.lg
             })}
           />
-
-          <Content
-            value="npm"
+          <div
             className={css({
-              p: 'padding.block.md',
-              bg: 'surface.container',
+              my: '3', // Changed from gap.inline.sm
             })}
           >
-            <pre
+            <Content
+              value="npm"
               className={css({
-                bg: 'fill.secondary',
-                p: 'padding.block.md',
-                rounded: 'md',
-                color: 'text.secondary',
-                border: '1px solid',
-                borderColor: 'border',
-                overflow: 'auto',
-                fontFamily: 'mono',
-                fontSize: 'sm',
+                px: '2', // Changed from padding.block.md
+                bg: 'surface.container',
               })}
             >
-              <code>{npm}</code>
-            </pre>
-          </Content>
-          <Content
-            value="yarn"
-            className={css({
-              p: 'padding.block.md',
-              bg: 'surface.container',
-            })}
-          >
-            <pre
+              <pre
+                className={css({
+                  bg: 'fill.secondary',
+                  p: '3', // Changed from padding.block.lg
+                  rounded: 'md',
+                  color: 'text.secondary',
+                  border: '1px solid',
+                  borderColor: 'border',
+                  overflow: 'auto',
+                  fontFamily: 'mono',
+                  fontSize: 'sm',
+                })}
+              >
+                <code>{npm}</code>
+              </pre>
+            </Content>
+            <Content
+              value="yarn"
               className={css({
-                bg: 'fill.secondary',
-                p: 'padding.block.md',
-                rounded: 'md',
-                color: 'text.secondary',
-                border: '1px solid',
-                borderColor: 'border',
-                overflow: 'auto',
-                fontFamily: 'mono',
-                fontSize: 'sm',
+                p: '2', // Changed from padding.block.md
+                bg: 'surface.container',
               })}
             >
-              <code>{yarn}</code>
-            </pre>
-          </Content>
-          <Content
-            value="pnpm"
-            className={css({
-              p: 'padding.block.md',
-              bg: 'surface.container',
-            })}
-          >
-            <pre
+              <pre
+                className={css({
+                  bg: 'fill.secondary',
+                  p: '3', // Changed from padding.block.lg
+                  rounded: 'md',
+                  color: 'text.secondary',
+                  border: '1px solid',
+                  borderColor: 'border',
+                  overflow: 'auto',
+                  fontFamily: 'mono',
+                  fontSize: 'sm',
+                })}
+              >
+                <code>{yarn}</code>
+              </pre>
+            </Content>
+            <Content
+              value="pnpm"
               className={css({
-                bg: 'fill.secondary',
-                p: 'padding.block.md',
-                rounded: 'md',
-                color: 'text.secondary',
-                border: '1px solid',
-                borderColor: 'border',
-                overflow: 'auto',
-                fontFamily: 'mono',
-                fontSize: 'sm',
+                p: '2', // Changed from padding.block.md
+                bg: 'surface.container',
               })}
             >
-              <code>{pnpm}</code>
-            </pre>
-          </Content>
+              <pre
+                className={css({
+                  bg: 'fill.secondary',
+                  p: '3', // Changed from padding.block.lg
+                  rounded: 'md',
+                  color: 'text.secondary',
+                  border: '1px solid',
+                  borderColor: 'border',
+                  overflow: 'auto',
+                  fontFamily: 'mono',
+                  fontSize: 'sm',
+                })}
+              >
+                <code>{pnpm}</code>
+              </pre>
+            </Content>
+          </div>
         </div>
       </Root>
     </div>

@@ -3,7 +3,7 @@ import { styled } from '@styled-system/jsx'
 import { type ButtonVariantProps, button, icon, spinner } from '@styled-system/recipes'
 import React from 'react'
 
-export type ButtonProps = ButtonVariantProps & //exported button props
+export type ButtonProps = ButtonVariantProps & //exported for toast
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     isLoading?: boolean
     icon?: React.ReactNode

@@ -1,13 +1,12 @@
 'use client'
 
+import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import * as MenubarPrimitive from '@radix-ui/react-menubar'
 import { css, cx } from '@styled-system/css'
 import { icon, menubar } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import { Check, ChevronRight, Circle } from 'lucide-react'
 import * as React from 'react'
-import type { Assign, WithFixedClassName } from '~/utils/types'
-import { createStyleContext } from '../../utils/style-context'
 
 const { withProvider, withContext } = createStyleContext(menubar)
 
@@ -110,16 +109,16 @@ export const Root = withProvider<
   Assign<MenubarPrimitive.MenubarProps, JsxStyleProps>
 >(MenubarPrimitive.Root, 'root')
 
-export const Menu = MenubarPrimitive.Menu
+export const Menu: React.FC<MenubarPrimitive.MenubarMenuProps> = MenubarPrimitive.Menu //not doing this was giving error
 
 export const Group = withContext<
   React.ElementRef<typeof MenubarPrimitive.Group>,
   Assign<MenubarPrimitive.MenubarGroupProps, JsxStyleProps>
 >(MenubarPrimitive.Group, 'group')
 
-export const Portal = MenubarPrimitive.Portal
+export const Portal: React.FC<MenubarPrimitive.MenubarPortalProps> = MenubarPrimitive.Portal //not doing this was giving error
 
-export const SubMenu = MenubarPrimitive.Sub
+export const SubMenu: React.FC<MenubarPrimitive.MenubarSubProps> = MenubarPrimitive.Sub //not doing this was giving error
 
 export const RadioGroup = withContext<
   React.ElementRef<typeof MenubarPrimitive.RadioGroup>,

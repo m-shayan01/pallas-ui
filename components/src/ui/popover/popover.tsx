@@ -1,11 +1,10 @@
 'use client'
 
+import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import * as PopoverPrimitive from '@radix-ui/react-popover'
 import { popover } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import * as React from 'react'
-import { createStyleContext } from '~/utils/style-context'
-import type { Assign, WithFixedClassName } from '~/utils/types'
 
 const { withProvider, withContext } = createStyleContext(popover)
 

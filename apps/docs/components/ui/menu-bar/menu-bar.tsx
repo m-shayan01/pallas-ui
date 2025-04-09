@@ -1,13 +1,12 @@
 'use client'
 
-import { createStyleContext } from '@pallas-ui/style-context'
+import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import * as MenubarPrimitive from '@radix-ui/react-menubar'
 import { css, cx } from '@styled-system/css'
 import { icon, menubar } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import { Check, ChevronRight, Circle } from 'lucide-react'
 import * as React from 'react'
-import type { Assign, WithFixedClassName } from '~/utils/types'
 
 const { withProvider, withContext } = createStyleContext(menubar)
 

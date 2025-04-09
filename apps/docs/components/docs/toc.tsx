@@ -99,6 +99,7 @@ export function Toc({ toc }: TocProps) {
       </div>
       <div
         className={css({
+          //component spacing via gap inline
           display: 'flex',
           flexDirection: 'column',
           gap: 'gap.inline.md',
@@ -119,34 +120,35 @@ export function Toc({ toc }: TocProps) {
             >
               {item.text}
             </Link>
-            {item.children && item.children.length > 0 && (
-              <div
-                className={css({
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 'gap.inline.sm',
-                  mt: 'gap.inline.md',
-                  ml: 'padding.inline.md',
-                })}
-              >
-                {item.children.map((child) => (
-                  <Link
-                    key={child.slug}
-                    href={`#${child.slug}`}
-                    className={css({
-                      display: 'inline-block',
-                      color: activeHeading === child.slug ? 'primary' : 'text.tertiary',
-                      textDecoration: 'none',
-                      fontSize: 'sm',
-                      fontWeight: activeHeading === child.slug ? 'medium' : 'normal',
-                      _hover: { color: 'primary.hover' },
-                    })}
-                  >
-                    {child.text}
-                  </Link>
-                ))}
-              </div>
-            )}
+            {item.children &&
+              item.children.length > 0 && ( //children inner spacing via padding
+                <div
+                  className={css({
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 'padding.inline.md',
+                    mt: 'padding.inline.md',
+                    ml: 'padding.inline.md',
+                  })}
+                >
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.slug}
+                      href={`#${child.slug}`}
+                      className={css({
+                        display: 'inline-block',
+                        color: activeHeading === child.slug ? 'primary' : 'text.tertiary',
+                        textDecoration: 'none',
+                        fontSize: 'sm',
+                        fontWeight: activeHeading === child.slug ? 'medium' : 'normal',
+                        _hover: { color: 'primary.hover' },
+                      })}
+                    >
+                      {child.text}
+                    </Link>
+                  ))}
+                </div>
+              )}
           </div>
         ))}
       </div>
