@@ -44,7 +44,7 @@ export const sidebar = defineSlotRecipe({
     root: {
       // className="group peer hidden text-sidebar-foreground md:block"
       display: 'none',
-      color: 'sidebar.foreground',
+      color: '{colors.text}',
       md: { display: 'block' },
     },
     gap: {
@@ -91,6 +91,7 @@ export const sidebar = defineSlotRecipe({
       transition: 'left, right, width 200ms ease-linear',
       display: 'none',
       md: { display: 'flex' },
+      borderColor: '{colors.border}',
 
       '.group:is([data-side=left]) &': {
         left: '0',
@@ -154,6 +155,8 @@ export const sidebar = defineSlotRecipe({
     },
     trigger: {
       // 'h-7 w-7'
+      h: 7,
+      w: 7,
     },
     rail: {
       // 'absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex',
@@ -184,16 +187,24 @@ export const sidebar = defineSlotRecipe({
       },
     },
     header: {
-      py: 2,
-      px: 3,
+      // 'flex flex-col gap-2 p-2',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2,
+      p: 2,
     },
     footer: {
-      py: 2,
-      px: 3,
+      // 'flex flex-col gap-2 p-2'
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 2,
+      p: 2,
     },
     separator: {
+      // 'mx-2 w-auto bg-sidebar-border'
+      w: 'auto!',
       mx: 2,
-      bg: '{colors.border}',
+      borderColor: '{colors.border}',
     },
     group: {
       // relative flex w-full min-w-0 flex-col p-2
@@ -214,8 +225,9 @@ export const sidebar = defineSlotRecipe({
       flexShrink: 0,
       alignItems: 'center',
       borderRadius: 'md',
-      px: 2,
-      fontSize: 'xs',
+      px: '{spacing.padding.inline.sm}',
+      my: '{spacing.gap.component.sm}',
+      fontSize: 'sm',
       fontWeight: '{medium}',
       color: '{colors.text.secondary}',
       outline: 'none',
@@ -258,10 +270,6 @@ export const sidebar = defineSlotRecipe({
       width: 'full',
       overflow: 'hidden',
       justifyContent: 'left',
-      '&[data-state=open]': {
-        bg: 'sidebar.accent',
-        color: 'sidebar.accent.foreground',
-      },
       '.group:is([data-collapsible=icon]) &': {
         p: 2,
       },
@@ -272,22 +280,135 @@ export const sidebar = defineSlotRecipe({
         size: 4,
         flexShrink: 0,
       },
+      '&[data-active=true]': {
+        backgroundColor: '{colors.primary.bg}!',
+        color: '{colors.primary.text}!',
+      },
     },
     menuAction: {
+      // 'absolute right-1 top-1.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 peer-hover/menu-button:text-sidebar-accent-foreground [&>svg]:size-4 [&>svg]:shrink-0',
+      //   // Increases the hit area of the button on mobile.
+      //   'after:absolute after:-inset-2 after:md:hidden',
+      //   'peer-data-[size=sm]/menu-button:top-1',
+      //   'peer-data-[size=default]/menu-button:top-1.5',
+      //   'peer-data-[size=lg]/menu-button:top-2.5',
+      //   'group-data-[collapsible=icon]:hidden',
+      // NOT IMPLEMENTED YET
+      //   showOnHover &&
+      //     'group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-sidebar-accent-foreground md:opacity-0',
       position: 'absolute',
-      top: 2,
-      right: 2,
+      right: 1,
+      top: 0,
+      aspectRatio: 1,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 'md',
+      p: 0,
+      color: '{colors.text}',
+      '& > svg': {
+        size: 4,
+        flexShrink: 0,
+      },
+      '.group:is([data-collapsible=icon]) &': {
+        display: 'none',
+      },
     },
     menuBadge: {
+      // 'pointer-events-none absolute right-1 flex h-5 min-w-5 select-none items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums text-sidebar-foreground',
+      // 'peer-hover/menu-button:text-sidebar-accent-foreground peer-data-[active=true]/menu-button:text-sidebar-accent-foreground',
+      // 'peer-data-[size=sm]/menu-button:top-1',
+      // 'peer-data-[size=default]/menu-button:top-1.5',
+      // 'peer-data-[size=lg]/menu-button:top-2.5',
+      // 'group-data-[collapsible=icon]:hidden',
       position: 'absolute',
       top: 2,
-      right: 2,
+      right: 1,
+
+      // '.peer:is([data-size=lg]) &': {
+      //   display: 'none',
+      // },
+
+      '.group:is([data-collapsible=icon]) &': {
+        display: 'none',
+      },
     },
     menuSub: {
-      borderLeft: '1px',
+      // 'mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5',
+      // 'group-data-[collapsible=icon]:hidden',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1',
+      minWidth: '0',
+      borderLeftWidth: '1px',
       borderColor: '{colors.border}',
-      pl: 2,
-      ml: 3,
+      px: 2.5,
+      py: 0.5,
+      mx: 3.5,
+      transform: 'translateX(1px)',
+
+      '.group:is([data-collapsible=icon]) &': {
+        display: 'none',
+      },
+    },
+    menuSubButton: {
+      // 'flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-sidebar-foreground outline-none ring-sidebar-ring
+      //  hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground
+      //  disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50
+      //  [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-sidebar-accent-foreground',
+      //  'data-[active=true]:bg-sidebar-accent data-[active=true]:text-sidebar-accent-foreground',
+      //  size === 'sm' && 'text-xs',
+      //  size === 'md' && 'text-sm',
+      //  'group-data-[collapsible=icon]:hidden',
+      height: '7',
+      minWidth: '0',
+      transform: 'translateX(-1px)',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '2',
+      overflow: 'hidden',
+      rounded: 'md',
+      px: '2',
+      color: '{colors.text}',
+      transition: 'colors',
+      outlineColor: '{colors.primary.text}',
+      fontSize: 'md',
+
+      _hover: {
+        bg: '{colors.fill.secondary}',
+        cursor: 'pointer',
+      },
+      _focusVisible: {
+        outlineWidth: '2',
+      },
+      _active: {
+        color: '{colors.primary.active}',
+        borderColor: '{colors.primary.borderActive}',
+      },
+      _disabled: {
+        pointerEvents: 'none',
+        opacity: '0.5',
+      },
+
+      '&[data-size=sm]': {
+        fontSize: 'sm',
+      },
+      '&[data-size=lg]': {
+        fontSize: 'lg',
+      },
+
+      '.group:is([data-collapsible=icon]) &': {
+        display: 'none',
+      },
+
+      '& > span:last-of-type': {
+        truncate: true,
+      },
+      '& > svg': {
+        size: '4',
+        flexShrink: '0',
+        color: 'sidebar.accent.foreground',
+      },
     },
   },
   // variants: {
