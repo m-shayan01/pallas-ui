@@ -7,12 +7,20 @@ references:
     link: https://www.radix-ui.com/docs/primitives/components/checkbox
     api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
+<ContentContainer>
+<Section>
+# Checkbox
+A control that allows the user to toggle between checked and not checked.
+
 
 <ComponentPreview name="checkbox" withRecipe />
+</Section>
 
+<Section>
 ## Installation
 
 <Steps>
+<Section>
 ### Install the following dependencies
 
 <InstallTabs pkg="@radix-ui/react-checkbox" />
@@ -23,8 +31,11 @@ references:
 
 ### Update the import paths to match your project setup
 
+</Section>
 </Steps>
+</Section>
 
+<Section>
 ## Usage
 
 ```tsx
@@ -36,7 +47,9 @@ import { Label } from '@/components/ui/label'
   <Label htmlFor="terms">Accept terms and conditions</Label>
 </div>
 ```
+</Section>
 
+<Section>
 ## Recipe
 ### Usage
 ```tsx
@@ -51,7 +64,9 @@ import { checkbox, type CheckboxVariantProps } from '@styled-system/recipes'
   </div>
 </div>
 ```
+</Section>
 
+<Section>
 ## Examples
 
 ### With text
@@ -59,3 +74,7 @@ import { checkbox, type CheckboxVariantProps } from '@styled-system/recipes'
 
 ### Disabled
 <ComponentPreview name="checkbox" file = "disabled"/>
+
+</Section>
+
+</ContentContainer>

@@ -51,21 +51,21 @@ export function ColorPalette() {
       className={css({
         display: 'flex',
         flexDirection: 'column',
-        gap: 'gap.inline.sm',
-        mb: 'layout.section.sm',
+        gap: '3', // Changed from gap.inline.sm
+        mb: '6', // Changed from layout.section.sm
       })}
     >
       {swatches.map(({ name, swatches }) => (
         <div
           key={name}
-          className={css({ display: 'flex', flexDirection: 'column', gap: 'layout.section.sm' })}
+          className={css({ display: 'flex', flexDirection: 'column', gap: '6' })} // Changed from layout.section.sm
         >
           <h2
             className={css({
               fontSize: '2xl',
               fontWeight: 'semibold',
               color: 'text',
-              mt: 'layout.section.lg',
+              mt: '10', // Changed from layout.section.lg
             })}
           >
             {name.charAt(0).toUpperCase() + name.slice(1)} Colors
@@ -74,8 +74,8 @@ export function ColorPalette() {
             className={css({
               display: 'flex',
               flexDirection: 'column',
-              gap: 'gap.component.sm',
-              p: 'gap.inline.sm',
+              gap: '4', // Changed from gap.component.sm
+              p: '3', // Changed from gap.inline.sm
               border: '1px solid',
               borderColor: 'border',
               borderRadius: 'md',
@@ -88,8 +88,8 @@ export function ColorPalette() {
                 className={css({
                   display: 'flex',
                   alignItems: 'center',
-                  gap: 'gap.inline.md',
-                  py: 'gap.component.sm',
+                  gap: '4', // Changed from gap.inline.md
+                  py: '4', // Changed from gap.component.sm
                   borderBottom: '1px solid',
                   borderColor: 'border.secondary',
                   _last: { borderBottom: 'none' },
@@ -109,7 +109,7 @@ export function ColorPalette() {
                   className={css({
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: 'padding.inline.xs',
+                    gap: '1', // Changed from padding.inline.xs
                   })}
                 >
                   <span className={css({ fontSize: 'sm', fontWeight: 'medium' })}>{tokenName}</span>

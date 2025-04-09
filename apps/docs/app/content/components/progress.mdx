@@ -7,12 +7,19 @@ references:
     link: https://www.radix-ui.com/docs/primitives/components/progress
     api: https://www.radix-ui.com/docs/primitives/components/progress#api-reference
 ---
+<ContentContainer>
+<Section>
+# Progress
+Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
 
 <ComponentPreview name="progress" withRecipe />
+</Section>
 
+<Section>
 ## Installation
 
 <Steps>
+<Section>
 ### Install the following dependencies
 
 <InstallTabs pkg="react-aria-components" />
@@ -22,9 +29,11 @@ references:
 <ComponentSource name="progress" />
 
 ### Update the import paths to match your project setup
-
+</Section>
 </Steps>
+</Section>
 
+<Section>
 ## Usage
 
 ```tsx
@@ -39,7 +48,9 @@ import Progress from '@/components/ui/progress'
   <Progress.Label>33%</Progress.Label>
 </Progress.Root>
 ```
+</Section>
 
+<Section>
 ## Examples
 ### Default
 <ComponentPreview name="progress" />
@@ -61,3 +72,6 @@ import Progress from '@/components/ui/progress'
 
 ### Indeterminate
 <ComponentPreview name="progress" file="indeterminate" />
+</Section>
+
+</ContentContainer>

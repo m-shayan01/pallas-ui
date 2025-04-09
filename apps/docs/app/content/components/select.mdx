@@ -7,12 +7,19 @@ references:
     link: https://www.radix-ui.com/docs/primitives/components/select
     api: https://www.radix-ui.com/docs/primitives/components/select#api-reference
 ---
+<ContentContainer>
 
+<Section>
+# Select
+Displays a list of options for the user to pick from - triggered by a button.
 <ComponentPreview name="select" withRecipe />
+</Section>
 
+<Section>
 ## Installation
 
 <Steps>
+<Section>
 ### Install the following dependencies
 
 <InstallTabs pkg="@radix-ui/react-select" />
@@ -22,9 +29,11 @@ references:
 <ComponentSource name="select" />
 
 ### Update the import paths to match your project setup
-
+</Section>
 </Steps>
+</Section>
 
+<Section>
 ## Usage
 
 ```tsx
@@ -42,7 +51,9 @@ import Select from '@/components/ui/select'
   </Select.Content>
 </Select.Root>
 ```
+</Section>
 
+<Section>
 ## Examples
 ### Groups
 <ComponentPreview name ="select" file = "groups" />
@@ -52,3 +63,7 @@ import Select from '@/components/ui/select'
 
 ### Form
 <ComponentPreview name ="select" file = "form" />
+
+</Section>
+
+</ContentContainer>

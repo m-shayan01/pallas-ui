@@ -74,7 +74,7 @@ export function ComponentPreview({
           <Trigger
             value="preview"
             className={css({
-              p: 'padding.inline.md',
+              p: '3', // Changed from padding.inline.md
               color: 'text.secondary',
               fontWeight: 'medium',
               _selected: {
@@ -91,7 +91,7 @@ export function ComponentPreview({
             <Trigger
               value="code"
               className={css({
-                p: 'padding.inline.md',
+                p: '3', // Changed from padding.inline.md
                 color: 'text.secondary',
                 fontWeight: 'medium',
                 _selected: {
@@ -109,7 +109,7 @@ export function ComponentPreview({
             <Trigger
               value="recipe"
               className={css({
-                p: 'padding.inline.md',
+                p: '3', // Changed from padding.inline.md
                 color: 'text.secondary',
                 fontWeight: 'medium',
                 _selected: {
@@ -130,7 +130,7 @@ export function ComponentPreview({
               fallback={
                 <div
                   className={css({
-                    p: 'padding.block.sm',
+                    p: '1', // Changed from padding.block.sm
                     textAlign: 'center',
                     color: 'text.secondary',
                   })}
@@ -148,7 +148,7 @@ export function ComponentPreview({
           <Content
             value="code"
             className={css({
-              px: 'padding.block.md',
+              p: '2', // Changed from padding.block.md
               overflowX: 'auto', // Added for code block responsiveness
               maxWidth: '100%',
             })}
@@ -158,7 +158,7 @@ export function ComponentPreview({
         )}
 
         {withRecipe && hasRecipe && recipe && (
-          <Content value="recipe" className={css({ px: 'padding.block.md' })}>
+          <Content value="recipe" className={css({ p: '2' /* Changed from padding.block.md */ })}>
             {recipe}
           </Content>
         )}
@@ -171,7 +171,6 @@ export function ComponentSource({ name, children }: { name: string; children?: R
   return (
     <div
       className={css({
-        py: 'padding.block.sm',
         width: '100%', // Changed from fixed width to 100%
         maxWidth: '100%',
       })}
@@ -188,7 +187,7 @@ export function ComponentSource({ name, children }: { name: string; children?: R
       ) : (
         <div
           className={css({
-            p: 'padding.block.sm',
+            p: '1', // Changed from padding.block.sm
             border: '1px dashed',
             borderColor: 'border.secondary',
             rounded: 'md',
@@ -199,7 +198,7 @@ export function ComponentSource({ name, children }: { name: string; children?: R
           })}
         >
           <p>Source code for {name} not available</p>
-          <p className={css({ mt: 'gap.inline.sm', fontSize: 'xs', color: 'text.tertiary' })}>
+          <p className={css({ mt: '3', fontSize: 'xs', color: 'text.tertiary' })}>
             This component may be in a different location or the rehype plugin is not configured
             correctly
           </p>

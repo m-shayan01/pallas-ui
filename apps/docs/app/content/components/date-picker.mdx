@@ -4,14 +4,21 @@ description: A date picker component with range and presets.
 references:
   shadcnUiLink: https://ui.shadcn.com/docs/components/date-picker
 ---
+<ContentContainer>
+<Section>
+# Date Picker
+A date picker component with range and presets.
 
 <ComponentPreview name="date-picker" withRecipe />
+</Section>
 
+<Section>
 ## Installation
 
 The Date Picker is built using a composition of the `<Popover />` and the `<DayPicker />` components.
 
 <Steps>
+<Section>
 ### Install the following dependencies
 
 <InstallTabs pkg="date-fns react-day-picker" />
@@ -19,9 +26,11 @@ The Date Picker is built using a composition of the `<Popover />` and the `<DayP
 ### Make sure you have the required components
 
 You'll need the [Popover](/docs/components/popover) and [DayPicker](/docs/components/daypicker) components.
-
+</Section>
 </Steps>
+</Section>
 
+<Section>
 ## Usage
 
 ```tsx
@@ -64,6 +73,10 @@ export default function Example() {
   )
 }
 ```
+
+</Section>
+
+<Section>
 ## Examples
 
 ### Date Range Picker
@@ -71,3 +84,6 @@ export default function Example() {
 
 ### With Presets
 <ComponentPreview name="date-picker" file= "with-presets" />
+</Section>
+
+</ContentContainer>

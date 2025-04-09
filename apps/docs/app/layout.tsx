@@ -27,8 +27,6 @@ export default function RootLayout({
               position: 'sticky',
               top: 0,
               zIndex: 10,
-              mt: 'layout.section.sm',
-              mb: 'layout.section.sm',
             })}
           >
             <div

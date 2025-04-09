@@ -50,45 +50,8 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
     }
   }
 
-  // Define tab options
-  const tabs = [
-    { value: 'npm', content: npm },
-    { value: 'yarn', content: yarn },
-    { value: 'pnpm', content: pnpm },
-  ]
-
-  // Reusable styles
-  const triggerStyles = (isActive: boolean) =>
-    css({
-      p: 'padding.inline.md',
-      fontWeight: isActive ? 'semibold' : 'normal',
-      borderBottom: isActive ? '2px solid' : 'none',
-      borderColor: 'primary',
-    })
-
-  const contentStyles = css({
-    p: 'padding.block.md',
-    bg: 'surface.container',
-  })
-
-  const preStyles = css({
-    bg: 'fill.secondary',
-    p: 'padding.block.lg',
-    rounded: 'md',
-    color: 'text.secondary',
-    border: '1px solid',
-    borderColor: 'border',
-    overflow: 'auto',
-    fontFamily: 'mono',
-    fontSize: 'sm',
-  })
-
   return (
-    <div
-      className={css({
-        py: 'gap.inline.sm',
-      })}
-    >
+    <div>
       <Root
         value={activeTab}
         onValueChange={handleTabChange}
@@ -106,15 +69,39 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
             borderColor: 'border',
           })}
         >
-          {tabs.map((tab) => (
-            <Trigger
-              key={tab.value}
-              value={tab.value}
-              className={triggerStyles(activeTab === tab.value)}
-            >
-              {tab.value}
-            </Trigger>
-          ))}
+          <Trigger
+            value="npm"
+            className={css({
+              p: '3', // Changed from padding.inline.md
+              fontWeight: activeTab === 'npm' ? 'semibold' : 'normal',
+              borderBottom: activeTab === 'npm' ? '2px solid' : 'none',
+              borderColor: 'primary',
+            })}
+          >
+            npm
+          </Trigger>
+          <Trigger
+            value="yarn"
+            className={css({
+              p: '3', // Changed from padding.inline.md
+              fontWeight: activeTab === 'yarn' ? 'semibold' : 'normal',
+              borderBottom: activeTab === 'yarn' ? '2px solid' : 'none',
+              borderColor: 'primary',
+            })}
+          >
+            yarn
+          </Trigger>
+          <Trigger
+            value="pnpm"
+            className={css({
+              p: '3', // Changed from padding.inline.md
+              fontWeight: activeTab === 'pnpm' ? 'semibold' : 'normal',
+              borderBottom: activeTab === 'pnpm' ? '2px solid' : 'none',
+              borderColor: 'primary',
+            })}
+          >
+            pnpm
+          </Trigger>
         </TabList>
 
         {/* Container for all content tabs with relative positioning */}
@@ -123,22 +110,84 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
           <CopyButton
             value={getCurrentTabContent()}
             className={css({
-              top: 'padding.inline.lg',
-              right: 'padding.inline.lg',
+              top: '4', // Changed from padding.inline.lg
+              right: '4', // Changed from padding.inline.lg
             })}
           />
           <div
             className={css({
-              my: 'padding.inline.xs',
+              my: '3', // Changed from gap.inline.sm
             })}
           >
-            {tabs.map((tab) => (
-              <Content key={tab.value} value={tab.value} className={contentStyles}>
-                <pre className={preStyles}>
-                  <code>{tab.content}</code>
-                </pre>
-              </Content>
-            ))}
+            <Content
+              value="npm"
+              className={css({
+                px: '2', // Changed from padding.block.md
+                bg: 'surface.container',
+              })}
+            >
+              <pre
+                className={css({
+                  bg: 'fill.secondary',
+                  p: '3', // Changed from padding.block.lg
+                  rounded: 'md',
+                  color: 'text.secondary',
+                  border: '1px solid',
+                  borderColor: 'border',
+                  overflow: 'auto',
+                  fontFamily: 'mono',
+                  fontSize: 'sm',
+                })}
+              >
+                <code>{npm}</code>
+              </pre>
+            </Content>
+            <Content
+              value="yarn"
+              className={css({
+                p: '2', // Changed from padding.block.md
+                bg: 'surface.container',
+              })}
+            >
+              <pre
+                className={css({
+                  bg: 'fill.secondary',
+                  p: '3', // Changed from padding.block.lg
+                  rounded: 'md',
+                  color: 'text.secondary',
+                  border: '1px solid',
+                  borderColor: 'border',
+                  overflow: 'auto',
+                  fontFamily: 'mono',
+                  fontSize: 'sm',
+                })}
+              >
+                <code>{yarn}</code>
+              </pre>
+            </Content>
+            <Content
+              value="pnpm"
+              className={css({
+                p: '2', // Changed from padding.block.md
+                bg: 'surface.container',
+              })}
+            >
+              <pre
+                className={css({
+                  bg: 'fill.secondary',
+                  p: '3', // Changed from padding.block.lg
+                  rounded: 'md',
+                  color: 'text.secondary',
+                  border: '1px solid',
+                  borderColor: 'border',
+                  overflow: 'auto',
+                  fontFamily: 'mono',
+                  fontSize: 'sm',
+                })}
+              >
+                <code>{pnpm}</code>
+              </pre>
+            </Content>
           </div>
         </div>
       </Root>

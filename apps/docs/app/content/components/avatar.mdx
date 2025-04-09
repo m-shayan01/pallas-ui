@@ -7,12 +7,19 @@ references:
     link: https://www.radix-ui.com/docs/primitives/components/avatar
     api: https://www.radix-ui.com/docs/primitives/components/avatar#api-reference
 ---
+<ContentContainer>
+<Section>
+# Avatar
+An image element with a fallback for representing the user.
+
 
 <ComponentPreview name="avatar" withRecipe />
-
+</Section>
+<Section>
 ## Installation
 
 <Steps>
+<Section>
 ### Install the following dependencies
 
 <InstallTabs pkg="@radix-ui/react-avatar" />
@@ -22,9 +29,12 @@ references:
 <ComponentSource name="avatar" />
 
 ### Update the import paths to match your project setup
-
+</Section>
 </Steps>
 
+</Section>
+
+<Section>
 ## Usage
 
 ```tsx
@@ -35,7 +45,9 @@ import Avatar from '@/components/ui/avatar'
   <Avatar.Fallback>NP</Avatar.Fallback>
 </Avatar.Root>
 ```
+</Section>
 
+<Section>
 ## Recipe
 ### Usage
 ```tsx
@@ -47,3 +59,5 @@ import { avatar, type AvatarVariantProps } from '@styled-system/recipes'
   <div className={avatar().fallback}>NP</div>
 </div>
 ```
+</Section>
+</ContentContainer>

@@ -9,11 +9,10 @@ export function Steps({ children }: StepsProps) {
   return (
     <div
       className={css({
-        //inner children spacing via padding
         borderLeft: '2px solid',
         borderColor: 'border',
-        pl: 'padding.inline.lg',
-        py: 'padding.block.sm',
+        pl: '4', // Changed from padding.inline.lg
+        py: '1', // Changed from padding.block.sm
       })}
     >
       {children}

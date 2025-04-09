@@ -1,9 +1,9 @@
 import { css } from '@styled-system/css'
+import { Container } from '@styled-system/jsx'
 import { allComponents, allGuides, allThemings } from 'content-collections'
 import { notFound } from 'next/navigation'
+import { DynamicToc } from '../../../components/docs/dynamic-toc'
 import { MdxComponent } from '../../../components/docs/mdx-components'
-import { Toc } from '../../../components/docs/toc'
-import { generateToc } from '../../../lib/toc'
 
 export function generateStaticParams() {
   const guideParams = allGuides.map((guide) => ({
@@ -71,8 +71,6 @@ type ContentPageProps = {
     title: string
   }
   mdxCode: string
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  tocData: any[]
   showHeader?: boolean
 }
 
@@ -81,7 +79,6 @@ function ContentPage({
   description,
   breadcrumb,
   mdxCode,
-  tocData,
   showHeader = true,
 }: ContentPageProps) {
   return (
@@ -120,7 +117,7 @@ function ContentPage({
               <span className={css({ color: 'text.secondary' })}>{breadcrumb.title}</span>
             </div>
 
-            {title && (
+            {/* {title && (
               <h1
                 className={css({
                   mt: 'layout.section.lg',
@@ -150,7 +147,7 @@ function ContentPage({
               >
                 {description}
               </p>
-            )}
+            )} */}
           </header>
         )}
 
@@ -164,33 +161,31 @@ function ContentPage({
         </div>
       </div>
 
-      {tocData && tocData.length > 0 && (
+      <div
+        className={css({
+          display: 'none',
+          position: 'relative',
+          fontSize: 'sm',
+          xl: {
+            display: 'block',
+          },
+        })}
+      >
         <div
           className={css({
-            display: 'none',
-            position: 'relative',
-            fontSize: 'sm',
-            xl: {
-              display: 'block',
-            },
+            position: 'sticky',
+            top: '72px',
+            height: 'calc(100vh - 72px)',
+            p: 'padding.block.md',
+            borderLeft: '1px solid',
+            borderColor: 'border.secondary',
+            bg: 'surface.container',
+            overflowY: 'auto',
           })}
         >
-          <div
-            className={css({
-              position: 'sticky',
-              top: '72px',
-              height: 'calc(100vh - 72px)',
-              p: 'padding.block.md',
-              borderLeft: '1px solid',
-              borderColor: 'border.secondary',
-              bg: 'surface.container',
-              overflowY: 'auto',
-            })}
-          >
-            <Toc toc={tocData} />
-          </div>
+          <DynamicToc />
         </div>
-      )}
+      </div>
     </main>
   )
 }
@@ -236,15 +231,12 @@ export default async function DocsPage({ params }: any) {
       notFound()
     }
 
-    const tocData = generateToc(component.content)
-
     return (
       <ContentPage
         title={component.title}
         description={component.description}
         breadcrumb={{ section: 'Components', title: component.title }}
         mdxCode={component.mdx}
-        tocData={tocData}
       />
     )
   }
@@ -257,13 +249,10 @@ export default async function DocsPage({ params }: any) {
       notFound()
     }
 
-    const tocData = generateToc(theme.content)
-
     return (
       <ContentPage
         breadcrumb={{ section: 'Theming', title: theme.title }}
         mdxCode={theme.mdx}
-        tocData={tocData}
         showHeader={true}
       />
     )
@@ -276,13 +265,10 @@ export default async function DocsPage({ params }: any) {
     notFound()
   }
 
-  const tocData = generateToc(guide.content)
-
   return (
     <ContentPage
       mdxCode={guide.mdx}
       breadcrumb={{ section: 'Introduction', title: guide.title }}
-      tocData={tocData}
       showHeader={true}
     />
   )

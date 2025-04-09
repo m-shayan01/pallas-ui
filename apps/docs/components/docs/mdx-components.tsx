@@ -3,19 +3,21 @@
 import Accordian from '@/components/ui/accordian/accordian'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Heading, Paragraph } from '@/components/ui/typography'
 import { MDXContent } from '@content-collections/mdx/react'
 import { css } from '@styled-system/css'
 import { HashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { ComponentPreview, ComponentSource } from './component-preview'
+import { ContentContainer } from './content-container'
 import { CopyButton } from './copy-button'
 import { InstallTabs } from './install-tabs'
 import { PackageTabs } from './package-tabs'
+import { Section } from './section'
 import { Steps } from './steps'
 import { ColorPalette } from './theme/color-palette'
 import { SizeBox, SpacingBox } from './theme/size-box'
-//import { ThemePreview } from './theme/theme-preview'
 
 interface MdxComponentProps {
   code: string
@@ -31,7 +33,7 @@ function HeadingAnchor({ id, level }: { id?: string; level: 1 | 2 | 3 | 4 }) {
       className={css({
         display: 'inline-block',
         rounded: 'md',
-        mx: level > 2 ? 'padding.inline.xs' : 'padding.inline.sm',
+        mx: level > 2 ? '1' : '2',
         color: 'text.tertiary',
         opacity: '0',
         transition: 'opacity 0.2s',
@@ -128,36 +130,13 @@ function CodeBlock({
     <div
       className={css({
         position: 'relative',
-        my: 'gap.inline.sm',
         width: '100%',
         maxWidth: '100%',
       })}
     >
-      {/* {filename && (
-        <div
-          className={css({
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            right: '0',
-            bg: 'fill',
-            color: 'text.secondary',
-            fontSize: 'xs',
-            px: 'padding.inline.md',
-            py: 'padding.block.sm',
-            borderBottom: '1px solid',
-            borderColor: 'border.secondary',
-            fontFamily: 'mono',
-            zIndex: 5,
-          })}
-        >
-          {filename}
-        </div>
-      )} */}
       <pre
         className={css({
-          p: 'padding.block.lg',
-          //pt: filename ? 'layout.internal.md' : 'padding.block.md',
+          p: '3',
           rounded: 'md',
           bg: 'fill.secondary',
           color: 'text.secondary',
@@ -185,132 +164,125 @@ function CodeBlock({
 
       {/* Only add the copy button if we have content to copy */}
       {codeString && <CopyButton value={codeString} />}
-
-      {/* {language && !filename && (
-        <div
-          className={css({
-            position: 'absolute',
-            top: '0',
-            right: '0',
-            bg: 'fill',
-            color: 'text.secondary',
-            fontSize: 'xs',
-            px: 'padding.inline.sm',
-            py: 'padding.block.xs',
-            rounded: 'md',
-            mt: '12px',
-            mr: '48px', // Space for copy button
-          })}
-        >
-          {language}
-        </div>
-      )} */}
     </div>
   )
 }
 
 const components = {
-  h1: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1
-      id={id}
-      className={css({
-        mt: 'layout.section.lg',
-        mb: 'layout.section.sm',
-        fontSize: '3xl',
-        fontWeight: 'bold',
-        lineHeight: 'tight',
-        scrollMargin: '24',
-        display: 'flex',
-        alignItems: 'center',
-        color: 'text',
-        _groupHover: { '& a': { opacity: 1 } },
-      })}
-      {...props}
-    >
-      <span>{children}</span>
-      <HeadingAnchor id={id} level={1} />
-    </h1>
+  ContentContainer,
+  Section,
+  h1: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+      <Heading
+        id={id}
+        level={1}
+        color="default"
+        css={{
+          mt: '6',
+          mb: '4',
+          scrollMargin: '24',
+          display: 'flex',
+          alignItems: 'center',
+          fontWeight: '700',
+          fontSize: '4xl',
+        }}
+        {...props}
+      >
+        <span>{children}</span>
+        <HeadingAnchor id={id} level={1} />
+      </Heading>
+    </div>
   ),
-  h2: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2
-      id={id}
-      className={css({
-        mt: 'layout.section.lg',
-        mb: 'layout.section.sm',
-        fontSize: '2xl',
-        fontWeight: 'semibold',
-        lineHeight: 'tight',
-        scrollMargin: '24',
-        display: 'flex',
-        alignItems: 'center',
-        color: 'text',
-        _groupHover: { '& a': { opacity: 1 } },
-      })}
-      {...props}
-    >
-      <span>{children}</span>
-      <HeadingAnchor id={id} level={2} />
-    </h2>
+  h2: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+      <Heading
+        id={id}
+        level={2}
+        color="default"
+        css={{
+          mt: '6',
+          mb: '3',
+          scrollMargin: '24',
+          display: 'flex',
+          alignItems: 'center',
+          fontWeight: '600',
+          fontSize: '3xl',
+        }}
+        {...props}
+      >
+        <span>{children}</span>
+        <HeadingAnchor id={id} level={2} />
+      </Heading>
+    </div>
   ),
-  h3: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3
-      id={id}
-      className={css({
-        my: 'layout.internal.sm', //exist inside the h2 layout
-        fontSize: 'xl',
-        fontWeight: 'semibold',
-        lineHeight: 'tight',
-        scrollMargin: '24',
-        display: 'flex',
-        alignItems: 'center',
-        color: 'text',
-        _groupHover: { '& a': { opacity: 1 } },
-      })}
-      {...props}
-    >
-      <span className={css({ mr: 'gap.inline.sm' })}>{children}</span>
-      <HeadingAnchor id={id} level={3} />
-    </h3>
+  h3: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+      <Heading
+        id={id}
+        level={3}
+        color="default"
+        css={{
+          mt: '3',
+          mb: '1',
+          scrollMargin: '24',
+          display: 'flex',
+          alignItems: 'center',
+          fontWeight: '600',
+          fontSize: '2xl',
+        }}
+        {...props}
+      >
+        <span className={css({ mr: '3' })}>{children}</span>
+        <HeadingAnchor id={id} level={3} />
+      </Heading>
+    </div>
   ),
-  h4: ({ id, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4
-      id={id}
-      className={css({
-        my: 'layout.default.sm', //exist inside the h3 layout
-        fontSize: 'lg',
-        fontWeight: 'semibold',
-        lineHeight: 'tight',
-        scrollMargin: '24',
-        display: 'flex',
-        alignItems: 'center',
-        color: 'text',
-        _groupHover: { '& a': { opacity: 1 } },
-      })}
-      {...props}
-    >
-      <span>{children}</span>
-      <HeadingAnchor id={id} level={4} />
-    </h4>
+  h4: ({ id, children, color: _color, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+    <div className={css({ position: 'relative', _groupHover: { '& a': { opacity: 1 } } })}>
+      <Heading
+        id={id}
+        level={4}
+        color="default"
+        css={{
+          my: '2',
+          scrollMargin: '24',
+          display: 'flex',
+          alignItems: 'center',
+          fontWeight: '500',
+          fontSize: 'xl',
+        }}
+        {...props}
+      >
+        <span>{children}</span>
+        <HeadingAnchor id={id} level={4} />
+      </Heading>
+    </div>
   ),
   a: CustomLink,
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p
-      className={css({
-        mt: 'gap.inline.sm',
-        mb: 'gap.inline.sm',
-        lineHeight: 'relaxed',
-        color: 'text.secondary',
-      })}
-      {...props}
-    />
-  ),
+  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => {
+    // Destructure any variant prop that might come from MDX
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    const { variant: _variant, ...restProps } = props as any
+    return (
+      <Paragraph
+        variant="default"
+        css={{
+          mt: '3',
+          mb: '1',
+          fontSize: 'md',
+          lineHeight: 'tight',
+        }}
+        {...restProps}
+      />
+    )
+  },
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
       className={css({
-        my: 'gap.component.sm',
-        ml: 'padding.inline.lg',
+        my: '4',
+        ml: '4',
         listStyleType: 'disc',
-        '& li': { m: 'gap.inline.sm' },
+        '& li': { m: '3' },
         color: 'text.secondary',
       })}
       {...props}
@@ -319,10 +291,10 @@ const components = {
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
     <ol
       className={css({
-        my: 'gap.component.sm',
-        ml: 'padding.inline.lg',
+        my: '4',
+        ml: '4',
         listStyleType: 'decimal',
-        '& li': { m: 'gap.inline.sm' },
+        '& li': { m: '3' },
         color: 'text.secondary',
       })}
       {...props}
@@ -331,89 +303,12 @@ const components = {
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className={css({ color: 'text.secondary' })} {...props} />
   ),
-  // blockquote: (props: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
-  //   <blockquote
-  //     className={css({
-  //       mt: 'gap.component.lg',
-  //       mb: 'gap.component.lg',
-  //       borderLeft: '4px solid',
-  //       borderColor: 'border.secondary',
-  //       pl: 'padding.inline.lg',
-  //       py: 'padding.block.sm',
-  //       fontStyle: 'italic',
-  //       color: 'text.secondary',
-  //     })}
-  //     {...props}
-  //   />
-  // ),
-  // hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
-  //   <hr
-  //     className={css({
-  //       my: 'layout.internal.md',
-  //       borderColor: 'border.secondary',
-  //     })}
-  //     {...props}
-  //   />
-  // ),
-  // table: (props: React.TableHTMLAttributes<HTMLTableElement>) => (
-  //   <div
-  //     className={css({
-  //       my: 'gap.component.lg',
-  //       w: 'full',
-  //       overflowX: 'auto',
-  //     })}
-  //   >
-  //     <table
-  //       className={css({
-  //         w: 'full',
-  //         borderCollapse: 'collapse',
-  //         textAlign: 'left',
-  //         fontSize: 'sm',
-  //         color: 'text.secondary',
-  //       })}
-  //       {...props}
-  //     />
-  //   </div>
-  // ),
-  // tr: (props: React.HTMLAttributes<HTMLTableRowElement>) => (
-  //   <tr
-  //     className={css({
-  //       borderTop: '1px solid',
-  //       borderColor: 'border.secondary',
-  //     })}
-  //     {...props}
-  //   />
-  // ),
-  // th: (props: React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => (
-  //   <th
-  //     className={css({
-  //       py: 'padding.block.sm',
-  //       px: 'padding.inline.md',
-  //       fontWeight: 'semibold',
-  //       bg: 'fill.secondary',
-  //       color: 'text',
-  //     })}
-  //     {...props}
-  //   />
-  // ),
-  // td: (props: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
-  //   <td
-  //     className={css({
-  //       py: 'padding.block.sm',
-  //       px: 'padding.inline.md',
-  //       borderTop: '1px solid',
-  //       borderColor: 'border.secondary',
-  //     })}
-  //     {...props}
-  //   />
-  // ),
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   code: (props: any) => {
     // If the code has a className, it's part of a code block
     if (props.className) {
       return <CodeBlock {...props} />
     }
-    //do this later
     return <CodeBlock {...props} />
   },
 
@@ -428,7 +323,6 @@ const components = {
   ColorPalette,
   SizeBox,
   SpacingBox,
-  //ThemePreview,
 }
 
 export function MdxComponent({ code }: MdxComponentProps) {
@@ -436,7 +330,7 @@ export function MdxComponent({ code }: MdxComponentProps) {
     return (
       <div
         className={css({
-          p: 'layout.section.lg',
+          p: '10',
           border: '1px solid',
           borderColor: 'error.border',
           bg: 'error.bg',
@@ -452,21 +346,11 @@ export function MdxComponent({ code }: MdxComponentProps) {
   try {
     return (
       <div
-      // className={css({                //fix
-      //   '& [data-rehype-pretty-code-title]': {
-      //     roundedTop: 'md',
-      //     bg: 'fill',
-      //     color: 'text.secondary',
-      //     fontSize: 'xs',
-      //     px: 'layout.section.lg',
-      //     py: 'padding.block.sm',
-      //     fontFamily: 'mono',
-      //     '& + div > pre': {
-      //       mt: '0',
-      //       roundedTop: '0',
-      //     },
-      //   },
-      // })}
+        data-mdx-content="true"
+        className={css({
+          width: '100%',
+          position: 'relative',
+        })}
       >
         <MDXContent code={code} components={components} />
       </div>
@@ -476,7 +360,7 @@ export function MdxComponent({ code }: MdxComponentProps) {
     return (
       <div
         className={css({
-          p: 'layout.section.lg',
+          p: '10',
           border: '1px solid',
           borderColor: 'error.border',
           bg: 'error.bg',

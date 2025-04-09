@@ -16,9 +16,9 @@ export function SizeBox({
       className={css({
         display: 'flex',
         flexDirection: 'column',
-        gap: 'gap.inline.sm',
-        p: 'gap.inline.sm',
-        mb: 'gap.component.sm',
+        gap: '3', // Changed from gap.inline.sm
+        p: '3', // Changed from gap.inline.sm
+        mb: '4', // Changed from gap.component.sm
         border: '1px solid',
         borderColor: 'border',
         borderRadius: 'md',
@@ -26,7 +26,7 @@ export function SizeBox({
         minWidth: '180px',
       })}
     >
-      <div className={css({ display: 'flex', flexDirection: 'column', gap: 'gap.inline.lg' })}>
+      <div className={css({ display: 'flex', flexDirection: 'column', gap: '5' })}>
         <span className={css({ fontSize: 'sm', fontWeight: 'medium' })}>{label}</span>
         <span className={css({ fontSize: 'xs', color: 'text.tertiary' })}>
           {width} x {height}
@@ -40,7 +40,7 @@ export function SizeBox({
           justifyContent: 'center',
           borderRadius: 'md',
           mx: 'auto',
-          mt: 'gap.inline.sm',
+          mt: '3', // Changed from gap.inline.sm
         })}
         style={{ width, height }}
       />
@@ -60,11 +60,11 @@ export function SpacingBox({
       className={css({
         display: 'flex',
         alignItems: 'center',
-        gap: 'gap.inline.lg',
-        p: 'gap.inline.sm',
+        gap: '5', // Changed from gap.inline.lg
+        p: '3', // Changed from gap.inline.sm
         border: '1px solid',
         borderColor: 'border',
-        mb: 'gap.component.sm',
+        mb: '4', // Changed from gap.component.sm
         borderRadius: 'md',
         bg: 'surface.container',
       })}
@@ -78,7 +78,7 @@ export function SpacingBox({
             fontSize: 'xs',
             color: 'text.tertiary',
             display: 'block',
-            mt: 'gap.inline.sm',
+            mt: '3', // Changed from gap.inline.sm
           })}
         >
           {size}

@@ -7,12 +7,19 @@ references:
     link: https://www.radix-ui.com/docs/primitives/components/popover
     api: https://www.radix-ui.com/docs/primitives/components/popover#api-reference
 ---
+<ContentContainer>
+<Section>
+# Popover
+Displays rich content in a portal, triggered by a button.
 
 <ComponentPreview name="popover" withRecipe />
+</Section>
 
+<Section>
 ## Installation
 
 <Steps>
+<Section>
 ### Install the following dependencies
 
 <InstallTabs pkg="@radix-ui/react-popover" />
@@ -22,9 +29,11 @@ references:
 <ComponentSource name="popover" />
 
 ### Update the import paths to match your project setup
-
+</Section>
 </Steps>
+</Section>
 
+<Section>
 ## Usage
 
 ```tsx
@@ -36,7 +45,9 @@ import Popover from '@/components/ui/popover'
   <Popover.Content>Place content for the popover here.</Popover.Content>
 </Popover.Root>
 ```
+</Section>
 
+<Section>
 ## Examples
 ### Simple
 <ComponentPreview name="popover" file = "simple" />
@@ -44,3 +55,5 @@ import Popover from '@/components/ui/popover'
 ### With Form controls
 
 <ComponentPreview name="popover" />
+</Section>
+</ContentContainer>

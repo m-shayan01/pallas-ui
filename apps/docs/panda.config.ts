@@ -55,6 +55,20 @@ export default defineConfig({
             900: { value: '#111827' },
           },
         },
+        fonts: {
+          heading: {
+            value:
+              'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+          },
+          body: {
+            value:
+              'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+          },
+          mono: {
+            value:
+              'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+          },
+        },
       },
       semanticTokens: {
         colors: {

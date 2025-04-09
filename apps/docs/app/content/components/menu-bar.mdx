@@ -7,12 +7,20 @@ references:
     link: https://www.radix-ui.com/docs/primitives/components/menubar
     api: https://www.radix-ui.com/docs/primitives/components/menubar#api-reference
 ---
+<ContentContainer>
 
+<Section>
+# Menu-bar
+A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
 <ComponentPreview name="menu-bar" withRecipe />
+</Section>
+
+<Section>
 
 ## Installation
 
 <Steps>
+<Section>
 ### Install the following dependencies
 
 <InstallTabs pkg="@radix-ui/react-menubar" />
@@ -22,9 +30,11 @@ references:
 <ComponentSource name="menu-bar" />
 
 ### Update the import paths to match your project setup
-
+</Section>
 </Steps>
+</Section>
 
+<Section>
 ## Usage
 
 ```tsx
@@ -47,7 +57,9 @@ import Menubar from '@/components/ui/menu-bar'
   </Menubar.Menu>
 </Menubar.Root>
 ```
+</Section>
 
+<Section>
 ## Examples
 ### Simple Menubar
 
@@ -58,3 +70,6 @@ import Menubar from '@/components/ui/menu-bar'
 
 ### With Radio Items
 <ComponentPreview name="menu-bar" file="radio-items"/>
+</Section>
+
+</ContentContainer>
