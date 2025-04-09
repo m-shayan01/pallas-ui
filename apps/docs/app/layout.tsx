@@ -40,6 +40,7 @@ export default function RootLayout({
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
+                  position: 'relative', // Add position relative
                   flexWrap: { base: 'wrap', md: 'nowrap' },
                   gap: { base: 'gap.component.md', md: '0' },
                 })}
@@ -50,6 +51,7 @@ export default function RootLayout({
                     fontWeight: 'bold',
                     fontSize: 'xl',
                     color: 'text',
+                    zIndex: 2, // Add z-index
                   })}
                 >
                   <span>Pallas UI</span>
@@ -59,8 +61,10 @@ export default function RootLayout({
                   className={css({
                     order: { base: 3, md: 2 },
                     width: { base: '100%', md: 'auto' },
-                    mx: { md: 'gap.inline.md' },
-                    flex: { md: '1' },
+                    position: { md: 'absolute' }, // Position absolute on medium screens and up
+                    left: { md: '50%' }, // Center horizontally
+                    transform: { md: 'translateX(-50%)' }, // Adjust for the element's width
+                    zIndex: 1, // Lower z-index than logo and nav
                     maxWidth: { md: '400px' },
                   })}
                 >
@@ -72,6 +76,7 @@ export default function RootLayout({
                     display: 'flex',
                     gap: 'gap.component.md',
                     order: { base: 2, md: 3 },
+                    zIndex: 2, // Add z-index
                   })}
                 >
                   <Link

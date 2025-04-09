@@ -97,7 +97,7 @@ export function SearchDialog() {
           position: 'relative',
           display: 'flex',
           minW: '160px',
-          w: { base: 'full', md: 'auto' },
+          w: { base: 'full', md: '100%' }, // Changed from 'auto' to '100%' for md screens
           justifyContent: 'flex-start',
           gap: '4',
           color: 'text.secondary',

@@ -89,10 +89,8 @@ function ContentPage({
           base: '1fr',
           xl: '1fr 250px',
         },
-        gap: 'gap.component.lg',
+        p: '6',
         maxWidth: '100%',
-        mx: 'auto',
-        px: { base: 'layout.internal.sm', md: 'layout.internal.md' },
       })}
     >
       <div
@@ -109,7 +107,7 @@ function ContentPage({
                 color: 'text.tertiary',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 'gap.inline.sm',
+                gap: '2',
               })}
             >
               <span>{breadcrumb.section}</span>
@@ -176,7 +174,7 @@ function ContentPage({
             position: 'sticky',
             top: '72px',
             height: 'calc(100vh - 72px)',
-            p: 'padding.block.md',
+            p: '4',
             borderLeft: '1px solid',
             borderColor: 'border.secondary',
             bg: 'surface.container',
@@ -202,15 +200,12 @@ export default async function DocsPage({ params }: any) {
         className={css({
           maxW: '4xl',
           mx: 'auto',
-          py: 'layout.section.sm',
-          px: 'layout.internal.md',
         })}
       >
         <h1
           className={css({
             fontSize: '3xl',
             fontWeight: 'bold',
-            mb: 'gap.component.md',
             color: 'text',
           })}
         >
