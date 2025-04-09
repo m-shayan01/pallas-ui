@@ -1,10 +1,10 @@
 'use client'
 
+import type { Assign, WithFixedClassName } from '@pallas-ui/style-context'
 import * as Tabs from '@radix-ui/react-tabs'
 import type { SegmentedVariantProps } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import type * as React from 'react'
-import type { Assign, WithFixedClassName } from '~/utils/types'
 import { Root, withContext } from './root'
 
 export type RootProps = Assign<

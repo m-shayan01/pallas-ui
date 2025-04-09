@@ -1,13 +1,13 @@
 'use client'
 
+import type { Assign, WithFixedClassName } from '@pallas-ui/style-context'
+import { createStyleContext } from '@pallas-ui/style-context'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { styled } from '@styled-system/jsx'
 import { icon, select } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { Check, ChevronDown } from 'lucide-react'
 import * as React from 'react'
-import type { Assign, WithFixedClassName } from '@/components/utils/types'
-import { createStyleContext } from '@pallas-ui/style-context'
 
 const { withProvider, withContext } = createStyleContext(select)
 

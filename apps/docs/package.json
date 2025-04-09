@@ -14,6 +14,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/components": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",

@@ -95,5 +95,12 @@ export const createStyleContext = <R extends Recipe>(recipe: R) => {
   }
 }
 
+type Assign<T, U> = Omit<T, keyof U> & U
+type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>
+
+type WithFixedClassName<T> = Omit<T, 'className'> & {
+  className?: string | undefined
+}
+
 // Export types
-export type { Props, Recipe, Slot, Options }
+export type { Props, Recipe, Slot, Options, Assign, Optional, WithFixedClassName }
