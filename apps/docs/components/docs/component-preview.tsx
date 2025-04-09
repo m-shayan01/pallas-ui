@@ -66,9 +66,12 @@ export function ComponentPreview({
             borderBottom: '1px solid',
             borderColor: 'border',
             bg: 'surface.layout',
-            overflowX: 'auto', // Added for tab responsiveness
+
+            overflowX: 'visible', // Changed from 'auto' to 'visible'
             display: 'flex',
-            flexWrap: { base: 'nowrap', md: 'wrap' }, // Allow wrapping on larger screens
+            flexWrap: 'wrap', // Always wrap tabs instead of conditional wrapping
+            position: 'relative', // Add position relative
+            zIndex: 1, // Ensure tabs appear above content
           })}
         >
           <Trigger

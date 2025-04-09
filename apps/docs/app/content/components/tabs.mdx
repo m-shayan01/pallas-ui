@@ -1,0 +1,65 @@
+---
+title: Tabs
+description: A set of layered sections of content that display one panel at a time.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/tabs
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/tabs
+    api: https://www.radix-ui.com/docs/primitives/components/tabs#api-reference
+---
+<ContentContainer>
+
+<Section>
+# Tabs
+A set of layered sections of content that display one panel at a time.
+
+<ComponentPreview name="tabs" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-tabs" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="tabs" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Tabs from '@/components/ui/tabs'
+```
+```tsx
+<Tabs.Root defaultValue="account">
+  <Tabs.TabList>
+    <Tabs.Trigger value="account">Account</Tabs.Trigger>
+    <Tabs.Trigger value="password">Password</Tabs.Trigger>
+  </Tabs.TabList>
+  <Tabs.Content value="account">Account content</Tabs.Content>
+  <Tabs.Content value="password">Password content</Tabs.Content>
+</Tabs.Root>
+```
+</Section>
+<Section>
+## Examples
+
+### Default
+<ComponentPreview name="tabs" />
+### Vertical
+<ComponentPreview name="tabs" file = "vertical"/>
+
+### Custom Styles
+<ComponentPreview name="tabs" file = "custom-styles"/>
+</Section>
+</ContentContainer>

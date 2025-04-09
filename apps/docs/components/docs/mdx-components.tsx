@@ -279,8 +279,8 @@ const components = {
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
       className={css({
-        my: '4',
-        ml: '4',
+        my: '1',
+        ml: '1',
         listStyleType: 'disc',
         '& li': { m: '3' },
         color: 'text.secondary',
@@ -291,8 +291,8 @@ const components = {
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
     <ol
       className={css({
-        my: '4',
-        ml: '4',
+        my: '1',
+        ml: '1',
         listStyleType: 'decimal',
         '& li': { m: '3' },
         color: 'text.secondary',
