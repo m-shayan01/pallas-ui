@@ -6,9 +6,12 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
+  SidebarInput,
+  SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
   SidebarMenuBadge,
@@ -18,6 +21,7 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
+  SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
 } from '~/ui/sidebar'
@@ -26,6 +30,9 @@ const meta: Meta<typeof Sidebar> = {
   component: Sidebar,
   title: 'Components/Sidebar',
   tags: ['autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+  },
 }
 
 export default meta
@@ -163,10 +170,15 @@ export const Default: Story = {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+
+        <SidebarRail />
       </Sidebar>
+
+      {/* <SidebarInset> */}
       <main>
         <SidebarTrigger />
       </main>
+      {/* </SidebarInset> */}
     </SidebarProvider>
   ),
 }

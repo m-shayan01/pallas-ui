@@ -309,7 +309,7 @@ const SidebarRailButton = withContext<React.ElementRef<'button'>, HTMLStyledProp
   'rail',
 )
 const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<'button'>>(
-  ({ className, ...props }, ref) => {
+  ({ ...props }, ref) => {
     const { toggleSidebar } = useSidebar()
 
     return (
@@ -320,15 +320,15 @@ const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<'bu
         tabIndex={-1}
         onClick={toggleSidebar}
         title="Toggle Sidebar"
-        className={cx(
-          'absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex',
-          '[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize',
-          '[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize',
-          'group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar',
-          '[[data-side=left][data-collapsible=offcanvas]_&]:-right-2',
-          '[[data-side=right][data-collapsible=offcanvas]_&]:-left-2',
-          className,
-        )}
+        // className={cx(
+        //   'absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] hover:after:bg-sidebar-border group-data-[side=left]:-right-4 group-data-[side=right]:left-0 sm:flex',
+        //   '[[data-side=left]_&]:cursor-w-resize [[data-side=right]_&]:cursor-e-resize',
+        //   '[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize',
+        //   'group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full group-data-[collapsible=offcanvas]:hover:bg-sidebar',
+        //   '[[data-side=left][data-collapsible=offcanvas]_&]:-right-2',
+        //   '[[data-side=right][data-collapsible=offcanvas]_&]:-left-2',
+        //   className,
+        // )}
         {...props}
       />
     )
@@ -336,16 +336,20 @@ const SidebarRail = React.forwardRef<HTMLButtonElement, React.ComponentProps<'bu
 )
 SidebarRail.displayName = 'SidebarRail'
 
+const SidebarInsetComp = withContext<React.ElementRef<'main'>, HTMLStyledProps<'main'>>(
+  'main',
+  'inset',
+)
 const SidebarInset = React.forwardRef<HTMLDivElement, React.ComponentProps<'main'>>(
-  ({ className, ...props }, ref) => {
+  ({ ...props }, ref) => {
     return (
-      <main
+      <SidebarInsetComp
         ref={ref}
-        className={cx(
-          'relative flex w-full flex-1 flex-col bg-background',
-          'md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow',
-          className,
-        )}
+        // className={cx(
+        //   'relative flex w-full flex-1 flex-col bg-background',
+        //   'md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow',
+        //   className,
+        // )}
         {...props}
       />
     )
@@ -477,27 +481,27 @@ const SidebarGroupLabel = React.forwardRef<
 })
 SidebarGroupLabel.displayName = 'SidebarGroupLabel'
 
-const SidebarGroupAction = React.forwardRef<
-  HTMLButtonElement,
-  React.ComponentProps<'button'> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
-  const Comp = asChild ? Slot : 'button'
+const SidebarGroupActionComp = withContext<HTMLButtonElement, ButtonProps>(Button, 'groupAction')
+const SidebarGroupAction = React.forwardRef<HTMLButtonElement, ButtonProps & { asChild?: boolean }>(
+  ({ asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : SidebarGroupActionComp
 
-  return (
-    <Comp
-      ref={ref}
-      data-sidebar="group-action"
-      className={cx(
-        'absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
-        // Increases the hit area of the button on mobile.
-        'after:absolute after:-inset-2 after:md:hidden',
-        'group-data-[collapsible=icon]:hidden',
-        className,
-      )}
-      {...props}
-    />
-  )
-})
+    return (
+      <Comp
+        ref={ref}
+        data-sidebar="group-action"
+        // className={cx(
+        //   'absolute right-3 top-3.5 flex aspect-square w-5 items-center justify-center rounded-md p-0 text-sidebar-foreground outline-none ring-sidebar-ring transition-transform hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0',
+        //   // Increases the hit area of the button on mobile.
+        //   'after:absolute after:-inset-2 after:md:hidden',
+        //   'group-data-[collapsible=icon]:hidden',
+        //   className,
+        // )}
+        {...props}
+      />
+    )
+  },
+)
 SidebarGroupAction.displayName = 'SidebarGroupAction'
 
 const SidebarGroupContentComp = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>(
