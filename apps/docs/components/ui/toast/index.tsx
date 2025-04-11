@@ -15,44 +15,44 @@ type RootProps = Assign<
   ToastVariantProps
 >
 
-export const Root = withProvider<React.ElementRef<typeof RadixToast.Root>, RootProps>(
+export const Root = withProvider<React.ComponentRef<typeof RadixToast.Root>, RootProps>(
   RadixToast.Root,
   'root',
 )
 
 export const Viewport = withProvider<
-  React.ElementRef<typeof RadixToast.Viewport>,
+  React.ComponentRef<typeof RadixToast.Viewport>,
   Assign<ComponentProps<typeof RadixToast.Viewport>, Pick<ToastVariantProps, 'placement'>>
 >(RadixToast.Viewport, 'viewport')
 
 export const Title = withContext<
-  React.ElementRef<typeof RadixToast.Title>,
+  React.ComponentRef<typeof RadixToast.Title>,
   Assign<ComponentProps<typeof RadixToast.Title>, JsxStyleProps>
 >(RadixToast.Title, 'title')
 
 export const Description = withContext<
-  React.ElementRef<typeof RadixToast.Description>,
+  React.ComponentRef<typeof RadixToast.Description>,
   Assign<ComponentProps<typeof RadixToast.Description>, JsxStyleProps>
 >(RadixToast.Description, 'description')
 
 export const Close = withContext<
-  React.ElementRef<typeof RadixToast.Close>,
+  React.ComponentRef<typeof RadixToast.Close>,
   Assign<ComponentProps<typeof RadixToast.Close>, JsxStyleProps>
 >(RadixToast.Close, 'close')
 
 export const Actions = withContext<
-  React.ElementRef<typeof HStack>,
+  React.ComponentRef<typeof HStack>,
   Assign<ComponentProps<typeof HStack>, JsxStyleProps>
 >(HStack, 'actions')
 
 export type ActionProps = ComponentProps<typeof RadixToast.Action>
 
 export const Action = withContext<
-  React.ElementRef<typeof RadixToast.Action>,
+  React.ComponentRef<typeof RadixToast.Action>,
   Assign<ActionProps, JsxStyleProps>
 >(RadixToast.Action, 'action')
 
-export const Icon = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'icon')
+export const Icon = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>('div', 'icon')
 
 export const Provider = RadixToast.Provider
 
