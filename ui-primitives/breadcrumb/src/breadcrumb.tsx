@@ -36,12 +36,12 @@ const useBreadcrumb = () => {
 }
 
 const BreadcrumbList = React.forwardRef<HTMLOListElement, React.ComponentPropsWithoutRef<'ol'>>(
-  ({ className, ...props }, ref) => <ol ref={ref} {...props} />,
+  (props, ref) => <ol ref={ref} {...props} />,
 )
 BreadcrumbList.displayName = 'BreadcrumbList'
 
 const BreadcrumbItem = React.forwardRef<HTMLLIElement, React.ComponentPropsWithoutRef<'li'>>(
-  ({ className, ...props }, ref) => <li ref={ref} {...props} />,
+  (props, ref) => <li ref={ref} {...props} />,
 )
 BreadcrumbItem.displayName = 'BreadcrumbItem'
 
@@ -50,7 +50,7 @@ interface BreadcrumbLinkProps extends React.ComponentPropsWithoutRef<'a'> {
 }
 
 const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
-  ({ asChild, className, ...props }, ref) => {
+  ({ asChild, ...props }, ref) => {
     const Component = asChild ? Slot : ('a' as const)
     return <Component ref={ref} {...props} />
   },
@@ -58,24 +58,24 @@ const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
 BreadcrumbLink.displayName = 'BreadcrumbLink'
 
 const BreadcrumbPage = React.forwardRef<HTMLSpanElement, React.ComponentPropsWithoutRef<'span'>>(
-  ({ className, ...props }, ref) => <span ref={ref} aria-current="page" {...props} />,
+  (props, ref) => <span ref={ref} aria-current="page" {...props} />,
 )
 BreadcrumbPage.displayName = 'BreadcrumbPage'
 
-const BreadcrumbSeparator = ({ children, className, ...props }: React.ComponentProps<'li'>) => {
+const BreadcrumbSeparator = ({ children, ...props }: React.ComponentProps<'li'>) => {
   const { separator } = useBreadcrumb()
 
   return (
     <li role="presentation" aria-hidden="true" {...props}>
-      {children ?? separator ?? <ChevronRight />}
+      {children ?? separator ?? <ChevronRight className="breadcrumb__sperator_icon" />}
     </li>
   )
 }
 BreadcrumbSeparator.displayName = 'BreadcrumbSeparator'
 
-const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
+const BreadcrumbEllipsis = ({ ...props }: React.ComponentProps<'span'>) => (
   <span role="presentation" aria-hidden="true" {...props}>
-    <MoreHorizontal className="h-4 w-4" />
+    <MoreHorizontal className="breadcrumb__sperator_icon" />
     <span className="sr-only">More</span>
   </span>
 )
