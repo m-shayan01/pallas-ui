@@ -99,14 +99,16 @@ function extractCodeString(children: React.ReactNode): string {
 
   // Handle React elements
   if (React.isValidElement(children)) {
+    const props = children.props as Record<string, unknown>
+
     // If the element has props.children, extract from there
-    if (children.props?.children) {
-      return extractCodeString(children.props.children)
+    if ('children' in props && props.children !== undefined) {
+      return extractCodeString(props.children as React.ReactNode)
     }
 
     // If the element has a 'value' prop (like in some code highlighting components)
-    if (children.props?.value) {
-      return children.props.value
+    if ('value' in props && typeof props.value === 'string') {
+      return props.value
     }
   }
 
@@ -352,6 +354,7 @@ export function MdxComponent({ code }: MdxComponentProps) {
           position: 'relative',
         })}
       >
+        {/* @ts-expect-error - MDXContent has incompatible component types with our components object */}
         <MDXContent code={code} components={components} />
       </div>
     )

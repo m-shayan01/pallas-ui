@@ -10,17 +10,17 @@ import * as React from 'react'
 const { withProvider, withContext } = createStyleContext(modal)
 
 const ModalPortal = withContext<
-  React.ElementRef<typeof AlertDialogPrimitive.Portal>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Portal>,
   Assign<WithFixedClassName<AlertDialogPrimitive.AlertDialogPortalProps>, JsxStyleProps>
 >(AlertDialogPrimitive.Portal, 'portal')
 
 const ModalOverlay = withContext<
-  React.ElementRef<typeof AlertDialogPrimitive.Overlay>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Overlay>,
   Assign<AlertDialogPrimitive.AlertDialogOverlayProps, JsxStyleProps>
 >(AlertDialogPrimitive.Overlay, 'overlay')
 
 const ContentRaw = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Content>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Content>
 >(({ className, ...props }, ref) => (
   <ModalPortal>
@@ -31,7 +31,7 @@ const ContentRaw = React.forwardRef<
 ContentRaw.displayName = AlertDialogPrimitive.Content.displayName
 
 const CancelRaw = React.forwardRef<
-  React.ElementRef<typeof AlertDialogPrimitive.Cancel>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Cancel>,
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Cancel>
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Cancel
@@ -44,41 +44,47 @@ CancelRaw.displayName = AlertDialogPrimitive.Cancel.displayName
 
 export type RootProps = WithFixedClassName<ComponentProps<typeof AlertDialogPrimitive.Root>>
 export const Root = withProvider<
-  React.ElementRef<typeof AlertDialogPrimitive.Root>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>
 >(AlertDialogPrimitive.Root, 'root')
 
 export const Trigger = withContext<
-  React.ElementRef<typeof AlertDialogPrimitive.Trigger>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Trigger>,
   Assign<AlertDialogPrimitive.AlertDialogTriggerProps, JsxStyleProps>
 >(AlertDialogPrimitive.Trigger, 'trigger')
 
 export const Content = withContext<
-  React.ElementRef<typeof ContentRaw>,
+  React.ComponentRef<typeof ContentRaw>,
   Assign<AlertDialogPrimitive.AlertDialogContentProps, JsxStyleProps>
 >(ContentRaw, 'content')
 
-export const Header = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'header')
+export const Header = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
+  'div',
+  'header',
+)
 
-export const Footer = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'footer')
+export const Footer = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
+  'div',
+  'footer',
+)
 
 export const Title = withContext<
-  React.ElementRef<typeof AlertDialogPrimitive.Title>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Title>,
   Assign<AlertDialogPrimitive.AlertDialogTitleProps, JsxStyleProps>
 >(AlertDialogPrimitive.Title, 'title')
 
 export const Description = withContext<
-  React.ElementRef<typeof AlertDialogPrimitive.Description>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Description>,
   Assign<AlertDialogPrimitive.AlertDialogDescriptionProps, JsxStyleProps>
 >(AlertDialogPrimitive.Description, 'description')
 
 export const Action = withContext<
-  React.ElementRef<typeof AlertDialogPrimitive.Action>,
+  React.ComponentRef<typeof AlertDialogPrimitive.Action>,
   Assign<AlertDialogPrimitive.AlertDialogActionProps, JsxStyleProps>
 >(AlertDialogPrimitive.Action, 'action')
 
 export const Cancel = withContext<
-  React.ElementRef<typeof CancelRaw>,
+  React.ComponentRef<typeof CancelRaw>,
   Assign<AlertDialogPrimitive.AlertDialogCancelProps, JsxStyleProps>
 >(CancelRaw, 'cancel')
 

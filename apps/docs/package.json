@@ -14,6 +14,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@pallas-ui/breadcrumb": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/components": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
@@ -55,8 +56,8 @@
     "@pallas-ui/typescript-config": "workspace:*",
     "@pandacss/dev": "0.50.0",
     "@types/node": "^20",
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.0",
-    "typescript": "5.5.4"
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "5.7.3"
   }
 }

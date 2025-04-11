@@ -13,12 +13,12 @@ export type RootProps = Assign<
 >
 
 export const Option = withContext<
-  React.ElementRef<typeof Tabs.Trigger>,
+  React.ComponentRef<typeof Tabs.Trigger>,
   Assign<WithFixedClassName<ComponentProps<typeof Tabs.Trigger>>, JsxStyleProps>
 >(Tabs.Trigger, 'option')
 
 export const Text = withContext<
-  React.ElementRef<'p'>,
+  React.ComponentRef<'p'>,
   Assign<WithFixedClassName<ComponentProps<'p'>>, JsxStyleProps>
 >('p', 'text')
 

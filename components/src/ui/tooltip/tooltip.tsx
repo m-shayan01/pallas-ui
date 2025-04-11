@@ -15,22 +15,22 @@ const Provider = TooltipPrimitive.Provider
 const Portal = TooltipPrimitive.Portal
 
 export const Root = withProvider<
-  React.ElementRef<typeof TooltipPrimitive.Root>,
+  React.ComponentRef<typeof TooltipPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>
 >(TooltipPrimitive.Root, 'root')
 
 export const Trigger = withContext<
-  React.ElementRef<typeof TooltipPrimitive.Trigger>,
+  React.ComponentRef<typeof TooltipPrimitive.Trigger>,
   Assign<TooltipPrimitive.TooltipTriggerProps, JsxStyleProps>
 >(TooltipPrimitive.Trigger, 'trigger')
 
 const Arrow = withContext<
-  React.ElementRef<typeof TooltipPrimitive.Arrow>,
+  React.ComponentRef<typeof TooltipPrimitive.Arrow>,
   Assign<TooltipPrimitive.TooltipArrowProps, JsxStyleProps>
 >(TooltipPrimitive.Arrow, 'arrow')
 
 const CustomContent = React.forwardRef<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
+  React.ComponentRef<typeof TooltipPrimitive.Content>,
   TooltipPrimitive.TooltipContentProps
 >(({ align = 'center', sideOffset = 4, children, ...props }, ref) => (
   <Portal>
@@ -43,7 +43,7 @@ const CustomContent = React.forwardRef<
 CustomContent.displayName = TooltipPrimitive.Content.displayName
 
 export const Content = withContext<
-  React.ElementRef<typeof TooltipPrimitive.Content>,
+  React.ComponentRef<typeof TooltipPrimitive.Content>,
   Assign<TooltipPrimitive.TooltipContentProps, JsxStyleProps>
 >(CustomContent, 'content')
 

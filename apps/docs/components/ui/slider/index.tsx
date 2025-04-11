@@ -7,7 +7,7 @@ import { slider } from '@styled-system/recipes'
 import * as React from 'react'
 
 const BaseSlider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
+  React.ComponentRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
 >(({ className, ...props }, ref) => {
   const styles = slider()
