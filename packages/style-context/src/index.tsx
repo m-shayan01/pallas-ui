@@ -2,6 +2,7 @@ import {
   type ElementType,
   type ForwardRefExoticComponent,
   type PropsWithoutRef,
+  type ReactElement,
   type RefAttributes,
   createContext,
   forwardRef,

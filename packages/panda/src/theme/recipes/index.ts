@@ -4,6 +4,7 @@ import { accordian } from './accordian'
 import { alert, alertDescription, alertTitle } from './alert'
 import { avatar } from './avatar'
 import { badge } from './badge'
+import { breadcrumb } from './breadcrumb'
 import { button } from './button'
 import { card } from './card'
 import { checkbox } from './checkbox'
@@ -28,7 +29,6 @@ import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
-
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
   button,
@@ -63,4 +63,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   daypicker,
   input,
   segmented,
+  breadcrumb,
 }
