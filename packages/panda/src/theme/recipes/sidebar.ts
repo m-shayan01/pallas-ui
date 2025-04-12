@@ -5,6 +5,7 @@ export const sidebar = defineSlotRecipe({
   description: 'Styles for the Sidebar component',
   slots: [
     'provider',
+    'rootNonCollapsible',
     'root', // Outer container
     'gap', // Transition width handler
     'fixed', // Fixed positioned wrapper
@@ -35,7 +36,7 @@ export const sidebar = defineSlotRecipe({
     provider: {
       // 'group/sidebar-wrapper flex min-h-svh w-full has-[[data-variant=inset]]:bg-sidebar'
       display: 'flex',
-      minHeight: '100svh', // or use a token if defined
+      height: '100svh', // or use a token if defined
       width: 'full',
       '&:has([data-variant=inset])': {
         backgroundColor: '{colors.surface.layout}',
@@ -46,6 +47,15 @@ export const sidebar = defineSlotRecipe({
       display: 'none',
       color: '{colors.text}',
       md: { display: 'block' },
+    },
+    rootNonCollapsible: {
+      // 'flex h-full w-[--sidebar-width] flex-col bg-sidebar text-sidebar-foreground',
+      display: 'flex',
+      flexDirection: 'column',
+      h: 'full',
+      width: '{sizes.2xs}',
+      bg: '{colors.surface.layout}',
+      color: '{colors.text}',
     },
     gap: {
       // cx(
@@ -88,7 +98,7 @@ export const sidebar = defineSlotRecipe({
       zIndex: 10,
       h: 'screen',
       w: '{sizes.2xs}',
-      transition: 'left, right, width 200ms linear',
+      transition: 'left 200ms linear, right 200ms linear, width 200ms linear',
       display: 'none',
       md: { display: 'flex' },
       borderColor: '{colors.border}',
@@ -236,13 +246,13 @@ export const sidebar = defineSlotRecipe({
       flex: '1',
       backgroundColor: '{colors.surface.container}',
       md: {
-        '.peer:is([data-variant=inset]) &': {
+        '.peer:is([data-variant=inset]) ~ &': {
           m: 2,
           ml: 0,
           rounded: 'xl',
           shadow: 'md',
         },
-        '.peer:is([data-variant=inset]):is([data-state=collapsed]) &': {
+        '.peer:is([data-variant=inset]):is([data-state=collapsed]) ~ &': {
           ml: 2,
         },
       },
@@ -299,7 +309,7 @@ export const sidebar = defineSlotRecipe({
       fontWeight: '{medium}',
       color: '{colors.text.secondary}',
       outline: 'none',
-      transition: 'opacity, margin 200ms linear',
+      transition: 'opacity 200ms linear, margin 200ms linear',
 
       '.group:is([data-collapsible=icon]) &': {
         mt: -6,
@@ -361,7 +371,7 @@ export const sidebar = defineSlotRecipe({
         w: '8!',
         h: '8!',
       },
-      transition: 'width, height, padding 200ms linear',
+      transition: 'width 200ms linear, height 200ms linear, padding 200ms linear',
 
       '& > span:last-of-type': {
         truncate: true,

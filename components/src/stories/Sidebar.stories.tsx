@@ -10,7 +10,6 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarHeader,
-  SidebarInput,
   SidebarInset,
   SidebarMenu,
   SidebarMenuAction,
@@ -174,11 +173,9 @@ export const Default: Story = {
         <SidebarRail />
       </Sidebar>
 
-      {/* <SidebarInset> */}
       <main>
         <SidebarTrigger />
       </main>
-      {/* </SidebarInset> */}
     </SidebarProvider>
   ),
 }
