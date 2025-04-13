@@ -2,32 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { css } from '@styled-system/css'
 import { Calendar, Command, Home, Inbox, Menu, Plus, Search, Settings } from 'lucide-react'
 import Avatar from '~/ui/avatar'
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupAction,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarInset,
-  SidebarMenu,
-  SidebarMenuAction,
-  SidebarMenuBadge,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
-  SidebarProvider,
-  SidebarRail,
-  SidebarSeparator,
-  SidebarTrigger,
-} from '~/ui/sidebar'
+import Sidebar from '~/ui/sidebar'
 
-const meta: Meta<typeof Sidebar> = {
-  component: Sidebar,
+const meta: Meta<typeof Sidebar.Root> = {
+  component: Sidebar.Root,
   title: 'Components/Sidebar',
   tags: ['autodocs'],
   parameters: {
@@ -88,167 +66,167 @@ export const Default: Story = {
     collapsible: 'offcanvas',
   },
   render: (props) => {
-    const Main = props.variant === 'inset' ? SidebarInset : 'main'
+    const Main = props.variant === 'inset' ? Sidebar.Inset : 'main'
     return (
-      <SidebarProvider>
+      <Sidebar.Provider>
         {props.side === 'right' && (
           <Main style={{ flex: 1 }}>
-            <SidebarTrigger />
+            <Sidebar.Trigger />
           </Main>
         )}
 
-        <Sidebar {...props}>
-          <SidebarHeader>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton size="lg" asChild>
+        <Sidebar.Root {...props}>
+          <Sidebar.Header>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton size="lg" asChild>
                   <Header />
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarHeader>
+                </Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.Header>
 
-          <SidebarSeparator />
+          <Sidebar.Separator />
 
-          <SidebarContent>
+          <Sidebar.Content>
             <SidebarContentGroup />
-          </SidebarContent>
+          </Sidebar.Content>
 
-          <SidebarFooter>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton size="lg" asChild>
+          <Sidebar.Footer>
+            <Sidebar.Menu>
+              <Sidebar.MenuItem>
+                <Sidebar.MenuButton size="lg" asChild>
                   <Footer />
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarFooter>
+                </Sidebar.MenuButton>
+              </Sidebar.MenuItem>
+            </Sidebar.Menu>
+          </Sidebar.Footer>
 
-          <SidebarRail />
-        </Sidebar>
+          <Sidebar.Rail />
+        </Sidebar.Root>
 
         {props.side === 'left' && (
           <Main>
-            <SidebarTrigger />
+            <Sidebar.Trigger />
           </Main>
         )}
-      </SidebarProvider>
+      </Sidebar.Provider>
     )
   },
 }
 
 export const Inset = () => (
-  <SidebarProvider>
-    <Sidebar variant="inset" side="left" collapsible="offcanvas">
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+  <Sidebar.Provider>
+    <Sidebar.Root variant="inset" side="left" collapsible="offcanvas">
+      <Sidebar.Header>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" asChild>
               <Header />
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Header>
 
-      <SidebarSeparator />
+      <Sidebar.Separator />
 
-      <SidebarContent>
+      <Sidebar.Content>
         <SidebarContentGroup />
-      </SidebarContent>
+      </Sidebar.Content>
 
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+      <Sidebar.Footer>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" asChild>
               <Footer />
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Footer>
 
-      <SidebarRail />
-    </Sidebar>
+      <Sidebar.Rail />
+    </Sidebar.Root>
 
-    <SidebarInset>
-      <SidebarTrigger />
-    </SidebarInset>
-  </SidebarProvider>
+    <Sidebar.Inset>
+      <Sidebar.Trigger />
+    </Sidebar.Inset>
+  </Sidebar.Provider>
 )
 
 export const Floating = () => (
-  <SidebarProvider>
-    <Sidebar variant="floating" side="left" collapsible="offcanvas">
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+  <Sidebar.Provider>
+    <Sidebar.Root variant="floating" side="left" collapsible="offcanvas">
+      <Sidebar.Header>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" asChild>
               <Header />
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Header>
 
-      <SidebarSeparator />
+      <Sidebar.Separator />
 
-      <SidebarContent>
+      <Sidebar.Content>
         <SidebarContentGroup />
-      </SidebarContent>
+      </Sidebar.Content>
 
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+      <Sidebar.Footer>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" asChild>
               <Footer />
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Footer>
 
-      <SidebarRail />
-    </Sidebar>
+      <Sidebar.Rail />
+    </Sidebar.Root>
 
     <main>
-      <SidebarTrigger />
+      <Sidebar.Trigger />
     </main>
-  </SidebarProvider>
+  </Sidebar.Provider>
 )
 
 export const Icons = () => (
-  <SidebarProvider>
+  <Sidebar.Provider>
     <main>
-      <SidebarTrigger />
+      <Sidebar.Trigger />
     </main>
 
-    <Sidebar variant="sidebar" side="right" collapsible="icon">
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+    <Sidebar.Root variant="sidebar" side="right" collapsible="icon">
+      <Sidebar.Header>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" asChild>
               <Header />
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Header>
 
-      <SidebarSeparator />
+      <Sidebar.Separator />
 
-      <SidebarContent>
+      <Sidebar.Content>
         <SidebarContentGroup />
-      </SidebarContent>
+      </Sidebar.Content>
 
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+      <Sidebar.Footer>
+        <Sidebar.Menu>
+          <Sidebar.MenuItem>
+            <Sidebar.MenuButton size="lg" asChild>
               <Footer />
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
+            </Sidebar.MenuButton>
+          </Sidebar.MenuItem>
+        </Sidebar.Menu>
+      </Sidebar.Footer>
 
-      <SidebarRail />
-    </Sidebar>
-  </SidebarProvider>
+      <Sidebar.Rail />
+    </Sidebar.Root>
+  </Sidebar.Provider>
 )
 
 const Header = () => (
@@ -359,44 +337,44 @@ const URL =
   'https://images.unsplash.com/photo-1738008896551-9ab767d9e6ac?q=80&w=2099&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
 const SidebarContentGroup = () => (
-  <SidebarGroup>
-    <SidebarGroupLabel>Application</SidebarGroupLabel>
-    <SidebarGroupAction title="Application Menu" size="sm" variant="text">
+  <Sidebar.Group>
+    <Sidebar.GroupLabel>Application</Sidebar.GroupLabel>
+    <Sidebar.GroupAction title="Application Menu" size="sm" variant="text">
       <Menu strokeWidth={1} size={20} />
-    </SidebarGroupAction>
-    <SidebarGroupContent>
-      <SidebarMenu>
+    </Sidebar.GroupAction>
+    <Sidebar.GroupContent>
+      <Sidebar.Menu>
         {MENU_ITEMS.map((item, i) => (
-          <SidebarMenuItem key={item.title}>
-            <SidebarMenuButton icon={<item.icon size="16" />}>
+          <Sidebar.MenuItem key={item.title}>
+            <Sidebar.MenuButton icon={<item.icon size="16" />}>
               <a href={item.url}>
                 <span>{item.title}</span>
               </a>
-            </SidebarMenuButton>
+            </Sidebar.MenuButton>
             {i === 0 && (
               <>
-                <SidebarMenuBadge>12</SidebarMenuBadge>
-                <SidebarMenuSub>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton>Users</SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton>Groups</SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                  <SidebarMenuSubItem>
-                    <SidebarMenuSubButton>Media</SidebarMenuSubButton>
-                  </SidebarMenuSubItem>
-                </SidebarMenuSub>
+                <Sidebar.MenuBadge>12</Sidebar.MenuBadge>
+                <Sidebar.MenuSub>
+                  <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton>Users</Sidebar.MenuSubButton>
+                  </Sidebar.MenuSubItem>
+                  <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton>Groups</Sidebar.MenuSubButton>
+                  </Sidebar.MenuSubItem>
+                  <Sidebar.MenuSubItem>
+                    <Sidebar.MenuSubButton>Media</Sidebar.MenuSubButton>
+                  </Sidebar.MenuSubItem>
+                </Sidebar.MenuSub>
               </>
             )}
             {i === 2 && (
-              <SidebarMenuAction title="Add Event" size="sm" variant="text">
+              <Sidebar.MenuAction title="Add Event" size="sm" variant="text">
                 <Plus strokeWidth={1} size={20} />
-              </SidebarMenuAction>
+              </Sidebar.MenuAction>
             )}
-          </SidebarMenuItem>
+          </Sidebar.MenuItem>
         ))}
-      </SidebarMenu>
-    </SidebarGroupContent>
-  </SidebarGroup>
+      </Sidebar.Menu>
+    </Sidebar.GroupContent>
+  </Sidebar.Group>
 )
