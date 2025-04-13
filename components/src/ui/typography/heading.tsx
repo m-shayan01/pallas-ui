@@ -20,7 +20,7 @@ const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     })
     console.log(headingStylesRaw)
     const headingClassName = cx(headingStylesRaw, css(cssProp || {}))
-    const Tag: keyof JSX.IntrinsicElements = `h${level}`
+    const Tag: keyof React.JSX.IntrinsicElements = `h${level}`
 
     return (
       <Tag ref={ref} className={headingClassName} {...props}>

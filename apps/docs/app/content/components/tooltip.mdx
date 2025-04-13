@@ -1,0 +1,76 @@
+---
+title: Tooltip
+description: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/tooltip
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/tooltip
+    api: https://www.radix-ui.com/docs/primitives/components/tooltip#api-reference
+---
+
+<ContentContainer>
+
+<Section>
+# Tooltip
+A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+
+<ComponentPreview name="tooltip" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-tooltip" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="tooltip" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Root, Trigger, Content } from '@/components/ui/tooltip'
+import { TooltipProvider } from '@radix-ui/react-tooltip'
+```
+```tsx
+  <Root>
+    <Trigger asChild>
+      <Button variant="outlined">Hover</Button>
+    </Trigger>
+    <Content>
+      Add to library
+    </Content>
+  </Root>
+```
+</Section>
+
+<Section>
+
+## Examples
+
+### Tooltip Positions
+
+<ComponentPreview name="tooltip" file="positions" /> 
+
+### Tooltip Alignments
+<ComponentPreview name="tooltip" file="alignments" />
+
+### Tooltip Delay
+<ComponentPreview name="tooltip" file="delay" />
+
+### Disabled Tooltip
+<ComponentPreview name="tooltip" file="disabled" />
+
+</Section>
+
+</ContentContainer>

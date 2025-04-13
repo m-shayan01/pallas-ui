@@ -8,7 +8,7 @@ import { Check } from 'lucide-react'
 import * as React from 'react'
 
 const BaseCheckbox = React.forwardRef<
-  React.ElementRef<typeof CheckboxPrimitive.Root>,
+  React.ComponentRef<typeof CheckboxPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof CheckboxPrimitive.Root>
 >(({ className, ...props }, ref) => {
   const styles = checkbox()

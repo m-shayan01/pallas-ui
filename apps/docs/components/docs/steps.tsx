@@ -1,5 +1,5 @@
-import type React from 'react'
 import { css } from '@styled-system/css'
+import type React from 'react'
 
 interface StepsProps {
   children: React.ReactNode
@@ -11,9 +11,8 @@ export function Steps({ children }: StepsProps) {
       className={css({
         borderLeft: '2px solid',
         borderColor: 'border',
-        pl: 'padding.inline.lg',
-        py: 'padding.block.sm',
-        my: 'margin.block.md',
+        pl: '4', // Changed from padding.inline.lg
+        py: '1', // Changed from padding.block.sm
       })}
     >
       {children}

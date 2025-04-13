@@ -1,9 +1,9 @@
 import { css } from '@styled-system/css'
+import { Container } from '@styled-system/jsx'
 import { allComponents, allGuides, allThemings } from 'content-collections'
 import { notFound } from 'next/navigation'
+import { DynamicToc } from '../../../components/docs/dynamic-toc'
 import { MdxComponent } from '../../../components/docs/mdx-components'
-import { Toc } from '../../../components/docs/toc'
-import { generateToc } from '../../../lib/toc'
 
 export function generateStaticParams() {
   const guideParams = allGuides.map((guide) => ({
@@ -62,6 +62,132 @@ export async function generateMetadata({ params }: any) {
   return {}
 }
 
+//reusable component for content pages
+type ContentPageProps = {
+  title?: string
+  description?: string
+  breadcrumb?: {
+    section: string
+    title: string
+  }
+  mdxCode: string
+  showHeader?: boolean
+}
+
+function ContentPage({
+  title,
+  description,
+  breadcrumb,
+  mdxCode,
+  showHeader = true,
+}: ContentPageProps) {
+  return (
+    <main
+      className={css({
+        display: 'grid',
+        gridTemplateColumns: {
+          base: '1fr',
+          xl: '1fr 250px',
+        },
+        p: '6',
+        maxWidth: '100%',
+      })}
+    >
+      <div
+        className={css({
+          width: '100%',
+          overflowX: 'hidden',
+        })}
+      >
+        {showHeader && breadcrumb && (
+          <header>
+            <div
+              className={css({
+                fontSize: 'sm',
+                color: 'text.tertiary',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '2',
+              })}
+            >
+              <span>{breadcrumb.section}</span>
+              <span>/</span>
+              <span className={css({ color: 'text.secondary' })}>{breadcrumb.title}</span>
+            </div>
+
+            {/* {title && (
+              <h1
+                className={css({
+                  mt: 'layout.section.lg',
+                  mb: 'layout.section.sm',
+                  fontSize: '3xl',
+                  fontWeight: 'bold',
+                  lineHeight: 'tight',
+                  scrollMargin: '24',
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: 'text',
+                  _groupHover: { '& a': { opacity: 1 } },
+                })}
+              >
+                {title}
+              </h1>
+            )}
+
+            {description && (
+              <p
+                className={css({
+                  mt: 'gap.inline.sm',
+                  mb: 'gap.inline.sm',
+                  lineHeight: 'relaxed',
+                  color: 'text.secondary',
+                })}
+              >
+                {description}
+              </p>
+            )} */}
+          </header>
+        )}
+
+        <div
+          className={css({
+            width: '100%',
+            overflowX: 'hidden',
+          })}
+        >
+          <MdxComponent code={mdxCode} />
+        </div>
+      </div>
+
+      <div
+        className={css({
+          display: 'none',
+          position: 'relative',
+          fontSize: 'sm',
+          xl: {
+            display: 'block',
+          },
+        })}
+      >
+        <div
+          className={css({
+            position: 'sticky',
+            top: '72px',
+            height: 'calc(100vh - 72px)',
+            p: '4',
+            borderLeft: '1px solid',
+            borderColor: 'border.secondary',
+            bg: 'surface.container',
+            overflowY: 'auto',
+          })}
+        >
+          <DynamicToc />
+        </div>
+      </div>
+    </main>
+  )
+}
+
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export default async function DocsPage({ params }: any) {
   const resolvedParams = await (params instanceof Promise ? params : Promise.resolve(params))
@@ -74,15 +200,12 @@ export default async function DocsPage({ params }: any) {
         className={css({
           maxW: '4xl',
           mx: 'auto',
-          py: 'layout.section.sm',
-          px: 'layout.internal.md',
         })}
       >
         <h1
           className={css({
             fontSize: '3xl',
             fontWeight: 'bold',
-            mb: 'gap.component.md',
             color: 'text',
           })}
         >
@@ -103,96 +226,13 @@ export default async function DocsPage({ params }: any) {
       notFound()
     }
 
-    const tocData = generateToc(component.content)
-
     return (
-      <main
-        className={css({
-          display: 'grid',
-          gridTemplateColumns: {
-            base: '1fr',
-            xl: '1fr 250px',
-          },
-          gap: 'gap.component.lg',
-          maxWidth: '100%',
-          mx: 'auto',
-          px: { base: 'layout.internal.sm', md: 'layout.internal.md' },
-        })}
-      >
-        <div
-          className={css({
-            width: '100%',
-            overflowX: 'hidden',
-          })}
-        >
-          <header className={css({ mb: 'layout.section.sm' })}>
-            <div
-              className={css({
-                fontSize: 'sm',
-                color: 'text.tertiary',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'gap.inline.sm',
-                mb: 'gap.inline.md',
-              })}
-            >
-              <span>Components</span>
-              <span>/</span>
-              <span className={css({ color: 'text.secondary' })}>{component.title}</span>
-            </div>
-
-            <h1
-              className={css({
-                fontSize: '3xl',
-                fontWeight: 'bold',
-                mb: 'gap.inline.md',
-                color: 'text',
-              })}
-            >
-              {component.title}
-            </h1>
-
-            <p className={css({ color: 'text.secondary' })}>{component.description}</p>
-          </header>
-
-          <div
-            className={css({
-              width: '100%',
-              overflowX: 'hidden',
-            })}
-          >
-            <MdxComponent code={component.mdx} />
-          </div>
-        </div>
-
-        {tocData && tocData.length > 0 && (
-          <div
-            className={css({
-              display: 'none',
-              position: 'relative',
-              fontSize: 'sm',
-              xl: {
-                display: 'block',
-              },
-            })}
-          >
-            <div
-              className={css({
-                position: 'sticky',
-                top: '72px',
-                height: 'calc(100vh - 72px)',
-                p: 'padding.block.md',
-                borderLeft: '1px solid',
-                borderColor: 'border.secondary',
-                bg: 'surface.container',
-                overflowY: 'auto',
-              })}
-            >
-              <Toc toc={tocData} />
-            </div>
-          </div>
-        )}
-      </main>
+      <ContentPage
+        title={component.title}
+        description={component.description}
+        breadcrumb={{ section: 'Components', title: component.title }}
+        mdxCode={component.mdx}
+      />
     )
   }
 
@@ -204,96 +244,12 @@ export default async function DocsPage({ params }: any) {
       notFound()
     }
 
-    const tocData = generateToc(theme.content)
-
     return (
-      <main
-        className={css({
-          display: 'grid',
-          gridTemplateColumns: {
-            base: '1fr',
-            xl: '1fr 250px',
-          },
-          gap: 'gap.component.lg',
-          maxWidth: '100%',
-          mx: 'auto',
-          px: { base: 'layout.internal.sm', md: 'layout.internal.md' },
-        })}
-      >
-        <div
-          className={css({
-            width: '100%',
-            overflowX: 'hidden',
-          })}
-        >
-          <header className={css({ mb: 'layout.section.sm' })}>
-            <div
-              className={css({
-                fontSize: 'sm',
-                color: 'text.tertiary',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 'gap.inline.sm',
-                mb: 'gap.inline.md',
-              })}
-            >
-              <span>Theming</span>
-              <span>/</span>
-              <span className={css({ color: 'text.secondary' })}>{theme.title}</span>
-            </div>
-
-            {/* <h1
-              className={css({
-                fontSize: '3xl',
-                fontWeight: 'bold',
-                mb: 'gap.inline.md',
-                color: 'text',
-              })}
-            >
-              {theme.title}
-            </h1>
-
-            <p className={css({ color: 'text.secondary' })}>{theme.description}</p> */}
-          </header>
-
-          <div
-            className={css({
-              width: '100%',
-              overflowX: 'hidden',
-            })}
-          >
-            <MdxComponent code={theme.mdx} />
-          </div>
-        </div>
-
-        {tocData && tocData.length > 0 && (
-          <div
-            className={css({
-              display: 'none',
-              position: 'relative',
-              fontSize: 'sm',
-              xl: {
-                display: 'block',
-              },
-            })}
-          >
-            <div
-              className={css({
-                position: 'sticky',
-                top: '72px',
-                height: 'calc(100vh - 72px)',
-                p: 'padding.block.md',
-                borderLeft: '1px solid',
-                borderColor: 'border.secondary',
-                bg: 'surface.container',
-                overflowY: 'auto',
-              })}
-            >
-              <Toc toc={tocData} />
-            </div>
-          </div>
-        )}
-      </main>
+      <ContentPage
+        breadcrumb={{ section: 'Theming', title: theme.title }}
+        mdxCode={theme.mdx}
+        showHeader={true}
+      />
     )
   }
 
@@ -304,65 +260,11 @@ export default async function DocsPage({ params }: any) {
     notFound()
   }
 
-  const tocData = generateToc(guide.content)
-
   return (
-    <main
-      className={css({
-        display: 'grid',
-        gridTemplateColumns: {
-          base: '1fr',
-          xl: '1fr 250px',
-        },
-        gap: 'gap.component.lg',
-        maxWidth: '100%',
-        mx: 'auto',
-        px: { base: 'layout.internal.sm', md: 'layout.internal.md' },
-      })}
-    >
-      <div
-        className={css({
-          width: '100%',
-          overflowX: 'hidden',
-        })}
-      >
-        <div
-          className={css({
-            width: '100%',
-            overflowX: 'hidden',
-          })}
-        >
-          <MdxComponent code={guide.mdx} />
-        </div>
-      </div>
-
-      {tocData && tocData.length > 0 && (
-        <div
-          className={css({
-            display: 'none',
-            position: 'relative',
-            fontSize: 'sm',
-            xl: {
-              display: 'block',
-            },
-          })}
-        >
-          <div
-            className={css({
-              position: 'sticky',
-              top: '72px',
-              height: 'calc(100vh - 72px)',
-              p: 'padding.block.md',
-              borderLeft: '1px solid',
-              borderColor: 'border.secondary',
-              bg: 'surface.container',
-              overflowY: 'auto',
-            })}
-          >
-            <Toc toc={tocData} />
-          </div>
-        </div>
-      )}
-    </main>
+    <ContentPage
+      mdxCode={guide.mdx}
+      breadcrumb={{ section: 'Introduction', title: guide.title }}
+      showHeader={true}
+    />
   )
 }

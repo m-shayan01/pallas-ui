@@ -1,0 +1,87 @@
+---
+title: Modal
+description: A dialog that appears on top of the main content and requires user interaction.
+references:
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/alert-dialog
+    api: https://www.radix-ui.com/docs/primitives/components/alert-dialog#api-reference
+---
+
+<ContentContainer>
+
+<Section>
+# Modal
+A dialog that appears on top of the main content and requires user interaction.
+
+<ComponentPreview name="modal" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-alert-dialog" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="modal" file="modal" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Modal from '@/components/ui/modal/modal'
+```
+```tsx
+const [open, setOpen] = useState(false)
+
+<Modal.Root open={open} onOpenChange={setOpen}>
+  <Modal.Trigger asChild>
+    <Button>Open Modal</Button>
+  </Modal.Trigger>
+  <Modal.Content>
+    <Modal.Header>
+      <Modal.Title>Modal Title</Modal.Title>
+      <Modal.Description>
+        This is a description of the modal.
+      </Modal.Description>
+    </Modal.Header>
+    <div>
+      {/* Modal content goes here */}
+    </div>
+    <Modal.Footer>
+      <Modal.Cancel>Cancel</Modal.Cancel>
+      <Modal.Action asChild>
+        <Button>Continue</Button>
+      </Modal.Action>
+    </Modal.Footer>
+  </Modal.Content>
+</Modal.Root>
+```
+
+</Section>
+
+<Section>
+## Examples
+
+### Modal with Form
+<ComponentPreview name = "modal" file="with-form" />
+
+### Confirmation Modal
+<ComponentPreview name = "modal" file="confirmation" />
+
+### Modal without Footer
+<ComponentPreview name = "modal" file="without-footer" />
+
+</Section>
+
+
+</ContentContainer>

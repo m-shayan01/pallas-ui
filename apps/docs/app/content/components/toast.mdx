@@ -1,0 +1,128 @@
+---
+title: Toast
+description: A succinct message that is displayed temporarily.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/toast
+  radix:
+    link: https://www.radix-ui.com/docs/primitives/components/toast
+    api: https://www.radix-ui.com/docs/primitives/components/toast#api-reference
+---
+
+<ContentContainer>
+
+<Section>
+# Toast
+A succinct message that is displayed temporarily.
+
+<ComponentPreview name="toast" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-toast" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="toast" />
+
+### Update the import paths to match your project setup
+
+### Add the Toast Provider to your app
+
+```tsx
+import Toast from '@/components/ui/toast'
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head />
+      <body>
+        <Toast.Provider>
+          <main>{children}</main>
+          <Toast.Viewport />
+        </Toast.Provider>
+      </body>
+    </html>
+  )
+}
+```
+### Edit panda.config.ts to load the toast variant css
+```ts
+import { defineConfig } from '@pandacss/dev'
+
+export default defineConfig({
+  // ...rest of your config
+
+  staticCss: {
+    recipes: {
+      // Load toast variant styles since it cannot be statically analyzed
+      toast: [{ variant: ['*'] }],
+    },
+  },
+})
+```
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+
+## Usage
+
+```tsx
+import { useState } from 'react'
+import Toast from '@/components/ui/toast'
+```
+```tsx
+export const Example = () => {
+  const [open, setOpen] = useState(false)
+  
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>
+        Show Toast
+      </Button>
+      
+      <Toast.Provider>
+        <Toast.Root open={open} onOpenChange={setOpen}>
+          <Toast.Title>Scheduled: Catch up</Toast.Title>
+          <Toast.Description>Friday, February 10, 2023 at 5:57 PM</Toast.Description>
+          <Toast.Close asChild>
+            <Button variant="ghost" size="sm">
+              <X size={16} />
+            </Button>
+          </Toast.Close>
+        </Toast.Root>
+        <Toast.Viewport />
+      </Toast.Provider>
+    </>
+  )
+}
+```
+</Section>
+
+<Section>
+## Examples
+### Simple
+<ComponentPreview name="toast" file="simple"/>
+
+### With Title
+<ComponentPreview name="toast" file="with-title" />
+
+### With Action
+<ComponentPreview name="toast" file="with-action" />
+
+### Shadow Variant
+<ComponentPreview name="toast" file="shadow" />
+### Different Placements
+<ComponentPreview name="toast" file="placement" />
+
+</Section>
+
+</ContentContainer>

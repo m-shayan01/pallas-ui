@@ -9,8 +9,6 @@ import { rehypeComponent } from './plugins/rehype-component'
 
 const TOC_LEVEL = 3
 
-
-
 const guides = defineCollection({
   name: 'guides',
   directory: 'app/content/guides',
@@ -24,9 +22,6 @@ const guides = defineCollection({
   transform: async (document, context) => {
     const slug = document._meta.fileName.replace(/\.mdx$/, '')
     const headings = await extractHeadings(document.content)
-
-    // Generate TOC data
-    const tocData = generateToc(document.content, TOC_LEVEL)
 
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [
@@ -64,7 +59,6 @@ const guides = defineCollection({
       slug,
       headings,
       mdx,
-      tocData,
     }
   },
 })
@@ -91,8 +85,6 @@ const components = defineCollection({
     toc: z.boolean().optional().default(true),
   }),
   transform: async (document, context) => {
-    const tocData = generateToc(document.content, TOC_LEVEL)
-
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [
         remarkGfm,
@@ -132,11 +124,9 @@ const components = defineCollection({
       ...document,
       slug,
       mdx,
-      tocData,
     }
   },
 })
-
 
 const theming = defineCollection({
   name: 'theming',
@@ -150,8 +140,6 @@ const theming = defineCollection({
     toc: z.boolean().optional().default(true),
   }),
   transform: async (document, context) => {
-    const tocData = generateToc(document.content, TOC_LEVEL)
-
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [
         remarkGfm,
@@ -191,11 +179,9 @@ const theming = defineCollection({
       ...document,
       slug,
       mdx,
-      tocData,
     }
   },
 })
-
 
 async function extractHeadings(content: string) {
   const headingLines = content.match(/^##? .+/gm) || []
