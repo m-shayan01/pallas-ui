@@ -10,11 +10,10 @@ export const sidebar = defineSlotRecipe({
     'gap', // Transition width handler
     'fixed', // Fixed positioned wrapper
     'inner', // sidebar content wrapper
+    'inset',
     'content',
     'trigger',
     'rail',
-    'inset',
-    'input',
     'header',
     'footer',
     'separator',
@@ -151,6 +150,27 @@ export const sidebar = defineSlotRecipe({
         shadow: 'lg',
       },
     },
+    inset: {
+      // 'relative flex w-full flex-1 flex-col bg-background',
+      // 'md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow',
+      position: 'relative',
+      display: 'flex',
+      flexDirection: 'column',
+      width: 'full',
+      flex: '1',
+      backgroundColor: '{colors.surface.container}',
+      md: {
+        '.peer:is([data-variant=inset])': {
+          m: 2,
+          ml: 0,
+          rounded: 'xl',
+          shadow: 'md',
+        },
+        '.peer:is([data-variant=inset]):is([data-state=collapsed])': {
+          ml: 2,
+        },
+      },
+    },
     content: {
       // 'flex min-h-0 flex-1 flex-col gap-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden'
       minHeight: '0',
@@ -234,34 +254,6 @@ export const sidebar = defineSlotRecipe({
       },
       '.group:is([data-side=right]):is([data-collapsible=offcanvas]) &': {
         left: '-2',
-      },
-    },
-    inset: {
-      // 'relative flex w-full flex-1 flex-col bg-background',
-      // 'md:peer-data-[variant=inset]:m-2 md:peer-data-[state=collapsed]:peer-data-[variant=inset]:ml-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow',
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      width: 'full',
-      flex: '1',
-      backgroundColor: '{colors.surface.container}',
-      md: {
-        '.peer:is([data-variant=inset]) ~ &': {
-          m: 2,
-          ml: 0,
-          rounded: 'xl',
-          shadow: 'md',
-        },
-        '.peer:is([data-variant=inset]):is([data-state=collapsed]) ~ &': {
-          ml: 2,
-        },
-      },
-    },
-    input: {
-      backgroundColor: 'background',
-      _focusVisible: {
-        ring: '2px',
-        ringColor: '{colors.primary.hover}',
       },
     },
     header: {
@@ -366,6 +358,7 @@ export const sidebar = defineSlotRecipe({
       width: 'full',
       overflow: 'hidden',
       justifyContent: 'left',
+      h: 'auto!',
       '.group:is([data-collapsible=icon]) &': {
         p: '2!',
         w: '8!',
@@ -399,6 +392,16 @@ export const sidebar = defineSlotRecipe({
       position: 'absolute',
       right: 1,
       top: 0,
+      '.menu-button.button--size_sm ~ &': {
+        top: 1,
+      },
+      '.menu-button.button--size_md ~ &': {
+        top: 1.5,
+      },
+      '.menu-button.button--size_lg ~ &': {
+        top: 2.5,
+      },
+
       aspectRatio: 1,
       display: 'flex',
       alignItems: 'center',
@@ -422,12 +425,19 @@ export const sidebar = defineSlotRecipe({
       // 'peer-data-[size=lg]/menu-button:top-2.5',
       // 'group-data-[collapsible=icon]:hidden',
       position: 'absolute',
-      top: 2,
+      h: 5,
       right: 1,
+      userSelect: 'none',
 
-      // '.peer:is([data-size=lg]) &': {
-      //   display: 'none',
-      // },
+      '.menu-button.button--size_sm ~ &': {
+        top: 1,
+      },
+      '.menu-button.button--size_md ~ &': {
+        top: 1.5,
+      },
+      '.menu-button.button--size_lg ~ &': {
+        top: 2.5,
+      },
 
       '.group:is([data-collapsible=icon]) &': {
         display: 'none',

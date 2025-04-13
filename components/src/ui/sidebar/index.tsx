@@ -452,6 +452,7 @@ const SidebarMenuButton = React.forwardRef<
         variant={variant}
         size={size}
         // className={cx(sidebarMenuButtonVariants({ variant, size }), className, defaultStyle)}
+        className={cx('menu-button', props.className)}
         {...props}
       />
     )
