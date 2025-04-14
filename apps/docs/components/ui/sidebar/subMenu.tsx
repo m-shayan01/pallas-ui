@@ -3,7 +3,7 @@ import type { HTMLStyledProps } from '@styled-system/types'
 import React from 'react'
 import { withContext } from './provider'
 
-const SidebarMenuSubComp = withContext<React.ComponentRef<'ul'>, HTMLStyledProps<'ul'>>(
+const SidebarMenuSubComp = withContext<React.ElementRef<'ul'>, HTMLStyledProps<'ul'>>(
   'ul',
   'menuSub',
 )
@@ -12,7 +12,7 @@ export const MenuSub = React.forwardRef<HTMLUListElement, React.ComponentProps<'
 )
 MenuSub.displayName = 'SidebarMenuSub'
 
-const SidebarMenuSubItemComp = withContext<React.ComponentRef<'li'>, HTMLStyledProps<'li'>>(
+const SidebarMenuSubItemComp = withContext<React.ElementRef<'li'>, HTMLStyledProps<'li'>>(
   'li',
   'menuSubItem',
 )
@@ -21,7 +21,7 @@ export const MenuSubItem = React.forwardRef<HTMLLIElement, React.ComponentProps<
 )
 MenuSubItem.displayName = 'SidebarMenuSubItem'
 
-const SidebarMenuSubButtonComp = withContext<React.ComponentRef<'a'>, HTMLStyledProps<'a'>>(
+const SidebarMenuSubButtonComp = withContext<React.ElementRef<'a'>, HTMLStyledProps<'a'>>(
   'a',
   'menuSubButton',
 )

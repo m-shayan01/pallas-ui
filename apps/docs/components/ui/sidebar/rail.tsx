@@ -2,7 +2,7 @@ import type { HTMLStyledProps } from '@styled-system/types'
 import React from 'react'
 import { useSidebar, withContext } from './provider'
 
-const SidebarRailButton = withContext<React.ComponentRef<'button'>, HTMLStyledProps<'button'>>(
+const SidebarRailButton = withContext<React.ElementRef<'button'>, HTMLStyledProps<'button'>>(
   'button',
   'rail',
 )

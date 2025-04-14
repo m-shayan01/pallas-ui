@@ -6,13 +6,13 @@ import { Button, type ButtonProps } from '../button'
 import Tooltip from '../tooltip/tooltip'
 import { useSidebar, withContext } from './provider'
 
-const SidebarMenuComp = withContext<React.ComponentRef<'ul'>, HTMLStyledProps<'ul'>>('ul', 'menu')
+const SidebarMenuComp = withContext<React.ElementRef<'ul'>, HTMLStyledProps<'ul'>>('ul', 'menu')
 export const Menu = React.forwardRef<HTMLUListElement, React.ComponentProps<'ul'>>(
   ({ ...props }, ref) => <SidebarMenuComp ref={ref} data-sidebar="menu" {...props} />,
 )
 Menu.displayName = 'SidebarMenu'
 
-const SidebarMenuItemComp = withContext<React.ComponentRef<'li'>, HTMLStyledProps<'li'>>(
+const SidebarMenuItemComp = withContext<React.ElementRef<'li'>, HTMLStyledProps<'li'>>(
   'li',
   'menuItem',
 )
@@ -149,7 +149,7 @@ export const MenuAction = React.forwardRef<
 })
 MenuAction.displayName = 'SidebarMenuAction'
 
-const SidebarMenuBadgeComp = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
+const SidebarMenuBadgeComp = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>(
   'div',
   'menuBadge',
 )

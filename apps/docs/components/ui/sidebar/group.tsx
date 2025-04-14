@@ -4,7 +4,7 @@ import React from 'react'
 import { Button, type ButtonProps } from '../button'
 import { withContext } from './provider'
 
-const SidebarGroupComp = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
+const SidebarGroupComp = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>(
   'div',
   'group',
 )
@@ -15,7 +15,7 @@ export const Group = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'
 )
 Group.displayName = 'SidebarGroup'
 
-const SidebarGroupLabelComp = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
+const SidebarGroupLabelComp = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>(
   'div',
   'groupLabel',
 )
@@ -39,7 +39,7 @@ export const GroupAction = React.forwardRef<HTMLButtonElement, ButtonProps & { a
 )
 GroupAction.displayName = 'SidebarGroupAction'
 
-const SidebarGroupContentComp = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
+const SidebarGroupContentComp = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>(
   'div',
   'groupContent',
 )

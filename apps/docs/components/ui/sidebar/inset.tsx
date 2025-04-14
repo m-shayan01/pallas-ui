@@ -2,7 +2,7 @@ import type { HTMLStyledProps } from '@styled-system/types'
 import React from 'react'
 import { withContext } from './provider'
 
-const SidebarInsetComp = withContext<React.ComponentRef<'main'>, HTMLStyledProps<'main'>>(
+const SidebarInsetComp = withContext<React.ElementRef<'main'>, HTMLStyledProps<'main'>>(
   'main',
   'inset',
 )

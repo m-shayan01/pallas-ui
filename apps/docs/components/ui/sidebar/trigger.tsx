@@ -6,7 +6,7 @@ import { useSidebar, withContext } from './provider'
 
 const SidebarTriggerButton = withContext<HTMLButtonElement, ButtonProps>(Button, 'trigger')
 export const Trigger = React.forwardRef<
-  React.ComponentRef<typeof Button>,
+  React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ onClick, ...props }, ref) => {
   const { toggleSidebar } = useSidebar()

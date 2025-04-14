@@ -35,7 +35,7 @@ export function useSidebar() {
 
 export const { withProvider, withContext } = createStyleContext(sidebar)
 
-const ProviderComponent = withProvider<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
+const ProviderComponent = withProvider<React.ElementRef<'div'>, HTMLStyledProps<'div'>>(
   'div',
   'provider',
 )
