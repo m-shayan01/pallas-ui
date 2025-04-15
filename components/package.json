@@ -39,6 +39,9 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
+    "@pandacss/config": "^0.53.3",
+    "@pandacss/node": "^0.53.3",
+    "@pandacss/types": "^0.49.0",
     "@chromatic-com/storybook": "3.2.4",
     "@oslojs/encoding": "^1.1.0",
     "@pandacss/shared": "^0.53.3",
