@@ -27,8 +27,8 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
     width: 'full',
     fontSize: 'sm',
     fontWeight: 'medium',
-    py: 'padding.block.sm',
-    px: 'padding.inline.md',
+    py: '1', // was padding.block.sm
+    px: '3', // was padding.inline.md
     rounded: 'md',
     cursor: 'pointer',
     color: 'text.secondary',
@@ -36,20 +36,21 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
   }
 
   const activeStyle = {
-    bg: 'fill.secondary',
-    color: 'primary.DEFAULT',
+    bg: 'primary',
+    color: 'bgSolid.text',
     fontWeight: 'semibold',
     borderLeft: '2px solid',
-    borderLeftColor: 'primary.DEFAULT',
+    borderLeftColor: 'primary',
+    _hover: { bg: 'primary.hover', color: 'bgSolid.text' },
   }
 
   const subMenuStyle = css({
     //inner children spacing via padding
-    pl: 'padding.inline.sm',
-    ml: 'padding.inline.md',
+    pl: '2', // was padding.inline.sm
+    ml: '3', // was padding.inline.md
     borderLeft: '1px solid',
     borderColor: 'border',
-    spaceY: 'padding.inline.md',
+    spaceY: '3', // was padding.inline.md
   })
 
   const chevronStyle = css({
@@ -71,14 +72,14 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
     //component root spacing via gap
     width: '100%',
     borderRadius: '0',
-    mb: 'gap.component.sm',
+    mb: '4', // was gap.component.sm
     borderWidth: '0',
   })
 
   const accordionHeaderStyle = css({
     width: '100%',
-    px: 'gap.component.sm',
-    py: 'gap.component.sm',
+    px: '6', // was gap.component.lg
+    py: '4', // was gap.component.sm
     bg: 'surface.layout',
   })
 

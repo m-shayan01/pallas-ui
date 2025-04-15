@@ -114,22 +114,18 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
               right: '4', // Changed from padding.inline.lg
             })}
           />
-          <div
-            className={css({
-              my: '3', // Changed from gap.inline.sm
-            })}
-          >
+          <div>
             <Content
               value="npm"
               className={css({
-                px: '2', // Changed from padding.block.md
+                p: '2',
                 bg: 'surface.container',
               })}
             >
               <pre
                 className={css({
-                  bg: 'fill.secondary',
-                  p: '3', // Changed from padding.block.lg
+                  bg: 'bgSolid',
+                  p: '3',
                   rounded: 'md',
                   color: 'text.secondary',
                   border: '1px solid',
@@ -139,20 +135,28 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code>{npm}</code>
+                <code className={css({ 
+                  color: '#D4D4D4', // Light gray color similar to dark-plus theme
+                  display: 'block',
+                  whiteSpace: 'pre',
+                })}>
+                  {npm}
+                </code>
               </pre>
             </Content>
+
+            {/* Update the other Content components similarly */}
             <Content
               value="yarn"
               className={css({
-                p: '2', // Changed from padding.block.md
+                p: '2',
                 bg: 'surface.container',
               })}
             >
               <pre
                 className={css({
-                  bg: 'fill.secondary',
-                  p: '3', // Changed from padding.block.lg
+                  bg: 'bgSolid', // Changed to match code blocks
+                  p: '3',
                   rounded: 'md',
                   color: 'text.secondary',
                   border: '1px solid',
@@ -162,20 +166,21 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code>{yarn}</code>
+                <code className={css({ color: 'text.primary' })}>{yarn}</code>
               </pre>
             </Content>
+
             <Content
               value="pnpm"
               className={css({
-                p: '2', // Changed from padding.block.md
+                p: '2',
                 bg: 'surface.container',
               })}
             >
               <pre
                 className={css({
-                  bg: 'fill.secondary',
-                  p: '3', // Changed from padding.block.lg
+                  bg: 'bgSolid', // Changed to match code blocks
+                  p: '3',
                   rounded: 'md',
                   color: 'text.secondary',
                   border: '1px solid',
@@ -185,7 +190,7 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code>{pnpm}</code>
+                <code className={css({ color: 'text.primary' })}>{pnpm}</code>
               </pre>
             </Content>
           </div>

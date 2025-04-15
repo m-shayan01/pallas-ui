@@ -1,3 +1,4 @@
+import { Item, Link, List, Root, Separator } from '@pallas-ui/breadcrumb'
 import { css } from '@styled-system/css'
 import { Container } from '@styled-system/jsx'
 import { allComponents, allGuides, allThemings } from 'content-collections'
@@ -101,51 +102,28 @@ function ContentPage({
       >
         {showHeader && breadcrumb && (
           <header>
-            <div
-              className={css({
-                fontSize: 'sm',
-                color: 'text.tertiary',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '2',
-              })}
-            >
-              <span>{breadcrumb.section}</span>
-              <span>/</span>
-              <span className={css({ color: 'text.secondary' })}>{breadcrumb.title}</span>
-            </div>
-
-            {/* {title && (
-              <h1
+            <Root>
+              <List
                 className={css({
-                  mt: 'layout.section.lg',
-                  mb: 'layout.section.sm',
-                  fontSize: '3xl',
-                  fontWeight: 'bold',
-                  lineHeight: 'tight',
-                  scrollMargin: '24',
                   display: 'flex',
                   alignItems: 'center',
-                  color: 'text',
-                  _groupHover: { '& a': { opacity: 1 } },
+                  flexWrap: 'nowrap',
+                  gap: '2',
                 })}
               >
-                {title}
-              </h1>
-            )}
+                <Item>
+                  <Link href={`/docs/${breadcrumb.section.toLowerCase()}`}>
+                    {breadcrumb.section}
+                  </Link>
+                </Item>
+                <Separator />
+                <Item>
+                  <span className={css({ color: 'text.secondary' })}>{breadcrumb.title}</span>
+                </Item>
+              </List>
+            </Root>
 
-            {description && (
-              <p
-                className={css({
-                  mt: 'gap.inline.sm',
-                  mb: 'gap.inline.sm',
-                  lineHeight: 'relaxed',
-                  color: 'text.secondary',
-                })}
-              >
-                {description}
-              </p>
-            )} */}
+            {/* Commented out title and description as in your original code */}
           </header>
         )}
 

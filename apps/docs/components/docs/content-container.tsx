@@ -15,6 +15,11 @@ export function ContentContainer({ children, className }: ContentContainerProps)
       className={`${vstack({
         gap: 'layout.section.sm',
       })} ${className || ''}`}
+      css={{
+        paddingLeft: '0', // Remove left padding
+        pr: { base: '4', md: '8', lg: '8' }, // kept right padding
+        px: '0', //manually adjusted to 0
+      }}
     >
       {children}
     </Container>

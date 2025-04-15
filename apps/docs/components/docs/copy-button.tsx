@@ -90,20 +90,20 @@ export function CopyButton({ value, className }: CopyButtonProps) {
       onClick={copyToClipboard}
       className={`${css({
         position: 'absolute',
-        top: '4', // Changed from padding.inline.lg
-        right: '3', // Changed from padding.inline.md
+        top: '4',
+        right: '3',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-
-        p: '2', // Changed from padding.inline.sm
-        color: copied ? 'success.text' : 'text.tertiary',
-        bg: 'fill.tertiary',
-        border: 'none',
-        opacity: 0.8,
+        p: '2',
+        color: copied ? 'success.text' : 'text.secondary',
+        bg: 'border', //background colors for fill, etc do not work
+        border: '1px solid',
+        borderColor: 'border',
+        opacity: 1, // Full opacity for better visibility
         _hover: {
-          bg: 'fill',
-          color: copied ? 'success.text' : 'text',
+          bg: 'border.secondary',
+          color: copied ? 'success.text' : 'text.primary',
           opacity: 1,
         },
         _focus: {

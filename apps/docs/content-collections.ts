@@ -1,5 +1,6 @@
 import { defineCollection, defineConfig } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
+import { grid } from '@styled-system/patterns'
 import { remarkNpm2Yarn } from '@theguild/remark-npm2yarn'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
@@ -41,7 +42,7 @@ const guides = defineCollection({
         [
           rehypePrettyCode,
           {
-            theme: 'github-light',
+            theme: 'dark-plus',
             // biome-ignore lint/suspicious/noExplicitAny: <explanation>
             onVisitHighlightedLine(node: { properties: { className: any[] } }) {
               node.properties.className = [
@@ -49,6 +50,8 @@ const guides = defineCollection({
                 'line--highlighted',
               ]
             },
+            grid: false,
+            keepBackground: false,
           },
         ],
       ],
@@ -104,7 +107,7 @@ const components = defineCollection({
         [
           rehypePrettyCode,
           {
-            theme: 'github-light',
+            theme: 'dark-plus', //material-theme-darker, min-dark, night-owl, slack-dark(good), all these also look good
             // biome-ignore lint/suspicious/noExplicitAny: <explanation>
             onVisitHighlightedLine(node: { properties: { className: any[] } }) {
               node.properties.className = [
@@ -112,6 +115,9 @@ const components = defineCollection({
                 'line--highlighted',
               ]
             },
+            // Add these options to remove the border corners
+            grid: false,
+            keepBackground: false,
           },
         ],
       ],
@@ -159,7 +165,7 @@ const theming = defineCollection({
         [
           rehypePrettyCode,
           {
-            theme: 'github-light',
+            theme: 'dark-plus',
             // biome-ignore lint/suspicious/noExplicitAny: <explanation>
             onVisitHighlightedLine(node: { properties: { className: any[] } }) {
               node.properties.className = [
@@ -167,6 +173,8 @@ const theming = defineCollection({
                 'line--highlighted',
               ]
             },
+            grid: false,
+            keepBackground: false,
           },
         ],
       ],
