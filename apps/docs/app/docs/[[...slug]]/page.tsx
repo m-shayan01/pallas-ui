@@ -82,6 +82,27 @@ function ContentPage({
   mdxCode,
   showHeader = true,
 }: ContentPageProps) {
+  //helper function to get the correct starter link for each section as docs/components type links do not exist
+  const getBreadcrumbLink = (section: string) => {
+    const sectionLower = section.toLowerCase()
+    if (sectionLower === 'components') {
+      // Link to the first component
+      return '/docs/components/accordian'
+    }
+    if (sectionLower === 'theming') {
+      // Link to the first theming page
+      const firstTheme = allThemings[0]
+      return '/docs/theming/index'
+    }
+    if (sectionLower === 'introduction') {
+      // Link to the first guide
+      const firstGuide = allGuides[0]
+      return '/docs/introduction'
+    }
+    // Default fallback
+    return '/docs'
+  }
+
   return (
     <main
       className={css({
@@ -112,13 +133,27 @@ function ContentPage({
                 })}
               >
                 <Item>
-                  <Link href={`/docs/${breadcrumb.section.toLowerCase()}`}>
+                  <Link
+                    href={getBreadcrumbLink(breadcrumb.section)}
+                    className={css({
+                      color: 'text.secondary',
+                      _hover: { color: 'primary' },
+                      transition: 'color 0.2s ease',
+                    })}
+                  >
                     {breadcrumb.section}
                   </Link>
                 </Item>
                 <Separator />
                 <Item>
-                  <span className={css({ color: 'text.secondary' })}>{breadcrumb.title}</span>
+                  <span
+                    className={css({
+                      color: 'text.primary',
+                      fontWeight: 'medium',
+                    })}
+                  >
+                    {breadcrumb.title}
+                  </span>
                 </Item>
               </List>
             </Root>

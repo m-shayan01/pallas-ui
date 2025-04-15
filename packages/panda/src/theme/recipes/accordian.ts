@@ -40,7 +40,7 @@ export const accordian = defineSlotRecipe({
       justifyContent: 'space-between',
       textStyle: {
         base: 'lg',
-        lg: 'xl',
+        lg: 'lg',
       },
       bg: '{colors.primary.bg}',
       fontWeight: 'semibold',

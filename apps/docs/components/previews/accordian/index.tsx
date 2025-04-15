@@ -1,17 +1,12 @@
 import Accordian from '@/components/ui/accordian/accordian'
-import { ChevronDown } from 'lucide-react'
 import { css } from '@styled-system/css'
+import { ChevronDown } from 'lucide-react'
 
 export default function AccordionPreview() {
   return (
     <Accordian.Root type="single" style={{ width: '100%', border: '0' }}>
       <Accordian.Item value="item-1">
-        <Accordian.ItemHeader 
-          className={css({
-            textStyle: 'lg !important', // Force lg text style at all breakpoints
-            fontSize: 'lg !important',   // Backup approach
-          })}
-        >
+        <Accordian.ItemHeader>
           Is it accessible?
           <Accordian.ItemTrigger>
             <ChevronDown />
@@ -22,12 +17,7 @@ export default function AccordionPreview() {
         </Accordian.ItemContent>
       </Accordian.Item>
       <Accordian.Item value="item-2">
-        <Accordian.ItemHeader 
-          className={css({
-            textStyle: 'lg !important',
-            fontSize: 'lg !important',
-          })}
-        >
+        <Accordian.ItemHeader>
           Is it styled?
           <Accordian.ItemTrigger>
             <ChevronDown />
@@ -38,12 +28,7 @@ export default function AccordionPreview() {
         </Accordian.ItemContent>
       </Accordian.Item>
       <Accordian.Item value="item-3">
-        <Accordian.ItemHeader 
-          className={css({
-            textStyle: 'lg !important',
-            fontSize: 'lg !important',
-          })}
-        >
+        <Accordian.ItemHeader>
           Is it animated?
           <Accordian.ItemTrigger>
             <ChevronDown />

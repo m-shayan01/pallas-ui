@@ -96,31 +96,32 @@ export function CopyButton({ value, className }: CopyButtonProps) {
         alignItems: 'center',
         justifyContent: 'center',
         p: '2',
-        color: copied ? 'success.text' : 'text.secondary',
-        bg: 'border', //background colors for fill, etc do not work
-        border: '1px solid',
-        borderColor: 'border',
-        opacity: 1, // Full opacity for better visibility
+        backgroundImage: copied ? 'none' : 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+        backgroundColor: copied ? 'success' : 'transparent',
+        backgroundSize: '200% auto',
+        border: '0',
+        boxShadow: '0 0 10px rgba(238, 238, 238, 0.3)',
+        borderRadius: 'md',
+        opacity: 1,
         _hover: {
-          bg: 'border.secondary',
-          color: copied ? 'success.text' : 'text.primary',
-          opacity: 1,
+          backgroundPosition: 'right center',
+          color: 'white',
         },
         _focus: {
           outline: 'none',
           ring: 'none',
           shadow: 'none',
         },
-        transition: 'all 0.2s ease',
+        transition: 'all 0.5s',
         maxWidth: 'icon.md',
         maxHeight: 'icon.md',
       })} ${className || ''}`}
       aria-label="Copy code to clipboard"
     >
       {copied ? (
-        <Check className={css({ h: 'icon.sm', w: 'icon.sm', color: 'success.text' })} />
+        <Check className={css({ h: 'icon.sm', w: 'icon.sm', color: 'white' })} />
       ) : (
-        <Copy className={css({ h: 'icon.sm', w: 'icon.sm' })} />
+        <Copy className={css({ h: 'icon.sm', w: 'icon.sm', color: 'black' })} />
       )}
     </Button>
   )

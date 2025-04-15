@@ -31,7 +31,7 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
     px: '3', // was padding.inline.md
     rounded: 'md',
     cursor: 'pointer',
-    color: 'text.secondary',
+    color: 'text',
     _hover: { bg: 'fill.secondary', color: 'text' },
   }
 
@@ -39,8 +39,6 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
     bg: 'primary',
     color: 'bgSolid.text',
     fontWeight: 'semibold',
-    borderLeft: '2px solid',
-    borderLeftColor: 'primary',
     _hover: { bg: 'primary.hover', color: 'bgSolid.text' },
   }
 
@@ -72,20 +70,20 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
     //component root spacing via gap
     width: '100%',
     borderRadius: '0',
-    mb: '4', // was gap.component.sm
+    mb: '1', // was gap.component.sm
     borderWidth: '0',
   })
 
   const accordionHeaderStyle = css({
     width: '100%',
     px: '6', // was gap.component.lg
-    py: '4', // was gap.component.sm
-    bg: 'surface.layout',
+    py: '2', // was gap.component.sm
+    bg: 'surface.container',
   })
 
   const accordionContentStyle = css({
     width: '100%',
-    bg: 'surface.layout',
+    bg: 'surface.container',
   })
 
   return (
@@ -123,7 +121,7 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
           <Accordian.ItemContent className={accordionContentStyle}>
             <ul className={subMenuStyle}>
               {guides.map((guide) => (
-                <li key={guide.slug}>
+                <li key={guide.slug} className={css({ marginTop: '1' })}>
                   <Link
                     href={`/docs/${guide.slug}`}
                     className={css(
@@ -151,7 +149,7 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
           <Accordian.ItemContent className={accordionContentStyle}>
             <ul className={subMenuStyle}>
               {themings.map((theme) => (
-                <li key={theme.slug}>
+                <li key={theme.slug} className={css({ marginTop: '1' })}>
                   <Link
                     href={`/docs/theming/${theme.slug}`}
                     className={css(
@@ -178,7 +176,7 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
           <Accordian.ItemContent className={accordionContentStyle}>
             <ul className={subMenuStyle}>
               {components.map((component) => (
-                <li key={component.slug}>
+                <li key={component.slug} className={css({ marginTop: '1' })}>
                   <Link
                     href={`/docs/components/${component.slug}`}
                     className={css(

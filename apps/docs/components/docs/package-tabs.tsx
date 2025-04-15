@@ -135,17 +135,22 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code className={css({ 
-                  color: '#D4D4D4', // Light gray color similar to dark-plus theme
-                  display: 'block',
-                  whiteSpace: 'pre',
-                })}>
+                <code
+                  className={css({
+                    fontWeight: '900',
+                    background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    display: 'block',
+                    whiteSpace: 'pre',
+                  })}
+                >
                   {npm}
                 </code>
               </pre>
             </Content>
 
-            {/* Update the other Content components similarly */}
+            {/* Update the other Content components with the same gradient styling */}
             <Content
               value="yarn"
               className={css({
@@ -155,7 +160,7 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
             >
               <pre
                 className={css({
-                  bg: 'bgSolid', // Changed to match code blocks
+                  bg: 'bgSolid',
                   p: '3',
                   rounded: 'md',
                   color: 'text.secondary',
@@ -166,7 +171,19 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code className={css({ color: 'text.primary' })}>{yarn}</code>
+                <code
+                  className={css({
+                    fontWeight: '900',
+                    background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+                    backgroundClip: 'text',
+                    // WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    display: 'block',
+                    whiteSpace: 'pre',
+                  })}
+                >
+                  {yarn}
+                </code>
               </pre>
             </Content>
 
@@ -179,7 +196,7 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
             >
               <pre
                 className={css({
-                  bg: 'bgSolid', // Changed to match code blocks
+                  bg: 'bgSolid',
                   p: '3',
                   rounded: 'md',
                   color: 'text.secondary',
@@ -190,7 +207,20 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
                   fontSize: 'sm',
                 })}
               >
-                <code className={css({ color: 'text.primary' })}>{pnpm}</code>
+                <code
+                  className={css({
+                    fontWeight: '900',
+                    background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+                    backgroundClip: 'text',
+                    // WebkitBackgroundClip: 'text',
+
+                    WebkitTextFillColor: 'transparent',
+                    display: 'block',
+                    whiteSpace: 'pre',
+                  })}
+                >
+                  {pnpm}
+                </code>
               </pre>
             </Content>
           </div>
