@@ -2,14 +2,14 @@ import type { HTMLStyledProps } from '@styled-system/types'
 import React from 'react'
 import { useSidebar, withContext } from './provider'
 
-const SidebarRoot = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'root')
+const SidebarRoot = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>('div', 'root')
 const SidebarRootNonCollapsible = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>(
   'div',
   'rootNonCollapsible',
 )
-const SidebarGap = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'gap')
-const SidebarFixed = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'fixed')
-const SidebarInner = withContext<React.ElementRef<'div'>, HTMLStyledProps<'div'>>('div', 'inner')
+const SidebarGap = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>('div', 'gap')
+const SidebarFixed = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>('div', 'fixed')
+const SidebarInner = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>('div', 'inner')
 
 export const Root = React.forwardRef<
   HTMLDivElement,

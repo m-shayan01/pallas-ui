@@ -1,10 +1,10 @@
-import React from 'react'
+import { Header as HeaderPrimitive } from '@pallas-ui/sidebar'
+import type { Assign } from '@pallas-ui/style-context'
+import type { JsxStyleProps } from '@styled-system/types'
+import type React from 'react'
 import { withContext } from './provider'
 
-const SidebarHeaderComp = withContext('div', 'header')
-export const Header = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
-  ({ ...props }, ref) => {
-    return <SidebarHeaderComp ref={ref} data-sidebar="header" {...props} />
-  },
-)
-Header.displayName = 'SidebarHeader'
+export const Header = withContext<
+  React.ComponentRef<typeof HeaderPrimitive>,
+  Assign<React.ComponentProps<typeof HeaderPrimitive>, JsxStyleProps>
+>(HeaderPrimitive, 'header')

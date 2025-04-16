@@ -1,10 +1,10 @@
-import React from 'react'
+import { Content as ContentPrimitive } from '@pallas-ui/sidebar'
+import type { Assign } from '@pallas-ui/style-context'
+import type { JsxStyleProps } from '@styled-system/types'
+import type React from 'react'
 import { withContext } from './provider'
 
-const SidebarContentComp = withContext('div', 'content')
-export const Content = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
-  ({ ...props }, ref) => {
-    return <SidebarContentComp ref={ref} data-sidebar="content" {...props} />
-  },
-)
-Content.displayName = 'SidebarContent'
+export const Content = withContext<
+  React.ComponentRef<typeof ContentPrimitive>,
+  Assign<React.ComponentProps<typeof ContentPrimitive>, JsxStyleProps>
+>(ContentPrimitive, 'content')

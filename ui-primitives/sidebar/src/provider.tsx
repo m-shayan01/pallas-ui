@@ -1,11 +1,7 @@
-import { createStyleContext } from '@pallas-ui/style-context'
-import { cx } from '@styled-system/css'
-import { sidebar } from '@styled-system/recipes'
-import type { HTMLStyledProps } from '@styled-system/types'
 import React from 'react'
-import Tooltip from '../tooltip/tooltip'
+import useIsMobile from './useIsMobile'
 
-type SidebarContextProps = {
+export type SidebarContextProps = {
   state: 'expanded' | 'collapsed'
   open: boolean
   setOpen: (open: boolean) => void
@@ -17,9 +13,6 @@ type SidebarContextProps = {
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state'
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
-const SIDEBAR_WIDTH = '16rem'
-const SIDEBAR_WIDTH_MOBILE = '18rem'
-const SIDEBAR_WIDTH_ICON = '3rem'
 const SIDEBAR_KEYBOARD_SHORTCUT = 'd'
 
 const SidebarContext = React.createContext<SidebarContextProps | null>(null)
@@ -33,20 +26,13 @@ export function useSidebar() {
   return context
 }
 
-export const { withProvider, withContext } = createStyleContext(sidebar)
+export type SidebarProviderProps = React.ComponentPropsWithoutRef<'div'> & {
+  defaultOpen?: boolean
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+}
 
-const ProviderStyled = withProvider<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
-  Provider,
-  'provider',
-)
-export const Provider = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<'div'> & {
-    defaultOpen?: boolean
-    open?: boolean
-    onOpenChange?: (open: boolean) => void
-  }
->(
+export const SidebarProvider = React.forwardRef<HTMLDivElement, SidebarProviderProps>(
   (
     {
       defaultOpen = true,
@@ -59,14 +45,14 @@ export const Provider = React.forwardRef<
     },
     ref,
   ) => {
-    // const isMobile = useIsMobile()
-    const isMobile = false
+    const isMobile = useIsMobile()
     const [openMobile, setOpenMobile] = React.useState(false)
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
     const [_open, _setOpen] = React.useState(defaultOpen)
     const open = openProp ?? _open
+
     const setOpen = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
         const openState = typeof value === 'function' ? value(open) : value
@@ -83,9 +69,10 @@ export const Provider = React.forwardRef<
     )
 
     // Helper to toggle the sidebar.
-    const toggleSidebar = React.useCallback(() => {
-      return isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)
-    }, [isMobile, setOpen, setOpenMobile])
+    const toggleSidebar = React.useCallback(
+      () => (isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open)),
+      [isMobile, setOpen],
+    )
 
     // Adds a keyboard shortcut to toggle the sidebar.
     React.useEffect(() => {
@@ -112,18 +99,18 @@ export const Provider = React.forwardRef<
         setOpenMobile,
         toggleSidebar,
       }),
-      [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar],
+      [state, open, setOpen, isMobile, openMobile, toggleSidebar],
     )
 
     return (
       <SidebarContext.Provider value={contextValue}>
-        <Tooltip.Provider delayDuration={0}>
-          <ProviderStyled className={cx('group/sidebar-wrapper', className)} ref={ref} {...props}>
-            {children}
-          </ProviderStyled>
-        </Tooltip.Provider>
+        <div className={`group/sidebar-wrapper ${className}`} ref={ref} {...props}>
+          {children}
+        </div>
       </SidebarContext.Provider>
     )
   },
 )
-Provider.displayName = 'SidebarProvider'
+SidebarProvider.displayName = 'SidebarProvider'
+
+export const Provider = SidebarProvider
