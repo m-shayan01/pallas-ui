@@ -140,7 +140,7 @@ function CodeBlock({
         className={css({
           p: '3',
           rounded: 'md',
-          bg: 'fill.secondary',
+          bg: 'bgSolid',
           color: 'text.secondary',
           border: '1px solid',
           borderColor: 'border',

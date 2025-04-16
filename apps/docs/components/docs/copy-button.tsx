@@ -90,37 +90,38 @@ export function CopyButton({ value, className }: CopyButtonProps) {
       onClick={copyToClipboard}
       className={`${css({
         position: 'absolute',
-        top: '4', // Changed from padding.inline.lg
-        right: '3', // Changed from padding.inline.md
+        top: '4',
+        right: '3',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-
-        p: '2', // Changed from padding.inline.sm
-        color: copied ? 'success.text' : 'text.tertiary',
-        bg: 'fill.tertiary',
-        border: 'none',
-        opacity: 0.8,
+        p: '2',
+        backgroundImage: copied ? 'none' : 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+        backgroundColor: copied ? 'success' : 'transparent',
+        backgroundSize: '200% auto',
+        border: '0',
+        boxShadow: '0 0 10px rgba(238, 238, 238, 0.3)',
+        borderRadius: 'md',
+        opacity: 1,
         _hover: {
-          bg: 'fill',
-          color: copied ? 'success.text' : 'text',
-          opacity: 1,
+          backgroundPosition: 'right center',
+          color: 'white',
         },
         _focus: {
           outline: 'none',
           ring: 'none',
           shadow: 'none',
         },
-        transition: 'all 0.2s ease',
+        transition: 'all 0.5s',
         maxWidth: 'icon.md',
         maxHeight: 'icon.md',
       })} ${className || ''}`}
       aria-label="Copy code to clipboard"
     >
       {copied ? (
-        <Check className={css({ h: 'icon.sm', w: 'icon.sm', color: 'success.text' })} />
+        <Check className={css({ h: 'icon.sm', w: 'icon.sm', color: 'white' })} />
       ) : (
-        <Copy className={css({ h: 'icon.sm', w: 'icon.sm' })} />
+        <Copy className={css({ h: 'icon.sm', w: 'icon.sm', color: 'black' })} />
       )}
     </Button>
   )

@@ -136,7 +136,7 @@ export function SearchDialog() {
             right: '2',
             display: 'none',
             alignItems: 'center',
-            gap: '3',
+            gap: '1',
             rounded: 'sm',
             border: '1px solid',
             borderColor: 'border',
