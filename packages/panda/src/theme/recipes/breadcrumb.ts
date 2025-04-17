@@ -50,11 +50,13 @@ export const breadcrumb = defineSlotRecipe({
       '& > svg': {
         width: '{sizes.icon.sm}',
         height: '{sizes.icon.sm}',
+        color: 'text.secondary',
       },
     },
     sperator_icon: {
       width: '{sizes.icon.sm}',
       height: '{sizes.icon.sm}',
+      color: 'text.secondary',
     },
     ellipsis: {
       display: 'flex',
