@@ -53,6 +53,7 @@ export function ComponentPreview({
     color: 'text.secondary',
     fontSize: 'sm',
     fontWeight: 'medium',
+    zIndex: '1',
     _selected: {
       color: 'text',
       borderBottom: '2px solid',
@@ -69,6 +70,7 @@ export function ComponentPreview({
         bg: 'surface.container',
         width: '100%', // Changed from fixed width to 100%
         maxWidth: '100%',
+        cursor: 'pointer',
       })}
     >
       <Root defaultValue="preview">
