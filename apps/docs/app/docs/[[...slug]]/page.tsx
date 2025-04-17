@@ -1,6 +1,5 @@
 import { Item, Link, List, Root, Separator } from '@pallas-ui/breadcrumb'
 import { css } from '@styled-system/css'
-import { Container } from '@styled-system/jsx'
 import { allComponents, allGuides, allThemings } from 'content-collections'
 import { notFound } from 'next/navigation'
 import { DynamicToc } from '../../../components/docs/dynamic-toc'

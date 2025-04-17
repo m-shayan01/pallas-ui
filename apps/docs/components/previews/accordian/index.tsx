@@ -1,5 +1,4 @@
 import Accordian from '@/components/ui/accordian/accordian'
-import { css } from '@styled-system/css'
 import { ChevronDown } from 'lucide-react'
 
 export default function AccordionPreview() {

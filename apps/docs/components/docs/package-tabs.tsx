@@ -110,7 +110,7 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
           <CopyButton
             value={getCurrentTabContent()}
             className={css({
-              top: '4', // Changed from padding.inline.lg
+              top: '5', // Changed from padding.inline.lg
               right: '4', // Changed from padding.inline.lg
             })}
           />

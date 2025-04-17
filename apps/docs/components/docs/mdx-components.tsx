@@ -138,7 +138,8 @@ function CodeBlock({
     >
       <pre
         className={css({
-          p: '3',
+          px: '5',
+          py: '6',
           rounded: 'md',
           bg: 'bgSolid',
           color: 'text.secondary',
