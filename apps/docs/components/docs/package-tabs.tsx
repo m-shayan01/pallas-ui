@@ -87,6 +87,8 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
     _selected: {
       fontWeight: 'semibold',
     },
+    position: 'relative',
+    zIndex: '1',
   })
 
   const contentContainerStyle = css({
@@ -108,9 +110,24 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
       >
         <TabList
           className={css({
-            bg: 'fill.tertiary',
+            position: 'relative',
             borderBottom: '1px solid',
             borderColor: 'border',
+            backdropFilter: 'blur(2px)',
+            bg: '#e6f4ff4a',
+            _before: {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: 'url(/noise.svg)',
+              backgroundSize: 'cover',
+              opacity: 0.3,
+              zIndex: 0,
+              mixBlendMode: 'overlay',
+            },
           })}
         >
           <Trigger value="npm" className={triggerStyle}>
