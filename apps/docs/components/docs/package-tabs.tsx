@@ -50,6 +50,16 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
     }
   }
 
+  const triggerStyle = css({
+    p: '3', // Changed from padding.inline.md
+    fontWeight: 'normal',
+    borderColor: 'primary',
+    fontSize: 'sm',
+    _selected: {
+      fontWeight: 'semibold',
+    },
+  })
+
   return (
     <div>
       <Root

@@ -48,6 +48,17 @@ export function ComponentPreview({
 
   const [code, recipe] = childrenArray
 
+  const triggerStyle = css({
+    p: '3', // Changed from padding.inline.md
+    color: 'text.secondary',
+    fontSize: 'sm',
+    fontWeight: 'medium',
+    _selected: {
+      color: 'text',
+      borderBottom: '2px solid',
+      borderColor: 'primary',
+    },
+  })
   return (
     <div
       className={css({
@@ -74,54 +85,18 @@ export function ComponentPreview({
             zIndex: 1, // Ensure tabs appear above content
           })}
         >
-          <Trigger
-            value="preview"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              color: 'text.secondary',
-              fontWeight: 'medium',
-              _selected: {
-                color: 'text',
-                borderBottom: '2px solid',
-                borderColor: 'primary',
-              },
-            })}
-          >
+          <Trigger value="preview" className={triggerStyle}>
             Preview
           </Trigger>
 
           {code && (
-            <Trigger
-              value="code"
-              className={css({
-                p: '3', // Changed from padding.inline.md
-                color: 'text.secondary',
-                fontWeight: 'medium',
-                _selected: {
-                  color: 'text',
-                  borderBottom: '2px solid',
-                  borderColor: 'primary',
-                },
-              })}
-            >
+            <Trigger value="code" className={triggerStyle}>
               Code
             </Trigger>
           )}
 
           {withRecipe && hasRecipe && (
-            <Trigger
-              value="recipe"
-              className={css({
-                p: '3', // Changed from padding.inline.md
-                color: 'text.secondary',
-                fontWeight: 'medium',
-                _selected: {
-                  color: 'text',
-                  borderBottom: '2px solid',
-                  borderColor: 'primary',
-                },
-              })}
-            >
+            <Trigger value="recipe" className={triggerStyle}>
               Recipe
             </Trigger>
           )}
