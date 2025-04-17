@@ -100,7 +100,7 @@ export function rehypeComponent() {
         const fileName = fileAttr?.value || 'index'
 
         const nameMap = {
-          accordion: 'accordian',
+          accordion: 'accordion',
         }
         const dirName = nameMap[componentName] || componentName
 

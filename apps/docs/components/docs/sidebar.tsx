@@ -1,6 +1,6 @@
 'use client'
 
-import Accordian from '@/components/ui/accordian/accordian'
+import Accordion from '@/components/ui/accordion'
 import { css } from '@styled-system/css'
 import { allComponents, allGuides, allThemings } from 'content-collections'
 import { ChevronDown } from 'lucide-react'
@@ -106,19 +106,19 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
         },
       })}
     >
-      <Accordian.Root
+      <Accordion.Root
         type="multiple"
         defaultValue={['guides', 'components', 'theming']}
         style={{ width: '100%', borderWidth: '0' }}
       >
-        <Accordian.Item value="guides" className={accordionItemStyle}>
-          <Accordian.ItemHeader className={accordionHeaderStyle}>
+        <Accordion.Item value="guides" className={accordionItemStyle}>
+          <Accordion.ItemHeader className={accordionHeaderStyle}>
             <span className={headerStyle}>Getting Started</span>
-            <Accordian.ItemTrigger>
+            <Accordion.ItemTrigger>
               <ChevronDown className={chevronStyle} />
-            </Accordian.ItemTrigger>
-          </Accordian.ItemHeader>
-          <Accordian.ItemContent className={accordionContentStyle}>
+            </Accordion.ItemTrigger>
+          </Accordion.ItemHeader>
+          <Accordion.ItemContent className={accordionContentStyle}>
             <ul className={subMenuStyle}>
               {guides.map((guide) => (
                 <li key={guide.slug} className={css({ marginTop: '1' })}>
@@ -135,18 +135,18 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
                 </li>
               ))}
             </ul>
-          </Accordian.ItemContent>
-        </Accordian.Item>
+          </Accordion.ItemContent>
+        </Accordion.Item>
 
         {/* New Theming Section */}
-        <Accordian.Item value="theming" className={accordionItemStyle}>
-          <Accordian.ItemHeader className={accordionHeaderStyle}>
+        <Accordion.Item value="theming" className={accordionItemStyle}>
+          <Accordion.ItemHeader className={accordionHeaderStyle}>
             <span className={headerStyle}>Theming</span>
-            <Accordian.ItemTrigger>
+            <Accordion.ItemTrigger>
               <ChevronDown className={chevronStyle} />
-            </Accordian.ItemTrigger>
-          </Accordian.ItemHeader>
-          <Accordian.ItemContent className={accordionContentStyle}>
+            </Accordion.ItemTrigger>
+          </Accordion.ItemHeader>
+          <Accordion.ItemContent className={accordionContentStyle}>
             <ul className={subMenuStyle}>
               {themings.map((theme) => (
                 <li key={theme.slug} className={css({ marginTop: '1' })}>
@@ -163,17 +163,17 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
                 </li>
               ))}
             </ul>
-          </Accordian.ItemContent>
-        </Accordian.Item>
+          </Accordion.ItemContent>
+        </Accordion.Item>
 
-        <Accordian.Item value="components" className={accordionItemStyle}>
-          <Accordian.ItemHeader className={accordionHeaderStyle}>
+        <Accordion.Item value="components" className={accordionItemStyle}>
+          <Accordion.ItemHeader className={accordionHeaderStyle}>
             <span className={headerStyle}>Components</span>
-            <Accordian.ItemTrigger>
+            <Accordion.ItemTrigger>
               <ChevronDown className={chevronStyle} />
-            </Accordian.ItemTrigger>
-          </Accordian.ItemHeader>
-          <Accordian.ItemContent className={accordionContentStyle}>
+            </Accordion.ItemTrigger>
+          </Accordion.ItemHeader>
+          <Accordion.ItemContent className={accordionContentStyle}>
             <ul className={subMenuStyle}>
               {components.map((component) => (
                 <li key={component.slug} className={css({ marginTop: '1' })}>
@@ -190,9 +190,9 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
                 </li>
               ))}
             </ul>
-          </Accordian.ItemContent>
-        </Accordian.Item>
-      </Accordian.Root>
+          </Accordion.ItemContent>
+        </Accordion.Item>
+      </Accordion.Root>
     </div>
   )
 }

@@ -66,7 +66,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href="/docs/components/accordian"
+            href="/docs/components/accordion"
             className={css({
               px: 'padding.inline.lg', // Using inline padding
               py: 'padding.block.md', // Using block padding

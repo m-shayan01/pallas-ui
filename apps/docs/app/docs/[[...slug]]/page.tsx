@@ -86,7 +86,7 @@ function ContentPage({
     const sectionLower = section.toLowerCase()
     if (sectionLower === 'components') {
       // Link to the first component
-      return '/docs/components/accordian'
+      return '/docs/components/accordion'
     }
     if (sectionLower === 'theming') {
       // Link to the first theming page
