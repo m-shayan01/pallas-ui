@@ -11,6 +11,35 @@ interface PackageTabsProps {
   pnpm: string
 }
 
+const TabContent = ({ value }: { value: string }) => (
+  <pre
+    className={css({
+      bg: '#1E1E1E',
+      p: '3',
+      rounded: 'md',
+      color: 'text.secondary',
+      border: '1px solid',
+      borderColor: 'border',
+      overflow: 'auto',
+      fontFamily: 'mono',
+      fontSize: 'sm',
+    })}
+  >
+    <code
+      className={css({
+        fontWeight: '900',
+        background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+        backgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        display: 'block',
+        whiteSpace: 'pre',
+      })}
+    >
+      {value}
+    </code>
+  </pre>
+)
+
 export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
   const [activeTab, setActiveTab] = React.useState('npm')
 
@@ -51,13 +80,18 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
   }
 
   const triggerStyle = css({
-    p: '3', // Changed from padding.inline.md
+    p: '3',
     fontWeight: 'normal',
     borderColor: 'primary',
     fontSize: 'sm',
     _selected: {
       fontWeight: 'semibold',
     },
+  })
+
+  const contentContainerStyle = css({
+    p: '2',
+    bg: 'surface.container',
   })
 
   return (
@@ -79,37 +113,13 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
             borderColor: 'border',
           })}
         >
-          <Trigger
-            value="npm"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              fontWeight: activeTab === 'npm' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'npm' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
+          <Trigger value="npm" className={triggerStyle}>
             npm
           </Trigger>
-          <Trigger
-            value="yarn"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              fontWeight: activeTab === 'yarn' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'yarn' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
+          <Trigger value="yarn" className={triggerStyle}>
             yarn
           </Trigger>
-          <Trigger
-            value="pnpm"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              fontWeight: activeTab === 'pnpm' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'pnpm' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
+          <Trigger value="pnpm" className={triggerStyle}>
             pnpm
           </Trigger>
         </TabList>
@@ -120,118 +130,21 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
           <CopyButton
             value={getCurrentTabContent()}
             className={css({
-              top: '5', // Changed from padding.inline.lg
-              right: '4', // Changed from padding.inline.lg
+              top: '5',
+              right: '4',
             })}
           />
           <div>
-            <Content
-              value="npm"
-              className={css({
-                p: '2',
-                bg: 'surface.container',
-              })}
-            >
-              <pre
-                className={css({
-                  bg: 'bgSolid',
-                  p: '3',
-                  rounded: 'md',
-                  color: 'text.secondary',
-                  border: '1px solid',
-                  borderColor: 'border',
-                  overflow: 'auto',
-                  fontFamily: 'mono',
-                  fontSize: 'sm',
-                })}
-              >
-                <code
-                  className={css({
-                    fontWeight: '900',
-                    background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
-                    backgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    display: 'block',
-                    whiteSpace: 'pre',
-                  })}
-                >
-                  {npm}
-                </code>
-              </pre>
+            <Content value="npm" className={contentContainerStyle}>
+              <TabContent value={npm} />
             </Content>
 
-            {/* Update the other Content components with the same gradient styling */}
-            <Content
-              value="yarn"
-              className={css({
-                p: '2',
-                bg: 'surface.container',
-              })}
-            >
-              <pre
-                className={css({
-                  bg: 'bgSolid',
-                  p: '3',
-                  rounded: 'md',
-                  color: 'text.secondary',
-                  border: '1px solid',
-                  borderColor: 'border',
-                  overflow: 'auto',
-                  fontFamily: 'mono',
-                  fontSize: 'sm',
-                })}
-              >
-                <code
-                  className={css({
-                    fontWeight: '900',
-                    background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
-                    backgroundClip: 'text',
-                    // WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    display: 'block',
-                    whiteSpace: 'pre',
-                  })}
-                >
-                  {yarn}
-                </code>
-              </pre>
+            <Content value="yarn" className={contentContainerStyle}>
+              <TabContent value={yarn} />
             </Content>
 
-            <Content
-              value="pnpm"
-              className={css({
-                p: '2',
-                bg: 'surface.container',
-              })}
-            >
-              <pre
-                className={css({
-                  bg: 'bgSolid',
-                  p: '3',
-                  rounded: 'md',
-                  color: 'text.secondary',
-                  border: '1px solid',
-                  borderColor: 'border',
-                  overflow: 'auto',
-                  fontFamily: 'mono',
-                  fontSize: 'sm',
-                })}
-              >
-                <code
-                  className={css({
-                    fontWeight: '900',
-                    background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
-                    backgroundClip: 'text',
-                    // WebkitBackgroundClip: 'text',
-
-                    WebkitTextFillColor: 'transparent',
-                    display: 'block',
-                    whiteSpace: 'pre',
-                  })}
-                >
-                  {pnpm}
-                </code>
-              </pre>
+            <Content value="pnpm" className={contentContainerStyle}>
+              <TabContent value={pnpm} />
             </Content>
           </div>
         </div>
