@@ -14,6 +14,7 @@ export function ContentContainer({ children, className }: ContentContainerProps)
     <Container
       className={`${vstack({
         gap: 'layout.section.sm',
+        alignItems: 'flex-start',
       })} ${className || ''}`}
       css={{
         paddingLeft: '0', // Remove left padding

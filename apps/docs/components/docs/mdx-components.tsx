@@ -1,6 +1,6 @@
 'use client'
 
-import Accordian from '@/components/ui/accordian/accordian'
+import Accordion from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Heading, Paragraph } from '@/components/ui/typography'
@@ -138,7 +138,8 @@ function CodeBlock({
     >
       <pre
         className={css({
-          p: '3',
+          px: '5',
+          py: '6',
           rounded: 'md',
           bg: 'bgSolid',
           color: 'text.secondary',
@@ -314,7 +315,7 @@ const components = {
     return <CodeBlock {...props} />
   },
 
-  Accordian,
+  Accordion,
   Badge,
   Button,
   ComponentPreview,

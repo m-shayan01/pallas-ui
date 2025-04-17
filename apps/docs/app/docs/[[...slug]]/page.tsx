@@ -1,7 +1,7 @@
 import { Item, Link, List, Root, Separator } from '@pallas-ui/breadcrumb'
 import { css } from '@styled-system/css'
-import { Container } from '@styled-system/jsx'
 import { allComponents, allGuides, allThemings } from 'content-collections'
+import { ChevronRight } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import { DynamicToc } from '../../../components/docs/dynamic-toc'
 import { MdxComponent } from '../../../components/docs/mdx-components'
@@ -87,7 +87,7 @@ function ContentPage({
     const sectionLower = section.toLowerCase()
     if (sectionLower === 'components') {
       // Link to the first component
-      return '/docs/components/accordian'
+      return '/docs/components/accordion'
     }
     if (sectionLower === 'theming') {
       // Link to the first theming page
@@ -144,7 +144,9 @@ function ContentPage({
                     {breadcrumb.section}
                   </Link>
                 </Item>
-                <Separator />
+                <Separator>
+                  <ChevronRight size={18} className={css({ color: 'text.secondary' })} />
+                </Separator>
                 <Item>
                   <span
                     className={css({

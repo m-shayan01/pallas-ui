@@ -90,7 +90,7 @@ export function CopyButton({ value, className }: CopyButtonProps) {
       onClick={copyToClipboard}
       className={`${css({
         position: 'absolute',
-        top: '4',
+        top: '3',
         right: '3',
         display: 'flex',
         alignItems: 'center',

@@ -1,6 +1,6 @@
 import type { RecipeConfig, RecipeVariantRecord, SlotRecipeConfig } from '@pandacss/dev'
 
-import { accordian } from './accordian'
+import { accordion } from './accordion'
 import { alert, alertDescription, alertTitle } from './alert'
 import { avatar } from './avatar'
 import { badge } from './badge'
@@ -48,7 +48,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   avatar,
   card,
   modal,
-  accordian,
+  accordion,
   menubar,
   toast,
   tabs,

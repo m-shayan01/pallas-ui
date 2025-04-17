@@ -50,6 +50,16 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
     }
   }
 
+  const triggerStyle = css({
+    p: '3', // Changed from padding.inline.md
+    fontWeight: 'normal',
+    borderColor: 'primary',
+    fontSize: 'sm',
+    _selected: {
+      fontWeight: 'semibold',
+    },
+  })
+
   return (
     <div>
       <Root
@@ -110,7 +120,7 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
           <CopyButton
             value={getCurrentTabContent()}
             className={css({
-              top: '4', // Changed from padding.inline.lg
+              top: '5', // Changed from padding.inline.lg
               right: '4', // Changed from padding.inline.lg
             })}
           />

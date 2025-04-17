@@ -94,7 +94,7 @@ export default function RootLayout({
                     Documentation
                   </Link>
                   <Link
-                    href="/docs/components/accordian"
+                    href="/docs/components/accordion"
                     className={css({
                       color: 'text.secondary',
                       fontWeight: 'medium',
