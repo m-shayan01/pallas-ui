@@ -76,13 +76,26 @@ export function ComponentPreview({
           className={css({
             borderBottom: '1px solid',
             borderColor: 'border',
-            bg: 'surface.layout',
-
             overflowX: 'visible', // Changed from 'auto' to 'visible'
             display: 'flex',
             flexWrap: 'wrap', // Always wrap tabs instead of conditional wrapping
             position: 'relative', // Add position relative
             zIndex: 1, // Ensure tabs appear above content
+            backdropFilter: 'blur(2px)',
+            bg: '#e6f4ff4a',
+            _before: {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: 'url(/noise.svg)',
+              backgroundSize: 'cover',
+              opacity: 0.3,
+              zIndex: 0,
+              mixBlendMode: 'overlay',
+            },
           })}
         >
           <Trigger value="preview" className={triggerStyle}>

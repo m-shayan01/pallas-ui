@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Heading, Paragraph } from '@/components/ui/typography'
 import { MDXContent } from '@content-collections/mdx/react'
-import { css } from '@styled-system/css'
+import { css, cx } from '@styled-system/css'
 import { HashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -141,7 +141,7 @@ function CodeBlock({
           px: '5',
           py: '6',
           rounded: 'md',
-          bg: 'bgSolid',
+          bg: '#1E1E1E',
           color: 'text.secondary',
           border: '1px solid',
           borderColor: 'border',
@@ -307,13 +307,26 @@ const components = {
     <li className={css({ color: 'text.secondary' })} {...props} />
   ),
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  code: (props: any) => {
-    // If the code has a className, it's part of a code block
-    if (props.className) {
-      return <CodeBlock {...props} />
-    }
-    return <CodeBlock {...props} />
-  },
+  pre: (props: any) => <CodeBlock {...props} />,
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cx(
+        css({
+          fontSize: 'inherit',
+          mx: '0.5',
+          position: 'relative',
+          rounded: 'sm',
+          bg: 'fill.secondary',
+          px: '0.3rem',
+          py: '0.2rem',
+          textStyle: 'sm',
+          fontWeight: 'semibold',
+        }),
+        className,
+      )}
+      {...props}
+    />
+  ),
 
   Accordion,
   Badge,

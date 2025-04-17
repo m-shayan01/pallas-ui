@@ -11,8 +11,13 @@ export function Steps({ children }: StepsProps) {
       className={css({
         borderLeft: '2px solid',
         borderColor: 'border',
-        pl: '4', // Changed from padding.inline.lg
-        py: '1', // Changed from padding.block.sm
+        pl: '4',
+        py: '1',
+        counterReset: 'step',
+        '& h3': {
+          counterIncrement: 'step',
+          textStyle: 'xl',
+        },
       })}
     >
       {children}
