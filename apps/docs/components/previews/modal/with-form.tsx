@@ -27,11 +27,15 @@ export default function ModalWithFormDemo() {
             <VStack gap="4">
               <div>
                 <Label htmlFor="name">Name</Label>
-                <Input.Text id="name" defaultValue="John Doe" />
+                <Input id="name" size="md">
+                  <Input.Text defaultValue="John Doe" />
+                </Input>
               </div>
               <div>
                 <Label htmlFor="email">Email</Label>
-                <Input.Text id="email" defaultValue="john.doe@example.com" />
+                <Input id="email" size="md">
+                  <Input.Text defaultValue="john.doe@example.com" />
+                </Input>
               </div>
             </VStack>
           </form>

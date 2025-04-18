@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import Modal from '@/components/ui/modal/modal'
+import { Paragraph } from '@/components/ui/typography'
 import { X } from 'lucide-react'
 import { useState } from 'react'
 
@@ -27,10 +28,10 @@ export default function ModalWithoutFooterDemo() {
             </Modal.Description>
           </Modal.Header>
           <div>
-            <p>
+            <Paragraph>
               This modal doesn't have a footer with action buttons. It's meant for displaying
               information only.
-            </p>
+            </Paragraph>
           </div>
         </Modal.Content>
       </Modal.Root>

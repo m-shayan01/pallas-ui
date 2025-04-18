@@ -1,12 +1,14 @@
-import { css } from '@styled-system/css'
-import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Stack } from '@styled-system/jsx'
 
 export default function Example() {
   return (
-    <div className={css({ display: 'grid', gap: '2' })}>
+    <Stack width="full" maxWidth="sm" align="flex-start" gap="1">
       <Label htmlFor="file">Upload file</Label>
-      <Input.Text id="file" type="file" />
-    </div>
+      <Input size="md">
+        <Input.Text id="file" type="file" />
+      </Input>
+    </Stack>
   )
 }
