@@ -1,5 +1,6 @@
 'use client'
 
+import { docTabs } from '@/components/common/recipes/doc-tabs'
 import { css } from '@styled-system/css'
 import React from 'react'
 import { Content, Root, TabList, Trigger } from '../ui/tabs'
@@ -79,70 +80,25 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
     }
   }
 
-  const triggerStyle = css({
-    p: '3',
-    fontWeight: 'normal',
-    borderColor: 'primary',
-    fontSize: 'sm',
-    _selected: {
-      fontWeight: 'semibold',
-    },
-    position: 'relative',
-    zIndex: '1',
-  })
-
-  const contentContainerStyle = css({
-    p: '2',
-    bg: 'surface.container',
-  })
+  const styles = docTabs({ variant: 'package' })
 
   return (
     <div>
-      <Root
-        value={activeTab}
-        onValueChange={handleTabChange}
-        className={css({
-          border: '1px solid',
-          borderColor: 'border',
-          rounded: 'md',
-          overflow: 'hidden',
-        })}
-      >
-        <TabList
-          className={css({
-            position: 'relative',
-            borderBottom: '1px solid',
-            borderColor: 'border',
-            backdropFilter: 'blur(2px)',
-            bg: '#e6f4ff4a',
-            _before: {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: 'url(/noise.svg)',
-              backgroundSize: 'cover',
-              opacity: 0.3,
-              zIndex: 0,
-              mixBlendMode: 'overlay',
-            },
-          })}
-        >
-          <Trigger value="npm" className={triggerStyle}>
+      <Root value={activeTab} onValueChange={handleTabChange} className={styles.root}>
+        <TabList className={styles.tabList}>
+          <Trigger value="npm" className={styles.trigger}>
             npm
           </Trigger>
-          <Trigger value="yarn" className={triggerStyle}>
+          <Trigger value="yarn" className={styles.trigger}>
             yarn
           </Trigger>
-          <Trigger value="pnpm" className={triggerStyle}>
+          <Trigger value="pnpm" className={styles.trigger}>
             pnpm
           </Trigger>
         </TabList>
 
         {/* Container for all content tabs with relative positioning */}
-        <div className={css({ position: 'relative' })}>
+        <div className={styles.contentContainer}>
           {/* Copy button that stays in place for all tabs */}
           <CopyButton
             value={getCurrentTabContent()}
@@ -152,15 +108,15 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
             })}
           />
           <div>
-            <Content value="npm" className={contentContainerStyle}>
+            <Content value="npm" className={styles.content}>
               <TabContent value={npm} />
             </Content>
 
-            <Content value="yarn" className={contentContainerStyle}>
+            <Content value="yarn" className={styles.content}>
               <TabContent value={yarn} />
             </Content>
 
-            <Content value="pnpm" className={contentContainerStyle}>
+            <Content value="pnpm" className={styles.content}>
               <TabContent value={pnpm} />
             </Content>
           </div>

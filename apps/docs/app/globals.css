@@ -5,8 +5,8 @@
 }
 
 :root {
-  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", sans-serif;
+  --font-sans: var(--font-raleway);
+  --font-heading: var(--font-noto-sans-jp);
 }
 
 html {
@@ -21,6 +21,14 @@ body {
   color: var(--colors-text-DEFAULT);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
 /* Add these keyframes to your global CSS */
 @keyframes fadeIn {
   from {

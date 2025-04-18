@@ -57,17 +57,15 @@ export default defineConfig({
         },
         fonts: {
           heading: {
-            value:
-              'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+            value: 'var(--font-noto-sans-jp)',
           },
           body: {
-            value:
-              'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+            value: 'var(--font-raleway)',
           },
-          mono: {
-            value:
-              'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-          },
+          // mono: {
+          //   value:
+          //     'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+          // },
         },
       },
       semanticTokens: {
@@ -99,6 +97,11 @@ export default defineConfig({
         },
       },
       recipes: {
+        // button: {
+        //   base: {
+        //     fontFamily: 'heading', // This will use the Noto Sans JP font
+        //   },
+        // },
         prose: {
           className: 'docs-prose',
           base: {

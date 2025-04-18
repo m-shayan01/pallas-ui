@@ -1,18 +1,17 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Content, Root, Trigger } from '@/components/ui/tooltip'
-import { TooltipProvider } from '@radix-ui/react-tooltip'
+import Tooltip from '@/components/ui/tooltip/tooltip'
 
 export default function TooltipDemo() {
   return (
-    <TooltipProvider>
-      <Root>
-        <Trigger asChild>
+    <Tooltip.Provider>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>
           <Button variant="outlined">Hover</Button>
-        </Trigger>
-        <Content>Add to library</Content>
-      </Root>
-    </TooltipProvider>
+        </Tooltip.Trigger>
+        <Tooltip.Content>Add to library</Tooltip.Content>
+      </Tooltip.Root>
+    </Tooltip.Provider>
   )
 }

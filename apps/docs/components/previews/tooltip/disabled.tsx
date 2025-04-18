@@ -1,20 +1,19 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Content, Root, Trigger } from '@/components/ui/tooltip'
-import { TooltipProvider } from '@radix-ui/react-tooltip'
+import Tooltip from '@/components/ui/tooltip/tooltip'
 
 export default function TooltipDisabledDemo() {
   return (
-    <TooltipProvider>
-      <Root>
-        <Trigger asChild>
+    <Tooltip.Provider>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>
           <Button variant="outlined" disabled>
             Disabled Button
           </Button>
-        </Trigger>
-        <Content>This tooltip won't show because the trigger is disabled</Content>
-      </Root>
-    </TooltipProvider>
+        </Tooltip.Trigger>
+        <Tooltip.Content>This tooltip won't show because the trigger is disabled</Tooltip.Content>
+      </Tooltip.Root>
+    </Tooltip.Provider>
   )
 }
