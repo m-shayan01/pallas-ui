@@ -1,6 +1,6 @@
-# Breadcrumb
+# Sidebar
 
-A flexible and accessible breadcrumb navigation component built with Radix UI primitives.
+A flexible and accessible sidebar navigation component built with Radix UI primitives.
 
 ## Features
 
@@ -14,59 +14,111 @@ A flexible and accessible breadcrumb navigation component built with Radix UI pr
 ## Installation
 
 ```bash
-npm install @your-scope/breadcrumb
+npm install @your-scope/sidebar
 ```
 
 ## Usage
 
 ```tsx
-import { Breadcrumb } from '@your-scope/breadcrumb'
+import Sidebar from '@your-scope/sidebar'
 
 function Example() {
   return (
-    <Breadcrumb.Root>
-      <Breadcrumb.List>
-        <Breadcrumb.Item>
-          <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Separator />
-        <Breadcrumb.Item>
-          <Breadcrumb.Link href="/docs">Docs</Breadcrumb.Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Separator />
-        <Breadcrumb.Item>
-          <Breadcrumb.Page>Current Page</Breadcrumb.Page>
-        </Breadcrumb.Item>
-      </Breadcrumb.List>
-    </Breadcrumb.Root>
+    <Sidebar.Provider>
+      <Sidebar.Root>
+         <Sidebar.Header></Sidebar.Header>
+         <Sidebar.Content>
+            <Sidebar.Group>
+              <Sidebar.GroupLabel></Sidebar.GroupLabel>
+              <Sidebar.GroupAction></Sidebar.GroupAction>
+              <Sidebar.GroupContent>
+                <Sidebar.Menu>
+                  <Sidebar.MenuItem>
+                    <Sidebar.MenuButton></Sidebar.MenuButton>
+                  </Sidebar.MenuItem>
+                  <Sidebar.MenuItem>
+                    <Sidebar.MenuButton></Sidebar.MenuButton>
+                  </Sidebar.MenuItem>
+                  <Sidebar.MenuItem>
+                    <Sidebar.MenuButton></Sidebar.MenuButton>
+                    <Sidebar.MenuSub>
+                      <Sidebar.MenuSubItem>
+                        <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
+                      </Sidebar.MenuSubItem>
+                      <Sidebar.MenuSubItem>
+                        <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
+                      </Sidebar.MenuSubItem>
+                      <Sidebar.MenuSubItem>
+                        <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
+                      </Sidebar.MenuSubItem>
+                    </Sidebar.MenuSub>
+                  </Sidebar.MenuItem>
+                </Sidebar.Menu>
+              </Sidebar.GroupContent>
+            </Sidebar.Group>
+         </Sidebar.Content>
+         <Sidebar.Footer></Sidebar.Footer>
+      </Sidebar.Root>
+    </Sidebar.Provider>
   )
 }
 ```
 
-## Custom Separator
-
-You can customize the separator between breadcrumb items:
-
-```tsx
-<Breadcrumb.Root separator={<span className="mx-2">/</span>}>
-  {/* ... */}
-</Breadcrumb.Root>
-```
-
 ## Components
 
-- `Breadcrumb.Root` - The root navigation element
-- `Breadcrumb.List` - The ordered list container
-- `Breadcrumb.Item` - Individual breadcrumb items
-- `Breadcrumb.Link` - Link component for navigation
-- `Breadcrumb.Page` - Current page indicator
-- `Breadcrumb.Separator` - Separator between items
-- `Breadcrumb.Ellipsis` - Ellipsis for truncated paths
+Provider,
+  Root,
+  Content,
+  Inset,
+  Header,
+  Footer,
+  Group,
+  GroupAction,
+  GroupContent,
+  GroupLabel,
+  Menu,
+  MenuAction,
+  MenuBadge,
+  MenuButton,
+  MenuItem,
+  MenuSub,
+  MenuSubButton,
+  MenuSubItem,
+  Rail,
+  Separator,
+  Trigger,
+  useSidebar,
+
+- `Sidebar.Provider` - The provider element
+- `Sidebar.Root` - The root element
+- `Sidebar.Inset` - The wrapper element for sidebar siblings in 'inset' variant
+- `Sidebar.Content` - The content wrapper element
+- `Sidebar.Header` - The header wrapper element
+- `Sidebar.Footer` - The footer wrapper element
+
+- `Sidebar.Group` - The group wrapper element
+- `Sidebar.GroupLabel` - The group label element
+- `Sidebar.GroupAction` - The group action element
+- `Sidebar.GroupContent` - The group content wrapper element
+
+- `Sidebar.Menu` - The menu wrapper element
+- `Sidebar.MenuItem` - The menu item element
+- `Sidebar.MenuButton` - The menu button element
+- `Sidebar.MenuAction` - The menu action element
+- `Sidebar.MenuBadge` - The menu badge element
+
+- `Sidebar.MenuSub` - The sub menu wrapper element
+- `Sidebar.MenuSubItem` - The sub menu item element
+- `Sidebar.MenuSubButton` - The sub menu button element
+
+- `Sidebar.Trigger` - The trigger element for toggle
+- `Sidebar.Rail` - The rail element for toggle
+- `Sidebar.useSidebar` - The hook to control toggle manually
 
 ## Accessibility
 
-The component follows WAI-ARIA patterns for breadcrumb navigation:
-- Uses semantic HTML elements (`nav`, `ol`, `li`)
+The component follows WAI-ARIA patterns for sidebar navigation:
+- Uses semantic HTML elements (`ul`, `li`, `a`)
 - Includes proper ARIA labels and roles
 - Maintains keyboard navigation support
 - Provides screen reader friendly structure
