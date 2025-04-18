@@ -6,7 +6,6 @@ import type { Assign, JsxStyleProps } from '@styled-system/types'
 import React from 'react'
 import Tooltip from '../tooltip/tooltip'
 
-export { useSidebar } from '@pallas-ui/sidebar'
 export const { withProvider, withContext } = createStyleContext(sidebar)
 
 const ProviderStyled = withProvider<

@@ -35,8 +35,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.1.1",
-    "lucide-react": "0.462.0"
+    "@radix-ui/react-slot": "^1.1.1"
   },
   "devDependencies": {
     "@pallas-ui/typescript-config": "workspace:*",

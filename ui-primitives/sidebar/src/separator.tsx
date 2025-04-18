@@ -1,8 +1,4 @@
-import { cx } from '@styled-system/css'
-import { sidebar } from '@styled-system/recipes'
-import { Separator as Comp, type SeparatorProps } from '../separator'
-
-export const Separator = ({ className, ...props }: SeparatorProps) => {
-  return <Comp data-sidebar="separator" className={cx(sidebar().separator, className)} {...props} />
+export const Separator = (props: React.ComponentProps<'div'>) => {
+  return <div data-sidebar="separator" {...props} />
 }
 Separator.displayName = 'SidebarSeparator'

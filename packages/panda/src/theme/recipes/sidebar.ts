@@ -187,6 +187,7 @@ export const sidebar = defineSlotRecipe({
       // 'h-7 w-7'
       h: 7,
       w: 7,
+      p: '0!',
     },
     rail: {
       // 'absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear
@@ -358,6 +359,7 @@ export const sidebar = defineSlotRecipe({
       width: 'full',
       overflow: 'hidden',
       justifyContent: 'left',
+      gap: '{spacing.gap.inline.xs}',
       h: 'auto!',
       '.group:is([data-collapsible=icon]) &': {
         p: '2!',
@@ -370,7 +372,7 @@ export const sidebar = defineSlotRecipe({
         truncate: true,
       },
       '& > svg': {
-        size: 4,
+        size: '1rem',
         flexShrink: 0,
       },
       '&[data-active=true]': {
@@ -409,10 +411,10 @@ export const sidebar = defineSlotRecipe({
       borderRadius: 'md',
       p: '0!',
       color: '{colors.text}',
-      '& > svg': {
-        size: 4,
-        flexShrink: 0,
-      },
+      // '& > svg': {
+      //   size: '1rem',
+      //   flexShrink: 0,
+      // },
       '.group:is([data-collapsible=icon]) &': {
         display: 'none',
       },
@@ -452,9 +454,9 @@ export const sidebar = defineSlotRecipe({
       minWidth: '0',
       borderLeftWidth: '1px',
       borderColor: '{colors.border}',
-      px: 2.5,
+      px: 3,
       py: 0.5,
-      mx: 3.5,
+      mx: 4,
       transform: 'translateX(1px)',
 
       '.group:is([data-collapsible=icon]) &': {
@@ -514,7 +516,7 @@ export const sidebar = defineSlotRecipe({
         truncate: true,
       },
       '& > svg': {
-        size: '4',
+        size: '1rem',
         flexShrink: '0',
         color: 'sidebar.accent.foreground',
       },

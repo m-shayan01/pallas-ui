@@ -1,6 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { css } from '@styled-system/css'
-import { Calendar, Command, Home, Inbox, Menu, Plus, Search, Settings } from 'lucide-react'
+import {
+  Calendar,
+  Command,
+  Home,
+  Inbox,
+  Menu,
+  PanelLeft,
+  Plus,
+  Search,
+  Settings,
+} from 'lucide-react'
 import Avatar from '~/ui/avatar'
 import Sidebar from '~/ui/sidebar'
 
@@ -71,7 +81,9 @@ export const Default: Story = {
       <Sidebar.Provider>
         {props.side === 'right' && (
           <Main style={{ flex: 1 }}>
-            <Sidebar.Trigger />
+            <Sidebar.Trigger>
+              <PanelLeft size={16} />
+            </Sidebar.Trigger>
           </Main>
         )}
 
@@ -107,7 +119,9 @@ export const Default: Story = {
 
         {props.side === 'left' && (
           <Main>
-            <Sidebar.Trigger />
+            <Sidebar.Trigger>
+              <PanelLeft size={16} />
+            </Sidebar.Trigger>
           </Main>
         )}
       </Sidebar.Provider>
@@ -148,7 +162,9 @@ export const Inset = () => (
     </Sidebar.Root>
 
     <Sidebar.Inset>
-      <Sidebar.Trigger />
+      <Sidebar.Trigger>
+        <PanelLeft size={16} />
+      </Sidebar.Trigger>
     </Sidebar.Inset>
   </Sidebar.Provider>
 )
@@ -186,7 +202,9 @@ export const Floating = () => (
     </Sidebar.Root>
 
     <main>
-      <Sidebar.Trigger />
+      <Sidebar.Trigger>
+        <PanelLeft size={16} />
+      </Sidebar.Trigger>
     </main>
   </Sidebar.Provider>
 )
@@ -194,7 +212,9 @@ export const Floating = () => (
 export const Icons = () => (
   <Sidebar.Provider>
     <main>
-      <Sidebar.Trigger />
+      <Sidebar.Trigger>
+        <PanelLeft size={16} />
+      </Sidebar.Trigger>
     </main>
 
     <Sidebar.Root variant="sidebar" side="right" collapsible="icon">
@@ -346,7 +366,8 @@ const SidebarContentGroup = () => (
       <Sidebar.Menu>
         {MENU_ITEMS.map((item, i) => (
           <Sidebar.MenuItem key={item.title}>
-            <Sidebar.MenuButton icon={<item.icon size="16" />}>
+            <Sidebar.MenuButton>
+              <item.icon />
               <a href={item.url}>
                 <span>{item.title}</span>
               </a>

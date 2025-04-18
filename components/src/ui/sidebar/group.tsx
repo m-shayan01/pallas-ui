@@ -1,51 +1,39 @@
-import { Slot } from '@radix-ui/react-slot'
-import type { HTMLStyledProps } from '@styled-system/types'
+import {
+  GroupAction as GroupActionPrimitive,
+  GroupContent as GroupContentPrimitive,
+  GroupLabel as GroupLabelPrimitive,
+  Group as GroupPrimitive,
+  type SidebarGroupActionProps,
+  type SidebarGroupLabelProps,
+} from '@pallas-ui/sidebar'
+import { cx } from '@styled-system/css'
+import { button } from '@styled-system/recipes'
+import type { Assign, JsxStyleProps } from '@styled-system/types'
 import React from 'react'
-import { Button, type ButtonProps } from '../button'
+import type { ButtonProps } from '../button'
 import { withContext } from './provider'
 
-const SidebarGroupComp = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
-  'div',
-  'group',
-)
-export const Group = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
-  ({ ...props }, ref) => {
-    return <SidebarGroupComp ref={ref} data-sidebar="group" {...props} />
-  },
-)
-Group.displayName = 'SidebarGroup'
+export const Group = withContext<
+  React.ComponentRef<typeof GroupPrimitive>,
+  Assign<React.ComponentProps<typeof GroupPrimitive>, JsxStyleProps>
+>(GroupPrimitive, 'group')
 
-const SidebarGroupLabelComp = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
-  'div',
-  'groupLabel',
-)
-export const GroupLabel = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentProps<'div'> & { asChild?: boolean }
->(({ className, asChild = false, ...props }, ref) => {
-  const Comp = asChild ? Slot : SidebarGroupLabelComp
+export const GroupLabel = withContext<
+  React.ComponentRef<typeof GroupLabelPrimitive>,
+  Assign<SidebarGroupLabelProps, JsxStyleProps>
+>(GroupLabelPrimitive, 'groupLabel')
 
-  return <Comp ref={ref} data-sidebar="group-label" {...props} />
+type ActionButtonProps = Assign<SidebarGroupActionProps, ButtonProps>
+const GroupActionStyled = withContext<
+  React.ComponentRef<typeof GroupActionPrimitive>,
+  ActionButtonProps
+>(GroupActionPrimitive, 'groupAction')
+export const GroupAction = React.forwardRef<HTMLButtonElement, ActionButtonProps>((props, ref) => {
+  const [buttonProps, { className, ...rest }] = button.splitVariantProps(props)
+  return <GroupActionStyled ref={ref} className={cx(button(buttonProps), className)} {...rest} />
 })
-GroupLabel.displayName = 'SidebarGroupLabel'
 
-const SidebarGroupActionComp = withContext<HTMLButtonElement, ButtonProps>(Button, 'groupAction')
-export const GroupAction = React.forwardRef<HTMLButtonElement, ButtonProps & { asChild?: boolean }>(
-  ({ asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : SidebarGroupActionComp
-
-    return <Comp ref={ref} data-sidebar="group-action" {...props} />
-  },
-)
-GroupAction.displayName = 'SidebarGroupAction'
-
-const SidebarGroupContentComp = withContext<React.ComponentRef<'div'>, HTMLStyledProps<'div'>>(
-  'div',
-  'groupContent',
-)
-export const GroupContent = React.forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
-  ({ ...props }, ref) => (
-    <SidebarGroupContentComp ref={ref} data-sidebar="group-content" {...props} />
-  ),
-)
-GroupContent.displayName = 'SidebarGroupContent'
+export const GroupContent = withContext<
+  React.ComponentRef<typeof GroupContentPrimitive>,
+  Assign<SidebarGroupLabelProps, JsxStyleProps>
+>(GroupContentPrimitive, 'groupContent')
