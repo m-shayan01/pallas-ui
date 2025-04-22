@@ -33,7 +33,6 @@ export default defineConfig({
       colors: themeColorPalette,
       baseRadius: 2,
     }),
-    '@pandacss/preset-base',
   ],
 
   include: ['./components/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}'],
