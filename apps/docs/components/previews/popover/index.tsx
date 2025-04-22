@@ -1,10 +1,10 @@
 'use client'
 
-import { css } from '@styled-system/css'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import Popover from '@/components/ui/popover'
+import { css } from '@styled-system/css'
 
 export default function Example() {
   return (
@@ -30,7 +30,9 @@ export default function Example() {
               })}
             >
               <Label htmlFor="width">Width</Label>
-              <Input.Text id="width" defaultValue="100%" />
+              <Input id="width" size="md">
+                <Input.Text defaultValue="100%" />
+              </Input>
             </div>
             <div
               className={css({
@@ -41,7 +43,9 @@ export default function Example() {
               })}
             >
               <Label htmlFor="maxWidth">Max. width</Label>
-              <Input.Text id="maxWidth" defaultValue="300px" />
+              <Input id="maxWidth" size="md">
+                <Input.Text defaultValue="300px" />
+              </Input>
             </div>
             <div
               className={css({
@@ -52,7 +56,9 @@ export default function Example() {
               })}
             >
               <Label htmlFor="height">Height</Label>
-              <Input.Text id="height" defaultValue="25px" />
+              <Input id="height" size="md">
+                <Input.Text defaultValue="25px" />
+              </Input>
             </div>
             <div
               className={css({
@@ -63,7 +69,9 @@ export default function Example() {
               })}
             >
               <Label htmlFor="maxHeight">Max. height</Label>
-              <Input.Text id="maxHeight" defaultValue="none" />
+              <Input id="maxHeight" size="md">
+                <Input.Text defaultValue="none" />
+              </Input>
             </div>
           </div>
         </div>
