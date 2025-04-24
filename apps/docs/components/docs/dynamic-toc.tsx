@@ -111,6 +111,7 @@ export function DynamicToc() {
           fontWeight: 'medium',
           mb: '5', // Changed from gap.component.md
           color: 'text',
+          fontSize: 'lg', // to show level diff
         })}
       >
         On This Page
@@ -131,7 +132,7 @@ export function DynamicToc() {
                 display: 'inline-block',
                 color: activeId === item.id ? 'primary' : 'text.secondary',
                 textDecoration: 'none',
-                fontSize: 'sm',
+                fontSize: 'md', //changed from sm to show difference in toc levels
                 fontWeight: activeId === item.id ? 'medium' : 'normal',
                 _hover: { color: 'primary.hover' },
               })}
@@ -158,7 +159,7 @@ export function DynamicToc() {
                       display: 'inline-block',
                       color: activeId === child.id ? 'primary' : 'text.tertiary',
                       textDecoration: 'none',
-                      fontSize: 'sm',
+                      fontSize: 'sm', //xs looked too weird so left it as is
                       fontWeight: activeId === child.id ? 'medium' : 'normal',
                       _hover: { color: 'primary.hover' },
                     })}

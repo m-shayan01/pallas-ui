@@ -1,11 +1,11 @@
 'use client'
 
-import Accordian from '@/components/ui/accordian/accordian'
+import Accordion from '@/components/ui/accordion'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Heading, Paragraph } from '@/components/ui/typography'
 import { MDXContent } from '@content-collections/mdx/react'
-import { css } from '@styled-system/css'
+import { css, cx } from '@styled-system/css'
 import { HashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -138,9 +138,10 @@ function CodeBlock({
     >
       <pre
         className={css({
-          p: '3',
+          px: '5',
+          py: '6',
           rounded: 'md',
-          bg: 'fill.secondary',
+          bg: '#1E1E1E',
           color: 'text.secondary',
           border: '1px solid',
           borderColor: 'border',
@@ -180,8 +181,6 @@ const components = {
         level={1}
         color="default"
         css={{
-          mt: '6',
-          mb: '4',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
@@ -202,8 +201,6 @@ const components = {
         level={2}
         color="default"
         css={{
-          mt: '6',
-          mb: '3',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
@@ -269,8 +266,6 @@ const components = {
       <Paragraph
         variant="default"
         css={{
-          mt: '3',
-          mb: '1',
           fontSize: 'md',
           lineHeight: 'tight',
         }}
@@ -306,15 +301,27 @@ const components = {
     <li className={css({ color: 'text.secondary' })} {...props} />
   ),
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  code: (props: any) => {
-    // If the code has a className, it's part of a code block
-    if (props.className) {
-      return <CodeBlock {...props} />
-    }
-    return <CodeBlock {...props} />
-  },
+  pre: (props: any) => <CodeBlock {...props} />,
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cx(
+        css({
+          mx: '0.5',
+          position: 'relative',
+          rounded: 'sm',
+          bg: 'fill.secondary',
+          px: '0.3rem',
+          py: '0.2rem',
+          fontSize: 'sm',
+          fontWeight: 'semibold',
+        }),
+        className,
+      )}
+      {...props}
+    />
+  ),
 
-  Accordian,
+  Accordion,
   Badge,
   Button,
   ComponentPreview,

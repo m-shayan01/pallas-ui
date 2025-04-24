@@ -1,5 +1,6 @@
 'use client'
 
+import { docTabs } from '@/components/common/recipes/doc-tabs'
 import { Content, Root, TabList, Trigger } from '@/components/ui/tabs'
 import { css } from '@styled-system/css'
 import React from 'react'
@@ -48,80 +49,24 @@ export function ComponentPreview({
 
   const [code, recipe] = childrenArray
 
-  return (
-    <div
-      className={css({
-        border: '1px solid',
-        borderColor: 'border',
-        rounded: 'md',
-        overflow: 'hidden',
-        bg: 'surface.container',
-        width: '100%', // Changed from fixed width to 100%
-        maxWidth: '100%',
-      })}
-    >
-      <Root defaultValue="preview">
-        <TabList
-          className={css({
-            borderBottom: '1px solid',
-            borderColor: 'border',
-            bg: 'surface.layout',
+  const styles = docTabs({ variant: 'preview' })
 
-            overflowX: 'visible', // Changed from 'auto' to 'visible'
-            display: 'flex',
-            flexWrap: 'wrap', // Always wrap tabs instead of conditional wrapping
-            position: 'relative', // Add position relative
-            zIndex: 1, // Ensure tabs appear above content
-          })}
-        >
-          <Trigger
-            value="preview"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              color: 'text.secondary',
-              fontWeight: 'medium',
-              _selected: {
-                color: 'text',
-                borderBottom: '2px solid',
-                borderColor: 'primary',
-              },
-            })}
-          >
+  return (
+    <div className={styles.root}>
+      <Root defaultValue="preview">
+        <TabList className={styles.tabList}>
+          <Trigger value="preview" className={styles.trigger}>
             Preview
           </Trigger>
 
           {code && (
-            <Trigger
-              value="code"
-              className={css({
-                p: '3', // Changed from padding.inline.md
-                color: 'text.secondary',
-                fontWeight: 'medium',
-                _selected: {
-                  color: 'text',
-                  borderBottom: '2px solid',
-                  borderColor: 'primary',
-                },
-              })}
-            >
+            <Trigger value="code" className={styles.trigger}>
               Code
             </Trigger>
           )}
 
           {withRecipe && hasRecipe && (
-            <Trigger
-              value="recipe"
-              className={css({
-                p: '3', // Changed from padding.inline.md
-                color: 'text.secondary',
-                fontWeight: 'medium',
-                _selected: {
-                  color: 'text',
-                  borderBottom: '2px solid',
-                  borderColor: 'primary',
-                },
-              })}
-            >
+            <Trigger value="recipe" className={styles.trigger}>
               Recipe
             </Trigger>
           )}
@@ -133,7 +78,7 @@ export function ComponentPreview({
               fallback={
                 <div
                   className={css({
-                    p: '1', // Changed from padding.block.sm
+                    p: '1',
                     textAlign: 'center',
                     color: 'text.secondary',
                   })}
@@ -148,20 +93,13 @@ export function ComponentPreview({
         </Content>
 
         {code && (
-          <Content
-            value="code"
-            className={css({
-              p: '2', // Changed from padding.block.md
-              overflowX: 'auto', // Added for code block responsiveness
-              maxWidth: '100%',
-            })}
-          >
+          <Content value="code" className={styles.content}>
             {code}
           </Content>
         )}
 
         {withRecipe && hasRecipe && recipe && (
-          <Content value="recipe" className={css({ p: '2' /* Changed from padding.block.md */ })}>
+          <Content value="recipe" className={styles.content}>
             {recipe}
           </Content>
         )}
@@ -174,7 +112,7 @@ export function ComponentSource({ name, children }: { name: string; children?: R
   return (
     <div
       className={css({
-        width: '100%', // Changed from fixed width to 100%
+        width: '100%',
         maxWidth: '100%',
       })}
     >
@@ -182,7 +120,7 @@ export function ComponentSource({ name, children }: { name: string; children?: R
         <div
           className={css({
             overflowX: 'auto',
-            width: '100%', // Added to ensure full width
+            width: '100%',
           })}
         >
           {children}
@@ -190,7 +128,7 @@ export function ComponentSource({ name, children }: { name: string; children?: R
       ) : (
         <div
           className={css({
-            p: '1', // Changed from padding.block.sm
+            p: '1',
             border: '1px dashed',
             borderColor: 'border.secondary',
             rounded: 'md',

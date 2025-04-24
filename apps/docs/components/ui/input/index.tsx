@@ -10,6 +10,15 @@ import Popover from '@/components/ui/popover'
 
 const InputContext = React.createContext<{ id: string } | null>(null)
 
+// Hook to ensure components are used within InputRoot
+const useInputContext = () => {
+  const context = React.useContext(InputContext)
+  if (!context) {
+    throw new Error('Input components must be used within an Input component')
+  }
+  return context
+}
+
 // Root component
 const InputRoot = React.forwardRef<
   HTMLDivElement,
@@ -28,6 +37,7 @@ InputRoot.displayName = 'Input'
 // Prefix component
 const InputPrefix = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
+    useInputContext()
     const { prefix } = input()
     return <div ref={ref} className={cx(prefix, className)} {...props} />
   },
@@ -37,6 +47,7 @@ InputPrefix.displayName = 'Input.Prefix'
 // Postfix component
 const InputPostfix = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
+    useInputContext()
     const { postfix } = input()
     return <div ref={ref} className={cx(postfix, className)} {...props} />
   },
@@ -56,7 +67,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     { className, formatter, maxLength, showCount, status, onChange, value, defaultValue, ...props },
     ref,
   ) => {
-    const { id } = React.useContext(InputContext) || {}
+    const { id } = useInputContext()
     const { field, charCount } = input()
     const [inputValue, setInputValue] = React.useState(value || defaultValue || '')
     const characterCount = String(inputValue).length
@@ -108,7 +119,7 @@ type InputNumberProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'
 
 const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
   ({ className, controls = true, step = 1, min, max, value, onChange, ...props }, ref) => {
-    const { id } = React.useContext(InputContext) || {}
+    const { id } = useInputContext()
     const { field, control } = input()
     const [localValue, setLocalValue] = React.useState<number | undefined>(
       value !== undefined ? Number(value) : undefined,
@@ -223,7 +234,7 @@ const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
     { className, value, onChange, format: formatStr = 'PP', placeholder = 'Pick a date', ...props },
     ref,
   ) => {
-    const { id } = React.useContext(InputContext) || {}
+    const { id } = useInputContext()
     const { field, postfix } = input()
     const [selected, setSelected] = React.useState<Date | undefined>(value)
 

@@ -10,21 +10,82 @@ order: 2
 This guide will help you set up Pallas UI in your React project.
 </Section>
 
+Refer to [Panda CSS docs](https://panda-css.com/docs/installation) for more information on how to install and configure Panda CSS.
+
 <Section>
 ## Installation
 
-Install Pallas UI using your package manager of choice:
+
+<Section gap="1">
+#### Install Pallas UI preset
+Install Pallas UI preset using your package manager of choice:
+<InstallTabs pkg="@pallas-ui/panda" />
+</Section>
+
+
+
+<Section gap="1">
+#### Install Pallas UI styled-system utils
+Install Pallas UI styled-system utils using your package manager of choice:
+<InstallTabs pkg="@pallas-ui/styled-system" />
+</Section>
+</Section>
+
+<Section>
+## Configuration
+
+<Section gap="1">
+#### Add preset to panda config
+Adding your preset to panda config `panda.config.ts`:
+
+```tsx
+import { defineConfig } from '@pandacss/dev'
+ 
+export default defineConfig({
+  // Required: Add the preset to your config.
+  presets: ['@pallas-ui/panda'],
+ 
+  // Optional: Enable CSS reset
+  preflight: true,
+ 
+  // Use React
+  jsxFramework: 'react',
+ 
+  // Optional: Emit artifacts to `node_modules` as a package.
+  // The copy-paste component examples use `@shadow-panda/styled-system` as the import path of the generated files.
+  // If you choose not to use this option, you should rewrite your component imports as needed.
+  // @see https://panda-css.com/docs/references/config#emitpackage
+  emitPackage: true,
+  outdir: 'styled-system',
+ 
+  // Other configurations and overrides...
+})
+```
+</Section>
+
+<Section gap="1">
+#### Copy components from docs
+Copy components from docs to your project:
 
 ```bash
-# Using npm
-npm install @pallas-ui/react
-
-# Using yarn
-yarn add @pallas-ui/react
-
-# Using pnpm
-pnpm add @pallas-ui/react
+cp -r node_modules/@pallas-ui/docs/src/components ./components
 ```
 
+</Section>
+
+<Section gap="1">
+#### Setup Paths in TSConfig    
+
+```tsx
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["app/components/*"]
+    }
+  }
+}
+``` 
+</Section>
 </Section>
 </ContentContainer>

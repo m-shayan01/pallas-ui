@@ -13,6 +13,7 @@ import { textStyles } from './theme/text-styles'
 import { tokens } from './theme/tokens'
 import { utilities } from './theme/utilities'
 import type { ThemeOptions } from './types/theme'
+import presetBase from '@pandacss/preset-base'
 
 export const createPreset = (options: ThemeOptions) => {
   const { colors } = options
@@ -38,7 +39,7 @@ export const createPreset = (options: ThemeOptions) => {
 
   return definePreset({
     name: '@pallas-ui/panda-preset',
-    presets: ['@pandacss/preset-base'],
+    presets: [presetBase],
     conditions,
     utilities: {
       extend: utilities,

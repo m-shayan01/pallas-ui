@@ -1,6 +1,7 @@
 'use client'
 
 import { css } from '@styled-system/css'
+import { VStack } from '@styled-system/jsx'
 import { vstack } from '@styled-system/patterns'
 import type React from 'react'
 
@@ -8,19 +9,26 @@ interface SectionProps {
   children: React.ReactNode
   className?: string
   id?: string
+  gap?: string
 }
 
-export function Section({ children, className, id }: SectionProps) {
+export function Section({
+  children,
+  className,
+  id,
+  gap = '{spacing.gap.component.sm}',
+}: SectionProps) {
   return (
-    <div
+    <VStack
       id={id}
-      className={`${vstack({
-        gap: 'gap.component.sm',
+      gap={gap}
+      css={{
         alignItems: 'stretch',
         width: '100%',
-      })} ${className || ''}`}
+      }}
+      className={className}
     >
       {children}
-    </div>
+    </VStack>
   )
 }

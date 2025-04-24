@@ -67,7 +67,7 @@ const BreadcrumbSeparator = ({ children, ...props }: React.ComponentProps<'li'>)
 
   return (
     <li role="presentation" aria-hidden="true" {...props}>
-      {children ?? separator ?? <ChevronRight className="breadcrumb__sperator_icon" />}
+      {children ?? separator ?? <ChevronRight size={12} className="breadcrumb__sperator_icon" />}
     </li>
   )
 }

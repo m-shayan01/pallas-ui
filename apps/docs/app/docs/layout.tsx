@@ -16,10 +16,13 @@ export default function DocsLayout({
       })}
     >
       <div
+        // className={css({
+        //   w: { base: 'full', md: '64' },
+        //   bg: 'surface.layout', // Sidebar with layout color (gray)
+        //   p: 'layout.default.md', // Using layout spacing
+        // })} //for removal of sidebar padding
         className={css({
-          w: { base: 'full', md: '64' },
-          bg: 'surface.layout', // Sidebar with layout color (gray)
-          p: 'layout.default.md', // Using layout spacing
+          bg: 'surface.container',
         })}
       >
         <Sidebar />

@@ -1,25 +1,25 @@
-import { css } from '@styled-system/css'
 import { Input } from '@/components/ui/input'
+import { Stack } from '@styled-system/jsx'
 import { AtSign, Search } from 'lucide-react'
 
 export default function Example() {
   return (
-    <div className={css({ display: 'grid', gap: '4' })}>
-      <Input>
+    <Stack width="full" maxWidth="md" align="flex-start" gap="4">
+      <Input size="md">
         <Input.Prefix>
           <AtSign size={16} />
         </Input.Prefix>
         <Input.Text placeholder="Email" />
       </Input>
-      
-      <Input>
+
+      <Input size="md">
         <Input.Text placeholder="Search" />
         <Input.Postfix>
           <Search size={16} />
         </Input.Postfix>
       </Input>
-      
-      <Input>
+
+      <Input size="md">
         <Input.Prefix>
           <span>https://</span>
         </Input.Prefix>
@@ -28,6 +28,6 @@ export default function Example() {
           <span>.com</span>
         </Input.Postfix>
       </Input>
-    </div>
+    </Stack>
   )
 }

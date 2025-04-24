@@ -1,5 +1,6 @@
 'use client'
 
+import { docTabs } from '@/components/common/recipes/doc-tabs'
 import { css } from '@styled-system/css'
 import React from 'react'
 import { Content, Root, TabList, Trigger } from '../ui/tabs'
@@ -10,6 +11,35 @@ interface PackageTabsProps {
   yarn: string
   pnpm: string
 }
+
+const TabContent = ({ value }: { value: string }) => (
+  <pre
+    className={css({
+      bg: '#1E1E1E',
+      p: '3',
+      rounded: 'md',
+      color: 'text.secondary',
+      border: '1px solid',
+      borderColor: 'border',
+      overflow: 'auto',
+      fontFamily: 'mono',
+      fontSize: 'sm',
+    })}
+  >
+    <code
+      className={css({
+        fontWeight: '900',
+        background: 'linear-gradient(to right, #C6FFDD, #FBD786, #f7797d)',
+        backgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        display: 'block',
+        whiteSpace: 'pre',
+      })}
+    >
+      {value}
+    </code>
+  </pre>
+)
 
 export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
   const [activeTab, setActiveTab] = React.useState('npm')
@@ -50,143 +80,44 @@ export function PackageTabs({ npm, yarn, pnpm }: PackageTabsProps) {
     }
   }
 
+  const styles = docTabs({ variant: 'package' })
+
   return (
     <div>
-      <Root
-        value={activeTab}
-        onValueChange={handleTabChange}
-        className={css({
-          border: '1px solid',
-          borderColor: 'border',
-          rounded: 'md',
-          overflow: 'hidden',
-        })}
-      >
-        <TabList
-          className={css({
-            bg: 'fill.tertiary',
-            borderBottom: '1px solid',
-            borderColor: 'border',
-          })}
-        >
-          <Trigger
-            value="npm"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              fontWeight: activeTab === 'npm' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'npm' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
+      <Root value={activeTab} onValueChange={handleTabChange} className={styles.root}>
+        <TabList className={styles.tabList}>
+          <Trigger value="npm" className={styles.trigger}>
             npm
           </Trigger>
-          <Trigger
-            value="yarn"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              fontWeight: activeTab === 'yarn' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'yarn' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
+          <Trigger value="yarn" className={styles.trigger}>
             yarn
           </Trigger>
-          <Trigger
-            value="pnpm"
-            className={css({
-              p: '3', // Changed from padding.inline.md
-              fontWeight: activeTab === 'pnpm' ? 'semibold' : 'normal',
-              borderBottom: activeTab === 'pnpm' ? '2px solid' : 'none',
-              borderColor: 'primary',
-            })}
-          >
+          <Trigger value="pnpm" className={styles.trigger}>
             pnpm
           </Trigger>
         </TabList>
 
         {/* Container for all content tabs with relative positioning */}
-        <div className={css({ position: 'relative' })}>
+        <div className={styles.contentContainer}>
           {/* Copy button that stays in place for all tabs */}
           <CopyButton
             value={getCurrentTabContent()}
             className={css({
-              top: '4', // Changed from padding.inline.lg
-              right: '4', // Changed from padding.inline.lg
+              top: '5',
+              right: '4',
             })}
           />
-          <div
-            className={css({
-              my: '3', // Changed from gap.inline.sm
-            })}
-          >
-            <Content
-              value="npm"
-              className={css({
-                px: '2', // Changed from padding.block.md
-                bg: 'surface.container',
-              })}
-            >
-              <pre
-                className={css({
-                  bg: 'fill.secondary',
-                  p: '3', // Changed from padding.block.lg
-                  rounded: 'md',
-                  color: 'text.secondary',
-                  border: '1px solid',
-                  borderColor: 'border',
-                  overflow: 'auto',
-                  fontFamily: 'mono',
-                  fontSize: 'sm',
-                })}
-              >
-                <code>{npm}</code>
-              </pre>
+          <div>
+            <Content value="npm" className={styles.content}>
+              <TabContent value={npm} />
             </Content>
-            <Content
-              value="yarn"
-              className={css({
-                p: '2', // Changed from padding.block.md
-                bg: 'surface.container',
-              })}
-            >
-              <pre
-                className={css({
-                  bg: 'fill.secondary',
-                  p: '3', // Changed from padding.block.lg
-                  rounded: 'md',
-                  color: 'text.secondary',
-                  border: '1px solid',
-                  borderColor: 'border',
-                  overflow: 'auto',
-                  fontFamily: 'mono',
-                  fontSize: 'sm',
-                })}
-              >
-                <code>{yarn}</code>
-              </pre>
+
+            <Content value="yarn" className={styles.content}>
+              <TabContent value={yarn} />
             </Content>
-            <Content
-              value="pnpm"
-              className={css({
-                p: '2', // Changed from padding.block.md
-                bg: 'surface.container',
-              })}
-            >
-              <pre
-                className={css({
-                  bg: 'fill.secondary',
-                  p: '3', // Changed from padding.block.lg
-                  rounded: 'md',
-                  color: 'text.secondary',
-                  border: '1px solid',
-                  borderColor: 'border',
-                  overflow: 'auto',
-                  fontFamily: 'mono',
-                  fontSize: 'sm',
-                })}
-              >
-                <code>{pnpm}</code>
-              </pre>
+
+            <Content value="pnpm" className={styles.content}>
+              <TabContent value={pnpm} />
             </Content>
           </div>
         </div>

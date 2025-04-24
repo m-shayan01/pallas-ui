@@ -1,6 +1,7 @@
+import { Item, Link, List, Root, Separator } from '@pallas-ui/breadcrumb'
 import { css } from '@styled-system/css'
-import { Container } from '@styled-system/jsx'
 import { allComponents, allGuides, allThemings } from 'content-collections'
+import { ChevronRight } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import { DynamicToc } from '../../../components/docs/dynamic-toc'
 import { MdxComponent } from '../../../components/docs/mdx-components'
@@ -81,6 +82,27 @@ function ContentPage({
   mdxCode,
   showHeader = true,
 }: ContentPageProps) {
+  //helper function to get the correct starter link for each section as docs/components type links do not exist
+  const getBreadcrumbLink = (section: string) => {
+    const sectionLower = section.toLowerCase()
+    if (sectionLower === 'components') {
+      // Link to the first component
+      return '/docs/components/accordion'
+    }
+    if (sectionLower === 'theming') {
+      // Link to the first theming page
+      const firstTheme = allThemings[0]
+      return '/docs/theming/index'
+    }
+    if (sectionLower === 'introduction') {
+      // Link to the first guide
+      const firstGuide = allGuides[0]
+      return '/docs/introduction'
+    }
+    // Default fallback
+    return '/docs'
+  }
+
   return (
     <main
       className={css({
@@ -101,51 +123,44 @@ function ContentPage({
       >
         {showHeader && breadcrumb && (
           <header>
-            <div
-              className={css({
-                fontSize: 'sm',
-                color: 'text.tertiary',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '2',
-              })}
-            >
-              <span>{breadcrumb.section}</span>
-              <span>/</span>
-              <span className={css({ color: 'text.secondary' })}>{breadcrumb.title}</span>
-            </div>
-
-            {/* {title && (
-              <h1
+            <Root>
+              <List
                 className={css({
-                  mt: 'layout.section.lg',
-                  mb: 'layout.section.sm',
-                  fontSize: '3xl',
-                  fontWeight: 'bold',
-                  lineHeight: 'tight',
-                  scrollMargin: '24',
                   display: 'flex',
                   alignItems: 'center',
-                  color: 'text',
-                  _groupHover: { '& a': { opacity: 1 } },
+                  flexWrap: 'nowrap',
+                  gap: '2',
                 })}
               >
-                {title}
-              </h1>
-            )}
+                <Item>
+                  <Link
+                    href={getBreadcrumbLink(breadcrumb.section)}
+                    className={css({
+                      color: 'text.secondary',
+                      _hover: { color: 'primary' },
+                      transition: 'color 0.2s ease',
+                    })}
+                  >
+                    {breadcrumb.section}
+                  </Link>
+                </Item>
+                <Separator>
+                  <ChevronRight size={18} className={css({ color: 'text.secondary' })} />
+                </Separator>
+                <Item>
+                  <span
+                    className={css({
+                      color: 'text.primary',
+                      fontWeight: 'medium',
+                    })}
+                  >
+                    {breadcrumb.title}
+                  </span>
+                </Item>
+              </List>
+            </Root>
 
-            {description && (
-              <p
-                className={css({
-                  mt: 'gap.inline.sm',
-                  mb: 'gap.inline.sm',
-                  lineHeight: 'relaxed',
-                  color: 'text.secondary',
-                })}
-              >
-                {description}
-              </p>
-            )} */}
+            {/* Commented out title and description as in your original code */}
           </header>
         )}
 
