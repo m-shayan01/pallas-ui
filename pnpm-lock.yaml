@@ -247,6 +247,12 @@ importers:
       '@pandacss/node':
         specifier: ^0.53.3
         version: 0.53.3(typescript@5.7.2)
+      '@pandacss/preset-base':
+        specifier: ^0.53.3
+        version: 0.53.3
+      '@pandacss/preset-panda':
+        specifier: ^0.53.3
+        version: 0.53.3
       '@pandacss/shared':
         specifier: ^0.53.3
         version: 0.53.3
