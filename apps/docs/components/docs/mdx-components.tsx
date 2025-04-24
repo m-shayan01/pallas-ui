@@ -181,8 +181,6 @@ const components = {
         level={1}
         color="default"
         css={{
-          mt: '6',
-          mb: '4',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
@@ -203,8 +201,6 @@ const components = {
         level={2}
         color="default"
         css={{
-          mt: '6',
-          mb: '3',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
@@ -270,8 +266,6 @@ const components = {
       <Paragraph
         variant="default"
         css={{
-          mt: '3',
-          mb: '1',
           fontSize: 'md',
           lineHeight: 'tight',
         }}
@@ -312,14 +306,13 @@ const components = {
     <code
       className={cx(
         css({
-          fontSize: 'inherit',
           mx: '0.5',
           position: 'relative',
           rounded: 'sm',
           bg: 'fill.secondary',
           px: '0.3rem',
           py: '0.2rem',
-          textStyle: 'sm',
+          fontSize: 'sm',
           fontWeight: 'semibold',
         }),
         className,

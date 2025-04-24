@@ -1,7 +1,8 @@
+//import { ComponentShowcase } from '../components/home/showcase'
+import { ComponentShowcase } from '@/components/home/showcase/index'
 import { css } from '@styled-system/css'
 import Link from 'next/link'
 import { Feature } from '../components/home/feature'
-
 export default function Home() {
   return (
     <div
@@ -108,6 +109,20 @@ export default function Home() {
           description="Built with TypeScript for a great developer experience with full type safety."
         />
       </div>
+
+      {/* <div
+        className={css({
+          mb: 'layout.section.lg',
+          py: 'layout.internal.lg',
+          px: { base: 'layout.internal.sm', md: 'layout.internal.md' },
+          borderRadius: 'lg',
+          bg: 'surface.container.low',
+        })}
+      >
+        <ComponentShowcase />
+      </div> */}
+      {/* <HomeShowcase /> */}
+      <ComponentShowcase />
     </div>
   )
 }

@@ -16,7 +16,8 @@ export const heading = defineRecipe({
           base: '{fontSizes.4xl}',
           lg: '{fontSizes.5xl}',
         },
-        my: '{spacing.4}',
+        mt: '{spacing.3}',
+        mb: '{spacing.2}',
         fontWeight: '{fontWeights.extrabold}',
       },
       2: {
@@ -24,6 +25,8 @@ export const heading = defineRecipe({
           base: '{fontSizes.3xl}',
           lg: '{fontSizes.4xl}',
         },
+        mt: '{spacing.2}',
+        mb: '{spacing.1}',
         fontWeight: '{fontWeights.semibold}',
       },
       3: {
