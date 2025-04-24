@@ -84,6 +84,7 @@ export function Sidebar({ onNavigate }: SidebarProps = {}) {
   const accordionContentStyle = css({
     width: '100%',
     bg: 'surface.container',
+    py: 'padding.inline.xs',
   })
 
   return (
