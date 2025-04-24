@@ -21,7 +21,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cx(button({ variant, size, width }), className)}
         {...props}
       >
-        <span className={css({ display: 'flex', alignItems: 'center', pl: 2, pr: 1 })}>
+        <span className={css({ display: 'flex', alignItems: 'center', gap: 2 })}>
           {isLoading && <Spinner size="sm" />}
           {icon && <IconWrapper size="sm">{icon}</IconWrapper>}
           {children}

@@ -1,35 +1,34 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { Content, Root, Trigger } from '@/components/ui/tooltip'
-import { TooltipProvider } from '@radix-ui/react-tooltip'
+import Tooltip from '@/components/ui/tooltip/tooltip'
 import { VStack } from '@styled-system/jsx'
 
 export default function TooltipAlignmentsDemo() {
   return (
-    <TooltipProvider>
+    <Tooltip.Provider>
       <VStack gap="4">
-        <Root>
-          <Trigger asChild>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
             <Button variant="outlined">Start Alignment</Button>
-          </Trigger>
-          <Content align="start">Aligned to the start</Content>
-        </Root>
+          </Tooltip.Trigger>
+          <Tooltip.Content align="start">Aligned to the start</Tooltip.Content>
+        </Tooltip.Root>
 
-        <Root>
-          <Trigger asChild>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
             <Button variant="outlined">Center Alignment</Button>
-          </Trigger>
-          <Content align="center">Aligned to the center</Content>
-        </Root>
+          </Tooltip.Trigger>
+          <Tooltip.Content align="center">Aligned to the center</Tooltip.Content>
+        </Tooltip.Root>
 
-        <Root>
-          <Trigger asChild>
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
             <Button variant="outlined">End Alignment</Button>
-          </Trigger>
-          <Content align="end">Aligned to the end</Content>
-        </Root>
+          </Tooltip.Trigger>
+          <Tooltip.Content align="end">Aligned to the end</Tooltip.Content>
+        </Tooltip.Root>
       </VStack>
-    </TooltipProvider>
+    </Tooltip.Provider>
   )
 }

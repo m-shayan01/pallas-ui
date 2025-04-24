@@ -33,7 +33,6 @@ export default defineConfig({
       colors: themeColorPalette,
       baseRadius: 2,
     }),
-    '@pandacss/preset-base',
   ],
 
   include: ['./components/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}'],
@@ -57,17 +56,15 @@ export default defineConfig({
         },
         fonts: {
           heading: {
-            value:
-              'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+            value: 'var(--font-noto-sans-jp)',
           },
           body: {
-            value:
-              'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+            value: 'var(--font-inter)',
           },
-          mono: {
-            value:
-              'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-          },
+          // mono: {
+          //   value:
+          //     'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+          // },
         },
       },
       semanticTokens: {
@@ -99,6 +96,11 @@ export default defineConfig({
         },
       },
       recipes: {
+        // button: {
+        //   base: {
+        //     fontFamily: 'heading', // This will use the Noto Sans JP font
+        //   },
+        // },
         prose: {
           className: 'docs-prose',
           base: {
