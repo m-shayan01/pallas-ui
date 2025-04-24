@@ -14,7 +14,7 @@ export type RootProps = WithFixedClassName<DrawerPrimitive.DialogProps>
 
 export const Root = withProvider<
   React.ComponentRef<typeof DrawerPrimitive.Root>,
-  Assign<RootProps, DrawerVariantProps>
+  Assign<RootProps, DrawerVariantProps & JsxStyleProps>
 >(DrawerPrimitive.Root, 'root')
 
 export const Trigger = withContext<
@@ -60,6 +60,21 @@ export const Description = withContext<
   Assign<DrawerPrimitive.DialogDescriptionProps, JsxStyleProps>
 >(DrawerPrimitive.Description, 'description')
 
+export const Header = withContext<
+  React.ComponentRef<'div'>,
+  Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>
+>('div', 'header')
+
+export const Body = withContext<
+  React.ComponentRef<'div'>,
+  Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>
+>('div', 'body')
+
+export const Footer = withContext<
+  React.ComponentRef<'div'>,
+  Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>
+>('div', 'footer')
+
 const Drawer = {
   Root,
   Trigger,
@@ -67,6 +82,9 @@ const Drawer = {
   Close,
   Title,
   Description,
+  Header,
+  Body,
+  Footer,
 }
 
 export default Drawer

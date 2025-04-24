@@ -2,7 +2,7 @@
 
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import * as DrawerPrimitive from '@radix-ui/react-dialog'
-import { drawer } from '@styled-system/recipes'
+import { type DrawerVariantProps, drawer } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import * as React from 'react'
 
@@ -14,7 +14,7 @@ export type RootProps = WithFixedClassName<DrawerPrimitive.DialogProps>
 
 export const Root = withProvider<
   React.ComponentRef<typeof DrawerPrimitive.Root>,
-  Assign<RootProps, JsxStyleProps>
+  Assign<RootProps, DrawerVariantProps>
 >(DrawerPrimitive.Root, 'root')
 
 export const Trigger = withContext<
