@@ -59,7 +59,7 @@ export default defineConfig({
             value: 'var(--font-noto-sans-jp)',
           },
           body: {
-            value: 'var(--font-raleway)',
+            value: 'var(--font-inter)',
           },
           // mono: {
           //   value:

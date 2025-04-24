@@ -5,7 +5,7 @@
 }
 
 :root {
-  --font-sans: var(--font-raleway);
+  --font-sans: var(--font-inter);
   --font-heading: var(--font-noto-sans-jp);
 }
 
