@@ -9,6 +9,7 @@ import { button } from './button'
 import { card } from './card'
 import { checkbox } from './checkbox'
 import { daypicker } from './daypicker'
+import { drawer } from './drawer'
 import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
@@ -30,6 +31,7 @@ import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
+
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
   button,
@@ -46,24 +48,25 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
-  avatar,
-  card,
-  modal,
   accordion,
-  menubar,
-  toast,
-  tabs,
-  progress,
-  select,
-  popover,
-  tooltip,
-  radioGroup,
+  avatar,
+  breadcrumb,
+  card,
   checkbox,
-  slider,
-  switchRecipe,
+  drawer,
   daypicker,
   input,
+  modal,
+  menubar,
+  progress,
+  popover,
+  radioGroup,
   segmented,
+  select,
+  slider,
+  switchRecipe,
+  tabs,
+  toast,
+  tooltip,
   sidebar,
-  breadcrumb,
 }
