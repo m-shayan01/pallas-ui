@@ -27,7 +27,10 @@
     "jsxImportSource": "react",
     "paths": {
       "~/*": ["./src/*"],
-      "@styled-system/*": ["styled-system/*"]
+      "@styled-system/*": ["styled-system/*"],
+      "@components/*": ["src/ui/*"],
+      "@pallas-ui/style-context": ["../packages/style-context/src"],
+      "@pallas-ui/*": ["../ui-primitives/*/src"]
     }
   },
   "include": ["src", "styled-system"]

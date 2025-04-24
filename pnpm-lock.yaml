@@ -35,6 +35,9 @@ importers:
       '@pallas-ui/panda-preset':
         specifier: workspace:*
         version: link:../../packages/panda
+      '@pallas-ui/sidebar':
+        specifier: workspace:*
+        version: link:../../ui-primitives/sidebar
       '@pallas-ui/style-context':
         specifier: workspace:*
         version: link:../../packages/style-context
@@ -165,6 +168,9 @@ importers:
       '@pallas-ui/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda
+      '@pallas-ui/sidebar':
+        specifier: workspace:*
+        version: link:../ui-primitives/sidebar
       '@pallas-ui/style-context':
         specifier: workspace:*
         version: link:../packages/style-context
@@ -437,6 +443,34 @@ importers:
       typescript:
         specifier: ^5.7.3
         version: 5.8.3
+
+  ui-primitives/sidebar:
+    dependencies:
+      '@radix-ui/react-slot':
+        specifier: ^1.1.1
+        version: 1.1.2(@types/react@19.1.0)(react@19.1.0)
+    devDependencies:
+      '@pallas-ui/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@types/react':
+        specifier: ^19.0.7
+        version: 19.1.0
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.1.2(@types/react@19.1.0)
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(postcss@8.5.3)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
 
 packages:
 
@@ -14109,6 +14143,33 @@ snapshots:
     optionalDependencies:
       postcss: 8.4.49
       typescript: 5.8.3
+    transitivePeerDependencies:
+      - jiti
+      - supports-color
+      - tsx
+      - yaml
+
+  tsup@8.4.0(postcss@8.5.3)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0):
+    dependencies:
+      bundle-require: 5.1.0(esbuild@0.25.1)
+      cac: 6.7.14
+      chokidar: 4.0.3
+      consola: 3.4.2
+      debug: 4.4.0
+      esbuild: 0.25.1
+      joycon: 3.1.1
+      picocolors: 1.1.1
+      postcss-load-config: 6.0.1(postcss@8.5.3)(tsx@4.19.2)(yaml@2.7.0)
+      resolve-from: 5.0.0
+      rollup: 4.39.0
+      source-map: 0.8.0-beta.0
+      sucrase: 3.35.0
+      tinyexec: 0.3.2
+      tinyglobby: 0.2.12
+      tree-kill: 1.2.2
+    optionalDependencies:
+      postcss: 8.5.3
+      typescript: 5.7.3
     transitivePeerDependencies:
       - jiti
       - supports-color
