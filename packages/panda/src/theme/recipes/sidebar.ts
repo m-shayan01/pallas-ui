@@ -123,7 +123,7 @@ export const sidebar = defineSlotRecipe({
       },
 
       '.group:is([data-variant=floating], [data-variant=inset]):is([data-collapsible=icon]) &': {
-        w: '3rem + {spacing.4} + 2px)',
+        w: 'calc(3rem + {spacing.4} + 2px)',
       },
       '.group:is([data-variant=sidebar]):is([data-collapsible=icon]) &': {
         w: '3rem',

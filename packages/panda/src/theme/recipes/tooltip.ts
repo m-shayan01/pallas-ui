@@ -15,7 +15,8 @@ export const tooltip = defineSlotRecipe({
       color: '{colors.text}',
       boxShadow: '{shadows.lg}',
       animateIn: true,
-      fadeIn: 0,
+      textStyle: 'xs',
+      fadeIn: 10,
       zoomIn: 95,
       maxWidth: 250,
 

@@ -8,8 +8,8 @@ import Tooltip from '@/components/ui/tooltip/tooltip'
 import Heading from '@/components/ui/typography/heading'
 import Paragraph from '@/components/ui/typography/paragraph'
 import { css } from '@styled-system/css'
+import { HStack, VStack } from '@styled-system/jsx'
 import { InfoIcon, Settings } from 'lucide-react'
-import React from 'react'
 import { ShowcaseCard } from './showcase-card'
 
 export const PopoverTooltipShowcase = () => {
@@ -56,35 +56,21 @@ export const PopoverTooltipShowcase = () => {
               <Heading level={3} className={css({ fontWeight: 'semibold', mb: '2' })}>
                 Display Settings
               </Heading>
-              <div className={css({ display: 'flex', flexDirection: 'column', gap: '2' })}>
-                <div
-                  className={css({
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '2',
-                    cursor: 'pointer',
-                  })}
-                >
+              <VStack gap="2">
+                <HStack gap="2">
                   <Checkbox id="show-notifications" defaultChecked />
                   <Label htmlFor="show-notifications">Show notifications</Label>
-                </div>
-                <div
-                  className={css({
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '2',
-                    cursor: 'pointer',
-                  })}
-                >
+                </HStack>
+                <HStack gap="2">
                   <Checkbox id="dark-mode" />
                   <Label htmlFor="dark-mode">Dark mode</Label>
-                </div>
-                <div className={css({ mt: '2' })}>
+                </HStack>
+                <HStack className={css({ mt: '2' })}>
                   <Button size="sm" variant="primary" className={css({ width: '100%' })}>
                     Save
                   </Button>
-                </div>
-              </div>
+                </HStack>
+              </VStack>
             </div>
           </Popover.Content>
         </Popover.Root>

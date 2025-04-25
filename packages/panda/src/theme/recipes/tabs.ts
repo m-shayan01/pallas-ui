@@ -27,31 +27,31 @@ export const tabs = defineSlotRecipe({
     tabList: {
       display: 'flex',
       flexWrap: 'nowrap',
-      gap: '{spacing.gap.component.md}',
+      gap: '{spacing.gap.component.sm}',
       borderColor: '{colors.border}',
       fontWeight: '{medium}',
     },
     content: {
       overflow: 'hidden',
       color: '{colors.text}',
-      textStyle: '{md}',
+      textStyle: '{sm}',
     },
   },
   variants: {
     size: {
       sm: {
         trigger: {
-          textStyle: '{sm}',
+          textStyle: 'xs',
         },
       },
       md: {
         trigger: {
-          textStyle: '{md}',
+          textStyle: 'sm',
         },
       },
       lg: {
         trigger: {
-          textStyle: '{lg}',
+          textStyle: 'md',
         },
       },
     },
