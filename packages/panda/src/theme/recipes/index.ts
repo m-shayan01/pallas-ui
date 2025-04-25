@@ -1,14 +1,16 @@
 import type { RecipeConfig, RecipeVariantRecord, SlotRecipeConfig } from '@pandacss/dev'
 
-import { accordian } from './accordian'
+import { accordion } from './accordion'
 import { alert, alertDescription, alertTitle } from './alert'
 import { avatar } from './avatar'
 import { badge } from './badge'
+import { breadcrumb } from './breadcrumb'
 import { button } from './button'
 import { card } from './card'
 import { carousel } from './carousel'
 import { checkbox } from './checkbox'
 import { daypicker } from './daypicker'
+import { drawer } from './drawer'
 import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
@@ -22,6 +24,7 @@ import { radioGroup } from './radio-group'
 import { segmented } from './segmented'
 import { select } from './select'
 import { separator } from './separator'
+import { sidebar } from './sidebar'
 import { slider } from './slider'
 import { spinner } from './spinner'
 import { switchRecipe } from './switch'
@@ -46,23 +49,26 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
+  accordion,
   avatar,
+  breadcrumb,
   card,
-  modal,
-  accordian,
-  menubar,
-  toast,
-  tabs,
-  progress,
-  select,
-  popover,
-  tooltip,
-  radioGroup,
+  carousel,
   checkbox,
-  slider,
-  switchRecipe,
+  drawer,
   daypicker,
   input,
+  modal,
+  menubar,
+  progress,
+  popover,
+  radioGroup,
   segmented,
-  carousel,
+  select,
+  slider,
+  switchRecipe,
+  tabs,
+  toast,
+  tooltip,
+  sidebar,
 }

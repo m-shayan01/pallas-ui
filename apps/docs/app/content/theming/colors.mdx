@@ -1,0 +1,45 @@
+---
+title: Color Tokens
+description: Color tokens used in Pallas UI design system
+order: 2
+---
+
+
+
+# Color Tokens
+
+Pallas UI uses a semantic color system that provides consistent theming across the entire design system.
+
+
+
+## Color System
+
+Our color system is organized into semantic categories that represent their usage in the UI. Each color has variations for different states and emphasis levels.
+
+<ColorPalette />
+
+
+
+## Usage
+
+Use these color tokens in your components for consistent styling:
+
+```tsx
+import { css } from '@styled-system/css'
+
+function Example() {
+  return (
+    <div
+      className={css({
+        color: 'text',
+        bg: 'surface.container',
+        borderColor: 'border',
+      })}
+    >
+      Content with consistent colors
+    </div>
+  )
+}
+```
+
+

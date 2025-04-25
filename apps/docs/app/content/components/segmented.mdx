@@ -1,0 +1,75 @@
+---
+title: Segmented
+description: A set of two or more segments, each of which functions as a mutually exclusive button.
+---
+
+<ContentContainer>
+
+<Section>
+# Segmented
+A set of two or more segments, each of which functions as a mutually exclusive button.
+
+<ComponentPreview name="segmented" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-tabs" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="segmented" />
+<ComponentSource name="segmented" file="root" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Segmented from '@/components/ui/segmented'
+```
+```tsx
+const [value, setValue] = useState('tab1')
+
+<Segmented.Root value={value} onValueChange={setValue}>
+  <Segmented.Option value="tab1">
+    <Segmented.Text>Option 1</Segmented.Text>
+  </Segmented.Option>
+  <Segmented.Option value="tab2">
+    <Segmented.Text>Option 2</Segmented.Text>
+  </Segmented.Option>
+  <Segmented.Option value="tab3">
+    <Segmented.Text>Option 3</Segmented.Text>
+  </Segmented.Option>
+</Segmented.Root>
+```
+</Section>
+<Section>
+## Examples
+
+### Sizes
+<ComponentPreview name="segmented" file="sizes"/>
+
+### Orientation
+<ComponentPreview name="segmented" file="vertical"/>
+
+### Block (Full Width)
+<ComponentPreview name="segmented" file="block"/>
+
+### Disabled
+<ComponentPreview name="segmented" file="disabled"/>
+
+### With Icons
+<ComponentPreview name="segmented" file="with-icons"/>
+
+</Section>
+</ContentContainer>

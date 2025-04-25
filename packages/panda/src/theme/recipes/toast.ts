@@ -26,16 +26,17 @@ export const toast = defineSlotRecipe({
       borderRadius: '{radii.md}',
       paddingBlock: '{spacing.padding.block.lg}',
       paddingInline: '{spacing.padding.inline.lg}',
+      shadow: 'md',
     },
     title: {
       gridArea: 'title',
-      textStyle: '{md}',
+      textStyle: 'sm',
       fontWeight: 'medium',
       paddingRight: '{spacing.padding.block.lg}',
     },
     description: {
       gridArea: 'description',
-      textStyle: '{sm}',
+      textStyle: 'xs',
     },
     close: {
       gridArea: 'close',

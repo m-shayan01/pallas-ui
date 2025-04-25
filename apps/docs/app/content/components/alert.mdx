@@ -1,0 +1,79 @@
+---
+title: Alert
+description: Displays a callout for user attention.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/alert
+---
+<ContentContainer>
+
+<Section>
+# Alert
+Displays a callout for user attention.
+
+<ComponentPreview name="alert" withRecipe />
+
+</Section>
+
+<Section>
+## Installation
+<Steps>
+<Section>
+### Copy and paste the following code into your project
+
+<ComponentSource name="alert" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
+import { Terminal } from 'lucide-react' // Any icon of your choice
+```
+```tsx
+<Alert>
+  <Terminal className="h-4 w-4" />
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>
+    You can add components and dependencies to your app using the cli.
+  </AlertDescription>
+</Alert>
+```
+</Section>
+
+<Section>
+## Recipe
+### Usage
+```tsx
+import { alert, type AlertVariantProps } from '@styled-system/recipes'
+```
+```tsx
+<div className={alert({ variant: 'info' })}>Alert content</div>
+```
+</Section>
+
+<Section>
+## Examples
+### Default
+
+<ComponentPreview name="alert" />
+
+### Info
+
+<ComponentPreview name="alert" file="info" />
+
+### Error
+
+<ComponentPreview name="alert" file="error" />
+
+### Warning
+
+<ComponentPreview name="alert" file="warning" />
+
+</Section>
+</ContentContainer>

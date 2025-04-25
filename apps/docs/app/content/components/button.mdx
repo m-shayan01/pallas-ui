@@ -1,0 +1,101 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+references:
+  shadcnUiLink: https://ui.shadcn.com/docs/components/button
+---
+<ContentContainer>
+
+<Section>
+# Button
+Displays a button or a component that looks like a button.
+<ComponentPreview name="button" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@radix-ui/react-slot" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name= "button"/>
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Button } from '@/components/ui/button/button'
+```
+
+```tsx
+<Button variant="default" size="default">
+  Button
+</Button>
+```
+</Section>
+
+<Section>
+## Recipe
+### Usage
+```tsx
+import { button, type ButtonVariantProps } from '@styled-system/recipes'
+```
+```tsx
+<button className={button({ variant: 'outline', size: 'default' })}>Button</button>
+```
+
+### Link
+
+```tsx
+import { button } from '@styled-system/recipes'
+```
+```tsx
+<Button variant="link">Link Button</Button>
+```
+
+Alternatively, you can set the the className parameter for the link component.
+
+```tsx
+<Link className={button({ variant: 'outline' })}>Click here</Link>
+```
+</Section>
+
+<Section>
+
+## Examples
+### Default (Primary)
+
+<ComponentPreview name="button" file ="primary" />
+
+### Outline
+
+<ComponentPreview name="button" file="outlined" />
+
+### Dashed
+
+<ComponentPreview name="button" file="dashed" />
+
+### Link
+
+<ComponentPreview name="button" file="link" />
+
+### Text
+
+<ComponentPreview name="button" file="text" />
+
+</Section>
+
+</ContentContainer>
+

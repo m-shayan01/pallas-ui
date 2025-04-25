@@ -42,11 +42,12 @@ export const modal = defineSlotRecipe({
       maxWidth: '{sizes.lg}',
       translateX: '-50%',
       translateY: '-50%',
+      textStyle: 'sm',
       transitionDuration: 'normal',
-      gap: '{spacing.gap.component.md}',
+      gap: '{spacing.gap.component.lg}',
       border: 'base',
       bg: 'background',
-      p: '{spacing.padding.block.md}',
+      p: '{spacing.padding.block.lg}',
       boxShadow: 'lg',
 
       _open: {
@@ -72,7 +73,7 @@ export const modal = defineSlotRecipe({
     header: {
       display: 'flex',
       flexDirection: 'column',
-      spaceY: '{spacing.gap.inline.sm}',
+      spaceY: '{spacing.padding.block.sm}',
       textAlign: 'center',
 
       sm: {
@@ -94,12 +95,12 @@ export const modal = defineSlotRecipe({
       fontWeight: 'semibold',
     },
     description: {
-      textStyle: 'sm',
+      textStyle: 'xs',
       color: '{colors.text.secondary}',
     },
     cancel: {
       mt: {
-        base: 'spacing.gap.component.sm',
+        base: '{spacing.gap.component.sm}',
         sm: '0',
       },
     },

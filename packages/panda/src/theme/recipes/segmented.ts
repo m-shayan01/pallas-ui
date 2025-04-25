@@ -61,7 +61,7 @@ export const segmented = defineSlotRecipe({
         },
         option: {
           gap: '{spacing.1}',
-          textStyle: '{sm}',
+          textStyle: '{xs}',
           borderRadius: 'calc({radii.sm} - {spacing.0.5})',
           paddingInline: '{spacing.padding.inline.sm}',
           paddingBlock: '{spacing.padding.block.sm}',
@@ -74,7 +74,7 @@ export const segmented = defineSlotRecipe({
         },
         option: {
           gap: '{spacing.2}',
-          textStyle: '{md}',
+          textStyle: '{sm}',
           borderRadius: 'calc({radii.md} - {spacing.1} * 0.75)',
           paddingInline: '{spacing.padding.inline.md}',
           paddingBlock: '{spacing.padding.block.sm}',
@@ -87,7 +87,7 @@ export const segmented = defineSlotRecipe({
         },
         option: {
           gap: '{spacing.3}',
-          textStyle: '{lg}',
+          textStyle: '{md}',
           borderRadius: 'calc({radii.lg} - {spacing.1})',
           paddingInline: '{spacing.padding.inline.lg}',
           paddingBlock: '{spacing.padding.block.md}',
