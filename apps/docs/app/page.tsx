@@ -20,14 +20,18 @@ export default function Home() {
         <div className={css({ textAlign: 'center', mb: 'layout.section.lg' })}>
           <h1
             className={css({
-              fontSize: { base: '4xl', md: '5xl' },
+              fontSize: { base: '3xl', md: '4xl' },
               fontWeight: 'extrabold',
               mb: 'gap.component.md', // Using component gap spacing
               lineHeight: '1.1',
               color: 'text', // Using default text color
             })}
           >
-            <span className={css({ color: 'primary.DEFAULT' })}>Pallas UI</span> -
+            <span
+              className={css({ color: 'primary.DEFAULT', fontSize: { base: '5xl', md: '6xl' } })}
+            >
+              Pallas UI
+            </span>{' '}
             <br />A Modern React Component Library
           </h1>
 
@@ -96,7 +100,7 @@ export default function Home() {
           className={css({
             display: 'grid',
             gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' },
-            gap: 'gap.component.lg', // Using component gap spacing
+            gap: 'gap.component.md', // Using component gap spacing
           })}
         >
           <Feature

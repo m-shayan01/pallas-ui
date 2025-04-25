@@ -181,6 +181,8 @@ const components = {
         level={1}
         color="default"
         css={{
+          mt: '4',
+          mb: '2',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
@@ -201,6 +203,8 @@ const components = {
         level={2}
         color="default"
         css={{
+          mt: '6',
+          mb: '2',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
@@ -267,7 +271,7 @@ const components = {
         variant="default"
         css={{
           fontSize: 'md',
-          lineHeight: 'tight',
+          lineHeight: 'relaxed',
         }}
         {...restProps}
       />
@@ -309,11 +313,33 @@ const components = {
           mx: '0.5',
           position: 'relative',
           rounded: 'sm',
-          bg: 'fill.secondary',
+          bg: 'fill.tertiary',
+          px: '0.4rem',
+          py: '0.3rem',
+          fontSize: 'sm',
+          fontWeight: 'semibold',
+          color: '#171717',
+          textWrap: 'nowrap',
+        }),
+        className,
+      )}
+      {...props}
+    />
+  ),
+  inlineCode: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cx(
+        css({
+          mx: '0.5',
+          position: 'relative',
+          rounded: 'sm',
+          bg: 'fill.tertiary',
           px: '0.3rem',
           py: '0.2rem',
           fontSize: 'sm',
           fontWeight: 'semibold',
+          color: '#171717',
+          textWrap: 'nowrap',
         }),
         className,
       )}
@@ -332,6 +358,7 @@ const components = {
   ColorPalette,
   SizeBox,
   SpacingBox,
+  Paragraph,
 }
 
 export function MdxComponent({ code }: MdxComponentProps) {

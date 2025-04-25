@@ -139,6 +139,7 @@ function ContentPage({
                       color: 'text.secondary',
                       _hover: { color: 'primary' },
                       transition: 'color 0.2s ease',
+                      fontSize: 'sm',
                     })}
                   >
                     {breadcrumb.section}
@@ -152,6 +153,7 @@ function ContentPage({
                     className={css({
                       color: 'text.primary',
                       fontWeight: 'medium',
+                      fontSize: 'sm',
                     })}
                   >
                     {breadcrumb.title}

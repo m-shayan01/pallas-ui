@@ -16,7 +16,7 @@ export const breadcrumb = defineSlotRecipe({
       alignItems: 'center',
       gap: '{spacing.gap.inline.xs}',
       wordBreak: 'break-word',
-      fontSize: 'md',
+      fontSize: 'sm',
       color: 'text.secondary',
       padding: 0,
       margin: 0,
