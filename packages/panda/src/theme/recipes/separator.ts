@@ -3,7 +3,9 @@ import { defineRecipe } from '@pandacss/dev'
 export const separator = defineRecipe({
   className: 'separator',
   description: 'Styles for the Separator component',
-  base: {},
+  base: {
+    borderColor: '{colors.border}',
+  },
   variants: {
     orientation: {
       horizontal: {

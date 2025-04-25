@@ -30,16 +30,16 @@ export const ShowcaseCard = ({
           borderRadius: 'md',
           overflow: 'hidden',
           bg: 'white',
-          boxShadow: 'sm',
-          border: '1px solid',
-          borderColor: 'gray.200',
+          boxShadow: 'xs',
+          border: '.5px solid',
+          borderColor: 'border.secondary',
           transition: 'all 0.2s ease-in-out',
           height: 'fit-content',
           gridColumn: colSpan ? `span ${colSpan} / span ${colSpan}` : 'auto',
           gridRow: rowSpan ? `span ${rowSpan} / span ${rowSpan}` : 'auto',
           _hover: {
-            boxShadow: 'md',
-            transform: 'translateY(-2px)',
+            boxShadow: 'sm',
+            transform: 'translateY(-1px)',
           },
         }),
         className,
@@ -49,7 +49,7 @@ export const ShowcaseCard = ({
         className={css({
           p: paddingTitle ? paddingTitle : '6',
           borderBottom: '1px solid',
-          borderColor: 'gray.100',
+          borderColor: 'border',
           border: 'none',
           spaceY: '4',
         })}
@@ -60,7 +60,6 @@ export const ShowcaseCard = ({
       <div
         className={css({
           p: paddingBlock ? paddingBlock : '6',
-          bg: 'gray.50',
         })}
       >
         {children}

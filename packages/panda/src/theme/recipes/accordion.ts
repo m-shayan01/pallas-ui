@@ -39,8 +39,8 @@ export const accordion = defineSlotRecipe({
       gap: '{spacing.gap.component.md}',
       justifyContent: 'space-between',
       textStyle: {
-        base: 'lg',
-        lg: 'lg',
+        base: 'sm',
+        lg: 'md',
       },
       bg: '{colors.primary.bg}',
       fontWeight: 'semibold',
@@ -52,7 +52,7 @@ export const accordion = defineSlotRecipe({
       color: '{colors.text}',
       px: '{spacing.padding.inline.lg}',
       py: '{spacing.padding.block.lg}',
-      textStyle: 'md',
+      textStyle: 'sm',
     },
   },
 })

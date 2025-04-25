@@ -18,30 +18,30 @@ export const paragraph = defineRecipe({
     size: {
       base: {
         fontSize: {
-          base: '{fontSizes.md}',
-          lg: '{fontSizes.lg}',
-          '2xl': '{fontSizes.xl}',
-        },
-      },
-      large: {
-        fontSize: {
-          base: '{fontSizes.lg}',
-          lg: '{fontSizes.xl}',
-          '2xl': '{fontSizes.2xl}',
-        },
-      },
-      compact: {
-        fontSize: {
           base: '{fontSizes.sm}',
           lg: '{fontSizes.md}',
           '2xl': '{fontSizes.lg}',
         },
       },
-      subscript: {
+      large: {
+        fontSize: {
+          base: '{fontSizes.md}',
+          lg: '{fontSizes.lg}',
+          '2xl': '{fontSizes.xl}',
+        },
+      },
+      compact: {
         fontSize: {
           base: '{fontSizes.xs}',
           lg: '{fontSizes.sm}',
           '2xl': '{fontSizes.md}',
+        },
+      },
+      subscript: {
+        fontSize: {
+          base: '{fontSizes.2xs}',
+          lg: '{fontSizes.xs}',
+          '2xl': '{fontSizes.sm}',
         },
       },
     },

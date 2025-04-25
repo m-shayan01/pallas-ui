@@ -7,7 +7,7 @@ export const button = defineRecipe({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    textStyle: 'md',
+    textStyle: 'sm',
     transition: 'background-color 0.2s ease',
     cursor: 'pointer',
     '&:disabled': {
@@ -85,19 +85,19 @@ export const button = defineRecipe({
     },
     size: {
       sm: {
-        textStyle: '{sm}',
+        textStyle: 'xs',
         paddingX: '{spacing.padding.inline.sm}',
         paddingY: '{spacing.padding.block.sm}',
         height: '{sizes.controlHeight.sm}',
       },
       md: {
-        textStyle: '{md}',
+        textStyle: 'sm',
         paddingX: '{spacing.padding.inline.md}',
         paddingY: '{spacing.padding.block.md}',
         height: '{sizes.controlHeight.md}',
       },
       lg: {
-        textStyle: '{lg}',
+        textStyle: 'md',
         paddingX: '{spacing.padding.inline.lg}',
         paddingY: '{spacing.padding.block.lg}',
         height: '{sizes.controlHeight.lg}',

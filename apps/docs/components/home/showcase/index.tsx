@@ -21,7 +21,10 @@ export const ComponentShowcase = () => {
         className={css({
           display: 'flex',
           flexDirection: { base: 'column', md: 'row' },
-          gap: '6',
+          gap: 'layout.internal.lg',
+          bg: 'surface.layout',
+          mx: 'auto',
+          maxW: '1200px',
         })}
       >
         {/* Column 1 */}
@@ -29,7 +32,7 @@ export const ComponentShowcase = () => {
           className={css({
             display: 'flex',
             flexDirection: 'column',
-            gap: '6',
+            gap: 'layout.internal.lg',
             flex: '1',
           })}
         >
@@ -44,7 +47,7 @@ export const ComponentShowcase = () => {
           className={css({
             display: 'flex',
             flexDirection: 'column',
-            gap: '6',
+            gap: 'layout.internal.lg',
             flex: '1',
           })}
         >
@@ -59,7 +62,7 @@ export const ComponentShowcase = () => {
           className={css({
             display: 'flex',
             flexDirection: 'column',
-            gap: '6',
+            gap: 'layout.internal.lg',
             flex: '1',
           })}
         >
