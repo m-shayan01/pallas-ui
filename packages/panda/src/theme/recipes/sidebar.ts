@@ -330,7 +330,7 @@ export const sidebar = defineSlotRecipe({
       transition: 'transform 200ms linear',
 
       '& > svg': {
-        size: 4,
+        size: '1rem',
         flexShrink: 0,
       },
       '.group:is([data-collapsible=icon]) &': {
