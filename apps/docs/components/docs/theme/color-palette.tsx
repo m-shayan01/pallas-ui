@@ -59,9 +59,6 @@ const ColorSwatch = ({ tokenName, color }: ColorSwatchProps) => {
         alignItems: 'flex-start',
         gap: '4',
         py: '4',
-        borderBottom: '1px solid',
-        borderColor: 'border.secondary',
-        _last: { borderBottom: 'none' },
       })}
     >
       <button
@@ -167,7 +164,11 @@ export function ColorPalette() {
             })}
           >
             {Object.entries(swatches).map(([tokenName, color]) => (
-              <ColorSwatch key={tokenName} tokenName={tokenName} color={color} />
+              <ColorSwatch
+                key={tokenName}
+                tokenName={tokenName.replace('.DEFAULT', '')}
+                color={color}
+              />
             ))}
           </div>
         </div>

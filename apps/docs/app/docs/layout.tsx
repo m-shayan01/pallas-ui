@@ -1,5 +1,5 @@
 import { css } from '@styled-system/css'
-import { Sidebar } from '../../components/docs/sidebar'
+import { Sidebar } from '../../components/layout/sidebar'
 
 export default function DocsLayout({
   children,

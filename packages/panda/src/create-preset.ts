@@ -1,4 +1,5 @@
 import { definePreset } from '@pandacss/dev'
+import presetBase from '@pandacss/preset-base'
 import { generateThemeColors } from './colors/colors'
 import { paletteGenerator, presetPrimaryColors } from './colors/paletteGenerator'
 import { animationStyles } from './theme/animation-styles'
@@ -13,7 +14,6 @@ import { textStyles } from './theme/text-styles'
 import { tokens } from './theme/tokens'
 import { utilities } from './theme/utilities'
 import type { ThemeOptions } from './types/theme'
-import presetBase from '@pandacss/preset-base'
 
 export const createPreset = (options: ThemeOptions) => {
   const { colors } = options

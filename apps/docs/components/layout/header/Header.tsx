@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SearchDialog } from '../../components/docs/search'
+import { SearchDialog } from '../../docs/search'
 import { header } from './header.recipe'
 
 export function Header() {

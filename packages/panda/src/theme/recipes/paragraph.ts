@@ -23,6 +23,14 @@ export const paragraph = defineRecipe({
           '2xl': '{fontSizes.lg}',
         },
       },
+      extraLarge: {
+        fontSize: {
+          base: '{fontSizes.lg}',
+          lg: '{fontSizes.xl}',
+          '2xl': '{fontSizes.2xl}',
+        },
+        fontWeight: 'bold',
+      },
       large: {
         fontSize: {
           base: '{fontSizes.md}',
@@ -48,6 +56,7 @@ export const paragraph = defineRecipe({
     color: {
       default: { color: '{colors.text}' },
       secondary: { color: '{colors.text.secondary}' },
+      tertiary: { color: '{colors.text.tertiary}' },
       success: { color: '{colors.success}' },
       warning: { color: '{colors.warning}' },
       error: { color: '{colors.error}' },

@@ -35,7 +35,7 @@ export default defineConfig({
     }),
   ],
 
-  include: ['./components/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}'],
+  include: ['./components/**/*.{js,jsx,ts,tsx,mdx}', './app/**/*.{js,jsx,ts,tsx,mdx}'],
 
   theme: {
     extend: {
