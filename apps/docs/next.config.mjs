@@ -4,7 +4,7 @@ import { withContentCollections } from '@content-collections/next'
 const nextConfig = {
   // your next.js config
   experimental: {
-    viewTransitions: true,
+    viewTransition: true,
   },
 }
 
