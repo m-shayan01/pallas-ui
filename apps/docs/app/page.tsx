@@ -1,6 +1,7 @@
 //import { ComponentShowcase } from '../components/home/showcase'
 import { Feature } from '@/components/home/feature'
 import { ComponentShowcase } from '@/components/home/showcase/index'
+import { Button } from '@/components/ui/button'
 import { css } from '@styled-system/css'
 import { Box } from '@styled-system/jsx'
 import Link from 'next/link'
@@ -14,7 +15,6 @@ export default function Home() {
           mx: 'auto',
           py: 'layout.section.lg', // Using section layout spacing
           px: 'layout.internal.md', // Using internal layout spacing
-          bg: 'surface.container', // Using container surface color
         })}
       >
         <div className={css({ textAlign: 'center', mb: 'layout.section.lg' })}>
@@ -54,44 +54,16 @@ export default function Home() {
               justifyContent: 'center',
             })}
           >
-            <Link
-              href="/docs/introduction/introduction"
-              className={css({
-                px: 'padding.inline.lg', // Using inline padding
-                py: 'padding.block.md', // Using block padding
-                fontSize: 'md',
-                fontWeight: 'medium',
-                rounded: 'md',
-                bg: 'primary',
-                color: 'bgSolid.text',
-                height: 'controlHeight.md', // Using control height
-                display: 'inline-flex',
-                alignItems: 'center',
-                _hover: { bg: 'primary.hover' },
-              })}
-            >
-              Get Started
+            <Link href="/docs/introduction/introduction">
+              <Button variant="primary" size="lg">
+                Get Started
+              </Button>
             </Link>
 
-            <Link
-              href="/docs/components/accordion"
-              className={css({
-                px: 'padding.inline.lg', // Using inline padding
-                py: 'padding.block.md', // Using block padding
-                fontSize: 'md',
-                fontWeight: 'medium',
-                rounded: 'md',
-                bg: 'surface.container',
-                color: 'text',
-                border: '1px solid',
-                borderColor: 'border.DEFAULT',
-                height: 'controlHeight.md', // Using control height
-                display: 'inline-flex',
-                alignItems: 'center',
-                _hover: { bg: 'fill.secondary' },
-              })}
-            >
-              Components
+            <Link href="/docs/components/accordion">
+              <Button variant="outlined" size="lg">
+                Components
+              </Button>
             </Link>
           </div>
         </div>
