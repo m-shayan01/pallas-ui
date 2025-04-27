@@ -65,13 +65,13 @@ export const header = sva({
       alignItems: 'center',
     },
     link: {
-      color: 'text.secondary',
+      color: 'text',
       fontWeight: 'medium',
       fontFamily: 'body',
       _hover: { color: 'primary.hover' },
     },
     githubLink: {
-      color: 'text.secondary',
+      color: 'text',
       display: 'flex',
       alignItems: 'center',
       _hover: { color: 'primary.hover' },

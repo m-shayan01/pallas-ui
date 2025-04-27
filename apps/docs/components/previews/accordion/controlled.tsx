@@ -1,4 +1,5 @@
 import Accordion from '@/components/ui/accordion'
+import Segmented from '@/components/ui/segmented'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 
@@ -6,34 +7,19 @@ export default function AccordionControlledPreview() {
   const [value, setValue] = useState<string | undefined>('item-1')
 
   return (
-    <div>
+    <div style={{ width: '100%', margin: '0 auto' }}>
       <div style={{ marginBottom: '1rem' }}>
-        <button
-          type="button"
-          onClick={() => setValue(value === 'item-1' ? undefined : 'item-1')}
-          style={{
-            padding: '0.5rem 1rem',
-            border: '1px solid var(--colors-border)',
-            borderRadius: 'var(--radii-md)',
-            backgroundColor: value === 'item-1' ? 'var(--colors-primary-100)' : 'transparent',
-            marginRight: '0.5rem',
-          }}
-        >
-          Toggle First Item
-        </button>
-        <button
-          type="button"
-          onClick={() => setValue(value === 'item-2' ? undefined : 'item-2')}
-          style={{
-            padding: '0.5rem 1rem',
-            border: '1px solid var(--colors-border)',
-            borderRadius: 'var(--radii-md)',
-            backgroundColor: value === 'item-2' ? 'var(--colors-primary-100)' : 'transparent',
-            marginRight: '0.5rem',
-          }}
-        >
-          Toggle Second Item
-        </button>
+        <Segmented.Root value={value || ''} onValueChange={setValue}>
+          <Segmented.Option value="item-1">
+            <Segmented.Text>Item 1</Segmented.Text>
+          </Segmented.Option>
+          <Segmented.Option value="item-2">
+            <Segmented.Text>Item 2</Segmented.Text>
+          </Segmented.Option>
+          <Segmented.Option value="">
+            <Segmented.Text>Collapse All</Segmented.Text>
+          </Segmented.Option>
+        </Segmented.Root>
       </div>
 
       <Accordion.Root
@@ -50,7 +36,8 @@ export default function AccordionControlledPreview() {
             </Accordion.ItemTrigger>
           </Accordion.ItemHeader>
           <Accordion.ItemContent>
-            This accordion is controlled with React state. Click the buttons above to control it.
+            This accordion is controlled with React state. Use the segmented control above to manage
+            it.
           </Accordion.ItemContent>
         </Accordion.Item>
         <Accordion.Item value="item-2">

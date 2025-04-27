@@ -1,0 +1,78 @@
+---
+title: 'Layout Guide'
+description: 'Create flexible layouts with PallasUI patterns'
+order: 1
+---
+
+<ContentContainer>
+<Section>
+# Layout Guide
+<Paragraph size={'extraLarge'} color={'tertiary'}>Create flexible layouts with PallasUI patterns</Paragraph>
+</Section>
+Pallas UI leverages Panda CSS patterns for creating flexible and responsive layouts. We've extended these patterns with a standard set of properties to provide consistent layout control across all components.
+
+## Core Layout Patterns
+
+Pallas UI provides several layout patterns to help structure your UI:
+
+- **Box** - A basic container with no styling applied, useful for applying custom styles
+- **Flex** - A flexible container that can arrange items horizontally or vertically
+- **Stack** - A simplified flex container for stacking elements
+- **HStack** - A horizontal stack with items aligned in the center
+- **VStack** - A vertical stack with items aligned in the center
+- **Grid** - A CSS grid container for two-dimensional layouts
+- **Shapes** - Circle and Square components for creating simple geometric shapes
+- **AspectRatio** - A container that maintains a specific aspect ratio
+
+## Common Properties
+
+All layout patterns in Pallas UI share these common properties:
+
+### Padding Properties
+- `p` - Padding on all sides
+- `px` - Horizontal padding (left and right)
+- `py` - Vertical padding (top and bottom)
+- `pt` - Padding top
+- `pr` - Padding right
+- `pb` - Padding bottom
+- `pl` - Padding left
+
+### Sizing Properties
+- `w` - Width
+- `minW` - Minimum width
+- `maxW` - Maximum width
+- `h` - Height
+- `minH` - Minimum height
+- `maxH` - Maximum height
+
+### Position Property
+- `position` - CSS position (static, relative, absolute, fixed, sticky)
+
+## Usage
+
+Pallas UI's layout patterns can be imported from the JSX namespace:
+
+```jsx
+import { Box, Flex, HStack, VStack, Grid, Circle, Square, AspectRatio } from '@styled-system/jsx'
+
+function MyComponent() {
+  return (
+    <Box p={4}>
+      <VStack gap={4}>
+        <HStack gap={2}>
+          <Circle size="50px" bg="primary" />
+          <Square size="50px" bg="secondary" />
+        </HStack>
+        <Grid columns={2} gap={4}>
+          <Box p={2} bg="gray.100">Grid item 1</Box>
+          <Box p={2} bg="gray.100">Grid item 2</Box>
+        </Grid>
+      </VStack>
+    </Box>
+  )
+}
+```
+
+For detailed examples and all available properties, check the documentation for each specific layout pattern.
+
+</ContentContainer>

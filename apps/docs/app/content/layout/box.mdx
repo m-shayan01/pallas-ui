@@ -1,0 +1,55 @@
+---
+title: 'Box'
+description: 'A fundamental layout component for basic content containers'
+---
+<ContentContainer>
+
+<Section gap="1">
+# Box
+<Paragraph size={'extraLarge'} color={'tertiary'}>A fundamental layout component for creating containers with custom styles and responsive behavior.</Paragraph>
+<ComponentPreview name="box" />
+</Section>
+
+<Section>
+## Usage
+
+```jsx
+import { Box } from '@styled-system/jsx'
+```
+
+```jsx
+<Box
+  p={4}
+  w="full"
+  maxW="500px"
+>
+  This is a box
+</Box>
+```
+</Section>
+
+<Section>
+## Properties
+
+Box accepts all HTML div attributes and all common styling properties through the className prop with css function.
+
+Key features:
+- Padding and margin
+- Width and height
+- Background colors
+- Border and border radius
+- Responsive properties
+</Section>
+
+<Section>
+## Examples
+
+### Default
+<ComponentPreview name="box" />
+
+### Nested Boxes
+<ComponentPreview name="box" file="nested" />
+
+</Section>
+
+</ContentContainer> 

@@ -9,12 +9,12 @@ const createPattern = <T extends PatternConfig>(config: T): PatternConfig => {
     pr: { type: 'property', value: 'paddingRight' },
     pb: { type: 'property', value: 'paddingBottom' },
     pl: { type: 'property', value: 'paddingLeft' },
-    width: { type: 'property', value: 'width' },
-    minWidth: { type: 'property', value: 'minWidth' },
-    maxWidth: { type: 'property', value: 'maxWidth' },
-    height: { type: 'property', value: 'height' },
-    minHeight: { type: 'property', value: 'minHeight' },
-    maxHeight: { type: 'property', value: 'maxHeight' },
+    w: { type: 'property', value: 'width' },
+    minW: { type: 'property', value: 'minWidth' },
+    maxW: { type: 'property', value: 'maxWidth' },
+    h: { type: 'property', value: 'height' },
+    minH: { type: 'property', value: 'minHeight' },
+    maxH: { type: 'property', value: 'maxHeight' },
     position: { type: 'property', value: 'position' },
   }
 
@@ -186,6 +186,38 @@ const gridItem = createPattern({
   },
 })
 
+const aspectRatio = createPattern({
+  properties: {
+    ratio: { type: 'number' },
+  },
+  blocklist: ['aspectRatio'],
+  transform(props, { map }) {
+    const { ratio = 4 / 3, ...rest } = props
+    return {
+      position: 'relative',
+      _before: {
+        content: `""`,
+        display: 'block',
+        height: '0',
+        paddingBottom: map(ratio, (r: any) => `${(1 / r) * 100}%`),
+      },
+      '&>*': {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+        position: 'absolute',
+        inset: '0',
+        width: '100%',
+        height: '100%',
+      },
+      '&>img, &>video': {
+        objectFit: 'cover',
+      },
+      ...rest,
+    }
+  },
+})
 export const patterns = {
   box,
   flex,
@@ -194,4 +226,5 @@ export const patterns = {
   hstack,
   grid,
   gridItem,
+  aspectRatio,
 }

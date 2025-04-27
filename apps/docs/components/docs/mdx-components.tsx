@@ -9,6 +9,7 @@ import { css, cx } from '@styled-system/css'
 import { HashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import { typographyTable, typographyTableContainer } from '../common/recipes/table'
 import { ComponentPreview, ComponentSource } from './component-preview'
 import { ContentContainer } from './content-container'
 import { CopyButton } from './copy-button'
@@ -345,6 +346,11 @@ const components = {
       )}
       {...props}
     />
+  ),
+  table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
+    <div className={typographyTableContainer()}>
+      <table className={cx(typographyTable(), className)} {...props} />
+    </div>
   ),
 
   Accordion,
