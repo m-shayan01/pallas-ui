@@ -1,3 +1,8 @@
 {
-  "recommendations": ["yoavbls.pretty-ts-errors", "biomejs.biome", "chakra-ui.panda-css-vscode"]
+  "recommendations": [
+    "yoavbls.pretty-ts-errors",
+    "biomejs.biome",
+    "pallasui.panda-css-pallasui",
+    "unifiedjs.vscode-mdx"
+  ]
 }

@@ -1,7 +1,5 @@
 import { defineCollection, defineConfig } from '@content-collections/core'
 import { compileMDX } from '@content-collections/mdx'
-import { grid } from '@styled-system/patterns'
-import { remarkNpm2Yarn } from '@theguild/remark-npm2yarn'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
@@ -9,6 +7,16 @@ import { generateToc } from './lib/toc'
 import { rehypeComponent } from './plugins/rehype-component'
 
 const TOC_LEVEL = 3
+
+const prettyCodeOptions = {
+  theme: 'dark-plus', //material-theme-darker, min-dark, night-owl, slack-dark(good), all these also look good
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  onVisitHighlightedLine(node: { properties: { className: any[] } }) {
+    node.properties.className = [...(node.properties.className || []), 'line--highlighted']
+  },
+}
+
+const rehypePlugins = [rehypeSlug, rehypeComponent, [rehypePrettyCode, prettyCodeOptions]]
 
 const guides = defineCollection({
   name: 'guides',
@@ -25,36 +33,8 @@ const guides = defineCollection({
     const headings = await extractHeadings(document.content)
 
     const mdx = await compileMDX(context, document, {
-      remarkPlugins: [
-        remarkGfm,
-        // Enable npm2Yarn with correct configuration
-        // [
-        //   remarkNpm2Yarn,
-        //   {
-        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
-        //     tabNamesProp: 'items',
-        //     storageKey: 'selectedPackageManager',
-        //   },
-        // ],
-      ],
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypePrettyCode,
-          {
-            theme: 'dark-plus',
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-            onVisitHighlightedLine(node: { properties: { className: any[] } }) {
-              node.properties.className = [
-                ...(node.properties.className || []),
-                'line--highlighted',
-              ]
-            },
-            grid: false,
-            keepBackground: false,
-          },
-        ],
-      ],
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: rehypePlugins,
     })
 
     return {
@@ -89,38 +69,8 @@ const components = defineCollection({
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document, {
-      remarkPlugins: [
-        remarkGfm,
-        // Enable npm2Yarn with correct configuration
-        // [
-        //   remarkNpm2Yarn,
-        //   {
-        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
-        //     tabNamesProp: 'items',
-        //     storageKey: 'selectedPackageManager',
-        //   },
-        // ],
-      ],
-      rehypePlugins: [
-        rehypeSlug,
-        rehypeComponent,
-        [
-          rehypePrettyCode,
-          {
-            theme: 'dark-plus', //material-theme-darker, min-dark, night-owl, slack-dark(good), all these also look good
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-            onVisitHighlightedLine(node: { properties: { className: any[] } }) {
-              node.properties.className = [
-                ...(node.properties.className || []),
-                'line--highlighted',
-              ]
-            },
-            // Add these options to remove the border corners
-            grid: false,
-            keepBackground: false,
-          },
-        ],
-      ],
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: rehypePlugins,
     })
 
     const fileName = document._meta.fileName.replace(/\.mdx$/, '')
@@ -147,37 +97,36 @@ const theming = defineCollection({
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document, {
-      remarkPlugins: [
-        remarkGfm,
-        // Enable npm2Yarn with correct configuration
-        // [
-        //   remarkNpm2Yarn,
-        //   {
-        //     packageName: '../components/docs/npm-tabs', // Path to your custom tabs component
-        //     tabNamesProp: 'items',
-        //     storageKey: 'selectedPackageManager',
-        //   },
-        // ],
-      ],
-      rehypePlugins: [
-        rehypeSlug,
-        rehypeComponent,
-        [
-          rehypePrettyCode,
-          {
-            theme: 'dark-plus',
-            // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-            onVisitHighlightedLine(node: { properties: { className: any[] } }) {
-              node.properties.className = [
-                ...(node.properties.className || []),
-                'line--highlighted',
-              ]
-            },
-            grid: false,
-            keepBackground: false,
-          },
-        ],
-      ],
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: rehypePlugins,
+    })
+
+    const fileName = document._meta.fileName.replace(/\.mdx$/, '')
+    const slug = document.slug || fileName
+
+    return {
+      ...document,
+      slug,
+      mdx,
+    }
+  },
+})
+
+const layout = defineCollection({
+  name: 'layout',
+  directory: 'app/content/layout',
+  include: '**/*.mdx',
+  schema: (z) => ({
+    title: z.string(),
+    description: z.string(),
+    slug: z.string().optional(),
+    order: z.number().optional().default(999),
+    toc: z.boolean().optional().default(true),
+  }),
+  transform: async (document, context) => {
+    const mdx = await compileMDX(context, document, {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: rehypePlugins,
     })
 
     const fileName = document._meta.fileName.replace(/\.mdx$/, '')
@@ -203,5 +152,5 @@ async function extractHeadings(content: string) {
 }
 
 export default defineConfig({
-  collections: [guides, components, theming],
+  collections: [guides, components, theming, layout],
 })

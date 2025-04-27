@@ -65,8 +65,8 @@ export const breadcrumb = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       '& > svg': {
-        width: '{sizes.icon.md}',
-        height: '{sizes.icon.md}',
+        width: '{sizes.icon.sm}',
+        height: '{sizes.icon.sm}',
       },
     },
   },

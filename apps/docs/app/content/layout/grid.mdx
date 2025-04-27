@@ -1,0 +1,69 @@
+---
+title: 'Grid'
+description: 'Create two-dimensional grid layouts with ease'
+---
+<ContentContainer>
+
+<Section gap="1">
+# Grid
+<Paragraph size={'extraLarge'} color={'tertiary'}>A layout component that creates two-dimensional grid-based layouts with precise control over placement and sizing.</Paragraph>
+<ComponentPreview name="grid" />
+</Section>
+
+<Section>
+## Usage
+
+```jsx
+import { Grid } from '@styled-system/jsx'
+```
+
+```jsx
+<Grid 
+  className={css({
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: 4,
+  })}
+>
+  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 1</Box>
+  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 2</Box>
+  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 3</Box>
+  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 4</Box>
+  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 5</Box>
+  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 6</Box>
+</Grid>
+```
+</Section>
+
+<Section>
+## Properties
+
+Grid accepts all HTML div attributes and common styling properties through the className prop with css function.
+
+Key grid properties:
+- `gridTemplateColumns` - Defines the columns in the grid
+- `gridTemplateRows` - Defines the rows in the grid
+- `gridTemplateAreas` - Defines named grid areas
+- `gap` - Controls spacing between grid items
+- `gridAutoFlow` - Controls how auto-placed items are inserted in the grid
+</Section>
+
+<Section>
+## Examples
+
+### Basic Grid
+<ComponentPreview name="grid" />
+
+### Responsive Grid
+<ComponentPreview name="grid" file="responsive" />
+
+### Grid Template Areas
+<ComponentPreview name="grid" file="areas" />
+
+### Item Placement
+<ComponentPreview name="grid" file="item-placement" />
+
+### Auto-fill and Auto-fit
+<ComponentPreview name="grid" file="auto-fill" />
+</Section>
+
+</ContentContainer> 
