@@ -4,22 +4,17 @@ import { Flex } from '@styled-system/jsx'
 
 export default function ShapesPreview() {
   return (
-    <Flex
-      className={css({
-        gap: 6,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-      })}
-    >
+    <Flex w="100%" h="100%" gap="6" justify="center" align="center">
       <Circle
         className={css({
           size: '100px',
-          bg: 'fill.accent',
+          bg: 'primary.bg',
+          border: '1px solid',
+          borderColor: 'border.secondary',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          color: 'white',
+          color: 'text.secondary',
           fontWeight: 'medium',
         })}
       >
@@ -29,7 +24,7 @@ export default function ShapesPreview() {
       <Square
         className={css({
           size: '100px',
-          bg: 'fill.secondary',
+          bg: 'primary.bg',
           border: '1px solid',
           borderColor: 'border.secondary',
           display: 'flex',

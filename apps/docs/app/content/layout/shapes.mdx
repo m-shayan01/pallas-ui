@@ -37,53 +37,7 @@ Both Circle and Square components accept the following properties:
 | ---- | ---- | ------- | ----------- |
 | `size` | `string \| number` | - | Sets both width and height to the same value |
 
-Additionally, they accept all common layout properties through the className prop with css function.
-</Section>
-
-<Section>
-## Examples
-
-### Basic Shapes
-<ComponentPreview name="shapes" />
-
-### Different Sizes
-<ComponentPreview name="shapes" file="sizes" />
-
-### With Content
-
-Both Circle and Square can contain any content:
-
-```jsx
-<Circle className={css({ size: '150px', bg: 'fill.accent', color: 'white' })}>
-  <Flex className={css({ direction: 'column', align: 'center' })}>
-    <Box as="span" className={css({ fontSize: 'xl', fontWeight: 'bold' })}>75%</Box>
-    <Box as="span" className={css({ fontSize: 'sm' })}>Complete</Box>
-  </Flex>
-</Circle>
-```
-
-### As Avatars
-
-Circles work well for avatar displays:
-
-```jsx
-<Circle className={css({ 
-  size: '60px', 
-  overflow: 'hidden', 
-  border: '2px solid', 
-  borderColor: 'accent.500' 
-})}>
-  <img 
-    src="/avatar.jpg" 
-    alt="User Avatar"
-    className={css({ 
-      width: '100%', 
-      height: '100%', 
-      objectFit: 'cover' 
-    })}
-  />
-</Circle>
-```
+Additionally, they accept all common layout properties through the className prop or with css function.
 </Section>
 
 </ContentContainer> 
