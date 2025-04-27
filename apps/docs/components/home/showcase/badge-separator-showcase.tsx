@@ -12,7 +12,7 @@ const Paragraph = (props: React.ComponentProps<typeof OrignalParagraph>) => (
   <OrignalParagraph size="compact" {...props} />
 )
 const SpacedRow = (props: React.ComponentProps<typeof HStack>) => (
-  <HStack justify="space-between" width="full" {...props} />
+  <HStack justify="space-between" w="full" {...props} />
 )
 
 export const BadgeSeparatorShowcase = () => {
@@ -57,7 +57,7 @@ export const BadgeSeparatorShowcase = () => {
 
         <VStack gap="4" css={{ w: 'full' }}>
           <Heading level={5}>Milestones</Heading>
-          <VStack gap="3" width={'full'}>
+          <VStack gap="3" w="full">
             <SpacedRow>
               <Paragraph>Design System</Paragraph>
               <Badge variant="primary">Completed</Badge>

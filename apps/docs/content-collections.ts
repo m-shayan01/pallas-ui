@@ -3,9 +3,8 @@ import { compileMDX } from '@content-collections/mdx'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
 import remarkGfm from 'remark-gfm'
-import { generateToc } from './lib/toc'
+import type { Pluggable } from 'unified'
 import { rehypeComponent } from './plugins/rehype-component'
-
 const TOC_LEVEL = 3
 
 const prettyCodeOptions = {
@@ -16,7 +15,11 @@ const prettyCodeOptions = {
   },
 }
 
-const rehypePlugins = [rehypeSlug, rehypeComponent, [rehypePrettyCode, prettyCodeOptions]]
+const rehypePlugins: Pluggable[] = [
+  rehypeSlug,
+  rehypeComponent,
+  [rehypePrettyCode, prettyCodeOptions],
+]
 
 const guides = defineCollection({
   name: 'guides',
@@ -34,7 +37,7 @@ const guides = defineCollection({
 
     const mdx = await compileMDX(context, document, {
       remarkPlugins: [remarkGfm],
-      rehypePlugins: rehypePlugins,
+      rehypePlugins: rehypePlugins as Pluggable[],
     })
 
     return {

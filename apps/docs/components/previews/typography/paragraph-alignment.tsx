@@ -3,7 +3,7 @@ import { VStack } from '@styled-system/jsx'
 
 export default function ParagraphAlignmentDemo() {
   return (
-    <VStack gap="6" width="100%">
+    <VStack gap="6" w="100%">
       <Paragraph textAlign="left">
         Left-aligned paragraph. Typography is the art and technique of arranging type to make
         written language legible, readable, and appealing when displayed.
