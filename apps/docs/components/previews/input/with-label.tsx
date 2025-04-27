@@ -4,7 +4,7 @@ import { Stack } from '@styled-system/jsx'
 
 export default function Example() {
   return (
-    <Stack width="full" maxWidth="sm" align="flex-start" gap="1">
+    <Stack w="full" maxW="sm" align="flex-start" gap="1">
       <Label htmlFor="email">Email</Label>
       <Input size="md">
         <Input.Text id="email" placeholder="Email" />
