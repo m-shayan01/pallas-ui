@@ -7,7 +7,12 @@ import type * as React from 'react'
 
 const { withProvider, withContext } = createStyleContext(accordion)
 
-export type RootProps = WithFixedClassName<ComponentProps<typeof RadixAccordion.Root>>
+export type RootProps = WithFixedClassName<
+  ComponentProps<typeof RadixAccordion.Root> & {
+    collapsible?: boolean
+  }
+>
+
 export const Root = withProvider<
   React.ComponentRef<typeof RadixAccordion.Root>,
   Assign<RootProps, JsxStyleProps>

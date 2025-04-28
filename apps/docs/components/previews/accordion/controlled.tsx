@@ -24,6 +24,7 @@ export default function AccordionControlledPreview() {
 
       <Accordion.Root
         type="single"
+        collapsible={true}
         value={value}
         onValueChange={setValue}
         css={{ width: '100%', border: '0' }}

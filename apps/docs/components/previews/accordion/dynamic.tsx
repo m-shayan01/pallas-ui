@@ -30,7 +30,7 @@ export default function AccordionDynamicPreview() {
   ]
 
   return (
-    <Accordion.Root type="multiple" style={{ width: '100%', border: '0' }}>
+    <Accordion.Root type="multiple" css={{ width: '100%', border: '0' }}>
       {items.map((item) => (
         <Accordion.Item key={item.id} value={item.id}>
           <Accordion.ItemHeader>
