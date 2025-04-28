@@ -31,7 +31,7 @@ export const button = defineRecipe({
       },
       outlined: {
         bg: 'transparent',
-        border: '1px solid {colors.border}',
+        border: '1px solid {colors.bgSolid}',
         color: '{colors.text}',
         _hover: {
           color: '{colors.primary}',

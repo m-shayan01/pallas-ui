@@ -3,32 +3,27 @@ import { Feature } from '@/components/home/feature'
 import { ComponentShowcase } from '@/components/home/showcase/index'
 import { Button } from '@/components/ui/button'
 import { css } from '@styled-system/css'
-import { Box } from '@styled-system/jsx'
+import { Box, Grid, HStack, VStack } from '@styled-system/jsx'
 import Link from 'next/link'
 
 export default function Home() {
   return (
     <Box>
-      <div
-        className={css({
-          maxW: '6xl',
-          mx: 'auto',
-          py: 'layout.section.lg', // Using section layout spacing
-          px: 'layout.internal.md', // Using internal layout spacing
-        })}
-      >
-        <div className={css({ textAlign: 'center', mb: 'layout.section.lg' })}>
+      <Box w="6xl" mx="auto" py="layout.section.lg" px="layout.internal.md">
+        <VStack mb="layout.section.lg" css={{ textAlign: 'center' }}>
           <h1
             className={css({
               fontSize: { base: '3xl', md: '4xl' },
               fontWeight: 'extrabold',
-              mb: 'gap.component.md', // Using component gap spacing
-              lineHeight: '1.1',
-              color: 'text', // Using default text color
+              mb: 'gap.component.md',
+              lineHeight: '1.5',
+              color: 'text',
             })}
           >
             <span
-              className={css({ color: 'primary.DEFAULT', fontSize: { base: '5xl', md: '6xl' } })}
+              className={css({
+                fontSize: { base: '5xl', md: '6xl' },
+              })}
             >
               Pallas UI
             </span>{' '}
@@ -38,22 +33,15 @@ export default function Home() {
           <p
             className={css({
               fontSize: { base: 'lg', md: 'xl' },
-              maxW: '2xl',
-              mx: 'auto',
-              color: 'text.secondary', // Using secondary text color
+              maxWidth: '2xl',
+              marginX: 'auto',
+              color: 'text.secondary',
             })}
           >
             Beautiful, accessible components built with React and Panda CSS
           </p>
 
-          <div
-            className={css({
-              mt: 'layout.internal.lg', // Using internal layout spacing
-              display: 'flex',
-              gap: 'gap.inline.md', // Using inline gap spacing
-              justifyContent: 'center',
-            })}
-          >
+          <HStack gap="gap.inline.md" justify="center" mt="layout.internal.lg">
             <Link href="/docs/introduction/introduction">
               <Button variant="primary" size="lg">
                 Get Started
@@ -61,18 +49,27 @@ export default function Home() {
             </Link>
 
             <Link href="/docs/components/accordion">
-              <Button variant="outlined" size="lg">
+              <Button
+                variant="outlined"
+                size="lg"
+                className={css({
+                  borderColor: 'gray.800',
+                  color: 'text.secondary',
+                  _hover: {
+                    color: 'text',
+                  },
+                })}
+              >
                 Components
               </Button>
             </Link>
-          </div>
-        </div>
+          </HStack>
+        </VStack>
 
-        <div
+        <Grid
           className={css({
-            display: 'grid',
             gridTemplateColumns: { base: '1fr', md: 'repeat(3, 1fr)' },
-            gap: 'gap.component.md', // Using component gap spacing
+            gap: 'gap.component.md',
           })}
         >
           <Feature
@@ -87,21 +84,8 @@ export default function Home() {
             title="Developer Experience"
             description="Built with TypeScript for a great developer experience with full type safety."
           />
-        </div>
-
-        {/* <div
-        className={css({
-          mb: 'layout.section.lg',
-          py: 'layout.internal.lg',
-          px: { base: 'layout.internal.sm', md: 'layout.internal.md' },
-          borderRadius: 'lg',
-          bg: 'surface.container.low',
-        })}
-      >
-        <ComponentShowcase />
-      </div> */}
-        {/* <HomeShowcase /> */}
-      </div>
+        </Grid>
+      </Box>
       <ComponentShowcase />
     </Box>
   )

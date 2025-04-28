@@ -1,7 +1,7 @@
 'use client'
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import * as RadixAccordion from '@radix-ui/react-accordion'
-import { accordion } from '@styled-system/recipes'
+import { type AccordionVariantProps, accordion } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import type * as React from 'react'
 
@@ -15,7 +15,7 @@ export type RootProps = WithFixedClassName<
 
 export const Root = withProvider<
   React.ComponentRef<typeof RadixAccordion.Root>,
-  Assign<RootProps, JsxStyleProps>
+  Assign<RootProps, AccordionVariantProps & JsxStyleProps>
 >(RadixAccordion.Root, 'root')
 
 export const Item = withContext<
