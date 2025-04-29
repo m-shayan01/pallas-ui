@@ -3,33 +3,20 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const carousel = defineSlotRecipe({
   className: 'carousel',
   description: 'Styles for the Carousel component',
-  slots: ['root', 'item', 'previous', 'next', 'dots'],
+  slots: ['root', 'list', 'item', 'previous', 'next', 'dots'],
   base: {
     root: {
       position: 'relative',
-      overflow: 'hidden',
+    },
+    list: {
+      display: 'flex',
     },
     item: {
-      // width: '{full}',
-      // position: 'absolute',
-      visibility: 'visible',
-      overflow: 'hidden',
-      height: 'inherit',
-      // '&[data-visible=fromRight]': {
-      //   visibility: 'visible',
-      //   animationStyle: 'carousel.slideInRight',
-      //   zIndex: 99,
-      // },
-      // '&[data-visible=fromLeft]': {
-      //   visibility: 'visible',
-      //   animationStyle: 'carousel.slideInLeft',
-      //   zIndex: 99,
-      // },
-      // '&[data-exit]': {
-      //   transition: 'visibility 1s',
-      // },
-
-      width: '300px',
+      minWidth: '0',
+      flexShrink: '0',
+      flexGrow: '0',
+      // flexBasis: 'full',
+      width: 'full'
     },
     previous: {
       position: 'absolute',
@@ -46,20 +33,31 @@ export const carousel = defineSlotRecipe({
       zIndex: 100,
     },
     dots: {
-      position: 'absolute',
-      bottom: '{spacing.0}',
-      left: '50%',
-      translate: '-50% 0',
-      display: 'flex',
-      zIndex: 100,
-      '& > *': {
-        cursor: 'pointer',
-      },
+
     },
   },
   variants: {
     orientation: {
-      vertical: {},
+      horizontal: {
+        list: {
+          ml: '-4'
+        },
+        item: {
+          pl: '4'
+        }
+      },
+      vertical: {
+        list: {
+          flexDirection: 'column',
+          mt: '-4'
+        },
+        item: {
+          pt: '4'
+        }
+      },
     },
   },
+  defaultVariants: {
+    orientation: 'horizontal'
+  }
 })

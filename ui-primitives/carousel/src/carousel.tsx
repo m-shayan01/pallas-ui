@@ -8,7 +8,7 @@ import { CarouselContext, useCarousel } from './useCarousel'
 export const CarouselRoot = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & CarouselProps
->(({ orientation = 'horizontal', opts, setApi, plugins, className, children, ...props }, ref) => {
+>(({ orientation = 'horizontal', opts, setApi, plugins, children, ...props }, ref) => {
   const [carouselRef, api] = useEmblaCarousel(
     {
       ...opts,
@@ -87,7 +87,6 @@ export const CarouselRoot = React.forwardRef<
       <section
         ref={ref}
         onKeyDownCapture={handleKeyDown}
-        // className={cn('relative', className)}
         aria-roledescription="carousel"
         {...props}
       >
@@ -103,10 +102,7 @@ export const CarouselList = React.forwardRef<HTMLDivElement, React.HTMLAttribute
     const { carouselRef, orientation } = useCarousel()
 
     return (
-      <div
-        ref={carouselRef}
-        // className="overflow-hidden"
-      >
+      <div ref={carouselRef} style={{ overflow: 'hidden' }}>
         <div
           ref={ref}
           // className={cn(
@@ -123,7 +119,7 @@ export const CarouselList = React.forwardRef<HTMLDivElement, React.HTMLAttribute
 CarouselList.displayName = 'CarouselList'
 
 export const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => {
+  ({ ...props }, ref) => {
     const { orientation } = useCarousel()
 
     return (
