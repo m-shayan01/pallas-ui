@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react'
 
 export default function AccordionPreview() {
   return (
-    <Accordion.Root type="single" style={{ width: '100%', border: '0' }}>
+    <Accordion.Root type="single" collapsible={true} css={{ width: '100%', border: '0' }}>
       <Accordion.Item value="item-1">
         <Accordion.ItemHeader>
           Is it accessible?

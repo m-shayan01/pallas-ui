@@ -39,7 +39,7 @@ references:
 ```tsx
 import Avatar from '@/components/ui/avatar'
 
-<Avatar.Root>
+<Avatar.Root size="md" shape="circle">
   <Avatar.Image src="https://github.com/nanopx.png" alt="@nanopx" />
   <Avatar.Fallback>NP</Avatar.Fallback>
 </Avatar.Root>
@@ -47,16 +47,34 @@ import Avatar from '@/components/ui/avatar'
 </Section>
 
 <Section>
-## Recipe
-### Usage
-```tsx
-import { avatar, type AvatarVariantProps } from '@styled-system/recipes'
-```
-```tsx
-<div className={avatar().root}>
-  <img className={avatar().image} src="https://github.com/nanopx.png" alt="@nanopx" />
-  <div className={avatar().fallback}>NP</div>
-</div>
-```
+## Examples
+
+### Shapes
+The Avatar component supports two shapes: `circle` (default) and `square`.
+
+<ComponentPreview name="avatar" file="shapes" />
+
+### Sizes
+Available sizes: `sm` (32px), `md` (40px), `lg` (48px), and `xl` (56px). Default is `md`.
+
+<ComponentPreview name="avatar" file="sizes" />
+
+### Fallbacks
+The fallback is displayed when the image fails to load or when no image is provided.
+
+<ComponentPreview name="avatar" file="fallbacks" />
+
 </Section>
+
+<Section>
+## API Reference
+
+### Root Props
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| size | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Controls the size of the avatar |
+| shape | `'circle' \| 'square'` | `'circle'` | Controls the shape of the avatar |
+
+</Section>
+
 </ContentContainer>

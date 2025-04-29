@@ -30,26 +30,16 @@ description: Displays a callout for user attention.
 ```tsx
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert'
 import { Terminal } from 'lucide-react' // Any icon of your choice
+import { icon } from '@styled-system/recipes'
 ```
 ```tsx
 <Alert>
-  <Terminal className="h-4 w-4" />
+  <Terminal className={icon()} />
   <AlertTitle>Heads up!</AlertTitle>
   <AlertDescription>
     You can add components and dependencies to your app using the cli.
   </AlertDescription>
 </Alert>
-```
-</Section>
-
-<Section>
-## Recipe
-### Usage
-```tsx
-import { alert, type AlertVariantProps } from '@styled-system/recipes'
-```
-```tsx
-<div className={alert({ variant: 'info' })}>Alert content</div>
 ```
 </Section>
 

@@ -8,14 +8,16 @@ const URL = 'https://github.com/nanopx.png'
 export default function Example() {
   return (
     <HStack gap="4">
-      <Avatar.Root>
+      {/* Circle shape (default) */}
+      <Avatar.Root size="lg">
         <Avatar.Image src={URL} />
-        <Avatar.Fallback>AR</Avatar.Fallback>
+        <Avatar.Fallback>CR</Avatar.Fallback>
       </Avatar.Root>
 
-      <Avatar.Root shape="square">
+      {/* Square shape */}
+      <Avatar.Root size="lg" shape="square">
         <Avatar.Image src={URL} />
-        <Avatar.Fallback>AR</Avatar.Fallback>
+        <Avatar.Fallback>SQ</Avatar.Fallback>
       </Avatar.Root>
     </HStack>
   )
