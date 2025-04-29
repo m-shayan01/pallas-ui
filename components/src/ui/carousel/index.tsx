@@ -1,18 +1,33 @@
 'use client'
 import * as CarouselPrimitive from '@pallas-ui/carousel'
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
-import { carousel } from '@styled-system/recipes'
+import { cx } from '@styled-system/css'
+import { type CarouselVariantProps, button, carousel } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
-import type * as React from 'react'
+import * as React from 'react'
+import type { ButtonProps } from '../button'
 
 const { withProvider, withContext } = createStyleContext(carousel)
 
-export type RootProps = WithFixedClassName<ComponentProps<typeof CarouselPrimitive.Root>>
+export type RootProps = Assign<
+  WithFixedClassName<CarouselPrimitive.CarouselRootProps>,
+  JsxStyleProps & CarouselVariantProps
+>
 
-export const Root = withProvider<
-  React.ComponentRef<typeof CarouselPrimitive.Root>,
-  Assign<RootProps, JsxStyleProps>
->(CarouselPrimitive.Root, 'root')
+export type PreviousProps = Assign<
+  ComponentProps<typeof CarouselPrimitive.Previous>,
+  JsxStyleProps & ButtonProps
+>
+
+export type NextProps = Assign<
+  ComponentProps<typeof CarouselPrimitive.Next>,
+  JsxStyleProps & ButtonProps
+>
+
+export const Root = withProvider<React.ComponentRef<typeof CarouselPrimitive.Root>, RootProps>(
+  CarouselPrimitive.Root,
+  'root',
+)
 
 export const List = withContext<
   React.ComponentRef<typeof CarouselPrimitive.List>,
@@ -24,15 +39,47 @@ export const Item = withContext<
   Assign<ComponentProps<typeof CarouselPrimitive.Item>, JsxStyleProps>
 >(CarouselPrimitive.Item, 'item')
 
+const PreviousButton = React.forwardRef<
+  React.ComponentRef<typeof CarouselPrimitive.Previous>,
+  PreviousProps
+>((props, ref) => {
+  const [buttonProps, { className, children, ...restProps }] = button.splitVariantProps(props)
+  return (
+    <CarouselPrimitive.Previous
+      ref={ref}
+      className={cx(button({ variant: 'text', ...buttonProps }), className)}
+      {...restProps}
+    >
+      {children}
+    </CarouselPrimitive.Previous>
+  )
+})
+
 export const Previous = withContext<
   React.ComponentRef<typeof CarouselPrimitive.Previous>,
-  Assign<ComponentProps<typeof CarouselPrimitive.Previous>, JsxStyleProps>
->(CarouselPrimitive.Previous, 'previous')
+  PreviousProps
+>(PreviousButton, 'previous')
 
-export const Next = withContext<
+const NextButton = React.forwardRef<
   React.ComponentRef<typeof CarouselPrimitive.Next>,
-  Assign<ComponentProps<typeof CarouselPrimitive.Next>, JsxStyleProps>
->(CarouselPrimitive.Next, 'next')
+  PreviousProps
+>((props, ref) => {
+  const [buttonProps, { className, children, ...restProps }] = button.splitVariantProps(props)
+  return (
+    <CarouselPrimitive.Next
+      ref={ref}
+      className={cx(button({ variant: 'text', ...buttonProps }), className)}
+      {...restProps}
+    >
+      {children}
+    </CarouselPrimitive.Next>
+  )
+})
+
+export const Next = withContext<React.ComponentRef<typeof CarouselPrimitive.Next>, NextProps>(
+  NextButton,
+  'next',
+)
 
 const Carousel = {
   Root,

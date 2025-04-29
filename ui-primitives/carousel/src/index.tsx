@@ -1,4 +1,4 @@
-export type { CarouselApi } from './types'
+export type { CarouselApi, CarouselRootProps } from './types'
 export {
   CarouselRoot,
   Root,

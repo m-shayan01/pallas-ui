@@ -15,26 +15,25 @@ export const carousel = defineSlotRecipe({
       minWidth: '0',
       flexShrink: '0',
       flexGrow: '0',
-      // flexBasis: 'full',
-      width: 'full'
+      flexBasis: 'full',
     },
     previous: {
       position: 'absolute',
-      left: '{spacing.0}',
-      top: '50%',
-      translate: '0 -50%',
-      zIndex: 100,
+      h: "8",
+      w: '8',
+      px: '0!',
+      py: '0!',
+      rounded: 'full',
     },
     next: {
       position: 'absolute',
-      right: '{spacing.0}',
-      top: '50%',
-      translate: '0 -50%',
-      zIndex: 100,
+      h: "8",
+      w: '8',
+      px: '0!',
+      py: '0!',
+      rounded: 'full',
     },
-    dots: {
-
-    },
+    dots: {},
   },
   variants: {
     orientation: {
@@ -44,6 +43,16 @@ export const carousel = defineSlotRecipe({
         },
         item: {
           pl: '4'
+        },
+        previous: {
+          left: '{spacing.-10}',
+          top: '50%',
+          translate: '0 -50%',
+        },
+        next: {
+          right: '{spacing.-10}',
+          top: '50%',
+          translate: '0 -50%',
         }
       },
       vertical: {
@@ -53,6 +62,19 @@ export const carousel = defineSlotRecipe({
         },
         item: {
           pt: '4'
+        },
+        previous: {
+          top: '{spacing.-10}',
+          left: '50%',
+          translate: '-50% 0%',
+          rotate: '90deg',
+        },
+        next: {
+          bottom: '{spacing.-10}',
+          left: '50%',
+          translate: '-50% 0%',
+          rotate: '90deg',
+
         }
       },
     },

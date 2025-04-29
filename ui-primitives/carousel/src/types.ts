@@ -9,6 +9,8 @@ export type CarouselPlugin = UseCarouselParameters[1]
 export type CarouselProps = {
   opts?: CarouselOptions
   plugins?: CarouselPlugin
-  orientation?: 'horizontal' | 'vertical'
   setApi?: (api: CarouselApi) => void
 }
+
+export type CarouselRootProps = React.ComponentPropsWithoutRef<'section'> & CarouselProps
+
