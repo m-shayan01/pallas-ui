@@ -31,7 +31,7 @@ export default function DocsLayout({
         className={css({
           flex: 1,
           overflow: 'visible',
-          p: { base: 'layout.internal.sm', md: 'layout.internal.md' }, // Using internal layout spacing
+          p: { base: '1', md: 'layout.internal.md' }, // Using internal layout spacing
           maxW: '100%',
           bg: 'surface.container', // Main content area with container color (white)
         })}

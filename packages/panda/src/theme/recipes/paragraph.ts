@@ -11,7 +11,7 @@ export const paragraph = defineRecipe({
     },
     lineHeight: '1.5',
     fontFamily: 'body',
-    textAlign: { base: 'center', md: 'left' },
+    textAlign: { base: 'left', md: 'left' },
     display: 'block',
   },
   variants: {

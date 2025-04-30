@@ -18,7 +18,7 @@ export function ContentContainer({ children, className }: ContentContainerProps)
       })} ${className || ''}`}
       css={{
         paddingLeft: '0', // Remove left padding
-        pr: { base: '4', md: '8', lg: '8' }, // kept right padding
+        pr: { base: '2', md: '8', lg: '8' }, // kept right padding
         px: '0', //manually adjusted to 0
       }}
     >
