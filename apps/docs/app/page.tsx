@@ -9,7 +9,12 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <Box>
-      <Box w="6xl" mx="auto" py="layout.section.lg" px="layout.internal.md">
+      <Box
+        maxW={{ base: '100%', md: '6xl' }}
+        mx="auto"
+        py="layout.section.lg"
+        px="layout.internal.md"
+      >
         <VStack mb="layout.section.lg" css={{ textAlign: 'center' }}>
           <h1
             className={css({
