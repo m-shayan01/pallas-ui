@@ -127,7 +127,7 @@ function ContentPage({
           base: '1fr',
           xl: '1fr 250px',
         },
-        p: '6',
+        p: { base: '4', md: '6' },
         maxWidth: '100%',
       })}
     >

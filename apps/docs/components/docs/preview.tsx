@@ -15,7 +15,7 @@ export function Preview({ className, children }: PreviewProps) {
           justifyContent: 'center',
           alignItems: 'center',
           p: '{spacing.padding.inline.lg}', // Changed from padding.inline.lg
-          minH: '200px',
+          minH: '100px',
           bg: 'surface.elevated',
           color: 'text',
         }),
