@@ -48,25 +48,18 @@ import { Button } from '@/components/ui/button/button'
 <Section>
 ## Properties
 
-### Core Properties
-
 | Property | Type | Default | Description | Options |
 |----------|------|---------|-------------|----------|
-| `variant` | `string` | `"primary"` | Visual style of the button | `"primary"`, `"outlined"`, `"dashed"`, `"default"`, `"text"`, `"link"` |
-| `size` | `string` | `"md"` | Size of the button | `"sm"`, `"md"`, `"lg"`, `"icon"` |
-| `shape` | `string` | `"default"` | Shape of the button | `"default"`, `"rounded"`, `"circle"` |
-| `width` | `string` | - | Width variant | `"full"` |
-
-### Additional Properties
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `isLoading` | `boolean` | `false` | Shows loading spinner |
-| `icon` | `ReactElement` | - | Button icon element |
-| `disabled` | `boolean` | `false` | Disables the button |
-| `className` | `string` | - | Custom CSS classes |
-| `css` | `SystemStyleObject` | - | Inline Panda CSS styles |
-| `asChild` | `boolean` | `false` | Render as a different element |
+| `variant` | `string` | `primary` | Visual style of the button | `primary`, `outlined`, `dashed`, `default`, `text`, `link` |
+| `size` | `string` | `md` | Size of the button | `sm`, `md`, `lg`, `icon` |
+| `shape` | `string` | `default` | Shape of the button | `default`, `rounded`, `circle` |
+| `width` | `string` | - | Width variant | `full` |
+| `isLoading` | `boolean` | `false` | Shows loading spinner | `true`, `false` |
+| `icon` | `ReactElement` | - | Button icon element | - |
+| `disabled` | `boolean` | `false` | Disables the button | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+| `css` | `SystemStyleObject` | - | Inline Panda CSS styles | - |
+| `asChild` | `boolean` | `false` | Render as a different element | `true`, `false` |
 
 The button component also accepts all standard HTML button attributes as props.
 
