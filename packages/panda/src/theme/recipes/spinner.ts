@@ -29,6 +29,12 @@ export const spinner = defineRecipe({
         h: '{sizes.icon.lg}',
       },
     },
+    variant: {
+      default: {},
+      thin: {
+        borderWidth: '2px',
+      },
+    },
     color: {
       primary: {
         borderColor: '{colors.primary}',
@@ -40,6 +46,7 @@ export const spinner = defineRecipe({
   },
   defaultVariants: {
     size: 'md',
+    variant: 'default',
     color: 'default',
   },
 })

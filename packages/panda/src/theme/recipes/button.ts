@@ -109,7 +109,7 @@ export const button = defineRecipe({
     },
     shape: {
       default: {
-        borderRadius: '0',
+        borderRadius: '{radii.md}',
       },
       rounded: {
         borderRadius: '{radii.4xl}',
