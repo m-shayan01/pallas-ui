@@ -37,6 +37,7 @@ export const typographyTable = cva({
       '& th': {
         fontWeight: 'bold',
         fontSize: 'md',
+        px: '5',
       },
 
       '& th, & td': {

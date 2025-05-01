@@ -4,7 +4,7 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 import { cx } from '@styled-system/css'
 import { styled } from '@styled-system/jsx'
 import { checkbox, icon } from '@styled-system/recipes'
-import { Check } from 'lucide-react'
+import { Check, Minus } from 'lucide-react'
 import * as React from 'react'
 
 const BaseCheckbox = React.forwardRef<
@@ -16,7 +16,11 @@ const BaseCheckbox = React.forwardRef<
   return (
     <CheckboxPrimitive.Root ref={ref} className={cx('peer', styles.root, className)} {...props}>
       <CheckboxPrimitive.Indicator className={styles.indicator}>
-        <Check className={icon()} />
+        {props.checked === 'indeterminate' ? (
+          <Minus className={icon()} />
+        ) : (
+          <Check className={icon()} />
+        )}
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   )
