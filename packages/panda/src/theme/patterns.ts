@@ -23,6 +23,7 @@ const createPattern = <T extends PatternConfig>(config: T): PatternConfig => {
     minH: { type: 'property', value: 'minHeight' },
     maxH: { type: 'property', value: 'maxHeight' },
     position: { type: 'property', value: 'position' },
+    bg: { type: 'property', value: 'backgroundColor' },
   }
 
   return definePattern({

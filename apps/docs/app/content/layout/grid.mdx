@@ -19,17 +19,15 @@ import { Grid } from '@styled-system/jsx'
 
 ```jsx
 <Grid 
-  className={css({
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: 4,
-  })}
+  columns={3}
+  gap={4}
 >
-  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 1</Box>
-  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 2</Box>
-  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 3</Box>
-  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 4</Box>
-  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 5</Box>
-  <Box className={css({ p: 4, bg: 'fill.secondary' })}>Item 6</Box>
+  <Box p={4}>Item 1</Box>
+  <Box p={4}>Item 2</Box>
+  <Box p={4}>Item 3</Box>
+  <Box p={4}>Item 4</Box>
+  <Box p={4}>Item 5</Box>
+  <Box p={4}>Item 6</Box>
 </Grid>
 ```
 </Section>
@@ -37,14 +35,28 @@ import { Grid } from '@styled-system/jsx'
 <Section>
 ## Properties
 
-Grid accepts all HTML div attributes and common styling properties through the className prop with css function.
+Grid accepts all common properties mentioned in the [layout guide](/docs/layout/index) along with these grid-specific properties:
 
-Key grid properties:
-- `gridTemplateColumns` - Defines the columns in the grid
-- `gridTemplateRows` - Defines the rows in the grid
-- `gridTemplateAreas` - Defines named grid areas
-- `gap` - Controls spacing between grid items
-- `gridAutoFlow` - Controls how auto-placed items are inserted in the grid
+### Grid Container Properties
+
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `columns` | `grid-template-columns` | The number of columns in the grid |
+| `gap` | `gap` | The gap between the elements in the stack |
+| `columnGap` | `column-gap` | The gap between the elements in the stack horizontally |
+| `rowGap` | `row-gap` | The gap between the elements in the stack vertically |
+| `minChildWidth` | `min-width` | The minimum width of the child elements before wrapping (must not be used with columns) |
+
+### Grid Item Properties
+
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `colSpan` | `grid-column` | The number of columns the item spans |
+| `rowSpan` | `grid-row` | The number of rows the item spans |
+| `colStart` | `grid-column-start` | The column the item starts at |
+| `colEnd` | `grid-column-end` | The column the item ends at |
+| `rowStart` | `grid-row-start` | The row the item starts at |
+| `rowEnd` | `grid-row-end` | The row the item ends at |
 </Section>
 
 <Section>

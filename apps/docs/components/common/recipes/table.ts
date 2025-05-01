@@ -16,8 +16,14 @@ export const typographyTable = cva({
     borderRadius: 'md',
     border: '1px solid',
     borderColor: 'border',
+    fontSize: 'sm',
 
     // add border to column
+    '& code': {
+      padding: '0.25rem 0.5rem',
+      fontSize: 'sm',
+      lineHeight: 'relaxed',
+    },
 
     '& tr': {
       m: 0,
@@ -25,11 +31,12 @@ export const typographyTable = cva({
       p: 0,
 
       _even: {
-        bg: 'fill.secondary',
+        bg: 'fill.tertiary',
       },
 
       '& th': {
         fontWeight: 'bold',
+        fontSize: 'md',
       },
 
       '& th, & td': {

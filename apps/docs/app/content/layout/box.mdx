@@ -31,14 +31,20 @@ import { Box } from '@styled-system/jsx'
 <Section>
 ## Properties
 
-Box accepts all HTML div attributes and all common styling properties through the className prop with css function.
+Box accepts all common porperties mentioned in the [layout guide](/docs/layout/index).
 
-Key features:
-- Padding and margin
-- Width and height
-- Background colors
-- Border and border radius
-- Responsive properties
+### Responsive Values
+
+All properties support responsive values using the following format:
+
+```jsx
+<Box
+  w={{ base: "100%", md: "50%", lg: "33%" }}
+  p={{ base: 2, md: 4, lg: 6 }}
+>
+  Responsive Box
+</Box>
+```
 </Section>
 
 <Section>

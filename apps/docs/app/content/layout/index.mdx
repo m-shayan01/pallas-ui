@@ -28,25 +28,29 @@ Pallas UI provides several layout patterns to help structure your UI:
 
 All layout patterns in Pallas UI share these common properties:
 
-### Padding Properties
-- `p` - Padding on all sides
-- `px` - Horizontal padding (left and right)
-- `py` - Vertical padding (top and bottom)
-- `pt` - Padding top
-- `pr` - Padding right
-- `pb` - Padding bottom
-- `pl` - Padding left
-
-### Sizing Properties
-- `w` - Width
-- `minW` - Minimum width
-- `maxW` - Maximum width
-- `h` - Height
-- `minH` - Minimum height
-- `maxH` - Maximum height
-
-### Position Property
-- `position` - CSS position (static, relative, absolute, fixed, sticky)
+| Prop | CSS Property | Description |
+|------|-------------|-------------|
+| `p` | `padding` | Padding on all sides |
+| `px` | `paddingInline` | Horizontal padding (left and right) |
+| `py` | `paddingBlock` | Vertical padding (top and bottom) |
+| `pt` | `paddingTop` | Padding top |
+| `pr` | `paddingRight` | Padding right |
+| `pb` | `paddingBottom` | Padding bottom |
+| `pl` | `paddingLeft` | Padding left |
+| `m` | `margin` | Margin on all sides |
+| `mx` | `marginInline` | Horizontal margin (left and right) |
+| `my` | `marginBlock` | Vertical margin (top and bottom) |
+| `mt` | `marginTop` | Margin top |
+| `mr` | `marginRight` | Margin right |
+| `mb` | `marginBottom` | Margin bottom |
+| `ml` | `marginLeft` | Margin left |
+| `w` | `width` | Element width |
+| `minW` | `minWidth` | Minimum width constraint |
+| `maxW` | `maxWidth` | Maximum width constraint |
+| `h` | `height` | Element height |
+| `minH` | `minHeight` | Minimum height constraint |
+| `maxH` | `maxHeight` | Maximum height constraint |
+| `position` | `position` | CSS position value (static, relative, absolute, fixed, sticky) |
 
 ## Usage
 
@@ -57,16 +61,33 @@ import { Box, Flex, HStack, VStack, Grid, Circle, Square, AspectRatio } from '@s
 
 function MyComponent() {
   return (
-    <Box p={4}>
-      <VStack gap={4}>
-        <HStack gap={2}>
+    <Box p={4} maxW="1200px" mx="auto">
+      <VStack gap={4} minH="400px">
+        <HStack gap={2} w="full" justify="space-between">
           <Circle size="50px" bg="primary" />
           <Square size="50px" bg="secondary" />
         </HStack>
-        <Grid columns={2} gap={4}>
-          <Box p={2} bg="gray.100">Grid item 1</Box>
-          <Box p={2} bg="gray.100">Grid item 2</Box>
+        
+        <Grid columns={2} gap={4} w="full">
+          <Box p={4} bg="gray.100" position="relative">
+            <Box position="absolute" top={2} right={2}>
+              ✨
+            </Box>
+            Grid item with padding and positioning
+          </Box>
+          <Box py={6} px={4} bg="gray.100" minH="100px">
+            Grid item with vertical/horizontal padding
+          </Box>
         </Grid>
+
+        <Flex direction="row" wrap="wrap" gap={4} mt={8}>
+          <Box flex="1" px={4} maxW="300px">
+            Flexible item with max width
+          </Box>
+          <Box flex="1" px={4} maxW="300px">
+            Another flexible item
+          </Box>
+        </Flex>
       </VStack>
     </Box>
   )
