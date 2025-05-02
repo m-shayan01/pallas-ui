@@ -4,7 +4,7 @@ import { type Assign, type WithFixedClassName, createStyleContext } from '@palla
 import * as MenubarPrimitive from '@radix-ui/react-menubar'
 import { css, cx } from '@styled-system/css'
 import { icon, menubar } from '@styled-system/recipes'
-import type { JsxStyleProps } from '@styled-system/types'
+import type { HTMLStyledProps, JsxStyleProps } from '@styled-system/types'
 import { Check, ChevronRight, Circle } from 'lucide-react'
 import * as React from 'react'
 
@@ -27,10 +27,12 @@ const CustomSubTrigger = React.forwardRef<
     {...props}
   >
     {children}
-    <ChevronRight className={icon()} />
+    <ChevronRight className={icon({ left: 'auto' })} />
   </MenubarPrimitive.SubTrigger>
 ))
 CustomSubTrigger.displayName = MenubarPrimitive.SubTrigger.displayName
+
+type CustomSubTriggerProps = React.ComponentPropsWithoutRef<typeof CustomSubTrigger>
 
 const Arrow = withContext<
   React.ComponentRef<typeof MenubarPrimitive.Arrow>,
@@ -58,10 +60,19 @@ CustomContent.displayName = MenubarPrimitive.Content.displayName
 
 const CustomItem = React.forwardRef<
   React.ComponentRef<typeof MenubarPrimitive.Item>,
-  MenubarPrimitive.MenubarItemProps
->(({ ...props }, ref) => <MenubarPrimitive.Item ref={ref} {...props} />)
+  MenubarPrimitive.MenubarItemProps & {
+    insetLeft?: boolean
+  }
+>(({ className, insetLeft, ...props }, ref) => (
+  <MenubarPrimitive.Item
+    className={cx(insetLeft && css({ pl: '8' }), className)}
+    ref={ref}
+    {...props}
+  />
+))
 CustomItem.displayName = MenubarPrimitive.Item.displayName
 
+type CustomItemProps = React.ComponentPropsWithoutRef<typeof CustomItem>
 const CustomCheckboxItem = React.forwardRef<
   React.ComponentRef<typeof MenubarPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof MenubarPrimitive.CheckboxItem>
@@ -137,7 +148,7 @@ export const Content = withContext<
 
 export const SubTrigger = withContext<
   React.ComponentRef<typeof CustomSubTrigger>,
-  Assign<MenubarPrimitive.MenubarSubTriggerProps, JsxStyleProps>
+  Assign<CustomSubTriggerProps, JsxStyleProps>
 >(CustomSubTrigger, 'subTrigger')
 
 export const SubContent = withContext<
@@ -147,7 +158,7 @@ export const SubContent = withContext<
 
 export const Item = withContext<
   React.ComponentRef<typeof CustomItem>,
-  Assign<MenubarPrimitive.MenubarItemProps, JsxStyleProps>
+  Assign<CustomItemProps, JsxStyleProps>
 >(CustomItem, 'item')
 
 export const CheckboxItem = withContext<
@@ -170,6 +181,11 @@ export const Separator = withContext<
   Assign<MenubarPrimitive.MenubarSeparatorProps, JsxStyleProps>
 >(MenubarPrimitive.Separator, 'separator')
 
+export const Shortcut = withContext<React.ComponentRef<'span'>, HTMLStyledProps<'span'>>(
+  'span',
+  'shortcut',
+)
+
 const Menubar = {
   Root,
   Menu,
@@ -186,6 +202,7 @@ const Menubar = {
   RadioItem,
   Label,
   Separator,
+  Shortcut,
 }
 
 export default Menubar

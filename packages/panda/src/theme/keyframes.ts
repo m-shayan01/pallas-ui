@@ -9,29 +9,21 @@ export const keyframes = defineKeyframes({
     from: { opacity: '1' },
     to: { opacity: '0' },
   },
-  'slide-in': {
-    '0%': { opacity: '0', transform: 'translateY(64px)' },
-    '100%': { opacity: '1', transform: 'translateY(0)' },
+  'slide-down': {
+    '0%': { transform: 'translateY(2px)' },
+    '100%': { transform: 'translateY(0)' },
   },
-  'slide-out': {
-    '0%': { opacity: '1', transform: 'translateY(0)' },
-    '100%': { opacity: '0', transform: 'translateY(64px)' },
+  'slide-up': {
+    '0%': { transform: 'translateY(-2px)' },
+    '100%': { transform: 'translateY(0)' },
   },
-  'slide-in-left': {
-    '0%': { transform: 'translateX(-100%)' },
-    '100%': { transform: 'translateX(0%)' },
+  'slide-right': {
+    '0%': { transform: 'translateX(2px)' },
+    '100%': { transform: 'translateX(0)' },
   },
-  'slide-out-left': {
-    '0%': { transform: 'translateX(0%)' },
-    '100%': { transform: 'translateX(-100%)' },
-  },
-  'slide-in-right': {
-    '0%': { transform: 'translateX(100%)' },
-    '100%': { transform: 'translateX(0%)' },
-  },
-  'slide-out-right': {
-    '0%': { transform: 'translateX(0%)' },
-    '100%': { transform: 'translateX(100%)' },
+  'slide-left': {
+    '0%': { transform: 'translateX(-2px)' },
+    '100%': { transform: 'translateX(0)' },
   },
   'collapse-in': {
     '0%': { height: '0' },
@@ -42,12 +34,12 @@ export const keyframes = defineKeyframes({
     '100%': { height: '0' },
   },
   fadeIn: {
-    '0%': { opacity: '0', transform: 'translateY(-4px)' },
-    '100%': { opacity: '1', transform: 'translateY(0)' },
+    '0%': { opacity: '0' },
+    '100%': { opacity: '1' },
   },
   fadeOut: {
-    '0%': { opacity: '1', transform: 'translateY(0)' },
-    '100%': { opacity: '0', transform: 'translateY(-4px)' },
+    '0%': { opacity: '1' },
+    '100%': { opacity: '0' },
   },
   'skeleton-pulse': {
     '50%': { opacity: '0.5' },
