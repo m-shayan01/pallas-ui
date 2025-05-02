@@ -14,7 +14,7 @@ const BaseCheckbox = React.forwardRef<
   const styles = checkbox()
 
   return (
-    <CheckboxPrimitive.Root ref={ref} className={cx('peer', styles.root, className)} {...props}>
+    <CheckboxPrimitive.Root ref={ref} className={cx(styles.root, className)} {...props}>
       <CheckboxPrimitive.Indicator className={styles.indicator}>
         {props.checked === 'indeterminate' ? (
           <Minus className={icon()} />

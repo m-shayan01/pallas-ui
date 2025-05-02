@@ -4,7 +4,7 @@ import { AtSign, Search } from 'lucide-react'
 
 export default function Example() {
   return (
-    <Stack w="full" maxW="md" align="flex-start" gap="4">
+    <Stack w="full" maxW="sm" align="flex-start" gap="4">
       <Input size="md">
         <Input.Prefix>
           <AtSign size={16} />

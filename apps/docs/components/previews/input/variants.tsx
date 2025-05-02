@@ -4,7 +4,7 @@ import { Stack } from '@styled-system/jsx'
 
 export default function Example() {
   return (
-    <Stack w="full" maxW="md" align="flex-start" gap="4">
+    <Stack w="full" maxW="sm" align="flex-start" gap="4">
       <Stack w="full" align="flex-start" gap="2">
         <h3 className={css({ fontSize: 'sm', fontWeight: 'medium' })}>Size Variants</h3>
         <Stack w="full" align="flex-start" gap="2">

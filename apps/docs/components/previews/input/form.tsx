@@ -6,7 +6,7 @@ import { Stack } from '@styled-system/jsx'
 
 export default function Example() {
   return (
-    <form className={css({ w: 'full', maxW: 'md' })}>
+    <form className={css({ w: 'full', maxW: 'sm' })}>
       <Stack w="full" align="flex-start" gap="4">
         <Stack w="full" align="flex-start" gap="1">
           <Label htmlFor="email">Email</Label>
