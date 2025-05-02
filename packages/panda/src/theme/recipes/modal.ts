@@ -45,11 +45,10 @@ export const modal = defineSlotRecipe({
       textStyle: 'sm',
       transitionDuration: 'normal',
       gap: '{spacing.gap.component.lg}',
-      border: 'base',
       bg: 'background',
       p: '{spacing.padding.block.lg}',
       boxShadow: 'lg',
-
+      border: '1px solid {colors.border}',
       _open: {
         animateIn: true,
         fadeIn: 0,
