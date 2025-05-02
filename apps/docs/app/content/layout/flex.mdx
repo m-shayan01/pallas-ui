@@ -34,13 +34,34 @@ import { Flex, HStack, VStack } from '@styled-system/jsx'
 <Section>
 ## Properties
 
-Flex accepts all HTML div attributes along with specific flex properties:
+Flex accepts all common properties mentioned in the [layout guide](/docs/layout/index) along with these flex-specific properties:
 
-- `direction` - Controls the direction (row, column)
-- `align` - Aligns items along the cross axis
-- `justify` - Distributes space along the main axis
-- `wrap` - Controls whether items can wrap
-- `gap` - Controls spacing between items
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `direction` | `flex-direction` | Sets the direction of the flex container: `row`, `row-reverse`, `column`, `column-reverse` |
+| `align` | `align-items` | Aligns items along the cross axis: `flex-start`, `flex-end`, `center`, `baseline`, `stretch` |
+| `justify` | `justify-content` | Distributes space along the main axis: `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` |
+| `wrap` | `flex-wrap` | Controls item wrapping: `nowrap`, `wrap`, `wrap-reverse` |
+| `gap` | `gap` | Sets spacing between flex items |
+| `basis` | `flex-basis` | Sets the initial main size of a flex item |
+| `grow` | `flex-grow` | Sets the grow factor of a flex item |
+| `shrink` | `flex-shrink` | Sets the shrink factor of a flex item |
+| `flex` | `flex` | Shorthand for `flex-grow`, `flex-shrink`, and `flex-basis` |
+
+### HStack and VStack Properties
+
+These are specialized Flex components that share the following properties:
+
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `direction` | `flex-direction` | Direction of the flex container (preset per component) |
+| `align` | `align-items` | Aligns items along the cross axis |
+| `justify` | `justify-content` | Distributes space along the main axis |
+| `gap` | `gap` | Sets spacing between flex items |
+
+Both components also accept all other common properties mentioned in the [layout guide](/docs/layout/index).
+
+
 </Section>
 
 <Section>

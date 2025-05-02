@@ -23,6 +23,7 @@ const createPattern = <T extends PatternConfig>(config: T): PatternConfig => {
     minH: { type: 'property', value: 'minHeight' },
     maxH: { type: 'property', value: 'maxHeight' },
     position: { type: 'property', value: 'position' },
+    bg: { type: 'property', value: 'backgroundColor' },
   }
 
   return definePattern({
@@ -100,15 +101,17 @@ const vstack = createPattern({
   properties: {
     justify: { type: 'property', value: 'justifyContent' },
     gap: { type: 'property', value: 'gap' },
+    align: { type: 'property', value: 'alignItems' },
   },
   defaultValues: {
     gap: '10px',
+    align: 'center',
   },
   transform(props) {
-    const { justify, gap, ...rest } = props
+    const { justify, gap, align, ...rest } = props
     return {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: align,
       justifyContent: justify,
       gap,
       flexDirection: 'column',
@@ -122,15 +125,17 @@ const hstack = createPattern({
   properties: {
     justify: { type: 'property', value: 'justifyContent' },
     gap: { type: 'property', value: 'gap' },
+    align: { type: 'property', value: 'alignItems' },
   },
   defaultValues: {
     gap: '10px',
+    align: 'center',
   },
   transform(props) {
-    const { justify, gap, ...rest } = props
+    const { justify, gap, align, ...rest } = props
     return {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: align,
       justifyContent: justify,
       gap,
       flexDirection: 'row',

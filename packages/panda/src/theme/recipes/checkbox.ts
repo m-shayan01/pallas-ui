@@ -27,8 +27,15 @@ export const checkbox = defineSlotRecipe({
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
+        bg: '{colors.fill.disabled}',
+        _hover: {
+          borderColor: '{colors.border}',
+        },
       },
       _checked: {
+        bg: '{colors.primary}',
+      },
+      _indeterminate: {
         bg: '{colors.primary}',
       },
     },

@@ -46,35 +46,29 @@ import { Button } from '@/components/ui/button/button'
 </Section>
 
 <Section>
-## Recipe
-### Usage
-```tsx
-import { button, type ButtonVariantProps } from '@styled-system/recipes'
-```
-```tsx
-<button className={button({ variant: 'outline', size: 'default' })}>Button</button>
-```
+## Properties
 
-### Link
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `variant` | `string` | `primary` | Visual style of the button | `primary`, `outlined`, `dashed`, `default`, `text`, `link` |
+| `size` | `string` | `md` | Size of the button | `sm`, `md`, `lg`, `icon` |
+| `shape` | `string` | `default` | Shape of the button | `default`, `rounded`, `circle` |
+| `width` | `string` | - | Width variant | `full` |
+| `isLoading` | `boolean` | `false` | Shows loading spinner | `true`, `false` |
+| `icon` | `ReactElement` | - | Button icon element | - |
+| `disabled` | `boolean` | `false` | Disables the button | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+| `css` | `SystemStyleObject` | - | Inline Panda CSS styles | - |
+| `asChild` | `boolean` | `false` | Render as a different element | `true`, `false` |
 
-```tsx
-import { button } from '@styled-system/recipes'
-```
-```tsx
-<Button variant="link">Link Button</Button>
-```
+The button component also accepts all standard HTML button attributes as props.
 
-Alternatively, you can set the the className parameter for the link component.
-
-```tsx
-<Link className={button({ variant: 'outline' })}>Click here</Link>
-```
 </Section>
 
 <Section>
 
 ## Examples
-### Default (Primary)
+### Default
 
 <ComponentPreview name="button" file ="primary" />
 
@@ -94,7 +88,23 @@ Alternatively, you can set the the className parameter for the link component.
 
 <ComponentPreview name="button" file="text" />
 
+### With Icon
+
+<ComponentPreview name="button" file="with-icon" />
+
+### Loading State
+
+<ComponentPreview name="button" file="loading" />
+
+### Shapes
+
+<ComponentPreview name="button" file="shapes" />
+
+The `shape` prop allows you to modify the button's border radius:
+- `default` - Standard corners
+- `rounded` - Fully rounded corners
+- `circle` - Perfect circle (best used with `size="icon"`)
+
 </Section>
 
 </ContentContainer>
-
