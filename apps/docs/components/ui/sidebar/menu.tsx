@@ -28,11 +28,12 @@ const MenuItemStyled = withContext<React.ComponentRef<typeof MenuItemPrimitive>,
   MenuItemPrimitive,
   'menuItem',
 )
-export const MenuItem = React.forwardRef<HTMLLIElement, MenuItemProps>(
-  ({ className, ...props }, ref) => (
-    <MenuItemStyled ref={ref} className={cx('group/menu-item', className)} {...props} />
-  ),
-)
+export const MenuItem = React.forwardRef<
+  React.ComponentRef<typeof MenuItemPrimitive>,
+  MenuItemProps
+>(({ className, ...props }, ref) => (
+  <MenuItemStyled ref={ref} className={cx('group/menu-item', className)} {...props} />
+))
 
 // const sidebarMenuButtonVariants = cva({
 //   variants: {

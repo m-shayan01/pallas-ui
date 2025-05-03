@@ -13,14 +13,15 @@ const ProviderStyled = withProvider<
   Assign<SidebarProviderProps, JsxStyleProps>
 >(ProviderPrimitive, 'provider')
 
-export const Provider = React.forwardRef<HTMLDivElement, SidebarProviderProps>(
-  ({ className, style, children, ...props }, ref) => {
-    return (
-      <Tooltip.Provider delayDuration={0}>
-        <ProviderStyled className={cx('group/sidebar-wrapper', className)} ref={ref} {...props}>
-          {children}
-        </ProviderStyled>
-      </Tooltip.Provider>
-    )
-  },
-)
+export const Provider = React.forwardRef<
+  React.ComponentRef<typeof ProviderPrimitive>,
+  SidebarProviderProps
+>(({ className, style, children, ...props }, ref) => {
+  return (
+    <Tooltip.Provider delayDuration={0}>
+      <ProviderStyled className={cx('group/sidebar-wrapper', className)} ref={ref} {...props}>
+        {children}
+      </ProviderStyled>
+    </Tooltip.Provider>
+  )
+})
