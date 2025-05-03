@@ -1,4 +1,5 @@
 import AnimatedBrandName from '@/components/home/animated-brandname'
+import AnimatedWordCycle from '@/components/home/animated-word-cycle'
 //import { ComponentShowcase } from '../components/home/showcase'
 import { Feature } from '@/components/home/feature'
 import { ComponentShowcase } from '@/components/home/showcase/index'
@@ -20,6 +21,7 @@ export default function Home() {
           <h1
             className={css({
               fontSize: { base: '3xl', md: '4xl' },
+              px: { base: 12, md: 0 },
               fontWeight: 'extrabold',
               mb: 'gap.component.md',
               lineHeight: '1.5',
@@ -30,7 +32,7 @@ export default function Home() {
               letterSpacing: '-0.05em',
             })}
           >
-            <AnimatedBrandName /> <br />A Modern React Component Library
+            <AnimatedBrandName /> <br /> <AnimatedWordCycle /> React Component Library
           </h1>
 
           <p
