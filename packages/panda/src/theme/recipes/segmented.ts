@@ -7,8 +7,9 @@ export const segmented = defineSlotRecipe({
   base: {
     root: {
       width: 'fit-content',
-      backgroundColor: '{colors.border.secondary}',
+      backgroundColor: '{colors.fill.secondary}',
       display: 'flex',
+      shadow: '{shadows.insetMinimal}',
     },
     option: {
       color: '{colors.text.secondary}',
@@ -16,15 +17,13 @@ export const segmented = defineSlotRecipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      _hover: {
-        cursor: 'pointer',
-        '&:not([data-disabled], [data-selected])': {
-          backgroundColor: '{colors.border}',
-        },
-      },
+      transition: 'all 0.3s',
+      cursor: 'pointer',
+
       _selected: {
         color: '{colors.text}',
         backgroundColor: '{colors.surface.elevated}',
+        boxShadow: '{shadows.minimal}',
       },
       _disabled: {
         color: '{colors.text.disabled}',
@@ -57,7 +56,7 @@ export const segmented = defineSlotRecipe({
       sm: {
         root: {
           borderRadius: '{radii.sm}',
-          padding: '{spacing.0.5}',
+          padding: 'calc({spacing.1} * 0.75)',
         },
         option: {
           gap: '{spacing.1}',
@@ -70,7 +69,7 @@ export const segmented = defineSlotRecipe({
       md: {
         root: {
           borderRadius: '{radii.md}',
-          padding: 'calc({spacing.1} * 0.75)',
+          padding: '{spacing.1}',
         },
         option: {
           gap: '{spacing.2}',
@@ -83,7 +82,7 @@ export const segmented = defineSlotRecipe({
       lg: {
         root: {
           borderRadius: '{radii.lg}',
-          padding: '{spacing.1}',
+          padding: '{spacing.1.5}',
         },
         option: {
           gap: '{spacing.3}',
@@ -105,6 +104,35 @@ export const segmented = defineSlotRecipe({
       },
     },
   },
+  compoundVariants: [
+    {
+      orientation: 'vertical',
+      size: 'sm',
+      css: {
+        root: {
+          gap: '{spacing.1}',
+        },
+      },
+    },
+    {
+      orientation: 'vertical',
+      size: 'md',
+      css: {
+        root: {
+          gap: '{spacing.2}',
+        },
+      },
+    },
+    {
+      orientation: 'vertical',
+      size: 'lg',
+      css: {
+        root: {
+          gap: '{spacing.3}',
+        },
+      },
+    },
+  ],
   defaultVariants: {
     orientation: 'horizontal',
     size: 'md',

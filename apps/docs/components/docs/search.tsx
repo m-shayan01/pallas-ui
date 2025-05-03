@@ -105,6 +105,7 @@ export function SearchDialog() {
           px: '2',
           py: '1',
           borderColor: 'grey.500',
+          shadow: 'inset 0 1px 2px 0 rgba(0, 0, 0, 0.2)',
         })}
       >
         <SearchIcon className={css({ h: 'icon.sm', w: 'icon.sm' })} />
