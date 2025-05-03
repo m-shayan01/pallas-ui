@@ -14,6 +14,7 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@pallas-ui/breadcrumb": "workspace:*",
     "@pallas-ui/components": "workspace:*",
     "@pallas-ui/panda-preset": "workspace:*",
@@ -38,6 +39,7 @@
     "@theguild/remark-npm2yarn": "^0.3.3",
     "date-fns": "^4.1.0",
     "github-slugger": "^2.0.0",
+    "gsap": "^3.13.0",
     "lucide-react": "0.462.0",
     "mdx-bundler": "^10.1.1",
     "next": "15.3.0",

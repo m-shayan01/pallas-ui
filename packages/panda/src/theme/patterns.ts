@@ -53,6 +53,7 @@ const flex = createPattern({
     gap: { type: 'property', value: 'gap' },
     gapX: { type: 'property', value: 'columnGap' },
     gapY: { type: 'property', value: 'rowGap' },
+    flex: { type: 'property', value: 'flex' },
   },
   transform(props) {
     const { direction, align, justify, wrap, basis, grow, shrink, gapX, gapY, ...rest } = props

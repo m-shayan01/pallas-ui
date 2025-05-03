@@ -12,15 +12,18 @@ export const ShowcaseContainer = ({ title, children }: ShowcaseContainerProps) =
   return (
     <section
       className={css({
-        mt: 'layout.default.lg',
-        py: '16',
+        mt: 'layout.default.md',
+        pt: '6',
+        pb: '12',
         px: { base: '4', md: '6' },
         mx: 'auto',
-        bg: 'surface.layout',
+        backgroundSize: '15px 15px',
+        backgroundPosition: '0px 0px',
+        backgroundImage: 'radial-gradient(#dedede 1px, #0000 0)',
       })}
     >
       {title && (
-        <Heading level={2} css={{ textAlign: 'center', mb: '8' }}>
+        <Heading level={2} css={{ textAlign: 'center', mb: '12' }}>
           {title}
         </Heading>
       )}
