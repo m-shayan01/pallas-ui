@@ -1,13 +1,15 @@
-import { defineUtility } from '@pandacss/dev'
+import type { UtilityConfig } from '@pandacss/types'
 
-export const sizing = defineUtility({
-  className: 'sizing',
-  values: 'sizing',
-  shorthand: ['size', 'sz'],
-  transform: (value: string) => {
-    return {
-      width: value,
-      height: value,
-    }
+export const sizing: UtilityConfig = {
+  sizing: {
+    className: 'sizing',
+    values: 'sizing',
+    shorthand: ['size', 'sz'],
+    transform: (value: string) => {
+      return {
+        width: value,
+        height: value,
+      }
+    },
   },
-})
+}

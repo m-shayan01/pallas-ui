@@ -9,13 +9,21 @@ const createPattern = <T extends PatternConfig>(config: T): PatternConfig => {
     pr: { type: 'property', value: 'paddingRight' },
     pb: { type: 'property', value: 'paddingBottom' },
     pl: { type: 'property', value: 'paddingLeft' },
-    width: { type: 'property', value: 'width' },
-    minWidth: { type: 'property', value: 'minWidth' },
-    maxWidth: { type: 'property', value: 'maxWidth' },
-    height: { type: 'property', value: 'height' },
-    minHeight: { type: 'property', value: 'minHeight' },
-    maxHeight: { type: 'property', value: 'maxHeight' },
+    m: { type: 'property', value: 'margin' },
+    mx: { type: 'property', value: 'marginInline' },
+    my: { type: 'property', value: 'marginBlock' },
+    mt: { type: 'property', value: 'marginTop' },
+    mr: { type: 'property', value: 'marginRight' },
+    mb: { type: 'property', value: 'marginBottom' },
+    ml: { type: 'property', value: 'marginLeft' },
+    w: { type: 'property', value: 'width' },
+    minW: { type: 'property', value: 'minWidth' },
+    maxW: { type: 'property', value: 'maxWidth' },
+    h: { type: 'property', value: 'height' },
+    minH: { type: 'property', value: 'minHeight' },
+    maxH: { type: 'property', value: 'maxHeight' },
     position: { type: 'property', value: 'position' },
+    bg: { type: 'property', value: 'backgroundColor' },
   }
 
   return definePattern({
@@ -45,6 +53,7 @@ const flex = createPattern({
     gap: { type: 'property', value: 'gap' },
     gapX: { type: 'property', value: 'columnGap' },
     gapY: { type: 'property', value: 'rowGap' },
+    flex: { type: 'property', value: 'flex' },
   },
   transform(props) {
     const { direction, align, justify, wrap, basis, grow, shrink, gapX, gapY, ...rest } = props
@@ -93,15 +102,17 @@ const vstack = createPattern({
   properties: {
     justify: { type: 'property', value: 'justifyContent' },
     gap: { type: 'property', value: 'gap' },
+    align: { type: 'property', value: 'alignItems' },
   },
   defaultValues: {
     gap: '10px',
+    align: 'center',
   },
   transform(props) {
-    const { justify, gap, ...rest } = props
+    const { justify, gap, align, ...rest } = props
     return {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: align,
       justifyContent: justify,
       gap,
       flexDirection: 'column',
@@ -115,15 +126,17 @@ const hstack = createPattern({
   properties: {
     justify: { type: 'property', value: 'justifyContent' },
     gap: { type: 'property', value: 'gap' },
+    align: { type: 'property', value: 'alignItems' },
   },
   defaultValues: {
     gap: '10px',
+    align: 'center',
   },
   transform(props) {
-    const { justify, gap, ...rest } = props
+    const { justify, gap, align, ...rest } = props
     return {
       display: 'flex',
-      alignItems: 'center',
+      alignItems: align,
       justifyContent: justify,
       gap,
       flexDirection: 'row',
@@ -186,6 +199,38 @@ const gridItem = createPattern({
   },
 })
 
+const aspectRatio = createPattern({
+  properties: {
+    ratio: { type: 'number' },
+  },
+  blocklist: ['aspectRatio'],
+  transform(props, { map }) {
+    const { ratio = 4 / 3, ...rest } = props
+    return {
+      position: 'relative',
+      _before: {
+        content: `""`,
+        display: 'block',
+        height: '0',
+        paddingBottom: map(ratio, (r: unknown) => `${(1 / (r as number)) * 100}%`),
+      },
+      '&>*': {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        overflow: 'hidden',
+        position: 'absolute',
+        inset: '0',
+        width: '100%',
+        height: '100%',
+      },
+      '&>img, &>video': {
+        objectFit: 'cover',
+      },
+      ...rest,
+    }
+  },
+})
 export const patterns = {
   box,
   flex,
@@ -194,4 +239,5 @@ export const patterns = {
   hstack,
   grid,
   gridItem,
+  aspectRatio,
 }

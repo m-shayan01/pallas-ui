@@ -34,4 +34,38 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationName: 'slide-out-left, fade-out',
     },
   },
+
+  slideFadeIn: {
+    value: {
+      transformOrigin: 'center',
+      animationDuration: '{durations.fast}',
+      animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      '&[data-side^=top]': {
+        animationName: 'slide-down, fade-in',
+      },
+      '&[data-side^=bottom]': {
+        animationName: 'slide-up, fade-in',
+      },
+      '&[data-side^=left]': {
+        animationName: 'slide-right, fade-in',
+      },
+      '&[data-side^=right]': {
+        animationName: 'slide-left, fade-in',
+      },
+    },
+  },
+  modalContentShow: {
+    value: {
+      animationDuration: '{durations.fast}',
+      animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      animationName: 'modal-content-show',
+    },
+  },
+  modalContentHide: {
+    value: {
+      animationDuration: '{durations.fast}',
+      animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      animationName: 'modal-content-hide',
+    },
+  },
 })

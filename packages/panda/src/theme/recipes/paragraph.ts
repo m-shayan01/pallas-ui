@@ -11,7 +11,7 @@ export const paragraph = defineRecipe({
     },
     lineHeight: '1.5',
     fontFamily: 'body',
-    textAlign: { base: 'center', md: 'left' },
+    textAlign: { base: 'left', md: 'left' },
     display: 'block',
   },
   variants: {
@@ -22,6 +22,14 @@ export const paragraph = defineRecipe({
           lg: '{fontSizes.md}',
           '2xl': '{fontSizes.lg}',
         },
+      },
+      extraLarge: {
+        fontSize: {
+          base: '{fontSizes.lg}',
+          lg: '{fontSizes.xl}',
+          '2xl': '{fontSizes.2xl}',
+        },
+        fontWeight: 'bold',
       },
       large: {
         fontSize: {
@@ -48,6 +56,7 @@ export const paragraph = defineRecipe({
     color: {
       default: { color: '{colors.text}' },
       secondary: { color: '{colors.text.secondary}' },
+      tertiary: { color: '{colors.text.tertiary}' },
       success: { color: '{colors.success}' },
       warning: { color: '{colors.warning}' },
       error: { color: '{colors.error}' },

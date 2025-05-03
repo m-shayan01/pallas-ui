@@ -20,7 +20,7 @@ export const input = defineSlotRecipe({
         appearance: 'textfield',
       },
       // Base styles
-      border: '1px solid {colors.border}',
+      border: '.8px solid {colors.border}',
       _inputHover: {
         borderColor: '{colors.primary.hover}',
       },
@@ -80,6 +80,7 @@ export const input = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       color: '{colors.text.secondary}',
+      fontSize: 'sm',
     },
     postfix: {
       display: 'flex',
@@ -87,17 +88,32 @@ export const input = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       color: '{colors.text.secondary}',
+      fontSize: 'sm',
     },
     field: {
       w: 'full',
-      h: 'full',
+      h: '98%',
       py: '{spacing.padding.block.md}',
       bg: 'transparent',
       textStyle: 'sm',
 
+      '&[data-char-count]': {
+        paddingInlineEnd: '48px',
+      },
+
       _focus: {
         outline: 'none',
         border: 'none',
+      },
+      _file: {
+        border: 'none',
+        bg: 'transparent',
+        color: '{colors.text.secondary}',
+        textStyle: 'sm',
+        lineHeight: '1',
+        fontWeight: 'semibold',
+        marginRight: '2',
+        transform: 'translateY(-2px)',
       },
 
       _placeholder: {
@@ -108,6 +124,11 @@ export const input = defineSlotRecipe({
         WebkitAppearance: 'none',
         MozAppearance: 'none',
       },
+      '&::-webkit-autofill, &::-webkit-autofill:focus, &::-webkit-autofill:hover, &::-webkit-autofill:active':
+        {
+          WebkitBoxShadow: '0 0 0 1000px {colors.fill.secondary} inset !important',
+          WebkitTextFillColor: '{colors.text.secondary} !important',
+        },
     },
     charCount: {
       position: 'absolute',

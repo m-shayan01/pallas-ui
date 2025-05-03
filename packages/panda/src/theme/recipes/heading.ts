@@ -7,7 +7,7 @@ export const heading = defineRecipe({
     fontWeight: '{fontWeights.bold}',
     lineHeight: '110%',
     color: '{colors.text}',
-    textAlign: { base: 'center', md: 'left' },
+    textAlign: { base: 'left', md: 'left' },
   },
   variants: {
     level: {

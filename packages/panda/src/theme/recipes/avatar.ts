@@ -12,9 +12,6 @@ export const avatar = defineSlotRecipe({
       verticalAlign: 'middle',
       overflow: 'hidden',
       userSelect: 'none',
-      width: 50,
-      height: 50,
-      borderRadius: '{full}',
       backgroundColor: '{colors.border.secondary}',
     },
     image: {
@@ -30,8 +27,63 @@ export const avatar = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       color: '{colors.text}',
-      textStyle: '{md}',
       fontWeight: '{medium}',
     },
+  },
+  variants: {
+    size: {
+      sm: {
+        root: {
+          width: '{sizes.8}',
+          height: '{sizes.8}',
+        },
+        fallback: {
+          textStyle: '{sm}',
+        },
+      },
+      md: {
+        root: {
+          width: '{sizes.10}',
+          height: '{sizes.10}',
+        },
+        fallback: {
+          textStyle: '{md}',
+        },
+      },
+      lg: {
+        root: {
+          width: '{sizes.12}',
+          height: '{sizes.12}',
+        },
+        fallback: {
+          textStyle: '{lg}',
+        },
+      },
+      xl: {
+        root: {
+          width: '{sizes.14}',
+          height: '{sizes.14}',
+        },
+        fallback: {
+          textStyle: '{xl}',
+        },
+      },
+    },
+    shape: {
+      circle: {
+        root: {
+          borderRadius: '{full}',
+        },
+      },
+      square: {
+        root: {
+          borderRadius: '{md}',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
+    shape: 'circle',
   },
 })

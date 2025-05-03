@@ -14,10 +14,11 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@pallas-ui/breadcrumb": "workspace:*",
-    "@pallas-ui/sidebar": "workspace:*",
-    "@pallas-ui/panda-preset": "workspace:*",
     "@pallas-ui/components": "workspace:*",
+    "@pallas-ui/panda-preset": "workspace:*",
+    "@pallas-ui/sidebar": "workspace:*",
     "@pallas-ui/style-context": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
@@ -38,6 +39,7 @@
     "@theguild/remark-npm2yarn": "^0.3.3",
     "date-fns": "^4.1.0",
     "github-slugger": "^2.0.0",
+    "gsap": "^3.13.0",
     "lucide-react": "0.462.0",
     "mdx-bundler": "^10.1.1",
     "next": "15.3.0",
@@ -59,7 +61,8 @@
     "@types/node": "^20",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.2",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "unified": "^11.0.5"
   },
   "pnpm": {
     "overrides": {

@@ -1,0 +1,97 @@
+---
+title: 'Flex'
+description: 'Flex container components for creating flexible layouts'
+---
+<ContentContainer>
+
+<Section gap="1">
+# Flex
+<Paragraph size={'extraLarge'} color={'tertiary'}>A layout component that uses flexbox to help arrange its children in rows or columns with powerful alignment and spacing controls.</Paragraph>
+<ComponentPreview name="flex" />
+</Section>
+
+<Section>
+## Usage
+
+```jsx
+import { Flex, HStack, VStack } from '@styled-system/jsx'
+```
+
+```jsx
+<Flex 
+  direction="row"
+  gap="4"
+  align="flex-start"
+  justify="flex-start"
+>
+  <Box>Item 1</Box>
+  <Box>Item 2</Box>
+  <Box>Item 3</Box>
+</Flex>
+```
+</Section>
+
+<Section>
+## Properties
+
+Flex accepts all common properties mentioned in the [layout guide](/docs/layout/index) along with these flex-specific properties:
+
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `direction` | `flex-direction` | Sets the direction of the flex container: `row`, `row-reverse`, `column`, `column-reverse` |
+| `align` | `align-items` | Aligns items along the cross axis: `flex-start`, `flex-end`, `center`, `baseline`, `stretch` |
+| `justify` | `justify-content` | Distributes space along the main axis: `flex-start`, `flex-end`, `center`, `space-between`, `space-around`, `space-evenly` |
+| `wrap` | `flex-wrap` | Controls item wrapping: `nowrap`, `wrap`, `wrap-reverse` |
+| `gap` | `gap` | Sets spacing between flex items |
+| `basis` | `flex-basis` | Sets the initial main size of a flex item |
+| `grow` | `flex-grow` | Sets the grow factor of a flex item |
+| `shrink` | `flex-shrink` | Sets the shrink factor of a flex item |
+| `flex` | `flex` | Shorthand for `flex-grow`, `flex-shrink`, and `flex-basis` |
+
+### HStack and VStack Properties
+
+These are specialized Flex components that share the following properties:
+
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `direction` | `flex-direction` | Direction of the flex container (preset per component) |
+| `align` | `align-items` | Aligns items along the cross axis |
+| `justify` | `justify-content` | Distributes space along the main axis |
+| `gap` | `gap` | Sets spacing between flex items |
+
+Both components also accept all other common properties mentioned in the [layout guide](/docs/layout/index).
+
+
+</Section>
+
+<Section>
+## Examples
+
+### Default
+<ComponentPreview name="flex" />
+
+### Column Direction
+<ComponentPreview name="flex" file="column" />
+
+### Alignment Options
+<ComponentPreview name="flex" file="align" />
+
+### Justify Content
+<ComponentPreview name="flex" file="justify" />
+
+### HStack and VStack
+
+HStack and VStack are specialized Flex components with convenient defaults:
+
+<ComponentPreview name="flex" file="hstack" />
+
+<ComponentPreview name="flex" file="vstack" />
+
+### Responsive Flex
+
+<ComponentPreview name="flex" file="responsive" />
+
+
+</Section>
+
+</ContentContainer> 

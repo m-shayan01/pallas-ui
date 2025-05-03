@@ -1,25 +1,26 @@
-import { defineUtility } from '@pandacss/dev'
+import type { UtilityConfig } from '@pandacss/types'
 
-export const spaceX = defineUtility({
-  className: 'space_x',
-  values: 'spacing',
-  transform: (value: string) => {
-    return {
-      '& > * + *': {
-        marginLeft: value,
-      },
-    }
+export const spacing: UtilityConfig = {
+  spaceX: {
+    className: 'space_x',
+    values: 'spacing',
+    transform: (value: string) => {
+      return {
+        '& > * + *': {
+          marginLeft: value,
+        },
+      }
+    },
   },
-})
-
-export const spaceY = defineUtility({
-  className: 'space_y',
-  values: 'spacing',
-  transform: (value: string) => {
-    return {
-      '& > * + *': {
-        marginTop: value,
-      },
-    }
+  spaceY: {
+    className: 'space_y',
+    values: 'spacing',
+    transform: (value: string) => {
+      return {
+        '& > * + *': {
+          marginTop: value,
+        },
+      }
+    },
   },
-})
+}

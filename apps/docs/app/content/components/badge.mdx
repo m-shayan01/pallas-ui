@@ -1,14 +1,12 @@
 ---
 title: Badge
-description: Displays a badge or a component that looks like a badge.
-references:
-  shadcnUiLink: https://ui.shadcn.com/docs/components/badge
+description: A visual indicator for notification counts or status information.
 ---
 <ContentContainer>
 
-<Section>
+<Section gap="1">
 # Badge
-Displays a badge or a component that looks like a badge.
+<Paragraph size={'extraLarge'} color={'tertiary'}>A visual indicator for notification counts or status information.</Paragraph>
 <ComponentPreview name="badge" withRecipe />
 </Section>
 
@@ -38,25 +36,7 @@ import { Badge } from '@/components/ui/badge'
 ```
 </Section>
 
-<Section>
-## Recipe
-### Usage
-```tsx
-import { badge, type BadgeVariantProps } from '@styled-system/recipes'
-```
-```tsx
-<span className={badge({ variant: 'primary' })}>Badge</span>
-```
 
-### Link
-
-```tsx
-import { badge } from '@styled-system/recipes'
-```
-```tsx
-<Link className={badge({ variant: 'default' })}>Click here</Link>
-```
-</Section>
 
 <Section>
 ## Examples

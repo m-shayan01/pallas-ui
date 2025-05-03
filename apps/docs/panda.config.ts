@@ -34,8 +34,9 @@ export default defineConfig({
       baseRadius: 2,
     }),
   ],
+  globalCss: {},
 
-  include: ['./components/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}'],
+  include: ['./components/**/*.{js,jsx,ts,tsx,mdx}', './app/**/*.{js,jsx,ts,tsx,mdx}'],
 
   theme: {
     extend: {

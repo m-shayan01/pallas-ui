@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 export default function ModalDemo() {
   const [open, setOpen] = useState(false)
-  
+
   return (
     <>
       <Modal.Root open={open} onOpenChange={setOpen}>
@@ -16,9 +16,7 @@ export default function ModalDemo() {
         <Modal.Content>
           <Modal.Header>
             <Modal.Title>Modal Title</Modal.Title>
-            <Modal.Description>
-              This is a description of the modal. It provides additional context about the modal's purpose.
-            </Modal.Description>
+            <Modal.Description>This is a description of the modal.</Modal.Description>
           </Modal.Header>
           <div>
             <p>Modal content goes here. You can add any content you want inside the modal.</p>

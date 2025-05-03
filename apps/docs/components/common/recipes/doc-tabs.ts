@@ -10,6 +10,7 @@ export const docTabs = sva({
       overflow: 'hidden',
       width: '100%',
       maxWidth: '100%',
+      mt: '2',
     },
     tabList: {
       borderBottom: '1px solid',

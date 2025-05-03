@@ -29,7 +29,6 @@ export const select = defineSlotRecipe({
       py: '{spacing.padding.block.md}',
       textStyle: 'sm',
       cursor: 'pointer',
-      focusRingOffsetColor: '{colors.fill.secondary}',
 
       _placeholder: {
         color: '{colors.text.secondary}',
@@ -42,9 +41,6 @@ export const select = defineSlotRecipe({
         shadow: '0 0 0 2px {colors.primary.bgHover}',
         outline: '2px solid {colors.primary.bgHover}',
         outlineOffset: '2px',
-        focusRingWidth: '2',
-        focusRingColor: 'ring',
-        focusRingOffsetWidth: '2',
       },
 
       _disabled: {
@@ -74,55 +70,12 @@ export const select = defineSlotRecipe({
       color: '{colors.text}',
       shadow: 'md',
 
-      _open: {
-        animateIn: true,
-        fadeIn: 0,
-        zoomIn: 95,
-      },
-
-      _closed: {
-        animateOut: true,
-        fadeOut: 0,
-        zoomOut: 95,
-      },
-
-      _top: {
-        slideInFromBottom: '2',
-      },
-
-      _bottom: {
-        slideInFromTop: '2',
-      },
-
-      _left: {
-        slideInFromRight: '2',
-      },
-
-      _right: {
-        slideInFromLeft: '2',
-      },
-
-      '&[data-position=popper]': {
-        _top: {
-          translateY: '-1',
-        },
-
-        _bottom: {
-          translateY: '1',
-        },
-
-        _left: {
-          translateX: '-1',
-        },
-
-        _right: {
-          translateX: '1',
-        },
-      },
+      animationStyle: 'slideFadeIn',
+      animationDuration: '{durations.normal}',
     },
     label: {
       py: '{spacing.padding.block.md}',
-      pl: '{spacing.gap.inline.sm}',
+      pl: '{spacing.gap.inline.xs}',
       pr: '{spacing.gap.inline.sm}',
       textStyle: 'sm',
       fontWeight: 'semibold',
@@ -135,7 +88,7 @@ export const select = defineSlotRecipe({
       alignItems: 'center',
       rounded: '{radii.sm}',
       py: '{spacing.padding.block.md}',
-      pl: '{spacing.gap.inline.lg}',
+      pl: '{spacing.gap.component.lg}',
       pr: '{spacing.gap.inline.sm}',
       textStyle: 'sm',
       outline: '2px solid transparent',
@@ -164,6 +117,34 @@ export const select = defineSlotRecipe({
       my: '1',
       h: '1px',
       bg: '{colors.border.secondary}',
+    },
+  },
+  variants: {
+    size: {
+      sm: {
+        trigger: {
+          h: '{sizes.controlHeight.sm}',
+          textStyle: 'sm',
+          px: '{spacing.padding.inline.sm}',
+          py: '{spacing.padding.block.sm}',
+        },
+      },
+      md: {
+        trigger: {
+          h: '{sizes.controlHeight.md}',
+          textStyle: 'sm',
+          px: '{spacing.padding.inline.md}',
+          py: '{spacing.padding.block.md}',
+        },
+      },
+      lg: {
+        trigger: {
+          h: '{sizes.controlHeight.lg}',
+          textStyle: 'md',
+          px: '{spacing.padding.inline.md}',
+          py: '{spacing.padding.block.md}',
+        },
+      },
     },
   },
 })

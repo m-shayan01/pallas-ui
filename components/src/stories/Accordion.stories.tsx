@@ -11,7 +11,7 @@ const meta: Meta<typeof Accordion.Root> = {
 export default meta
 
 export const Default = () => (
-  <Accordion.Root type="single" defaultValue={'0'}>
+  <Accordion.Root type="single" collapsible={true} defaultValue={'0'}>
     <Accordion.Item value="0">
       <Accordion.ItemHeader>
         Accordion Header

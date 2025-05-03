@@ -1,6 +1,6 @@
 import { Item, Link, List, Root, Separator } from '@pallas-ui/breadcrumb'
 import { css } from '@styled-system/css'
-import { allComponents, allGuides, allThemings } from 'content-collections'
+import { allComponents, allGuides, allLayouts, allThemings } from 'content-collections'
 import { ChevronRight } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import { DynamicToc } from '../../../components/docs/dynamic-toc'
@@ -19,7 +19,11 @@ export function generateStaticParams() {
     slug: ['theming', theme.slug],
   }))
 
-  return [...guideParams, ...componentParams, ...themingParams]
+  const layoutParams = allLayouts.map((layout) => ({
+    slug: ['layout', layout.slug],
+  }))
+
+  return [...guideParams, ...componentParams, ...themingParams, ...layoutParams]
 }
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -48,6 +52,14 @@ export async function generateMetadata({ params }: any) {
       return {
         title: theme.title,
         description: theme.description,
+      }
+    }
+  } else if (slug[0] === 'layout' && slug.length > 1) {
+    const layout = allLayouts.find((l) => l.slug === slug[1])
+    if (layout) {
+      return {
+        title: layout.title,
+        description: layout.description,
       }
     }
   } else {
@@ -89,6 +101,10 @@ function ContentPage({
       // Link to the first component
       return '/docs/components/accordion'
     }
+    if (sectionLower === 'layout') {
+      // Link to the first layout page
+      return '/docs/layout/index'
+    }
     if (sectionLower === 'theming') {
       // Link to the first theming page
       const firstTheme = allThemings[0]
@@ -111,7 +127,7 @@ function ContentPage({
           base: '1fr',
           xl: '1fr 250px',
         },
-        p: '6',
+        p: { base: '4', md: '6' },
         maxWidth: '100%',
       })}
     >
@@ -139,6 +155,7 @@ function ContentPage({
                       color: 'text.secondary',
                       _hover: { color: 'primary' },
                       transition: 'color 0.2s ease',
+                      fontSize: 'sm',
                     })}
                   >
                     {breadcrumb.section}
@@ -152,6 +169,7 @@ function ContentPage({
                     className={css({
                       color: 'text.primary',
                       fontWeight: 'medium',
+                      fontSize: 'sm',
                     })}
                   >
                     {breadcrumb.title}
@@ -263,6 +281,23 @@ export default async function DocsPage({ params }: any) {
       <ContentPage
         breadcrumb={{ section: 'Theming', title: theme.title }}
         mdxCode={theme.mdx}
+        showHeader={true}
+      />
+    )
+  }
+
+  // Handle layout pages
+  if (slug[0] === 'layout' && slug.length > 1) {
+    const layout = allLayouts.find((l) => l.slug === slug[1])
+
+    if (!layout) {
+      notFound()
+    }
+
+    return (
+      <ContentPage
+        breadcrumb={{ section: 'Layout', title: layout.title }}
+        mdxCode={layout.mdx}
         showHeader={true}
       />
     )

@@ -7,6 +7,7 @@ export const DecorativeBox = (props: BoxProps) => (
     className={css({
       p: 4,
       h: '100%',
+      w: '100%',
       backgroundColor: 'rgba(0, 0, 0, 0.03)',
       backgroundClip: 'padding-box',
       border: '1px solid rgba(0, 0, 0, 0.08)',

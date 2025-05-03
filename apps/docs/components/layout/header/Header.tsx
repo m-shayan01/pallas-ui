@@ -1,7 +1,7 @@
+import AnimatedBrandName from '@/components/home/animated-brandname'
 import Link from 'next/link'
-import { SearchDialog } from '../../components/docs/search'
+import { SearchDialog } from '../../docs/search'
 import { header } from './header.recipe'
-
 export function Header() {
   const styles = header()
 
@@ -11,7 +11,7 @@ export function Header() {
         <div className={styles.innerContainer}>
           <div className={styles.layout}>
             <Link href="/" className={styles.logo}>
-              <span>Pallas UI</span>
+              <AnimatedBrandName />
             </Link>
 
             <div className={styles.searchContainer}>

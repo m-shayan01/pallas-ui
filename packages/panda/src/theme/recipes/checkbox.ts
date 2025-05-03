@@ -6,29 +6,31 @@ export const checkbox = defineSlotRecipe({
   slots: ['root', 'indicator'],
   base: {
     root: {
-      h: '{sizes.selectionControl.md}',
-      w: '{sizes.selectionControl.md}',
       flexShrink: '0',
       rounded: 'sm',
       border: '1px solid {colors.border}',
       cursor: 'pointer',
-      focusRingOffsetColor: '{colors.primary}',
+      boxShadow: '{shadows.insetMinimal}',
       _hover: {
         borderColor: '{colors.primary.bgHover}',
       },
       _focusVisible: {
-        outline: '2px solid transparent',
+        outline: '1px solid {colors.primary.bgHover}',
         outlineOffset: '2px',
-        focusRingWidth: '2',
-        focusRingColor: '{colors.primary}',
-        focusRingOffsetWidth: '2',
       },
 
       _disabled: {
         cursor: 'not-allowed',
         opacity: '0.5',
+        bg: '{colors.fill.disabled}',
+        _hover: {
+          borderColor: '{colors.border}',
+        },
       },
       _checked: {
+        bg: '{colors.primary}',
+      },
+      _indeterminate: {
         bg: '{colors.primary}',
       },
     },
@@ -38,5 +40,30 @@ export const checkbox = defineSlotRecipe({
       justifyContent: 'center',
       color: '{colors.surface.elevated}',
     },
+  },
+  variants: {
+    size: {
+      sm: {
+        root: {
+          h: '{sizes.selectionControl.sm}',
+          w: '{sizes.selectionControl.sm}',
+        },
+      },
+      md: {
+        root: {
+          h: '{sizes.selectionControl.md}',
+          w: '{sizes.selectionControl.md}',
+        },
+      },
+      lg: {
+        root: {
+          h: '{sizes.selectionControl.lg}',
+          w: '{sizes.selectionControl.lg}',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 })

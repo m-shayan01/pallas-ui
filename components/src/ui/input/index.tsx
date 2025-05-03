@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { css, cx } from '@styled-system/css'
-import { type InputVariantProps, input } from '@styled-system/recipes'
+import { type InputVariantProps, icon, input } from '@styled-system/recipes'
 import { format } from 'date-fns'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { Calendar } from 'lucide-react'
@@ -85,7 +85,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     }
 
     return (
-      <div className={css({ position: 'relative', width: '100%' })}>
+      <div className={css({ position: 'relative', width: '100%', height: '100%' })}>
         <Slot className={css({ flexGrow: 1 })}>
           <input
             id={id}
@@ -96,6 +96,7 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
             maxLength={maxLength}
             className={cx(field, className)}
             data-status={status}
+            data-char-count={showCount}
             {...props}
           />
         </Slot>
@@ -250,7 +251,7 @@ const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
 
     return (
       <Popover.Root>
-        <Popover.Trigger>
+        <Popover.Trigger className={css({ display: 'flex', width: '100%' })}>
           <div className={css({ position: 'relative', width: '100%', display: 'flex' })}>
             <Slot className={css({ flexGrow: 1 })}>
               <input
@@ -265,7 +266,7 @@ const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
               />
             </Slot>
             <div className={postfix}>
-              <Calendar size={16} />
+              <Calendar className={icon()} />
             </div>
           </div>
         </Popover.Trigger>
