@@ -44,8 +44,8 @@ export const radioGroup = defineSlotRecipe({
       _after: {
         content: '""',
         display: 'block',
-        w: '60%',
-        h: '60%',
+        w: '57%',
+        h: '57%',
         borderRadius: '50%',
         backgroundColor: '{colors.primary}',
       },

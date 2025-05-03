@@ -1,4 +1,4 @@
-import { defineUtility } from '@pandacss/dev'
+import type { UtilityConfig } from '@pandacss/types'
 
 const blurValues = {
   none: 'blur(0)',
@@ -11,14 +11,16 @@ const blurValues = {
   '3xl': 'blur(32px)',
 } as const
 
-export const backdropFilter = defineUtility({
-  property: 'backdropFilter',
-  shorthand: ['bgBlur'],
-  className: 'bg_blur',
-  values: blurValues,
-  transform: (value) => {
-    return {
-      backdropFilter: value,
-    }
+export const backdropFilter: UtilityConfig = {
+  backdropFilter: {
+    property: 'backdropFilter',
+    shorthand: ['bgBlur'],
+    className: 'bg_blur',
+    values: blurValues,
+    transform: (value) => {
+      return {
+        backdropFilter: value,
+      }
+    },
   },
-})
+}
