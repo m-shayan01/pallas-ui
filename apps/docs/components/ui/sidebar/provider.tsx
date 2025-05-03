@@ -14,7 +14,7 @@ const ProviderStyled = withProvider<
 >(ProviderPrimitive, 'provider')
 
 export const Provider = React.forwardRef<
-  React.ComponentRef<typeof ProviderPrimitive>,
+  React.ComponentRef<typeof ProviderStyled>,
   SidebarProviderProps
 >(({ className, style, children, ...props }, ref) => {
   return (
