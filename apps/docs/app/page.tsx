@@ -1,3 +1,4 @@
+import AnimatedBrandName from '@/components/home/animated-brandname'
 //import { ComponentShowcase } from '../components/home/showcase'
 import { Feature } from '@/components/home/feature'
 import { ComponentShowcase } from '@/components/home/showcase/index'
@@ -22,17 +23,14 @@ export default function Home() {
               fontWeight: 'extrabold',
               mb: 'gap.component.md',
               lineHeight: '1.5',
-              color: 'text',
+              color: 'transparent',
+              background: 'linear-gradient(180deg,#ffffff1a,#fff0 41.43%),#272727',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              letterSpacing: '-0.05em',
             })}
           >
-            <span
-              className={css({
-                fontSize: { base: '5xl', md: '6xl' },
-              })}
-            >
-              Pallas UI
-            </span>{' '}
-            <br />A Modern React Component Library
+            <AnimatedBrandName /> <br />A Modern React Component Library
           </h1>
 
           <p

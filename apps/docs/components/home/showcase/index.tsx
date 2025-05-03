@@ -1,4 +1,5 @@
 import { css } from '@styled-system/css'
+import { Flex } from '@styled-system/jsx'
 import React from 'react'
 import { AccordionShowcase } from './accordion-showcase'
 import { BadgeSeparatorShowcase } from './badge-separator-showcase'
@@ -22,55 +23,34 @@ export const ComponentShowcase = () => {
           display: 'flex',
           flexDirection: { base: 'column', md: 'row' },
           gap: 'layout.internal.lg',
-          bg: 'surface.layout',
+          bg: 'transparent',
           mx: 'auto',
           maxW: '1200px',
         })}
       >
         {/* Column 1 */}
-        <div
-          className={css({
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'layout.internal.lg',
-            flex: '1',
-          })}
-        >
+        <Flex direction="column" gap="layout.internal.lg" flex={1}>
           <FormShowcase />
           <DatePickerShowcase />
           <PopoverTooltipShowcase />
           <ProgressShowcase />
-        </div>
+        </Flex>
 
         {/* Column 2 */}
-        <div
-          className={css({
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'layout.internal.lg',
-            flex: '1',
-          })}
-        >
+        <Flex direction="column" gap="layout.internal.lg" flex={1}>
           <ProfileScenarioShowcase />
           <AccordionShowcase />
           <BadgeSeparatorShowcase />
           <ToastSelectShowcase />
-        </div>
+        </Flex>
 
         {/* Column 3 */}
-        <div
-          className={css({
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 'layout.internal.lg',
-            flex: '1',
-          })}
-        >
+        <Flex direction="column" gap="layout.internal.lg" flex={1}>
           <MenubarShowcase />
           <FormControlsShowcase />
           <DayPickerShowcase />
           <SliderTabsShowcase />
-        </div>
+        </Flex>
       </div>
     </ShowcaseContainer>
   )
