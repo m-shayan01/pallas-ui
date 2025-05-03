@@ -53,13 +53,27 @@ radial-gradient(at 70% 72%, hsla(67,69%,75%,1) 0px, transparent 50%), url(/noise
                 mb: 'gap.component.md',
                 lineHeight: '1.5',
                 color: 'transparent',
-                background: 'linear-gradient(180deg,#ffffff1a,#fff0 41.43%),#272727',
+                background: 'linear-gradient(180deg,#ffffff4a,#fff0 41.43%),#272727',
                 backgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 letterSpacing: '-0.05em',
               })}
             >
-              <AnimatedBrandName /> <br /> <AnimatedWordCycle /> React Component Library
+              <span
+                className={css({
+                  fontSize: { base: '6xl', md: '8xl' },
+                  px: { base: 12, md: 0 },
+                  fontWeight: 'extrabold',
+                  mb: 'gap.component.md',
+                  lineHeight: '1.5',
+                  background: 'linear-gradient(180deg,#ffffff4a,#fff0 60.43%),#272727',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                })}
+              >
+                Pallas UI
+              </span>
+              <br /> <AnimatedWordCycle /> React Component Library
             </h1>
 
             <p
@@ -85,8 +99,9 @@ radial-gradient(at 70% 72%, hsla(67,69%,75%,1) 0px, transparent 50%), url(/noise
                   variant="outlined"
                   size="lg"
                   className={css({
-                    borderColor: 'gray.800',
+                    borderColor: 'border',
                     color: 'text.secondary',
+                    bg: 'surface.elevated',
                     _hover: {
                       color: 'text',
                     },

@@ -314,7 +314,6 @@ const components = {
           mx: '0.5',
           position: 'relative',
           rounded: 'sm',
-          bg: 'fill.tertiary',
           px: '0.4rem',
           py: '0.3rem',
           fontSize: 'sm',

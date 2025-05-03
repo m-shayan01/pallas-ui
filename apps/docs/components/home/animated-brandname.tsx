@@ -19,7 +19,7 @@ export default function AnimatedBrandName() {
       duration: 1,
       scrambleText: {
         text,
-        chars: '.:',
+        chars: '.:ˑː',
         speed: 0.5,
       },
       overwrite: true,
@@ -32,7 +32,7 @@ export default function AnimatedBrandName() {
       duration: 0.5,
       scrambleText: {
         text,
-        chars: '.:',
+        chars: '.:ˑː',
         speed: 0.5,
       },
       overwrite: true,
@@ -50,9 +50,6 @@ export default function AnimatedBrandName() {
   return (
     <span
       ref={scrambleRef}
-      className={css({
-        fontSize: { base: '7xl', md: '8xl' },
-      })}
       onMouseOver={() => scramble(originalText)}
       onMouseOut={() => unscramble(originalText)}
       onFocus={() => scramble(originalText)}

@@ -71,7 +71,7 @@ export default function AnimatedWordCycle() {
     () => {
       const timeout = setTimeout(() => {
         setWordIndex((prev) => (prev + 1) % WORDS.length)
-      }, DELAY * 3000)
+      }, DELAY * 2000)
       return () => clearTimeout(timeout)
     },
     { dependencies: [wordIndex] },
