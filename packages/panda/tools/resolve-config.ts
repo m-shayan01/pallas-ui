@@ -1,7 +1,6 @@
 import { mergeConfigs } from '@pandacss/config/merge'
 import { logger } from '@pandacss/logger'
 import presetBase from '@pandacss/preset-base'
-import presetPanda from '@pandacss/preset-panda'
 import type { Config, Preset } from '@pandacss/types'
 
 type Extendable<T> = T & { extend?: T }
@@ -22,8 +21,6 @@ export function resolveConfig(config?: Config) {
         presets.add(preset)
       }
     })
-  } else if (!config.eject) {
-    presets.add(presetPanda)
   }
 
   config.presets = Array.from(presets)

@@ -21,16 +21,8 @@ export const modal = defineSlotRecipe({
       position: 'fixed',
       inset: '0',
       zIndex: 50,
-      bga: '{colors.surface.elevated}',
-      backdropBlur: 'sm',
-      _open: {
-        animateIn: true,
-        fadeIn: 0,
-      },
-      _closed: {
-        animateOut: true,
-        fadeOut: 0,
-      },
+      bg: '{colors.surface.spotlight}',
+      bgBlur: 'sm',
     },
     content: {
       position: 'fixed',
@@ -40,29 +32,17 @@ export const modal = defineSlotRecipe({
       display: 'grid',
       w: 'full',
       maxWidth: '{sizes.lg}',
-      translateX: '-50%',
-      translateY: '-50%',
+      transform: 'translate(-50%, -50%)',
       textStyle: 'sm',
-      transitionDuration: 'normal',
-      gap: '{spacing.gap.component.lg}',
+      gap: '{spacing.gap.component.sm}',
       bg: 'background',
       p: '{spacing.padding.block.lg}',
       boxShadow: 'lg',
       border: '1px solid {colors.border}',
-      _open: {
-        animateIn: true,
-        fadeIn: 0,
-        zoomIn: 95,
-        slideInFromLeft: '50%',
-        slideInFromTop: '48%',
-      },
+      animationStyle: 'modalContentShow',
 
       _closed: {
-        animateOut: true,
-        fadeOut: 0,
-        zoomOut: 95,
-        slideOutToLeft: '50%',
-        slideOutToTop: '48%',
+        animationStyle: 'modalContentHide',
       },
 
       sm: {
@@ -72,9 +52,8 @@ export const modal = defineSlotRecipe({
     header: {
       display: 'flex',
       flexDirection: 'column',
-      spaceY: '{spacing.padding.block.sm}',
       textAlign: 'center',
-
+      gap: '2px',
       sm: {
         textAlign: 'left',
       },

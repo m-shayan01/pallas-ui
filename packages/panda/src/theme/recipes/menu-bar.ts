@@ -40,6 +40,7 @@ export const menubar = defineSlotRecipe({
       fontWeight: 'medium',
       outline: '2px solid transparent',
       cursor: 'pointer',
+      boxShadow: '{shadows.minimal}',
 
       _hover: {
         bg: '{colors.fill.secondary}',

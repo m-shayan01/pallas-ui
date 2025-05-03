@@ -54,4 +54,18 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       },
     },
   },
+  modalContentShow: {
+    value: {
+      animationDuration: '{durations.fast}',
+      animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      animationName: 'modal-content-show',
+    },
+  },
+  modalContentHide: {
+    value: {
+      animationDuration: '{durations.fast}',
+      animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      animationName: 'modal-content-hide',
+    },
+  },
 })

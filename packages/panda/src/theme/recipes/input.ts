@@ -20,7 +20,7 @@ export const input = defineSlotRecipe({
         appearance: 'textfield',
       },
       // Base styles
-      border: '1px solid {colors.border}',
+      border: '.8px solid {colors.border}',
       _inputHover: {
         borderColor: '{colors.primary.hover}',
       },

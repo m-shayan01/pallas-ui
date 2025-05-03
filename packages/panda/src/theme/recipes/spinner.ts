@@ -42,6 +42,9 @@ export const spinner = defineRecipe({
       default: {
         borderColor: '{colors.fill}',
       },
+      solid: {
+        borderColor: '{colors.bgSolid.text}',
+      },
     },
   },
   defaultVariants: {
