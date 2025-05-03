@@ -24,10 +24,10 @@ export const GroupLabel = withContext<
 >(GroupLabelPrimitive, 'groupLabel')
 
 type ActionButtonProps = Assign<SidebarGroupActionProps, ButtonProps>
-const GroupActionStyled = withContext<
-  React.ComponentRef<typeof GroupActionPrimitive>,
-  ActionButtonProps
->(GroupActionPrimitive, 'groupAction')
+const GroupActionStyled = withContext<HTMLButtonElement, ActionButtonProps>(
+  GroupActionPrimitive,
+  'groupAction',
+)
 export const GroupAction = React.forwardRef<HTMLButtonElement, ActionButtonProps>((props, ref) => {
   const [buttonProps, { className, ...rest }] = button.splitVariantProps(props)
   return <GroupActionStyled ref={ref} className={cx(button(buttonProps), className)} {...rest} />
