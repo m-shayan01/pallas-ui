@@ -51,7 +51,7 @@ export default function AnimatedBrandName() {
     <span
       ref={scrambleRef}
       className={css({
-        fontSize: { base: '6xl', md: '7xl' },
+        fontSize: { base: '7xl', md: '8xl' },
       })}
       onMouseOver={() => scramble(originalText)}
       onMouseOut={() => unscramble(originalText)}
