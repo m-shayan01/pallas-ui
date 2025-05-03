@@ -16,6 +16,7 @@ export const button = defineRecipe({
     },
     borderRadius: '{radii.md}',
     height: '{sizes.controlHeight.md}',
+    boxShadow: '{shadows.minimal}',
   },
   variants: {
     variant: {
@@ -28,10 +29,13 @@ export const button = defineRecipe({
             bg: '{colors.primary.active}',
           },
         },
+        '& .spinner': {
+          borderColor: '{colors.bgSolid.text}',
+        },
       },
       outlined: {
         bg: 'transparent',
-        border: '1px solid {colors.bgSolid}',
+        border: '1px solid {colors.border}',
         color: '{colors.text}',
         _hover: {
           color: '{colors.primary}',
@@ -70,6 +74,7 @@ export const button = defineRecipe({
       text: {
         bg: 'transparent',
         color: '{colors.text}',
+        boxShadow: 'none',
         _hover: {
           bg: '{colors.fill.secondary}',
           color: '{colors.text.hover}',
@@ -78,6 +83,7 @@ export const button = defineRecipe({
       link: {
         bg: 'transparent',
         color: '{colors.primary}',
+        boxShadow: 'none',
         _hover: {
           color: '{colors.primary.hover}',
         },

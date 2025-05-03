@@ -7,9 +7,10 @@ export const accordion = defineSlotRecipe({
   base: {
     root: {
       width: 'full',
-      borderRadius: '{radii.md}',
+      borderRadius: '{radii.sm}',
       borderWidth: '1px',
       borderColor: '{colors.border}',
+      boxShadow: '{shadows.minimal}',
     },
     item: {
       borderColor: '{colors.border}',
@@ -19,10 +20,10 @@ export const accordion = defineSlotRecipe({
       },
       _first: {
         marginTop: '0',
-        roundedTop: { base: '{radii.md}', lg: '{radii.xl}' },
+        roundedTop: { base: '{radii.sm}', lg: '{radii.md}' },
       },
       _last: {
-        roundedBottom: { base: '{radii.md}', lg: '{radii.xl}' },
+        roundedBottom: { base: '{radii.sm}', lg: '{radii.md}' },
         _open: {
           borderBottomWidth: '1px',
         },

@@ -33,13 +33,19 @@ import { Input } from '@/components/ui/input'
 ```
 ```tsx
 // Basic text input
-<Input.Text placeholder="Email" />
+<Input>
+  <Input.Text placeholder="Email" />
+</Input>
 
 // Number input with controls
-<Input.Number min={0} max={100} />
+<Input>
+  <Input.Number min={0} max={100} />
+</Input>
 
 // Date picker input
-<Input.DayPicker placeholder="Select a date" />
+<Input>
+  <Input.DayPicker placeholder="Select a date" />
+</Input>
 
 // Input with prefix/postfix
 <Input>
