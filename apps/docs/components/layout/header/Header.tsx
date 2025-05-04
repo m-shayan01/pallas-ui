@@ -19,7 +19,7 @@ export function Header() {
             </div>
 
             <nav className={styles.nav}>
-              <Link href="/docs/introduction/introduction" className={styles.link}>
+              <Link href="/docs/introduction" className={styles.link}>
                 Documentation
               </Link>
               <Link href="/docs/components/accordion" className={styles.link}>

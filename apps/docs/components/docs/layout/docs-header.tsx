@@ -30,7 +30,14 @@ export function DocsHeader() {
       <HStack w="full" justify="space-between" align="center" gap={{ base: 2, md: 4 }}>
         <HStack gap={4} align="center">
           <Box w={{ base: '86px', md: '220px' }} h="32px">
-            <Box css={{ fontSize: { base: 'xl', md: '3xl' }, fontWeight: 'extrabold' }}>
+            <Box
+              css={{
+                fontSize: { base: 'xl', md: '3xl' },
+                fontWeight: 'extrabold',
+                lineHeight: '110%',
+                fontFamily: 'heading',
+              }}
+            >
               <AnimatedBrandName />
             </Box>
           </Box>
