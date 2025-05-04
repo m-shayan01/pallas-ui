@@ -66,6 +66,10 @@ export default function DocsLayout({
             pt="{sizes.header.height}"
             className={css({
               overflowX: 'auto',
+              borderRight: '1px solid',
+              borderColor: 'border.secondary',
+              boxSizing: 'border-box',
+              borderLeft: '1px solid',
             })}
           >
             {children}
@@ -73,22 +77,20 @@ export default function DocsLayout({
 
           {/* ToC */}
           <Box
-            w="{sizes.sidebar.width}"
+            w="calc({sizes.sidebar.width} - 2px)"
             h="{sizes.sidebar.height}"
             className={css({
               display: { base: 'none', lg: 'block' },
               position: 'sticky',
               top: '{sizes.header.height}',
               zIndex: 1,
+              borderLeft: '1px solid',
               fontSize: 'sm',
+              borderColor: 'border.secondary',
+              boxSizing: 'content-box',
             })}
           >
-            <Box
-              w="{sizes.sidebar.width}"
-              p="4"
-              bg="surface.container"
-              className={css({ borderLeft: '1px solid', borderColor: 'border.secondary' })}
-            >
+            <Box w="full" p="4" bg="surface.container">
               <ClientOnly>
                 <DynamicToc />
               </ClientOnly>
