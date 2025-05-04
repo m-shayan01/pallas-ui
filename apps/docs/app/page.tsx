@@ -15,6 +15,7 @@ export default function Home() {
         className={css({
           background: 'none',
           position: 'relative',
+          pt: '{sizes.header.height}',
           zIndex: 0,
           '&:before': {
             content: '""',

@@ -13,7 +13,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       {isHomepage ? (
         <Flex direction="column" minH="100vh">
           <Header />
-          <main className={css({ flex: 1, pt: '{sizes.header.height}' })}>{children}</main>
+          <main className={css({ flex: 1 })}>{children}</main>
           <footer
             className={css({
               bg: 'surface.elevated',
