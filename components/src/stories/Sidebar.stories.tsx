@@ -76,10 +76,10 @@ export const Default: Story = {
     collapsible: 'offcanvas',
   },
   render: (props) => {
-    const Main = props.variant === 'inset' ? Sidebar.Inset : 'main'
+    const Main = props['variant'] === 'inset' ? Sidebar.Inset : 'main'
     return (
       <Sidebar.Provider>
-        {props.side === 'right' && (
+        {props['side'] === 'right' && (
           <Main style={{ flex: 1 }}>
             <Sidebar.Trigger>
               <PanelLeft size={16} />
@@ -117,7 +117,7 @@ export const Default: Story = {
           <Sidebar.Rail />
         </Sidebar.Root>
 
-        {props.side === 'left' && (
+        {props['side'] === 'left' && (
           <Main>
             <Sidebar.Trigger>
               <PanelLeft size={16} />

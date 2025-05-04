@@ -3,7 +3,19 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const drawer = defineSlotRecipe({
   className: 'drawer',
   description: 'Styles for the Drawer component',
-  slots: ['root', 'trigger', 'portal', 'overlay', 'content', 'close', 'title', 'description', 'header', 'footer', 'body'],
+  slots: [
+    'root',
+    'trigger',
+    'portal',
+    'overlay',
+    'content',
+    'close',
+    'title',
+    'description',
+    'header',
+    'footer',
+    'body',
+  ],
   base: {
     root: {},
     overlay: {
@@ -14,7 +26,7 @@ export const drawer = defineSlotRecipe({
     },
     content: {
       position: 'fixed',
-      zIndex: '50',
+      zIndex: '150',
       w: '3/4',
       h: 'full',
       bg: 'surface.elevated',
@@ -54,6 +66,8 @@ export const drawer = defineSlotRecipe({
       position: 'relative',
     },
     body: {
+      display: 'flex',
+      flexDirection: 'column',
       flex: '1',
       p: '{spacing.padding.block.lg} {spacing.padding.inline.md}',
       overflowY: 'auto',
@@ -75,23 +89,13 @@ export const drawer = defineSlotRecipe({
       left: {
         content: {
           left: '0',
-          '&[data-state=open]': {
-            animationStyle: 'slideInLeft',
-          },
-          '&[data-state=closed]': {
-            animationStyle: 'slideOutLeft',
-          },
+          animationStyle: 'drawerSlideLeft',
         },
       },
       right: {
         content: {
           right: '0',
-          '&[data-state=open]': {
-            animationStyle: 'slideInRight',
-          },
-          '&[data-state=closed]': {
-            animationStyle: 'slideOutRight',
-          },
+          animationStyle: 'drawerSlideRight',
         },
       },
     },

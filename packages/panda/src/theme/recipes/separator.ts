@@ -4,6 +4,7 @@ export const separator = defineRecipe({
   className: 'separator',
   description: 'Styles for the Separator component',
   base: {
+    flexShrink: 0,
     borderColor: '{colors.border}',
   },
   variants: {
@@ -13,6 +14,7 @@ export const separator = defineRecipe({
       },
       vertical: {
         height: '{full}',
+        width: '1px',
         borderInlineEndWidth: '{sizes.0.5}',
       },
     },

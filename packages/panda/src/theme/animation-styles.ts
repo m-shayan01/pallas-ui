@@ -5,7 +5,7 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
   slideInRight: {
     value: {
       transformOrigin: 'center',
-      animationDuration: '{durations.fast}',
+      animationDuration: '{durations.slow}',
       animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       animationName: 'slide-in-right, fade-in',
     },
@@ -13,7 +13,7 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
   slideInLeft: {
     value: {
       transformOrigin: 'center',
-      animationDuration: '{durations.fast}',
+      animationDuration: '{durations.slow}',
       animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       animationName: 'slide-in-left, fade-in',
     },
@@ -21,7 +21,7 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
   slideOutRight: {
     value: {
       transformOrigin: 'center',
-      animationDuration: '{durations.fast}',
+      animationDuration: '{durations.slow}',
       animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       animationName: 'slide-out-right, fade-out',
     },
@@ -29,9 +29,36 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
   slideOutLeft: {
     value: {
       transformOrigin: 'center',
-      animationDuration: '{durations.fast}',
+      animationDuration: '{durations.slow}',
       animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       animationName: 'slide-out-left, fade-out',
+    },
+  },
+
+  drawerSlideRight: {
+    value: {
+      transformOrigin: 'center',
+      animationDuration: '{durations.slow}',
+      animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      '&[data-state=open]': {
+        animationName: 'slide-in-right, fade-in',
+      },
+      '&[data-state=closed]': {
+        animationName: 'slide-out-right, fade-out',
+      },
+    },
+  },
+  drawerSlideLeft: {
+    value: {
+      transformOrigin: 'center',
+      animationDuration: '{durations.slow}',
+      animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+      '&[data-state=open]': {
+        animationName: 'slide-in-left, fade-in',
+      },
+      '&[data-state=closed]': {
+        animationName: 'slide-out-left, fade-out',
+      },
     },
   },
 

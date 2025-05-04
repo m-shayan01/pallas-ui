@@ -1,14 +1,10 @@
-import { Divider, type DividerProps, styled } from '@styled-system/jsx'
+import { styled } from '@styled-system/jsx'
 import { type SeparatorVariantProps, separator } from '@styled-system/recipes'
 
-export type SeparatorProps = SeparatorVariantProps & DividerProps
+export type SeparatorProps = SeparatorVariantProps & React.HTMLAttributes<HTMLDivElement>
 
-const Component = styled(Divider, separator)
+const Component = styled('div', separator)
 
 export const Separator = (props: SeparatorProps) => {
-  return (
-    <div>
-      <Component {...props} />
-    </div>
-  )
+  return <Component {...props} />
 }

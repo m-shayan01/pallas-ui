@@ -95,13 +95,30 @@ export default defineConfig({
             },
           },
         },
+        sizes: {
+          header: {
+            height: {
+              value: {
+                base: '72px',
+              },
+            },
+          },
+          sidebar: {
+            width: {
+              value: {
+                base: '200px',
+                md: '230px',
+              },
+            },
+            height: {
+              value: {
+                base: 'calc(100vh - 72px)',
+              },
+            },
+          },
+        },
       },
       recipes: {
-        // button: {
-        //   base: {
-        //     fontFamily: 'heading', // This will use the Noto Sans JP font
-        //   },
-        // },
         prose: {
           className: 'docs-prose',
           base: {
