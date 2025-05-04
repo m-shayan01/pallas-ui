@@ -1,13 +1,8 @@
 import { DocsBreadcrumb } from '@/components/docs/doc-breadcrumb'
-import { DocsHeader } from '@/components/docs/layout/docs-header'
-import { DocsSidebar } from '@/components/docs/layout/docs-sidebar'
-import { Footer } from '@/components/layout/footer'
-import Sidebar from '@/components/ui/sidebar'
 import { css } from '@styled-system/css'
-import { Box, Grid, GridItem } from '@styled-system/jsx'
 import { allComponents, allGuides, allLayouts, allThemings } from 'content-collections'
+import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { DynamicToc } from '../../../components/docs/dynamic-toc'
 import { MdxComponent } from '../../../components/docs/mdx-components'
 
 type PageItem = {
@@ -62,15 +57,16 @@ const pageTypes = [
 
 export function generateStaticParams() {
   return pageTypes.flatMap((type) =>
-    type.source.map((item) => ({
+    type.source.map((item: PageItem) => ({
       slug: type.getSlug(item),
     })),
   )
 }
 
-export async function generateMetadata({ params }: { params?: { slug?: string[] } }) {
-  const resolvedParams = await (params instanceof Promise ? params : Promise.resolve(params))
-  const slug = resolvedParams.slug || []
+type ParamsPromise = Promise<{ slug?: string[] }>
+
+export async function generateMetadata({ params }: { params: ParamsPromise }): Promise<Metadata> {
+  const { slug = [] } = await params
 
   if (slug.length === 0) {
     return {
@@ -125,10 +121,8 @@ function ContentPage({
   )
 }
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-export default async function DocsPage({ params }: any) {
-  const resolvedParams = await (params instanceof Promise ? params : Promise.resolve(params))
-  const slug = resolvedParams.slug || []
+export default async function DocsPage({ params }: { params: ParamsPromise }) {
+  const { slug = [] } = await params
 
   if (slug.length === 0) {
     return (

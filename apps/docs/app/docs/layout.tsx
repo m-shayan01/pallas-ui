@@ -9,7 +9,7 @@ import { DynamicToc } from '../../components/docs/dynamic-toc'
 import { DocsHeader } from '../../components/docs/layout/docs-header'
 import { DocsSidebar } from '../../components/docs/layout/docs-sidebar'
 
-export function ClientOnly({ children }: { children: React.ReactNode }) {
+function ClientOnly({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
   if (!mounted) return null
