@@ -106,7 +106,8 @@ export default defineConfig({
           sidebar: {
             width: {
               value: {
-                base: '220px',
+                base: '200px',
+                md: '230px',
               },
             },
             height: {
@@ -118,11 +119,6 @@ export default defineConfig({
         },
       },
       recipes: {
-        // button: {
-        //   base: {
-        //     fontFamily: 'heading', // This will use the Noto Sans JP font
-        //   },
-        // },
         prose: {
           className: 'docs-prose',
           base: {

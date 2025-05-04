@@ -66,7 +66,7 @@ export function DocsBreadcrumb({ breadcrumb }: { breadcrumb: { section: string; 
             <Breadcrumb.Link
               aria-current="page"
               className={css({
-                color: 'text.primary',
+                color: 'text',
                 fontWeight: 'medium',
                 fontSize: 'md',
               })}

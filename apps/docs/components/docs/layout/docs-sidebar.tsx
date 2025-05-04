@@ -74,6 +74,7 @@ export function DocsSidebar({ onNavigate }: SidebarProps = {}) {
         height: 'sidebar.height',
         bg: 'surface.container',
         flex: '0 0 {sizes.sidebar.width}',
+        w: 'sidebar.width',
       })}
     >
       <Sidebar.Content>

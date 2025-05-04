@@ -56,7 +56,13 @@ export const Root = React.forwardRef<
             <Drawer.Title>Sidebar</Drawer.Title>
             <Drawer.Description>Displays the mobile sidebar.</Drawer.Description>
           </Drawer.Header>
-          <Drawer.Body>{children}</Drawer.Body>
+          <Drawer.Body
+            css={{
+              px: 0,
+            }}
+          >
+            {children}
+          </Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>
     )

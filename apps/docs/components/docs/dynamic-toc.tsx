@@ -58,11 +58,25 @@ export function DynamicToc() {
       setToc(result)
     }
 
-    // Build TOC initially and when the page changes
-    setTimeout(buildToc, 300) // Small delay to ensure MDX content is rendered
+    // Initial build (in case content is already present)
+    setTimeout(buildToc, 300)
+
+    // Observe DOM changes in the content area
+    const contentArea = document.querySelector('[data-mdx-content="true"]')
+    let observer: MutationObserver | null = null
+
+    if (contentArea) {
+      observer = new MutationObserver(() => {
+        buildToc()
+      })
+      observer.observe(contentArea, { childList: true, subtree: true })
+    }
+
+    // Also listen for window load
+    window.addEventListener('load', buildToc)
 
     // Set up Intersection Observer for active heading tracking
-    const observer = new IntersectionObserver(
+    const intersectionObserver = new IntersectionObserver(
       (entries) => {
         const visibleHeadings = entries
           .filter((entry) => entry.isIntersecting)
@@ -78,9 +92,15 @@ export function DynamicToc() {
 
     // Observe all headings with IDs
     const headings = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]')
-    headings.forEach((heading) => observer.observe(heading))
+    headings.forEach((heading) => {
+      intersectionObserver.observe(heading)
+    })
 
-    return () => observer.disconnect()
+    return () => {
+      if (observer) observer.disconnect()
+      window.removeEventListener('load', buildToc)
+      intersectionObserver.disconnect()
+    }
   }, [])
 
   // Handle scroll to section
