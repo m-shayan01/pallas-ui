@@ -16,9 +16,10 @@ export const header = sva({
     container: {
       paddingInline: { base: '1', md: '6' },
       paddingBlock: '4',
-      position: 'sticky',
+      position: 'fixed',
       top: 0,
       zIndex: 10,
+      width: '100%',
     },
     header: {
       bg: '#f3f4f6bd', // equivalent to surface.layout

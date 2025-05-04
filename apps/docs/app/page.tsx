@@ -1,4 +1,4 @@
-import AnimatedBrandName from '@/components/home/animated-brandname'
+import { StaggeredItem } from '@/components/common/StaggeredItem'
 import AnimatedWordCycle from '@/components/home/animated-word-cycle'
 //import { ComponentShowcase } from '../components/home/showcase'
 import { Feature } from '@/components/home/feature'
@@ -15,6 +15,7 @@ export default function Home() {
         className={css({
           background: 'none',
           position: 'relative',
+          pt: '{sizes.header.height}',
           zIndex: 0,
           '&:before': {
             content: '""',
@@ -45,72 +46,75 @@ radial-gradient(at 70% 72%, hsla(67,69%,75%,1) 0px, transparent 50%), url(/noise
           px="layout.internal.md"
         >
           <VStack mb="layout.section.lg" css={{ textAlign: 'center' }}>
-            <h1
-              className={css({
-                fontSize: { base: '3xl', md: '4xl' },
-                px: { base: 12, md: 0 },
-                fontWeight: 'extrabold',
-                mb: 'gap.component.md',
-                lineHeight: '1.5',
-                color: 'transparent',
-                background: 'linear-gradient(180deg,#ffffff4a,#fff0 41.43%),#272727',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                letterSpacing: '-0.05em',
-              })}
-            >
-              <span
+            <StaggeredItem delay={0}>
+              <h1
                 className={css({
-                  fontSize: { base: '6xl', md: '8xl' },
+                  fontSize: { base: '3xl', md: '4xl' },
                   px: { base: 12, md: 0 },
                   fontWeight: 'extrabold',
                   mb: 'gap.component.md',
                   lineHeight: '1.5',
-                  background: 'linear-gradient(180deg,#ffffff4a,#fff0 60.43%),#272727',
+                  color: 'transparent',
+                  background: 'linear-gradient(180deg,#ffffff4a,#fff0 41.43%),#272727',
                   backgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  letterSpacing: '-0.05em',
                 })}
               >
-                Pallas UI
-              </span>
-              <br /> <AnimatedWordCycle /> React Component Library
-            </h1>
-
-            <p
-              className={css({
-                fontSize: { base: 'lg', md: 'xl' },
-                maxWidth: '2xl',
-                marginX: 'auto',
-                color: 'text.secondary',
-              })}
-            >
-              Beautiful, accessible components built with React and Panda CSS
-            </p>
-
-            <HStack gap="gap.inline.md" justify="center" mt="layout.internal.lg">
-              <Link href="/docs/introduction/introduction">
-                <Button variant="primary" size="lg">
-                  Get Started
-                </Button>
-              </Link>
-
-              <Link href="/docs/components/accordion">
-                <Button
-                  variant="outlined"
-                  size="lg"
+                <span
                   className={css({
-                    borderColor: 'border',
-                    color: 'text.secondary',
-                    bg: 'surface.elevated',
-                    _hover: {
-                      color: 'text',
-                    },
+                    fontSize: { base: '4xl', md: '8xl' },
+                    px: { base: 10, md: 0 },
+                    fontWeight: 'extrabold',
+                    mb: 'gap.component.md',
+                    lineHeight: '1.5',
+                    background: 'linear-gradient(180deg,#ffffff4a,#fff0 60.43%),#272727',
+                    backgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
                   })}
                 >
-                  Components
-                </Button>
-              </Link>
-            </HStack>
+                  Pallas UI
+                </span>
+                <br /> <AnimatedWordCycle /> React Component Library
+              </h1>
+            </StaggeredItem>
+            <StaggeredItem delay={100}>
+              <p
+                className={css({
+                  fontSize: { base: 'lg', md: 'xl' },
+                  maxWidth: '2xl',
+                  marginX: 'auto',
+                  color: 'text.secondary',
+                })}
+              >
+                Beautiful, accessible components built with React and Panda CSS
+              </p>
+            </StaggeredItem>
+            <StaggeredItem delay={200}>
+              <HStack gap="gap.inline.md" justify="center" mt="layout.internal.lg">
+                <Link href="/docs/introduction/introduction">
+                  <Button variant="primary" size="lg">
+                    Get Started
+                  </Button>
+                </Link>
+                <Link href="/docs/components/accordion">
+                  <Button
+                    variant="outlined"
+                    size="lg"
+                    className={css({
+                      borderColor: 'border',
+                      color: 'text.secondary',
+                      bg: 'surface.elevated',
+                      _hover: {
+                        color: 'text',
+                      },
+                    })}
+                  >
+                    Components
+                  </Button>
+                </Link>
+              </HStack>
+            </StaggeredItem>
           </VStack>
 
           <Grid
@@ -119,22 +123,33 @@ radial-gradient(at 70% 72%, hsla(67,69%,75%,1) 0px, transparent 50%), url(/noise
               gap: 'gap.component.md',
             })}
           >
-            <Feature
-              title="Accessible"
-              description="All components follow WAI-ARIA guidelines and have proper keyboard navigation support."
-            />
-            <Feature
-              title="Themeable"
-              description="Easily customize the look and feel of your components with a powerful theming system."
-            />
-            <Feature
-              title="Developer Experience"
-              description="Built with TypeScript for a great developer experience with full type safety."
-            />
+            {[
+              {
+                title: 'Accessible',
+                description:
+                  'All components follow WAI-ARIA guidelines and have proper keyboard navigation support.',
+              },
+              {
+                title: 'Themeable',
+                description:
+                  'Easily customize the look and feel of your components with a powerful theming system.',
+              },
+              {
+                title: 'Developer Experience',
+                description:
+                  'Built with TypeScript for a great developer experience with full type safety.',
+              },
+            ].map((feature, i) => (
+              <StaggeredItem key={feature.title} delay={300 + i * 100}>
+                <Feature {...feature} />
+              </StaggeredItem>
+            ))}
           </Grid>
         </Box>
       </Box>
-      <ComponentShowcase />
+      <StaggeredItem delay={700}>
+        <ComponentShowcase />
+      </StaggeredItem>
     </Box>
   )
 }

@@ -14,6 +14,7 @@ export function Feature({ title, description }: FeatureProps) {
         border: '1px solid',
         borderColor: 'border',
         bg: 'surface.container', // Using container surface color
+        height: '100%',
       })}
     >
       <h3
