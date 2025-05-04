@@ -3,12 +3,10 @@
 @supports (color: var(--panda)) {
   @import "../styled-system/styles.css";
 }
-
 :root {
   --font-sans: var(--font-inter);
   --font-heading: var(--font-noto-sans-jp);
 }
-
 html {
   scroll-behavior: smooth;
 }

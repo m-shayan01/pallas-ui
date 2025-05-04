@@ -22,6 +22,8 @@ export const conditions = {
     bottom: '&[data-side=bottom]',
     left: '&[data-side=left]',
     right: '&[data-side=right]',
+    active: '&:is(:active, [data-active])',
+    activeTrue: '&:is([data-active=true])',
 
     // Base input states
     inputHover: '&:has(input:hover:not(:disabled))',

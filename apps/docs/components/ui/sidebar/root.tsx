@@ -6,7 +6,9 @@ import {
   RootInner,
   RootNonCollapsible,
 } from '@pallas-ui/sidebar'
+import { css } from '@styled-system/css'
 import React from 'react'
+import Drawer from '../drawer'
 import { withContext } from './provider'
 
 export type SidebarRootProps = React.ComponentPropsWithoutRef<'div'> & {
@@ -46,6 +48,19 @@ export const Root = React.forwardRef<
 >(({ side = 'left', variant = 'sidebar', collapsible = 'offcanvas', children, ...props }, ref) => {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 
+  if (isMobile) {
+    return (
+      <Drawer.Root open={openMobile} onOpenChange={setOpenMobile} {...props} side={side}>
+        <Drawer.Content data-sidebar="sidebar" data-mobile="true">
+          <Drawer.Header className={css({ srOnly: true })}>
+            <Drawer.Title>Sidebar</Drawer.Title>
+            <Drawer.Description>Displays the mobile sidebar.</Drawer.Description>
+          </Drawer.Header>
+          <Drawer.Body>{children}</Drawer.Body>
+        </Drawer.Content>
+      </Drawer.Root>
+    )
+  }
   if (collapsible === 'none') {
     return (
       <RootNonCollapsibleStyled ref={ref} {...props}>
@@ -53,30 +68,6 @@ export const Root = React.forwardRef<
       </RootNonCollapsibleStyled>
     )
   }
-
-  // if (isMobile) {
-  //   return (
-  //     <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
-  //       <SheetContent
-  //         data-sidebar="sidebar"
-  //         data-mobile="true"
-  //         className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-  //         style={
-  //           {
-  //             '--sidebar-width': SIDEBAR_WIDTH_MOBILE,
-  //           } as React.CSSProperties
-  //         }
-  //         side={side}
-  //       >
-  //         <SheetHeader className="sr-only">
-  //           <SheetTitle>Sidebar</SheetTitle>
-  //           <SheetDescription>Displays the mobile sidebar.</SheetDescription>
-  //         </SheetHeader>
-  //         <div className="flex h-full w-full flex-col">{children}</div>
-  //       </SheetContent>
-  //     </Sheet>
-  //   )
-  // }
 
   return (
     <RootCollapsibleStyled

@@ -48,14 +48,6 @@ export const Root = React.forwardRef<
 >(({ side = 'left', variant = 'sidebar', collapsible = 'offcanvas', children, ...props }, ref) => {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
 
-  if (collapsible === 'none') {
-    return (
-      <RootNonCollapsibleStyled ref={ref} {...props}>
-        {children}
-      </RootNonCollapsibleStyled>
-    )
-  }
-
   if (isMobile) {
     return (
       <Drawer.Root open={openMobile} onOpenChange={setOpenMobile} {...props} side={side}>
@@ -67,6 +59,13 @@ export const Root = React.forwardRef<
           <Drawer.Body>{children}</Drawer.Body>
         </Drawer.Content>
       </Drawer.Root>
+    )
+  }
+  if (collapsible === 'none') {
+    return (
+      <RootNonCollapsibleStyled ref={ref} {...props}>
+        {children}
+      </RootNonCollapsibleStyled>
     )
   }
 

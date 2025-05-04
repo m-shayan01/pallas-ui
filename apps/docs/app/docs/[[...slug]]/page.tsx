@@ -1,7 +1,11 @@
-import { Item, Link, List, Root, Separator } from '@pallas-ui/breadcrumb'
+import { DocsBreadcrumb } from '@/components/docs/doc-breadcrumb'
+import { DocsHeader } from '@/components/docs/layout/docs-header'
+import { DocsSidebar } from '@/components/docs/layout/docs-sidebar'
+import { Footer } from '@/components/layout/footer'
+import Sidebar from '@/components/ui/sidebar'
 import { css } from '@styled-system/css'
+import { GridItem } from '@styled-system/jsx'
 import { allComponents, allGuides, allLayouts, allThemings } from 'content-collections'
-import { ChevronRight } from 'lucide-react'
 import { notFound } from 'next/navigation'
 import { DynamicToc } from '../../../components/docs/dynamic-toc'
 import { MdxComponent } from '../../../components/docs/mdx-components'
@@ -95,129 +99,66 @@ function ContentPage({
   showHeader = true,
 }: ContentPageProps) {
   //helper function to get the correct starter link for each section as docs/components type links do not exist
-  const getBreadcrumbLink = (section: string) => {
-    const sectionLower = section.toLowerCase()
-    if (sectionLower === 'components') {
-      // Link to the first component
-      return '/docs/components/accordion'
-    }
-    if (sectionLower === 'layout') {
-      // Link to the first layout page
-      return '/docs/layout/index'
-    }
-    if (sectionLower === 'theming') {
-      // Link to the first theming page
-      const firstTheme = allThemings[0]
-      return '/docs/theming/index'
-    }
-    if (sectionLower === 'introduction') {
-      // Link to the first guide
-      const firstGuide = allGuides[0]
-      return '/docs/introduction'
-    }
-    // Default fallback
-    return '/docs'
-  }
 
   return (
-    <main
-      className={css({
-        display: 'grid',
-        gridTemplateColumns: {
-          base: '1fr',
-          xl: '1fr 250px',
-        },
-        p: { base: '4', md: '6' },
-        maxWidth: '100%',
-      })}
-    >
-      <div
+    <>
+      {showHeader && <DocsHeader />}
+      <DocsSidebar />
+      <main
         className={css({
-          width: '100%',
-          overflowX: 'hidden',
+          display: 'flex',
+          flexGrow: 1,
+          maxWidth: '100%',
+          height: '100vh',
+          overflowX: 'auto',
+          px: 'layout.section.sm',
+          pt: '{sizes.header.height}',
+          pb: 'layout.section.sm',
         })}
       >
-        {showHeader && breadcrumb && (
-          <header>
-            <Root>
-              <List
-                className={css({
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexWrap: 'nowrap',
-                  gap: '2',
-                })}
-              >
-                <Item>
-                  <Link
-                    href={getBreadcrumbLink(breadcrumb.section)}
-                    className={css({
-                      color: 'text.secondary',
-                      _hover: { color: 'primary' },
-                      transition: 'color 0.2s ease',
-                      fontSize: 'sm',
-                    })}
-                  >
-                    {breadcrumb.section}
-                  </Link>
-                </Item>
-                <Separator>
-                  <ChevronRight size={18} className={css({ color: 'text.secondary' })} />
-                </Separator>
-                <Item>
-                  <span
-                    className={css({
-                      color: 'text.primary',
-                      fontWeight: 'medium',
-                      fontSize: 'sm',
-                    })}
-                  >
-                    {breadcrumb.title}
-                  </span>
-                </Item>
-              </List>
-            </Root>
-
-            {/* Commented out title and description as in your original code */}
-          </header>
-        )}
-
         <div
           className={css({
             width: '100%',
             overflowX: 'hidden',
+            pl: { base: '6', md: '6' },
           })}
         >
-          <MdxComponent code={mdxCode} />
+          <div
+            className={css({
+              width: '100%',
+              overflowX: 'hidden',
+            })}
+          >
+            {breadcrumb && <DocsBreadcrumb breadcrumb={breadcrumb} />}
+            <MdxComponent code={mdxCode} />
+          </div>
         </div>
-      </div>
 
-      <div
-        className={css({
-          display: 'none',
-          position: 'relative',
-          fontSize: 'sm',
-          xl: {
-            display: 'block',
-          },
-        })}
-      >
         <div
           className={css({
+            display: 'none',
+            fontSize: 'sm',
+            lg: {
+              display: 'block',
+            },
             position: 'sticky',
-            top: '72px',
-            height: 'calc(100vh - 72px)',
-            p: '4',
-            borderLeft: '1px solid',
-            borderColor: 'border.secondary',
-            bg: 'surface.container',
-            overflowY: 'auto',
+            top: '0',
           })}
         >
-          <DynamicToc />
+          <div
+            className={css({
+              width: '280px',
+              p: '4',
+              borderLeft: '1px solid',
+              borderColor: 'border.secondary',
+              bg: 'surface.container',
+            })}
+          >
+            <DynamicToc />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   )
 }
 

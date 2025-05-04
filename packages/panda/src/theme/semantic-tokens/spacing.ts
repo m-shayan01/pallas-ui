@@ -33,6 +33,7 @@ export const spacing = defineSemanticTokens.spacing({
   },
   padding: {
     block: {
+      xs: { value: '{spacing.0.5}' },
       sm: { value: '{spacing.1}' },
       md: { value: '{spacing.2}' },
       lg: { value: '{spacing.3}' },
