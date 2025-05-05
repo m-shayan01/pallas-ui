@@ -79,7 +79,7 @@ export function DocsSidebar({ onNavigate }: SidebarProps = {}) {
     >
       <Sidebar.Content>
         <Sidebar.Group>
-          <Sidebar.GroupLabel>Core</Sidebar.GroupLabel>
+          <Sidebar.GroupLabel>Core Concepts</Sidebar.GroupLabel>
           <SidebarContentGroup
             icon={<Image src={IntroductionLogo} alt="Pallas UI" width={16} height={16} />}
             value="guides"

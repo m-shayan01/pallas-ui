@@ -37,7 +37,7 @@ export default function DocsLayout({
           className={css({
             flex: 1,
             display: 'grid',
-            lg: { gridTemplateColumns: '{sizes.sidebar.width} 1fr {sizes.sidebar.width}' },
+            lg: { gridTemplateColumns: '{sizes.sidebar.width} 1fr {sizes.toc.width}' },
             position: 'relative',
           })}
         >
@@ -60,9 +60,9 @@ export default function DocsLayout({
           <Box
             w="100%"
             px="layout.section.sm"
-            pb="layout.section.sm"
+            pb="layout.internal.sm"
             minW={0}
-            pl={{ base: '6', md: '6' }}
+            pl={{ base: '6', md: '10' }}
             pt="{sizes.header.height}"
             className={css({
               overflowX: 'auto',
@@ -77,7 +77,7 @@ export default function DocsLayout({
 
           {/* ToC */}
           <Box
-            w="calc({sizes.sidebar.width} - 2px)"
+            w="calc({sizes.toc.width} - 2px)"
             h="{sizes.sidebar.height}"
             className={css({
               display: { base: 'none', lg: 'block' },

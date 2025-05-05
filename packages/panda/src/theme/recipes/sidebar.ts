@@ -292,7 +292,8 @@ export const sidebar = defineSlotRecipe({
       flexDirection: 'column',
       width: 'full',
       minWidth: '0',
-      px: 2,
+      pl: 4,
+      pr: 2,
     },
     groupLabel: {
       // cx(
@@ -376,6 +377,9 @@ export const sidebar = defineSlotRecipe({
         w: '8!',
         h: '8!',
       },
+      '&:has(svg,img)': {
+        gap: '0.5',
+      },
       transition: 'width 200ms linear, height 200ms linear, padding 200ms linear',
 
       '& > span:last-of-type': {
@@ -384,6 +388,14 @@ export const sidebar = defineSlotRecipe({
       '& > svg': {
         size: '1rem',
         flexShrink: 0,
+        left: '-4px',
+        position: 'relative',
+      },
+      '& > img': {
+        size: '1rem',
+        flexShrink: 0,
+        left: '-4px',
+        position: 'relative',
       },
       _activeTrue: {
         backgroundColor: '{colors.primary.bg}!',

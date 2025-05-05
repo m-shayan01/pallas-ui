@@ -38,7 +38,9 @@ export function DocsHeader() {
                 fontFamily: 'heading',
               }}
             >
-              <AnimatedBrandName />
+              <Link href="/">
+                <AnimatedBrandName />
+              </Link>
             </Box>
           </Box>
         </HStack>
@@ -47,23 +49,25 @@ export function DocsHeader() {
             <SearchDialog />
           </Box>
         </HStack>
-        <HStack gap={{ base: 1, md: 4 }} align="center">
-          <Link
-            href="/docs/introduction/introduction"
-            aria-label="Docs"
-            style={{ display: 'flex', alignItems: 'center', gap: 4 }}
-          >
-            <LayoutGrid size={18} style={{ marginRight: 4 }} />
-            <span className={css({ display: { base: 'none', md: 'inline' } })}>Docs</span>
-          </Link>
-          <Link
-            href="/docs/components/accordion"
-            aria-label="Components"
-            style={{ display: 'flex', alignItems: 'center', gap: 4 }}
-          >
-            <Package size={18} style={{ marginRight: 4 }} />
-            <span className={css({ display: { base: 'none', md: 'inline' } })}>Components</span>
-          </Link>
+        <HStack gap={{ base: 1, md: 6 }} align="center">
+          <HStack gap={{ base: 1, md: 4 }} align="center">
+            <Link
+              href="/docs/introduction/introduction"
+              aria-label="Docs"
+              style={{ display: 'flex', alignItems: 'center', gap: 4 }}
+            >
+              <LayoutGrid size={18} style={{ marginRight: 4 }} />
+              <span className={css({ display: { base: 'none', md: 'inline' } })}>Docs</span>
+            </Link>
+            <Link
+              href="/docs/components/accordion"
+              aria-label="Components"
+              style={{ display: 'flex', alignItems: 'center', gap: 4 }}
+            >
+              <Package size={18} style={{ marginRight: 4 }} />
+              <span className={css({ display: { base: 'none', md: 'inline' } })}>Components</span>
+            </Link>
+          </HStack>
           <Link
             href="https://github.com/PallasUI/pallas-ui"
             target="_blank"
