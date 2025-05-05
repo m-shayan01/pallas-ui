@@ -82,7 +82,7 @@ export default function AnimatedWordCycle() {
       ref={elRef}
       className={css({
         display: 'inline-block',
-        minWidth: 135,
+        minWidth: { base: 100, md: 135 },
         textAlign: 'left',
         '& .cycle-char': {
           background: 'linear-gradient(180deg,#ffffff1a,#fff0 41.43%),#272727',
