@@ -2,6 +2,7 @@
 
 import { css } from '@styled-system/css'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 type TocItem = {
@@ -14,8 +15,10 @@ type TocItem = {
 export function DynamicToc() {
   const [toc, setToc] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
+  const pathname = usePathname()
 
   // Generate TOC from the actual rendered DOM
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     // Function to build TOC from DOM
     function buildToc() {
@@ -101,7 +104,7 @@ export function DynamicToc() {
       window.removeEventListener('load', buildToc)
       intersectionObserver.disconnect()
     }
-  }, [])
+  }, [pathname])
 
   // Handle scroll to section
   const scrollToSection = (id: string) => (e: React.MouseEvent) => {

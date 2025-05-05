@@ -29,12 +29,12 @@ export function DocsHeader() {
     >
       <HStack w="full" justify="space-between" align="center" gap={{ base: 2, md: 4 }}>
         <HStack gap={4} align="center">
-          <Box w={{ base: '86px', md: '220px' }} h="32px">
+          <Box w={{ base: '86px', md: '220px' }}>
             <Box
               css={{
                 fontSize: { base: 'xl', md: '3xl' },
                 fontWeight: 'extrabold',
-                lineHeight: '110%',
+                lineHeight: '1',
                 fontFamily: 'heading',
               }}
             >
@@ -49,12 +49,17 @@ export function DocsHeader() {
             <SearchDialog />
           </Box>
         </HStack>
-        <HStack gap={{ base: 1, md: 6 }} align="center">
-          <HStack gap={{ base: 1, md: 4 }} align="center">
+        <HStack gap={{ base: 1, md: 8 }} align="center">
+          <HStack gap={{ base: 1, md: 6 }} align="center">
             <Link
               href="/docs/introduction/introduction"
               aria-label="Docs"
-              style={{ display: 'flex', alignItems: 'center', gap: 4 }}
+              className={css({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                _hover: { color: 'primary.hover' },
+              })}
             >
               <LayoutGrid size={18} style={{ marginRight: 4 }} />
               <span className={css({ display: { base: 'none', md: 'inline' } })}>Docs</span>
@@ -62,7 +67,12 @@ export function DocsHeader() {
             <Link
               href="/docs/components/accordion"
               aria-label="Components"
-              style={{ display: 'flex', alignItems: 'center', gap: 4 }}
+              className={css({
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1,
+                _hover: { color: 'primary.hover' },
+              })}
             >
               <Package size={18} style={{ marginRight: 4 }} />
               <span className={css({ display: { base: 'none', md: 'inline' } })}>Components</span>

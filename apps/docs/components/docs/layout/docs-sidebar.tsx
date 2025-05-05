@@ -5,7 +5,7 @@ import IntroductionLogo from '@/public/introduction.svg'
 import { css } from '@styled-system/css'
 import { HStack } from '@styled-system/jsx'
 import { allComponents, allGuides, allLayouts, allThemings } from 'content-collections'
-import { Compass, LayoutGrid, Package, Palette, PanelLeft } from 'lucide-react'
+import { Compass, LayoutGrid, LayoutTemplate, Package, Palette, PanelLeft } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -96,7 +96,7 @@ export function DocsSidebar({ onNavigate }: SidebarProps = {}) {
           />
 
           <SidebarContentGroup
-            icon={<LayoutGrid size={16} />}
+            icon={<LayoutTemplate size={16} />}
             value="layout"
             title="Layout"
             items={layouts}

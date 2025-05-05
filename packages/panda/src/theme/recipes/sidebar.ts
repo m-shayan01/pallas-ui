@@ -478,7 +478,8 @@ export const sidebar = defineSlotRecipe({
       borderColor: '{colors.border}',
       px: '{spacing.padding.inline.md}',
       py: '{spacing.padding.block.xs}',
-      mx: '{spacing.padding.inline.md}',
+      ml: '{spacing.padding.inline.md}',
+      mr: '{spacing.padding.inline.xs}',
       transform: 'translateX(1px)',
       fontWeight: 'normal',
       '& .group:is([data-collapsible=icon]) &': {
