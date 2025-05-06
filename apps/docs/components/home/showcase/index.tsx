@@ -23,57 +23,39 @@ import { ToastSelectShowcase } from './toast-select-showcase'
 gsap.registerPlugin(useGSAP, ScrollSmoother)
 
 export const ComponentShowcase = () => {
-  const wrapperRef = useRef(null)
-  const contentRef = useRef(null)
-
-  const smoother = useRef<ScrollSmoother | null>(null)
-  useGSAP(() => {
-    if (!wrapperRef.current || !contentRef.current || !smoother.current) return
-    smoother.current = ScrollSmoother.create({
-      smooth: 1.2,
-      effects: true,
-    })
-    return () => {
-      smoother.current?.kill()
-    }
-  }, [])
-
   return (
     <ShowcaseContainer title="Component Showcase">
-      <div ref={wrapperRef} style={{ overflow: 'hidden' }}>
-        <div
-          ref={contentRef}
-          className={css({
-            display: 'flex',
-            flexDirection: { base: 'column', md: 'row' },
-            gap: 'layout.internal.lg',
-            bg: 'transparent',
-            mx: 'auto',
-            maxW: '1200px',
-          })}
-        >
-          {/* Column 1 */}
-          <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="0.8">
-            <FormShowcase />
-            <DatePickerShowcase />
-            <PopoverTooltipShowcase />
-            <ProgressShowcase />
-          </Flex>
-          {/* Column 2 */}
-          <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="1.2">
-            <ProfileScenarioShowcase />
-            <AccordionShowcase />
-            <BadgeSeparatorShowcase />
-            <ToastSelectShowcase />
-          </Flex>
-          {/* Column 3 */}
-          <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="1.6">
-            <MenubarShowcase />
-            <FormControlsShowcase />
-            <DayPickerShowcase />
-            <SliderTabsShowcase />
-          </Flex>
-        </div>
+      <div
+        className={css({
+          display: 'flex',
+          flexDirection: { base: 'column', md: 'row' },
+          gap: 'layout.internal.lg',
+          bg: 'transparent',
+          mx: 'auto',
+          maxW: '1200px',
+        })}
+      >
+        {/* Column 1 */}
+        <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="0.8">
+          <FormShowcase />
+          <DatePickerShowcase />
+          <PopoverTooltipShowcase />
+          <ProgressShowcase />
+        </Flex>
+        {/* Column 2 */}
+        <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="1.2">
+          <ProfileScenarioShowcase />
+          <AccordionShowcase />
+          <BadgeSeparatorShowcase />
+          <ToastSelectShowcase />
+        </Flex>
+        {/* Column 3 */}
+        <Flex direction="column" gap="layout.internal.lg" flex={1} data-speed="1.6">
+          <MenubarShowcase />
+          <FormControlsShowcase />
+          <DayPickerShowcase />
+          <SliderTabsShowcase />
+        </Flex>
       </div>
     </ShowcaseContainer>
   )

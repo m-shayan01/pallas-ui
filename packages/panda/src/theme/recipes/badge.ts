@@ -46,6 +46,21 @@ export const badge = defineRecipe({
         },
       },
     },
+    size: {
+      sm: {
+        px: '{spacing.padding.inline.sm}',
+        py: '{spacing.padding.block.xs}',
+      },
+      md: {
+        px: '{spacing.padding.inline.md}',
+        py: '{spacing.padding.block.sm}',
+      },
+      lg: {
+        textStyle: 'md',
+        px: '{spacing.padding.inline.lg}',
+        py: '{spacing.padding.block.md}',
+      },
+    },
   },
   defaultVariants: {
     variant: 'default',

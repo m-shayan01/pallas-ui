@@ -43,7 +43,7 @@ export const ProgressShowcase = () => {
   }
 
   return (
-    <ShowcaseCard paddingBlock="3" paddingTitle="0">
+    <ShowcaseCard paddingTitle="0">
       <div className={css({ display: 'flex', flexDirection: 'column', gap: '8', py: '4' })}>
         <div className={css({ spaceY: '4' })}>
           <Heading level={5}>File Upload</Heading>

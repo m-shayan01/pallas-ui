@@ -106,7 +106,6 @@ const vstack = createPattern({
   },
   defaultValues: {
     gap: '10px',
-    align: 'center',
   },
   transform(props) {
     const { justify, gap, align, ...rest } = props

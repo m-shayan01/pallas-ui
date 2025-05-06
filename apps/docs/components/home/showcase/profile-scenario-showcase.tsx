@@ -8,28 +8,15 @@ import Modal from '@/components/ui/modal/modal'
 import Heading from '@/components/ui/typography/heading'
 import Paragraph from '@/components/ui/typography/paragraph'
 import { css } from '@styled-system/css'
+import { Box, HStack, VStack } from '@styled-system/jsx'
 import React from 'react'
 import { ShowcaseCard } from './showcase-card'
 
 export const ProfileScenarioShowcase = () => {
   return (
     <ShowcaseCard paddingTitle="0">
-      <div
-        className={css({
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '6',
-        })}
-      >
-        <div
-          className={css({
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '3',
-          })}
-        >
+      <VStack gap="layout.section.md" align="center">
+        <VStack gap="gap.component.sm" align="center">
           <Avatar.Root>
             <Avatar.Image
               src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
@@ -37,35 +24,28 @@ export const ProfileScenarioShowcase = () => {
             />
             <Avatar.Fallback>JD</Avatar.Fallback>
           </Avatar.Root>
-          <div
-            className={css({
-              textAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            })}
-          >
+          <VStack align="center">
             <Heading level={3}>John Doe</Heading>
             <Paragraph size={'compact'}>john.doe@example.com</Paragraph>
-          </div>
-        </div>
+          </VStack>
+        </VStack>
 
-        <div className={css({ width: '100%', maxWidth: '320px' })}>
-          <div className={css({ mb: '4' })}>
+        <Box w="full" maxW="320px">
+          <Box mb="4">
             <Label htmlFor="name">Full Name</Label>
             <Input>
               <Input.Text id="name" placeholder="John Doe" />
             </Input>
-          </div>
+          </Box>
 
-          <div className={css({ mb: '4' })}>
+          <Box mb="4">
             <Label htmlFor="email">Email</Label>
             <Input>
               <Input.Text id="email" placeholder="john.doe@example.com" type="email" />
             </Input>
-          </div>
+          </Box>
 
-          <div className={css({ display: 'flex', justifyContent: 'space-between', gap: '3' })}>
+          <HStack justify="space-between" gap="gap.inline.sm">
             <Button variant="outlined">Cancel</Button>
 
             <Modal.Root>
@@ -87,9 +67,9 @@ export const ProfileScenarioShowcase = () => {
                 </Modal.Footer>
               </Modal.Content>
             </Modal.Root>
-          </div>
-        </div>
-      </div>
+          </HStack>
+        </Box>
+      </VStack>
     </ShowcaseCard>
   )
 }

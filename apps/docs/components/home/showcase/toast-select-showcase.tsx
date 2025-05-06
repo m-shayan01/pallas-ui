@@ -5,6 +5,7 @@ import { Label } from '@/components/ui/label'
 import Select from '@/components/ui/select'
 import Toast from '@/components/ui/toast'
 import { css } from '@styled-system/css'
+import { Box, VStack } from '@styled-system/jsx'
 import { Bell, Check } from 'lucide-react'
 import React, { useState } from 'react'
 import { ShowcaseCard } from './showcase-card'
@@ -23,8 +24,8 @@ export const ToastSelectShowcase = () => {
       title="Notification Preferences"
       description="Configure your notification settings and see real-time feedback"
     >
-      <div className={css({ display: 'flex', flexDirection: 'column', gap: '6', py: '2' })}>
-        <div>
+      <VStack gap="gap.component.lg" py="padding.block.md">
+        <Box>
           <Label
             htmlFor="notification-frequency"
             className={css({ display: 'block', mb: '2', fontWeight: 'medium' })}
@@ -43,7 +44,7 @@ export const ToastSelectShowcase = () => {
               <Select.Item value="never">Never</Select.Item>
             </Select.Content>
           </Select.Root>
-        </div>
+        </Box>
 
         <Button onClick={showToast} className={css({ mt: '2' })}>
           Save Preferences
@@ -54,17 +55,17 @@ export const ToastSelectShowcase = () => {
             <Toast.Icon>
               <Check className={css({ color: 'green.500' })} />
             </Toast.Icon>
-            <div>
+            <Box>
               <Toast.Title>Preferences Updated</Toast.Title>
               <Toast.Description>
                 Your notification frequency is now set to {frequency}.
               </Toast.Description>
-            </div>
+            </Box>
             <Toast.Close />
           </Toast.Root>
           <Toast.Viewport />
         </Toast.Provider>
-      </div>
+      </VStack>
     </ShowcaseCard>
   )
 }

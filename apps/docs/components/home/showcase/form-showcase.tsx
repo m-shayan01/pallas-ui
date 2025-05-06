@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { css } from '@styled-system/css'
+import { Box } from '@styled-system/jsx'
 import React from 'react'
 import { ShowcaseCard } from './showcase-card'
 
@@ -17,30 +18,30 @@ export const FormShowcase = () => {
         className={css({
           display: 'flex',
           flexDirection: 'column',
-          gap: '4',
+          gap: 'gap.component.md',
         })}
         onSubmit={(e) => e.preventDefault()}
       >
-        <div>
+        <Box>
           <Label>Full Name</Label>
           <Input>
             <Input.Text id="name" placeholder="Enter your name" />
           </Input>
-        </div>
+        </Box>
 
-        <div>
+        <Box>
           <Label>Email Address</Label>
           <Input>
             <Input.Text id="email" placeholder="you@example.com" type="email" />
           </Input>
-        </div>
+        </Box>
 
-        <div>
+        <Box>
           <Label>Message</Label>
           <Textarea placeholder="Your message here..." />
-        </div>
+        </Box>
 
-        <div
+        <Box
           className={css({
             display: 'flex',
             justifyContent: 'flex-end',
@@ -50,7 +51,7 @@ export const FormShowcase = () => {
         >
           <Button variant="outlined">Cancel</Button>
           <Button variant="primary">Submit</Button>
-        </div>
+        </Box>
       </form>
     </ShowcaseCard>
   )
