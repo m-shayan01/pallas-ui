@@ -18,10 +18,10 @@ const SpacedRow = (props: React.ComponentProps<typeof HStack>) => (
 export const BadgeSeparatorShowcase = () => {
   return (
     <ShowcaseCard paddingTitle="0">
-      <VStack gap="4" py="2" css={{ w: 'full' }}>
+      <VStack gap="gap.component.md" py="padding.block.xs" w="full" align="flex-start">
         <Box>
           <SpacedRow css={{ mb: '2' }}>
-            <Heading level={5}>Project Overview</Heading>
+            <Heading level={4}>Project Overview</Heading>
             <Badge variant="primary">Active</Badge>
           </SpacedRow>
           <Paragraph>
@@ -31,56 +31,76 @@ export const BadgeSeparatorShowcase = () => {
 
         <Separator />
 
-        <VStack gap="3" css={{ w: 'full' }}>
+        <VStack gap="gap.component.md" w="full" align="flex-start">
           <Heading level={5}>Team Members</Heading>
-          <VStack gap="3" css={{ w: 'full' }}>
+          <VStack gap="gap.inline.xs" w="full">
             <SpacedRow>
               <Paragraph>Alex Johnson</Paragraph>
-              <Badge variant="default">Lead</Badge>
+              <Badge variant="default" size="sm">
+                Lead
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>Maria Garcia</Paragraph>
-              <Badge variant="default">Developer</Badge>
+              <Badge variant="default" size="sm">
+                Developer
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>James Wilson</Paragraph>
-              <Badge variant="default">Designer</Badge>
+              <Badge variant="default" size="sm">
+                Designer
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>James Wilson</Paragraph>
-              <Badge variant="default">Designer</Badge>
+              <Badge variant="default" size="sm">
+                Designer
+              </Badge>
             </SpacedRow>
           </VStack>
         </VStack>
 
         <Separator />
 
-        <VStack gap="4" css={{ w: 'full' }}>
+        <VStack gap="gap.component.md" w="full" align="flex-start">
           <Heading level={5}>Milestones</Heading>
-          <VStack gap="3" w="full">
+          <VStack gap="gap.inline.xs" w="full">
             <SpacedRow>
               <Paragraph>Design System</Paragraph>
-              <Badge variant="primary">Completed</Badge>
+              <Badge variant="primary" size="sm">
+                Completed
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>Design System</Paragraph>
-              <Badge variant="primary">Completed</Badge>
+              <Badge variant="primary" size="sm">
+                Completed
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>Backend Integration</Paragraph>
-              <Badge variant="error">Blocked</Badge>
+              <Badge variant="error" size="sm">
+                Blocked
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>Backend Integration</Paragraph>
-              <Badge variant="error">Blocked</Badge>
+              <Badge variant="error" size="sm">
+                Blocked
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>Backend Integration</Paragraph>
-              <Badge variant="error">Blocked</Badge>
+              <Badge variant="error" size="sm">
+                Blocked
+              </Badge>
             </SpacedRow>
             <SpacedRow>
               <Paragraph>Testing</Paragraph>
-              <Badge variant="default">Not Started</Badge>
+              <Badge variant="default" size="sm">
+                Not Started
+              </Badge>
             </SpacedRow>
           </VStack>
         </VStack>

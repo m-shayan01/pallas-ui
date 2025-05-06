@@ -27,12 +27,12 @@ export const ShowcaseCard = ({
     <div
       className={cx(
         css({
-          borderRadius: 'md',
           overflow: 'hidden',
           bg: 'white',
           boxShadow: 'sm',
           border: '.5px solid',
           borderColor: 'border',
+          borderRadius: 'xl',
           transition: 'all 0.2s ease-in-out',
           height: 'fit-content',
           gridColumn: colSpan ? `span ${colSpan} / span ${colSpan}` : 'auto',
@@ -46,11 +46,12 @@ export const ShowcaseCard = ({
     >
       <div
         className={css({
-          p: paddingTitle ? paddingTitle : '6',
+          px: 'layout.section.md',
+          pt: paddingTitle ? paddingTitle : 'layout.section.md',
           borderBottom: '1px solid',
           borderColor: 'border',
           border: 'none',
-          spaceY: '4',
+          spaceY: 'gap.component.sm',
         })}
       >
         <Heading level={4}>{title}</Heading>
@@ -58,7 +59,7 @@ export const ShowcaseCard = ({
       </div>
       <div
         className={css({
-          p: paddingBlock ? paddingBlock : '6',
+          p: paddingBlock ? paddingBlock : 'layout.section.md',
         })}
       >
         {children}

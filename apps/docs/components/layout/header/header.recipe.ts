@@ -58,6 +58,7 @@ export const header = sva({
       transform: { md: 'translateX(-50%)' },
       zIndex: 1,
       maxWidth: { md: '400px' },
+      display: { base: 'none', md: 'block' },
     },
     nav: {
       display: 'flex',
@@ -67,6 +68,9 @@ export const header = sva({
       alignItems: 'center',
     },
     link: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'gap.inline.xs',
       color: 'text',
       fontSize: { base: 'sm', md: 'md' },
       fontWeight: 'medium',

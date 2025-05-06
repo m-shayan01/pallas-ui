@@ -43,7 +43,6 @@ export function DocsBreadcrumb({ breadcrumb }: { breadcrumb: { section: string; 
             display: 'flex',
             alignItems: 'center',
             flexWrap: 'nowrap',
-            gap: '2',
           })}
         >
           <Breadcrumb.Item>

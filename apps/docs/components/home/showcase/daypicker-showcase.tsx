@@ -2,6 +2,7 @@
 
 import { DayPicker } from '@/components/ui/daypicker'
 import { css } from '@styled-system/css'
+import { Box } from '@styled-system/jsx'
 import { addDays } from 'date-fns'
 import React from 'react'
 import { ShowcaseCard } from './showcase-card'
@@ -17,10 +18,8 @@ export const DayPickerShowcase = () => {
     <ShowcaseCard
       title="Date Selection"
       description="Select dates for your reservation or appointment"
-      paddingBlock="0"
-      paddingTitle="6"
     >
-      <div>
+      <Box>
         <DayPicker
           mode="range"
           defaultMonth={today}
@@ -32,10 +31,11 @@ export const DayPickerShowcase = () => {
             p: '2',
             borderRadius: 'md',
             border: '1px solid',
-            borderColor: 'gray.200',
+            borderColor: 'border',
+            boxShadow: 'sm',
           })}
         />
-      </div>
+      </Box>
     </ShowcaseCard>
   )
 }

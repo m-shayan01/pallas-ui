@@ -96,9 +96,10 @@ export function SearchDialog() {
         className={css({
           position: 'relative',
           display: 'flex',
+          alignItems: 'center',
           minW: '160px',
           w: { base: 'full', md: '100%' }, // Changed from 'auto' to '100%' for md screens
-          justifyContent: 'flex-start',
+          justifyContent: 'start',
           gap: '4',
           color: 'text.secondary',
           fontWeight: 'normal',
@@ -116,8 +117,7 @@ export function SearchDialog() {
               display: 'inline',
             },
             paddingRight: '4',
-            marginRight: '4',
-            paddingLeft: '2',
+            marginRight: '6',
           })}
         >
           Search documentation...

@@ -34,7 +34,12 @@ export default defineConfig({
       baseRadius: 2,
     }),
   ],
-  globalCss: {},
+  globalCss: {
+    '&::selection': {
+      backgroundColor: '{colors.primary.bg}',
+      color: '{colors.gray.900}',
+    },
+  },
 
   include: ['./components/**/*.{js,jsx,ts,tsx,mdx}', './app/**/*.{js,jsx,ts,tsx,mdx}'],
 
@@ -107,12 +112,19 @@ export default defineConfig({
             width: {
               value: {
                 base: '200px',
-                md: '230px',
+                md: '235px',
               },
             },
             height: {
               value: {
                 base: 'calc(100vh - 72px)',
+              },
+            },
+          },
+          toc: {
+            width: {
+              value: {
+                base: '250px',
               },
             },
           },

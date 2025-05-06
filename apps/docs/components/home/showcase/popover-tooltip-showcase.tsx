@@ -18,16 +18,7 @@ export const PopoverTooltipShowcase = () => {
       title="Interactive Controls"
       description="Tooltips for information and popovers for interactive content"
     >
-      <div
-        className={css({
-          display: 'flex',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '6',
-          py: '4',
-        })}
-      >
+      <HStack justify="space-between" align="center" gap="gap.component.lg" py="4">
         {/* Tooltip example */}
         <Tooltip.Provider>
           <Tooltip.Root>
@@ -73,7 +64,7 @@ export const PopoverTooltipShowcase = () => {
             </Box>
           </Popover.Content>
         </Popover.Root>
-      </div>
+      </HStack>
     </ShowcaseCard>
   )
 }

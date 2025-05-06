@@ -17,19 +17,23 @@ Pallas UI emerged from deep reflection on fundamental CSS management approaches 
 
 At its core, styling systems tend to follow one of two philosophical paths:
 
-- **Appearance-First Approach** - Where class names directly reflect visual properties, like:
+<br />
+**Appearance-First Approach** - Where class names directly reflect visual properties, like:
+
 ```css
 .rounded-full { border-radius: 9999px; }
- .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+.shadow-lg { box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
 
 ```
 
-- **Intent-First Approach** - Where class names reflect the purpose or meaning, like:
+
+**Intent-First Approach** - Where class names reflect the purpose or meaning, like:
+
 ```css
 .card {
     border-radius: var(--radius-card);
     box-shadow: var(--elevation-medium);
- }
+}
 ```
 
 These divergent approaches create different developer experiences and solve different problems. The appearance-first method excels at rapid development and creates a direct, visible correlation between code and output. The intent-first method shines in large systems where consistency and adaptability are crucial.
@@ -38,8 +42,8 @@ What if, instead of treating these as opposing methodologies, we viewed them as 
 
 Our solution is built on a carefully structured token system with distinct layers:
 
-1. **Base Tokens** - Raw values that serve as the foundation e.g. `colors.blue.500: "#3b82f6"`
-2. **Semantic Tokens** - Meaningful tokens that reference base tokens e.g. `colors.primary: "blue.500"`
+1. **Base Tokens** - Raw values that serve as the foundation e.g. `colors.blue.500: '#3b82f6'`
+2. **Semantic Tokens** - Meaningful tokens that reference base tokens e.g. `colors.primary: 'blue.500'`
 3. **Component Styles** - Components that consume semantic tokens e.g. `Button`
 
 The key insight is that semantic tokens aren't tied to specific components, but rather to functional purposes across the system. This creates a flexible middle layer that bridges raw values and component implementations, allowing for system-wide changes by adjusting semantic token mapping.

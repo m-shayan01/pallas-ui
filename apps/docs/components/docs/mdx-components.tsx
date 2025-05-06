@@ -182,13 +182,13 @@ const components = {
         level={1}
         color="default"
         css={{
-          mt: '4',
+          mt: '3',
           mb: '2',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
           fontWeight: '700',
-          fontSize: '4xl',
+          fontSize: '5xl',
         }}
         {...props}
       >
@@ -285,7 +285,7 @@ const components = {
         ml: '1',
         listStyleType: 'disc',
         '& li': { m: '3' },
-        color: 'text.secondary',
+        color: 'text',
       })}
       {...props}
     />
@@ -297,13 +297,13 @@ const components = {
         ml: '1',
         listStyleType: 'decimal',
         '& li': { m: '3' },
-        color: 'text.secondary',
+        color: 'text',
       })}
       {...props}
     />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className={css({ color: 'text.secondary' })} {...props} />
+    <li className={css({ color: 'text' })} {...props} />
   ),
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   pre: (props: any) => <CodeBlock {...props} />,
@@ -320,6 +320,7 @@ const components = {
           fontWeight: 'semibold',
           color: '#171717',
           textWrap: 'nowrap',
+          bg: 'fill.tertiary',
         }),
         className,
       )}

@@ -9,7 +9,7 @@ export const paragraph = defineRecipe({
       lg: '{fontSizes.lg}',
       '2xl': '{fontSizes.xl}',
     },
-    lineHeight: '1.5',
+    lineHeight: 'relaxed',
     fontFamily: 'body',
     textAlign: { base: 'left', md: 'left' },
     display: 'block',
@@ -25,11 +25,13 @@ export const paragraph = defineRecipe({
       },
       extraLarge: {
         fontSize: {
-          base: '{fontSizes.lg}',
-          lg: '{fontSizes.xl}',
-          '2xl': '{fontSizes.2xl}',
+          base: '{fontSizes.xl}',
+          lg: '{fontSizes.2xl}',
+          '2xl': '{fontSizes.3xl}',
         },
-        fontWeight: 'bold',
+        fontWeight: 'normal',
+        lineHeight: 'snug',
+        letterSpacing: '-0.01em',
       },
       large: {
         fontSize: {

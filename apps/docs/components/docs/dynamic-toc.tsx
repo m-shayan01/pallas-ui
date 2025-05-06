@@ -2,6 +2,7 @@
 
 import { css } from '@styled-system/css'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 type TocItem = {
@@ -14,8 +15,10 @@ type TocItem = {
 export function DynamicToc() {
   const [toc, setToc] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
+  const pathname = usePathname()
 
   // Generate TOC from the actual rendered DOM
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     // Function to build TOC from DOM
     function buildToc() {
@@ -101,7 +104,7 @@ export function DynamicToc() {
       window.removeEventListener('load', buildToc)
       intersectionObserver.disconnect()
     }
-  }, [])
+  }, [pathname])
 
   // Handle scroll to section
   const scrollToSection = (id: string) => (e: React.MouseEvent) => {
@@ -140,7 +143,7 @@ export function DynamicToc() {
         className={css({
           display: 'flex',
           flexDirection: 'column',
-          gap: '4', // Changed from gap.inline.md
+          gap: '2', // Changed from gap.inline.md
         })}
       >
         {toc.map((item) => (
@@ -155,6 +158,7 @@ export function DynamicToc() {
                 fontSize: 'md', //changed from sm to show difference in toc levels
                 fontWeight: activeId === item.id ? 'medium' : 'normal',
                 _hover: { color: 'primary.hover' },
+                mt: '1',
               })}
             >
               {item.text}
@@ -166,7 +170,7 @@ export function DynamicToc() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '1', // Changed from padding.inline.xs
-                  mt: '1', // Changed from padding.inline.xs
+                  mt: '0.5', // Changed from padding.inline.xs
                   ml: '3', // Changed from padding.inline.md
                 })}
               >

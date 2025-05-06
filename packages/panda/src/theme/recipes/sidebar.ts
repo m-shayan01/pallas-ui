@@ -55,6 +55,9 @@ export const sidebar = defineSlotRecipe({
       width: '{sizes.2xs}',
       bg: '{colors.surface.layout}',
       color: '{colors.text}',
+      visibility: 'hidden',
+      overflow: 'auto',
+      //make scrollbar thin and change its
     },
     gap: {
       // cx(
@@ -177,8 +180,15 @@ export const sidebar = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       flex: 1,
-      overflow: 'auto',
-      //make scrollbar thin and change its
+      visibility: 'visible',
+
+      _hover: {
+        overflow: 'auto',
+        '& .sidebar__rootNonCollapsible': {
+          visibility: 'visible',
+        },
+      },
+
       '&::-webkit-scrollbar': {
         width: '4px',
       },
@@ -292,7 +302,8 @@ export const sidebar = defineSlotRecipe({
       flexDirection: 'column',
       width: 'full',
       minWidth: '0',
-      px: 2,
+      pl: 4,
+      pr: 2,
     },
     groupLabel: {
       // cx(
@@ -351,7 +362,7 @@ export const sidebar = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       minWidth: 0,
-      gap: 1,
+      gap: 2,
     },
     menuItem: {
       // 'group/menu-item relative'
@@ -369,12 +380,16 @@ export const sidebar = defineSlotRecipe({
       width: 'full',
       overflow: 'hidden',
       justifyContent: 'left',
+      mt: 2,
       gap: '{spacing.gap.inline.xs}',
       h: 'auto!',
       '& .group:is([data-collapsible=icon]) &': {
         p: '2!',
         w: '8!',
         h: '8!',
+      },
+      '&:has(svg,img)': {
+        gap: '0.5',
       },
       transition: 'width 200ms linear, height 200ms linear, padding 200ms linear',
 
@@ -384,6 +399,14 @@ export const sidebar = defineSlotRecipe({
       '& > svg': {
         size: '1rem',
         flexShrink: 0,
+        left: '-4px',
+        position: 'relative',
+      },
+      '& > img': {
+        size: '1rem',
+        flexShrink: 0,
+        left: '-4px',
+        position: 'relative',
       },
       _activeTrue: {
         backgroundColor: '{colors.primary.bg}!',
@@ -460,13 +483,14 @@ export const sidebar = defineSlotRecipe({
       // 'group-data-[collapsible=icon]:hidden',
       display: 'flex',
       flexDirection: 'column',
-      gap: '1',
+      gap: '1.5',
       minWidth: '0',
       borderLeftWidth: '1px',
       borderColor: '{colors.border}',
       px: '{spacing.padding.inline.md}',
       py: '{spacing.padding.block.xs}',
-      mx: '{spacing.padding.inline.md}',
+      ml: '{spacing.padding.inline.md}',
+      mr: '{spacing.padding.inline.xs}',
       transform: 'translateX(1px)',
       fontWeight: 'normal',
       '& .group:is([data-collapsible=icon]) &': {
@@ -482,7 +506,7 @@ export const sidebar = defineSlotRecipe({
       //  size === 'sm' && 'text-xs',
       //  size === 'md' && 'text-sm',
       //  'group-data-[collapsible=icon]:hidden',
-      height: '7',
+      height: '1.6rem',
       minWidth: '0',
       transform: 'translateX(-1px)',
       display: 'flex',
