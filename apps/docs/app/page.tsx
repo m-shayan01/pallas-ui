@@ -92,7 +92,7 @@ radial-gradient(at 70% 72%, hsla(67,69%,75%,1) 0px, transparent 50%), url(/noise
             </StaggeredItem>
             <StaggeredItem delay={200}>
               <HStack gap="gap.inline.md" justify="center" mt="layout.internal.lg">
-                <Link href="/docs/introduction/introduction">
+                <Link href="/docs/introduction">
                   <Button variant="primary" size="lg">
                     Get Started
                   </Button>
