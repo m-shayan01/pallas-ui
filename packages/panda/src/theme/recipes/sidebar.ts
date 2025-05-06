@@ -55,6 +55,9 @@ export const sidebar = defineSlotRecipe({
       width: '{sizes.2xs}',
       bg: '{colors.surface.layout}',
       color: '{colors.text}',
+      visibility: 'hidden',
+      overflow: 'auto',
+      //make scrollbar thin and change its
     },
     gap: {
       // cx(
@@ -177,8 +180,15 @@ export const sidebar = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       flex: 1,
-      overflow: 'auto',
-      //make scrollbar thin and change its
+      visibility: 'visible',
+
+      _hover: {
+        overflow: 'auto',
+        '& .sidebar__rootNonCollapsible': {
+          visibility: 'visible',
+        },
+      },
+
       '&::-webkit-scrollbar': {
         width: '4px',
       },
@@ -352,7 +362,7 @@ export const sidebar = defineSlotRecipe({
       display: 'flex',
       flexDirection: 'column',
       minWidth: 0,
-      gap: 1,
+      gap: 2,
     },
     menuItem: {
       // 'group/menu-item relative'
@@ -370,6 +380,7 @@ export const sidebar = defineSlotRecipe({
       width: 'full',
       overflow: 'hidden',
       justifyContent: 'left',
+      mt: 2,
       gap: '{spacing.gap.inline.xs}',
       h: 'auto!',
       '& .group:is([data-collapsible=icon]) &': {
@@ -472,7 +483,7 @@ export const sidebar = defineSlotRecipe({
       // 'group-data-[collapsible=icon]:hidden',
       display: 'flex',
       flexDirection: 'column',
-      gap: '1',
+      gap: '1.5',
       minWidth: '0',
       borderLeftWidth: '1px',
       borderColor: '{colors.border}',
@@ -495,7 +506,7 @@ export const sidebar = defineSlotRecipe({
       //  size === 'sm' && 'text-xs',
       //  size === 'md' && 'text-sm',
       //  'group-data-[collapsible=icon]:hidden',
-      height: '7',
+      height: '1.6rem',
       minWidth: '0',
       transform: 'translateX(-1px)',
       display: 'flex',

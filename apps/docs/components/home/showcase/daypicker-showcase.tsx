@@ -18,8 +18,6 @@ export const DayPickerShowcase = () => {
     <ShowcaseCard
       title="Date Selection"
       description="Select dates for your reservation or appointment"
-      paddingBlock="0"
-      paddingTitle="6"
     >
       <Box>
         <DayPicker

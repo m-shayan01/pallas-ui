@@ -29,8 +29,9 @@ export const paragraph = defineRecipe({
           lg: '{fontSizes.2xl}',
           '2xl': '{fontSizes.3xl}',
         },
-        fontWeight: 'semibold',
-        lineHeight: 'normal',
+        fontWeight: 'normal',
+        lineHeight: 'snug',
+        letterSpacing: '-0.01em',
       },
       large: {
         fontSize: {

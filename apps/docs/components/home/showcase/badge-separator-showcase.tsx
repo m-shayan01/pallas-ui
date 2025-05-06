@@ -21,7 +21,7 @@ export const BadgeSeparatorShowcase = () => {
       <VStack gap="gap.component.md" py="padding.block.xs" w="full" align="flex-start">
         <Box>
           <SpacedRow css={{ mb: '2' }}>
-            <Heading level={5}>Project Overview</Heading>
+            <Heading level={4}>Project Overview</Heading>
             <Badge variant="primary">Active</Badge>
           </SpacedRow>
           <Paragraph>

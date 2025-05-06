@@ -10,12 +10,12 @@ export const separator = defineRecipe({
   variants: {
     orientation: {
       horizontal: {
-        borderBlockEndWidth: '{sizes.0.5}',
+        borderBlockEndWidth: '1px',
       },
       vertical: {
         height: '{full}',
         width: '1px',
-        borderInlineEndWidth: '{sizes.0.5}',
+        borderInlineEndWidth: '1px',
       },
     },
     rounded: {

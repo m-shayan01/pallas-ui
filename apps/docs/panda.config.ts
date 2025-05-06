@@ -112,7 +112,7 @@ export default defineConfig({
             width: {
               value: {
                 base: '200px',
-                md: '205px',
+                md: '235px',
               },
             },
             height: {

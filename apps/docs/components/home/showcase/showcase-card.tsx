@@ -48,7 +48,6 @@ export const ShowcaseCard = ({
         className={css({
           px: 'layout.section.md',
           pt: paddingTitle ? paddingTitle : 'layout.section.md',
-          pb: 'gap.internal.md',
           borderBottom: '1px solid',
           borderColor: 'border',
           border: 'none',

@@ -143,7 +143,7 @@ export function DynamicToc() {
         className={css({
           display: 'flex',
           flexDirection: 'column',
-          gap: '4', // Changed from gap.inline.md
+          gap: '2', // Changed from gap.inline.md
         })}
       >
         {toc.map((item) => (
@@ -158,6 +158,7 @@ export function DynamicToc() {
                 fontSize: 'md', //changed from sm to show difference in toc levels
                 fontWeight: activeId === item.id ? 'medium' : 'normal',
                 _hover: { color: 'primary.hover' },
+                mt: '1',
               })}
             >
               {item.text}
@@ -169,7 +170,7 @@ export function DynamicToc() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '1', // Changed from padding.inline.xs
-                  mt: '1', // Changed from padding.inline.xs
+                  mt: '0.5', // Changed from padding.inline.xs
                   ml: '3', // Changed from padding.inline.md
                 })}
               >

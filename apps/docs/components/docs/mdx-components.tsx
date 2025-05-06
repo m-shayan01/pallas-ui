@@ -182,13 +182,13 @@ const components = {
         level={1}
         color="default"
         css={{
-          mt: '4',
+          mt: '3',
           mb: '2',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
           fontWeight: '700',
-          fontSize: '4xl',
+          fontSize: '5xl',
         }}
         {...props}
       >
