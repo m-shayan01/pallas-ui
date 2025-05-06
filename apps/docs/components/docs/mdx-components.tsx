@@ -285,7 +285,7 @@ const components = {
         ml: '1',
         listStyleType: 'disc',
         '& li': { m: '3' },
-        color: 'text.secondary',
+        color: 'text',
       })}
       {...props}
     />
@@ -297,13 +297,13 @@ const components = {
         ml: '1',
         listStyleType: 'decimal',
         '& li': { m: '3' },
-        color: 'text.secondary',
+        color: 'text',
       })}
       {...props}
     />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className={css({ color: 'text.secondary' })} {...props} />
+    <li className={css({ color: 'text' })} {...props} />
   ),
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   pre: (props: any) => <CodeBlock {...props} />,
@@ -320,6 +320,7 @@ const components = {
           fontWeight: 'semibold',
           color: '#171717',
           textWrap: 'nowrap',
+          bg: 'fill.tertiary',
         }),
         className,
       )}
