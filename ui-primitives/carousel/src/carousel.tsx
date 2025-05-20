@@ -2,33 +2,59 @@
 
 import useEmblaCarousel from 'embla-carousel-react'
 import * as React from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import type { CarouselApi, CarouselRootProps } from './types'
 import { CarouselContext, useCarousel } from './useCarousel'
 
 export const CarouselRoot = React.forwardRef<React.ComponentRef<'section'>, CarouselRootProps>(
   ({ opts, setApi, plugins, children, ...props }, ref) => {
     const [carouselRef, api] = useEmblaCarousel(opts, plugins)
-    const [canScrollPrev, setCanScrollPrev] = React.useState(false)
-    const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const [canScrollPrev, setCanScrollPrev] = useState(false)
+    const [canScrollNext, setCanScrollNext] = useState(false)
+    const [selectedIndex, setSelectedIndex] = useState(0)
+    const [scrollSnaps, setScrollSnaps] = useState<number[]>([])
+
+    const onInit = useCallback((api: CarouselApi) => {
+      if (!api) {
+        return
+      }
+      setScrollSnaps(api.scrollSnapList())
+    }, [])
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
         return
       }
 
+      setSelectedIndex(api.selectedScrollSnap())
       setCanScrollPrev(api.canScrollPrev())
       setCanScrollNext(api.canScrollNext())
     }, [])
 
-    const scrollPrev = React.useCallback(() => {
+    useEffect(() => {
+      if (!api) return
+      onInit(api)
+      onSelect(api)
+      api.on('reInit', onInit).on('reInit', onSelect).on('select', onSelect)
+    }, [api, onInit, onSelect])
+
+    const onDotButtonClick = useCallback(
+      (index: number) => {
+        if (!api) return
+        api.scrollTo(index)
+      },
+      [api],
+    )
+
+    const scrollPrev = useCallback(() => {
       api?.scrollPrev()
     }, [api])
 
-    const scrollNext = React.useCallback(() => {
+    const scrollNext = useCallback(() => {
       api?.scrollNext()
     }, [api])
 
-    const handleKeyDown = React.useCallback(
+    const handleKeyDown = useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'ArrowLeft') {
           event.preventDefault()
@@ -41,7 +67,7 @@ export const CarouselRoot = React.forwardRef<React.ComponentRef<'section'>, Caro
       [scrollPrev, scrollNext],
     )
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (!api || !setApi) {
         return
       }
@@ -49,7 +75,7 @@ export const CarouselRoot = React.forwardRef<React.ComponentRef<'section'>, Caro
       setApi(api)
     }, [api, setApi])
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (!api) {
         return
       }
@@ -73,6 +99,9 @@ export const CarouselRoot = React.forwardRef<React.ComponentRef<'section'>, Caro
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          onDotButtonClick,
+          selectedIndex,
+          scrollSnaps,
         }}
       >
         <section
@@ -151,8 +180,43 @@ export const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = 'CarouselNext'
 
+export const CarouselDots = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ children, ...props }, ref) => {
+    return (
+      <div ref={ref} {...props}>
+        {children}
+      </div>
+    )
+  },
+)
+CarouselDots.displayName = 'CarouselDots'
+
+export type CarouselDotProps = React.ComponentPropsWithoutRef<'button'> & {
+  index: number
+}
+
+export const CarouselDot = React.forwardRef<HTMLButtonElement, CarouselDotProps>(
+  ({ children, index, ...props }, ref) => {
+    const { onDotButtonClick, selectedIndex } = useCarousel()
+
+    return (
+      <button
+        ref={ref}
+        data-selected={selectedIndex === index}
+        onClick={() => onDotButtonClick(index)}
+        {...props}
+      >
+        {children}
+      </button>
+    )
+  },
+)
+CarouselDots.displayName = 'CarouselDot'
+
 export const Root = CarouselRoot
 export const List = CarouselList
 export const Item = CarouselItem
 export const Next = CarouselNext
 export const Previous = CarouselPrevious
+export const Dots = CarouselDots
+export const Dot = CarouselDot

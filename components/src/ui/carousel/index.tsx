@@ -81,12 +81,25 @@ export const Next = withContext<React.ComponentRef<typeof CarouselPrimitive.Next
   'next',
 )
 
+export const Dots = withContext<
+  React.ComponentRef<typeof CarouselPrimitive.Dots>,
+  Assign<ComponentProps<typeof CarouselPrimitive.Dots>, JsxStyleProps>
+>(CarouselPrimitive.Dots, 'dots')
+
+export const Dot = withContext<
+  React.ComponentRef<typeof CarouselPrimitive.Dot>,
+  Assign<CarouselPrimitive.CarouselDotProps, JsxStyleProps>
+>(CarouselPrimitive.Dot, 'dot')
+
 const Carousel = {
   Root,
   List,
   Item,
   Previous,
   Next,
+  Dots,
+  Dot,
+  useCarousel: CarouselPrimitive.useCarousel,
 }
 
 export default Carousel

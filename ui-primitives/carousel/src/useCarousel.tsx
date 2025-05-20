@@ -9,6 +9,9 @@ type CarouselContextProps = {
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
+  onDotButtonClick: (index: number) => void
+  selectedIndex: number
+  scrollSnaps: number[]
 } & CarouselProps
 
 export const CarouselContext = React.createContext<CarouselContextProps | null>(null)

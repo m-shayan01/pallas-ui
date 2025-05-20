@@ -1,4 +1,5 @@
 export type { CarouselApi, CarouselRootProps } from './types'
+export type { CarouselDotProps } from './carousel'
 export {
   CarouselRoot,
   Root,
@@ -10,5 +11,9 @@ export {
   Next,
   CarouselPrevious,
   Previous,
+  CarouselDots,
+  Dots,
+  CarouselDot,
+  Dot,
 } from './carousel'
 export { useCarousel } from './useCarousel'

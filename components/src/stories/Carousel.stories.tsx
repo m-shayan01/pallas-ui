@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { css } from '@styled-system/css'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronDown, ChevronLeft, ChevronRight, ChevronUp } from 'lucide-react'
 import Carousel from '../ui/carousel'
 
 const IMAGES = [
@@ -67,12 +67,19 @@ export const Default: Story = {
           </Carousel.Item>
         ))}
       </Carousel.List>
+
       <Carousel.Previous>
         <ChevronLeft />
       </Carousel.Previous>
       <Carousel.Next>
         <ChevronRight />
       </Carousel.Next>
+
+      <Carousel.Dots>
+        {IMAGES.map((_, i) => (
+          <Carousel.Dot key={i} index={i} />
+        ))}
+      </Carousel.Dots>
     </Carousel.Root>
   ),
 }
@@ -81,12 +88,8 @@ export const Vertical: Story = {
   args: {
     orientation: 'vertical',
   },
-  render: (props) => (
-    <Carousel.Root
-      opts={{ axis: props.orientation === 'horizontal' ? 'x' : 'y' }}
-      style={{ margin: 20 }}
-      {...props}
-    >
+  render: () => (
+    <Carousel.Root opts={{ axis: 'y' }} style={{ margin: 20 }} orientation={'vertical'}>
       <Carousel.List className={css({ height: 300 })}>
         {IMAGES.map((image, i) => (
           <Carousel.Item key={i} className={css({ flexBasis: 'full' })}>
@@ -107,10 +110,10 @@ export const Vertical: Story = {
         ))}
       </Carousel.List>
       <Carousel.Previous>
-        <ChevronLeft />
+        <ChevronUp />
       </Carousel.Previous>
       <Carousel.Next>
-        <ChevronRight />
+        <ChevronDown />
       </Carousel.Next>
     </Carousel.Root>
   ),
@@ -120,15 +123,15 @@ export const Multiple: Story = {
   args: {
     orientation: 'horizontal',
   },
-  render: (props) => (
+  render: () => (
     <Carousel.Root
-      opts={{ axis: props.orientation === 'horizontal' ? 'x' : 'y', align: 'start' }}
+      opts={{ axis: 'x', align: 'start' }}
       style={{ margin: 20 }}
-      {...props}
+      orientation={'horizontal'}
     >
       <Carousel.List className={css({ height: 300 })}>
         {IMAGES.map((image, i) => (
-          <Carousel.Item key={i} className={css({ flexBasis: '1/3' })}>
+          <Carousel.Item key={i} className={css({ flexBasis: '1/2' })}>
             <div
               style={{
                 display: 'flex',

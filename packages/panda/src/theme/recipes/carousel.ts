@@ -3,7 +3,7 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const carousel = defineSlotRecipe({
   className: 'carousel',
   description: 'Styles for the Carousel component',
-  slots: ['root', 'list', 'item', 'previous', 'next', 'dots'],
+  slots: ['root', 'list', 'item', 'previous', 'next', 'dots', 'dot'],
   base: {
     root: {
       position: 'relative',
@@ -33,7 +33,22 @@ export const carousel = defineSlotRecipe({
       py: '0!',
       rounded: 'full',
     },
-    dots: {},
+    dots: {
+      position: 'absolute',
+      display: 'flex',
+      gap: '{spacing.2}',
+    },
+    dot: {
+      borderWidth: '4',
+      borderRadius: 'full',
+      w: '4',
+      h: '4',
+      borderColor: '{colors.border}',
+      '&[data-selected=true]': {
+        borderColor: '{colors.bgSolid}'
+      },
+      cursor: 'pointer'
+    }
   },
   variants: {
     orientation: {
@@ -53,10 +68,17 @@ export const carousel = defineSlotRecipe({
           right: '{spacing.-10}',
           top: '50%',
           translate: '0 -50%',
+        },
+        dots: {
+          justifyContent: 'center',
+          bottom: '{spacing.-8}',
+          left: '50%',
+          translate: '-50% 0',
         }
       },
       vertical: {
         list: {
+          flex: 1,
           flexDirection: 'column',
           mt: '-4'
         },
@@ -67,14 +89,18 @@ export const carousel = defineSlotRecipe({
           top: '{spacing.-10}',
           left: '50%',
           translate: '-50% 0%',
-          rotate: '90deg',
         },
         next: {
           bottom: '{spacing.-10}',
           left: '50%',
           translate: '-50% 0%',
-          rotate: '90deg',
-
+        },
+        dots: {
+          flexDirection: 'column',
+          justifyContent: 'center',
+          left: '{spacing.4}',
+          top: '50%',
+          translate: '0 -50% ',
         }
       },
     },
