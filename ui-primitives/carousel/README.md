@@ -1,124 +1,73 @@
-# Sidebar
+# Carousel
 
-A flexible and accessible sidebar navigation component built with Radix UI primitives.
+A flexible and accessible carousel component built with embla-carousel-react.
 
 ## Features
 
-- Accessible navigation structure
-- Customizable separator
-- Support for links and current page indicators
-- Ellipsis for truncated paths
+- Support for multiple slides per screen
+- Navigate by swipe and buttons
+- Customizable and clickable dot buttons
+- Extendable using plugins provided by embla
 - TypeScript support
-- Follows Radix UI patterns
 
 ## Installation
 
 ```bash
-npm install @your-scope/sidebar
+npm install @pallas-ui/carousel
 ```
 
 ## Usage
 
 ```tsx
-import Sidebar from '@your-scope/sidebar'
+import * as Carousel from '@pallas-ui/carousel'
 
 function Example() {
   return (
-    <Sidebar.Provider>
-      <Sidebar.Root>
-         <Sidebar.Header></Sidebar.Header>
-         <Sidebar.Content>
-            <Sidebar.Group>
-              <Sidebar.GroupLabel></Sidebar.GroupLabel>
-              <Sidebar.GroupAction></Sidebar.GroupAction>
-              <Sidebar.GroupContent>
-                <Sidebar.Menu>
-                  <Sidebar.MenuItem>
-                    <Sidebar.MenuButton></Sidebar.MenuButton>
-                  </Sidebar.MenuItem>
-                  <Sidebar.MenuItem>
-                    <Sidebar.MenuButton></Sidebar.MenuButton>
-                  </Sidebar.MenuItem>
-                  <Sidebar.MenuItem>
-                    <Sidebar.MenuButton></Sidebar.MenuButton>
-                    <Sidebar.MenuSub>
-                      <Sidebar.MenuSubItem>
-                        <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
-                      </Sidebar.MenuSubItem>
-                      <Sidebar.MenuSubItem>
-                        <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
-                      </Sidebar.MenuSubItem>
-                      <Sidebar.MenuSubItem>
-                        <Sidebar.MenuSubButton></Sidebar.MenuSubButton>
-                      </Sidebar.MenuSubItem>
-                    </Sidebar.MenuSub>
-                  </Sidebar.MenuItem>
-                </Sidebar.Menu>
-              </Sidebar.GroupContent>
-            </Sidebar.Group>
-         </Sidebar.Content>
-         <Sidebar.Footer></Sidebar.Footer>
-      </Sidebar.Root>
-    </Sidebar.Provider>
+    <Carousel.Root>
+      <Carousel.List>
+        <Carousel.Item></Carousel.Item>
+        <Carousel.Item></Carousel.Item>
+        <Carousel.Item></Carousel.Item>
+      </Carousel.List>
+
+      <Carousel.Previous></Carousel.Previous>
+      <Carousel.Next></Carousel.Next>
+
+      <Carousel.Dots>
+        <Carousel.Dot/>
+        <Carousel.Dot/>
+        <Carousel.Dot/>
+      </Carousel.Dots>
+    </Carousel.Root>
   )
 }
 ```
 
 ## Components
 
-Provider,
-  Root,
-  Content,
-  Inset,
-  Header,
-  Footer,
-  Group,
-  GroupAction,
-  GroupContent,
-  GroupLabel,
-  Menu,
-  MenuAction,
-  MenuBadge,
-  MenuButton,
-  MenuItem,
-  MenuSub,
-  MenuSubButton,
-  MenuSubItem,
-  Rail,
-  Separator,
-  Trigger,
-  useSidebar,
+Root, 
+List, 
+Item, 
+Next,
+Previous, 
+Dots, 
+Dot, 
+useCarousel
 
-- `Sidebar.Provider` - The provider element
-- `Sidebar.Root` - The root element
-- `Sidebar.Inset` - The wrapper element for sidebar siblings in 'inset' variant
-- `Sidebar.Content` - The content wrapper element
-- `Sidebar.Header` - The header wrapper element
-- `Sidebar.Footer` - The footer wrapper element
+- `Carousel.Root` - The root element
+- `Carousel.List` - The wrapper element for carousel items
+- `Carousel.Item` - The wrapper element for an item (slide)
+- `Carousel.Previous` - The previous button
+- `Carousel.Next` - The next button
+- `Carousel.Dots` - The wrapper element for navigation dots
+- `Carousel.Dot` - The button element for a dot
 
-- `Sidebar.Group` - The group wrapper element
-- `Sidebar.GroupLabel` - The group label element
-- `Sidebar.GroupAction` - The group action element
-- `Sidebar.GroupContent` - The group content wrapper element
-
-- `Sidebar.Menu` - The menu wrapper element
-- `Sidebar.MenuItem` - The menu item element
-- `Sidebar.MenuButton` - The menu button element
-- `Sidebar.MenuAction` - The menu action element
-- `Sidebar.MenuBadge` - The menu badge element
-
-- `Sidebar.MenuSub` - The sub menu wrapper element
-- `Sidebar.MenuSubItem` - The sub menu item element
-- `Sidebar.MenuSubButton` - The sub menu button element
-
-- `Sidebar.Trigger` - The trigger element for toggle
-- `Sidebar.Rail` - The rail element for toggle
-- `Sidebar.useSidebar` - The hook to control toggle manually
+- `Carousel.useCarousel` - The hook provides handlers, refs, states etc
 
 ## Accessibility
 
 The component follows WAI-ARIA patterns for sidebar navigation:
-- Uses semantic HTML elements (`ul`, `li`, `a`)
+- Uses semantic HTML elements (`section`, `button`)
 - Includes proper ARIA labels and roles
 - Maintains keyboard navigation support
 - Provides screen reader friendly structure
