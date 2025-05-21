@@ -4,7 +4,7 @@ import type { Assign, WithFixedClassName } from '@pallas-ui/style-context'
 import { createStyleContext } from '@pallas-ui/style-context'
 import * as SelectPrimitive from '@radix-ui/react-select'
 import { styled } from '@styled-system/jsx'
-import { icon, select } from '@styled-system/recipes'
+import { type SelectVariantProps, icon, select } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { Check, ChevronDown } from 'lucide-react'
 import * as React from 'react'
@@ -60,7 +60,9 @@ const Item = React.forwardRef<
 ))
 Item.displayName = SelectPrimitive.Item.displayName
 
-export type RootProps = WithFixedClassName<ComponentProps<typeof SelectPrimitive.Root>>
+export type RootProps = WithFixedClassName<
+  ComponentProps<typeof SelectPrimitive.Root> & SelectVariantProps
+>
 export const Root = withProvider<
   React.ComponentRef<typeof SelectPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>

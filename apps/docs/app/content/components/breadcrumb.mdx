@@ -1,0 +1,83 @@
+---
+title: Breadcrumb
+description: A navigation component that helps users navigate hierarchical paths and understand their current location.
+---
+<ContentContainer>
+
+<Section gap="1">
+# Breadcrumb
+<Paragraph size={'extraLarge'} color={'tertiary'}>A navigation component that helps users navigate hierarchical paths and understand their current location.</Paragraph>
+<ComponentPreview name="breadcrumb" withRecipe />
+</Section>
+
+<Section>
+## Installation
+<Steps>
+<Section>
+### Copy and paste the following code into your project
+
+<ComponentSource name="breadcrumb" />
+
+### Update the import paths to match your project setup
+
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import { Breadcrumb } from '@/components/ui/breadcrumb'
+```
+
+```tsx
+<Breadcrumb.Root>
+  <Breadcrumb.List>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+      <Breadcrumb.Separator />
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/products">Products</Breadcrumb.Link>
+      <Breadcrumb.Separator />
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>
+      <Breadcrumb.Link href="/products/categories" aria-current="page">
+        Categories
+      </Breadcrumb.Link>
+    </Breadcrumb.Item>
+  </Breadcrumb.List>
+</Breadcrumb.Root>
+```
+</Section>
+
+
+
+<Section>
+## Examples
+
+### Default
+
+<ComponentPreview name="breadcrumb" />
+
+### Custom Separator
+
+<ComponentPreview name="breadcrumb" file="custom-separator" />
+
+### With Ellipsis
+
+<ComponentPreview name="breadcrumb" file="with-ellipsis" />
+
+### With Icons
+
+<ComponentPreview name="breadcrumb" file="with-icons" />
+
+### Dynamic
+
+<ComponentPreview name="breadcrumb" file="dynamic" />
+
+</Section>
+
+
+</ContentContainer> 

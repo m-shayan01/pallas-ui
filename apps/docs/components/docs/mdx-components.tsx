@@ -9,6 +9,7 @@ import { css, cx } from '@styled-system/css'
 import { HashIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import { typographyTable, typographyTableContainer } from '../common/recipes/table'
 import { ComponentPreview, ComponentSource } from './component-preview'
 import { ContentContainer } from './content-container'
 import { CopyButton } from './copy-button'
@@ -181,11 +182,13 @@ const components = {
         level={1}
         color="default"
         css={{
+          mt: '3',
+          mb: '2',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
           fontWeight: '700',
-          fontSize: '4xl',
+          fontSize: '5xl',
         }}
         {...props}
       >
@@ -201,6 +204,8 @@ const components = {
         level={2}
         color="default"
         css={{
+          mt: '6',
+          mb: '2',
           scrollMargin: '24',
           display: 'flex',
           alignItems: 'center',
@@ -267,7 +272,7 @@ const components = {
         variant="default"
         css={{
           fontSize: 'md',
-          lineHeight: 'tight',
+          lineHeight: 'relaxed',
         }}
         {...restProps}
       />
@@ -280,7 +285,7 @@ const components = {
         ml: '1',
         listStyleType: 'disc',
         '& li': { m: '3' },
-        color: 'text.secondary',
+        color: 'text',
       })}
       {...props}
     />
@@ -292,13 +297,13 @@ const components = {
         ml: '1',
         listStyleType: 'decimal',
         '& li': { m: '3' },
-        color: 'text.secondary',
+        color: 'text',
       })}
       {...props}
     />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className={css({ color: 'text.secondary' })} {...props} />
+    <li className={css({ color: 'text' })} {...props} />
   ),
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   pre: (props: any) => <CodeBlock {...props} />,
@@ -309,16 +314,43 @@ const components = {
           mx: '0.5',
           position: 'relative',
           rounded: 'sm',
-          bg: 'fill.secondary',
-          px: '0.3rem',
-          py: '0.2rem',
+          px: '0.4rem',
+          py: '0.3rem',
           fontSize: 'sm',
           fontWeight: 'semibold',
+          color: '#171717',
+          textWrap: 'nowrap',
+          bg: 'fill.tertiary',
         }),
         className,
       )}
       {...props}
     />
+  ),
+  inlineCode: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code
+      className={cx(
+        css({
+          mx: '0.5',
+          position: 'relative',
+          rounded: 'sm',
+          bg: 'fill.tertiary',
+          px: '0.3rem',
+          py: '0.2rem',
+          fontSize: 'sm',
+          fontWeight: 'semibold',
+          color: '#171717',
+          textWrap: 'nowrap',
+        }),
+        className,
+      )}
+      {...props}
+    />
+  ),
+  table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
+    <div className={typographyTableContainer()}>
+      <table className={cx(typographyTable(), className)} {...props} />
+    </div>
   ),
 
   Accordion,
@@ -332,6 +364,7 @@ const components = {
   ColorPalette,
   SizeBox,
   SpacingBox,
+  Paragraph,
 }
 
 export function MdxComponent({ code }: MdxComponentProps) {

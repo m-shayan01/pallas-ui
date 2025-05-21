@@ -25,6 +25,7 @@ import { segmented } from './segmented'
 import { select } from './select'
 import { separator } from './separator'
 import { sidebar } from './sidebar'
+import { skeleton } from './skeleton'
 import { slider } from './slider'
 import { spinner } from './spinner'
 import { switchRecipe } from './switch'
@@ -32,7 +33,6 @@ import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
-
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
   button,
@@ -46,6 +46,7 @@ export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>>
   textarea,
   spinner,
   separator,
+  skeleton,
 }
 
 export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {

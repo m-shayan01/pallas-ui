@@ -4,16 +4,18 @@ export const separator = defineRecipe({
   className: 'separator',
   description: 'Styles for the Separator component',
   base: {
+    flexShrink: 0,
     borderColor: '{colors.border}',
   },
   variants: {
     orientation: {
       horizontal: {
-        borderBlockEndWidth: '{sizes.0.5}',
+        borderBlockEndWidth: '1px',
       },
       vertical: {
         height: '{full}',
-        borderInlineEndWidth: '{sizes.0.5}',
+        width: '1px',
+        borderInlineEndWidth: '1px',
       },
     },
     rounded: {

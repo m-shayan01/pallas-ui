@@ -33,12 +33,18 @@ export const Separator = withContext<
   Assign<ComponentProps<typeof BreadcrumbPrimitive.Separator>, JsxStyleProps>
 >(BreadcrumbPrimitive.Separator, 'separator')
 
+export const Ellipsis = withContext<
+  React.ComponentRef<typeof BreadcrumbPrimitive.Ellipsis>,
+  Assign<ComponentProps<typeof BreadcrumbPrimitive.Ellipsis>, JsxStyleProps>
+>(BreadcrumbPrimitive.Ellipsis, 'ellipsis')
+
 const Breadcrumb = {
   Root,
   List,
   Item,
   Link,
   Separator,
+  Ellipsis,
 }
 
 export default Breadcrumb

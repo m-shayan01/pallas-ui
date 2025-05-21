@@ -2,17 +2,15 @@
 title: Checkbox
 description: A control that allows the user to toggle between checked and not checked.
 references:
-  shadcnUiLink: https://ui.shadcn.com/docs/components/checkbox
   radix:
     link: https://www.radix-ui.com/docs/primitives/components/checkbox
     api: https://www.radix-ui.com/docs/primitives/components/checkbox#api-reference
 ---
 <ContentContainer>
-<Section>
+
+<Section gap="1">
 # Checkbox
-A control that allows the user to toggle between checked and not checked.
-
-
+<Paragraph size={'extraLarge'} color={'tertiary'}>A control that allows the user to toggle between checked and not checked.</Paragraph>
 <ComponentPreview name="checkbox" withRecipe />
 </Section>
 
@@ -50,30 +48,43 @@ import { Label } from '@/components/ui/label'
 </Section>
 
 <Section>
-## Recipe
-### Usage
-```tsx
-import { checkbox, type CheckboxVariantProps } from '@styled-system/recipes'
-```
-```tsx
-<div className="peer">
-  <div className={checkbox().root}>
-    <div className={checkbox().indicator}>
-      {/* Your check icon */}
-    </div>
-  </div>
-</div>
-```
+## Props
+
+| Prop | Type | Default |
+| ---- | ---- | ------- |
+| `checked` | `boolean \| 'indeterminate'` | - |
+| `defaultChecked` | `boolean \| 'indeterminate'` | - |
+| `onCheckedChange` | `(checked: boolean \| 'indeterminate') => void` | - |
+| `disabled` | `boolean` | `false` |
+| `required` | `boolean` | `false` |
+| `name` | `string` | - |
+| `value` | `string` | `'on'` |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` |
+
+### Data Attributes
+
+The following data attributes are available on the root element:
+
+| Attribute | Values |
+| --------- | ------ |
+| `[data-state]` | `'checked' \| 'unchecked' \| 'indeterminate'` |
+| `[data-disabled]` | Present when disabled |
 </Section>
 
 <Section>
 ## Examples
 
+### States
+<ComponentPreview name="checkbox" file="states"/>
+
 ### With text
 <ComponentPreview name="checkbox"/>
 
 ### Disabled
-<ComponentPreview name="checkbox" file = "disabled"/>
+<ComponentPreview name="checkbox" file="disabled"/>
+
+### Sizes
+<ComponentPreview name="checkbox" file="sizes"/>
 
 </Section>
 

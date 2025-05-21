@@ -10,7 +10,7 @@ export const AccordionShowcase = () => {
   return (
     <ShowcaseCard paddingTitle="0" paddingBlock="0">
       <div className={css({ width: '100%' })}>
-        <Accordion.Root type="single">
+        <Accordion.Root type="single" collapsible>
           <Accordion.Item value="item-1">
             <Accordion.ItemHeader>
               What is Pallas UI?

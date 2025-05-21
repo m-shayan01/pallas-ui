@@ -1,10 +1,11 @@
 import { backdropFilter } from './backdrop-filters'
+import { focusRing } from './focus-ring'
 import { sizing } from './sizing'
-import { spaceX, spaceY } from './spacing'
+import { spacing } from './spacing'
 
 export const utilities = {
-  backdropFilter: backdropFilter,
-  spaceX: spaceX,
-  spaceY: spaceY,
-  sizing: sizing,
+  ...backdropFilter,
+  ...focusRing,
+  ...sizing,
+  ...spacing,
 }

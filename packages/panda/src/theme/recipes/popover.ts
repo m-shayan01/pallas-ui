@@ -10,11 +10,12 @@ export const popover = defineSlotRecipe({
       w: '72',
       rounded: '{radii.lg}',
       bg: '{colors.surface.elevated}',
-      p: '{spacing.padding.block.lg} {spacing.padding.inline.md}',
+      py: '{spacing.gap.component.md}',
+      px: '{spacing.gap.component.sm}',
       color: '{colors.text}',
       outline: 'none',
       boxShadow: '{shadows.lg}',
-
+      border: '1px solid {colors.border}',
       _open: {
         animateIn: true,
         fadeIn: 0,
@@ -26,25 +27,10 @@ export const popover = defineSlotRecipe({
         fadeOut: 0,
         zoomOut: 95,
       },
-
-      _top: {
-        slideInFromBottom: '2',
-      },
-
-      _bottom: {
-        slideInFromTop: '2',
-      },
-
-      _left: {
-        slideInFromRight: '2',
-      },
-
-      _right: {
-        slideInFromLeft: '2',
-      },
+      animationStyle: 'slideFadeIn',
     },
     arrow: {
-      fill: '{colors.surface.elevated}',
+      fill: '{colors.surface.spotlight}',
     },
     close: {
       position: 'absolute',

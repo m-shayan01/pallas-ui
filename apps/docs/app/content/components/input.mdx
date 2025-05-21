@@ -1,14 +1,13 @@
 ---
 title: Input
 description: Displays a form input field or a component that looks like an input field.
-references:
-  shadcnUiLink: https://ui.shadcn.com/docs/components/input
 ---
 <ContentContainer>
-<Section>
+
+<Section gap="1">
 # Input
-Displays a form input field or a component that looks like an input field.
-<ComponentPreview name="input" withRecipe />
+<Paragraph size={'extraLarge'} color={'tertiary'}>Displays a form input field or a component that looks like an input field.</Paragraph>
+<ComponentPreview name="input" withRecipe/>
 </Section>
 
 <Section>
@@ -34,13 +33,19 @@ import { Input } from '@/components/ui/input'
 ```
 ```tsx
 // Basic text input
-<Input.Text placeholder="Email" />
+<Input>
+  <Input.Text placeholder="Email" />
+</Input>
 
 // Number input with controls
-<Input.Number min={0} max={100} />
+<Input>
+  <Input.Number min={0} max={100} />
+</Input>
 
 // Date picker input
-<Input.DayPicker placeholder="Select a date" />
+<Input>
+  <Input.DayPicker placeholder="Select a date" />
+</Input>
 
 // Input with prefix/postfix
 <Input>
@@ -83,6 +88,9 @@ import { Input } from '@/components/ui/input'
 
 ### Form
 <ComponentPreview name="input" file="form" />
+
+### Character Count
+<ComponentPreview name="input" file="character-count" />
 
 </Section>
 </ContentContainer>

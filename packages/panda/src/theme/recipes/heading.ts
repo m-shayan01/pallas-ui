@@ -5,9 +5,10 @@ export const heading = defineRecipe({
   description: 'Heading styles',
   base: {
     fontWeight: '{fontWeights.bold}',
-    lineHeight: '110%',
+    lineHeight: 'tight',
     color: '{colors.text}',
-    textAlign: { base: 'center', md: 'left' },
+    letterSpacing: '-0.02em',
+    textAlign: { base: 'left', md: 'left' },
   },
   variants: {
     level: {

@@ -4,6 +4,9 @@ import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import Tabs from '@/components/ui/tabs'
 import { css } from '@styled-system/css'
+import { VStack } from '@styled-system/jsx'
+import { Box } from '@styled-system/jsx'
+import { HStack } from '@styled-system/jsx'
 import React, { useState } from 'react'
 import { ShowcaseCard } from './showcase-card'
 
@@ -19,21 +22,25 @@ export const SliderTabsShowcase = () => {
     >
       <Tabs.Root defaultValue="display">
         <Tabs.TabList
-          className={css({ mb: '4', borderBottom: '1px solid', borderColor: 'gray.200' })}
+          className={css({
+            mb: 'padding.block.md',
+            borderBottom: '1px solid',
+            borderColor: 'gray.200',
+          })}
         >
           <Tabs.Trigger value="display">Display</Tabs.Trigger>
           <Tabs.Trigger value="audio">Audio</Tabs.Trigger>
         </Tabs.TabList>
 
         <Tabs.Content value="display">
-          <div className={css({ display: 'flex', flexDirection: 'column', gap: '6', py: '2' })}>
-            <div>
-              <div className={css({ display: 'flex', justifyContent: 'space-between', mb: '2' })}>
+          <VStack gap="gap.component.lg" py="padding.block.md">
+            <Box>
+              <HStack justify="space-between" mb="2">
                 <Label htmlFor="brightness" className={css({ fontWeight: 'medium' })}>
                   Brightness
                 </Label>
                 <span>{brightness}%</span>
-              </div>
+              </HStack>
               <Slider
                 id="brightness"
                 value={[brightness]}
@@ -42,15 +49,15 @@ export const SliderTabsShowcase = () => {
                 max={100}
                 step={1}
               />
-            </div>
+            </Box>
 
-            <div>
-              <div className={css({ display: 'flex', justifyContent: 'space-between', mb: '2' })}>
+            <Box>
+              <HStack justify="space-between" mb="2">
                 <Label htmlFor="contrast" className={css({ fontWeight: 'medium' })}>
                   Contrast
                 </Label>
                 <span>{contrast}%</span>
-              </div>
+              </HStack>
               <Slider
                 id="contrast"
                 value={[contrast]}
@@ -59,27 +66,29 @@ export const SliderTabsShowcase = () => {
                 max={100}
                 step={1}
               />
-            </div>
-          </div>
+            </Box>
+          </VStack>
         </Tabs.Content>
 
         <Tabs.Content value="audio">
-          <div className={css({ py: '2' })}>
-            <div className={css({ display: 'flex', justifyContent: 'space-between', mb: '2' })}>
-              <Label htmlFor="volume" className={css({ fontWeight: 'medium' })}>
-                Volume
-              </Label>
-              <span>{volume}%</span>
-            </div>
-            <Slider
-              id="volume"
-              value={[volume]}
-              onValueChange={(value) => setVolume(value[0] ?? 0)}
-              min={0}
-              max={100}
-              step={1}
-            />
-          </div>
+          <VStack gap="gap.component.lg" py="padding.block.md">
+            <Box>
+              <HStack justify="space-between" mb="2">
+                <Label htmlFor="volume" className={css({ fontWeight: 'medium' })}>
+                  Volume
+                </Label>
+                <span>{volume}%</span>
+              </HStack>
+              <Slider
+                id="volume"
+                value={[volume]}
+                onValueChange={(value) => setVolume(value[0] ?? 0)}
+                min={0}
+                max={100}
+                step={1}
+              />
+            </Box>
+          </VStack>
         </Tabs.Content>
       </Tabs.Root>
     </ShowcaseCard>

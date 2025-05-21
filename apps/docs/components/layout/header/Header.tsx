@@ -1,5 +1,8 @@
+import AnimatedBrandName from '@/components/home/animated-brandname'
+import { css } from '@styled-system/css'
+import { LayoutGrid, Package } from 'lucide-react'
 import Link from 'next/link'
-import { SearchDialog } from '../../components/docs/search'
+import { SearchDialog } from '../../docs/search'
 import { header } from './header.recipe'
 
 export function Header() {
@@ -11,7 +14,7 @@ export function Header() {
         <div className={styles.innerContainer}>
           <div className={styles.layout}>
             <Link href="/" className={styles.logo}>
-              <span>Pallas UI</span>
+              <AnimatedBrandName />
             </Link>
 
             <div className={styles.searchContainer}>
@@ -19,11 +22,15 @@ export function Header() {
             </div>
 
             <nav className={styles.nav}>
-              <Link href="/docs/introduction/introduction" className={styles.link}>
-                Documentation
+              <Link href="/docs/introduction" className={styles.link}>
+                <LayoutGrid size={16} />
+                <span className={css({ display: { base: 'none', md: 'inline' } })}>
+                  Documentation
+                </span>
               </Link>
               <Link href="/docs/components/accordion" className={styles.link}>
-                Components
+                <Package size={16} />
+                <span className={css({ display: { base: 'none', md: 'inline' } })}>Components</span>
               </Link>
               <Link
                 href="https://github.com/PallasUI/pallas-ui"

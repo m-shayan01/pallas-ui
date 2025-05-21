@@ -2,6 +2,7 @@
 
 import { generateThemeColors } from '@pallas-ui/panda-preset/colors/colors'
 import { css } from '@styled-system/css'
+import { Flex } from '@styled-system/jsx'
 import { type Token, token } from '@styled-system/tokens'
 import { Copy } from 'lucide-react'
 import { useEffect, useState } from 'react'
@@ -54,21 +55,19 @@ const ColorSwatch = ({ tokenName, color }: ColorSwatchProps) => {
   return (
     <div
       className={css({
+        width: '90px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'flex-start',
         gap: '4',
         py: '4',
-        borderBottom: '1px solid',
-        borderColor: 'border.secondary',
-        _last: { borderBottom: 'none' },
       })}
     >
       <button
         type="button"
         className={css({
-          width: '80px',
-          height: '80px',
+          width: '90px',
+          height: '90px',
           borderRadius: 'md',
           border: '1px solid',
           borderColor: 'border',
@@ -98,8 +97,8 @@ const ColorSwatch = ({ tokenName, color }: ColorSwatchProps) => {
           <Copy
             className={css({
               color: 'white',
-              height: '24px',
-              width: '24px',
+              height: 'icon.md',
+              width: 'icon.md',
             })}
           />
         </div>
@@ -111,7 +110,20 @@ const ColorSwatch = ({ tokenName, color }: ColorSwatchProps) => {
           gap: '1',
         })}
       >
-        <span className={css({ fontSize: 'xs', fontWeight: 'medium' })}>{tokenName}</span>
+        <span
+          className={css({
+            fontSize: 'xs',
+            fontWeight: 'medium',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            maxWidth: '90px',
+            display: 'block',
+          })}
+          title={tokenName}
+        >
+          {tokenName}
+        </span>
         <span className={css({ fontSize: 'xs', color: 'text.tertiary', fontFamily: 'mono' })}>
           {color}
         </span>
@@ -141,7 +153,11 @@ export function ColorPalette() {
       })}
     >
       {swatches.map(({ name, swatches }) => (
-        <div key={name} className={css({ display: 'flex', flexDirection: 'column', gap: '6' })}>
+        <div
+          style={{ width: '100%' }}
+          key={name}
+          className={css({ display: 'flex', flexDirection: 'column', gap: '6' })}
+        >
           <h2
             className={css({
               fontSize: '2xl',
@@ -152,24 +168,42 @@ export function ColorPalette() {
           >
             {name.charAt(0).toUpperCase() + name.slice(1)} Colors
           </h2>
-          <div
-            className={css({
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'flex-start',
-              gap: '4',
-              p: '3',
+          <Flex
+            gap={4}
+            p={3}
+            justify="flex-start"
+            css={{
               border: '1px solid',
               borderColor: 'border',
               borderRadius: 'md',
               bg: 'surface.container',
+              width: 'calc((100vw - 6rem) - {sizes.sidebar.width} *2)',
               overflowX: 'auto',
-            })}
+              display: 'flex',
+              flexWrap: 'nowrap',
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#bbb #f5f5f5',
+              '&::-webkit-scrollbar': {
+                height: '4px',
+                background: 'surface.container',
+              },
+              '&::-webkit-scrollbar-thumb': {
+                background: 'border.secondary',
+                borderRadius: '4px',
+              },
+              '&::-webkit-scrollbar-track': {
+                background: 'surface.container',
+              },
+            }}
           >
             {Object.entries(swatches).map(([tokenName, color]) => (
-              <ColorSwatch key={tokenName} tokenName={tokenName} color={color} />
+              <ColorSwatch
+                key={tokenName}
+                tokenName={tokenName.replace('.DEFAULT', '')}
+                color={color}
+              />
             ))}
-          </div>
+          </Flex>
         </div>
       ))}
     </div>

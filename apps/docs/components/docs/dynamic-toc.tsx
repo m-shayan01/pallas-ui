@@ -2,6 +2,7 @@
 
 import { css } from '@styled-system/css'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 type TocItem = {
@@ -14,8 +15,10 @@ type TocItem = {
 export function DynamicToc() {
   const [toc, setToc] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
+  const pathname = usePathname()
 
   // Generate TOC from the actual rendered DOM
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     // Function to build TOC from DOM
     function buildToc() {
@@ -58,11 +61,25 @@ export function DynamicToc() {
       setToc(result)
     }
 
-    // Build TOC initially and when the page changes
-    setTimeout(buildToc, 300) // Small delay to ensure MDX content is rendered
+    // Initial build (in case content is already present)
+    setTimeout(buildToc, 300)
+
+    // Observe DOM changes in the content area
+    const contentArea = document.querySelector('[data-mdx-content="true"]')
+    let observer: MutationObserver | null = null
+
+    if (contentArea) {
+      observer = new MutationObserver(() => {
+        buildToc()
+      })
+      observer.observe(contentArea, { childList: true, subtree: true })
+    }
+
+    // Also listen for window load
+    window.addEventListener('load', buildToc)
 
     // Set up Intersection Observer for active heading tracking
-    const observer = new IntersectionObserver(
+    const intersectionObserver = new IntersectionObserver(
       (entries) => {
         const visibleHeadings = entries
           .filter((entry) => entry.isIntersecting)
@@ -78,10 +95,16 @@ export function DynamicToc() {
 
     // Observe all headings with IDs
     const headings = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]')
-    headings.forEach((heading) => observer.observe(heading))
+    headings.forEach((heading) => {
+      intersectionObserver.observe(heading)
+    })
 
-    return () => observer.disconnect()
-  }, [])
+    return () => {
+      if (observer) observer.disconnect()
+      window.removeEventListener('load', buildToc)
+      intersectionObserver.disconnect()
+    }
+  }, [pathname])
 
   // Handle scroll to section
   const scrollToSection = (id: string) => (e: React.MouseEvent) => {
@@ -120,7 +143,7 @@ export function DynamicToc() {
         className={css({
           display: 'flex',
           flexDirection: 'column',
-          gap: '4', // Changed from gap.inline.md
+          gap: '2', // Changed from gap.inline.md
         })}
       >
         {toc.map((item) => (
@@ -135,6 +158,7 @@ export function DynamicToc() {
                 fontSize: 'md', //changed from sm to show difference in toc levels
                 fontWeight: activeId === item.id ? 'medium' : 'normal',
                 _hover: { color: 'primary.hover' },
+                mt: '1',
               })}
             >
               {item.text}
@@ -146,7 +170,7 @@ export function DynamicToc() {
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '1', // Changed from padding.inline.xs
-                  mt: '1', // Changed from padding.inline.xs
+                  mt: '0.5', // Changed from padding.inline.xs
                   ml: '3', // Changed from padding.inline.md
                 })}
               >

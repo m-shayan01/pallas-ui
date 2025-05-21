@@ -2,16 +2,15 @@
 title: Accordion
 description: A vertically stacked set of interactive headings that each reveal a section of content.
 references:
-  shadcnUiLink: https://ui.shadcn.com/docs/components/accordion
   radix:
     link: https://www.radix-ui.com/docs/primitives/components/accordion
     api: https://www.radix-ui.com/docs/primitives/components/accordion#api-reference
 ---
 <ContentContainer>
 
-<Section>
+<Section gap="1">
 # Accordion
-A vertically stacked set of interactive headings that each reveal a section of content.
+<Paragraph size={'extraLarge'} color={'tertiary'}>A vertically stacked set of interactive headings that each reveal a section of content.</Paragraph>
 <ComponentPreview name="accordion" withRecipe />
 </Section>
 
@@ -54,6 +53,34 @@ import {
   </Accordion.Item>
 </Accordion>
 ```
+</Section>
+
+<Section>
+## Examples
+### Default
+
+<ComponentPreview name="accordion" />
+
+### Collapsible
+
+<ComponentPreview name="accordion" file="collapsible" />
+
+### Controlled
+
+<ComponentPreview name="accordion" file="controlled" />
+
+### Custom Style
+
+<ComponentPreview name="accordion" file="custom-style" />
+
+### Dynamic
+
+<ComponentPreview name="accordion" file="dynamic" />
+
+### Multiple
+
+<ComponentPreview name="accordion" file="multiple" />
+
 </Section>
 
 </ContentContainer>

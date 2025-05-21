@@ -1,0 +1,99 @@
+---
+title: 'Layout Guide'
+description: 'Create flexible layouts with PallasUI patterns'
+order: 1
+---
+
+<ContentContainer>
+<Section>
+# Layout Guide
+<Paragraph size={'extraLarge'} color={'tertiary'}>Create flexible layouts with PallasUI patterns</Paragraph>
+</Section>
+Pallas UI leverages Panda CSS patterns for creating flexible and responsive layouts. We've extended these patterns with a standard set of properties to provide consistent layout control across all components.
+
+## Core Layout Patterns
+
+Pallas UI provides several layout patterns to help structure your UI:
+
+- **Box** - A basic container with no styling applied, useful for applying custom styles
+- **Flex** - A flexible container that can arrange items horizontally or vertically
+- **Stack** - A simplified flex container for stacking elements
+- **HStack** - A horizontal stack with items aligned in the center
+- **VStack** - A vertical stack with items aligned in the center
+- **Grid** - A CSS grid container for two-dimensional layouts
+- **Shapes** - Circle and Square components for creating simple geometric shapes
+- **AspectRatio** - A container that maintains a specific aspect ratio
+
+## Common Properties
+
+All layout patterns in Pallas UI share these common properties:
+
+| Prop | CSS Property | Description |
+|------|-------------|-------------|
+| `p` | `padding` | Padding on all sides |
+| `px` | `paddingInline` | Horizontal padding (left and right) |
+| `py` | `paddingBlock` | Vertical padding (top and bottom) |
+| `pt` | `paddingTop` | Padding top |
+| `pr` | `paddingRight` | Padding right |
+| `pb` | `paddingBottom` | Padding bottom |
+| `pl` | `paddingLeft` | Padding left |
+| `m` | `margin` | Margin on all sides |
+| `mx` | `marginInline` | Horizontal margin (left and right) |
+| `my` | `marginBlock` | Vertical margin (top and bottom) |
+| `mt` | `marginTop` | Margin top |
+| `mr` | `marginRight` | Margin right |
+| `mb` | `marginBottom` | Margin bottom |
+| `ml` | `marginLeft` | Margin left |
+| `w` | `width` | Element width |
+| `minW` | `minWidth` | Minimum width constraint |
+| `maxW` | `maxWidth` | Maximum width constraint |
+| `h` | `height` | Element height |
+| `minH` | `minHeight` | Minimum height constraint |
+| `maxH` | `maxHeight` | Maximum height constraint |
+| `position` | `position` | CSS position value (static, relative, absolute, fixed, sticky) |
+
+## Usage
+
+Pallas UI's layout patterns can be imported from the JSX namespace:
+
+```jsx
+import { Box, Flex, HStack, VStack, Grid, Circle, Square, AspectRatio } from '@styled-system/jsx'
+
+function MyComponent() {
+  return (
+    <Box p={4} maxW="1200px" mx="auto">
+      <VStack gap={4} minH="400px">
+        <HStack gap={2} w="full" justify="space-between">
+          <Circle size="50px" bg="primary" />
+          <Square size="50px" bg="secondary" />
+        </HStack>
+        
+        <Grid columns={2} gap={4} w="full">
+          <Box p={4} bg="gray.100" position="relative">
+            <Box position="absolute" top={2} right={2}>
+              ✨
+            </Box>
+            Grid item with padding and positioning
+          </Box>
+          <Box py={6} px={4} bg="gray.100" minH="100px">
+            Grid item with vertical/horizontal padding
+          </Box>
+        </Grid>
+
+        <Flex direction="row" wrap="wrap" gap={4} mt={8}>
+          <Box flex="1" px={4} maxW="300px">
+            Flexible item with max width
+          </Box>
+          <Box flex="1" px={4} maxW="300px">
+            Another flexible item
+          </Box>
+        </Flex>
+      </VStack>
+    </Box>
+  )
+}
+```
+
+For detailed examples and all available properties, check the documentation for each specific layout pattern.
+
+</ContentContainer>

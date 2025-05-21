@@ -1,0 +1,43 @@
+---
+title: 'Shapes'
+description: 'Circle and Square layout components for creating geometric elements'
+---
+<ContentContainer>
+
+<Section gap="1">
+# Shapes
+<Paragraph size={'extraLarge'} color={'tertiary'}>Simple geometric shape components for creating circular and square UI elements.</Paragraph>
+
+</Section>
+<ComponentPreview name="shapes" />
+<Section>
+## Usage
+
+```jsx
+import { Circle, Square } from '@styled-system/jsx'
+```
+
+```jsx
+<Circle className={css({ size: '100px', bg: 'fill.accent' })}>
+  Circle Content
+</Circle>
+
+<Square className={css({ size: '100px', bg: 'fill.secondary' })}>
+  Square Content
+</Square>
+```
+</Section>
+
+<Section>
+## Properties
+
+Both Circle and Square components accept the following properties:
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `string \| number` | - | Sets both width and height to the same value |
+
+Additionally, they accept all common layout properties through the className prop or with css function.
+</Section>
+
+</ContentContainer> 

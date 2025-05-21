@@ -96,14 +96,17 @@ export function SearchDialog() {
         className={css({
           position: 'relative',
           display: 'flex',
+          alignItems: 'center',
           minW: '160px',
           w: { base: 'full', md: '100%' }, // Changed from 'auto' to '100%' for md screens
-          justifyContent: 'flex-start',
+          justifyContent: 'start',
           gap: '4',
           color: 'text.secondary',
           fontWeight: 'normal',
           px: '2',
           py: '1',
+          borderColor: 'grey.500',
+          shadow: 'inset 0 1px 2px 0 rgba(0, 0, 0, 0.2)',
         })}
       >
         <SearchIcon className={css({ h: 'icon.sm', w: 'icon.sm' })} />
@@ -114,8 +117,7 @@ export function SearchDialog() {
               display: 'inline',
             },
             paddingRight: '4',
-            marginRight: '4',
-            paddingLeft: '2',
+            marginRight: '6',
           })}
         >
           Search documentation...
@@ -130,7 +132,7 @@ export function SearchDialog() {
         >
           Search...
         </span>
-        <kbd
+        <span
           className={css({
             position: 'absolute',
             right: '2',
@@ -138,23 +140,26 @@ export function SearchDialog() {
             alignItems: 'center',
             gap: '1',
             rounded: 'sm',
-            border: '1px solid',
+            border: '.8px solid',
             borderColor: 'border',
             bg: 'surface.layout',
             px: '1',
             fontSize: 'xs',
-            fontFamily: 'mono',
+
             fontWeight: 'normal',
-            lineHeight: 'normal',
+            lineHeight: '1.125rem',
             marginLeft: '4',
+            ml: 'auto',
             md: {
               display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             },
+            boxSizing: 'border-box',
           })}
         >
-          <span>⌘</span>
-          <span>K</span>
-        </kbd>
+          <span className={css({ boxSizing: 'border-box' })}>⌘K</span>
+        </span>
       </Button>
 
       <Dialog.Root open={open} onOpenChange={setOpen}>

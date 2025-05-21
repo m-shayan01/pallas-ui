@@ -63,4 +63,5 @@ export const icon = defineRecipe({
     fillCurrent: false,
     dimmed: false,
   },
+  staticCss: [{ size: ['*'] }],
 })

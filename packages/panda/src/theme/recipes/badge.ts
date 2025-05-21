@@ -13,15 +13,6 @@ export const badge = defineRecipe({
     textStyle: 'xs',
     fontWeight: 'semibold',
     transition: 'colors',
-    focusRingOffsetColor: 'background',
-
-    _focus: {
-      outline: '2px solid transparent',
-      outlineOffset: '2px',
-      focusRingWidth: '2',
-      focusRingColor: 'ring',
-      focusRingOffsetWidth: '2',
-    },
   },
   variants: {
     variant: {
@@ -53,6 +44,21 @@ export const badge = defineRecipe({
           borderColor: '{colors.error.borderHover}',
           bg: '{colors.error.bgHover}',
         },
+      },
+    },
+    size: {
+      sm: {
+        px: '{spacing.padding.inline.sm}',
+        py: '{spacing.padding.block.xs}',
+      },
+      md: {
+        px: '{spacing.padding.inline.md}',
+        py: '{spacing.padding.block.sm}',
+      },
+      lg: {
+        textStyle: 'md',
+        px: '{spacing.padding.inline.lg}',
+        py: '{spacing.padding.block.md}',
       },
     },
   },

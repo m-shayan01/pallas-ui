@@ -88,10 +88,11 @@ export const daypicker = defineSlotRecipe({
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      h: '8',
+      h: '7',
       w: '8',
       px: '0',
       py: '0',
+      fontSize: 'sm',
       fontWeight: 'normal',
       borderRadius: '{radii.md}',
       '&[aria-selected="true"]': {
@@ -169,8 +170,10 @@ export const daypicker = defineSlotRecipe({
     range_end: {
       roundedLeft: '0',
       roundedRight: '{radii.md}',
+      color: '{colors.bgSolid.text}',
       _hover: {
         bg: '{colors.primary.hover}',
+        color: '{colors.text}',
       },
     },
     hidden: {

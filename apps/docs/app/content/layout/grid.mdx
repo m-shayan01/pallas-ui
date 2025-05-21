@@ -1,0 +1,81 @@
+---
+title: 'Grid'
+description: 'Create two-dimensional grid layouts with ease'
+---
+<ContentContainer>
+
+<Section gap="1">
+# Grid
+<Paragraph size={'extraLarge'} color={'tertiary'}>A layout component that creates two-dimensional grid-based layouts with precise control over placement and sizing.</Paragraph>
+
+</Section>
+<ComponentPreview name="grid" />
+<Section>
+## Usage
+
+```jsx
+import { Grid } from '@styled-system/jsx'
+```
+
+```jsx
+<Grid 
+  columns={3}
+  gap={4}
+>
+  <Box p={4}>Item 1</Box>
+  <Box p={4}>Item 2</Box>
+  <Box p={4}>Item 3</Box>
+  <Box p={4}>Item 4</Box>
+  <Box p={4}>Item 5</Box>
+  <Box p={4}>Item 6</Box>
+</Grid>
+```
+</Section>
+
+<Section>
+## Properties
+
+Grid accepts all common properties mentioned in the [layout guide](/docs/layout/index) along with these grid-specific properties:
+
+### Grid Container Properties
+
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `columns` | `grid-template-columns` | The number of columns in the grid |
+| `gap` | `gap` | The gap between the elements in the stack |
+| `columnGap` | `column-gap` | The gap between the elements in the stack horizontally |
+| `rowGap` | `row-gap` | The gap between the elements in the stack vertically |
+| `minChildWidth` | `min-width` | The minimum width of the child elements before wrapping (must not be used with columns) |
+
+### Grid Item Properties
+
+| Property | CSS Property | Description |
+|----------|-------------|-------------|
+| `colSpan` | `grid-column` | The number of columns the item spans |
+| `rowSpan` | `grid-row` | The number of rows the item spans |
+| `colStart` | `grid-column-start` | The column the item starts at |
+| `colEnd` | `grid-column-end` | The column the item ends at |
+| `rowStart` | `grid-row-start` | The row the item starts at |
+| `rowEnd` | `grid-row-end` | The row the item ends at |
+</Section>
+
+<Section>
+## Examples
+
+### Basic Grid
+<ComponentPreview name="grid" />
+
+### Responsive Grid
+<ComponentPreview name="grid" file="responsive" />
+
+### Grid Template Areas
+<ComponentPreview name="grid" file="areas" />
+
+### Item Placement
+<ComponentPreview name="grid" file="item-placement" />
+
+### Auto-fill and Auto-fit
+<ComponentPreview name="grid" file="auto-fill" />
+</Section>
+
+</ContentContainer> 

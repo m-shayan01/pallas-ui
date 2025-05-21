@@ -1,0 +1,50 @@
+---
+title: 'AspectRatio'
+description: 'A component that maintains a specific aspect ratio'
+---
+<ContentContainer>
+
+<Section gap="1">
+# AspectRatio
+<Paragraph size={'extraLarge'} color={'tertiary'}>A component that maintains a specific aspect ratio, regardless of the width. </Paragraph>
+</Section>
+This is particularly useful for images, videos, and other media content.
+<ComponentPreview name="aspect-ratio" />
+
+<Section>
+## Usage
+
+```jsx
+import { AspectRatio } from '@styled-system/jsx'
+```
+
+```jsx
+<AspectRatio ratio={16 / 9} w="100%" maxW="500px">
+  <img src="your-image.jpg" alt="Example" style={{ objectFit: 'cover' }} />
+</AspectRatio>
+```
+</Section>
+
+<Section>
+## Properties
+
+AspectRatio accepts all the common layout properties plus:
+
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `ratio` | `number` | `1` | The aspect ratio to maintain (width/height) |
+</Section>
+
+<Section>
+## Examples
+
+
+### With Image
+<ComponentPreview name="aspect-ratio" file="image" />
+
+### Responsive
+<ComponentPreview name="aspect-ratio" file="responsive" />
+
+</Section>
+
+</ContentContainer> 

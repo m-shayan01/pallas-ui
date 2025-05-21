@@ -34,8 +34,14 @@ export default defineConfig({
       baseRadius: 2,
     }),
   ],
+  globalCss: {
+    '&::selection': {
+      backgroundColor: '{colors.primary.bg}',
+      color: '{colors.gray.900}',
+    },
+  },
 
-  include: ['./components/**/*.{js,jsx,ts,tsx}', './app/**/*.{js,jsx,ts,tsx}'],
+  include: ['./components/**/*.{js,jsx,ts,tsx,mdx}', './app/**/*.{js,jsx,ts,tsx,mdx}'],
 
   theme: {
     extend: {
@@ -94,13 +100,37 @@ export default defineConfig({
             },
           },
         },
+        sizes: {
+          header: {
+            height: {
+              value: {
+                base: '72px',
+              },
+            },
+          },
+          sidebar: {
+            width: {
+              value: {
+                base: '200px',
+                md: '235px',
+              },
+            },
+            height: {
+              value: {
+                base: 'calc(100vh - 72px)',
+              },
+            },
+          },
+          toc: {
+            width: {
+              value: {
+                base: '250px',
+              },
+            },
+          },
+        },
       },
       recipes: {
-        // button: {
-        //   base: {
-        //     fontFamily: 'heading', // This will use the Noto Sans JP font
-        //   },
-        // },
         prose: {
           className: 'docs-prose',
           base: {

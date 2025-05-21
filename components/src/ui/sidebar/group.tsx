@@ -28,7 +28,11 @@ const GroupActionStyled = withContext<
   React.ComponentRef<typeof GroupActionPrimitive>,
   ActionButtonProps
 >(GroupActionPrimitive, 'groupAction')
-export const GroupAction = React.forwardRef<HTMLButtonElement, ActionButtonProps>((props, ref) => {
+
+export const GroupAction = React.forwardRef<
+  React.ComponentRef<typeof GroupActionStyled>,
+  ActionButtonProps
+>((props, ref) => {
   const [buttonProps, { className, ...rest }] = button.splitVariantProps(props)
   return <GroupActionStyled ref={ref} className={cx(button(buttonProps), className)} {...rest} />
 })

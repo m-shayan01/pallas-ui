@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { css } from '@styled-system/css'
+import { Box, HStack } from '@styled-system/jsx'
 import React from 'react'
 import { ShowcaseCard } from './showcase-card'
 
@@ -17,40 +18,33 @@ export const FormShowcase = () => {
         className={css({
           display: 'flex',
           flexDirection: 'column',
-          gap: '4',
+          gap: 'gap.component.md',
         })}
         onSubmit={(e) => e.preventDefault()}
       >
-        <div>
+        <Box>
           <Label>Full Name</Label>
           <Input>
             <Input.Text id="name" placeholder="Enter your name" />
           </Input>
-        </div>
+        </Box>
 
-        <div>
+        <Box>
           <Label>Email Address</Label>
           <Input>
             <Input.Text id="email" placeholder="you@example.com" type="email" />
           </Input>
-        </div>
+        </Box>
 
-        <div>
+        <Box>
           <Label>Message</Label>
           <Textarea placeholder="Your message here..." />
-        </div>
+        </Box>
 
-        <div
-          className={css({
-            display: 'flex',
-            justifyContent: 'flex-end',
-            gap: '3',
-            mt: '2',
-          })}
-        >
+        <HStack justify="flex-end" gap="3" mt="2">
           <Button variant="outlined">Cancel</Button>
           <Button variant="primary">Submit</Button>
-        </div>
+        </HStack>
       </form>
     </ShowcaseCard>
   )

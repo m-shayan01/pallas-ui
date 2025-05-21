@@ -2,9 +2,8 @@
 
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import { radioGroup } from '@styled-system/recipes'
+import { type RadioGroupVariantProps, radioGroup } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
-import { Circle } from 'lucide-react'
 import * as React from 'react'
 
 const { withProvider, withContext } = createStyleContext(radioGroup)
@@ -13,11 +12,6 @@ const Indicator = withContext<
   React.ComponentRef<typeof RadioGroupPrimitive.Indicator>,
   Assign<WithFixedClassName<RadioGroupPrimitive.RadioGroupIndicatorProps>, JsxStyleProps>
 >(RadioGroupPrimitive.Indicator, 'indicator')
-
-const Icon = withContext<
-  React.ComponentRef<typeof Circle>,
-  Assign<ComponentProps<typeof Circle>, JsxStyleProps>
->(Circle, 'icon')
 
 const RadioGroupItem = React.forwardRef<
   React.ComponentRef<typeof RadioGroupPrimitive.Item>,
@@ -31,7 +25,9 @@ const RadioGroupItem = React.forwardRef<
 })
 RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 
-export type RootProps = WithFixedClassName<ComponentProps<typeof RadioGroupPrimitive.Root>>
+export type RootProps = WithFixedClassName<
+  ComponentProps<typeof RadioGroupPrimitive.Root> & RadioGroupVariantProps
+>
 export const Root = withProvider<
   React.ComponentRef<typeof RadioGroupPrimitive.Root>,
   Assign<RootProps, JsxStyleProps>

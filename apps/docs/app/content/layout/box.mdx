@@ -1,0 +1,61 @@
+---
+title: 'Box'
+description: 'A fundamental layout component for basic content containers'
+---
+<ContentContainer>
+
+<Section gap="1">
+# Box
+<Paragraph size={'extraLarge'} color={'tertiary'}>A fundamental layout component for creating containers with custom styles and responsive behavior.</Paragraph>
+
+</Section>
+<ComponentPreview name="box" />
+<Section>
+## Usage
+
+```jsx
+import { Box } from '@styled-system/jsx'
+```
+
+```jsx
+<Box
+  p={4}
+  w="full"
+  maxW="500px"
+>
+  This is a box
+</Box>
+```
+</Section>
+
+<Section>
+## Properties
+
+Box accepts all common porperties mentioned in the [layout guide](/docs/layout/index).
+
+### Responsive Values
+
+All properties support responsive values using the following format:
+
+```jsx
+<Box
+  w={{ base: "100%", md: "50%", lg: "33%" }}
+  p={{ base: 2, md: 4, lg: 6 }}
+>
+  Responsive Box
+</Box>
+```
+</Section>
+
+<Section>
+## Examples
+
+### Default
+<ComponentPreview name="box" />
+
+### Nested Boxes
+<ComponentPreview name="box" file="nested" />
+
+</Section>
+
+</ContentContainer> 

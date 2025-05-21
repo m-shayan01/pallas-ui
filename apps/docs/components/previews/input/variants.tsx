@@ -4,10 +4,10 @@ import { Stack } from '@styled-system/jsx'
 
 export default function Example() {
   return (
-    <Stack width="full" maxWidth="md" align="flex-start" gap="4">
-      <Stack width="full" align="flex-start" gap="2">
+    <Stack w="full" maxW="sm" align="flex-start" gap="4">
+      <Stack w="full" align="flex-start" gap="2">
         <h3 className={css({ fontSize: 'sm', fontWeight: 'medium' })}>Size Variants</h3>
-        <Stack width="full" align="flex-start" gap="2">
+        <Stack w="full" align="flex-start" gap="2">
           <Input size="sm">
             <Input.Text placeholder="Small input" />
           </Input>
@@ -20,9 +20,9 @@ export default function Example() {
         </Stack>
       </Stack>
 
-      <Stack width="full" align="flex-start" gap="2">
+      <Stack w="full" align="flex-start" gap="2">
         <h3 className={css({ fontSize: 'sm', fontWeight: 'medium' })}>Shape Variants</h3>
-        <Stack width="full" align="flex-start" gap="2">
+        <Stack w="full" align="flex-start" gap="2">
           <Input shape="default">
             <Input.Text placeholder="Default shape" />
           </Input>
@@ -35,9 +35,9 @@ export default function Example() {
         </Stack>
       </Stack>
 
-      <Stack width="full" align="flex-start" gap="2">
+      <Stack w="full" align="flex-start" gap="2">
         <h3 className={css({ fontSize: 'sm', fontWeight: 'medium' })}>Status Variants</h3>
-        <Stack width="full" align="flex-start" gap="2">
+        <Stack w="full" align="flex-start" gap="2">
           <Input size="md">
             <Input.Text status="success" placeholder="Success state" />
           </Input>

@@ -25,10 +25,12 @@ export const menubar = defineSlotRecipe({
     root: {
       display: 'flex',
       alignItems: 'center',
+      rounded: 'md',
+      bg: '{colors.surface.elevated}',
+      border: '1px solid {colors.border}',
     },
     trigger: {
       display: 'flex',
-      cursor: 'default',
       userSelect: 'none',
       alignItems: 'center',
       rounded: 'sm',
@@ -37,6 +39,16 @@ export const menubar = defineSlotRecipe({
       textStyle: 'sm',
       fontWeight: 'medium',
       outline: '2px solid transparent',
+      cursor: 'pointer',
+      boxShadow: '{shadows.minimal}',
+
+      _hover: {
+        bg: '{colors.fill.secondary}',
+        _open: {
+          bg: '{colors.primary.bgHover}',
+          color: '{colors.primary.textActive}',
+        },
+      },
 
       _focus: {
         bg: '{colors.primary.bgHover}',
@@ -50,7 +62,6 @@ export const menubar = defineSlotRecipe({
     },
     subTrigger: {
       display: 'flex',
-      cursor: 'default',
       userSelect: 'none',
       alignItems: 'center',
       rounded: 'sm',
@@ -75,9 +86,9 @@ export const menubar = defineSlotRecipe({
       rounded: '{radii.lg}',
       bg: '{colors.surface.elevated}',
       color: '{colors.text}',
-      shadow: '{shadows.lg}',
+      shadow: '{shadows.md}',
       p: '{spacing.padding.block.lg} {spacing.padding.inline.md}',
-
+      border: '1px solid {colors.border}',
       _open: {
         animateIn: true,
         fadeIn: 0,
@@ -89,59 +100,28 @@ export const menubar = defineSlotRecipe({
         fadeOut: 0,
         zoomOut: 95,
       },
-
-      _top: {
-        slideInFromBottom: '2',
-      },
-
-      _bottom: {
-        slideInFromTop: '2',
-      },
-
-      _left: {
-        slideInFromRight: '2',
-      },
-
-      _right: {
-        slideInFromLeft: '2',
-      },
+      animationStyle: 'slideFadeIn',
     },
     content: {
       zIndex: 50,
-      minWidth: '72',
+      minWidth: '36',
       rounded: '{radii.lg}',
       bg: '{colors.surface.elevated}',
       p: '{spacing.padding.block.lg} {spacing.padding.inline.md}',
       color: '{colors.text}',
       outline: 'none',
-      boxShadow: '{shadows.lg}',
+      boxShadow: '{shadows.md}',
+      border: '1px solid {colors.border}',
 
       _open: {
-        animateIn: true,
-        fadeIn: 0,
-        zoomIn: 95,
+        animationStyle: 'fadeIn',
       },
-
-      _top: {
-        slideInFromBottom: '2',
-      },
-
-      _bottom: {
-        slideInFromTop: '2',
-      },
-
-      _left: {
-        slideInFromRight: '2',
-      },
-
-      _right: {
-        slideInFromLeft: '2',
-      },
+      animationStyle: 'slideFadeIn',
     },
     item: {
       position: 'relative',
       display: 'flex',
-      cursor: 'default',
+      cursor: '',
       userSelect: 'none',
       alignItems: 'center',
       rounded: 'sm',
@@ -223,11 +203,17 @@ export const menubar = defineSlotRecipe({
     },
     separator: {
       my: '{spacing.padding.block.sm}',
-      h: '1px',
+      h: '.5px',
       bg: '{colors.border}',
     },
     arrow: {
-      fill: '{colors.surface.elevated}',
+      fill: '{colors.surface.spotlight}',
+    },
+    shortcut: {
+      ml: 'auto',
+      textStyle: 'xs',
+      tracking: 'widest',
+      color: '{colors.text.secondary}',
     },
   },
 })

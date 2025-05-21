@@ -2,80 +2,106 @@
 
 import { Badge } from '@/components/ui/badge'
 import { Separator } from '@/components/ui/separator'
+import { Paragraph as OrignalParagraph } from '@/components/ui/typography'
 import Heading from '@/components/ui/typography/heading'
-import Paragraph from '@/components/ui/typography/paragraph'
-import { css } from '@styled-system/css'
 import { Box, HStack, VStack } from '@styled-system/jsx'
-import React from 'react'
+import type React from 'react'
 import { ShowcaseCard } from './showcase-card'
+
+const Paragraph = (props: React.ComponentProps<typeof OrignalParagraph>) => (
+  <OrignalParagraph size="compact" {...props} />
+)
+const SpacedRow = (props: React.ComponentProps<typeof HStack>) => (
+  <HStack justify="space-between" w="full" {...props} />
+)
 
 export const BadgeSeparatorShowcase = () => {
   return (
     <ShowcaseCard paddingTitle="0">
-      <VStack gap="4" py="2" css={{ w: 'full' }}>
+      <VStack gap="gap.component.md" py="padding.block.xs" w="full" align="flex-start">
         <Box>
-          <HStack justify="space-between" css={{ mb: '2' }}>
-            <Heading level={5}>Project Overview</Heading>
+          <SpacedRow css={{ mb: '2' }}>
+            <Heading level={4}>Project Overview</Heading>
             <Badge variant="primary">Active</Badge>
-          </HStack>
-          <Paragraph size={'compact'}>
+          </SpacedRow>
+          <Paragraph>
             A comprehensive dashboard for monitoring system performance and user activity.
           </Paragraph>
         </Box>
 
         <Separator />
 
-        <VStack gap="3" css={{ w: 'full' }}>
+        <VStack gap="gap.component.md" w="full" align="flex-start">
           <Heading level={5}>Team Members</Heading>
-          <VStack gap="3" css={{ w: 'full' }}>
-            <HStack justify="space-between" width={'full'}>
-              <span>Alex Johnson</span>
-              <Badge variant="default">Lead</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>Maria Garcia</span>
-              <Badge variant="default">Developer</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>James Wilson</span>
-              <Badge variant="default">Designer</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>James Wilson</span>
-              <Badge variant="default">Designer</Badge>
-            </HStack>
+          <VStack gap="gap.inline.xs" w="full">
+            <SpacedRow>
+              <Paragraph>Alex Johnson</Paragraph>
+              <Badge variant="default" size="sm">
+                Lead
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>Maria Garcia</Paragraph>
+              <Badge variant="default" size="sm">
+                Developer
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>James Wilson</Paragraph>
+              <Badge variant="default" size="sm">
+                Designer
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>James Wilson</Paragraph>
+              <Badge variant="default" size="sm">
+                Designer
+              </Badge>
+            </SpacedRow>
           </VStack>
         </VStack>
 
         <Separator />
 
-        <VStack gap="4" css={{ w: 'full' }}>
+        <VStack gap="gap.component.md" w="full" align="flex-start">
           <Heading level={5}>Milestones</Heading>
-          <VStack gap="3" width={'full'}>
-            <HStack justify="space-between" width={'full'}>
-              <span>Design System</span>
-              <Badge variant="primary">Completed</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>Design System</span>
-              <Badge variant="primary">Completed</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>Backend Integration</span>
-              <Badge variant="error">Blocked</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>Backend Integration</span>
-              <Badge variant="error">Blocked</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>Backend Integration</span>
-              <Badge variant="error">Blocked</Badge>
-            </HStack>
-            <HStack justify="space-between" width={'full'}>
-              <span>Testing</span>
-              <Badge variant="default">Not Started</Badge>
-            </HStack>
+          <VStack gap="gap.inline.xs" w="full">
+            <SpacedRow>
+              <Paragraph>Design System</Paragraph>
+              <Badge variant="primary" size="sm">
+                Completed
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>Design System</Paragraph>
+              <Badge variant="primary" size="sm">
+                Completed
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>Backend Integration</Paragraph>
+              <Badge variant="error" size="sm">
+                Blocked
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>Backend Integration</Paragraph>
+              <Badge variant="error" size="sm">
+                Blocked
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>Backend Integration</Paragraph>
+              <Badge variant="error" size="sm">
+                Blocked
+              </Badge>
+            </SpacedRow>
+            <SpacedRow>
+              <Paragraph>Testing</Paragraph>
+              <Badge variant="default" size="sm">
+                Not Started
+              </Badge>
+            </SpacedRow>
           </VStack>
         </VStack>
       </VStack>
