@@ -1,0 +1,72 @@
+import { defineSlotRecipe } from '@pandacss/dev'
+
+export const sheet = defineSlotRecipe({
+  className: 'sheet',
+  description: 'Styles for the Sheet component',
+  slots: [
+    'root',
+    'overlay',
+    'trigger',
+    'content',
+    'handle',
+    'title',
+    'description',
+    'close',
+    'header',
+    'footer',
+  ],
+  base: {
+    overlay: {
+      position: 'fixed',
+      inset: '0',
+      zIndex: '50',
+      backgroundColor: '{colors.bgSolid.hover}',
+    },
+    content: {
+      position: 'fixed',
+      insetX: '0',
+      bottom: '0',
+      zIndex: '50',
+      marginTop: '6rem',
+      display: 'flex',
+      flexDirection: 'column',
+      height: 'auto',
+      borderRadius: '10px 10px 0 0',
+      borderWidth: '1px',
+      borderColor: '{colors.border}',
+      backgroundColor: '{colors.surface.elevated}',
+    },
+    handle: {
+      marginX: 'auto',
+      marginTop: '{spacing.padding.block.md}',
+      height: '0.5',
+      width: '5%',
+      borderRadius: 'full',
+      backgroundColor: '{colors.border}',
+    },
+    close: {},
+    title: {
+      fontSize: 'lg',
+      fontWeight: 'semibold',
+      lineHeight: 'none',
+      letterSpacing: 'tight',
+    },
+    description: {
+      fontSize: 'sm',
+      color: '{colors.text.secondary}',
+    },
+    header: {
+      display: 'grid',
+      gap: '1.5',
+      padding: '{spacing.padding.block.lg}',
+      textAlign: { base: 'center', sm: 'left' },
+    },
+    footer: {
+      marginTop: 'auto',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.5',
+      padding: '{spacing.padding.block.md}',
+    },
+  },
+})

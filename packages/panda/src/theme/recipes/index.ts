@@ -23,6 +23,7 @@ import { radioGroup } from './radio-group'
 import { segmented } from './segmented'
 import { select } from './select'
 import { separator } from './separator'
+import { sheet } from './sheet'
 import { sidebar } from './sidebar'
 import { skeleton } from './skeleton'
 import { slider } from './slider'
@@ -32,6 +33,7 @@ import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
+
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
   button,
@@ -64,6 +66,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   radioGroup,
   segmented,
   select,
+  sheet,
   slider,
   switchRecipe,
   tabs,
