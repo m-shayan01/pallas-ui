@@ -17,10 +17,10 @@ export const sheet = defineSlotRecipe({
   ],
   base: {
     overlay: {
-      position: 'fixed',
-      inset: '0',
-      zIndex: '50',
-      backgroundColor: '{colors.bgSolid.hover}',
+      // position: 'fixed',
+      // inset: '0',
+      // zIndex: '50',
+      // backgroundColor: '{colors.bgSolid.hover}',
     },
     content: {
       position: 'fixed',

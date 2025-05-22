@@ -1,31 +1,30 @@
 'use client'
 
 import * as React from 'react'
-import { Drawer as Sheet } from 'vaul'
+import { type DialogProps, Drawer as Sheet } from 'vaul'
+
+export type SheetRootProps = DialogProps
 
 const SheetRoot = ({
   shouldScaleBackground = true,
   ...props
-}: React.ComponentProps<typeof Sheet.Root>) => (
-  <Sheet.Root shouldScaleBackground={shouldScaleBackground} {...props} />
-)
+}: React.ComponentProps<typeof Sheet.Root>) => {
+  console.log(props)
+  return <Sheet.Root shouldScaleBackground={shouldScaleBackground} {...props} />
+}
 
 export type SheetTriggerType = typeof Sheet.Trigger
-
 const SheetTrigger: SheetTriggerType = Sheet.Trigger
 
 const SheetPortal = Sheet.Portal
 
 export type SheetCloseType = typeof Sheet.Close
-
 const SheetClose: SheetCloseType = Sheet.Close
 
 export type SheetHandleType = typeof Sheet.Handle
-
 const SheetHandle: SheetHandleType = Sheet.Handle
 
 export type SheetOverlayType = typeof Sheet.Overlay
-
 const SheetOverlay: SheetOverlayType = React.forwardRef<
   React.ComponentRef<typeof Sheet.Overlay>,
   React.ComponentPropsWithoutRef<typeof Sheet.Overlay>
@@ -33,22 +32,17 @@ const SheetOverlay: SheetOverlayType = React.forwardRef<
 SheetOverlay.displayName = 'SheetOverlay'
 
 export type SheetContentType = typeof Sheet.Content
-
 const SheetContent: SheetContentType = React.forwardRef<
   React.ComponentRef<typeof Sheet.Content>,
   React.ComponentPropsWithoutRef<typeof Sheet.Content>
 >(({ children, ...props }, ref) => (
-  <SheetPortal>
-    <SheetOverlay />
-    <Sheet.Content ref={ref} {...props}>
-      {children}
-    </Sheet.Content>
-  </SheetPortal>
+  <Sheet.Content ref={ref} {...props}>
+    {children}
+  </Sheet.Content>
 ))
 SheetContent.displayName = 'SheetContent'
 
 export type SheetTitleType = typeof Sheet.Title
-
 const SheetTitle: SheetTitleType = React.forwardRef<
   React.ComponentRef<typeof Sheet.Title>,
   React.ComponentPropsWithoutRef<typeof Sheet.Title>
@@ -56,7 +50,6 @@ const SheetTitle: SheetTitleType = React.forwardRef<
 SheetTitle.displayName = 'SheetTitle'
 
 export type SheetDescriptionType = typeof Sheet.Description
-
 const SheetDescription: SheetDescriptionType = React.forwardRef<
   React.ComponentRef<typeof Sheet.Description>,
   React.ComponentPropsWithoutRef<typeof Sheet.Description>

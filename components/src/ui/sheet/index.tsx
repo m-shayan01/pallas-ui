@@ -1,4 +1,5 @@
 import * as SheetPrimitive from '@pallas-ui/sheet'
+import type { SheetRootProps } from '@pallas-ui/sheet'
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import { cx } from '@styled-system/css'
 import { type SheetVariantProps, button, sheet } from '@styled-system/recipes'
@@ -9,7 +10,7 @@ import type { ButtonProps } from '../button'
 const { withProvider, withContext } = createStyleContext(sheet)
 
 export type RootProps = Assign<
-  WithFixedClassName<typeof SheetPrimitive.Root>,
+  WithFixedClassName<SheetRootProps>,
   SheetVariantProps & JsxStyleProps
 >
 
@@ -73,6 +74,7 @@ export const Footer = withContext<
 
 const Sheet = {
   Root,
+  Portal: SheetPrimitive.Portal,
   Overlay,
   Handle,
   Content,
