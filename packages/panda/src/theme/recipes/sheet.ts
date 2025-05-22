@@ -69,4 +69,18 @@ export const sheet = defineSlotRecipe({
       padding: '{spacing.padding.block.md}',
     },
   },
+  variants: {
+    height: {
+      multiple: {
+        content: {
+          display: 'flex',
+          flexDirection: 'column',
+          left: 0,
+          right: 0,
+          h: 'full',
+          maxH: '97%',
+        },
+      },
+    },
+  },
 })

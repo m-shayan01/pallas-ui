@@ -64,16 +64,20 @@ export const Default: Story = {
   },
 }
 
-const snapPoints = [0, '355px', 1]
+const snapPoints = ['280px', '600px', 1]
 
 export const SnapPoints: Story = {
   argTypes: {},
   args: {},
   render: () => {
     const [snap, setSnap] = useState<number | string | null>(snapPoints[0])
-    //snapPoints={snapPoints} activeSnapPoint={snap} setActiveSnapPoint={setSnap}
     return (
-      <Sheet.Root snapPoints={snapPoints} activeSnapPoint={snap} setActiveSnapPoint={setSnap}>
+      <Sheet.Root
+        height={'multiple'}
+        snapPoints={snapPoints}
+        activeSnapPoint={snap}
+        setActiveSnapPoint={setSnap}
+      >
         <Sheet.Trigger className={css({ margin: 'padding.inline.md' })}>Open</Sheet.Trigger>
         <Sheet.Overlay />
         <Sheet.Portal>
