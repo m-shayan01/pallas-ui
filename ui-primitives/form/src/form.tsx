@@ -64,23 +64,36 @@ type FormItemContextValue = {
   id: string
 }
 
+type AB = {
+  a: string
+  b: number
+}
+
+const A = <K extends keyof AB>(a: K) => {
+  return a
+}
+
+A('a')
+
 const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue)
 
-const Provider = React.forwardRef<
-  React.ElementRef<'form'>,
-  React.ComponentPropsWithoutRef<'form'> & {
-    form: UseFormReturn<FieldValues>
+const Provider = (
+  props: React.ComponentPropsWithoutRef<'form'> & {
+    form: UseFormReturn<any>
     children: React.ReactNode
-  }
->(({ form, children, ...props }, ref) => {
+    ref?: React.Ref<HTMLFormElement>
+  },
+) => {
+  const { form, children, ref, ...rest } = props
+
   return (
     <FormProvider {...form}>
-      <form ref={ref} {...props}>
+      <form {...rest} ref={ref}>
         {children}
       </form>
     </FormProvider>
   )
-})
+}
 
 const Item = ({ children }: { children: React.ReactNode }) => {
   const id = React.useId()
@@ -93,7 +106,7 @@ Item.displayName = 'Item'
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>
->(({ className, ...props }, ref) => {
+>(({ ...props }, ref) => {
   const { error, formItemId } = useFormField()
 
   return (
@@ -113,16 +126,14 @@ const Control = React.forwardRef<
 >(({ ...props }, ref) => {
   const { formItemId, error } = useFormField()
 
-  return (
-    <Slot ref={ref} data-field-state={error ? 'error' : 'success'} id={formItemId} {...props} />
-  )
+  return <Slot ref={ref} data-status={error ? 'error' : 'success'} id={formItemId} {...props} />
 })
 Control.displayName = 'Control'
 
 const Description = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => {
+>(({ ...props }, ref) => {
   const { formDescriptionId } = useFormField()
 
   return <p ref={ref} id={formDescriptionId} {...props} />
@@ -130,7 +141,7 @@ const Description = React.forwardRef<
 Description.displayName = 'Description'
 
 const Message = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
-  ({ className, children, ...props }, ref) => {
+  ({ children, ...props }, ref) => {
     const { error, formMessageId } = useFormField()
     const body = error ? String(error?.message ?? '') : children
 

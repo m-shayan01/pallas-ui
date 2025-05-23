@@ -174,6 +174,9 @@ importers:
       '@pallas-ui/breadcrumb':
         specifier: workspace:*
         version: link:../ui-primitives/breadcrumb
+      '@pallas-ui/form':
+        specifier: workspace:*
+        version: link:../ui-primitives/form
       '@pallas-ui/panda-preset':
         specifier: workspace:*
         version: link:../packages/panda
@@ -253,6 +256,9 @@ importers:
       '@chromatic-com/storybook':
         specifier: 3.2.4
         version: 3.2.4(react@19.1.0)(storybook@8.6.12(prettier@3.5.3))
+      '@hookform/resolvers':
+        specifier: ^5.0.1
+        version: 5.0.1(react-hook-form@7.56.3(react@19.1.0))
       '@oslojs/encoding':
         specifier: ^1.1.0
         version: 1.1.0
@@ -337,6 +343,9 @@ importers:
       kleur:
         specifier: ^4.1.5
         version: 4.1.5
+      react-hook-form:
+        specifier: ^7.56.3
+        version: 7.56.3(react@19.1.0)
       storybook:
         specifier: ^8.5.3
         version: 8.6.12(prettier@3.5.3)
@@ -349,6 +358,9 @@ importers:
       vite-tsconfig-paths:
         specifier: 5.1.4
         version: 5.1.4(typescript@5.7.2)(vite@6.2.6(@types/node@20.17.32)(lightningcss@1.25.1)(tsx@4.19.4)(yaml@2.7.0))
+      zod:
+        specifier: ^3.24.4
+        version: 3.24.4
 
   packages/panda:
     dependencies:
@@ -394,7 +406,7 @@ importers:
         version: 2.2.0
       tsup:
         specifier: 8.3.5
-        version: 8.3.5(postcss@8.4.49)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)
+        version: 8.3.5(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0)
       tsx:
         specifier: ^4.19.2
         version: 4.19.4
@@ -6652,9 +6664,6 @@ packages:
       typescript: ^4.9.4 || ^5.0.2
       zod: ^3
 
-  zod@3.24.3:
-    resolution: {integrity: sha512-HhY1oqzWCQWuUqvBFnsyrtZRhyPeR7SUGv+C4+MsisMuVfSPx8HpwWqH8tRahSlt6M3PiFAcoeFhZAqIXTxoSg==}
-
   zod@3.24.4:
     resolution: {integrity: sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg==}
 
@@ -6949,7 +6958,7 @@ snapshots:
       tinyglobby: 0.2.10
       typescript: 5.7.3
       yaml: 2.7.0
-      zod: 3.24.3
+      zod: 3.24.4
 
   '@content-collections/integrations@0.2.1(@content-collections/core@0.8.2(typescript@5.7.3))':
     dependencies:
@@ -10905,9 +10914,9 @@ snapshots:
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.2
-      zod: 3.24.3
-      zod-to-json-schema: 3.24.5(zod@3.24.3)
-      zod-to-ts: 1.2.0(typescript@5.7.2)(zod@3.24.3)
+      zod: 3.24.4
+      zod-to-json-schema: 3.24.5(zod@3.24.4)
+      zod-to-ts: 1.2.0(typescript@5.7.2)(zod@3.24.4)
     optionalDependencies:
       sharp: 0.33.5
     transitivePeerDependencies:
@@ -12742,14 +12751,6 @@ snapshots:
     dependencies:
       postcss: 8.4.49
 
-  postcss-load-config@6.0.1(postcss@8.4.49)(tsx@4.19.4)(yaml@2.7.0):
-    dependencies:
-      lilconfig: 3.1.3
-    optionalDependencies:
-      postcss: 8.4.49
-      tsx: 4.19.4
-      yaml: 2.7.0
-
   postcss-load-config@6.0.1(postcss@8.5.3)(tsx@4.19.4)(yaml@2.7.0):
     dependencies:
       lilconfig: 3.1.3
@@ -13719,7 +13720,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.3.5(postcss@8.4.49)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0):
+  tsup@8.3.5(postcss@8.5.3)(tsx@4.19.4)(typescript@5.8.3)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.24.0)
       cac: 6.7.14
@@ -13729,7 +13730,7 @@ snapshots:
       esbuild: 0.24.0
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(postcss@8.4.49)(tsx@4.19.4)(yaml@2.7.0)
+      postcss-load-config: 6.0.1(postcss@8.5.3)(tsx@4.19.4)(yaml@2.7.0)
       resolve-from: 5.0.0
       rollup: 4.28.1
       source-map: 0.8.0-beta.0
@@ -13738,7 +13739,7 @@ snapshots:
       tinyglobby: 0.2.10
       tree-kill: 1.2.2
     optionalDependencies:
-      postcss: 8.4.49
+      postcss: 8.5.3
       typescript: 5.8.3
     transitivePeerDependencies:
       - jiti
@@ -14115,16 +14116,14 @@ snapshots:
 
   yoctocolors@2.1.1: {}
 
-  zod-to-json-schema@3.24.5(zod@3.24.3):
+  zod-to-json-schema@3.24.5(zod@3.24.4):
     dependencies:
-      zod: 3.24.3
+      zod: 3.24.4
 
-  zod-to-ts@1.2.0(typescript@5.7.2)(zod@3.24.3):
+  zod-to-ts@1.2.0(typescript@5.7.2)(zod@3.24.4):
     dependencies:
       typescript: 5.7.2
-      zod: 3.24.3
-
-  zod@3.24.3: {}
+      zod: 3.24.4
 
   zod@3.24.4: {}
 
