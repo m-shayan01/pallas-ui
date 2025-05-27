@@ -18,14 +18,13 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const formSchema = z.object({ name: z.string().min(3) })
-type FormValues = z.infer<typeof formSchema>
 
 export const Default: Story = {
   args: {
     children: 'Pallas UI',
   },
-  render: (props) => {
-    const form = useForm<FormValues>({
+  render: () => {
+    const form = useForm({
       defaultValues: {
         name: '',
       },
@@ -37,24 +36,29 @@ export const Default: Story = {
     })
 
     return (
-      <Form.Provider onSubmit={handleSubmit} form={form} {...props}>
-        <Form.Field
-          name="name"
-          render={({ field }) => (
-            <Form.Item>
-              <Form.Label>Name</Form.Label>
-              <Form.Description>Enter your name</Form.Description>
-              <Form.Control>
-                <Input>
-                  <Input.Text {...field} />
-                </Input>
-              </Form.Control>
-              <Form.Message />
-            </Form.Item>
-          )}
-        />
-        <Button type="submit">Submit</Button>
-      </Form.Provider>
+      <div>
+        <Form.Provider form={form} onSubmit={handleSubmit}>
+          <Form.Field
+            name="name"
+            control={form.control}
+            render={({ field }) => {
+              return (
+                <Form.Item>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Description>Enter your name</Form.Description>
+                  <Form.Control>
+                    <Input>
+                      <Input.Text {...field} />
+                    </Input>
+                  </Form.Control>
+                  <Form.Message />
+                </Form.Item>
+              )
+            }}
+          />
+          <Button type="submit">Submit</Button>
+        </Form.Provider>
+      </div>
     )
   },
 }
