@@ -4,13 +4,30 @@ import { type Assign, createStyleContext } from '@pallas-ui/style-context'
 import { form } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import type * as React from 'react'
+import type { FieldValues } from 'react-hook-form'
 
 const { withProvider, withContext } = createStyleContext(form)
 
-export const Provider = withProvider<
-  React.ComponentRef<typeof PrimitiveForm.Provider>,
-  Assign<ComponentProps<typeof PrimitiveForm.Provider>, JsxStyleProps>
->(PrimitiveForm.Provider, 'provider')
+export const Provider = <
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = unknown,
+  TTransformedValues extends FieldValues = TFieldValues,
+>(
+  props: Assign<
+    ComponentProps<typeof PrimitiveForm.Provider<TFieldValues, TContext, TTransformedValues>>,
+    JsxStyleProps
+  >,
+): React.ReactElement => {
+  const StyledProvider = withProvider<
+    React.ComponentRef<typeof PrimitiveForm.Provider<TFieldValues, TContext, TTransformedValues>>,
+    Assign<
+      ComponentProps<typeof PrimitiveForm.Provider<TFieldValues, TContext, TTransformedValues>>,
+      JsxStyleProps
+    >
+  >(PrimitiveForm.Provider, 'provider')
+
+  return <StyledProvider {...props} />
+}
 
 export const Label = withContext<
   React.ComponentRef<typeof PrimitiveForm.Label>,

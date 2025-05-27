@@ -64,33 +64,24 @@ type FormItemContextValue = {
   id: string
 }
 
-type AB = {
-  a: string
-  b: number
-}
-
-const A = <K extends keyof AB>(a: K) => {
-  return a
-}
-
-A('a')
-
 const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue)
 
-const Provider = (
+const Provider = <
+  TFieldValues extends FieldValues = FieldValues,
+  TContext = unknown,
+  TTransformedValues = TFieldValues,
+>(
   props: React.ComponentPropsWithoutRef<'form'> & {
-    form: UseFormReturn<any>
+    form: UseFormReturn<TFieldValues, TContext, TTransformedValues>
     children: React.ReactNode
-    ref?: React.Ref<HTMLFormElement>
+    // ref?: React.Ref<HTMLFormElement>
   },
 ) => {
-  const { form, children, ref, ...rest } = props
+  const { form, children, ...rest } = props
 
   return (
     <FormProvider {...form}>
-      <form {...rest} ref={ref}>
-        {children}
-      </form>
+      <form {...rest}>{children}</form>
     </FormProvider>
   )
 }
