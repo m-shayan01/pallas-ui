@@ -3,31 +3,16 @@ import PrimitiveForm from '@pallas-ui/form'
 import { type Assign, createStyleContext } from '@pallas-ui/style-context'
 import { form } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
+import type { HTMLAttributes } from 'react'
 import type * as React from 'react'
-import type { FieldValues } from 'react-hook-form'
+import type { FieldValues, UseFormReturn } from 'react-hook-form'
 
 const { withProvider, withContext } = createStyleContext(form)
 
-export const Provider = <
-  TFieldValues extends FieldValues = FieldValues,
-  TContext = unknown,
-  TTransformedValues extends FieldValues = TFieldValues,
->(
-  props: Assign<
-    ComponentProps<typeof PrimitiveForm.Provider<TFieldValues, TContext, TTransformedValues>>,
-    JsxStyleProps
-  >,
-): React.ReactElement => {
-  const StyledProvider = withProvider<
-    React.ComponentRef<typeof PrimitiveForm.Provider<TFieldValues, TContext, TTransformedValues>>,
-    Assign<
-      ComponentProps<typeof PrimitiveForm.Provider<TFieldValues, TContext, TTransformedValues>>,
-      JsxStyleProps
-    >
-  >(PrimitiveForm.Provider, 'provider')
-
-  return <StyledProvider {...props} />
-}
+const Root = withProvider<
+  React.ComponentRef<typeof PrimitiveForm.Root>,
+  Assign<ComponentProps<typeof PrimitiveForm.Root>, JsxStyleProps>
+>(PrimitiveForm.Root, 'root')
 
 export const Label = withContext<
   React.ComponentRef<typeof PrimitiveForm.Label>,
@@ -43,6 +28,23 @@ export const Message = withContext<
   React.ComponentRef<typeof PrimitiveForm.Message>,
   Assign<ComponentProps<typeof PrimitiveForm.Message>, JsxStyleProps>
 >(PrimitiveForm.Message, 'message')
+
+export const Provider = <
+  TFielValues extends FieldValues = FieldValues,
+  TContext = unknown,
+  TTransformedValues = TFielValues,
+>({
+  form,
+  ...props
+}: HTMLAttributes<HTMLFormElement> & {
+  form: UseFormReturn<TFielValues, TContext, TTransformedValues>
+}) => {
+  return (
+    <PrimitiveForm.Provider {...form}>
+      <Root {...props} />
+    </PrimitiveForm.Provider>
+  )
+}
 
 export const Field = PrimitiveForm.Field
 

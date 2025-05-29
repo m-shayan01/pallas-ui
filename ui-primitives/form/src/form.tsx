@@ -66,25 +66,17 @@ type FormItemContextValue = {
 
 const FormItemContext = React.createContext<FormItemContextValue>({} as FormItemContextValue)
 
-const Provider = <
-  TFieldValues extends FieldValues = FieldValues,
-  TContext = unknown,
-  TTransformedValues = TFieldValues,
->(
-  props: React.ComponentPropsWithoutRef<'form'> & {
-    form: UseFormReturn<TFieldValues, TContext, TTransformedValues>
-    children: React.ReactNode
-    // ref?: React.Ref<HTMLFormElement>
-  },
-) => {
-  const { form, children, ...rest } = props
+const Root = (props: React.ComponentPropsWithRef<'form'>) => {
+  const { children, ref, ...rest } = props
 
   return (
-    <FormProvider {...form}>
-      <form {...rest}>{children}</form>
-    </FormProvider>
+    <form ref={ref} {...rest}>
+      {children}
+    </form>
   )
 }
+
+const Provider = FormProvider
 
 const Item = ({ children }: { children: React.ReactNode }) => {
   const id = React.useId()
@@ -149,4 +141,4 @@ const Message = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTML
 )
 Message.displayName = 'Message'
 
-export { useFormField, Provider, Item, Label, Control, Description, Message, Field }
+export { useFormField, Provider, Item, Label, Control, Description, Message, Field, Root }
