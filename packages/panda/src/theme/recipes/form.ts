@@ -3,9 +3,9 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const form = defineSlotRecipe({
   className: 'form',
   description: 'Styles for the Form component',
-  slots: ['provider', 'label', 'description', 'message'],
+  slots: ['root', 'label', 'description', 'message'],
   base: {
-    provider: {
+    root: {
       backgroundColor: '{colors.background.primary}',
     },
     label: {
