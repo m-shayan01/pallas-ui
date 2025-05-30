@@ -58,10 +58,10 @@ export const Default: Story = {
                     <Form.Label>Name</Form.Label>
                     <Form.Control>
                       <Input>
-                        <Input.Text {...field} />
+                        <Input.Text placeholder="Enter your name" {...field} />
                       </Input>
                     </Form.Control>
-                    <Form.Description>Enter your name</Form.Description>
+                    <Form.Description>Both first and last name are required</Form.Description>
                     <Form.Message />
                   </Form.Item>
                 )

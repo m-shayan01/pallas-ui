@@ -23,12 +23,12 @@ export const form = defineSlotRecipe({
       },
     },
     description: {
-      textStyle: 'sm',
+      textStyle: 'xs',
       color: '{colors.text.secondary}',
       lineHeight: '{lineHeights.normal}',
     },
     message: {
-      textStyle: 'sm',
+      textStyle: 'xs',
       fontWeight: 'semibold',
       _errorState: {
         color: '{colors.error}',
