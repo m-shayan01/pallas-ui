@@ -46,90 +46,88 @@ export const Default: Story = {
     })
 
     return (
-      <div>
-        <Form.Provider form={form} onSubmit={handleSubmit}>
-          <VStack gap="4">
-            <VStack gap="0">
-              <Form.Field
-                name="name"
-                control={form.control}
-                render={({ field }) => {
-                  return (
-                    <Form.Item>
-                      <Form.Label>Name</Form.Label>
-                      <Form.Control>
-                        <Input>
-                          <Input.Text {...field} />
-                        </Input>
-                      </Form.Control>
-                      <Form.Description>Enter your name</Form.Description>
-                      <Form.Message />
-                    </Form.Item>
-                  )
-                }}
-              />
-            </VStack>
-            <VStack gap="0">
-              <Form.Field
-                name="agree"
-                control={form.control}
-                render={({ field }) => {
-                  return (
-                    <Form.Item>
-                      <Form.Label>Are you above 18?</Form.Label>
-                      <Form.Control>
-                        <HStack gap="2">
-                          <Checkbox
-                            id="checkbox-1"
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            onBlur={field.onBlur}
-                            name={field.name}
-                            ref={field.ref}
-                          />
-                          <Label htmlFor="checkbox-1">I am above 18</Label>
-                        </HStack>
-                      </Form.Control>
-                      <Form.Message />
-                    </Form.Item>
-                  )
-                }}
-              />
-            </VStack>
-            <VStack gap="0">
-              <Form.Field
-                name="gender"
-                control={form.control}
-                render={({ field }) => {
-                  return (
-                    <Form.Item>
-                      <Form.Label>Gender</Form.Label>
-                      <Form.Control>
-                        <RadioGroup.Root
-                          {...field}
-                          value={field.value}
-                          onValueChange={field.onChange}
-                        >
-                          <HStack gap="2">
-                            <RadioGroup.Item value="male" id="r1" />
-                            <Label htmlFor="r1">Male</Label>
-                          </HStack>
-                          <HStack gap="2">
-                            <RadioGroup.Item value="female" id="r2" />
-                            <Label htmlFor="r2">Female</Label>
-                          </HStack>
-                        </RadioGroup.Root>
-                      </Form.Control>
-                      <Form.Message />
-                    </Form.Item>
-                  )
-                }}
-              />
-            </VStack>
-            <Button type="submit">Submit</Button>
+      <Form.Provider form={form} onSubmit={handleSubmit}>
+        <VStack gap="4">
+          <VStack gap="0">
+            <Form.Field
+              name="name"
+              control={form.control}
+              render={({ field }) => {
+                return (
+                  <Form.Item>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control>
+                      <Input>
+                        <Input.Text {...field} />
+                      </Input>
+                    </Form.Control>
+                    <Form.Description>Enter your name</Form.Description>
+                    <Form.Message />
+                  </Form.Item>
+                )
+              }}
+            />
           </VStack>
-        </Form.Provider>
-      </div>
+          <VStack gap="0">
+            <Form.Field
+              name="agree"
+              control={form.control}
+              render={({ field }) => {
+                return (
+                  <Form.Item>
+                    <Form.Label>Are you above 18?</Form.Label>
+                    <Form.Control>
+                      <HStack gap="2">
+                        <Checkbox
+                          id="checkbox-1"
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          onBlur={field.onBlur}
+                          name={field.name}
+                          ref={field.ref}
+                        />
+                        <Label htmlFor="checkbox-1">I am above 18</Label>
+                      </HStack>
+                    </Form.Control>
+                    <Form.Message />
+                  </Form.Item>
+                )
+              }}
+            />
+          </VStack>
+          <VStack gap="0">
+            <Form.Field
+              name="gender"
+              control={form.control}
+              render={({ field }) => {
+                return (
+                  <Form.Item>
+                    <Form.Label>Gender</Form.Label>
+                    <Form.Control>
+                      <RadioGroup.Root
+                        {...field}
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
+                        <HStack gap="2">
+                          <RadioGroup.Item value="male" id="r1" />
+                          <Label htmlFor="r1">Male</Label>
+                        </HStack>
+                        <HStack gap="2">
+                          <RadioGroup.Item value="female" id="r2" />
+                          <Label htmlFor="r2">Female</Label>
+                        </HStack>
+                      </RadioGroup.Root>
+                    </Form.Control>
+                    <Form.Message />
+                  </Form.Item>
+                )
+              }}
+            />
+          </VStack>
+          <Button type="submit">Submit</Button>
+        </VStack>
+      </Form.Provider>
     )
   },
 }
