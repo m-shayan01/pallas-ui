@@ -24,7 +24,7 @@ type Story = StoryObj<typeof meta>
 const formSchema = z.object({
   name: z.string().min(3, 'Name must be at least 3 characters'),
   agree: z.boolean(),
-  radio: z.string().min(1, 'Select one option'),
+  gender: z.string().min(1, 'Select one option'),
 })
 
 export const Default: Story = {
@@ -36,7 +36,7 @@ export const Default: Story = {
       defaultValues: {
         name: '',
         agree: false,
-        radio: '',
+        gender: '',
       },
       resolver: zodResolver(formSchema),
     })
@@ -76,8 +76,8 @@ export const Default: Story = {
                 render={({ field }) => {
                   return (
                     <Form.Item>
-                      <Form.Label>Agree</Form.Label>
-                      <Form.Description>Are you agree?</Form.Description>
+                      <Form.Label>Age confirmation</Form.Label>
+                      <Form.Description>Are you above 18?</Form.Description>
                       <Form.Control>
                         <HStack gap="2">
                           <Checkbox
@@ -88,7 +88,7 @@ export const Default: Story = {
                             name={field.name}
                             ref={field.ref}
                           />
-                          <Label htmlFor="checkbox-1">Agree</Label>
+                          <Label htmlFor="checkbox-1">I am above 18</Label>
                         </HStack>
                       </Form.Control>
                       <Form.Message />
@@ -99,12 +99,12 @@ export const Default: Story = {
             </VStack>
             <VStack gap="0">
               <Form.Field
-                name="radio"
+                name="gender"
                 control={form.control}
                 render={({ field }) => {
                   return (
                     <Form.Item>
-                      <Form.Label>Radio</Form.Label>
+                      <Form.Label>Gender</Form.Label>
                       <Form.Description>Select one option</Form.Description>
                       <Form.Control>
                         <RadioGroup.Root
@@ -113,16 +113,12 @@ export const Default: Story = {
                           onValueChange={field.onChange}
                         >
                           <HStack gap="2">
-                            <RadioGroup.Item value="default" id="r1" />
-                            <Label htmlFor="r1">Default</Label>
+                            <RadioGroup.Item value="male" id="r1" />
+                            <Label htmlFor="r1">Male</Label>
                           </HStack>
                           <HStack gap="2">
-                            <RadioGroup.Item value="comfortable" id="r2" />
-                            <Label htmlFor="r2">Comfortable</Label>
-                          </HStack>
-                          <HStack gap="2">
-                            <RadioGroup.Item value="compact" id="r3" />
-                            <Label htmlFor="r3">Compact</Label>
+                            <RadioGroup.Item value="female" id="r2" />
+                            <Label htmlFor="r2">Female</Label>
                           </HStack>
                         </RadioGroup.Root>
                       </Form.Control>
