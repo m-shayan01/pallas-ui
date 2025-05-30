@@ -57,12 +57,12 @@ export const Default: Story = {
                   return (
                     <Form.Item>
                       <Form.Label>Name</Form.Label>
-                      <Form.Description>Enter your name</Form.Description>
                       <Form.Control>
                         <Input>
                           <Input.Text {...field} />
                         </Input>
                       </Form.Control>
+                      <Form.Description>Enter your name</Form.Description>
                       <Form.Message />
                     </Form.Item>
                   )
@@ -76,8 +76,7 @@ export const Default: Story = {
                 render={({ field }) => {
                   return (
                     <Form.Item>
-                      <Form.Label>Age confirmation</Form.Label>
-                      <Form.Description>Are you above 18?</Form.Description>
+                      <Form.Label>Are you above 18?</Form.Label>
                       <Form.Control>
                         <HStack gap="2">
                           <Checkbox
@@ -105,7 +104,6 @@ export const Default: Story = {
                   return (
                     <Form.Item>
                       <Form.Label>Gender</Form.Label>
-                      <Form.Description>Select one option</Form.Description>
                       <Form.Control>
                         <RadioGroup.Root
                           {...field}
