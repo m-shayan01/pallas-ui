@@ -1,5 +1,6 @@
 'use client'
-import PrimitiveForm from '@pallas-ui/form'
+
+import * as PrimitiveForm from '@pallas-ui/form'
 import { type Assign, createStyleContext } from '@pallas-ui/style-context'
 import { form } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
@@ -14,22 +15,7 @@ const Root = withProvider<
   Assign<ComponentProps<typeof PrimitiveForm.Root>, JsxStyleProps>
 >(PrimitiveForm.Root, 'root')
 
-export const Label = withContext<
-  React.ComponentRef<typeof PrimitiveForm.Label>,
-  Assign<ComponentProps<typeof PrimitiveForm.Label>, JsxStyleProps>
->(PrimitiveForm.Label, 'label')
-
-export const Description = withContext<
-  React.ComponentRef<typeof PrimitiveForm.Description>,
-  Assign<ComponentProps<typeof PrimitiveForm.Description>, JsxStyleProps>
->(PrimitiveForm.Description, 'description')
-
-export const Message = withContext<
-  React.ComponentRef<typeof PrimitiveForm.Message>,
-  Assign<ComponentProps<typeof PrimitiveForm.Message>, JsxStyleProps>
->(PrimitiveForm.Message, 'message')
-
-export const Provider = <
+const Provider = <
   TFielValues extends FieldValues = FieldValues,
   TContext = unknown,
   TTransformedValues = TFielValues,
@@ -45,6 +31,21 @@ export const Provider = <
     </PrimitiveForm.Provider>
   )
 }
+
+export const Label = withContext<
+  React.ComponentRef<typeof PrimitiveForm.Label>,
+  Assign<ComponentProps<typeof PrimitiveForm.Label>, JsxStyleProps>
+>(PrimitiveForm.Label, 'label')
+
+export const Description = withContext<
+  React.ComponentRef<typeof PrimitiveForm.Description>,
+  Assign<ComponentProps<typeof PrimitiveForm.Description>, JsxStyleProps>
+>(PrimitiveForm.Description, 'description')
+
+export const Message = withContext<
+  React.ComponentRef<typeof PrimitiveForm.Message>,
+  Assign<ComponentProps<typeof PrimitiveForm.Message>, JsxStyleProps>
+>(PrimitiveForm.Message, 'message')
 
 export const Field = PrimitiveForm.Field
 

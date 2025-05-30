@@ -18,6 +18,9 @@ export const form = defineSlotRecipe({
         cursor: 'not-allowed',
         color: '{colors.text.disabled}',
       },
+      _errorState: {
+        color: '{colors.error}',
+      },
     },
     description: {
       textStyle: 'sm',
