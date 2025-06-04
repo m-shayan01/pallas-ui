@@ -55,10 +55,10 @@ export const Default: Story = {
               render={({ field }) => {
                 return (
                   <Form.Item>
-                    <Form.Label>Name</Form.Label>
+                    <Form.Label htmlFor="text-1">Name</Form.Label>
                     <Form.Control>
                       <Input>
-                        <Input.Text placeholder="Enter your name" {...field} />
+                        <Input.Text id="text-1" placeholder="Enter your name" {...field} />
                       </Input>
                     </Form.Control>
                     <Form.Description>Both first and last name are required</Form.Description>
