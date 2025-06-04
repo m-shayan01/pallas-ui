@@ -1,28 +1,22 @@
-"use client"
+'use client'
 
-import {
-  type Assign,
-  type WithFixedClassName,
-  createStyleContext,
-} from "@pallas-ui/style-context"
-import * as DialogPrimitive from "@radix-ui/react-dialog"
-import { css } from "@styled-system/css"
-import { type CommandVariantProps, command } from "@styled-system/recipes"
-import type { ComponentProps, JsxStyleProps } from "@styled-system/types"
-import { Command as CommandPrimitive } from "cmdk"
-import { SearchIcon, XIcon } from "lucide-react"
-import * as React from "react"
+import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
+import * as DialogPrimitive from '@radix-ui/react-dialog'
+import { css } from '@styled-system/css'
+import { type CommandVariantProps, command } from '@styled-system/recipes'
+import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
+import { Command as CommandPrimitive } from 'cmdk'
+import { SearchIcon, XIcon } from 'lucide-react'
+import * as React from 'react'
 
 const { withProvider, withContext } = createStyleContext(command)
 
-export type RootProps = WithFixedClassName<
-  ComponentProps<typeof CommandPrimitive>
->
+export type RootProps = WithFixedClassName<ComponentProps<typeof CommandPrimitive>>
 
 export const Root = withProvider<
   React.ComponentRef<typeof CommandPrimitive>,
   Assign<RootProps, CommandVariantProps & JsxStyleProps>
->(CommandPrimitive, "root")
+>(CommandPrimitive, 'root')
 
 export type DialogProps = RootProps &
   ComponentProps<typeof DialogPrimitive.Root> & {
@@ -45,8 +39,8 @@ const CommandDialog = React.forwardRef<
       <DialogPrimitive.Overlay
         data-slot="dialog-overlay"
         className={css({
-          bg: "black/50",
-          position: "fixed",
+          bg: 'black/50',
+          position: 'fixed',
           inset: 0,
           zIndex: 50,
         })}
@@ -56,20 +50,20 @@ const CommandDialog = React.forwardRef<
         {...props}
         className={css({
           zIndex: 50,
-          shadow: "lg",
-          position: "fixed",
-          overflow: "hidden",
-          rounded: "{radii.lg}",
-          bg: "inherit",
+          shadow: 'lg',
+          position: 'fixed',
+          overflow: 'hidden',
+          rounded: '{radii.lg}',
+          bg: 'inherit',
           p: 0,
-          top: "[50vh]",
-          left: "[50vw]",
-          transform: "translate(-50%, -50%)",
+          top: '[50vh]',
+          left: '[50vw]',
+          transform: 'translate(-50%, -50%)',
           _open: {
-            animationStyle: "modalContentShow",
+            animationStyle: 'modalContentShow',
           },
           _closed: {
-            animationStyle: "modalContentHide",
+            animationStyle: 'modalContentHide',
           },
         })}
         ref={ref}
@@ -93,7 +87,7 @@ CommandDialog.displayName = DialogPrimitive.Content.displayName
 export const Dialog = withProvider<
   React.ComponentRef<typeof DialogPrimitive.Root>,
   Assign<DialogProps, JsxStyleProps>
->(CommandDialog, "dialog")
+>(CommandDialog, 'dialog')
 
 const CommandInput = React.forwardRef<
   React.ComponentRef<typeof CommandPrimitive.Input>,
@@ -103,25 +97,25 @@ const CommandInput = React.forwardRef<
     <div
       data-slot="command-input-wrapper"
       className={css({
-        display: "flex",
-        flexDir: "row",
-        px: "{spacing.padding.inline.sm}",
-        py: "{spacing.padding.inline.xs}",
-        gap: "{spacing.gap.inline.xs}",
-        borderBottom: "solid",
-        borderBottomWidth: "1px",
-        borderBottomColor: "{colors.fill}",
-        alignItems: "center",
+        display: 'flex',
+        flexDir: 'row',
+        px: '{spacing.padding.inline.sm}',
+        py: '{spacing.padding.inline.xs}',
+        gap: '{spacing.gap.inline.xs}',
+        borderBottom: 'solid',
+        borderBottomWidth: '1px',
+        borderBottomColor: '{colors.fill}',
+        alignItems: 'center',
       })}
     >
       <SearchIcon
         data-slot="command-input-icon"
         className={`icon +
                   ${css({
-                    sz: "1rem",
+                    sz: '1rem',
                     flexShrink: 0,
                     opacity: 0.5,
-                    color: "{colors.text}",
+                    color: '{colors.text}',
                   })}
 `}
       />
@@ -135,32 +129,32 @@ CommandInput.displayName = CommandPrimitive.Input.displayName
 export const Input = withContext<
   React.ComponentRef<typeof CommandPrimitive.Input>,
   Assign<ComponentProps<typeof CommandPrimitive.Input>, JsxStyleProps>
->(CommandInput, "input")
+>(CommandInput, 'input')
 
 export const List = withContext<
   React.ComponentRef<typeof CommandPrimitive.List>,
   Assign<ComponentProps<typeof CommandPrimitive.List>, JsxStyleProps>
->(CommandPrimitive.List, "list")
+>(CommandPrimitive.List, 'list')
 
 export const Empty = withContext<
   React.ComponentRef<typeof CommandPrimitive.Empty>,
   Assign<ComponentProps<typeof CommandPrimitive.Empty>, JsxStyleProps>
->(CommandPrimitive.Empty, "empty")
+>(CommandPrimitive.Empty, 'empty')
 
 export const Group = withContext<
   React.ComponentRef<typeof CommandPrimitive.Group>,
   Assign<ComponentProps<typeof CommandPrimitive.Group>, JsxStyleProps>
->(CommandPrimitive.Group, "group")
+>(CommandPrimitive.Group, 'group')
 
 export const Item = withContext<
   React.ComponentRef<typeof CommandPrimitive.Item>,
   Assign<ComponentProps<typeof CommandPrimitive.Item>, JsxStyleProps>
->(CommandPrimitive.Item, "item")
+>(CommandPrimitive.Item, 'item')
 
 export const Separator = withContext<
   React.ComponentRef<typeof CommandPrimitive.Separator>,
   Assign<ComponentProps<typeof CommandPrimitive.Separator>, JsxStyleProps>
->(CommandPrimitive.Separator, "separator")
+>(CommandPrimitive.Separator, 'separator')
 
 const Command = {
   Root,

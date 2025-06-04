@@ -1,13 +1,13 @@
-import { Button } from "@/components/ui/button"
-import Command from "@/components/ui/command"
-import Popover from "@/components/ui/popover"
-import { css } from "@styled-system/css"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { useState } from "react"
+import { Button } from '@/components/ui/button'
+import Command from '@/components/ui/command'
+import Popover from '@/components/ui/popover'
+import { css } from '@styled-system/css'
+import { Check, ChevronsUpDown } from 'lucide-react'
+import { useState } from 'react'
 
 function ComboBoxPreview() {
   const [open, setOpen] = useState(false)
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState('')
 
   return (
     <Popover.Root open={open} onOpenChange={setOpen}>
@@ -22,20 +22,20 @@ function ComboBoxPreview() {
           icon={<ChevronsUpDown className="opacity-50" />}
           aria-expanded={open}
           css={{
-            color: "{colors.text}",
-            display: "flex",
-            justifyContent: "space-between",
-            bg: "{colors.surface.elevated}",
+            color: '{colors.text}',
+            display: 'flex',
+            justifyContent: 'space-between',
+            bg: '{colors.surface.elevated}',
           }}
         >
           <span className={css({ lineHeight: 1 })}>
             {value
               ? frameworks.find((framework) => framework.value === value)?.label
-              : "Select framework..."}
+              : 'Select framework...'}
           </span>
         </Button>
       </Popover.Trigger>
-      <Popover.Content css={{ p: 0, width: 200, bg: "transparent" }}>
+      <Popover.Content css={{ p: 0, width: 200, bg: 'transparent' }}>
         <Command.Root label="Combobox Menu">
           <Command.Input placeholder="Search framework..." />
           <Command.List>
@@ -46,14 +46,14 @@ function ComboBoxPreview() {
                   key={framework.value}
                   value={framework.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
+                    setValue(currentValue === value ? '' : currentValue)
                     setOpen(false)
                   }}
                 >
                   {framework.label}
                   <Check
                     className={css({
-                      ml: "auto",
+                      ml: 'auto',
                       opacity: value === framework.value ? 1 : 0,
                     })}
                   />
@@ -71,23 +71,23 @@ export default ComboBoxPreview
 
 const frameworks = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: 'next.js',
+    label: 'Next.js',
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: 'sveltekit',
+    label: 'SvelteKit',
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: 'nuxt.js',
+    label: 'Nuxt.js',
   },
   {
-    value: "remix",
-    label: "Remix",
+    value: 'remix',
+    label: 'Remix',
   },
   {
-    value: "astro",
-    label: "Astro",
+    value: 'astro',
+    label: 'Astro',
   },
 ]

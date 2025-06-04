@@ -1,38 +1,38 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { css } from "@styled-system/css"
-import { HStack } from "@styled-system/jsx"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { useState } from "react"
-import { Button } from "~/ui/button"
-import Command from "../ui/command"
-import Popover from "../ui/popover"
+import type { Meta, StoryObj } from '@storybook/react'
+import { css } from '@styled-system/css'
+import { HStack } from '@styled-system/jsx'
+import { Check, ChevronsUpDown } from 'lucide-react'
+import { useState } from 'react'
+import { Button } from '~/ui/button'
+import Command from '../ui/command'
+import Popover from '../ui/popover'
 
 const frameworks = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: 'next.js',
+    label: 'Next.js',
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: 'sveltekit',
+    label: 'SvelteKit',
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: 'nuxt.js',
+    label: 'Nuxt.js',
   },
   {
-    value: "remix",
-    label: "Remix",
+    value: 'remix',
+    label: 'Remix',
   },
   {
-    value: "astro",
-    label: "Astro",
+    value: 'astro',
+    label: 'Astro',
   },
 ]
 
 const ComboBox = () => {
   const [open, setOpen] = useState(false)
-  const [value, setValue] = useState("")
+  const [value, setValue] = useState('')
 
   return (
     <Popover.Root open={open} onOpenChange={setOpen}>
@@ -47,20 +47,20 @@ const ComboBox = () => {
           icon={<ChevronsUpDown className="opacity-50" />}
           aria-expanded={open}
           css={{
-            color: "{colors.text}",
-            display: "flex",
-            justifyContent: "space-between",
-            bg: "{colors.surface.elevated}",
+            color: '{colors.text}',
+            display: 'flex',
+            justifyContent: 'space-between',
+            bg: '{colors.surface.elevated}',
           }}
         >
           <span className={css({ lineHeight: 1 })}>
             {value
               ? frameworks.find((framework) => framework.value === value)?.label
-              : "Select framework..."}
+              : 'Select framework...'}
           </span>
         </Button>
       </Popover.Trigger>
-      <Popover.Content css={{ p: 0, width: 200, bg: "transparent" }}>
+      <Popover.Content css={{ p: 0, width: 200, bg: 'transparent' }}>
         <Command.Root label="Combobox Menu">
           <Command.Input placeholder="Search framework..." />
           <Command.List>
@@ -71,14 +71,14 @@ const ComboBox = () => {
                   key={framework.value}
                   value={framework.value}
                   onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue)
+                    setValue(currentValue === value ? '' : currentValue)
                     setOpen(false)
                   }}
                 >
                   {framework.label}
                   <Check
                     className={css({
-                      ml: "auto",
+                      ml: 'auto',
                       opacity: value === framework.value ? 1 : 0,
                     })}
                   />
@@ -93,11 +93,11 @@ const ComboBox = () => {
 }
 
 const meta: Meta<typeof ComboBox> = {
-  title: "Forms/ComboBox",
+  title: 'Forms/ComboBox',
   component: ComboBox,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
   argTypes: {},
 }
@@ -117,15 +117,13 @@ type Status = {
 
 const ComboBoxPopover = () => {
   const [open, setOpen] = useState(false)
-  const [selectedFramework, setSelectedFramework] = useState<Status | null>(
-    null,
-  )
+  const [selectedFramework, setSelectedFramework] = useState<Status | null>(null)
 
   return (
     <HStack>
       <p
         className={css({
-          color: "{colors.text.secondary}",
+          color: '{colors.text.secondary}',
         })}
       >
         Framework
@@ -142,24 +140,16 @@ const ComboBoxPopover = () => {
             variant="outlined"
             aria-expanded={open}
             css={{
-              color: "{colors.text}",
-              display: "flex",
-              justifyContent: "space-between",
-              bg: "{colors.surface.elevated}",
+              color: '{colors.text}',
+              display: 'flex',
+              justifyContent: 'space-between',
+              bg: '{colors.surface.elevated}',
             }}
           >
-            {selectedFramework ? (
-              <>{selectedFramework.label}</>
-            ) : (
-              <>+ Set framework</>
-            )}
+            {selectedFramework ? <>{selectedFramework.label}</> : <>+ Set framework</>}
           </Button>
         </Popover.Trigger>
-        <Popover.Content
-          side="right"
-          align="start"
-          css={{ p: 0, width: 200, bg: "transparent" }}
-        >
+        <Popover.Content side="right" align="start" css={{ p: 0, width: 200, bg: 'transparent' }}>
           <Command.Root label="Combobox Menu">
             <Command.Input placeholder="Search framework..." />
             <Command.List>
@@ -171,9 +161,7 @@ const ComboBoxPopover = () => {
                     value={framework.value}
                     onSelect={(value) => {
                       setSelectedFramework(
-                        frameworks.find(
-                          (priority) => priority.value === value,
-                        ) || null,
+                        frameworks.find((priority) => priority.value === value) || null,
                       )
                       setOpen(false)
                     }}

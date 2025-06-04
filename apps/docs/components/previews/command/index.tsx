@@ -1,16 +1,9 @@
-import Command from "@/components/ui/command"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
+import Command from '@/components/ui/command'
+import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react'
 
 function CommandPreview() {
   return (
-    <Command.Root css={{ maxW: "[450px]", minH: "[350px]" }} defaultValue="-">
+    <Command.Root css={{ maxW: '[450px]', minH: '[350px]' }} defaultValue="-">
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>

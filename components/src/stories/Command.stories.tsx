@@ -1,23 +1,16 @@
-import type { Meta, StoryObj } from "@storybook/react"
-import { css } from "@styled-system/css"
-import { HStack } from "@styled-system/jsx"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
-import { useEffect, useState } from "react"
-import Command from "../ui/command"
+import type { Meta, StoryObj } from '@storybook/react'
+import { css } from '@styled-system/css'
+import { HStack } from '@styled-system/jsx'
+import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import Command from '../ui/command'
 
 const meta: Meta<typeof Command.Root> = {
-  title: "Forms/Command",
+  title: 'Forms/Command',
   component: Command.Root,
-  tags: ["autodocs"],
+  tags: ['autodocs'],
   render: (args) => (
-    <Command.Root {...args} css={{ maxW: "[450px]", minH: "[350px]" }}>
+    <Command.Root {...args} css={{ maxW: '[450px]', minH: '[350px]' }}>
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
@@ -56,8 +49,8 @@ const meta: Meta<typeof Command.Root> = {
   args: {
     css: {
       md: {
-        minW: "300px",
-        minH: "350px",
+        minW: '300px',
+        minH: '350px',
       },
     },
   },
@@ -65,9 +58,9 @@ const meta: Meta<typeof Command.Root> = {
     return (
       <div
         className={css({
-          w: "full",
-          display: "flex",
-          justifyContent: "center",
+          w: 'full',
+          display: 'flex',
+          justifyContent: 'center',
         })}
       >
         <Story />
@@ -91,34 +84,34 @@ export const Dialog: DialogStory = {
     const [open, setOpen] = useState(false)
     useEffect(() => {
       const down = (e: KeyboardEvent) => {
-        if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
+        if (e.key === 'j' && (e.metaKey || e.ctrlKey)) {
           e.preventDefault()
           setOpen((open) => !open)
         }
       }
-      document.addEventListener("keydown", down)
-      return () => document.removeEventListener("keydown", down)
+      document.addEventListener('keydown', down)
+      return () => document.removeEventListener('keydown', down)
     }, [])
     return (
       <>
         <p
           className={css({
-            color: "{colors.text.secondary}",
-            fontSize: "sm",
+            color: '{colors.text.secondary}',
+            fontSize: 'sm',
           })}
         >
-          Press{" "}
+          Press{' '}
           <kbd
             className={css({
-              bg: "{colors.primary.bg}",
-              display: "inline-flex",
+              bg: '{colors.primary.bg}',
+              display: 'inline-flex',
               h: 5,
-              alignItems: "center",
+              alignItems: 'center',
               gap: 1,
-              rounded: "md",
+              rounded: 'md',
               px: 1.5,
-              fontFamily: "mono",
-              fontSize: "sm",
+              fontFamily: 'mono',
+              fontSize: 'sm',
               opacity: 1,
             })}
           >
@@ -127,7 +120,7 @@ export const Dialog: DialogStory = {
         </p>
         <Command.Dialog {...args} open={open} onOpenChange={setOpen}>
           <Command.Input placeholder="Type a command or search..." />
-          <Command.List css={{ w: "[450px]" }}>
+          <Command.List css={{ w: '[450px]' }}>
             <Command.Empty>No results found.</Command.Empty>
             <Command.Group heading="Suggestions">
               <Command.Item>
@@ -165,7 +158,7 @@ export const Dialog: DialogStory = {
   },
   decorators: (Story) => {
     return (
-      <HStack css={{ justifyContent: "center" }}>
+      <HStack css={{ justifyContent: 'center' }}>
         <Story />
       </HStack>
     )

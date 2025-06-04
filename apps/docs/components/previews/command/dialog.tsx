@@ -1,48 +1,41 @@
-import Command from "@/components/ui/command"
-import { css } from "@styled-system/css"
-import { HStack } from "@styled-system/jsx"
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react"
-import { useEffect, useState } from "react"
+import Command from '@/components/ui/command'
+import { css } from '@styled-system/css'
+import { HStack } from '@styled-system/jsx'
+import { Calculator, Calendar, CreditCard, Settings, Smile, User } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 function CommandDialogPreview() {
   const [open, setOpen] = useState(false)
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
+      if (e.key === 'j' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
     }
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
   }, [])
   return (
-    <HStack css={{ justifyContent: "center" }}>
+    <HStack css={{ justifyContent: 'center' }}>
       <p
         className={css({
-          color: "{colors.text.secondary}",
-          fontSize: "sm",
+          color: '{colors.text.secondary}',
+          fontSize: 'sm',
         })}
       >
-        Press{" "}
+        Press{' '}
         <kbd
           className={css({
-            bg: "{colors.primary.bg}",
-            display: "inline-flex",
+            bg: '{colors.primary.bg}',
+            display: 'inline-flex',
             h: 5,
-            alignItems: "center",
+            alignItems: 'center',
             gap: 1,
-            rounded: "md",
+            rounded: 'md',
             px: 1.5,
-            fontFamily: "mono",
-            fontSize: "sm",
+            fontFamily: 'mono',
+            fontSize: 'sm',
             opacity: 1,
           })}
         >
@@ -51,7 +44,7 @@ function CommandDialogPreview() {
       </p>
       <Command.Dialog open={open} onOpenChange={setOpen}>
         <Command.Input placeholder="Type a command or search..." />
-        <Command.List css={{ w: "[450px]" }}>
+        <Command.List css={{ w: '[450px]' }}>
           <Command.Empty>No results found.</Command.Empty>
           <Command.Group heading="Suggestions">
             <Command.Item>

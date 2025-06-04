@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button"
-import Command from "@/components/ui/command"
-import Popover from "@/components/ui/popover"
-import { css } from "@styled-system/css"
-import { HStack } from "@styled-system/jsx"
-import { useState } from "react"
+import { Button } from '@/components/ui/button'
+import Command from '@/components/ui/command'
+import Popover from '@/components/ui/popover'
+import { css } from '@styled-system/css'
+import { HStack } from '@styled-system/jsx'
+import { useState } from 'react'
 
 type Status = {
   value: string
@@ -12,15 +12,13 @@ type Status = {
 
 function ComboBoxPopoverPreview() {
   const [open, setOpen] = useState(false)
-  const [selectedFramework, setSelectedFramework] = useState<Status | null>(
-    null,
-  )
+  const [selectedFramework, setSelectedFramework] = useState<Status | null>(null)
 
   return (
     <HStack>
       <p
         className={css({
-          color: "{colors.text.secondary}",
+          color: '{colors.text.secondary}',
         })}
       >
         Framework
@@ -37,24 +35,16 @@ function ComboBoxPopoverPreview() {
             variant="outlined"
             aria-expanded={open}
             css={{
-              color: "{colors.text}",
-              display: "flex",
-              justifyContent: "space-between",
-              bg: "{colors.surface.elevated}",
+              color: '{colors.text}',
+              display: 'flex',
+              justifyContent: 'space-between',
+              bg: '{colors.surface.elevated}',
             }}
           >
-            {selectedFramework ? (
-              <>{selectedFramework.label}</>
-            ) : (
-              <>+ Set framework</>
-            )}
+            {selectedFramework ? <>{selectedFramework.label}</> : <>+ Set framework</>}
           </Button>
         </Popover.Trigger>
-        <Popover.Content
-          side="right"
-          align="start"
-          css={{ p: 0, width: 200, bg: "transparent" }}
-        >
+        <Popover.Content side="right" align="start" css={{ p: 0, width: 200, bg: 'transparent' }}>
           <Command.Root label="Combobox Menu">
             <Command.Input placeholder="Search framework..." />
             <Command.List>
@@ -66,9 +56,7 @@ function ComboBoxPopoverPreview() {
                     value={framework.value}
                     onSelect={(value) => {
                       setSelectedFramework(
-                        frameworks.find(
-                          (priority) => priority.value === value,
-                        ) || null,
+                        frameworks.find((priority) => priority.value === value) || null,
                       )
                       setOpen(false)
                     }}
@@ -89,23 +77,23 @@ export default ComboBoxPopoverPreview
 
 const frameworks = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: 'next.js',
+    label: 'Next.js',
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: 'sveltekit',
+    label: 'SvelteKit',
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: 'nuxt.js',
+    label: 'Nuxt.js',
   },
   {
-    value: "remix",
-    label: "Remix",
+    value: 'remix',
+    label: 'Remix',
   },
   {
-    value: "astro",
-    label: "Astro",
+    value: 'astro',
+    label: 'Astro',
   },
 ]
