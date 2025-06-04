@@ -165,4 +165,5 @@ export const command = defineSlotRecipe({
   defaultVariants: {
     type: "flat",
   },
+  staticCss: [{ type: ["*"] }],
 })
