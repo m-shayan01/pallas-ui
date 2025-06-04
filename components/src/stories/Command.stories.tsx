@@ -17,7 +17,7 @@ const meta: Meta<typeof Command.Root> = {
   component: Command.Root,
   tags: ["autodocs"],
   render: (args) => (
-    <Command.Root {...args}>
+    <Command.Root {...args} css={{ maxW: "[450px]", minH: "[350px]" }}>
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
@@ -60,6 +60,19 @@ const meta: Meta<typeof Command.Root> = {
         minH: "350px",
       },
     },
+  },
+  decorators: (Story) => {
+    return (
+      <div
+        className={css({
+          w: "full",
+          display: "flex",
+          justifyContent: "center",
+        })}
+      >
+        <Story />
+      </div>
+    )
   },
 }
 
