@@ -8,31 +8,25 @@ function CommandPreview() {
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
         <Command.Group heading="Suggestions">
-          <Command.Item>
-            <Calendar />
+          <Command.Item icon={<Calendar />}>
             <span>Calendar</span>
           </Command.Item>
-          <Command.Item>
-            <Smile />
+          <Command.Item icon={<Smile />}>
             <span>Search Emoji</span>
           </Command.Item>
-          <Command.Item disabled>
-            <Calculator />
+          <Command.Item icon={<Calculator />} disabled>
             <span>Calculator</span>
           </Command.Item>
         </Command.Group>
         <Command.Separator />
         <Command.Group heading="Settings">
-          <Command.Item>
-            <User />
+          <Command.Item icon={<User />}>
             <span>Profile</span>
           </Command.Item>
-          <Command.Item>
-            <CreditCard />
+          <Command.Item icon={<CreditCard />}>
             <span>Billing</span>
           </Command.Item>
-          <Command.Item>
-            <Settings />
+          <Command.Item icon={<Settings />}>
             <span>Settings</span>
           </Command.Item>
         </Command.Group>

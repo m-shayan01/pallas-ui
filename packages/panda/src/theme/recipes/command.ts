@@ -3,7 +3,17 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const command = defineSlotRecipe({
   className: 'command',
   description: 'Styles for the Command component',
-  slots: ['root', 'dialog', 'input', 'list', 'empty', 'group', 'item', 'separator'],
+  slots: [
+    'root',
+    'dialog',
+    'input',
+    'list',
+    'empty',
+    'group',
+    'item',
+    'itemIndicator',
+    'separator',
+  ],
   base: {
     root: {
       display: 'flex',
@@ -13,7 +23,18 @@ export const command = defineSlotRecipe({
       border: 'solid',
       borderWidth: '1px',
       borderColor: '{colors.border}',
-      shadow: 'sm',
+      shadow: 'md',
+      animationStyle: 'slideFadeIn',
+      animationDuration: '{durations.normal}',
+      "& [data-slot='command-input-wrapper']": {
+        px: '{spacing.padding.inline.sm}',
+        py: '{spacing.padding.inline.xs}',
+        gap: '{spacing.gap.inline.xs}',
+        borderBottom: 'solid',
+        borderBottomWidth: '1px',
+        borderBottomColor: '{colors.fill}',
+        alignItems: 'center',
+      },
     },
     dialog: {},
     input: {
@@ -27,7 +48,7 @@ export const command = defineSlotRecipe({
         opacity: 0.5,
       },
       color: '{colors.text}',
-      fontSize: '{fontSizes.md}',
+      fontSize: '{fontSizes.sm}',
     },
     list: {
       '& [data-selected=true]': {
@@ -41,6 +62,7 @@ export const command = defineSlotRecipe({
       overflowY: 'auto',
       maxH: '[300px]',
       color: '{colors.text}',
+      outline: 'none',
     },
     empty: {
       p: 4,
@@ -52,6 +74,7 @@ export const command = defineSlotRecipe({
         fontSize: 'sm',
         px: 1,
         py: 0.5,
+        fontWeight: 'medium',
       },
       p: '{spacing.padding.block.sm}',
     },
@@ -62,9 +85,9 @@ export const command = defineSlotRecipe({
       alignItems: 'center',
       gap: 2,
       rounded: '{radii.md}',
-      px: '{spacing.padding.inline.sm}',
-      py: '{spacing.padding.block.sm}',
-
+      py: '{spacing.padding.block.md}',
+      pl: '{spacing.gap.component.lg}',
+      pr: '{spacing.padding.inline.sm}',
       fontSize: '{fontSizes.sm}',
       outline: 'hidden',
       userSelect: 'none',
@@ -74,44 +97,27 @@ export const command = defineSlotRecipe({
       bg: '{colors.fill}',
       my: '{spacing.1}',
     },
+    itemIndicator: {
+      position: 'absolute',
+      left: '{spacing.padding.inline.xs}',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
   },
   variants: {
     type: {
       flat: {
         root: {
-          "& [data-slot='dialog-close']": {
-            top: '{spacing.padding.inline.sm}',
-            right: '{spacing.padding.block.sm}',
-            fontSize: '{fontSizes.xs}',
-          },
           h: 'full',
           w: 'full',
         },
+        itemIndicator: {
+          h: '{sizes.icon.sm}',
+          w: '{sizes.icon.sm}',
+        },
       },
       floating: {
-        group: {
-          '& [cmdk-group-heading]': {
-            color: '{colors.text.tertiary}',
-            px: '{spacing.padding.inline.sm}',
-            fontWeight: 'medium',
-          },
-        },
-        list: {
-          '& [cmdk-group]': {
-            p: '{spacing.padding.inline.sm}',
-          },
-          '& [cmdk-group]:not([hidden]) ~ [cmdk-group]': {
-            pt: 0,
-          },
-          '& [cmdk-item]': {
-            px: '{spacing.padding.block.md}',
-            py: '{spacing.padding.inline.md}',
-          },
-          '& [cmdk-item] svg': {
-            height: '{sizes.5}',
-            width: '{sizes.5}',
-          },
-        },
         root: {
           "& [data-slot='command-input-icon']": {
             ml: '{spacing.padding.inline.xs}',
@@ -122,12 +128,12 @@ export const command = defineSlotRecipe({
           "& [data-slot='command-input-wrapper']": {
             height: '{sizes.12}',
           },
-          "& [data-slot='dialog-close']:is(:hover, [data-hover])": {
+          "& [data-slot='command-dialog-close']:is(:hover, [data-hover])": {
             borderColor: '{colors.primary.hover}',
             opacity: 1,
             cursor: 'pointer',
           },
-          "& [data-slot='dialog-close']": {
+          "& [data-slot='command-dialog-close']": {
             base: {
               top: '{spacing.padding.inline.md}',
               right: '{spacing.padding.block.lg}',
@@ -137,10 +143,14 @@ export const command = defineSlotRecipe({
               rounded: '{radii.xs}',
               flexShrink: 0,
               opacity: 0.5,
+              border: '1px solid transparent !important',
+              px: '{spacing.padding.inline.xs} !important',
+              py: '0 !important',
+              h: '{sizes.selectionControl.lg} !important',
             },
             _focus: {
-              outline: '2px solid {colors.primary.bgHover}',
-              outlineOffset: '2px',
+              borderColor: '{colors.primary.hover} !important',
+              outline: '1px solid {colors.primary.bgHover}',
             },
             _disabled: {
               pointerEvents: 'none',
@@ -149,6 +159,27 @@ export const command = defineSlotRecipe({
               bg: '{colors.bgSolid}',
             },
           },
+        },
+        group: {
+          '& [cmdk-group-heading]': {
+            color: '{colors.text.tertiary}',
+            px: '{spacing.padding.inline.sm}',
+            fontWeight: 'medium',
+            p: '{spacing.padding.inline.sm}',
+          },
+        },
+        list: {
+          '& [cmdk-group]:not([hidden]) ~ [cmdk-group]': {
+            pt: 0,
+          },
+        },
+        item: {
+          py: '{spacing.padding.inline.md}',
+          pl: '{spacing.layout.section.lg}',
+          pr: '{spacing.padding.block.md}',
+        },
+        itemIndicator: {
+          left: '{spacing.padding.inline.sm}',
         },
       },
     },

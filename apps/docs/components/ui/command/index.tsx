@@ -1,19 +1,49 @@
 'use client'
 
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
-import * as DialogPrimitive from '@radix-ui/react-dialog'
-import { css } from '@styled-system/css'
-import { type CommandVariantProps, command } from '@styled-system/recipes'
+import type * as DialogPrimitive from '@radix-ui/react-dialog'
+import { css, cx } from '@styled-system/css'
+import { HStack } from '@styled-system/jsx'
+import { type CommandVariantProps, command, icon } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
 import { Command as CommandPrimitive } from 'cmdk'
 import { SearchIcon, XIcon } from 'lucide-react'
 import * as React from 'react'
+import * as ModalPrimitive from '../modal/modal'
 
 const { withProvider, withContext } = createStyleContext(command)
 
+const CommandContext = React.createContext<{
+  isModal?: boolean
+} | null>(null)
+
+const useCommandContext = () => {
+  const context = React.useContext(CommandContext)
+  if (!context) {
+    throw new Error('useCommandContext must be used within Command.Root')
+  }
+  return context
+}
+
 export type RootProps = WithFixedClassName<ComponentProps<typeof CommandPrimitive>>
 
+const CustomRoot = React.forwardRef<React.ComponentRef<typeof CommandPrimitive>, RootProps>(
+  ({ className, ...props }, ref) => {
+    const { root } = command()
+    return (
+      <CommandContext.Provider value={{ isModal: false }}>
+        <CommandPrimitive ref={ref} className={cx(root, className)} {...props} />
+      </CommandContext.Provider>
+    )
+  },
+)
+
 export const Root = withProvider<
+  React.ComponentRef<typeof CommandPrimitive>,
+  Assign<RootProps, JsxStyleProps>
+>(CustomRoot, 'root')
+
+const ModalRoot = withProvider<
   React.ComponentRef<typeof CommandPrimitive>,
   Assign<RootProps, CommandVariantProps & JsxStyleProps>
 >(CommandPrimitive, 'root')
@@ -26,101 +56,51 @@ export type DialogProps = RootProps &
     showCloseButton?: boolean
   }
 
-const CommandDialog = React.forwardRef<
+const CommandModal = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Content>,
   DialogProps
 >(({ children, title, description, showCloseButton = true, ...props }, ref) => (
-  <DialogPrimitive.Root {...props}>
-    <div data-slot="dialog-header" className={css({ srOnly: true })}>
-      <DialogPrimitive.Title>{title}</DialogPrimitive.Title>
-      <DialogPrimitive.Description>{description}</DialogPrimitive.Description>
-    </div>
-    <DialogPrimitive.Portal data-slot="dialog-portal">
-      <DialogPrimitive.Overlay
-        data-slot="dialog-overlay"
-        className={css({
-          bg: 'black/50',
-          position: 'fixed',
-          inset: 0,
-          zIndex: 50,
-        })}
-      />
-      <DialogPrimitive.Content
-        data-slot="dialog-content"
-        {...props}
-        className={css({
-          zIndex: 50,
-          shadow: 'lg',
-          position: 'fixed',
-          overflow: 'hidden',
-          rounded: '{radii.lg}',
-          bg: 'inherit',
-          p: 0,
-          top: '[50vh]',
-          left: '[50vw]',
-          transform: 'translate(-50%, -50%)',
-          _open: {
-            animationStyle: 'modalContentShow',
-          },
-          _closed: {
-            animationStyle: 'modalContentHide',
-          },
-        })}
-        ref={ref}
-      >
-        <Root type="floating" {...props}>
+  <ModalPrimitive.Root {...props}>
+    <ModalPrimitive.Content data-slot="command-dialog-content" ref={ref}>
+      <div data-slot="command-dialog-header" className={css({ srOnly: true })}>
+        <ModalPrimitive.Title>{title}</ModalPrimitive.Title>
+        <ModalPrimitive.Description>{description}</ModalPrimitive.Description>
+      </div>
+      <CommandContext.Provider value={{ isModal: true }}>
+        <ModalRoot type={'floating'} {...props}>
           {children}
           {showCloseButton && (
-            <DialogPrimitive.Close data-slot="dialog-close">
-              <XIcon size={20} />
+            <ModalPrimitive.Cancel
+              data-slot="command-dialog-close"
+              onKeyDown={({ code }) => {
+                if (code === 'Enter') props.onOpenChange?.(false)
+              }}
+            >
+              <XIcon className={icon()} />
               <span className={css({ srOnly: true })}>Close</span>
-            </DialogPrimitive.Close>
+            </ModalPrimitive.Cancel>
           )}
-        </Root>
-      </DialogPrimitive.Content>
-    </DialogPrimitive.Portal>
-  </DialogPrimitive.Root>
+        </ModalRoot>
+      </CommandContext.Provider>
+    </ModalPrimitive.Content>
+  </ModalPrimitive.Root>
 ))
-
-CommandDialog.displayName = DialogPrimitive.Content.displayName
 
 export const Dialog = withProvider<
   React.ComponentRef<typeof DialogPrimitive.Root>,
   Assign<DialogProps, JsxStyleProps>
->(CommandDialog, 'dialog')
+>(CommandModal, 'dialog')
 
 const CommandInput = React.forwardRef<
   React.ComponentRef<typeof CommandPrimitive.Input>,
   ComponentProps<typeof CommandPrimitive.Input>
->(({ ...props }) => {
+>(({ ...props }, ref) => {
+  const { isModal } = useCommandContext()
   return (
-    <div
-      data-slot="command-input-wrapper"
-      className={css({
-        display: 'flex',
-        flexDir: 'row',
-        px: '{spacing.padding.inline.sm}',
-        py: '{spacing.padding.inline.xs}',
-        gap: '{spacing.gap.inline.xs}',
-        borderBottom: 'solid',
-        borderBottomWidth: '1px',
-        borderBottomColor: '{colors.fill}',
-        alignItems: 'center',
-      })}
-    >
-      <SearchIcon
-        data-slot="command-input-icon"
-        className={`icon +
-                  ${css({
-                    sz: '1rem',
-                    flexShrink: 0,
-                    opacity: 0.5,
-                    color: '{colors.text}',
-                  })}
-`}
-      />
-      <CommandPrimitive.Input {...props} />
-    </div>
+    <HStack data-slot="command-input-wrapper">
+      <SearchIcon data-slot="command-input-icon" className={icon({ dimmed: true })} />
+      <CommandPrimitive.Input {...props} ref={ref} autoFocus={isModal} />
+    </HStack>
   )
 })
 
@@ -146,10 +126,36 @@ export const Group = withContext<
   Assign<ComponentProps<typeof CommandPrimitive.Group>, JsxStyleProps>
 >(CommandPrimitive.Group, 'group')
 
+export const ItemIndicator = withContext<
+  React.ComponentRef<'div'>,
+  Assign<React.ComponentPropsWithoutRef<'div'>, JsxStyleProps>
+>('div', 'itemIndicator')
+
+const CustomItem = React.forwardRef<
+  React.ComponentRef<typeof CommandPrimitive.Item>,
+  ComponentProps<typeof CommandPrimitive.Item> & {
+    icon?: React.ReactNode
+  }
+>(({ children, icon = false, ...props }, ref) => {
+  return (
+    <CommandPrimitive.Item ref={ref} {...props}>
+      {icon && <ItemIndicator>{icon}</ItemIndicator>}
+      {children}
+    </CommandPrimitive.Item>
+  )
+})
+
+CustomItem.displayName = CommandPrimitive.Item.displayName
+
 export const Item = withContext<
   React.ComponentRef<typeof CommandPrimitive.Item>,
-  Assign<ComponentProps<typeof CommandPrimitive.Item>, JsxStyleProps>
->(CommandPrimitive.Item, 'item')
+  Assign<
+    ComponentProps<typeof CommandPrimitive.Item> & {
+      icon?: React.ReactNode
+    },
+    JsxStyleProps
+  >
+>(CustomItem, 'item')
 
 export const Separator = withContext<
   React.ComponentRef<typeof CommandPrimitive.Separator>,

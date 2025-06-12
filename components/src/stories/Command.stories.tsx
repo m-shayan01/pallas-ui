@@ -9,51 +9,27 @@ const meta: Meta<typeof Command.Root> = {
   title: 'Forms/Command',
   component: Command.Root,
   tags: ['autodocs'],
-  render: (args) => (
-    <Command.Root {...args} css={{ maxW: '[450px]', minH: '[350px]' }}>
+  render: (_args) => (
+    <Command.Root css={{ maxW: '[450px]', minH: '[350px]' }}>
       <Command.Input placeholder="Type a command or search..." />
       <Command.List>
         <Command.Empty>No results found.</Command.Empty>
         <Command.Group heading="Suggestions">
-          <Command.Item>
-            <Calendar />
-            <span>Calendar</span>
-          </Command.Item>
-          <Command.Item>
-            <Smile />
-            <span>Search Emoji</span>
-          </Command.Item>
-          <Command.Item disabled>
-            <Calculator />
-            <span>Calculator</span>
+          <Command.Item icon={<Calendar />}>Calendar</Command.Item>
+          <Command.Item icon={<Smile />}>Search Emoji</Command.Item>
+          <Command.Item disabled icon={<Calculator />}>
+            Calculator
           </Command.Item>
         </Command.Group>
         <Command.Separator />
         <Command.Group heading="Settings">
-          <Command.Item>
-            <User />
-            <span>Profile</span>
-          </Command.Item>
-          <Command.Item>
-            <CreditCard />
-            <span>Billing</span>
-          </Command.Item>
-          <Command.Item>
-            <Settings />
-            <span>Settings</span>
-          </Command.Item>
+          <Command.Item icon={<User />}>Profile</Command.Item>
+          <Command.Item icon={<CreditCard />}>Billing</Command.Item>
+          <Command.Item icon={<Settings />}>Settings</Command.Item>
         </Command.Group>
       </Command.List>
     </Command.Root>
   ),
-  args: {
-    css: {
-      md: {
-        minW: '300px',
-        minH: '350px',
-      },
-    },
-  },
   decorators: (Story) => {
     return (
       <div
@@ -80,7 +56,7 @@ const CommandDialog = () => {}
 type DialogStory = StoryObj<typeof CommandDialog>
 
 export const Dialog: DialogStory = {
-  render: (args) => {
+  render: (_args) => {
     const [open, setOpen] = useState(false)
     useEffect(() => {
       const down = (e: KeyboardEvent) => {
@@ -93,7 +69,30 @@ export const Dialog: DialogStory = {
       return () => document.removeEventListener('keydown', down)
     }, [])
     return (
-      <>
+      <Command.Dialog open={open} onOpenChange={setOpen} css={{ w: '[450px]' }}>
+        <Command.Input placeholder="Type a command or search..." />
+        <Command.List>
+          <Command.Empty>No results found.</Command.Empty>
+          <Command.Group heading="Suggestions">
+            <Command.Item icon={<Calendar />}>Calendar</Command.Item>
+            <Command.Item icon={<Smile />}>Search Emoji</Command.Item>
+            <Command.Item disabled icon={<Calculator />}>
+              Calculator
+            </Command.Item>
+          </Command.Group>
+          <Command.Separator />
+          <Command.Group heading="Settings">
+            <Command.Item icon={<User />}>Profile</Command.Item>
+            <Command.Item icon={<CreditCard />}>Billing</Command.Item>
+            <Command.Item icon={<Settings />}>Settings</Command.Item>
+          </Command.Group>
+        </Command.List>
+      </Command.Dialog>
+    )
+  },
+  decorators: (Story) => {
+    return (
+      <HStack css={{ justifyContent: 'center' }}>
         <p
           className={css({
             color: '{colors.text.secondary}',
@@ -118,47 +117,6 @@ export const Dialog: DialogStory = {
             <span className="text-xs">⌘</span>J
           </kbd>
         </p>
-        <Command.Dialog {...args} open={open} onOpenChange={setOpen}>
-          <Command.Input placeholder="Type a command or search..." />
-          <Command.List css={{ w: '[450px]' }}>
-            <Command.Empty>No results found.</Command.Empty>
-            <Command.Group heading="Suggestions">
-              <Command.Item>
-                <Calendar />
-                <span>Calendar</span>
-              </Command.Item>
-              <Command.Item>
-                <Smile />
-                <span>Search Emoji</span>
-              </Command.Item>
-              <Command.Item disabled>
-                <Calculator />
-                <span>Calculator</span>
-              </Command.Item>
-            </Command.Group>
-            <Command.Separator />
-            <Command.Group heading="Settings">
-              <Command.Item>
-                <User />
-                <span>Profile</span>
-              </Command.Item>
-              <Command.Item>
-                <CreditCard />
-                <span>Billing</span>
-              </Command.Item>
-              <Command.Item>
-                <Settings />
-                <span>Settings</span>
-              </Command.Item>
-            </Command.Group>
-          </Command.List>
-        </Command.Dialog>
-      </>
-    )
-  },
-  decorators: (Story) => {
-    return (
-      <HStack css={{ justifyContent: 'center' }}>
         <Story />
       </HStack>
     )
