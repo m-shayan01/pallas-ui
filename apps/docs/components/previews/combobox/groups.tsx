@@ -3,7 +3,7 @@ import { css } from '@styled-system/css'
 import { Check } from 'lucide-react'
 import { useState } from 'react'
 
-function ComboboxPreview() {
+function ComboboxGroups() {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState('')
 
@@ -18,10 +18,10 @@ function ComboboxPreview() {
 
   return (
     <Combobox.Root open={open} onOpenChange={setOpen}>
-      <Combobox.Trigger css={{ w: 200 }} placeholder="Select fruit...">
-        {value && fruits.find((fruit) => fruit.value === value)?.label}
+      <Combobox.Trigger className={css({ w: 200 })} placeholder="Select fruit...">
+        {value && [...fruits, ...vegetables].find((fruit) => fruit.value === value)?.label}
       </Combobox.Trigger>
-      <Combobox.Content placeholder="Search fruit..." css={{ w: 200 }}>
+      <Combobox.Content placeholder="Search fruit..." className={css({ w: 200 })}>
         <Combobox.Group heading="Fruit">
           {fruits.map((fruit) => (
             <Combobox.Item
@@ -41,12 +41,32 @@ function ComboboxPreview() {
             </Combobox.Item>
           ))}
         </Combobox.Group>
+        <Combobox.Separator />
+        <Combobox.Group heading="Vegetables">
+          {vegetables.map((vegetable) => (
+            <Combobox.Item
+              key={vegetable.value}
+              value={vegetable.value}
+              onSelect={handleSelect}
+              selected={value === vegetable.value}
+              icon={
+                <Check
+                  className={css({
+                    visibility: value === vegetable.value ? 'visible' : 'hidden',
+                  })}
+                />
+              }
+            >
+              {vegetable.label}
+            </Combobox.Item>
+          ))}
+        </Combobox.Group>
       </Combobox.Content>
     </Combobox.Root>
   )
 }
 
-export default ComboboxPreview
+export default ComboboxGroups
 
 const fruits = [
   {
@@ -68,5 +88,28 @@ const fruits = [
   {
     value: 'pineapple',
     label: 'Pineapple',
+  },
+]
+
+const vegetables = [
+  {
+    value: 'carrot',
+    label: 'Carrot',
+  },
+  {
+    value: 'celery',
+    label: 'Celery',
+  },
+  {
+    value: 'cucumber',
+    label: 'Cucumber',
+  },
+  {
+    value: 'lettuce',
+    label: 'Lettuce',
+  },
+  {
+    value: 'onion',
+    label: 'Onion',
   },
 ]

@@ -8,6 +8,7 @@ import { breadcrumb } from './breadcrumb'
 import { button } from './button'
 import { card } from './card'
 import { checkbox } from './checkbox'
+import { combobox } from './combobox'
 import { command } from './command'
 import { daypicker } from './daypicker'
 import { drawer } from './drawer'
@@ -57,6 +58,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   card,
   checkbox,
   command,
+  combobox,
   drawer,
   daypicker,
   input,

@@ -49,13 +49,7 @@ export default meta
 
 type Story = StoryObj<typeof Command.Root>
 
-export const Default: Story = {}
-
-const CommandDialog = () => {}
-
-type DialogStory = StoryObj<typeof CommandDialog>
-
-export const Dialog: DialogStory = {
+export const Dialog: Story = {
   render: (_args) => {
     const [open, setOpen] = useState(false)
     useEffect(() => {

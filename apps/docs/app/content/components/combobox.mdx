@@ -9,7 +9,7 @@ references:
 <ContentContainer>
 
 <Section gap="1">
-# Command
+# Combobox
 <Paragraph size={'extraLarge'} color={'tertiary'}>Autocomplete input with command palette and suggestions.</Paragraph>
 <ComponentPreview name="combobox" withRecipe />
 </Section>
@@ -17,9 +17,9 @@ references:
 <Section>
 ## Installation
 
-The Combobox is built by composing `Popover` and `Command` components.
+The Combobox is built with `Button`, `Popover` and `Command` components.
 
-See installation instructions for [Popover](/docs/components/popover#installation) and [Command](/docs/components/command#installation) components.
+See installation instructions for [Button](/docs/components/button#installation), [Popover](/docs/components/popover#installation) and [Command](/docs/components/command#installation) components.
 
 </Section>
 
@@ -29,59 +29,43 @@ See installation instructions for [Popover](/docs/components/popover#installatio
 ```tsx
 import {
   Popover
-} from "@/components/ui/popover"
-import {
-  Command
-} from '@/components/ui/command'
+} from "@/components/ui/combobox"
 ```
 
 ```tsx
-<Popover.Root open={open} onOpenChange={setOpen}>
-  <Popover.Trigger
-    asChild
-  >
-    <Button
-      variant="outlined"
-      icon={<ChevronsUpDown className="opacity-50" />}
-      ...
-    >
-      <span className={css({ lineHeight: 1 })}>
-        {value
-          ? frameworks.find((framework) => framework.value === value)
-              ?.label
-          : "Select framework..."}
-      </span>
-    </Button>
-  </Popover.Trigger>
-  <Popover.Content css={{ p: 0, width: 200, bg: "transparent" }}>
-    <Command.Root label="Combobox Menu">
-      <Command.Input placeholder="Search framework..." />
-      <Command.List>
-        <Command.Empty>No results found.</Command.Empty>
-        <Command.Group heading="Frameworks">
-          {frameworks.map((framework) => (
-            <Command.Item
-              key={framework.value}
-              value={framework.value}
-              onSelect={(currentValue) => {
-                setValue(currentValue === value ? "" : currentValue)
-                setOpen(false)
-              }}
-            >
-              {framework.label}
-              <Check
-                className={css({
-                  ml: "auto",
-                  opacity: value === framework.value ? 1 : 0,
-                })}
-              />
-            </Command.Item>
-          ))}
-        </Command.Group>
-      </Command.List>
-    </Command.Root>
-  </Popover.Content>
-</Popover.Root>
+<Combobox.Root open={open} onOpenChange={setOpen}>
+  <Combobox.Trigger css={{ w: 200 }}>
+    {value ? fruits.find((fruit) => fruit.value === value)?.label : 'Select fruit...'}
+  </Combobox.Trigger>
+  <Combobox.Content placeholder="Search fruit..." css={{ w: 200 }}>
+    <Combobox.Group heading="Fruit">
+      <Combobox.Item
+        value={'apple'}
+        onSelect={handleSelect}
+        selected={value === fruit.value}
+        icon={...}
+      >
+        Apple
+      </Combobox.Item>
+      <Combobox.Item
+        value={'banana'}
+        onSelect={handleSelect}
+        selected={value === fruit.value}
+        icon={...}
+      >
+        Banana
+      </Combobox.Item>
+      <Combobox.Item
+        value={'grapes'}
+        onSelect={handleSelect}
+        selected={value === fruit.value}
+        icon={...}
+      >
+        Grapes
+      </Combobox.Item>
+    </Combobox.Group>
+  </Combobox.Content>
+</Combobox.Root>
 ```
 </Section>
 
@@ -91,9 +75,25 @@ import {
 
 <ComponentPreview name="combobox" />
 
-### Dialog
+### Popover
 
 <ComponentPreview name="combobox" file="popover" />
+
+### Sizes
+
+<ComponentPreview name="combobox" file="variants" />
+
+### Multi-select
+
+<ComponentPreview name="combobox" file="multi-select" />
+
+### Groups
+
+<ComponentPreview name="combobox" file="groups" />
+
+### Form
+
+<ComponentPreview name="combobox" file="form" />
 
 </Section>
 
