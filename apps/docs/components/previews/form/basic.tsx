@@ -39,10 +39,10 @@ export default function FormExampleBasic() {
             render={({ field }) => {
               return (
                 <Form.Item>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label htmlFor="name">Name</Form.Label>
                   <Form.Control>
                     <Input>
-                      <Input.Text placeholder="Enter your name" {...field} />
+                      <Input.Text placeholder="Enter your name" id="name" {...field} />
                     </Input>
                   </Form.Control>
                   <Form.Description>Enter your first and last name</Form.Description>

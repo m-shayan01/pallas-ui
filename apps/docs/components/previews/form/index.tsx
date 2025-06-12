@@ -31,10 +31,10 @@ export default function FormPreview() {
             control={form.control}
             render={({ field }) => (
               <Form.Item>
-                <Form.Label>Email</Form.Label>
+                <Form.Label htmlFor="email">Email</Form.Label>
                 <Form.Control>
                   <Input>
-                    <Input.Text placeholder="Enter your email" {...field} />
+                    <Input.Text placeholder="Enter your email" id="email" {...field} />
                   </Input>
                 </Form.Control>
                 <Form.Description>Only work emails are allowed</Form.Description>
