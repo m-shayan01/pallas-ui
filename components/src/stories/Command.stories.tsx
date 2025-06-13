@@ -47,7 +47,11 @@ const meta: Meta<typeof Command.Root> = {
 
 export default meta
 
-type Story = StoryObj<typeof Command.Root>
+export const Default: Story = {
+  args: {},
+}
+
+type Story = StoryObj<typeof Command.Dialog>
 
 export const Dialog: Story = {
   render: (_args) => {

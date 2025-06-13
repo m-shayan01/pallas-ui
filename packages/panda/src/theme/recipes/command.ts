@@ -36,7 +36,6 @@ export const command = defineSlotRecipe({
         alignItems: 'center',
       },
     },
-    dialog: {},
     input: {
       w: 'full',
       outline: 'none',
@@ -48,7 +47,7 @@ export const command = defineSlotRecipe({
         opacity: 0.5,
       },
       color: '{colors.text}',
-      fontSize: '{fontSizes.sm}',
+      textStyle: 'sm',
     },
     list: {
       '& [data-selected=true]': {
@@ -60,18 +59,19 @@ export const command = defineSlotRecipe({
       },
       overflowX: 'hidden',
       overflowY: 'auto',
-      maxH: '[300px]',
       color: '{colors.text}',
       outline: 'none',
+      h: 'full',
     },
     empty: {
-      p: 4,
-      fontSize: '{fontSizes.md}',
+      py: 4,
+      px: 2,
+      textStyle: 'sm',
     },
     group: {
       '& [cmdk-group-heading]': {
         color: '{colors.text.tertiary}',
-        fontSize: 'sm',
+        textStyle: 'sm',
         px: 1,
         py: 0.5,
         fontWeight: 'medium',
@@ -88,7 +88,7 @@ export const command = defineSlotRecipe({
       py: '{spacing.padding.block.md}',
       pl: '{spacing.gap.component.lg}',
       pr: '{spacing.padding.inline.sm}',
-      fontSize: '{fontSizes.sm}',
+      textStyle: 'sm',
       outline: 'hidden',
       userSelect: 'none',
     },
@@ -113,14 +113,15 @@ export const command = defineSlotRecipe({
           w: 'full',
         },
         itemIndicator: {
-          h: '{sizes.icon.sm}',
-          w: '{sizes.icon.sm}',
+          h: '{sizes.icon.md}',
+          w: '{sizes.icon.md}',
         },
       },
       floating: {
         root: {
           "& [data-slot='command-input-icon']": {
             ml: '{spacing.padding.inline.xs}',
+            size: '{sizes.icon.xl} !important',
           },
           '& [cmdk-input]': {
             height: '{sizes.12}',
@@ -137,19 +138,16 @@ export const command = defineSlotRecipe({
             base: {
               top: '{spacing.padding.inline.md}',
               right: '{spacing.padding.block.lg}',
-              fontSize: '{fontSizes.xs}',
               color: '{colors.text}',
               position: 'absolute',
               rounded: '{radii.xs}',
               flexShrink: 0,
               opacity: 0.5,
-              border: '1px solid transparent !important',
-              px: '{spacing.padding.inline.xs} !important',
-              py: '0 !important',
-              h: '{sizes.selectionControl.lg} !important',
+              border: '1px solid transparent',
+              p: 0,
             },
             _focus: {
-              borderColor: '{colors.primary.hover} !important',
+              borderColor: '{colors.primary.hover}',
               outline: '1px solid {colors.primary.bgHover}',
             },
             _disabled: {
@@ -160,10 +158,16 @@ export const command = defineSlotRecipe({
             },
           },
         },
+        input: {
+          textStyle: 'md',
+        },
+        empty: {
+          p: '{spacing.padding.inline.sm}',
+          textStyle: 'md',
+        },
         group: {
           '& [cmdk-group-heading]': {
             color: '{colors.text.tertiary}',
-            px: '{spacing.padding.inline.sm}',
             fontWeight: 'medium',
             p: '{spacing.padding.inline.sm}',
           },
@@ -177,6 +181,7 @@ export const command = defineSlotRecipe({
           py: '{spacing.padding.inline.md}',
           pl: '{spacing.layout.section.lg}',
           pr: '{spacing.padding.block.md}',
+          textStyle: 'md',
         },
         itemIndicator: {
           left: '{spacing.padding.inline.sm}',
