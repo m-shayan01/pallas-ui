@@ -99,7 +99,7 @@ export const button = defineRecipe({
     },
     size: {
       sm: {
-        textStyle: 'xs',
+        textStyle: 'sm',
         paddingX: '{spacing.padding.inline.sm}',
         paddingY: '{spacing.padding.block.sm}',
         height: '{sizes.controlHeight.sm}',

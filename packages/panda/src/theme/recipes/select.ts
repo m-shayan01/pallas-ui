@@ -128,8 +128,11 @@ export const select = defineSlotRecipe({
       sm: {
         trigger: {
           h: '{sizes.controlHeight.sm}',
-          textStyle: 'xs',
+          textStyle: 'sm',
           px: '{spacing.padding.inline.sm}',
+          py: '{spacing.padding.block.sm}',
+        },
+        item: {
           py: '{spacing.padding.block.sm}',
         },
       },
@@ -138,6 +141,9 @@ export const select = defineSlotRecipe({
           h: '{sizes.controlHeight.md}',
           textStyle: 'sm',
           px: '{spacing.padding.inline.md}',
+          py: '{spacing.padding.block.md}',
+        },
+        item: {
           py: '{spacing.padding.block.md}',
         },
       },

@@ -68,14 +68,7 @@ const CustomTrigger = React.forwardRef<
         asChild={props.asChild ?? false}
         data-status={dataStatus}
       >
-        <span
-          className={css({
-            display: 'flex',
-            mr: 'auto',
-          })}
-        >
-          {children ? children : <span data-placeholder="">{placeholder}</span>}
-        </span>
+        <span>{children ? children : <span data-placeholder="">{placeholder}</span>}</span>
       </Button>
     </PopoverPrimitive.Trigger>
   )

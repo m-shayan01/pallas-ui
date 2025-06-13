@@ -8,10 +8,13 @@ import React from 'react'
 import { DayPicker } from '~/ui/daypicker'
 import Popover from '~/ui/popover'
 
-const InputContext = React.createContext<{
-  id: string
-  dataStatus?: 'error' | 'success' | 'warning'
-} | null>(null)
+const InputContext = React.createContext<
+  | ({
+      id: string
+      dataStatus?: 'error' | 'success' | 'warning'
+    } & InputVariantProps)
+  | null
+>(null)
 
 // Hook to ensure components are used within InputRoot
 const useInputContext = () => {
@@ -31,7 +34,7 @@ const InputRoot = React.forwardRef<
   const id = React.useId()
   const { root } = input({ size, shape })
   return (
-    <InputContext.Provider value={{ id, dataStatus }}>
+    <InputContext.Provider value={{ id, dataStatus, size, shape }}>
       <div ref={ref} className={cx(root, className)} {...props} />
     </InputContext.Provider>
   )
@@ -41,8 +44,8 @@ InputRoot.displayName = 'Input'
 // Prefix component
 const InputPrefix = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
-    useInputContext()
-    const { prefix } = input()
+    const { size, shape } = useInputContext()
+    const { prefix } = input({ size, shape })
     return <div ref={ref} className={cx(prefix, className)} {...props} />
   },
 )
@@ -51,8 +54,8 @@ InputPrefix.displayName = 'Input.Prefix'
 // Postfix component
 const InputPostfix = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => {
-    useInputContext()
-    const { postfix } = input()
+    const { size, shape } = useInputContext()
+    const { postfix } = input({ size, shape })
     return <div ref={ref} className={cx(postfix, className)} {...props} />
   },
 )
@@ -71,8 +74,8 @@ const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
     { className, formatter, maxLength, showCount, status, onChange, value, defaultValue, ...props },
     ref,
   ) => {
-    const { id, dataStatus } = useInputContext()
-    const { field, charCount } = input()
+    const { id, dataStatus, size, shape } = useInputContext()
+    const { field, charCount } = input({ size, shape })
     const [inputValue, setInputValue] = React.useState(value || defaultValue || '')
     const characterCount = String(inputValue).length
 
@@ -124,8 +127,8 @@ type InputNumberProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'
 
 const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
   ({ className, controls = true, step = 1, min, max, value, onChange, ...props }, ref) => {
-    const { id, dataStatus } = useInputContext()
-    const { field, control } = input()
+    const { id, dataStatus, size, shape } = useInputContext()
+    const { field, control } = input({ size, shape })
     const [localValue, setLocalValue] = React.useState<number | undefined>(
       value !== undefined ? Number(value) : undefined,
     )
@@ -240,8 +243,8 @@ const InputDayPicker = React.forwardRef<HTMLInputElement, InputDayPickerProps>(
     { className, value, onChange, format: formatStr = 'PP', placeholder = 'Pick a date', ...props },
     ref,
   ) => {
-    const { id, dataStatus } = useInputContext()
-    const { field, postfix } = input()
+    const { id, dataStatus, size, shape } = useInputContext()
+    const { field, postfix } = input({ size, shape })
     const [selected, setSelected] = React.useState<Date | undefined>(value)
 
     // Update internal state when value prop changes

@@ -30,8 +30,10 @@ export const combobox = defineSlotRecipe({
       },
       justifyContent: 'start',
       '& span': {
-        whiteSpace: 'nowrap',
+        mr: 'auto',
+        textOverflow: 'ellipsis',
         overflow: 'hidden',
+        whiteSpace: 'nowrap',
         _placeholder: {
           color: '{colors.text.secondary}',
         },
@@ -125,10 +127,13 @@ export const combobox = defineSlotRecipe({
           minH: '{sizes.controlHeight.sm}',
           maxH: '{sizes.controlHeight.sm}',
           '& *': {
-            textStyle: 'xs',
+            textStyle: 'sm',
           },
           px: '{spacing.padding.inline.sm} !important',
           py: '{spacing.padding.block.sm} !important',
+        },
+        item: {
+          py: '{spacing.padding.block.sm}',
         },
       },
       md: {
