@@ -1,3 +1,5 @@
+import { DayPicker } from '@/components/ui/daypicker'
+import Popover from '@/components/ui/popover'
 import { Slot } from '@radix-ui/react-slot'
 import { css, cx } from '@styled-system/css'
 import { type InputVariantProps, icon, input } from '@styled-system/recipes'
@@ -5,8 +7,6 @@ import { format } from 'date-fns'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { Calendar } from 'lucide-react'
 import React from 'react'
-import { DayPicker } from '@/components/ui/daypicker'
-import Popover from '@/components/ui/popover'
 
 const InputContext = React.createContext<
   | ({
