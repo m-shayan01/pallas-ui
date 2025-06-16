@@ -61,8 +61,8 @@ export const steps = defineSlotRecipe({
 
       _current: {
         border: '1px solid {colors.fill.secondary}',
-        color: '{colors.text}',
-        backgroundColor: '{colors.primary.bg}',
+        color: '{colors.bgSolid.text}',
+        backgroundColor: '{colors.primary}',
       },
       _complete: {
         backgroundColor: '{colors.primary}',
@@ -72,7 +72,7 @@ export const steps = defineSlotRecipe({
       _incomplete: {
         border: '1px solid {colors.fill.secondary}',
         backgroundColor: '{colors.fill.secondary}',
-        color: '{colors.fill}',
+        color: '{colors.primary.textActive}',
       },
     },
     separator: {
@@ -117,7 +117,7 @@ export const steps = defineSlotRecipe({
         indicator: {
           width: '{sizes.icon.sm}',
           height: '{sizes.icon.sm}',
-          fontSize: '{fontSizes.sm}',
+          fontSize: '{fontSizes.xs}',
         },
         separator: {
           _vertical: {
@@ -132,7 +132,7 @@ export const steps = defineSlotRecipe({
         },
         trigger: {
           gap: '{spacing.gap.inline.2xs}',
-          fontSize: '{fontSizes.sm}',
+          fontSize: '{fontSizes.xs}',
           '& *': {
             fontSize: 'inherit',
           },
@@ -145,7 +145,7 @@ export const steps = defineSlotRecipe({
         indicator: {
           width: '{sizes.icon.md}',
           height: '{sizes.icon.md}',
-          fontSize: '{fontSizes.md}',
+          fontSize: '{fontSizes.sm}',
         },
         separator: {
           _vertical: {
@@ -160,7 +160,7 @@ export const steps = defineSlotRecipe({
         },
         trigger: {
           gap: '{spacing.gap.inline.xs}',
-          fontSize: '{fontSizes.md}',
+          fontSize: '{fontSizes.sm}',
           '& *': {
             fontSize: 'inherit',
           },
@@ -173,7 +173,7 @@ export const steps = defineSlotRecipe({
         indicator: {
           width: '{sizes.icon.lg}',
           height: '{sizes.icon.lg}',
-          fontSize: '{fontSizes.lg}',
+          fontSize: '{fontSizes.md}',
         },
         separator: {
           _vertical: {
@@ -188,7 +188,7 @@ export const steps = defineSlotRecipe({
         },
         trigger: {
           gap: '{spacing.gap.inline.sm}',
-          fontSize: '{fontSizes.lg}',
+          fontSize: '{fontSizes.md}',
           '& *': {
             fontSize: 'inherit',
           },
