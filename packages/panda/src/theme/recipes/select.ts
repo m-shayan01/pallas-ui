@@ -48,6 +48,9 @@ export const select = defineSlotRecipe({
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled}',
         borderColor: '{colors.border.secondary}',
+        _hover: {
+          borderColor: '{colors.border.secondary}',
+        },
       },
     },
     viewport: {
@@ -74,11 +77,12 @@ export const select = defineSlotRecipe({
       animationDuration: '{durations.normal}',
     },
     label: {
-      py: '{spacing.padding.block.md}',
-      pl: '{spacing.gap.inline.xs}',
-      pr: '{spacing.gap.inline.sm}',
-      textStyle: 'sm',
-      fontWeight: 'semibold',
+      color: '{colors.text.tertiary}',
+      fontSize: 'sm',
+      py: '{spacing.padding.block.xs}',
+      px: '{spacing.padding.block.sm}',
+
+      fontWeight: 'medium',
     },
     item: {
       position: 'relative',
@@ -128,12 +132,18 @@ export const select = defineSlotRecipe({
           px: '{spacing.padding.inline.sm}',
           py: '{spacing.padding.block.sm}',
         },
+        item: {
+          py: '{spacing.padding.block.sm}',
+        },
       },
       md: {
         trigger: {
           h: '{sizes.controlHeight.md}',
           textStyle: 'sm',
           px: '{spacing.padding.inline.md}',
+          py: '{spacing.padding.block.md}',
+        },
+        item: {
           py: '{spacing.padding.block.md}',
         },
       },

@@ -182,17 +182,20 @@ export const sidebar = defineSlotRecipe({
       flex: 1,
       visibility: 'visible',
 
+      overflow: 'auto',
       _hover: {
-        overflow: 'auto',
         '& .sidebar__rootNonCollapsible': {
           visibility: 'visible',
         },
+        '&::-webkit-scrollbar-thumb': {
+          visibility: 'visible',
+        },
       },
-
       '&::-webkit-scrollbar': {
         width: '4px',
       },
       '&::-webkit-scrollbar-thumb': {
+        visibility: 'hidden',
         backgroundColor: '{colors.border}',
       },
 

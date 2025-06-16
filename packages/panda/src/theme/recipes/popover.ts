@@ -28,6 +28,14 @@ export const popover = defineSlotRecipe({
         zoomOut: 95,
       },
       animationStyle: 'slideFadeIn',
+
+      '&[data-slot="combobox-content"]': {
+        p: 0,
+        paddingBlock: 0,
+        paddingInline: 0,
+        border: 'none',
+        shadow: 'none',
+      },
     },
     arrow: {
       fill: '{colors.surface.spotlight}',

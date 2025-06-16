@@ -129,6 +129,10 @@ export const input = defineSlotRecipe({
           WebkitBoxShadow: '0 0 0 1000px {colors.fill.secondary} inset !important',
           WebkitTextFillColor: '{colors.text.secondary} !important',
         },
+
+      _disabled: {
+        cursor: 'not-allowed',
+      },
     },
     charCount: {
       position: 'absolute',
@@ -175,9 +179,9 @@ export const input = defineSlotRecipe({
           pl: '{spacing.padding.inline.sm}',
           pr: '{spacing.padding.inline.sm}',
           py: '0',
-          textStyle: 'sm',
         },
         field: {
+          textStyle: 'sm',
           py: '{spacing.padding.block.sm}',
         },
         control: {
@@ -197,9 +201,9 @@ export const input = defineSlotRecipe({
           pl: '{spacing.padding.inline.md}',
           pr: '{spacing.padding.inline.md}',
           py: '0',
-          textStyle: 'md',
         },
         field: {
+          textStyle: 'sm',
           py: '{spacing.padding.block.md}',
         },
         control: {
@@ -219,9 +223,9 @@ export const input = defineSlotRecipe({
           pl: '{spacing.padding.inline.lg}',
           pr: '{spacing.padding.inline.lg}',
           py: '0',
-          textStyle: 'lg',
         },
         field: {
+          textStyle: 'md',
           py: '{spacing.padding.block.lg}',
         },
         control: {
