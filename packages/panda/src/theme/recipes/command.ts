@@ -113,8 +113,8 @@ export const command = defineSlotRecipe({
           w: 'full',
         },
         itemIndicator: {
-          h: '{sizes.icon.md}',
-          w: '{sizes.icon.md}',
+          h: '{sizes.icon.sm}',
+          w: '{sizes.icon.sm}',
         },
       },
       floating: {
