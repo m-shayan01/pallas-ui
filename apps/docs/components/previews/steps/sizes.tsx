@@ -5,7 +5,7 @@ const items = [{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }]
 
 export default function StepsSizesPreview() {
   return (
-    <VStack gap={8} w="100%">
+    <VStack gap={8} w="90%">
       {/* Small */}
       <VStack gap={2} align="flex-start">
         <h4>Small</h4>
@@ -14,7 +14,9 @@ export default function StepsSizesPreview() {
             {items.map((item, index) => (
               <Steps.Item key={index} index={index}>
                 <Steps.Trigger>
-                  <Steps.Indicator>{index + 1}</Steps.Indicator>
+                  <Steps.Indicator>
+                    <span>{index + 1}</span>
+                  </Steps.Indicator>
                   <span>{item.title}</span>
                 </Steps.Trigger>
                 <Steps.Separator />
@@ -32,7 +34,9 @@ export default function StepsSizesPreview() {
             {items.map((item, index) => (
               <Steps.Item key={index} index={index}>
                 <Steps.Trigger>
-                  <Steps.Indicator>{index + 1}</Steps.Indicator>
+                  <Steps.Indicator>
+                    <span>{index + 1}</span>
+                  </Steps.Indicator>
                   <span>{item.title}</span>
                 </Steps.Trigger>
                 <Steps.Separator />
@@ -50,7 +54,9 @@ export default function StepsSizesPreview() {
             {items.map((item, index) => (
               <Steps.Item key={index} index={index}>
                 <Steps.Trigger>
-                  <Steps.Indicator>{index + 1}</Steps.Indicator>
+                  <Steps.Indicator>
+                    <span>{index + 1}</span>
+                  </Steps.Indicator>
                   <span>{item.title}</span>
                 </Steps.Trigger>
                 <Steps.Separator />

@@ -73,11 +73,15 @@ export const steps = defineSlotRecipe({
         border: '1px solid {colors.fill.secondary}',
         backgroundColor: '{colors.fill.secondary}',
         color: '{colors.primary.textActive}',
+        '& *': {
+          color: '{colors.primary.textActive}',
+        },
       },
     },
     separator: {
       flex: '1 0 0',
       backgroundColor: '{colors.fill.secondary}',
+      cursor: 'default',
       _vertical: {
         width: '1px',
         height: '100%',
@@ -97,13 +101,14 @@ export const steps = defineSlotRecipe({
     trigger: {
       display: 'flex',
       alignItems: 'center',
+      cursor: 'pointer',
       gap: '{spacing.gap.inline.xs}',
       textAlign: 'start',
       borderRadius: '{radii.sm}',
       _incomplete: {
-        color: '{colors.fill}',
+        color: '{colors.text.tertiary}',
         '& *': {
-          color: '{colors.fill}',
+          color: '{colors.text.tertiary}',
         },
       },
     },

@@ -46,7 +46,9 @@ export const Default: Story = {
           {items.map((item, index) => (
             <Steps.Item key={index} index={index}>
               <Steps.Trigger>
-                <Steps.Indicator>{index + 1}</Steps.Indicator>
+                <Steps.Indicator css={{ alignItems: 'center' }}>
+                  <span>{index + 1}</span>
+                </Steps.Indicator>
                 <span>{item.title}</span>
               </Steps.Trigger>
               <Steps.Separator />
@@ -76,7 +78,9 @@ export const Variants: Story = {
           {items.map((item, index) => (
             <Steps.Item key={index} index={index}>
               <Steps.Trigger>
-                <Steps.Indicator>{index + 1}</Steps.Indicator>
+                <Steps.Indicator css={{ alignItems: 'center' }}>
+                  <span>{index + 1}</span>
+                </Steps.Indicator>
                 <span>{item.title}</span>
               </Steps.Trigger>
               <Steps.Separator />
@@ -104,7 +108,9 @@ export const Sizes: Story = {
             {items.map((item, index) => (
               <Steps.Item key={index} index={index}>
                 <Steps.Trigger>
-                  <Steps.Indicator>{index + 1}</Steps.Indicator>
+                  <Steps.Indicator css={{ alignItems: 'center' }}>
+                    <span>{index + 1}</span>
+                  </Steps.Indicator>
                   <span>{item.title}</span>
                 </Steps.Trigger>
                 <Steps.Separator />
@@ -121,7 +127,9 @@ export const Sizes: Story = {
             {items.map((item, index) => (
               <Steps.Item key={index} index={index}>
                 <Steps.Trigger>
-                  <Steps.Indicator>{index + 1}</Steps.Indicator>
+                  <Steps.Indicator css={{ alignItems: 'center' }}>
+                    <span>{index + 1}</span>
+                  </Steps.Indicator>
                   <span>{item.title}</span>
                 </Steps.Trigger>
                 <Steps.Separator />
@@ -138,7 +146,9 @@ export const Sizes: Story = {
             {items.map((item, index) => (
               <Steps.Item key={index} index={index}>
                 <Steps.Trigger>
-                  <Steps.Indicator>{index + 1}</Steps.Indicator>
+                  <Steps.Indicator css={{ alignItems: 'center' }}>
+                    <span>{index + 1}</span>
+                  </Steps.Indicator>
                   <span>{item.title}</span>
                 </Steps.Trigger>
                 <Steps.Separator />
@@ -230,7 +240,7 @@ export const Dynamic: Story = {
               {dynamicItems.map((item, index) => (
                 <Steps.Item key={`${item.value}-${index}`} index={index}>
                   <Steps.Trigger>
-                    <Steps.Indicator>
+                    <Steps.Indicator css={{ alignItems: 'center' }}>
                       <span>{index + 1}</span>
                     </Steps.Indicator>
                     <span>{item.title}</span>

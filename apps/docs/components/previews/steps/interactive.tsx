@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import Steps from '@/components/ui/steps'
+import { Heading, Paragraph } from '@/components/ui/typography'
 import { HStack, VStack } from '@styled-system/jsx'
 import { useState } from 'react'
 
@@ -32,13 +33,15 @@ export default function StepsInteractivePreview() {
   }
 
   return (
-    <VStack gap={6} w="100%">
+    <VStack gap={6} w="95%">
       <Steps.Root count={items.length} orientation="horizontal" size="md" step={currentStep}>
         <Steps.List>
           {items.map((item, index) => (
             <Steps.Item key={index} index={index}>
               <Steps.Trigger onClick={() => goToStep(index)}>
-                <Steps.Indicator>{index + 1}</Steps.Indicator>
+                <Steps.Indicator css={{ alignItems: 'center' }}>
+                  <span style={{ alignSelf: 'stretch' }}>{index + 1}</span>
+                </Steps.Indicator>
                 <span>{item.title}</span>
               </Steps.Trigger>
               <Steps.Separator />
@@ -47,18 +50,22 @@ export default function StepsInteractivePreview() {
         </Steps.List>
 
         {items.map((item, index) => (
-          <Steps.Content key={index} index={index}>
-            <div
-              style={{
-                padding: '2rem',
+          <Steps.Content key={index} index={index} css={{ justifyContent: 'center' }}>
+            <VStack
+              w="100%"
+              p="4"
+              mt="5"
+              align="center"
+              css={{
                 textAlign: 'center',
-                border: '1px solid #e2e8f0',
-                borderRadius: '8px',
+                border: '1px solid',
+                borderColor: 'border',
+                borderRadius: 'md',
               }}
             >
-              <h3>{item.title}</h3>
-              <p style={{ marginTop: '0.5rem', color: '#64748b' }}>{item.description}</p>
-            </div>
+              <Heading level={4}>{item.title}</Heading>
+              <Paragraph>{item.description}</Paragraph>
+            </VStack>
           </Steps.Content>
         ))}
       </Steps.Root>
