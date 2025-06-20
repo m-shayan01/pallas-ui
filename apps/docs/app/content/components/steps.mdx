@@ -90,6 +90,30 @@ import Steps from '@/components/ui/steps'
 
 <ComponentPreview name="steps" file="interactive" />
 
+### Loading State
+
+<ComponentPreview name="steps" file="loading" />
+
+The Steps component supports a loading state for individual step indicators. Use the `loading` prop on `Steps.Indicator` to show a loading animation:
+
+```tsx
+<Steps.Indicator loading={true}>
+  <span>1</span>
+</Steps.Indicator>
+```
+
+### Disabled State
+
+<ComponentPreview name="steps" file="disabled" />
+
+Individual step indicators can be disabled using the `disabled` prop. Disabled steps are visually dimmed and cannot be interacted with:
+
+```tsx
+<Steps.Indicator disabled={true}>
+  <span>1</span>
+</Steps.Indicator>
+```
+
 </Section>
 
 </ContentContainer>

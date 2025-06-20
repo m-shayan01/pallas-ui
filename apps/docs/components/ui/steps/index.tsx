@@ -2,6 +2,7 @@
 
 import { Steps } from '@ark-ui/react/steps'
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
+import * as React from 'react'
 
 import { steps } from '@styled-system/recipes'
 import type { ComponentProps, JsxStyleProps } from '@styled-system/types'
@@ -37,10 +38,29 @@ const Item = withContext<
   Assign<ComponentProps<typeof Steps.Item>, JsxStyleProps>
 >(Steps.Item, 'item')
 
-const Indicator = withContext<
+export type IndicatorProps = Assign<ComponentProps<typeof Steps.Indicator>, JsxStyleProps> & {
+  loading?: boolean
+  disabled?: boolean
+}
+
+const BaseIndicator = withContext<
   React.ComponentRef<typeof Steps.Indicator>,
   Assign<ComponentProps<typeof Steps.Indicator>, JsxStyleProps>
 >(Steps.Indicator, 'indicator')
+
+const Indicator = React.forwardRef<React.ComponentRef<typeof Steps.Indicator>, IndicatorProps>(
+  ({ loading, disabled, ...props }, ref) => {
+    return (
+      <BaseIndicator
+        {...props}
+        ref={ref}
+        data-loading={loading || undefined}
+        data-disabled={disabled || undefined}
+      />
+    )
+  },
+)
+Indicator.displayName = 'Steps.Indicator'
 
 const Separator = withContext<
   React.ComponentRef<typeof Steps.Separator>,

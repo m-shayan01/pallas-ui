@@ -4,6 +4,8 @@ export const conditions = {
     current: '&:is([data-current])',
     incomplete: '&:is([data-incomplete])',
     complete: '&:is([data-complete])',
+    loading: '&:is([data-loading])',
+    disabled: '&:is([data-disabled])',
     hidden: '&:is([hidden])',
     hover: ['@media (hover: hover) and (pointer: fine)', '&:is(:hover, [data-hover])'],
     indeterminate:

@@ -161,6 +161,224 @@ export const Sizes: Story = {
   ),
 }
 
+export const LoadingState: Story = {
+  args: {
+    orientation: 'horizontal',
+    size: 'md',
+  },
+  render: (args) => {
+    const [loadingSteps, setLoadingSteps] = useState([false, false, false])
+    const [currentStep, setCurrentStep] = useState(1)
+
+    const toggleLoading = (index: number) => {
+      setLoadingSteps((prev) => {
+        const newLoadingSteps = [...prev]
+        newLoadingSteps[index] = !newLoadingSteps[index]
+        return newLoadingSteps
+      })
+    }
+
+    const nextStep = () => {
+      if (currentStep < items.length - 1) {
+        setCurrentStep(currentStep + 1)
+      }
+    }
+
+    const prevStep = () => {
+      if (currentStep > 0) {
+        setCurrentStep(currentStep - 1)
+      }
+    }
+
+    const simulateLoading = () => {
+      // Simulate loading for current step
+      setLoadingSteps((prev) => {
+        const newLoadingSteps = [...prev]
+        newLoadingSteps[currentStep] = true
+        return newLoadingSteps
+      })
+
+      // Auto-complete after 3 seconds
+      setTimeout(() => {
+        setLoadingSteps((prev) => {
+          const newLoadingSteps = [...prev]
+          newLoadingSteps[currentStep] = false
+          return newLoadingSteps
+        })
+        if (currentStep < items.length - 1) {
+          setCurrentStep(currentStep + 1)
+        }
+      }, 3000)
+    }
+
+    return (
+      <VStack gap={6} w="100%">
+        <HStack gap={4}>
+          <Button type="button" onClick={prevStep} disabled={currentStep === 0} variant="outlined">
+            Previous
+          </Button>
+          <Button
+            type="button"
+            onClick={nextStep}
+            disabled={currentStep === items.length - 1}
+            variant="outlined"
+          >
+            Next
+          </Button>
+          <Button type="button" onClick={simulateLoading} variant="primary">
+            Simulate Loading Current Step
+          </Button>
+          {items.map((item, index) => (
+            <Button
+              key={index}
+              type="button"
+              onClick={() => toggleLoading(index)}
+              variant={loadingSteps[index] ? 'primary' : 'outlined'}
+              size="sm"
+            >
+              {loadingSteps[index] ? `Stop Loading ${item.title}` : `Load ${item.title}`}
+            </Button>
+          ))}
+        </HStack>
+
+        <Stack w="100%" h="50vh">
+          <Steps.Root
+            count={items.length}
+            orientation={args['orientation']}
+            size={args['size']}
+            step={currentStep}
+          >
+            <Steps.List>
+              {items.map((item, index) => (
+                <Steps.Item key={index} index={index}>
+                  <Steps.Trigger>
+                    <Steps.Indicator css={{ alignItems: 'center' }} loading={loadingSteps[index]}>
+                      <span>{index + 1}</span>
+                    </Steps.Indicator>
+                    <span>{item.title}</span>
+                  </Steps.Trigger>
+                  <Steps.Separator />
+                </Steps.Item>
+              ))}
+            </Steps.List>
+
+            {items.map((item, index) => (
+              <Steps.Content key={index} index={index}>
+                <VStack gap={2} align="center">
+                  <Paragraph textStyle="bold">{item.title}</Paragraph>
+                  <Paragraph>{item.description}</Paragraph>
+                  {loadingSteps[index] && <Paragraph size="compact">Processing step...</Paragraph>}
+                </VStack>
+              </Steps.Content>
+            ))}
+          </Steps.Root>
+        </Stack>
+      </VStack>
+    )
+  },
+}
+
+export const DisabledState: Story = {
+  args: {
+    orientation: 'horizontal',
+    size: 'md',
+  },
+  render: (args) => {
+    const [disabledSteps, setDisabledSteps] = useState([false, true, false])
+    const [currentStep, setCurrentStep] = useState(0)
+
+    const toggleDisabled = (index: number) => {
+      setDisabledSteps((prev) => {
+        const newDisabledSteps = [...prev]
+        newDisabledSteps[index] = !newDisabledSteps[index]
+        return newDisabledSteps
+      })
+    }
+
+    const nextStep = () => {
+      if (currentStep < items.length - 1) {
+        setCurrentStep(currentStep + 1)
+      }
+    }
+
+    const prevStep = () => {
+      if (currentStep > 0) {
+        setCurrentStep(currentStep - 1)
+      }
+    }
+
+    const goToStep = (step: number) => {
+      if (!disabledSteps[step]) {
+        setCurrentStep(step)
+      }
+    }
+
+    return (
+      <VStack gap={6} w="100%">
+        <HStack gap={4}>
+          <Button type="button" onClick={prevStep} disabled={currentStep === 0} variant="outlined">
+            Previous
+          </Button>
+          <Button
+            type="button"
+            onClick={nextStep}
+            disabled={currentStep === items.length - 1}
+            variant="outlined"
+          >
+            Next
+          </Button>
+          {items.map((item, index) => (
+            <Button
+              key={index}
+              type="button"
+              onClick={() => toggleDisabled(index)}
+              variant={disabledSteps[index] ? 'primary' : 'outlined'}
+              size="sm"
+            >
+              {disabledSteps[index] ? `Enable ${item.title}` : `Disable ${item.title}`}
+            </Button>
+          ))}
+        </HStack>
+
+        <Stack w="100%" h="50vh">
+          <Steps.Root
+            count={items.length}
+            orientation={args['orientation']}
+            size={args['size']}
+            step={currentStep}
+          >
+            <Steps.List>
+              {items.map((item, index) => (
+                <Steps.Item key={index} index={index}>
+                  <Steps.Trigger onClick={() => goToStep(index)}>
+                    <Steps.Indicator css={{ alignItems: 'center' }} disabled={disabledSteps[index]}>
+                      <span>{index + 1}</span>
+                    </Steps.Indicator>
+                    <span>{item.title}</span>
+                  </Steps.Trigger>
+                  <Steps.Separator />
+                </Steps.Item>
+              ))}
+            </Steps.List>
+
+            {items.map((item, index) => (
+              <Steps.Content key={index} index={index}>
+                <VStack gap={2} align="center">
+                  <Paragraph textStyle="bold">{item.title}</Paragraph>
+                  <Paragraph>{item.description}</Paragraph>
+                  {disabledSteps[index] && (
+                    <Paragraph size="compact">This step is disabled</Paragraph>
+                  )}
+                </VStack>
+              </Steps.Content>
+            ))}
+          </Steps.Root>
+        </Stack>
+      </VStack>
+    )
+  },
+}
+
 export const Dynamic: Story = {
   args: {
     orientation: 'horizontal',

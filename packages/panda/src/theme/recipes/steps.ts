@@ -77,6 +77,38 @@ export const steps = defineSlotRecipe({
           color: '{colors.primary.textActive}',
         },
       },
+      _loading: {
+        position: 'relative',
+        backgroundColor: '{colors.primary.bg}',
+        color: '{colors.primary}',
+        border: '2px solid transparent',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: '-2px',
+          left: '-2px',
+          right: '-2px',
+          bottom: '-2px',
+          borderRadius: '{radii.full}',
+          border: '2px solid transparent',
+          borderTopColor: '{colors.primary}',
+          borderRightColor: '{colors.primary}',
+          animationStyle: 'loading',
+        },
+        '& *': {
+          color: '{colors.primary}',
+        },
+      },
+      _disabled: {
+        border: '1px solid {colors.fill.disabled}',
+        backgroundColor: '{colors.fill.disabled}',
+        color: '{colors.text.disabled}',
+        cursor: 'not-allowed',
+        opacity: 0.6,
+        '& *': {
+          color: '{colors.text.disabled}',
+        },
+      },
     },
     separator: {
       flex: '1 0 0',
@@ -109,6 +141,13 @@ export const steps = defineSlotRecipe({
         color: '{colors.text.tertiary}',
         '& *': {
           color: '{colors.text.tertiary}',
+        },
+      },
+      _disabled: {
+        cursor: 'not-allowed',
+        color: '{colors.text.disabled}',
+        '& *': {
+          color: '{colors.text.disabled}',
         },
       },
     },
