@@ -19,6 +19,11 @@ export const Root = withProvider<React.ComponentRef<typeof SheetPrimitive.Root>,
   'root',
 )
 
+export const NestedRoot = withProvider<
+  React.ComponentRef<typeof SheetPrimitive.NestedRoot>,
+  RootProps
+>(SheetPrimitive.NestedRoot, 'nestedRoot')
+
 export const Overlay = withContext<
   React.ComponentRef<typeof SheetPrimitive.Overlay>,
   Assign<React.ComponentProps<typeof SheetPrimitive.Overlay>, JsxStyleProps>
@@ -74,6 +79,7 @@ export const Footer = withContext<
 
 const Sheet = {
   Root,
+  NestedRoot,
   Portal: SheetPrimitive.Portal,
   Overlay,
   Handle,

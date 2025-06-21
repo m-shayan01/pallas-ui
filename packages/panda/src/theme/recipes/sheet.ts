@@ -5,6 +5,7 @@ export const sheet = defineSlotRecipe({
   description: 'Styles for the Sheet component',
   slots: [
     'root',
+    'nestedRoot',
     'overlay',
     'trigger',
     'content',
@@ -17,10 +18,10 @@ export const sheet = defineSlotRecipe({
   ],
   base: {
     overlay: {
-      // position: 'fixed',
-      // inset: '0',
-      // zIndex: '50',
-      // backgroundColor: '{colors.bgSolid.hover}',
+      position: 'fixed',
+      inset: '0',
+      zIndex: '50',
+      backgroundColor: '{colors.fill}',
     },
     content: {
       position: 'fixed',
@@ -38,7 +39,7 @@ export const sheet = defineSlotRecipe({
     },
     handle: {
       marginX: 'auto',
-      marginTop: '{spacing.padding.block.md}',
+      marginY: '{spacing.padding.block.md}',
       height: '0.5',
       width: '5%',
       borderRadius: 'full',
@@ -70,8 +71,8 @@ export const sheet = defineSlotRecipe({
     },
   },
   variants: {
-    height: {
-      multiple: {
+    mode: {
+      snap: {
         content: {
           display: 'flex',
           flexDirection: 'column',
