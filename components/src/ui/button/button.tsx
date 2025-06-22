@@ -9,6 +9,7 @@ export type ButtonProps = ButtonVariantProps & //exported for toast
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
     isLoading?: boolean
     icon?: React.ReactElement<{ className?: string }>
+    iconPosition?: 'start' | 'end'
     css?: SystemStyleObject
     asChild?: boolean
   }
@@ -31,6 +32,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       isLoading,
       disabled,
       icon: iconProp,
+      iconPosition = 'start',
       variant,
       size,
       shape,
@@ -62,10 +64,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cx(button({ variant, size, width, shape }), cssProp && css(cssProp), className)}
         {...props}
       >
-        <span className={css({ display: 'flex', alignItems: 'center', gap: 2 })}>
-          {isLoading && <Spinner size="sm" variant="thin" />}
-          {iconElement}
+        <span data-slot="button-content-wrapper">
+          {iconPosition === 'start' &&
+            (isLoading ? <Spinner size="sm" variant="thin" /> : iconElement)}
           {children}
+          {iconPosition === 'end' &&
+            (isLoading ? <Spinner size="sm" variant="thin" /> : iconElement)}
         </span>
       </Comp>
     )

@@ -48,6 +48,12 @@ export const modal = defineSlotRecipe({
       sm: {
         rounded: '{radii.lg}',
       },
+
+      "&[data-slot='command-dialog-content']": {
+        p: 0,
+        border: 'none',
+        w: 'min-content',
+      },
     },
     header: {
       display: 'flex',

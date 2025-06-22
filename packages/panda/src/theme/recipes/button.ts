@@ -17,6 +17,14 @@ export const button = defineRecipe({
     borderRadius: '{radii.md}',
     height: '{sizes.controlHeight.md}',
     boxShadow: '{shadows.minimal}',
+
+    '& [data-slot="button-content-wrapper"]': {
+      w: 'full',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      gap: 2,
+    },
   },
   variants: {
     variant: {
@@ -91,7 +99,7 @@ export const button = defineRecipe({
     },
     size: {
       sm: {
-        textStyle: 'xs',
+        textStyle: 'sm',
         paddingX: '{spacing.padding.inline.sm}',
         paddingY: '{spacing.padding.block.sm}',
         height: '{sizes.controlHeight.sm}',

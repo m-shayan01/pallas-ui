@@ -8,8 +8,12 @@ import { breadcrumb } from './breadcrumb'
 import { button } from './button'
 import { card } from './card'
 import { checkbox } from './checkbox'
+import { combobox } from './combobox'
+import { command } from './command'
 import { daypicker } from './daypicker'
+import { dialog } from './dialog'
 import { drawer } from './drawer'
+import { form } from './form'
 import { heading } from './heading'
 import { icon } from './icon'
 import { input } from './input'
@@ -56,10 +60,13 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   breadcrumb,
   card,
   checkbox,
+  command,
+  combobox,
   drawer,
   daypicker,
   input,
   modal,
+  dialog,
   menubar,
   progress,
   popover,
@@ -73,4 +80,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   toast,
   tooltip,
   sidebar,
+  form,
 }

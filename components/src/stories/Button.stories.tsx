@@ -2,6 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { button } from '@styled-system/recipes'
 import { ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { Label } from '~/ui/label'
+import { Switch } from '~/ui/switch'
 import Heading from '~/ui/typography/heading'
 import { Button } from '../ui/button'
 
@@ -90,4 +93,30 @@ export const Loading: Story = {
       </Stack>
     </Stack>
   ),
+}
+
+export const IconPosition: Story = {
+  render: () => {
+    const [position, setPosition] = useState<'start' | 'end'>('start')
+    return (
+      <Stack direction="column" gap={4}>
+        <Stack direction="row" align="center">
+          <Label>Start</Label>
+          <Switch
+            id="start"
+            onCheckedChange={() => setPosition((prev) => (prev === 'start' ? 'end' : 'start'))}
+          />
+          <Label>End</Label>
+        </Stack>
+        <Stack direction="column" align="flex-start">
+          <Button icon={<ArrowRight />} iconPosition={position}>
+            Icon Button
+          </Button>
+          <Button icon={<ArrowRight />} isLoading iconPosition={position}>
+            Loading Button
+          </Button>
+        </Stack>
+      </Stack>
+    )
+  },
 }
