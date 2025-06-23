@@ -44,6 +44,9 @@ importers:
       '@pallas-ui/panda-preset':
         specifier: workspace:*
         version: link:../../packages/panda
+      '@pallas-ui/sheet':
+        specifier: workspace:*
+        version: link:../../ui-primitives/sheet
       '@pallas-ui/sidebar':
         specifier: workspace:*
         version: link:../../ui-primitives/sidebar
