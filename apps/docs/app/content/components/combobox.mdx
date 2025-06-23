@@ -1,0 +1,100 @@
+---
+title: Combobox
+description: Autocomplete input with command palette and suggestions.
+references:
+  cmdk:
+    link: https://github.com/pacocoursey/cmdk
+    api: https://github.com/pacocoursey/cmdk#parts-and-styling
+---
+<ContentContainer>
+
+<Section gap="1">
+# Combobox
+<Paragraph size={'extraLarge'} color={'tertiary'}>Autocomplete input with command palette and suggestions.</Paragraph>
+<ComponentPreview name="combobox" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+The Combobox is built with `Button`, `Popover` and `Command` components.
+
+See installation instructions for [Button](/docs/components/button#installation), [Popover](/docs/components/popover#installation) and [Command](/docs/components/command#installation) components.
+
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import {
+  Popover
+} from "@/components/ui/combobox"
+```
+
+```tsx
+<Combobox.Root open={open} onOpenChange={setOpen}>
+  <Combobox.Trigger css={{ w: 200 }}>
+    {value ? fruits.find((fruit) => fruit.value === value)?.label : 'Select fruit...'}
+  </Combobox.Trigger>
+  <Combobox.Content placeholder="Search fruit..." css={{ w: 200 }}>
+    <Combobox.Group heading="Fruit">
+      <Combobox.Item
+        value={'apple'}
+        onSelect={handleSelect}
+        selected={value === fruit.value}
+        icon={...}
+      >
+        Apple
+      </Combobox.Item>
+      <Combobox.Item
+        value={'banana'}
+        onSelect={handleSelect}
+        selected={value === fruit.value}
+        icon={...}
+      >
+        Banana
+      </Combobox.Item>
+      <Combobox.Item
+        value={'grapes'}
+        onSelect={handleSelect}
+        selected={value === fruit.value}
+        icon={...}
+      >
+        Grapes
+      </Combobox.Item>
+    </Combobox.Group>
+  </Combobox.Content>
+</Combobox.Root>
+```
+</Section>
+
+<Section>
+## Examples
+### Default
+
+<ComponentPreview name="combobox" />
+
+### Popover
+
+<ComponentPreview name="combobox" file="popover" />
+
+### Sizes
+
+<ComponentPreview name="combobox" file="variants" />
+
+### Multi-select
+
+<ComponentPreview name="combobox" file="multi-select" />
+
+### Groups
+
+<ComponentPreview name="combobox" file="groups" />
+
+### Form
+
+<ComponentPreview name="combobox" file="form" />
+
+</Section>
+
+</ContentContainer>

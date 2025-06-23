@@ -105,6 +105,7 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationDuration: '{durations.fast}',
       animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       animationName: 'modal-content-show',
+      animationFillMode: 'both',
     },
   },
   modalContentHide: {
@@ -112,6 +113,7 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationDuration: '{durations.fast}',
       animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
       animationName: 'modal-content-hide',
+      animationFillMode: 'both',
     },
   },
   skeleton: {
