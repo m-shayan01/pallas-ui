@@ -35,6 +35,9 @@ importers:
       '@pallas-ui/breadcrumb':
         specifier: workspace:*
         version: link:../../ui-primitives/breadcrumb
+      '@pallas-ui/carousel':
+        specifier: workspace:*
+        version: link:../../ui-primitives/carousel
       '@pallas-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -500,6 +503,29 @@ importers:
       embla-carousel-react:
         specifier: ^8.6.0
         version: 8.6.0(react@19.1.0)
+    devDependencies:
+      '@pallas-ui/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@types/react':
+        specifier: ^19.0.7
+        version: 19.1.0
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.1.2(@types/react@19.1.0)
+      react:
+        specifier: ^19.1.0
+        version: 19.1.0
+      react-dom:
+        specifier: ^19.1.0
+        version: 19.1.0(react@19.1.0)
+      tsup:
+        specifier: ^8.4.0
+        version: 8.4.0(postcss@8.5.3)(tsx@4.19.4)(typescript@5.7.3)(yaml@2.7.0)
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
+
   ui-primitives/form:
     dependencies:
       '@radix-ui/react-label':
