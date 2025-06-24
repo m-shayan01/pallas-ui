@@ -1,0 +1,141 @@
+---
+title: Carousel
+description: A flexible and accessible carousel component for displaying content in a scrollable container.
+references:
+  embla:
+    link: https://www.embla-carousel.com/
+    api: https://www.embla-carousel.com/api/
+---
+
+<ContentContainer>
+
+<Section gap="1">
+# Carousel
+<Paragraph size={'extraLarge'} color={'tertiary'}>A flexible and accessible carousel component for displaying content in a scrollable container.</Paragraph>
+<ComponentPreview name="carousel" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="@pallas-ui/carousel" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="carousel" file="carousel" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Carousel from '@/components/ui/carousel'
+```
+```tsx
+<Carousel.Root opts={{ axis: 'x' }}>
+  <Carousel.List>
+    <Carousel.Item>
+      <div>Slide 1</div>
+    </Carousel.Item>
+    <Carousel.Item>
+      <div>Slide 2</div>
+    </Carousel.Item>
+  </Carousel.List>
+  
+  <Carousel.Previous>
+    <ChevronLeft />
+  </Carousel.Previous>
+  <Carousel.Next>
+    <ChevronRight />
+  </Carousel.Next>
+  
+  <Carousel.Dots>
+    <Carousel.Dot index={0} />
+    <Carousel.Dot index={1} />
+  </Carousel.Dots>
+</Carousel.Root>
+```
+
+</Section>
+
+<Section>
+## Examples
+
+### Basic Carousel
+<ComponentPreview name="carousel" />
+
+### Vertical Carousel
+<ComponentPreview name="carousel" file="vertical" />
+
+### Multiple Items
+<ComponentPreview name="carousel" file="multiple" />
+
+</Section>
+
+<Section>
+## API Reference
+
+### Carousel.Root
+The root carousel element that wraps the entire component.
+
+**Props:**
+- `opts` - CarouselOptions - Configuration options for the carousel
+- `plugins` - CarouselPlugin[] - Array of plugins to use
+- `setApi` - function - Callback to receive the carousel API
+- `orientation` - 'horizontal' | 'vertical' - Orientation of the carousel (default: 'horizontal')
+
+### Carousel.List
+The container that holds all carousel items.
+
+### Carousel.Item
+Individual carousel slide/item.
+
+### Carousel.Previous
+Button to navigate to the previous slide.
+
+**Props:**
+- `asChild` - boolean - Whether to render as a child element (default: false)
+- All button props are supported
+
+### Carousel.Next
+Button to navigate to the next slide.
+
+**Props:**
+- `asChild` - boolean - Whether to render as a child element (default: false)
+- All button props are supported
+
+### Carousel.Dots
+Container for dot indicators.
+
+### Carousel.Dot
+Individual dot indicator.
+
+**Props:**
+- `index` - number - The index of the slide this dot represents
+- `asChild` - boolean - Whether to render as a child element (default: false)
+
+### useCarousel Hook
+Hook to access carousel context and methods.
+
+**Returns:**
+- `carouselRef` - Ref for the carousel container
+- `api` - Carousel API instance
+- `scrollPrev` - Function to scroll to previous slide
+- `scrollNext` - Function to scroll to next slide
+- `canScrollPrev` - boolean - Whether previous slide is available
+- `canScrollNext` - boolean - Whether next slide is available
+- `onDotButtonClick` - Function to handle dot clicks
+- `selectedIndex` - number - Currently selected slide index
+- `scrollSnaps` - number[] - Array of snap points
+
+</Section>
+
+</ContentContainer>
