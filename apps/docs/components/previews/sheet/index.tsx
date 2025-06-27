@@ -20,7 +20,7 @@ export default function SheetDemo() {
               <Sheet.Title>Are you absolutely sure?</Sheet.Title>
               <Sheet.Description>This action cannot be undone.</Sheet.Description>
             </Sheet.Header>
-            <Box px="4">
+            <Box px="{spacing.padding.inline.md}">
               <Paragraph>
                 It is a long established fact that a reader will be distracted by the readable
                 content of a page when looking at its layout. The point of using Lorem Ipsum is that
@@ -28,7 +28,7 @@ export default function SheetDemo() {
                 here, content here', making it look like readable English.
               </Paragraph>
             </Box>
-            <Sheet.Footer css={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+            <Sheet.Footer>
               <Sheet.Close asChild>
                 <Button variant="outlined">Cancel</Button>
               </Sheet.Close>

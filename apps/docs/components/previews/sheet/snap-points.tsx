@@ -7,7 +7,7 @@ import { Box } from '@styled-system/jsx'
 import { useState } from 'react'
 
 export default function SheetSnapPointsDemo() {
-  const snapPoints = ['200px', '400px', 0.7, 0.9]
+  const snapPoints = ['200px', '400px', 0.7, 1]
   const [snap, setSnap] = useState<number | string | null>(snapPoints[0] as string | number)
 
   return (
@@ -25,30 +25,33 @@ export default function SheetSnapPointsDemo() {
           <Sheet.Overlay />
           <Sheet.Content>
             <Sheet.Handle />
-            <Box w="50%" mx="auto">
+            <Box w={{ base: '100%', md: '50%' }} mx="auto">
               <Sheet.Header>
                 <Sheet.Title>Snap Points Demo</Sheet.Title>
                 <Sheet.Description>
                   Drag to different snap points or use the handle.
                 </Sheet.Description>
               </Sheet.Header>
-              <Box px="4">
+              <Box px="padding.inline.md">
                 <Paragraph>
                   This sheet has multiple snap points: 200px, 400px, 70% of viewport height, and
                   full height. You can drag the handle to snap to different positions.
                 </Paragraph>
                 <Paragraph>
-                  It is a long established fact that a reader will be distracted by the readable
-                  content of a page when looking at its layout. The point of using Lorem Ipsum is
-                  that it has a more-or-less normal distribution of letters, as opposed to using
-                  'Content here, content here', making it look like readable English.
+                  The snap points feature allows users to drag the sheet to predefined positions,
+                  providing a more controlled and predictable interaction pattern. This is
+                  especially useful for forms, settings panels, or any content that benefits from
+                  different viewing heights. The sheet will smoothly animate between snap points and
+                  can be configured with pixel values, percentages, or a combination of both.
                 </Paragraph>
               </Box>
               <Sheet.Footer>
                 <Sheet.Close asChild>
-                  <Button variant="outlined">Cancel</Button>
+                  <Button variant="outlined">Close</Button>
                 </Sheet.Close>
-                <Button>Submit</Button>
+                <Sheet.Close asChild>
+                  <Button>Ok</Button>
+                </Sheet.Close>
               </Sheet.Footer>
             </Box>
           </Sheet.Content>

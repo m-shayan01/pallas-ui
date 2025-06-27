@@ -50,12 +50,7 @@ export const Default: Story = {
               humour and the like).
             </Paragraph>
 
-            <Sheet.Footer
-              className={css({
-                flexDirection: 'row',
-                justifyContent: { base: 'center', sm: 'end' },
-              })}
-            >
+            <Sheet.Footer>
               <Sheet.Close asChild>
                 <Button variant={'outlined'}>Cancel</Button>
               </Sheet.Close>
@@ -89,7 +84,7 @@ export const SnapPoints: Story = {
             <Sheet.Handle />
             <div
               className={css({
-                width: '50%',
+                width: { base: '100%', sm: '50%' },
                 marginX: 'auto',
                 overflowY: snap === 1 ? 'scroll' : 'hidden',
               })}
@@ -110,12 +105,7 @@ export const SnapPoints: Story = {
                 (injected humour and the like).
               </Paragraph>
 
-              <Sheet.Footer
-                className={css({
-                  flexDirection: 'row',
-                  justifyContent: { base: 'center', sm: 'end' },
-                })}
-              >
+              <Sheet.Footer>
                 <Sheet.Close asChild>
                   <Button variant={'outlined'}>Cancel</Button>
                 </Sheet.Close>
@@ -142,7 +132,7 @@ export const Scrollable: Story = {
             <Sheet.Handle />
             <Box
               className={css({
-                width: '50%',
+                width: { base: '100%', md: '50%' },
                 marginX: 'auto',
                 overflowY: 'scroll',
               })}
@@ -152,19 +142,17 @@ export const Scrollable: Story = {
                 <Sheet.Description>Manage your account settings and preferences.</Sheet.Description>
               </Sheet.Header>
 
-              <VStack gap="4" className={css({ marginX: 'padding.inline.md' })}>
+              <VStack
+                gap="{spacing.gap.component.md}"
+                className={css({ marginX: 'padding.inline.md' })}
+              >
                 <ProfileSection />
                 <NotificationsSection />
                 <RecentActivitySection />
                 <QuickActionsSection />
               </VStack>
 
-              <Sheet.Footer
-                className={css({
-                  flexDirection: 'row',
-                  justifyContent: { base: 'center', sm: 'end' },
-                })}
-              >
+              <Sheet.Footer>
                 <Sheet.Close asChild>
                   <Button variant={'outlined'}>Cancel</Button>
                 </Sheet.Close>
@@ -191,7 +179,7 @@ export const NestedSheet: Story = {
             <Sheet.Handle />
             <div
               className={css({
-                width: '50%',
+                width: { base: '100%', sm: '50%' },
                 marginX: 'auto',
               })}
             >
@@ -216,12 +204,7 @@ export const NestedSheet: Story = {
                 `Drawer.NestedRoot` component instead of `Drawer.Root`.
               </Paragraph>
 
-              <Sheet.Footer
-                className={css({
-                  flexDirection: 'row',
-                  justifyContent: { base: 'center', sm: 'end' },
-                })}
-              >
+              <Sheet.Footer>
                 <Sheet.Close asChild>
                   <Button variant={'outlined'}>Close</Button>
                 </Sheet.Close>
@@ -234,7 +217,7 @@ export const NestedSheet: Story = {
                       <Sheet.Handle />
                       <div
                         className={css({
-                          width: '50%',
+                          width: { base: '100%', sm: '50%' },
                           marginX: 'auto',
                         })}
                       >
