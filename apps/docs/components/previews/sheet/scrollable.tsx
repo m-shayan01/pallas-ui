@@ -12,7 +12,7 @@ import { Box, Grid, HStack, VStack } from '@styled-system/jsx'
 export default function SheetScrollableDemo() {
   return (
     <>
-      <Sheet.Root>
+      <Sheet.Root variant="scrollable">
         <Sheet.Trigger asChild>
           <Button>Open Scrollable Sheet</Button>
         </Sheet.Trigger>

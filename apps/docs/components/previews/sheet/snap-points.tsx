@@ -13,7 +13,7 @@ export default function SheetSnapPointsDemo() {
   return (
     <>
       <Sheet.Root
-        mode="snap"
+        variant="snap"
         snapPoints={snapPoints}
         activeSnapPoint={snap}
         setActiveSnapPoint={setSnap}
