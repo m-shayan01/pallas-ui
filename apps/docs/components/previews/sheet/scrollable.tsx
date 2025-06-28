@@ -18,7 +18,7 @@ export default function SheetScrollableDemo() {
         </Sheet.Trigger>
         <Sheet.Portal>
           <Sheet.Overlay />
-          <Sheet.Content className={css({ height: 'full' })}>
+          <Sheet.Content>
             <Sheet.Handle />
             <Box
               className={css({

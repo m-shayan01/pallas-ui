@@ -72,7 +72,7 @@ export const SnapPoints: Story = {
     const [snap, setSnap] = useState<number | string | null>(snapPoints[0])
     return (
       <Sheet.Root
-        mode={'snap'}
+        variant={'snap'}
         snapPoints={snapPoints}
         activeSnapPoint={snap}
         setActiveSnapPoint={setSnap}
@@ -124,16 +124,17 @@ export const Scrollable: Story = {
   args: {},
   render: () => {
     return (
-      <Sheet.Root>
+      <Sheet.Root variant={'scrollable'}>
         <Sheet.Trigger className={css({ margin: 'padding.inline.md' })}>Open</Sheet.Trigger>
         <Sheet.Portal>
           <Sheet.Overlay />
-          <Sheet.Content className={css({ height: 'full' })}>
+          <Sheet.Content>
             <Sheet.Handle />
             <Box
               className={css({
                 width: { base: '100%', md: '50%' },
                 marginX: 'auto',
+                flex: 1,
                 overflowY: 'scroll',
               })}
             >

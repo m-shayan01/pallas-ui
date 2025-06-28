@@ -71,13 +71,16 @@ export const sheet = defineSlotRecipe({
     },
   },
   variants: {
-    mode: {
+    variant: {
       snap: {
         content: {
-          display: 'flex',
-          flexDirection: 'column',
           left: 0,
           right: 0,
+          h: 'full',
+        },
+      },
+      scrollable: {
+        content: {
           h: 'full',
         },
       },
