@@ -9,8 +9,8 @@ export const input_otp = defineSlotRecipe({
       display: 'flex',
     },
     slot: {
-      width: '10',
-      height: '10',
+      width: '40',
+      height: '40',
       fontSize: 'lg',
       display: 'flex',
       alignItems: 'center',

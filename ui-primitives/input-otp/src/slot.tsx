@@ -18,7 +18,7 @@ export const InputOTPSlot = React.forwardRef<
   if (!currentSlot) return null
   const { char, hasFakeCaret, isActive } = currentSlot
 
-  // console.log('class: ', className)
+  console.log('class: ', className)
 
   return (
     <div
@@ -28,7 +28,7 @@ export const InputOTPSlot = React.forwardRef<
       className={className}
       {...props}
     >
-      {/* <p>Slot</p> */}
+      <p>Slot</p>
       <div style={{ opacity: char ? 1 : 0.2 }}>{char ?? currentSlot.placeholderChar}</div>
       {hasFakeCaret && (
         <div
@@ -55,5 +55,3 @@ export const InputOTPSlot = React.forwardRef<
 })
 
 InputOTPSlot.displayName = 'InputOTPSlot'
-
-export const Slot = InputOTPSlot
