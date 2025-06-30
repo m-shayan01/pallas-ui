@@ -12,8 +12,8 @@ export const InputOTPRoot = React.forwardRef<HTMLInputElement, InputOTPProps>(
   ({ maxLength = 6, children }, ref) => {
     return (
         <OTPInput maxLength={maxLength} ref={ref}>
-          {children}
           {/* <p>Root</p> */}
+          {children}
         </OTPInput>
     )
   },

@@ -9,8 +9,8 @@ export const input_otp = defineSlotRecipe({
       display: 'flex',
     },
     slot: {
-      width: '40',
-      height: '40',
+      width: '10',
+      height: '10',
       fontSize: 'lg',
       display: 'flex',
       alignItems: 'center',
@@ -20,6 +20,9 @@ export const input_otp = defineSlotRecipe({
   variants: {
     styling: {
       box: {
+        group: {
+          gap: '1',
+        },
         slot: {
           border: '1px solid',
           borderColor: 'border',
@@ -62,7 +65,9 @@ export const input_otp = defineSlotRecipe({
       },
       unstyled: {
         slot: {
-          border: 'none',
+          border: '1px solid',
+          borderColor: 'border',
+          position: 'relative',
         },
       },
     },

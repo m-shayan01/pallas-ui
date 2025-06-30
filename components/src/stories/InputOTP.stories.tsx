@@ -4,6 +4,7 @@ import { Label } from '~/ui/label'
 import InputOTP from '../ui/input-otp'
 
 const meta: Meta<typeof InputOTP> = {
+  //@ts-ignore
   component: InputOTP.Root,
   title: 'Forms/InputOTP',
   tags: ['autodocs'],
@@ -11,22 +12,57 @@ const meta: Meta<typeof InputOTP> = {
 
 export default meta
 
+const maxLength = 6
+
 export const Default = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
-      <Label>Basic Input OTP</Label>
-      <InputOTP.Root maxLength={6} styling="filled">
+      <Label>Box Input </Label>
+      <InputOTP.Root maxLength={maxLength} styling="box">
         <InputOTP.Group>
-          <InputOTP.Slot index={0} />
-          <InputOTP.Slot index={1} />
-          <InputOTP.Slot index={2} />
-          <InputOTP.Slot index={3} />
-          <InputOTP.Slot index={4} />
-          <InputOTP.Slot index={5} />
+          {Array.from({ length: maxLength }).map((_, i) => (
+            <InputOTP.Slot key={i} index={i} />
+          ))}
         </InputOTP.Group>
       </InputOTP.Root>
-
     </Stack>
   </Stack>
 )
 
+const inputOTPVariants = [
+  {
+    label: 'Box',
+    styling: 'box',
+  },
+  {
+    label: 'Filled',
+    styling: 'filled',
+  },
+  {
+    label: 'Underlined',
+    styling: 'underlined',
+  },
+  {
+    label: 'Unstyled',
+    styling: 'unstyled',
+  },
+]
+
+type Styling = 'box' | 'filled' | 'underlined' | 'unstyled'
+
+export const InputOTPVariants = () => (
+  <Stack align="flex-start" gap="6">
+    {inputOTPVariants.map((variant) => (
+      <Stack align="flex-start" gap="1" key={variant.styling}>
+        <Label>{variant.label}</Label>
+        <InputOTP.Root maxLength={maxLength} styling={variant.styling as Styling}>
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+    ))}
+  </Stack>
+)
