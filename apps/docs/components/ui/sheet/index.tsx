@@ -1,16 +1,15 @@
-import * as SheetPrimitive from '@pallas-ui/sheet'
-import type { SheetRootProps } from '@pallas-ui/sheet'
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
 import { cx } from '@styled-system/css'
 import { type SheetVariantProps, button, sheet } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import { forwardRef } from 'react'
+import { type DialogProps, Drawer as SheetPrimitive } from 'vaul'
 import type { ButtonProps } from '../button'
 
 const { withProvider, withContext } = createStyleContext(sheet)
 
 export type RootProps = Assign<
-  WithFixedClassName<SheetRootProps>,
+  WithFixedClassName<Omit<DialogProps, 'direction'>>,
   SheetVariantProps & JsxStyleProps
 >
 
@@ -67,15 +66,21 @@ export const Close = withContext<
   Assign<React.ComponentProps<typeof SheetPrimitive.Close>, JsxStyleProps>
 >(SheetPrimitive.Close, 'close')
 
+const SheetHeader = ({ ...props }: React.HTMLAttributes<HTMLDivElement>) => <div {...props} />
+SheetHeader.displayName = 'SheetHeader'
+
 export const Header = withContext<
-  React.ComponentRef<typeof SheetPrimitive.Header>,
-  Assign<React.ComponentProps<typeof SheetPrimitive.Header>, JsxStyleProps>
->(SheetPrimitive.Header, 'header')
+  React.ComponentRef<typeof SheetHeader>,
+  Assign<React.ComponentProps<typeof SheetHeader>, JsxStyleProps>
+>(SheetHeader, 'header')
+
+const SheetFooter = ({ ...props }: React.HTMLAttributes<HTMLDivElement>) => <div {...props} />
+SheetFooter.displayName = 'SheetFooter'
 
 export const Footer = withContext<
-  React.ComponentRef<typeof SheetPrimitive.Footer>,
-  Assign<React.ComponentProps<typeof SheetPrimitive.Footer>, JsxStyleProps>
->(SheetPrimitive.Footer, 'footer')
+  React.ComponentRef<typeof SheetFooter>,
+  Assign<React.ComponentProps<typeof SheetFooter>, JsxStyleProps>
+>(SheetFooter, 'footer')
 
 const Sheet = {
   Root,
