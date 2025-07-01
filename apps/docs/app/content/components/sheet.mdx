@@ -22,7 +22,7 @@ references:
 <Section>
 ### Install the following dependencies
 
-<InstallTabs pkg="@pallas-ui/sheet" />
+<InstallTabs pkg="vaul" />
 
 ### Copy and paste the following code into your project
 
@@ -38,10 +38,15 @@ references:
 
 ```tsx
 import Sheet from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+import { Box } from '@styled-system/jsx'
 ```
+
 ```tsx
 <Sheet.Root>
-  <Sheet.Trigger>Open Sheet</Sheet.Trigger>
+  <Sheet.Trigger asChild>
+    <Button>Open Sheet</Button>
+  </Sheet.Trigger>
   <Sheet.Portal>
     <Sheet.Overlay />
     <Sheet.Content>
@@ -52,12 +57,12 @@ import Sheet from '@/components/ui/sheet'
           This is a description of the sheet.
         </Sheet.Description>
       </Sheet.Header>
-      <div>
+      <Box px="padding.inline.md">
         {/* Sheet content goes here */}
-      </div>
+      </Box>
       <Sheet.Footer>
         <Sheet.Close asChild>
-          <Button>Cancel</Button>
+          <Button variant="outlined">Cancel</Button>
         </Sheet.Close>
         <Button>Continue</Button>
       </Sheet.Footer>
@@ -91,71 +96,96 @@ import Sheet from '@/components/ui/sheet'
 ### Sheet.Root
 The root sheet element that wraps the entire component.
 
-**Props:**
-- `defaultOpen` - boolean - Default open state of the sheet
-- `open` - boolean - Controls the open state of the sheet
-- `onOpenChange` - function - Callback when the open state changes
-- `modal` - boolean - Whether the sheet is modal (default: true)
-- `container` - HTMLElement - Container element (default: document.body)
-- `onAnimationEnd` - function - Callback when animation ends
-- `dismissible` - boolean - Whether the sheet can be dismissed (default: true)
-- `handleOnly` - boolean - Whether only the handle can be used to drag (default: false)
-- `repositionInputs` - boolean - Whether to reposition inputs (default: true)
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `defaultOpen` | `boolean` | `false` | Default open state of the sheet | `true`, `false` |
+| `open` | `boolean` | - | Controls the open state of the sheet | `true`, `false` |
+| `onOpenChange` | `function` | - | Callback when the open state changes | - |
+| `modal` | `boolean` | `true` | Whether the sheet is modal | `true`, `false` |
+| `container` | `HTMLElement` | `document.body` | Container element for the sheet | - |
+| `onAnimationEnd` | `function` | - | Callback when animation ends | - |
+| `dismissible` | `boolean` | `true` | Whether the sheet can be dismissed | `true`, `false` |
+| `handleOnly` | `boolean` | `false` | Whether only the handle can be used to drag | `true`, `false` |
+| `repositionInputs` | `boolean` | `true` | Whether to reposition inputs | `true`, `false` |
+| `variant` | `string` | - | Visual variant of the sheet | `snap`, `scrollable` |
+| `className` | `string` | - | Custom CSS classes | - |
 
-**Snap Points Props:**
-- `snapPoints` - array - Array of snap points
-- `activeSnapPoint` - boolean - Currently active snap point
-- `setActiveSnapPoint` - function - Function to set the active snap point
-- `fadeFromIndex` - number - Index from which to fade
-- `snapToSequentialPoint` - boolean - Whether to snap to sequential points
+**Snap Points Properties:**
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `snapPoints` | `(string \| number)[]` | - | Array of snap points (pixels, percentages, or fractions) | - |
+| `activeSnapPoint` | `string \| number \| null` | - | Currently active snap point | - |
+| `setActiveSnapPoint` | `function` | - | Function to set the active snap point | - |
+| `fadeFromIndex` | `number` | - | Index from which to fade content | - |
+| `snapToSequentialPoint` | `boolean` | - | Whether to snap to sequential points | `true`, `false` |
+
+### Sheet.NestedRoot
+Special root component for nested sheets. Use this instead of `Sheet.Root` when creating sheets inside other sheets.
+
+Same properties as `Sheet.Root` but optimized for nested usage.
 
 ### Sheet.Trigger
 The element that triggers the sheet to open.
 
-**Props:**
-- `asChild` - boolean - Whether to render as a child element (default: false)
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+Inherits all Button component props when not using `asChild`.
 
 ### Sheet.Portal
-Portals the sheet content to the document body. No props.
+Portals the sheet content to the document body. Accepts `className` prop for custom styling.
 
 ### Sheet.Overlay
 The backdrop overlay behind the sheet.
 
-**Props:**
-- `asChild` - boolean - Whether to render as a child element (default: false)
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
 
 ### Sheet.Content
 The main content container of the sheet.
 
-**Props:**
-- `asChild` - boolean - Whether to render as a child element (default: false)
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
 
 ### Sheet.Handle
-Drag handle for dismissing the sheet. No props.
+Drag handle for dismissing the sheet. Automatically styled based on the sheet variant. Accepts `className` prop for custom styling.
 
 ### Sheet.Header
-Header section wrapper for title and description.
+Header section wrapper for title and description. Automatically applies proper spacing and layout. Accepts `className` prop for custom styling.
 
 ### Sheet.Footer
-Footer section wrapper for actions.
+Footer section wrapper that sticks to the bottom and contains action buttons. Automatically applies proper spacing and layout. Accepts `className` prop for custom styling.
 
 ### Sheet.Title
 The sheet title element.
 
-**Props:**
-- `asChild` - boolean - Whether to render as a child element (default: false)
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
 
 ### Sheet.Description
 The sheet description element.
 
-**Props:**
-- `asChild` - boolean - Whether to render as a child element (default: false)
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
 
 ### Sheet.Close
 Button to close the sheet.
 
-**Props:**
-- `asChild` - boolean - Whether to render as a child element (default: false)
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
 
 </Section>
 

@@ -36,6 +36,24 @@ export const sheet = defineSlotRecipe({
       borderWidth: '1px',
       borderColor: '{colors.border}',
       backgroundColor: '{colors.surface.elevated}',
+      scrollbarColor: '{colors.border} {colors.surface.container}',
+      '&::-webkit-scrollbar': {
+        width: '8px',
+      },
+      '&::-webkit-scrollbar-track': {
+        background: '{colors.surface.container}',
+        borderRadius: '4px',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        background: '{colors.border}',
+        borderRadius: '4px',
+        '&:hover': {
+          background: '{colors.border.secondary}',
+        },
+      },
+      '&::-webkit-scrollbar-corner': {
+        background: '{colors.surface.container}',
+      },
     },
     handle: {
       marginX: 'auto',
