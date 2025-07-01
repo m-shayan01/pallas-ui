@@ -42,6 +42,11 @@ export const input_otp = defineSlotRecipe({
             outlineColor: 'accent',
             zIndex: 1,
           },
+          '[error-status="true"] &': {
+            borderColor: 'error',
+            outlineColor: 'error',
+            color: 'error.text',
+          },
         },
       },
       underlined: {
@@ -54,6 +59,11 @@ export const input_otp = defineSlotRecipe({
             borderBottom: '2px solid',
             outlineColor: 'accent',
             zIndex: 1,
+          },
+          '[error-status="true"] &': {
+            borderColor: 'error',
+            outlineColor: 'error',
+            color: 'error.text',
           },
         },
       },
@@ -71,6 +81,11 @@ export const input_otp = defineSlotRecipe({
             outlineOffset: '0',
             zIndex: 1,
           },
+          '[error-status="true"] &': {
+            bg: 'error.bg',
+            outlineColor: 'error.border',
+            color: 'error.text',
+          },
         },
       },
       unstyled: {
@@ -78,6 +93,10 @@ export const input_otp = defineSlotRecipe({
           border: '1px solid',
           borderColor: 'border',
           position: 'relative',
+          '[error-status="true"] &': {
+            borderColor: 'error.border',
+            color: 'error.text',
+          },
         },
       },
     },
@@ -85,5 +104,5 @@ export const input_otp = defineSlotRecipe({
   defaultVariants: {
     styling: 'box',
   },
-  // staticCss: [{ styling: ['*'] }],
+  staticCss: [{ styling: ['*'] }],
 })

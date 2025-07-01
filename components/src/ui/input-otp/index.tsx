@@ -8,21 +8,17 @@ import {
 import { type Assign, createStyleContext } from '@pallas-ui/style-context'
 import { type Input_otpVariantProps, input_otp } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
-// import type { OTPInputProps } from 'input-otp'
 import type { ComponentProps } from 'react'
 import type React from 'react'
 
 const { withProvider, withContext } = createStyleContext(input_otp)
 
 // root container component
-type ContainerProps = Assign<
-  JsxStyleProps & Input_otpVariantProps,
-  ComponentProps<typeof ContainerPrimitive>
->
-const InputOTP = withProvider<React.ComponentRef<typeof ContainerPrimitive>, ContainerProps>(
-  ContainerPrimitive,
-  'container',
-)
+type ContainerProps = Assign<JsxStyleProps, ComponentProps<typeof ContainerPrimitive>>
+const InputOTP = withProvider<
+  React.ComponentRef<typeof ContainerPrimitive>,
+  ContainerProps & Input_otpVariantProps
+>(ContainerPrimitive, 'container')
 
 // root component
 type RootProps = Assign<InputOTPProps, JsxStyleProps>
