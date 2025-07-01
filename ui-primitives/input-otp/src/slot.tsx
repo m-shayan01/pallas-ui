@@ -9,15 +9,35 @@ const useOTPContext = () => {
   return context
 }
 
+const SlotCaret = () => {
+  return (
+    <div data-slot="input-otp-caret" aria-hidden="true">
+      {' '}
+      |{' '}
+    </div>
+  )
+}
+
+const SlotChar = ({
+  char,
+  isActive,
+  placeholderChar,
+}: { char?: string | null; isActive?: boolean; placeholderChar?: string }) => {
+  if (char || isActive) {
+    return <div data-slot="input-otp-char">{char}</div>
+  }
+  return <div data-slot="input-otp-placeholder">{placeholderChar}</div>
+}
+
 export const InputOTPSlot = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & { index: number }
+  React.ComponentPropsWithoutRef<'div'> & { index: number }
 >(({ index, className, ...props }, ref) => {
   const OTPcontext = useOTPContext()
   const currentSlot = OTPcontext.slots[index]
   if (!currentSlot) return null
   const { char, hasFakeCaret, isActive } = currentSlot
-  
+
   return (
     <div
       ref={ref}
@@ -27,27 +47,12 @@ export const InputOTPSlot = React.forwardRef<
       {...props}
     >
       {/* <p>Slot</p> */}
-      <div style={{ opacity: char ? 1 : 0.2 }}>{char ?? currentSlot.placeholderChar}</div>
-      {hasFakeCaret && (
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <div
-            style={{
-              width: 1,
-              height: 32,
-              background: 'white',
-              animation: 'caret-blink 1.2s ease-out infinite',
-            }}
-          />
-        </div>
-      )}
+      <SlotChar
+        char={char}
+        isActive={isActive}
+        placeholderChar={currentSlot.placeholderChar ?? 'X'}
+      />
+      {hasFakeCaret && <SlotCaret />}
     </div>
   )
 })

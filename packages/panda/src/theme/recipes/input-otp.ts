@@ -3,7 +3,7 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const input_otp = defineSlotRecipe({
   className: 'input-otp',
   description: 'Styles for the Input OTP component',
-  slots: ['root', 'group', 'slot'],
+  slots: ['container', 'root', 'group', 'slot'],
   base: {
     group: {
       display: 'flex',
@@ -15,6 +15,16 @@ export const input_otp = defineSlotRecipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      '& [data-slot="input-otp-char"]': {
+        opacity: 1,
+      },
+      '& [data-slot="input-otp-placeholder"]': {
+        opacity: 0.2,
+      },
+      '& [data-slot="input-otp-caret"]': {
+        animationStyle: 'caretBlink',
+        fontSize: 'xl',
+      },
     },
   },
   variants: {
@@ -75,4 +85,5 @@ export const input_otp = defineSlotRecipe({
   defaultVariants: {
     styling: 'box',
   },
+  // staticCss: [{ styling: ['*'] }],
 })
