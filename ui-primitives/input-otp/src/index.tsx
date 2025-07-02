@@ -1,5 +1,5 @@
 export { InputOTPRoot } from './root'
 export { InputOTPGroup } from './group'
 export { InputOTPSlot } from './slot'
-export { InputOTPContainer } from './container'
-export { SeparatorPrimitive as InputOTPSeparator } from './separator'
+export { InputOTPSeparator } from './separator'
+export type { InputOTPProps } from './root'

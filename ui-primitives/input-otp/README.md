@@ -18,11 +18,10 @@ npm install @your-scope/input-otp
 ## Usage
 
 ```tsx
-import Sidebar from '@your-scope/sidebar'
+import InputOTP from '@your-scope/input-otp'
 
 function Example() {
   return (
-    <InputOTP.Container>
         <InputOTP.Root maxLength={6}>
             <InputOTP.Group>
             <InputOTP.Slot index={0} />
@@ -34,14 +33,12 @@ function Example() {
             <InputOTP.Slot index={5} />
             </InputOTP.Group>
         </InputOTP.Root>
-    </InputOTP.Container>
   )
 }
 ```
 
 ## Components
 
-- `InputOTP.Container` - The container element, provides the style context
 - `InputOTP.Root` - The root element
 - `InputOTP.Group` - The group wrapper element
 - `InputOTP.Slot` - The input slot element
