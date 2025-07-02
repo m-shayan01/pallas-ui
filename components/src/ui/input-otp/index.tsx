@@ -1,37 +1,31 @@
 import {
   InputOTPContainer as ContainerPrimitive,
   InputOTPGroup as GroupPrimitive,
-  type InputOTPProps,
   InputOTPRoot as RootPrimitive,
+  InputOTPSeparator as SeparatorPrimitive,
   InputOTPSlot as SlotPrimitive,
 } from '@pallas-ui/input-otp'
 import { type Assign, createStyleContext } from '@pallas-ui/style-context'
-import { type Input_otpVariantProps, input_otp } from '@styled-system/recipes'
+import { type InputOTPVariantProps, inputOTP } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import type { ComponentProps } from 'react'
 import type React from 'react'
 
-const { withProvider, withContext } = createStyleContext(input_otp)
+const { withProvider, withContext } = createStyleContext(inputOTP)
 
 // root container component
-type ContainerProps = Assign<JsxStyleProps, ComponentProps<typeof ContainerPrimitive>>
+type ContainerProps = Assign<JsxStyleProps, React.ComponentProps<typeof ContainerPrimitive>>
 const InputOTP = withProvider<
   React.ComponentRef<typeof ContainerPrimitive>,
-  ContainerProps & Input_otpVariantProps
+  ContainerProps & InputOTPVariantProps
 >(ContainerPrimitive, 'container')
 
 // root component
-type RootProps = Assign<InputOTPProps, JsxStyleProps>
+type RootProps = Assign<React.ComponentProps<typeof RootPrimitive>, JsxStyleProps>
 const InputOTPRoot = withContext<React.ComponentRef<typeof RootPrimitive>, RootProps>(
   RootPrimitive,
   'root',
 )
-
-// type RootProps = Assign<InputOTPProps, Input_otpVariantProps & JsxStyleProps>
-// const InputOTPRoot = withProvider<React.ComponentRef<typeof RootPrimitive>, RootProps>(
-//   RootPrimitive,
-//   'root',
-// )
 
 // group component
 type GroupProps = Assign<JsxStyleProps, ComponentProps<typeof GroupPrimitive>>
@@ -43,8 +37,14 @@ const InputOTPGroup = withContext<React.ComponentRef<typeof GroupPrimitive>, Gro
 // slot component
 const InputOTPSlot = withContext<
   React.ComponentRef<typeof SlotPrimitive>,
-  React.HTMLAttributes<HTMLDivElement> & Input_otpVariantProps & { index: number }
+  React.ComponentProps<typeof SlotPrimitive>
 >(SlotPrimitive, 'slot')
+
+// separator component
+const InputOTPSep = withContext<
+  React.ComponentRef<typeof SeparatorPrimitive>,
+  React.ComponentProps<typeof SeparatorPrimitive>
+>(SeparatorPrimitive, 'separator')
 
 // compose the InputOTP object
 export default {
@@ -52,4 +52,5 @@ export default {
   Root: InputOTPRoot,
   Group: InputOTPGroup,
   Slot: InputOTPSlot,
+  Separator: InputOTPSep,
 }

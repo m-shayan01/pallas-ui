@@ -21,7 +21,7 @@ export const Default: Story = {
       options: ['box', 'filled', 'underlined', 'unstyled'],
       table: {
         defaultValue: {
-          summary: 'box',
+          summary: 'unstyled',
         },
       },
     },
@@ -37,41 +37,40 @@ export const Default: Story = {
     pattern: {
       description: 'Valid input specified as a regex pattern',
       control: { type: 'select' },
-      options: ['Alphanumeric', 'Numeric', 'Alphabetical'],
+      options: ['Numeric', 'Alphabetical', 'Alphanumeric'],
       mapping: {
-        Alphanumeric: '^[a-zA-Z0-9]*$',
         Numeric: '^[0-9]*$',
         Alphabetical: '^[a-zA-Z]*$',
+        Alphanumeric: '^[a-zA-Z0-9]*$',
       },
       table: {
         defaultValue: {
           summary: '^[a-zA-Z0-9]*$',
-          detail: 'Alphanumeric characters',
         },
       },
     },
-    errorStatus: {
+    dataStatus: {
       control: { type: 'inline-radio' },
-      options: ['false', 'true'],
-      description: 'Is in error state',
+      options: ['none', 'error', 'success'],
+      description: 'Status of data validation',
       table: {
         defaultValue: {
-          summary: 'false',
+          summary: 'none',
         },
       },
     },
   },
   args: {
-    styling: 'box',
+    styling: 'unstyled',
     maxLength: 6,
-    pattern: '^[0-9]*$',
-    errorStatus: 'false',
+    pattern: '^[a-zA-Z0-9]*$',
+    dataStatus: 'none',
   },
   render: (props) => {
     return (
       <Stack align="flex-start" gap="6">
         <Stack align="flex-start" gap="1">
-          <InputOTP.Container styling={props['styling']} errorStatus={props['errorStatus']}>
+          <InputOTP.Container styling={props['styling']} dataStatus={props['dataStatus']}>
             <InputOTP.Root maxLength={props['maxLength']} pattern={props['pattern']}>
               <InputOTP.Group>
                 {Array.from({ length: props['maxLength'] }).map((_, i) => (
@@ -85,23 +84,6 @@ export const Default: Story = {
     )
   },
 }
-
-// export const Default = () => (
-//   <Stack align="flex-start" gap="6">
-//     <Stack align="flex-start" gap="1">
-//       <Label>Box Input </Label>
-//       <InputOTP.Container styling="box">
-//         <InputOTP.Root maxLength={maxLength} pattern={regex}>
-//           <InputOTP.Group>
-//             {Array.from({ length: maxLength }).map((_, i) => (
-//               <InputOTP.Slot key={i} index={i} />
-//             ))}
-//           </InputOTP.Group>
-//         </InputOTP.Root>
-//       </InputOTP.Container>
-//     </Stack>
-//   </Stack>
-// )
 
 const inputOTPVariants = [
   {
@@ -123,17 +105,104 @@ const inputOTPVariants = [
 ]
 
 const maxLength = 6
-const regex = '^[a-zA-Z0-9]*$'
 
 type Styling = 'box' | 'filled' | 'underlined' | 'unstyled'
 
-export const InputOTPVariants = () => (
+export const InputOTPBox = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Box Input </Label>
+      <InputOTP.Container styling="box">
+        <InputOTP.Root maxLength={maxLength}>
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </InputOTP.Container>
+    </Stack>
+  </Stack>
+)
+export const InputOTPUnderlined = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Box Input </Label>
+      <InputOTP.Container styling="underlined">
+        <InputOTP.Root maxLength={maxLength}>
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </InputOTP.Container>
+    </Stack>
+  </Stack>
+)
+export const InputOTPFilled = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Box Input </Label>
+      <InputOTP.Container styling="filled">
+        <InputOTP.Root maxLength={maxLength}>
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </InputOTP.Container>
+    </Stack>
+  </Stack>
+)
+export const InputOTPUnstyled = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Box Input </Label>
+      <InputOTP.Container styling="unstyled">
+        <InputOTP.Root maxLength={maxLength}>
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </InputOTP.Container>
+    </Stack>
+  </Stack>
+)
+
+export const WithSeparators = () => (
   <Stack align="flex-start" gap="6">
     {inputOTPVariants.map((variant) => (
       <Stack align="flex-start" gap="1" key={variant.styling}>
         <Label>{variant.label}</Label>
         <InputOTP.Container styling={variant.styling as Styling}>
-          <InputOTP.Root maxLength={maxLength} pattern={regex}>
+          <InputOTP.Root maxLength={maxLength}>
+            <InputOTP.Group>
+              <InputOTP.Slot index={0} />
+              <InputOTP.Slot index={1} />
+              <InputOTP.Slot index={2} />
+              <InputOTP.Separator />
+              <InputOTP.Slot index={3} />
+              <InputOTP.Slot index={4} />
+              <InputOTP.Slot index={5} />
+            </InputOTP.Group>
+          </InputOTP.Root>
+        </InputOTP.Container>
+      </Stack>
+    ))}
+  </Stack>
+)
+
+export const ErrorState = () => (
+  <Stack align="flex-start" gap="6">
+    {inputOTPVariants.map((variant) => (
+      <Stack align="flex-start" gap="1" key={variant.styling}>
+        <Label>{variant.label}</Label>
+        <InputOTP.Container styling={variant.styling as Styling} dataStatus={'error'}>
+          <InputOTP.Root maxLength={maxLength}>
             <InputOTP.Group>
               {Array.from({ length: maxLength }).map((_, i) => (
                 <InputOTP.Slot key={i} index={i} />
@@ -146,13 +215,13 @@ export const InputOTPVariants = () => (
   </Stack>
 )
 
-export const ErrorStateForEachVariant = () => (
+export const SuccessState = () => (
   <Stack align="flex-start" gap="6">
     {inputOTPVariants.map((variant) => (
       <Stack align="flex-start" gap="1" key={variant.styling}>
         <Label>{variant.label}</Label>
-        <InputOTP.Container styling={variant.styling as Styling} errorStatus={'true'}>
-          <InputOTP.Root maxLength={maxLength} pattern={regex}>
+        <InputOTP.Container styling={variant.styling as Styling} dataStatus={'success'}>
+          <InputOTP.Root maxLength={maxLength}>
             <InputOTP.Group>
               {Array.from({ length: maxLength }).map((_, i) => (
                 <InputOTP.Slot key={i} index={i} />

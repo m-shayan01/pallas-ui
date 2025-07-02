@@ -1,9 +1,9 @@
 import { defineSlotRecipe } from '@pandacss/dev'
 
-export const input_otp = defineSlotRecipe({
-  className: 'input-otp',
+export const inputOTP = defineSlotRecipe({
+  className: 'inputOTP',
   description: 'Styles for the Input OTP component',
-  slots: ['container', 'root', 'group', 'slot'],
+  slots: ['container', 'root', 'group', 'slot', 'separator'],
   base: {
     group: {
       display: 'flex',
@@ -26,6 +26,17 @@ export const input_otp = defineSlotRecipe({
         fontSize: 'xl',
       },
     },
+    separator: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '3',
+      height: '1',
+      marginTop: '4.5',
+      marginX: '2',
+      rounded: 'full',
+      bg: 'border',
+    },
   },
   variants: {
     styling: {
@@ -42,10 +53,15 @@ export const input_otp = defineSlotRecipe({
             outlineColor: 'accent',
             zIndex: 1,
           },
-          '[error-status="true"] &': {
+          '[data-status="error"] &': {
             borderColor: 'error',
             outlineColor: 'error',
             color: 'error.text',
+          },
+          '[data-status="success"] &': {
+            borderColor: 'success',
+            outlineColor: 'success',
+            color: 'success.text',
           },
         },
       },
@@ -60,10 +76,15 @@ export const input_otp = defineSlotRecipe({
             outlineColor: 'accent',
             zIndex: 1,
           },
-          '[error-status="true"] &': {
+          '[data-status="error"] &': {
             borderColor: 'error',
             outlineColor: 'error',
             color: 'error.text',
+          },
+          '[data-status="success"] &': {
+            borderColor: 'success',
+            outlineColor: 'success',
+            color: 'success.text',
           },
         },
       },
@@ -81,21 +102,29 @@ export const input_otp = defineSlotRecipe({
             outlineOffset: '0',
             zIndex: 1,
           },
-          '[error-status="true"] &': {
+          '[data-status="error"] &': {
             bg: 'error.bg',
             outlineColor: 'error.border',
             color: 'error.text',
           },
+          '[data-status="success"] &': {
+            bg: 'success.bg',
+            outlineColor: 'success.border',
+            color: 'success.text',
+          },
+        },
+        separator: {
+          marginX: '1',
         },
       },
       unstyled: {
         slot: {
-          border: '1px solid',
-          borderColor: 'border',
           position: 'relative',
-          '[error-status="true"] &': {
-            borderColor: 'error.border',
+          '[data-status="error"] &': {
             color: 'error.text',
+          },
+          '[data-status="success"] &': {
+            color: 'success.text',
           },
         },
       },
@@ -104,5 +133,4 @@ export const input_otp = defineSlotRecipe({
   defaultVariants: {
     styling: 'box',
   },
-  staticCss: [{ styling: ['*'] }],
 })

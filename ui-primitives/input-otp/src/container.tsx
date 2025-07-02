@@ -2,9 +2,7 @@ import React from 'react'
 
 export const InputOTPContainer = React.forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<'div'> & { errorStatus?: 'true' | 'false' }
->(({ errorStatus = 'false', ...props }, ref) => (
-  <div ref={ref} error-status={errorStatus} {...props} />
-))
+  React.ComponentPropsWithoutRef<'div'> & { dataStatus?: 'error' | 'success' | 'none' }
+>(({ dataStatus = 'none', ...props }, ref) => <div ref={ref} data-status={dataStatus} {...props} />)
 
 InputOTPContainer.displayName = 'InputOTPContainer'

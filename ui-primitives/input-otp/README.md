@@ -5,8 +5,8 @@ An accessible one-time-password input component built on top of [input-otp](http
 ## Features
 
 - Four different variants that can be customized
-- Error state styling for each variant
-- Support for copy-paste
+- Validation state based styling for each variant
+- Support for copy-paste and keyboard navigation
 - TypeScript support
 
 ## Installation
@@ -28,6 +28,7 @@ function Example() {
             <InputOTP.Slot index={0} />
             <InputOTP.Slot index={1} />
             <InputOTP.Slot index={2} />
+            <InputOTP.Separator />
             <InputOTP.Slot index={3} />
             <InputOTP.Slot index={4} />
             <InputOTP.Slot index={5} />
@@ -40,18 +41,18 @@ function Example() {
 
 ## Components
 
-- `InputOTP.Container` - The container element, that contains the provider
+- `InputOTP.Container` - The container element, provides the style context
 - `InputOTP.Root` - The root element
 - `InputOTP.Group` - The group wrapper element
 - `InputOTP.Slot` - The input slot element
+- `InputOTP.Separator` - A separator element
 
 ## Accessibility
 
 The component follows WAI-ARIA patterns for sidebar navigation:
-- Uses semantic HTML elements (`ul`, `li`, `a`)
-- Includes proper ARIA labels and roles
+- Includes proper ARIA labels for accessibility
 - Maintains keyboard navigation support
-- Provides screen reader friendly structure
+- Maintains copy-paste support
 
 ## License
 
