@@ -50,7 +50,7 @@ export const InputOTPSlot = React.forwardRef<
       <SlotChar
         char={char}
         isActive={isActive}
-        placeholderChar={currentSlot.placeholderChar ?? 'X'}
+        placeholderChar={currentSlot.placeholderChar ?? '-'}
       />
       {hasFakeCaret && <SlotCaret />}
     </div>

@@ -1,12 +1,24 @@
 import { defineSlotRecipe } from '@pandacss/dev'
 
-export const input_otp = defineSlotRecipe({
-  className: 'input-otp',
+export const inputOTP = defineSlotRecipe({
+  className: 'inputOTP',
   description: 'Styles for the Input OTP component',
-  slots: ['container', 'root', 'group', 'slot'],
+  slots: ['root', 'group', 'slot', 'separator'],
   base: {
     group: {
       display: 'flex',
+      border: '1px solid',
+      borderColor: 'border',
+
+      '[data-status="error"] &': {
+        color: 'error.text',
+        borderColor: 'error',
+      },
+
+      '[data-status="success"] &': {
+        color: 'success.text',
+        borderColor: 'success',
+      },
     },
     slot: {
       width: '10',
@@ -15,16 +27,34 @@ export const input_otp = defineSlotRecipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      position: 'relative',
+
+      '&[data-active]': {
+        zIndex: 1,
+      },
       '& [data-slot="input-otp-char"]': {
         opacity: 1,
       },
+
       '& [data-slot="input-otp-placeholder"]': {
         opacity: 0.2,
       },
+
       '& [data-slot="input-otp-caret"]': {
         animationStyle: 'caretBlink',
         fontSize: 'xl',
       },
+    },
+    separator: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: '3',
+      height: '1',
+      marginTop: '4.5',
+      marginX: '2',
+      rounded: 'full',
+      bg: 'border',
     },
   },
   variants: {
@@ -32,58 +62,79 @@ export const input_otp = defineSlotRecipe({
       box: {
         group: {
           gap: '1',
+          border: 'none',
         },
         slot: {
           border: '1px solid',
           borderColor: 'border',
-          position: 'relative',
+
           '&[data-active]': {
             outline: '2px solid',
-            outlineColor: 'accent',
-            zIndex: 1,
+          },
+
+          '[data-status="error"] &': {
+            borderColor: 'error',
+            outlineColor: 'error',
+          },
+
+          '[data-status="success"] &': {
+            borderColor: 'success',
+            outlineColor: 'success',
           },
         },
       },
       underlined: {
-        group: {},
+        group: {
+          border: 'none',
+        },
         slot: {
-          borderBottom: '1px solid',
+          borderBottom: '2px solid',
           borderColor: 'border',
-          position: 'relative',
+
           '&[data-active]': {
-            borderBottom: '2px solid',
-            outlineColor: 'accent',
-            zIndex: 1,
+            borderBottom: '3px solid',
+          },
+
+          '[data-status="error"] &': {
+            borderColor: 'error',
+            outlineColor: 'error',
+          },
+
+          '[data-status="success"] &': {
+            borderColor: 'success',
+            outlineColor: 'success',
           },
         },
       },
       filled: {
         group: {
           gap: '2',
+          border: 'none',
         },
         slot: {
           rounded: 'md',
           bg: 'primary.bg',
+
           '&[data-active]': {
             bg: 'primary.border',
             outline: '5px solid',
             outlineColor: 'primary.bg',
-            outlineOffset: '0',
-            zIndex: 1,
+          },
+
+          '[data-status="error"] &': {
+            bg: 'error.bg',
+            outlineColor: 'error.border',
+          },
+
+          '[data-status="success"] &': {
+            bg: 'success.bg',
+            outlineColor: 'success',
           },
         },
-      },
-      unstyled: {
-        slot: {
-          border: '1px solid',
-          borderColor: 'border',
-          position: 'relative',
+        separator: {
+          marginX: '1',
         },
       },
     },
   },
-  defaultVariants: {
-    styling: 'box',
-  },
-  // staticCss: [{ styling: ['*'] }],
 })
