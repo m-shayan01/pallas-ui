@@ -7,6 +7,18 @@ export const inputOTP = defineSlotRecipe({
   base: {
     group: {
       display: 'flex',
+      border: '1px solid',
+      borderColor: 'border',
+
+      '[data-status="error"] &': {
+        color: 'error.text',
+        borderColor: 'error',
+      },
+
+      '[data-status="success"] &': {
+        color: 'success.text',
+        borderColor: 'success',
+      },
     },
     slot: {
       width: '10',
@@ -20,15 +32,6 @@ export const inputOTP = defineSlotRecipe({
       '&[data-active]': {
         zIndex: 1,
       },
-
-      '[data-status="error"] &': {
-        color: 'error.text',
-      },
-
-      '[data-status="success"] &': {
-        color: 'success.text',
-      },
-
       '& [data-slot="input-otp-char"]': {
         opacity: 1,
       },
@@ -59,6 +62,7 @@ export const inputOTP = defineSlotRecipe({
       box: {
         group: {
           gap: '1',
+          border: 'none',
         },
         slot: {
           border: '1px solid',
@@ -80,7 +84,9 @@ export const inputOTP = defineSlotRecipe({
         },
       },
       underlined: {
-        group: {},
+        group: {
+          border: 'none',
+        },
         slot: {
           borderBottom: '2px solid',
           borderColor: 'border',
@@ -103,6 +109,7 @@ export const inputOTP = defineSlotRecipe({
       filled: {
         group: {
           gap: '2',
+          border: 'none',
         },
         slot: {
           rounded: 'md',
