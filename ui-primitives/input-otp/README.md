@@ -4,7 +4,7 @@ An accessible one-time-password input component built on top of [input-otp](http
 
 ## Features
 
-- Four different variants that can be customized
+- Three different variants that can be customized
 - Validation state based styling for each variant
 - Support for copy-paste and keyboard navigation
 - TypeScript support
@@ -46,7 +46,7 @@ function Example() {
 
 ## Accessibility
 
-The component follows WAI-ARIA patterns for sidebar navigation:
+The component follows WAI-ARIA patterns for slots navigation:
 - Includes proper ARIA labels for accessibility
 - Maintains keyboard navigation support
 - Maintains copy-paste support
