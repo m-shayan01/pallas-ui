@@ -5,18 +5,7 @@ const maxLength = 6
 
 export default function ErrorExample() {
   return (
-    <Stack align="flex-start" gap="6">
-      <Stack align="flex-start" gap="1">
-        <Box mb={2}>Unstyled</Box>
-        <InputOTP.Root maxLength={maxLength} dataStatus="error">
-          <InputOTP.Group>
-            {Array.from({ length: maxLength }).map((_, i) => (
-              <InputOTP.Slot key={i} index={i} />
-            ))}
-          </InputOTP.Group>
-        </InputOTP.Root>
-      </Stack>
-
+    <Stack align="flex-start" gap="4">
       <Stack align="flex-start" gap="1">
         <Box mb={2}>Box</Box>
         <InputOTP.Root maxLength={maxLength} styling="box" dataStatus="error">
@@ -42,6 +31,17 @@ export default function ErrorExample() {
       <Stack align="flex-start" gap="1">
         <Box mb={2}>Underlined</Box>
         <InputOTP.Root maxLength={maxLength} styling="underlined" dataStatus="error">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+
+      <Stack align="flex-start" gap="1">
+        <Box mb={2}>Borderless</Box>
+        <InputOTP.Root maxLength={maxLength} styling="borderless" dataStatus="error">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />

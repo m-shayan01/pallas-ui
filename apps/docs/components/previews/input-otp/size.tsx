@@ -3,12 +3,12 @@ import { Box, Stack } from '@styled-system/jsx'
 
 const maxLength = 6
 
-export default function VariantsExample() {
+export default function OtherVariantsExample() {
   return (
     <Stack align="flex-start" gap="4">
-      <Stack align="flex-start" gap="1">
-        <Box mb={2}>Box</Box>
-        <InputOTP.Root maxLength={maxLength} styling="box">
+      <Stack align="flex-start" gap="2">
+        <Box mb={2}>Small</Box>
+        <InputOTP.Root maxLength={maxLength} size="sm">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -17,9 +17,9 @@ export default function VariantsExample() {
         </InputOTP.Root>
       </Stack>
 
-      <Stack align="flex-start" gap="1">
-        <Box mb={2}>Filled</Box>
-        <InputOTP.Root maxLength={maxLength} styling="filled">
+      <Stack align="flex-start" gap="2">
+        <Box mb={2}>Medium</Box>
+        <InputOTP.Root maxLength={maxLength} size="md">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -28,20 +28,9 @@ export default function VariantsExample() {
         </InputOTP.Root>
       </Stack>
 
-      <Stack align="flex-start" gap="1">
-        <Box mb={2}>Underlined</Box>
-        <InputOTP.Root maxLength={maxLength} styling="underlined">
-          <InputOTP.Group>
-            {Array.from({ length: maxLength }).map((_, i) => (
-              <InputOTP.Slot key={i} index={i} />
-            ))}
-          </InputOTP.Group>
-        </InputOTP.Root>
-      </Stack>
-
-      <Stack align="flex-start" gap="1">
-        <Box mb={2}>Borderless</Box>
-        <InputOTP.Root maxLength={maxLength} styling="borderless">
+      <Stack align="flex-start" gap="2">
+        <Box mb={2}>Large</Box>
+        <InputOTP.Root maxLength={maxLength} size="lg">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />

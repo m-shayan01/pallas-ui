@@ -60,12 +60,27 @@ import { Input } from '@/components/ui/input-otp'
 
 | Property | Type | Default | Description | Options |
 |----------|------|---------|-------------|----------|
-| `styling` | `string` | - | Visual style of the otp input field | `box`, `filled`, `underlined`|
+| `styling` | `string` | `box` | Visual style of the otp input field | `box`, `filled`, `underlined`, `borderless`|
+| `shape` | `string` | `default` | Shape of the slots | `default`, `rounded` |
+| `size` | `string` | `md` | Size of the slots | `sm`, `md`, `lg` |
 | `maxLength` | `number` | `6` | Number of slots/size of input | - |
-| `dataStatus` | `string` | `none` | Validation state of the input | `none`, `success`, `error` |
+| `dataStatus` | `string` | `none` | Validation state of the input | `none`, `success`, `error`, `warning` |
 | `pattern` | `string` | `^[a-zA-Z0-9]*$` | Regular expression to specify pattern of input code | - |
+| `placeholder` | `string` | `-` | Specify a custom placeholder in the slots | - |
 
-The InputOTP component also accepts all props by the OTPInput component from the [input-otp](https://input-otp.rodz.dev/) library.
+
+The InputOTP component also accepts all props by the OTPInput component from the [input-otp](https://input-otp.rodz.dev/) library:
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `render` | `(props: RenderProps) => React.ReactElement` | - | Render function creating the slots | - |
+| `containerClassName` | `string` | - | The class name for the root container | - |
+| `value` | `string` | - | Value state controlling the input | - |
+| `onChange` | `(newValue: string) => unknown` | - | Setter for the controlled value (or callback for uncontrolled value) | - |
+| `onComplete` | `(...args: any[]) => unknown` | - | Callback when the input is complete | - |
+| `textAlign` | `string` | `left` | Where is the text located within the input. Affects click-holding or long-press behavior | `left`, `center`, `right` |
+| `inputMode` | `string` | `numeric` | Virtual keyboard appearance on mobile | `numeric`, `text`, `decimal`, `tel`, `search`, `email`, `url` |
+| `pasteTransformer` | `(pastedText: string) => string` | - | Transfomer function that allows pasting, for example, "XXX-XXX" even though the input's pattern doesn't allow hyphen and its max length is 6. | - |
+
 
 </Section>
 
@@ -78,7 +93,13 @@ The InputOTP component also accepts all props by the OTPInput component from the
 ### Style Variants
 <ComponentPreview name="input-otp" file="variants" />
 
-### With Separators
+### Shape Variants
+<ComponentPreview name="input-otp" file="shape" />
+
+### Size Variants
+<ComponentPreview name="input-otp" file="size" />
+
+### With Separator
 <ComponentPreview name="input-otp" file="separator" />
 
 ### Success State
@@ -86,6 +107,9 @@ The InputOTP component also accepts all props by the OTPInput component from the
 
 ### Error State
 <ComponentPreview name="input-otp" file="error-otp" />
+
+### Warning State
+<ComponentPreview name="input-otp" file="warning-otp" />
 
 </Section>
 </ContentContainer>

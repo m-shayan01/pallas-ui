@@ -3,12 +3,12 @@ import { Box, Stack } from '@styled-system/jsx'
 
 const maxLength = 6
 
-export default function SuccessExample() {
+export default function WarningExample() {
   return (
     <Stack align="flex-start" gap="4">
       <Stack align="flex-start" gap="1">
         <Box mb={2}>Box</Box>
-        <InputOTP.Root maxLength={maxLength} styling="box" dataStatus="success">
+        <InputOTP.Root maxLength={maxLength} styling="box" dataStatus="warning">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -19,7 +19,7 @@ export default function SuccessExample() {
 
       <Stack align="flex-start" gap="1">
         <Box mb={2}>Filled</Box>
-        <InputOTP.Root maxLength={maxLength} styling="filled" dataStatus="success">
+        <InputOTP.Root maxLength={maxLength} styling="filled" dataStatus="warning">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -30,7 +30,7 @@ export default function SuccessExample() {
 
       <Stack align="flex-start" gap="1">
         <Box mb={2}>Underlined</Box>
-        <InputOTP.Root maxLength={maxLength} styling="underlined" dataStatus="success">
+        <InputOTP.Root maxLength={maxLength} styling="underlined" dataStatus="warning">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -41,7 +41,7 @@ export default function SuccessExample() {
 
       <Stack align="flex-start" gap="1">
         <Box mb={2}>Borderless</Box>
-        <InputOTP.Root maxLength={maxLength} styling="borderless" dataStatus="success">
+        <InputOTP.Root maxLength={maxLength} styling="borderless" dataStatus="warning">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
