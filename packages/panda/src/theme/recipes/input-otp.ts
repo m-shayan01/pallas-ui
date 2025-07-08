@@ -7,33 +7,24 @@ export const inputOTP = defineSlotRecipe({
   base: {
     group: {
       display: 'flex',
-      border: '1px solid',
-      borderColor: 'border',
-
-      '[data-status="error"] &': {
-        color: 'error.text',
-        borderColor: 'error',
-      },
-
-      '[data-status="success"] &': {
-        color: 'success.text',
-        borderColor: 'success',
-      },
     },
     slot: {
-      width: '10',
-      height: '10',
-      fontSize: 'lg',
+      px: '{spacing.padding.block.md}',
+      py: '{spacing.padding.block.md}',
+
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
 
-      '&[data-active]': {
-        zIndex: 1,
-      },
-      '& [data-slot="input-otp-char"]': {
-        opacity: 1,
+      bg: '{colors.surface.elevated}',
+      color: '{colors.text.secondary}',
+
+      border: '.8px solid {colors.border}',
+
+      _active: {
+        borderColor: '{colors.primary.hover}',
+        shadow: '0 0 0 2px {colors.primary.bgHover}',
       },
 
       '& [data-slot="input-otp-placeholder"]': {
@@ -44,97 +35,165 @@ export const inputOTP = defineSlotRecipe({
         animationStyle: 'caretBlink',
         fontSize: 'xl',
       },
-    },
-    separator: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '3',
-      height: '1',
-      marginTop: '4.5',
-      marginX: '2',
-      rounded: 'full',
-      bg: 'border',
+
+      '[data-disabled="true"] &': {
+        opacity: '0.5',
+        color: '{colors.text.disabled}',
+        bg: '{colors.fill.disabled}',
+        borderColor: '{colors.border.secondary} !',
+      },
     },
   },
   variants: {
     styling: {
       box: {
         group: {
-          gap: '1',
-          border: 'none',
+          gap: '2',
         },
         slot: {
-          border: '1px solid',
-          borderColor: 'border',
-
-          '&[data-active]': {
-            outline: '2px solid',
-          },
-
           '[data-status="error"] &': {
-            borderColor: 'error',
-            outlineColor: 'error',
+            borderColor: '{colors.error.border}',
+            _active: {
+              borderColor: '{colors.error.borderHover}',
+              shadow: '0 0 0 2px {colors.error.bgHover}',
+            },
           },
-
+          '[data-status="warning"] &': {
+            borderColor: '{colors.warning.border}',
+            _active: {
+              borderColor: '{colors.warning.borderHover}',
+              shadow: '0 0 0 2px {colors.warning.bgHover}',
+            },
+          },
           '[data-status="success"] &': {
-            borderColor: 'success',
-            outlineColor: 'success',
+            borderColor: '{colors.success.border}',
+            _active: {
+              borderColor: '{colors.success.borderHover}',
+              shadow: '0 0 0 2px {colors.success.bgHover}',
+            },
           },
         },
       },
       underlined: {
-        group: {
-          border: 'none',
-        },
         slot: {
-          borderBottom: '2px solid',
-          borderColor: 'border',
+          border: 'none',
+          borderRadius: 'unset !important',
+          borderBottom: '1px solid',
+          borderColor: '{colors.border}',
 
-          '&[data-active]': {
-            borderBottom: '3px solid',
+          _active: {
+            shadow: 'none',
+            borderBottom: '2px solid {colors.primary.hover}',
           },
 
           '[data-status="error"] &': {
-            borderColor: 'error',
-            outlineColor: 'error',
+            borderColor: '{colors.error.border}',
+            _active: {
+              borderColor: '{colors.error.borderHover}',
+            },
           },
-
+          '[data-status="warning"] &': {
+            borderColor: '{colors.warning.border}',
+            _active: {
+              borderColor: '{colors.warning.borderHover}',
+            },
+          },
           '[data-status="success"] &': {
-            borderColor: 'success',
-            outlineColor: 'success',
+            borderColor: '{colors.success.border}',
+            _active: {
+              borderColor: '{colors.success.borderHover}',
+            },
           },
         },
       },
       filled: {
         group: {
           gap: '2',
-          border: 'none',
         },
         slot: {
           rounded: 'md',
-          bg: 'primary.bg',
+          bg: '{colors.fill.secondary}',
+          border: 'none',
 
-          '&[data-active]': {
-            bg: 'primary.border',
-            outline: '5px solid',
-            outlineColor: 'primary.bg',
+          _active: {
+            bg: '{colors.surface.elevated}',
+            border: '.8px solid {colors.primary.hover}',
+            shadow: 'none',
           },
 
           '[data-status="error"] &': {
-            bg: 'error.bg',
-            outlineColor: 'error.border',
+            bg: '{colors.error.bg}',
+            _active: {
+              borderColor: '{colors.error.borderHover}',
+            },
           },
-
+          '[data-status="warning"] &': {
+            bg: '{colors.warning.bg}',
+            _active: {
+              borderColor: '{colors.warning.borderHover}',
+            },
+          },
           '[data-status="success"] &': {
-            bg: 'success.bg',
-            outlineColor: 'success',
+            bg: '{colors.success.bg}',
+            _active: {
+              borderColor: '{colors.success.borderHover}',
+            },
           },
         },
-        separator: {
-          marginX: '1',
+      },
+      borderless: {
+        group: {
+          gap: '2',
+        },
+        slot: {
+          border: 'none',
+
+          _active: {
+            border: 'none',
+            shadow: 'unset',
+          },
         },
       },
     },
+    size: {
+      sm: {
+        slot: {
+          w: '{sizes.controlHeight.sm}',
+          h: '{sizes.controlHeight.sm}',
+          textStyle: 'sm',
+        },
+      },
+      md: {
+        slot: {
+          w: '{sizes.controlHeight.md}',
+          h: '{sizes.controlHeight.md}',
+          textStyle: 'md',
+        },
+      },
+      lg: {
+        slot: {
+          w: '{sizes.controlHeight.lg}',
+          h: '{sizes.controlHeight.lg}',
+          textStyle: 'lg',
+        },
+      },
+    },
+    shape: {
+      default: {
+        slot: {
+          borderRadius: '{radii.md}',
+        },
+      },
+      rounded: {
+        slot: {
+          borderRadius: '{radii.full}',
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    styling: 'box',
+    size: 'md',
+    shape: 'default',
   },
 })

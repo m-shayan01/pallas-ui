@@ -18,21 +18,21 @@ export const Default: Story = {
     styling: {
       description: 'Styling variants of InputOTP',
       control: 'inline-radio',
-      options: ['box', 'filled', 'underlined', 'unstyled'],
-      table: {
-        defaultValue: {
-          summary: 'No styles',
-        },
-      },
+      options: ['box', 'filled', 'underlined', 'borderless'],
+    },
+    size: {
+      description: 'Size of Slots',
+      control: 'inline-radio',
+      options: ['sm', 'md', 'lg'],
+    },
+    shape: {
+      description: 'Shape of Slots',
+      control: 'inline-radio',
+      options: ['default', 'rounded'],
     },
     maxLength: {
       description: 'Number of input slots',
       control: { type: 'number' },
-      table: {
-        defaultValue: {
-          summary: '6',
-        },
-      },
     },
     pattern: {
       description: 'Valid input specified as a regex pattern',
@@ -43,24 +43,21 @@ export const Default: Story = {
         Alphabetical: '^[a-zA-Z]*$',
         Alphanumeric: '^[a-zA-Z0-9]*$',
       },
-      table: {
-        defaultValue: {
-          summary: '^[a-zA-Z0-9]*$',
-        },
-      },
     },
     dataStatus: {
       control: { type: 'inline-radio' },
-      options: ['none', 'error', 'success'],
+      options: ['none', 'error', 'warning', 'success'],
       description: 'Status of data validation',
-      table: {
-        defaultValue: {
-          summary: 'none',
-        },
-      },
+    },
+    disabled: {
+      control: { type: 'boolean' },
+      description: 'Disables the InputOTP Component',
     },
   },
   args: {
+    styling: 'box',
+    size: 'md',
+    shape: 'default',
     maxLength: 6,
     pattern: '^[a-zA-Z0-9]*$',
     dataStatus: 'none',
@@ -73,7 +70,10 @@ export const Default: Story = {
             maxLength={props['maxLength']}
             pattern={props['pattern']}
             styling={props['styling']}
+            size={props['size']}
+            shape={props['shape']}
             dataStatus={props['dataStatus']}
+            disabled={props['disabled']}
           >
             <InputOTP.Group>
               {Array.from({ length: props['maxLength'] }).map((_, i) => (
@@ -88,8 +88,7 @@ export const Default: Story = {
 }
 
 const maxLength = 6
-
-type Styling = 'box' | 'filled' | 'underlined'
+type Styling = 'box' | 'filled' | 'underlined' | 'borderless'
 
 export const InputOTPBox = () => (
   <Stack align="flex-start" gap="6">
@@ -133,10 +132,10 @@ export const InputOTPFilled = () => (
   </Stack>
 )
 
-export const InputOTPUnstyled = () => (
+export const InputOTPBorderless = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
-      <InputOTP.Root maxLength={maxLength}>
+      <InputOTP.Root maxLength={maxLength} styling="borderless">
         <InputOTP.Group>
           {Array.from({ length: maxLength }).map((_, i) => (
             <InputOTP.Slot key={i} index={i} />
@@ -161,12 +160,76 @@ const inputOTPVariants = [
     styling: 'underlined',
   },
   {
-    label: 'Unstyled',
-    styling: 'unstyled',
+    label: 'Borderless',
+    styling: 'borderless',
   },
 ]
 
-export const WithSeparators = () => (
+export const SizeVariants = () => {
+  return (
+    <Stack align="flex-start" gap="6">
+      <Stack align="flex-start" gap="1">
+        <Label>Small</Label>
+        <InputOTP.Root maxLength={maxLength} size="sm">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+      <Stack align="flex-start" gap="1">
+        <Label>Medium</Label>
+        <InputOTP.Root maxLength={maxLength} size="md">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+      <Stack align="flex-start" gap="1">
+        <Label>Large</Label>
+        <InputOTP.Root maxLength={maxLength} size="lg">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+    </Stack>
+  )
+}
+
+export const ShapeVariants = () => {
+  return (
+    <Stack align="flex-start" gap="6">
+      <Stack align="flex-start" gap="1">
+        <Label>Default</Label>
+        <InputOTP.Root maxLength={maxLength} shape="default">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+      <Stack align="flex-start" gap="1">
+        <Label>Rounded</Label>
+        <InputOTP.Root maxLength={maxLength} shape="rounded">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+    </Stack>
+  )
+}
+
+export const WithSeparator = () => (
   <Stack align="flex-start" gap="6">
     {inputOTPVariants.map((variant) => (
       <Stack align="flex-start" gap="1" key={variant.styling}>
@@ -187,6 +250,22 @@ export const WithSeparators = () => (
   </Stack>
 )
 
+export const DisabledState = () => {
+  return (
+    <Stack align="flex-start" gap="6">
+      <Stack align="flex-start" gap="1">
+        <InputOTP.Root maxLength={maxLength} disabled={true}>
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+    </Stack>
+  )
+}
+
 export const ErrorState = () => (
   <Stack align="flex-start" gap="6">
     {inputOTPVariants.map((variant) => (
@@ -196,6 +275,27 @@ export const ErrorState = () => (
           maxLength={maxLength}
           styling={variant.styling as Styling}
           dataStatus={'error'}
+        >
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+    ))}
+  </Stack>
+)
+
+export const WarningState = () => (
+  <Stack align="flex-start" gap="6">
+    {inputOTPVariants.map((variant) => (
+      <Stack align="flex-start" gap="1" key={variant.styling}>
+        <Label>{variant.label}</Label>
+        <InputOTP.Root
+          maxLength={maxLength}
+          styling={variant.styling as Styling}
+          dataStatus={'warning'}
         >
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
