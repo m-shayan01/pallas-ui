@@ -39,6 +39,10 @@ export const inputOTP = defineSlotRecipe({
         shadow: '0 0 0 2px {colors.primary.bgHover}',
       },
 
+      _hover: {
+        borderColor: '{colors.primary.hover}',
+      },
+
       '& [data-slot="input-otp-placeholder"]': {
         opacity: 0.2,
       },
@@ -156,6 +160,15 @@ export const inputOTP = defineSlotRecipe({
           _active: {
             border: 'none',
             shadow: 'unset',
+          },
+          '[data-status="error"] &': {
+            color: '{colors.error.text}',
+          },
+          '[data-status="warning"] &': {
+            color: '{colors.warning.text}',
+          },
+          '[data-status="success"] &': {
+            color: '{colors.success.text}',
           },
         },
       },
