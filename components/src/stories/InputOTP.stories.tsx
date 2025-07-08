@@ -61,6 +61,7 @@ export const Default: Story = {
     maxLength: 6,
     pattern: '^[a-zA-Z0-9]*$',
     dataStatus: 'none',
+    disabled: false,
   },
   render: (props) => {
     return (
@@ -90,9 +91,10 @@ export const Default: Story = {
 const maxLength = 6
 type Styling = 'box' | 'filled' | 'underlined' | 'borderless'
 
-export const InputOTPBox = () => (
+export const StyleVariants = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
+      <Label>Box</Label>
       <InputOTP.Root maxLength={maxLength} styling="box">
         <InputOTP.Group>
           {Array.from({ length: maxLength }).map((_, i) => (
@@ -101,26 +103,8 @@ export const InputOTPBox = () => (
         </InputOTP.Group>
       </InputOTP.Root>
     </Stack>
-  </Stack>
-)
-
-export const InputOTPUnderlined = () => (
-  <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
-      <InputOTP.Root maxLength={maxLength} styling="underlined">
-        <InputOTP.Group>
-          {Array.from({ length: maxLength }).map((_, i) => (
-            <InputOTP.Slot key={i} index={i} />
-          ))}
-        </InputOTP.Group>
-      </InputOTP.Root>
-    </Stack>
-  </Stack>
-)
-
-export const InputOTPFilled = () => (
-  <Stack align="flex-start" gap="6">
-    <Stack align="flex-start" gap="1">
+      <Label>Filled</Label>
       <InputOTP.Root maxLength={maxLength} styling="filled">
         <InputOTP.Group>
           {Array.from({ length: maxLength }).map((_, i) => (
@@ -129,12 +113,18 @@ export const InputOTPFilled = () => (
         </InputOTP.Group>
       </InputOTP.Root>
     </Stack>
-  </Stack>
-)
-
-export const InputOTPBorderless = () => (
-  <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
+      <Label>Underlined</Label>
+      <InputOTP.Root maxLength={maxLength} styling="underlined">
+        <InputOTP.Group>
+          {Array.from({ length: maxLength }).map((_, i) => (
+            <InputOTP.Slot key={i} index={i} />
+          ))}
+        </InputOTP.Group>
+      </InputOTP.Root>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Borderless</Label>
       <InputOTP.Root maxLength={maxLength} styling="borderless">
         <InputOTP.Group>
           {Array.from({ length: maxLength }).map((_, i) => (

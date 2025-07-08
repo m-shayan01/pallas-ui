@@ -5,8 +5,20 @@ export const inputOTP = defineSlotRecipe({
   description: 'Styles for the Input OTP component',
   slots: ['root', 'group', 'slot', 'separator'],
   base: {
+    root: {
+      '[data-disabled="true"] &': {
+        '& input[data-input-otp="true"]': {
+          cursor: 'not-allowed',
+        },
+      },
+    },
     group: {
       display: 'flex',
+      gap: '2',
+      '& [data-slot="input-otp-separator"]': {
+        px: '{spacing.padding.block.sm}',
+        py: '{spacing.padding.block.sm}',
+      },
     },
     slot: {
       px: '{spacing.padding.block.md}',
@@ -37,19 +49,15 @@ export const inputOTP = defineSlotRecipe({
       },
 
       '[data-disabled="true"] &': {
-        opacity: '0.5',
         color: '{colors.text.disabled}',
-        bg: '{colors.fill.disabled}',
-        borderColor: '{colors.border.secondary} !',
+        bg: '{colors.fill.disabled} !important',
+        borderColor: '{colors.border.secondary}',
       },
     },
   },
   variants: {
     styling: {
       box: {
-        group: {
-          gap: '2',
-        },
         slot: {
           '[data-status="error"] &': {
             borderColor: '{colors.error.border}',
@@ -75,6 +83,9 @@ export const inputOTP = defineSlotRecipe({
         },
       },
       underlined: {
+        group: {
+          gap: '0',
+        },
         slot: {
           border: 'none',
           borderRadius: 'unset !important',
@@ -107,9 +118,6 @@ export const inputOTP = defineSlotRecipe({
         },
       },
       filled: {
-        group: {
-          gap: '2',
-        },
         slot: {
           rounded: 'md',
           bg: '{colors.fill.secondary}',
@@ -142,9 +150,6 @@ export const inputOTP = defineSlotRecipe({
         },
       },
       borderless: {
-        group: {
-          gap: '2',
-        },
         slot: {
           border: 'none',
 
