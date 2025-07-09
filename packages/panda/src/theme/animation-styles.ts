@@ -125,4 +125,10 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationDirection: 'alternate',
     },
   },
+
+  loading: {
+    value: {
+      animation: 'rotation 1s linear infinite',
+    },
+  },
 })
