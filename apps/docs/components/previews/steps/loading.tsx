@@ -96,14 +96,6 @@ export default function StepsLoadingPreview() {
         <Button onClick={reset} disabled={loadingStep !== null} variant="outlined">
           Reset
         </Button>
-        <Button
-          onClick={() => simulateLoading(1)}
-          disabled={loadingStep !== null}
-          variant="outlined"
-          size="sm"
-        >
-          Simulate Loading Step 2
-        </Button>
       </HStack>
     </VStack>
   )

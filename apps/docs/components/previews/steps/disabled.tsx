@@ -45,12 +45,9 @@ export default function StepsDisabledPreview() {
     }
   }
 
-  const toggleStepDisabled = (index: number) => {
-    setDisabledSteps((prev) => {
-      const newDisabled = [...prev]
-      newDisabled[index] = !newDisabled[index]
-      return newDisabled
-    })
+  const resetDemo = () => {
+    setCurrentStep(0)
+    setDisabledSteps([false, false, true, true])
   }
 
   return (
@@ -77,6 +74,7 @@ export default function StepsDisabledPreview() {
               p="4"
               mt="5"
               align="center"
+              h="140px"
               css={{
                 textAlign: 'center',
                 border: '1px solid',
@@ -96,40 +94,28 @@ export default function StepsDisabledPreview() {
         ))}
       </Steps.Root>
 
-      <VStack gap={4} align="stretch">
-        <HStack gap={4} justify="center">
-          <Button onClick={prevStep} disabled={currentStep === 0} variant="outlined">
-            Previous
-          </Button>
-          <Button
-            onClick={nextStep}
-            disabled={currentStep === items.length - 1 || disabledSteps[currentStep + 1]}
-            variant="primary"
-          >
-            Next
-          </Button>
-          <Button
-            onClick={enableNextStep}
-            disabled={currentStep === items.length - 1 || !disabledSteps[currentStep + 1]}
-            variant="outlined"
-          >
-            Enable Next Step
-          </Button>
-        </HStack>
-
-        <HStack gap={2} justify="center">
-          {items.map((item, index) => (
-            <Button
-              key={index}
-              onClick={() => toggleStepDisabled(index)}
-              variant={disabledSteps[index] ? 'primary' : 'outlined'}
-              size="sm"
-            >
-              {disabledSteps[index] ? 'Enable' : 'Disable'} {index + 1}
-            </Button>
-          ))}
-        </HStack>
-      </VStack>
+      <HStack gap={4} justify="center">
+        <Button onClick={prevStep} disabled={currentStep === 0} variant="outlined">
+          Previous
+        </Button>
+        <Button
+          onClick={nextStep}
+          disabled={currentStep === items.length - 1 || disabledSteps[currentStep + 1]}
+          variant="primary"
+        >
+          Next
+        </Button>
+        <Button
+          onClick={enableNextStep}
+          disabled={currentStep === items.length - 1 || !disabledSteps[currentStep + 1]}
+          variant="outlined"
+        >
+          Enable Next Step
+        </Button>
+        <Button onClick={resetDemo} variant="outlined">
+          Reset Demo
+        </Button>
+      </HStack>
     </VStack>
   )
 }

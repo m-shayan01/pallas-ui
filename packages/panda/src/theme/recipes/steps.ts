@@ -58,6 +58,7 @@ export const steps = defineSlotRecipe({
       width: '{sizes.icon.md}',
       height: '{sizes.icon.md}',
       fontSize: '{fontSizes.md}',
+      transition: 'all 0.2s ease-in-out',
 
       _current: {
         border: '1px solid {colors.fill.secondary}',

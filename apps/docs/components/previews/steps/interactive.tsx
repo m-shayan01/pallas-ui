@@ -40,7 +40,7 @@ export default function StepsInteractivePreview() {
             <Steps.Item key={index} index={index}>
               <Steps.Trigger onClick={() => goToStep(index)}>
                 <Steps.Indicator css={{ alignItems: 'center' }}>
-                  <span style={{ alignSelf: 'stretch' }}>{index + 1}</span>
+                  <span>{index + 1}</span>
                 </Steps.Indicator>
                 <span>{item.title}</span>
               </Steps.Trigger>
