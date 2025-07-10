@@ -20,7 +20,7 @@ export const Default: Story = {
       control: 'inline-radio',
       options: ['outline', 'filled', 'underlined', 'borderless'],
     },
-    size: {
+    slotSize: {
       description: 'Size of Slots',
       control: 'inline-radio',
       options: ['sm', 'md', 'lg'],
@@ -53,14 +53,19 @@ export const Default: Story = {
       control: { type: 'boolean' },
       description: 'Disables the InputOTP Component',
     },
+    placeholder: {
+      control: { type: 'text' },
+      description: 'Placeholder for the slots',
+    },
   },
   args: {
     styling: 'outline',
-    size: 'md',
+    slotSize: 'md',
     maxLength: 6,
     pattern: '^[a-zA-Z0-9]*$',
     dataStatus: 'none',
     disabled: false,
+    placeholder: '-',
   },
   render: (props) => {
     return (
@@ -74,6 +79,7 @@ export const Default: Story = {
             shape={props['shape']}
             dataStatus={props['dataStatus']}
             disabled={props['disabled']}
+            placeholder={props['placeholder']}
           >
             <InputOTP.Group>
               {Array.from({ length: props['maxLength'] }).map((_, i) => (
@@ -89,6 +95,25 @@ export const Default: Story = {
 
 const maxLength = 6
 type Styling = 'outline' | 'filled' | 'underlined' | 'borderless'
+
+const inputOTPVariants = [
+  {
+    label: 'Outline',
+    styling: 'outline',
+  },
+  {
+    label: 'Filled',
+    styling: 'filled',
+  },
+  {
+    label: 'Underlined',
+    styling: 'underlined',
+  },
+  {
+    label: 'Borderless',
+    styling: 'borderless',
+  },
+]
 
 export const StyleVariants = () => (
   <Stack align="flex-start" gap="6">
@@ -135,31 +160,12 @@ export const StyleVariants = () => (
   </Stack>
 )
 
-const inputOTPVariants = [
-  {
-    label: 'Outline',
-    styling: 'outline',
-  },
-  {
-    label: 'Filled',
-    styling: 'filled',
-  },
-  {
-    label: 'Underlined',
-    styling: 'underlined',
-  },
-  {
-    label: 'Borderless',
-    styling: 'borderless',
-  },
-]
-
 export const SizeVariants = () => {
   return (
     <Stack align="flex-start" gap="6">
       <Stack align="flex-start" gap="1">
         <Label>Small</Label>
-        <InputOTP.Root maxLength={maxLength} size="sm">
+        <InputOTP.Root maxLength={maxLength} slotSize="sm">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -169,7 +175,7 @@ export const SizeVariants = () => {
       </Stack>
       <Stack align="flex-start" gap="1">
         <Label>Medium</Label>
-        <InputOTP.Root maxLength={maxLength} size="md">
+        <InputOTP.Root maxLength={maxLength} slotSize="md">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -179,7 +185,7 @@ export const SizeVariants = () => {
       </Stack>
       <Stack align="flex-start" gap="1">
         <Label>Large</Label>
-        <InputOTP.Root maxLength={maxLength} size="lg">
+        <InputOTP.Root maxLength={maxLength} slotSize="lg">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />

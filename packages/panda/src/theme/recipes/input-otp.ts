@@ -141,7 +141,7 @@ export const inputOTP = defineSlotRecipe({
         },
       },
     },
-    size: {
+    slotSize: {
       sm: {
         slot: {
           w: '{sizes.controlHeight.sm}',
@@ -174,6 +174,6 @@ export const inputOTP = defineSlotRecipe({
   },
   defaultVariants: {
     styling: 'outline',
-    size: 'md',
+    slotSize: 'md',
   },
 })

@@ -7,7 +7,7 @@ export default function SizesExample() {
     <Stack align="flex-start" gap="4">
       <Stack align="flex-start" gap="2">
         <Box mb={2}>Small</Box>
-        <InputOTP.Root maxLength={maxLength} size="sm">
+        <InputOTP.Root maxLength={maxLength} slotSize="sm">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -18,7 +18,7 @@ export default function SizesExample() {
 
       <Stack align="flex-start" gap="2">
         <Box mb={2}>Medium</Box>
-        <InputOTP.Root maxLength={maxLength} size="md">
+        <InputOTP.Root maxLength={maxLength} slotSize="md">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -29,7 +29,7 @@ export default function SizesExample() {
 
       <Stack align="flex-start" gap="2">
         <Box mb={2}>Large</Box>
-        <InputOTP.Root maxLength={maxLength} size="lg">
+        <InputOTP.Root maxLength={maxLength} slotSize="lg">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
