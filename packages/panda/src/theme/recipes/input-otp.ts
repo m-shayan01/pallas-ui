@@ -6,19 +6,17 @@ export const inputOTP = defineSlotRecipe({
   slots: ['root', 'group', 'slot', 'separator'],
   base: {
     root: {
-      '[data-disabled="true"] &': {
-        '& input[data-input-otp="true"]': {
-          cursor: 'not-allowed',
-        },
+      '& input[data-input-otp="true"]': {
+        _disabled: { cursor: 'not-allowed' },
+      },
+      '& [data-input-otp-container="true"]': {
+        display: 'flex',
+        gap: '{spacing.2}',
       },
     },
     group: {
       display: 'flex',
-      gap: '2',
-      '& [data-slot="input-otp-separator"]': {
-        px: '{spacing.padding.block.sm}',
-        py: '{spacing.padding.block.sm}',
-      },
+      gap: '{spacing.2}',
     },
     slot: {
       px: '{spacing.padding.block.md}',
@@ -31,17 +29,7 @@ export const inputOTP = defineSlotRecipe({
 
       bg: '{colors.surface.elevated}',
       color: '{colors.text.secondary}',
-
-      border: '.8px solid {colors.border}',
-
-      _active: {
-        borderColor: '{colors.primary.hover}',
-        shadow: '0 0 0 2px {colors.primary.bgHover}',
-      },
-
-      _hover: {
-        borderColor: '{colors.primary.hover}',
-      },
+      borderRadius: '{radii.md}',
 
       '& [data-slot="input-otp-placeholder"]': {
         opacity: 0.2,
@@ -55,120 +43,100 @@ export const inputOTP = defineSlotRecipe({
       '[data-disabled="true"] &': {
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled} !important',
-        borderColor: '{colors.border.secondary}',
+        borderColor: '{colors.border.secondary} ',
       },
+    },
+    separator: {
+      py: '{spacing.padding.block.sm}',
     },
   },
   variants: {
     styling: {
-      box: {
+      outline: {
         slot: {
-          '[data-status="error"] &': {
-            borderColor: '{colors.error.border}',
-            _active: {
-              borderColor: '{colors.error.borderHover}',
-              shadow: '0 0 0 2px {colors.error.bgHover}',
+          border: '.8px solid',
+          borderColor: {
+            base: '{colors.border}',
+            _active: '{colors.primary.hover}',
+            '[data-status="error"] &': {
+              base: '{colors.error.border}',
+              _active: '{colors.error.borderHover}',
+            },
+            '[data-status="warning"] &': {
+              base: '{colors.warning.border}',
+              _active: '{colors.warning.borderHover}',
+            },
+            '[data-status="success"] &': {
+              base: '{colors.success.border}',
+              _active: '{colors.success.borderHover}',
             },
           },
-          '[data-status="warning"] &': {
-            borderColor: '{colors.warning.border}',
+          shadow: {
             _active: {
-              borderColor: '{colors.warning.borderHover}',
-              shadow: '0 0 0 2px {colors.warning.bgHover}',
-            },
-          },
-          '[data-status="success"] &': {
-            borderColor: '{colors.success.border}',
-            _active: {
-              borderColor: '{colors.success.borderHover}',
-              shadow: '0 0 0 2px {colors.success.bgHover}',
+              base: '0 0 0 2px {colors.primary.bgHover}',
+              '[data-status="error"] &': '0 0 0 2px {colors.error.bgHover}',
+              '[data-status="warning"] &': '0 0 0 2px {colors.warning.bgHover}',
+              '[data-status="success"] &': '0 0 0 2px {colors.success.bgHover}',
             },
           },
         },
       },
       underlined: {
         group: {
-          gap: '0',
+          gap: '{spacing.0}',
         },
         slot: {
-          border: 'none',
           borderRadius: 'unset !important',
-          borderBottom: '1px solid',
-          borderColor: '{colors.border}',
-
-          _active: {
-            shadow: 'none',
-            borderBottom: '2px solid {colors.primary.hover}',
+          borderBottom: {
+            base: '1px solid {colors.border}',
+            _active: '2px solid {colors.primary.hover}',
           },
 
-          '[data-status="error"] &': {
-            borderColor: '{colors.error.border}',
-            _active: {
-              borderColor: '{colors.error.borderHover}',
+          borderColor: {
+            '[data-status="error"] &': {
+              base: '{colors.error.border}',
+              _active: '{colors.error.borderHover}',
             },
-          },
-          '[data-status="warning"] &': {
-            borderColor: '{colors.warning.border}',
-            _active: {
-              borderColor: '{colors.warning.borderHover}',
+            '[data-status="warning"] &': {
+              base: '{colors.warning.border}',
+              _active: '{colors.warning.borderHover}',
             },
-          },
-          '[data-status="success"] &': {
-            borderColor: '{colors.success.border}',
-            _active: {
-              borderColor: '{colors.success.borderHover}',
+            '[data-status="success"] &': {
+              base: '{colors.success.border}',
+              _active: '{colors.success.borderHover}',
             },
           },
         },
       },
       filled: {
         slot: {
-          rounded: 'md',
-          bg: '{colors.fill.secondary}',
-          border: 'none',
+          bg: {
+            base: '{colors.fill.secondary}',
+            _active: '{colors.surface.elevated}',
+            '[data-status="error"] &': '{colors.error.bg}',
+            '[data-status="warning"] &': '{colors.warning.bg}',
+            '[data-status="success"] &': '{colors.success.bg}',
+          },
 
           _active: {
-            bg: '{colors.surface.elevated}',
             border: '.8px solid {colors.primary.hover}',
-            shadow: 'none',
           },
 
-          '[data-status="error"] &': {
-            bg: '{colors.error.bg}',
+          borderColor: {
             _active: {
-              borderColor: '{colors.error.borderHover}',
-            },
-          },
-          '[data-status="warning"] &': {
-            bg: '{colors.warning.bg}',
-            _active: {
-              borderColor: '{colors.warning.borderHover}',
-            },
-          },
-          '[data-status="success"] &': {
-            bg: '{colors.success.bg}',
-            _active: {
-              borderColor: '{colors.success.borderHover}',
+              '[data-status="error"] &': '{colors.error.borderHover}',
+              '[data-status="warning"] &': '{colors.warning.borderHover}',
+              '[data-status="success"] &': '{colors.success.borderHover}',
             },
           },
         },
       },
       borderless: {
         slot: {
-          border: 'none',
-
-          _active: {
-            border: 'none',
-            shadow: 'unset',
-          },
-          '[data-status="error"] &': {
-            color: '{colors.error.text}',
-          },
-          '[data-status="warning"] &': {
-            color: '{colors.warning.text}',
-          },
-          '[data-status="success"] &': {
-            color: '{colors.success.text}',
+          color: {
+            '[data-status="error"] &': '{colors.error.text}',
+            '[data-status="warning"] &': '{colors.warning.text}',
+            '[data-status="success"] &': '{colors.success.text}',
           },
         },
       },
@@ -197,11 +165,6 @@ export const inputOTP = defineSlotRecipe({
       },
     },
     shape: {
-      default: {
-        slot: {
-          borderRadius: '{radii.md}',
-        },
-      },
       rounded: {
         slot: {
           borderRadius: '{radii.full}',
@@ -210,8 +173,7 @@ export const inputOTP = defineSlotRecipe({
     },
   },
   defaultVariants: {
-    styling: 'box',
+    styling: 'outline',
     size: 'md',
-    shape: 'default',
   },
 })

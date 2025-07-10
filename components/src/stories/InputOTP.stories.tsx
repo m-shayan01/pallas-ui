@@ -18,7 +18,7 @@ export const Default: Story = {
     styling: {
       description: 'Styling variants of InputOTP',
       control: 'inline-radio',
-      options: ['box', 'filled', 'underlined', 'borderless'],
+      options: ['outline', 'filled', 'underlined', 'borderless'],
     },
     size: {
       description: 'Size of Slots',
@@ -27,8 +27,8 @@ export const Default: Story = {
     },
     shape: {
       description: 'Shape of Slots',
-      control: 'inline-radio',
-      options: ['default', 'rounded'],
+      control: 'inline-check',
+      options: ['rounded'],
     },
     maxLength: {
       description: 'Number of input slots',
@@ -55,9 +55,8 @@ export const Default: Story = {
     },
   },
   args: {
-    styling: 'box',
+    styling: 'outline',
     size: 'md',
-    shape: 'default',
     maxLength: 6,
     pattern: '^[a-zA-Z0-9]*$',
     dataStatus: 'none',
@@ -89,13 +88,13 @@ export const Default: Story = {
 }
 
 const maxLength = 6
-type Styling = 'box' | 'filled' | 'underlined' | 'borderless'
+type Styling = 'outline' | 'filled' | 'underlined' | 'borderless'
 
 export const StyleVariants = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
-      <Label>Box</Label>
-      <InputOTP.Root maxLength={maxLength} styling="box">
+      <Label>Outline</Label>
+      <InputOTP.Root maxLength={maxLength} styling="outline">
         <InputOTP.Group>
           {Array.from({ length: maxLength }).map((_, i) => (
             <InputOTP.Slot key={i} index={i} />
@@ -138,8 +137,8 @@ export const StyleVariants = () => (
 
 const inputOTPVariants = [
   {
-    label: 'Box',
-    styling: 'box',
+    label: 'Outline',
+    styling: 'outline',
   },
   {
     label: 'Filled',
@@ -197,7 +196,7 @@ export const ShapeVariants = () => {
     <Stack align="flex-start" gap="6">
       <Stack align="flex-start" gap="1">
         <Label>Default</Label>
-        <InputOTP.Root maxLength={maxLength} shape="default">
+        <InputOTP.Root maxLength={maxLength}>
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -219,7 +218,7 @@ export const ShapeVariants = () => {
   )
 }
 
-export const WithSeparator = () => (
+export const WithSeparatorAndSeparateGroups = () => (
   <Stack align="flex-start" gap="6">
     {inputOTPVariants.map((variant) => (
       <Stack align="flex-start" gap="1" key={variant.styling}>
@@ -229,7 +228,9 @@ export const WithSeparator = () => (
             <InputOTP.Slot index={0} />
             <InputOTP.Slot index={1} />
             <InputOTP.Slot index={2} />
-            <InputOTP.Separator />
+          </InputOTP.Group>
+          <InputOTP.Separator />
+          <InputOTP.Group>
             <InputOTP.Slot index={3} />
             <InputOTP.Slot index={4} />
             <InputOTP.Slot index={5} />
@@ -237,6 +238,23 @@ export const WithSeparator = () => (
         </InputOTP.Root>
       </Stack>
     ))}
+  </Stack>
+)
+
+export const WithCustomPlaceholder = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <InputOTP.Root maxLength={maxLength} placeholder="X">
+        <InputOTP.Group>
+          <InputOTP.Slot index={0} />
+          <InputOTP.Slot index={1} />
+          <InputOTP.Slot index={2} />
+          <InputOTP.Slot index={3} />
+          <InputOTP.Slot index={4} />
+          <InputOTP.Slot index={5} />
+        </InputOTP.Group>
+      </InputOTP.Root>
+    </Stack>
   </Stack>
 )
 

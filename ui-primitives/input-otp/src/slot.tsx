@@ -37,6 +37,7 @@ export const InputOTPSlot = React.forwardRef<
   const currentSlot = OTPcontext.slots[index]
   if (!currentSlot) return null
   const { char, hasFakeCaret, isActive } = currentSlot
+  const { placeholderChar } = OTPcontext.slots[0] ?? currentSlot
 
   return (
     <div
@@ -46,12 +47,7 @@ export const InputOTPSlot = React.forwardRef<
       className={className}
       {...props}
     >
-      {/* <p>Slot</p> */}
-      <SlotChar
-        char={char}
-        isActive={isActive}
-        placeholderChar={currentSlot.placeholderChar ?? '-'}
-      />
+      <SlotChar char={char} isActive={isActive} placeholderChar={placeholderChar ?? undefined} />
       {hasFakeCaret && <SlotCaret />}
     </div>
   )

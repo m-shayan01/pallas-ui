@@ -1,9 +1,8 @@
 import InputOTP from '@/components/ui/input-otp'
 import { Box, Stack } from '@styled-system/jsx'
+import { maxLength } from '.'
 
-const maxLength = 6
-
-export default function OtherVariantsExample() {
+export default function SizesExample() {
   return (
     <Stack align="flex-start" gap="4">
       <Stack align="flex-start" gap="2">

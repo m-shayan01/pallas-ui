@@ -46,7 +46,9 @@ import { Input } from '@/components/ui/input-otp'
         <InputOTP.Slot index={0} />
         <InputOTP.Slot index={1} />
         <InputOTP.Slot index={2} />
-        <InputOTP.Separator />
+    </InputOTP.Group>
+    <InputOTP.Separator />
+    <InputOTP.Group>
         <InputOTP.Slot index={3} />
         <InputOTP.Slot index={4} />
         <InputOTP.Slot index={5} />
@@ -77,9 +79,11 @@ The InputOTP component also accepts all props by the OTPInput component from the
 | `value` | `string` | - | Value state controlling the input | - |
 | `onChange` | `(newValue: string) => unknown` | - | Setter for the controlled value (or callback for uncontrolled value) | - |
 | `onComplete` | `(...args: any[]) => unknown` | - | Callback when the input is complete | - |
-| `textAlign` | `string` | `left` | Where is the text located within the input. Affects click-holding or long-press behavior | `left`, `center`, `right` |
+| `textAlign` | `string` | `left` | Where is the text located within the input. | `left`, `center`, `right` |
 | `inputMode` | `string` | `numeric` | Virtual keyboard appearance on mobile | `numeric`, `text`, `decimal`, `tel`, `search`, `email`, `url` |
-| `pasteTransformer` | `(pastedText: string) => string` | - | Transfomer function that allows pasting, for example, "XXX-XXX" even though the input's pattern doesn't allow hyphen and its max length is 6. | - |
+| `pasteTransformer` | `(pastedText: string) => string` | - | Transfomer function for pasting | - |
+| `pushPasswordManagerStrategy` | `string` | `increase-width` | For detecting Password Managers in the page and then shifting their badges to the right side, outside the input. | `increase-width`, `none` |
+| `noScriptCSSFallback` | `string` | - | Fallback for pages without JS. | - |
 
 
 </Section>
@@ -99,8 +103,11 @@ The InputOTP component also accepts all props by the OTPInput component from the
 ### Size Variants
 <ComponentPreview name="input-otp" file="size" />
 
-### With Separator
+### With Separator and Separate Groups
 <ComponentPreview name="input-otp" file="separator" />
+
+### With Custom Placeholder
+<ComponentPreview name="input-otp" file="placeholder" />
 
 ### Success State
 <ComponentPreview name="input-otp" file="success" />

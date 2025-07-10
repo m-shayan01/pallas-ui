@@ -1,7 +1,7 @@
 import InputOTP from '@/components/ui/input-otp'
 import { Stack } from '@styled-system/jsx'
 
-const maxLength = 6
+export const maxLength = 6
 
 export default function Example() {
   return (

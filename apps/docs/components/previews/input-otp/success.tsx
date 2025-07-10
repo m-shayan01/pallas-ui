@@ -1,14 +1,13 @@
 import InputOTP from '@/components/ui/input-otp'
 import { Box, Stack } from '@styled-system/jsx'
-
-const maxLength = 6
+import { maxLength } from '.'
 
 export default function SuccessExample() {
   return (
     <Stack align="flex-start" gap="4">
       <Stack align="flex-start" gap="1">
-        <Box mb={2}>Box</Box>
-        <InputOTP.Root maxLength={maxLength} styling="box" dataStatus="success">
+        <Box mb={2}>Outline</Box>
+        <InputOTP.Root maxLength={maxLength} styling="outline" dataStatus="success">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
