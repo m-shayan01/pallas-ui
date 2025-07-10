@@ -16,24 +16,26 @@ export default function SheetDemo() {
           <Sheet.Overlay />
           <Sheet.Content>
             <Sheet.Handle />
-            <Sheet.Header>
-              <Sheet.Title>Are you absolutely sure?</Sheet.Title>
-              <Sheet.Description>This action cannot be undone.</Sheet.Description>
-            </Sheet.Header>
-            <Box px="{spacing.padding.inline.md}">
-              <Paragraph>
+            <Box w={{ base: '100%', md: '50%' }} maxW="2xl" mx="auto">
+              <Sheet.Header>
+                <Sheet.Title>Are you absolutely sure?</Sheet.Title>
+                <Sheet.Description>This action cannot be undone.</Sheet.Description>
+              </Sheet.Header>
+
+              <Paragraph css={{ marginX: '{spacing.padding.inline.md}' }}>
                 It is a long established fact that a reader will be distracted by the readable
                 content of a page when looking at its layout. The point of using Lorem Ipsum is that
                 it has a more-or-less normal distribution of letters, as opposed to using 'Content
                 here, content here', making it look like readable English.
               </Paragraph>
+
+              <Sheet.Footer>
+                <Sheet.Close asChild>
+                  <Button variant="outlined">Cancel</Button>
+                </Sheet.Close>
+                <Button>Submit</Button>
+              </Sheet.Footer>
             </Box>
-            <Sheet.Footer>
-              <Sheet.Close asChild>
-                <Button variant="outlined">Cancel</Button>
-              </Sheet.Close>
-              <Button>Submit</Button>
-            </Sheet.Footer>
           </Sheet.Content>
         </Sheet.Portal>
       </Sheet.Root>

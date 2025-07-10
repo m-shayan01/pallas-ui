@@ -17,14 +17,14 @@ export default function SheetNestedDemo() {
           <Sheet.Overlay />
           <Sheet.Content>
             <Sheet.Handle />
-            <Box w={{ base: '100%', md: '50%' }} mx="auto">
+            <Box w={{ base: '100%', md: '50%' }} maxW="2xl" mx="auto">
               <Sheet.Header>
                 <Sheet.Title>Parent Sheet</Sheet.Title>
                 <Sheet.Description>
                   This is the parent sheet. You can open a nested sheet from here.
                 </Sheet.Description>
               </Sheet.Header>
-              <Paragraph className={css({ marginX: '{spacing.padding.inline.md}' })}>
+              <Paragraph css={{ marginX: '{spacing.padding.inline.md}' }}>
                 This demonstrates how to create nested sheets. Click the button below to open a
                 nested sheet.
               </Paragraph>

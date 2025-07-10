@@ -25,7 +25,7 @@ export default function SheetSnapPointsDemo() {
           <Sheet.Overlay />
           <Sheet.Content>
             <Sheet.Handle />
-            <Box w={{ base: '100%', md: '50%' }} mx="auto">
+            <Box w={{ base: '100%', md: '50%' }} maxW="2xl" mx="auto">
               <Sheet.Header>
                 <Sheet.Title>Snap Points Demo</Sheet.Title>
                 <Sheet.Description>
