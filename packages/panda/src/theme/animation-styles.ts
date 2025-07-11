@@ -35,6 +35,25 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
     },
   },
 
+  carousel: {
+    slideInLeft: {
+      value: {
+        transformOrigin: 'center',
+        animationDuration: '{durations.slowest}',
+        animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        animationName: 'slide-in-left',
+      },
+    },
+    slideInRight: {
+      value: {
+        transformOrigin: 'center',
+        animationDuration: '{durations.slowest}',
+        animationTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        animationName: 'slide-in-right',
+      },
+    },
+  },
+
   drawerSlideRight: {
     value: {
       transformOrigin: 'center',
@@ -112,6 +131,12 @@ export const animationStyles: Theme['animationStyles'] = defineAnimationStyles({
       animationDuration: '1.2s',
       animationTimingFunction: 'ease-out',
       animationIterationCount: 'infinite',
+    },
+  },
+
+  loading: {
+    value: {
+      animation: 'rotation 1s linear infinite',
     },
   },
 })

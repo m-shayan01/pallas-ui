@@ -1,0 +1,192 @@
+---
+title: Sheet
+description: A flexible and accessible bottom sheet component for creating slide-out panels and overlays.
+references:
+  vaul:
+    link: https://vaul.emilkowal.ski/api
+    api: https://vaul.emilkowal.ski/api
+---
+
+<ContentContainer>
+
+<Section gap="1">
+# Sheet
+<Paragraph size={'extraLarge'} color={'tertiary'}>A flexible and accessible bottom sheet component for creating slide-out panels and overlays.</Paragraph>
+<ComponentPreview name="sheet" withRecipe />
+</Section>
+
+<Section>
+## Installation
+
+<Steps>
+<Section>
+### Install the following dependencies
+
+<InstallTabs pkg="vaul" />
+
+### Copy and paste the following code into your project
+
+<ComponentSource name="sheet" file="sheet" />
+
+### Update the import paths to match your project setup
+</Section>
+</Steps>
+</Section>
+
+<Section>
+## Usage
+
+```tsx
+import Sheet from '@/components/ui/sheet'
+import { Button } from '@/components/ui/button'
+import { Box } from '@styled-system/jsx'
+```
+
+```tsx
+<Sheet.Root>
+  <Sheet.Trigger asChild>
+    <Button>Open Sheet</Button>
+  </Sheet.Trigger>
+  <Sheet.Portal>
+    <Sheet.Overlay />
+    <Sheet.Content>
+      <Sheet.Handle />
+      <Sheet.Header>
+        <Sheet.Title>Sheet Title</Sheet.Title>
+        <Sheet.Description>
+          This is a description of the sheet.
+        </Sheet.Description>
+      </Sheet.Header>
+      <Box px="padding.inline.md">
+        {/* Sheet content goes here */}
+      </Box>
+      <Sheet.Footer>
+        <Sheet.Close asChild>
+          <Button variant="outlined">Cancel</Button>
+        </Sheet.Close>
+        <Button>Continue</Button>
+      </Sheet.Footer>
+    </Sheet.Content>
+  </Sheet.Portal>
+</Sheet.Root>
+```
+
+</Section>
+
+<Section>
+## Examples
+
+### Basic Sheet
+<ComponentPreview name="sheet" />
+
+### Sheet with Snap Points
+<ComponentPreview name="sheet" file="snap-points" />
+
+### Scrollable Sheet
+<ComponentPreview name="sheet" file="scrollable" />
+
+### Nested Sheet
+<ComponentPreview name="sheet" file="nested" />
+
+</Section>
+
+<Section>
+## API Reference
+
+### Sheet.Root
+The root sheet element that wraps the entire component.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `defaultOpen` | `boolean` | `false` | Default open state of the sheet | `true`, `false` |
+| `open` | `boolean` | - | Controls the open state of the sheet | `true`, `false` |
+| `onOpenChange` | `function` | - | Callback when the open state changes | - |
+| `modal` | `boolean` | `true` | Whether the sheet is modal | `true`, `false` |
+| `container` | `HTMLElement` | `document.body` | Container element for the sheet | - |
+| `onAnimationEnd` | `function` | - | Callback when animation ends | - |
+| `dismissible` | `boolean` | `true` | Whether the sheet can be dismissed | `true`, `false` |
+| `handleOnly` | `boolean` | `false` | Whether only the handle can be used to drag | `true`, `false` |
+| `repositionInputs` | `boolean` | `true` | Whether to reposition inputs | `true`, `false` |
+| `variant` | `string` | - | Visual variant of the sheet | `snap`, `scrollable` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+**Snap Points Properties:**
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `snapPoints` | `(string \| number)[]` | - | Array of snap points (pixels, percentages, or fractions) | - |
+| `activeSnapPoint` | `string \| number \| null` | - | Currently active snap point | - |
+| `setActiveSnapPoint` | `function` | - | Function to set the active snap point | - |
+| `fadeFromIndex` | `number` | - | Index from which to fade content | - |
+| `snapToSequentialPoint` | `boolean` | - | Whether to snap to sequential points | `true`, `false` |
+
+### Sheet.NestedRoot
+Special root component for nested sheets. Use this instead of `Sheet.Root` when creating sheets inside other sheets.
+
+Same properties as `Sheet.Root` but optimized for nested usage.
+
+### Sheet.Trigger
+The element that triggers the sheet to open.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+Inherits all Button component props when not using `asChild`.
+
+### Sheet.Portal
+Portals the sheet content to the document body. Accepts `className` prop for custom styling.
+
+### Sheet.Overlay
+The backdrop overlay behind the sheet.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+### Sheet.Content
+The main content container of the sheet.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+### Sheet.Handle
+Drag handle for dismissing the sheet. Automatically styled based on the sheet variant. Accepts `className` prop for custom styling.
+
+### Sheet.Header
+Header section wrapper for title and description. Automatically applies proper spacing and layout. Accepts `className` prop for custom styling.
+
+### Sheet.Footer
+Footer section wrapper that sticks to the bottom and contains action buttons. Automatically applies proper spacing and layout. Accepts `className` prop for custom styling.
+
+### Sheet.Title
+The sheet title element.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+### Sheet.Description
+The sheet description element.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+### Sheet.Close
+Button to close the sheet.
+
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `asChild` | `boolean` | `false` | Whether to render as a child element | `true`, `false` |
+| `className` | `string` | - | Custom CSS classes | - |
+
+</Section>
+
+</ContentContainer>

@@ -7,6 +7,7 @@ import { badge } from './badge'
 import { breadcrumb } from './breadcrumb'
 import { button } from './button'
 import { card } from './card'
+import { carousel } from './carousel'
 import { checkbox } from './checkbox'
 import { combobox } from './combobox'
 import { command } from './command'
@@ -28,15 +29,18 @@ import { radioGroup } from './radio-group'
 import { segmented } from './segmented'
 import { select } from './select'
 import { separator } from './separator'
+import { sheet } from './sheet'
 import { sidebar } from './sidebar'
 import { skeleton } from './skeleton'
 import { slider } from './slider'
 import { spinner } from './spinner'
+import { steps } from './steps'
 import { switchRecipe } from './switch'
 import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
+
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
   button,
@@ -58,6 +62,7 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   avatar,
   breadcrumb,
   card,
+  carousel,
   checkbox,
   command,
   combobox,
@@ -73,7 +78,9 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   radioGroup,
   segmented,
   select,
+  sheet,
   slider,
+  steps,
   switchRecipe,
   tabs,
   toast,
