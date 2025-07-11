@@ -4,7 +4,7 @@ An accessible one-time-password input component built on top of [input-otp](http
 
 ## Features
 
-- Three different variants that can be customized
+- Variants based on style, shape and size that can be customized
 - Validation state based styling for each variant
 - Support for copy-paste and keyboard navigation
 - TypeScript support
@@ -27,7 +27,9 @@ function Example() {
             <InputOTP.Slot index={0} />
             <InputOTP.Slot index={1} />
             <InputOTP.Slot index={2} />
+            </InputOTP.Group>
             <InputOTP.Separator />
+            <InputOTP.Group>
             <InputOTP.Slot index={3} />
             <InputOTP.Slot index={4} />
             <InputOTP.Slot index={5} />

@@ -58,37 +58,6 @@ import { Input } from '@/components/ui/input-otp'
 </Section>
 
 <Section>
-## Properties
-
-| Property | Type | Default | Description | Options |
-|----------|------|---------|-------------|----------|
-| `styling` | `string` | `box` | Visual style of the otp input field | `box`, `filled`, `underlined`, `borderless`|
-| `slotSize` | `string` | `md` | Size of the slots | `sm`, `md`, `lg` |
-| `shape` | `string` | `default` | Shape of the slots | `default`, `rounded` |
-| `maxLength` | `number` | `6` | Number of slots/size of input | - |
-| `pattern` | `string` | `^[a-zA-Z0-9]*$` | Regular expression to specify pattern of input code | - |
-| `dataStatus` | `string` | `none` | Validation state of the input | `none`, `success`, `error`, `warning` |
-| `disabled` | `boolean` | - | Disabled state of the input | `true`, `false` |
-| `placeholder` | `string` | `-` | Specify a custom placeholder in the slots | - |
-
-
-The InputOTP component also accepts props by the OTPInput component from [input-otp](https://input-otp.rodz.dev/):
-| Property | Type | Default | Description | Options |
-|----------|------|---------|-------------|----------|
-| `container`-<br/>`ClassName` | `string` | - | Class name for the root container | - |
-| `value` | `string` | - | Controlled value | - |
-| `onChange` | `(newValue:`<br/>`string) => unknown` | - | Change handler | - |
-| `onComplete` | `(...args:any[])`<br/>`=> unknown` | - | Called when the input is complete | - |
-| `textAlign` | `string` | `left` | WText alignment | `left`, `center`, `right` |
-| `inputMode` | `string` | `numeric` | Mobile keyboard type | `numeric`, `text`, `decimal`, `tel`, `search`, `email`, `url` |
-| `pasteTransformer` | `(pastedText:string)`<br/>`=> string` | - | Paste transform function | - |
-| `pushPassword`-<br/>`ManagerStrategy` | `string` | `increase-width` | Password manager badge strategy | `increase-width`, `none` |
-| `noScriptCSS`-<br/>`Fallback` | `string` | - | Fallback for no-JS pages | - |
-
-
-</Section>
-
-<Section>
 ## Examples
 
 ### Default
@@ -117,6 +86,41 @@ The InputOTP component also accepts props by the OTPInput component from [input-
 
 ### Warning State
 <ComponentPreview name="input-otp" file="warning" />
+
+</Section>
+
+<Section>
+## API Reference
+
+### Root Props
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `styling` | `string` | `box` | Visual style of the otp input field | `box`, `filled`, `underlined`, `borderless`|
+| `slotSize` | `string` | `md` | Size of the slots | `sm`, `md`, `lg` |
+| `shape` | `string` | `default` | Shape of the slots | `default`, `rounded` |
+| `maxLength` | `number` | `6` | Number of slots/size of input | - |
+| `pattern` | `string` | `^[a-zA-Z0-9]*$` | Regular expression to specify pattern of input code | - |
+| `dataStatus` | `string` | `none` | Validation state of the input | `none`, `success`, `error`, `warning` |
+| `disabled` | `boolean` | - | Disabled state of the input | `true`, `false` |
+| `placeholder` | `string` | `-` | Specify a custom placeholder in the slots | - |
+
+
+The InputOTP component also accepts props by the OTPInput component from [input-otp](https://input-otp.rodz.dev/):
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `value` | `string` | - | Controlled value | - |
+| `onChange` | `(newValue:`<br/>`string) => unknown` | - | Change handler | - |
+| `onComplete` | `(...args:any[])`<br/>`=> unknown` | - | Called when the input is complete | - |
+| `textAlign` | `string` | `left` | WText alignment | `left`, `center`, `right` |
+| `inputMode` | `string` | `numeric` | Mobile keyboard type | `numeric`, `text`, `decimal`, `tel`, `search`, `email`, `url` |
+| `pasteTransformer` | `(pastedText:string)`<br/>`=> string` | - | Paste transform function | - |
+| `pushPassword`-<br/>`ManagerStrategy` | `string` | `increase-width` | Password manager badge strategy | `increase-width`, `none` |
+| `noScriptCSS`-<br/>`Fallback` | `string` | - | Fallback for no-JS pages | - |
+
+### Slot Props
+| Property | Type | Default | Description | Options |
+|----------|------|---------|-------------|----------|
+| `index` | `number` | - | Index of the slot | - |
 
 </Section>
 </ContentContainer>

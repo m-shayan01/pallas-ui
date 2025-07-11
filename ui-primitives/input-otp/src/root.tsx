@@ -4,7 +4,6 @@ import React from 'react'
 
 export type InputOTPProps = OTPInputProps & {
   dataStatus?: 'error' | 'success' | 'none' | 'warning'
-  children: React.ReactNode
 }
 export const InputOTPRoot = React.forwardRef<React.ComponentRef<typeof OTPInput>, InputOTPProps>(
   (
@@ -15,12 +14,11 @@ export const InputOTPRoot = React.forwardRef<React.ComponentRef<typeof OTPInput>
       placeholder = '-',
       disabled,
       className,
-      children,
       ...props
     },
     ref,
   ) => {
-    const { render, ...restProps } = props
+    const { containerClassName, ...rest } = props
     return (
       <div
         data-slot="input-otp-root"
@@ -35,10 +33,8 @@ export const InputOTPRoot = React.forwardRef<React.ComponentRef<typeof OTPInput>
           pattern={pattern}
           disabled={disabled}
           placeholder={placeholder}
-          {...restProps}
-        >
-          {children}
-        </OTPInput>
+          {...props}
+        />
       </div>
     )
   },
