@@ -6,8 +6,10 @@ export const inputOTP = defineSlotRecipe({
   slots: ['root', 'group', 'slot', 'separator'],
   base: {
     root: {
-      '& input[data-input-otp="true"]': {
-        _disabled: { cursor: 'not-allowed' },
+      '&[data-disabled="true"] ': {
+        '& input[data-input-otp="true"]': {
+          cursor: 'not-allowed',
+        },
       },
       '& [data-input-otp-container="true"]': {
         display: 'flex',
@@ -147,6 +149,7 @@ export const inputOTP = defineSlotRecipe({
           w: '{sizes.controlHeight.sm}',
           h: '{sizes.controlHeight.sm}',
           textStyle: 'sm',
+          borderRadius: '{radii.sm}',
         },
       },
       md: {
@@ -161,6 +164,7 @@ export const inputOTP = defineSlotRecipe({
           w: '{sizes.controlHeight.lg}',
           h: '{sizes.controlHeight.lg}',
           textStyle: 'lg',
+          borderRadius: '{radii.lg}',
         },
       },
     },

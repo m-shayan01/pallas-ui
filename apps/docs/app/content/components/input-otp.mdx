@@ -78,6 +78,9 @@ import { Input } from '@/components/ui/input-otp'
 ### With Custom Placeholder
 <ComponentPreview name="input-otp" file="placeholder" />
 
+### Disabled
+<ComponentPreview name="input-otp" file="disabled" />
+
 ### Success State
 <ComponentPreview name="input-otp" file="success" />
 
@@ -87,12 +90,17 @@ import { Input } from '@/components/ui/input-otp'
 ### Warning State
 <ComponentPreview name="input-otp" file="warning" />
 
+### Form
+<ComponentPreview name="input-otp" file="form" />
+
 </Section>
 
 <Section>
 ## API Reference
 
-### Root Props
+### InputOTP.Root
+The root element that wraps the entire component.
+
 | Property | Type | Default | Description | Options |
 |----------|------|---------|-------------|----------|
 | `styling` | `string` | `box` | Visual style of the otp input field | `box`, `filled`, `underlined`, `borderless`|
@@ -105,7 +113,7 @@ import { Input } from '@/components/ui/input-otp'
 | `placeholder` | `string` | `-` | Specify a custom placeholder in the slots | - |
 
 
-The InputOTP component also accepts props by the OTPInput component from [input-otp](https://input-otp.rodz.dev/):
+InputOTP.Root also accepts props by the OTPInput component from [input-otp](https://input-otp.rodz.dev/):
 | Property | Type | Default | Description | Options |
 |----------|------|---------|-------------|----------|
 | `value` | `string` | - | Controlled value | - |
@@ -117,10 +125,18 @@ The InputOTP component also accepts props by the OTPInput component from [input-
 | `pushPassword`-<br/>`ManagerStrategy` | `string` | `increase-width` | Password manager badge strategy | `increase-width`, `none` |
 | `noScriptCSS`-<br/>`Fallback` | `string` | - | Fallback for no-JS pages | - |
 
-### Slot Props
+### InputOTP.Group
+The group wrapper element that wraps multiple slots.
+
+### InputOTP.Slot
+The slot element that represents each individual character input.
+
 | Property | Type | Default | Description | Options |
 |----------|------|---------|-------------|----------|
 | `index` | `number` | - | Index of the slot | - |
+
+### InputOTP.Separator
+A separator element that visually separates groups of slots.
 
 </Section>
 </ContentContainer>
