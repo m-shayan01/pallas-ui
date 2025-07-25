@@ -11,6 +11,8 @@ export const inputOTP = defineSlotRecipe({
           cursor: 'not-allowed',
         },
       },
+
+      // to show multiple groups in a single line
       '& [data-input-otp-container="true"]': {
         display: 'flex',
         gap: '{spacing.2}',
@@ -21,7 +23,7 @@ export const inputOTP = defineSlotRecipe({
       gap: '{spacing.2}',
     },
     slot: {
-      px: '{spacing.padding.block.md}',
+      px: '{spacing.padding.inline.md}',
       py: '{spacing.padding.block.md}',
 
       display: 'flex',
@@ -31,7 +33,7 @@ export const inputOTP = defineSlotRecipe({
 
       bg: '{colors.surface.elevated}',
       color: '{colors.text.secondary}',
-      borderRadius: '{radii.md}',
+      rounded: '{radii.md}',
 
       '& [data-slot="input-otp-placeholder"]': {
         opacity: 0.2,
@@ -39,13 +41,14 @@ export const inputOTP = defineSlotRecipe({
 
       '& [data-slot="input-otp-caret"]': {
         animationStyle: 'caretBlink',
-        fontSize: 'xl',
+        textStyle: 'xl',
+        pb: '{spacing.1}',
       },
 
       '[data-disabled="true"] &': {
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled} !important',
-        borderColor: '{colors.border.secondary} ',
+        border: '{borders.input.disabled}',
       },
     },
     separator: {
@@ -56,29 +59,30 @@ export const inputOTP = defineSlotRecipe({
     styling: {
       outline: {
         slot: {
-          border: '.8px solid',
-          borderColor: {
-            base: '{colors.border}',
-            _active: '{colors.primary.hover}',
-            '[data-status="error"] &': {
-              base: '{colors.error.border}',
-              _active: '{colors.error.borderHover}',
-            },
-            '[data-status="warning"] &': {
-              base: '{colors.warning.border}',
-              _active: '{colors.warning.borderHover}',
-            },
-            '[data-status="success"] &': {
-              base: '{colors.success.border}',
-              _active: '{colors.success.borderHover}',
+          border: '{borders.input.default}',
+          _active: {
+            border: '{borders.input.hover}',
+            shadow: '{shadows.input.basic}',
+          },
+          '[data-status="success"] &': {
+            border: '{borders.input.success}',
+            _active: {
+              border: '{borders.input.success}',
+              shadow: '{shadows.input.success}',
             },
           },
-          shadow: {
+          '[data-status="error"] &': {
+            border: '{borders.input.error}',
             _active: {
-              base: '0 0 0 2px {colors.primary.bgHover}',
-              '[data-status="error"] &': '0 0 0 2px {colors.error.bgHover}',
-              '[data-status="warning"] &': '0 0 0 2px {colors.warning.bgHover}',
-              '[data-status="success"] &': '0 0 0 2px {colors.success.bgHover}',
+              border: '{borders.input.error}',
+              shadow: '{shadows.input.error}',
+            },
+          },
+          '[data-status="warning"] &': {
+            border: '{borders.input.warning}',
+            _active: {
+              border: '{borders.input.warning}',
+              shadow: '{shadows.input.warning}',
             },
           },
         },
@@ -112,23 +116,29 @@ export const inputOTP = defineSlotRecipe({
       },
       filled: {
         slot: {
-          bg: {
-            base: '{colors.fill.secondary}',
-            _active: '{colors.surface.elevated}',
-            '[data-status="error"] &': '{colors.error.bg}',
-            '[data-status="warning"] &': '{colors.warning.bg}',
-            '[data-status="success"] &': '{colors.success.bg}',
-          },
+          bg: '{colors.fill.secondary}',
 
           _active: {
-            border: '.8px solid {colors.primary.hover}',
+            bg: '{colors.surface.elevated}',
+            border: '{borders.input.hover}',
           },
 
-          borderColor: {
+          '[data-status="success"] &': {
+            bg: '{colors.success.bg}',
             _active: {
-              '[data-status="error"] &': '{colors.error.borderHover}',
-              '[data-status="warning"] &': '{colors.warning.borderHover}',
-              '[data-status="success"] &': '{colors.success.borderHover}',
+              border: '{borders.input.success}',
+            },
+          },
+          '[data-status="error"] &': {
+            bg: '{colors.error.bg}',
+            _active: {
+              border: '{borders.input.error}',
+            },
+          },
+          '[data-status="warning"] &': {
+            bg: '{colors.warning.bg}',
+            _active: {
+              border: '{borders.input.warning}',
             },
           },
         },
@@ -149,7 +159,11 @@ export const inputOTP = defineSlotRecipe({
           w: '{sizes.controlHeight.sm}',
           h: '{sizes.controlHeight.sm}',
           textStyle: 'sm',
-          borderRadius: '{radii.sm}',
+          rounded: '{radii.sm}',
+
+          '& [data-slot="input-otp-caret"]': {
+            textStyle: 'md',
+          },
         },
       },
       md: {
@@ -164,14 +178,18 @@ export const inputOTP = defineSlotRecipe({
           w: '{sizes.controlHeight.lg}',
           h: '{sizes.controlHeight.lg}',
           textStyle: 'lg',
-          borderRadius: '{radii.lg}',
+          rounded: '{radii.lg}',
+
+          '& [data-slot="input-otp-caret"]': {
+            textStyle: '2xl',
+          },
         },
       },
     },
     shape: {
       rounded: {
         slot: {
-          borderRadius: '{radii.full}',
+          rounded: '{radii.full}',
         },
       },
     },

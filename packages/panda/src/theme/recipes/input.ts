@@ -8,61 +8,63 @@ export const input = defineSlotRecipe({
     root: {
       display: 'flex',
       w: 'full',
-      rounded: '{radii.md}',
-      bg: '{colors.surface.elevated}',
       px: '{spacing.padding.inline.md}',
       py: '0',
-      color: '{colors.text.secondary}',
-      textStyle: 'sm',
-      focusRingOffsetColor: '{colors.fill.secondary}',
       alignItems: 'center',
       '&:has(input[type=number])': {
         appearance: 'textfield',
       },
+
       // Base styles
-      border: '.8px solid {colors.border}',
+      focusRingOffsetColor: '{colors.fill.secondary}',
+      rounded: '{radii.md}',
+      bg: '{colors.surface.elevated}',
+      color: '{colors.text.secondary}',
+      textStyle: 'sm',
+
+      border: '{borders.input.default}',
       _inputHover: {
-        borderColor: '{colors.primary.hover}',
+        border: '{borders.input.hover}',
       },
       _inputFocus: {
-        borderColor: '{colors.primary.hover}',
-        shadow: '0 0 0 2px {colors.primary.bgHover}',
+        border: '{borders.input.hover}',
+        shadow: '{shadows.input.basic}',
       },
 
       // Success state
       _inputSuccess: {
-        borderColor: '{colors.success.border}',
+        border: '{borders.input.success}',
       },
       _inputSuccessHover: {
-        borderColor: '{colors.success.borderHover}',
+        border: '{borders.input.successHover}',
       },
       _inputSuccessFocus: {
-        borderColor: '{colors.success.borderHover}',
-        shadow: '0 0 0 2px {colors.success.bgHover}',
+        border: '{borders.input.successHover}',
+        shadow: '{shadows.input.success}',
       },
 
       // Error state
       _inputError: {
-        borderColor: '{colors.error.border}',
+        border: '{borders.input.error}',
       },
       _inputErrorHover: {
-        borderColor: '{colors.error.borderHover}',
+        border: '{borders.input.errorHover}',
       },
       _inputErrorFocus: {
-        borderColor: '{colors.error.borderHover}',
-        shadow: '0 0 0 2px {colors.error.bgHover}',
+        border: '{borders.input.errorHover}',
+        shadow: '{shadows.input.error}',
       },
 
       // Warning state
       _inputWarning: {
-        borderColor: '{colors.warning.border}',
+        border: '{borders.input.warning}',
       },
       _inputWarningHover: {
-        borderColor: '{colors.warning.borderHover}',
+        border: '{borders.input.warningHover}',
       },
       _inputWarningFocus: {
-        borderColor: '{colors.warning.borderHover}',
-        shadow: '0 0 0 2px {colors.warning.bgHover}',
+        border: '{borders.input.warningHover}',
+        shadow: '{shadows.input.warning}',
       },
 
       // Disabled state
@@ -71,7 +73,7 @@ export const input = defineSlotRecipe({
         opacity: '0.5',
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled}',
-        borderColor: '{colors.border.secondary}',
+        border: '{borders.input.disabled}',
       },
     },
     prefix: {
@@ -80,7 +82,7 @@ export const input = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       color: '{colors.text.secondary}',
-      fontSize: 'sm',
+      textStyle: 'sm',
     },
     postfix: {
       display: 'flex',
@@ -88,7 +90,7 @@ export const input = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'center',
       color: '{colors.text.secondary}',
-      fontSize: 'sm',
+      textStyle: 'sm',
     },
     field: {
       w: 'full',
@@ -139,7 +141,7 @@ export const input = defineSlotRecipe({
       right: '2',
       top: '50%',
       transform: 'translateY(-50%)',
-      fontSize: 'xs',
+      textStyle: 'xs',
       color: '{colors.text.tertiary}',
       pointerEvents: 'none',
       userSelect: 'none',
@@ -154,7 +156,7 @@ export const input = defineSlotRecipe({
       justifyContent: 'center',
       width: '6',
       height: '3',
-      borderRadius: 'sm',
+      rounded: '{radii.sm}',
       border: '1px solid {colors.border}',
       bg: '{colors.surface.elevated}',
       color: '{colors.text.secondary}',
@@ -243,18 +245,17 @@ export const input = defineSlotRecipe({
     shape: {
       default: {
         root: {
-          borderRadius: '{radii.md}',
+          rounded: '{radii.md}',
         },
       },
-
       rounded: {
         root: {
-          borderRadius: '{radii.4xl}',
+          rounded: '{radii.4xl}',
         },
       },
       circle: {
         root: {
-          borderRadius: '{radii.full}',
+          rounded: '{radii.full}',
         },
       },
     },
