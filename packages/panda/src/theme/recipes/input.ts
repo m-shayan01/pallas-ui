@@ -28,7 +28,7 @@ export const input = defineSlotRecipe({
       },
       _inputFocus: {
         border: '{borders.input.hover}',
-        shadow: '{shadows.input.basic}',
+        shadow: '{shadows.input.default}',
       },
 
       // Success state

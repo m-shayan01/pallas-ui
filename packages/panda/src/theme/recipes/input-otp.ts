@@ -62,7 +62,7 @@ export const inputOTP = defineSlotRecipe({
           border: '{borders.input.default}',
           _active: {
             border: '{borders.input.hover}',
-            shadow: '{shadows.input.basic}',
+            shadow: '{shadows.input.default}',
           },
           '[data-status="success"] &': {
             border: '{borders.input.success}',
@@ -92,24 +92,29 @@ export const inputOTP = defineSlotRecipe({
           gap: '{spacing.0}',
         },
         slot: {
-          borderRadius: 'unset !important',
-          borderBottom: {
-            base: '1px solid {colors.border}',
-            _active: '2px solid {colors.primary.hover}',
+          _after: {
+            content: '""',
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            h: '0.8px',
+            bg: {
+              base: '{colors.border}',
+              '[data-status="error"] &': '{colors.error.border}',
+              '[data-status="warning"] &': '{colors.warning.border}',
+              '[data-status="success"] &': '{colors.success.border}',
+            },
           },
-
-          borderColor: {
-            '[data-status="error"] &': {
-              base: '{colors.error.border}',
-              _active: '{colors.error.borderHover}',
-            },
-            '[data-status="warning"] &': {
-              base: '{colors.warning.border}',
-              _active: '{colors.warning.borderHover}',
-            },
-            '[data-status="success"] &': {
-              base: '{colors.success.border}',
-              _active: '{colors.success.borderHover}',
+          _active: {
+            _after: {
+              h: '1.5px',
+              bg: {
+                base: '{colors.primary.hover}',
+                '[data-status="error"] &': '{colors.error.borderHover}',
+                '[data-status="warning"] &': '{colors.warning.borderHover}',
+                '[data-status="success"] &': '{colors.success.borderHover}',
+              },
             },
           },
         },
