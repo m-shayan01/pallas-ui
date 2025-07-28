@@ -7,14 +7,14 @@ export const switchRecipe = defineSlotRecipe({
   base: {
     root: {
       display: 'inline-flex',
-      h: '24px',
-      w: '44px',
+      h: '{sizes.icon.md}',
+      w: '{sizes.icon.xl}',
       flexShrink: 0,
       cursor: 'pointer',
       alignItems: 'center',
       rounded: 'full',
-      border: '2px solid transparent',
-      transition: 'colors',
+      border: '{borders.switch}',
+      // transition: 'colors',
 
       _focusVisible: {
         outline: '2px solid transparent',
@@ -40,8 +40,7 @@ export const switchRecipe = defineSlotRecipe({
     thumb: {
       pointerEvents: 'none',
       display: 'block',
-      h: '5',
-      w: '5',
+      size: '{sizes.5}',
       rounded: 'full',
       bg: 'background',
       shadow: 'sm',

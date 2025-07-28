@@ -23,7 +23,7 @@ export const select = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'space-between',
       rounded: '{radii.md}',
-      border: '1px solid {colors.border}',
+      border: '{borders.input.defaultSm}',
       bg: '{colors.surface.elevated}',
       px: '{spacing.padding.inline.md}',
       py: '{spacing.padding.block.md}',
@@ -38,8 +38,8 @@ export const select = defineSlotRecipe({
       },
       _focus: {
         borderColor: '{colors.primary.hover}',
-        shadow: '0 0 0 2px {colors.primary.bgHover}',
-        outline: '2px solid {colors.primary.bgHover}',
+        shadow: '{shadows.input.default}',
+        outline: '0.8px solid {colors.primary.bgHover}',
         outlineOffset: '2px',
       },
 
@@ -54,7 +54,7 @@ export const select = defineSlotRecipe({
       },
     },
     viewport: {
-      p: '1',
+      p: '{spacing.padding.block.sm}',
 
       '&[data-position=popper]': {
         h: 'var(--radix-select-trigger-height)',
@@ -68,7 +68,7 @@ export const select = defineSlotRecipe({
       minW: '8rem',
       overflow: 'hidden',
       rounded: '{radii.md}',
-      border: '1px solid {colors.border}',
+      border: '{borders.input.defaultSm}',
       bg: '{colors.surface.elevated}',
       color: '{colors.text}',
       shadow: 'md',

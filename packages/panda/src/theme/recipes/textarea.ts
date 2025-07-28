@@ -8,7 +8,7 @@ export const textarea = defineRecipe({
     minH: '80px',
     w: 'full',
     rounded: '{radii.md}',
-    border: '1px solid {colors.border}',
+    border: '{borders.input.default}',
     bg: '{colors.surface.elevated}',
     px: '{spacing.padding.inline.md}',
     py: '{spacing.padding.block.md}',
@@ -16,11 +16,11 @@ export const textarea = defineRecipe({
     focusRingOffsetColor: '{colors.fill.secondary}',
 
     _hover: {
-      borderColor: '{colors.primary.hover}',
+      border: '{borders.input.hover}',
     },
     _focus: {
-      borderColor: '{colors.primary.hover}',
-      shadow: '0 0 0 2px {colors.primary.bgHover}',
+      border: '{borders.input.hover}',
+      shadow: '{shadows.input.default}',
     },
     _placeholder: {
       color: '{colors.text.secondary}',
@@ -29,17 +29,14 @@ export const textarea = defineRecipe({
     _focusVisible: {
       outline: '2px solid transparent',
       outlineOffset: '2px',
-      focusRingWidth: '2',
-      focusRingColor: '{colors.primary.border}',
-      focusRingOffsetWidth: '2',
     },
 
     _disabled: {
       cursor: 'not-allowed',
-      opacity: '0.5',
+      // opacity: '0.5',
       color: '{colors.text.disabled}',
       bg: '{colors.fill.disabled}',
-      borderColor: '{colors.border.secondary}',
+      border: '{borders.input.disabled}',
     },
   },
 })

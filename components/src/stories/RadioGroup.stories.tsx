@@ -22,7 +22,7 @@ export const Default = () => (
       <Label htmlFor="r2">Comfortable</Label>
     </HStack>
     <HStack gap="2">
-      <RadioGroup.Item value="compact" id="r3" />
+      <RadioGroup.Item value="compact" id="r3" disabled />
       <Label htmlFor="r3">Compact</Label>
     </HStack>
   </RadioGroup.Root>

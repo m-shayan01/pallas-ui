@@ -7,12 +7,12 @@ export const checkbox = defineSlotRecipe({
   base: {
     root: {
       flexShrink: '0',
-      rounded: 'sm',
-      border: '1px solid {colors.border}',
+      rounded: '{radii.sm}',
+      border: '{borders.input.defaultSm}',
       cursor: 'pointer',
       boxShadow: '{shadows.insetMinimal}',
       _hover: {
-        borderColor: '{colors.primary.bgHover}',
+        border: '{borders.input.hover}',
       },
       _focusVisible: {
         outline: '1px solid {colors.primary.bgHover}',
@@ -21,10 +21,10 @@ export const checkbox = defineSlotRecipe({
 
       _disabled: {
         cursor: 'not-allowed',
-        opacity: '0.5',
+        // opacity: '0.5',
         bg: '{colors.fill.disabled}',
         _hover: {
-          borderColor: '{colors.border}',
+          border: '{borders.input.defaultSm}',
         },
       },
       _checked: {

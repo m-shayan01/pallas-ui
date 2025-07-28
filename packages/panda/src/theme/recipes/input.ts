@@ -114,7 +114,7 @@ export const input = defineSlotRecipe({
         textStyle: 'sm',
         lineHeight: '1',
         fontWeight: 'semibold',
-        marginRight: '2',
+        marginRight: '{spacing.layout.internal.xs}',
         transform: 'translateY(-2px)',
       },
 
@@ -157,7 +157,7 @@ export const input = defineSlotRecipe({
       width: '6',
       height: '3',
       rounded: '{radii.sm}',
-      border: '1px solid {colors.border}',
+      border: '{borders.control}',
       bg: '{colors.surface.elevated}',
       color: '{colors.text.secondary}',
       cursor: 'pointer',

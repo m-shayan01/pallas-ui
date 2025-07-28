@@ -12,9 +12,11 @@ export const shadows = defineSemanticTokens.shadows({
   insetMinimal: { value: 'inset 0px 1px 0px 0px rgba(0, 0, 0, 0.04)' },
 
   input: {
-    default: { value: '{shadows.input} {colors.primary.bgHover}' },
-    success: { value: '{shadows.input} {colors.success.bgHover}' },
-    error: { value: '{shadows.input} {colors.error.bgHover}' },
-    warning: { value: '{shadows.input} {colors.warning.bgHover}' },
+    default: { value: '{shadows.2xs} {colors.primary.bgHover}' },
+    success: { value: '{shadows.2xs} {colors.success.bgHover}' },
+    error: { value: '{shadows.2xs} {colors.error.bgHover}' },
+    warning: { value: '{shadows.2xs} {colors.warning.bgHover}' },
   },
+
+  sliderThumb: { value: '{shadows.xxl}' },
 })

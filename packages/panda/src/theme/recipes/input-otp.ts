@@ -6,7 +6,7 @@ export const inputOTP = defineSlotRecipe({
   slots: ['root', 'group', 'slot', 'separator'],
   base: {
     root: {
-      '&[data-disabled="true"] ': {
+      _disabled: {
         '& input[data-input-otp="true"]': {
           cursor: 'not-allowed',
         },
@@ -15,12 +15,12 @@ export const inputOTP = defineSlotRecipe({
       // to show multiple groups in a single line
       '& [data-input-otp-container="true"]': {
         display: 'flex',
-        gap: '{spacing.2}',
+        gap: '{spacing.gap.inline.xs}',
       },
     },
     group: {
       display: 'flex',
-      gap: '{spacing.2}',
+      gap: '{spacing.gap.inline.xs}',
     },
     slot: {
       px: '{spacing.padding.inline.md}',
@@ -42,7 +42,7 @@ export const inputOTP = defineSlotRecipe({
       '& [data-slot="input-otp-caret"]': {
         animationStyle: 'caretBlink',
         textStyle: 'xl',
-        pb: '{spacing.1}',
+        pb: '{spacing.pading.block.sm}',
       },
 
       '[data-disabled="true"] &': {
@@ -89,7 +89,7 @@ export const inputOTP = defineSlotRecipe({
       },
       underlined: {
         group: {
-          gap: '{spacing.0}',
+          gap: '0',
         },
         slot: {
           _after: {
@@ -98,7 +98,7 @@ export const inputOTP = defineSlotRecipe({
             left: 0,
             right: 0,
             bottom: 0,
-            h: '0.8px',
+            h: '{sizes.underlineHeight.default}',
             bg: {
               base: '{colors.border}',
               '[data-status="error"] &': '{colors.error.border}',
@@ -108,7 +108,7 @@ export const inputOTP = defineSlotRecipe({
           },
           _active: {
             _after: {
-              h: '1.5px',
+              h: '{sizes.underlineHeight.active}',
               bg: {
                 base: '{colors.primary.hover}',
                 '[data-status="error"] &': '{colors.error.borderHover}',

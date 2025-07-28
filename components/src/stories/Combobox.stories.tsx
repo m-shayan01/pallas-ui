@@ -261,6 +261,37 @@ export const Sizes: Story = {
   },
 }
 
+export const ValidationStates: Story = {
+  render: (_args) => {
+    const [openErr, setOpenErr] = useState(false)
+    const [openSuccess, setOpenSuccess] = useState(false)
+    const [openWarn, setOpenWarn] = useState(false)
+    return (
+      <Stack>
+        <h3>Combobox Validation states</h3>
+        <Stack>
+          <Label>Error</Label>
+          <Combobox.Root data-status="error" open={openErr} onOpenChange={setOpenErr}>
+            <ComboboxInner setOpen={setOpenErr} />
+          </Combobox.Root>
+        </Stack>
+        <Stack>
+          <Label>Success</Label>
+          <Combobox.Root data-status="success" open={openSuccess} onOpenChange={setOpenSuccess}>
+            <ComboboxInner setOpen={setOpenSuccess} />
+          </Combobox.Root>
+        </Stack>
+        <Stack>
+          <Label>Warning</Label>
+          <Combobox.Root data-status="warning" open={openWarn} onOpenChange={setOpenWarn}>
+            <ComboboxInner setOpen={setOpenWarn} />
+          </Combobox.Root>
+        </Stack>
+      </Stack>
+    )
+  },
+}
+
 export const Multiple: Story = {
   render: (_args) => {
     const [open, setOpen] = useState(false)

@@ -12,6 +12,10 @@ export const slider = defineSlotRecipe({
       touchAction: 'none',
       userSelect: 'none',
       alignItems: 'center',
+      _disabled: {
+        // pointerEvents: 'none',
+        cursor: 'not-allowed',
+      },
     },
     track: {
       position: 'relative',
@@ -33,24 +37,34 @@ export const slider = defineSlotRecipe({
       w: '{sizes.icon.sm}',
       cursor: 'pointer',
       rounded: 'full',
-      borderWidth: '2px',
-      borderStyle: 'solid',
-      borderColor: '{colors.primary}',
+      border: '{borders.sliderThumb.default}',
       bg: '{colors.surface.elevated}',
       focusRingOffsetColor: '{colors.surface.elevated}',
-      transition: 'colors',
+      // transition: 'colors',
+
+      _hover: {
+        border: '{borders.sliderThumb.hover}',
+        shadow: '{shadows.sliderThumb}',
+      },
 
       _focusVisible: {
         outline: '2px solid transparent',
         outlineOffset: '2px',
-        focusRingWidth: '2',
-        focusRingColor: 'ring',
-        focusRingOffsetWidth: '2',
+        border: '{borders.sliderThumb.hover}',
+        shadow: '{shadows.sliderThumb}',
+        // focusRingWidth: '2',
+        // focusRingColor: 'ring',
+        // focusRingOffsetWidth: '2',
       },
 
       _disabled: {
-        pointerEvents: 'none',
-        opacity: '0.5',
+        cursor: 'not-allowed',
+        border: '{borders.input.default}',
+        _hover: {
+          shadow: 'none',
+          border: '{borders.input.default}',
+        },
+        // opacity: '0.5',
       },
     },
   },

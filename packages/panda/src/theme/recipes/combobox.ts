@@ -7,16 +7,16 @@ export const combobox = defineSlotRecipe({
   base: {
     root: {},
     trigger: {
-      border: '1px solid {colors.border}',
+      border: '{borders.input.deafultSm}',
 
       _focus: {
-        borderColor: '{colors.primary.hover} !important',
-        shadow: '0 0 0 2px {colors.primary.bgHover}',
-        outline: '2px solid {colors.primary.bgHover}',
+        border: '{borders.input.hover} !important',
+        shadow: '{shadows.input.default}',
+        outline: '0.8px solid {colors.primary.bgHover}',
         outlineOffset: '2px',
       },
       _hover: {
-        borderColor: '{colors.primary.hover}',
+        border: '{borders.input.hover}',
         color: '{colors.text} !important',
       },
       _disabled: {
@@ -49,8 +49,8 @@ export const combobox = defineSlotRecipe({
         },
         '&:is(:focus, [data-focus])': {
           borderColor: '{colors.error.borderHover} !important',
-          shadow: '0 0 0 2px {colors.error.bgHover}',
-          outline: '2px solid {colors.error.bgHover}',
+          shadow: '{shadows.input.error}',
+          outline: '0.8px solid {colors.error.bgHover}',
         },
       },
 
@@ -61,8 +61,8 @@ export const combobox = defineSlotRecipe({
         },
         '&:is(:focus, [data-focus])': {
           borderColor: '{colors.success.borderHover} !important',
-          shadow: '0 0 0 2px {colors.success.bgHover}',
-          outline: '2px solid {colors.success.bgHover}',
+          shadow: '{shadows.input.success}',
+          outline: '0.8px solid {colors.success.bgHover}',
         },
       },
 
@@ -73,8 +73,8 @@ export const combobox = defineSlotRecipe({
         },
         '&:is(:focus, [data-focus])': {
           borderColor: '{colors.warning.borderHover} !important',
-          shadow: '0 0 0 2px {colors.warning.bgHover}',
-          outline: '2px solid {colors.warning.bgHover}',
+          shadow: '{shadows.input.warning}',
+          outline: '0.8px solid {colors.warning.bgHover}',
         },
       },
     },

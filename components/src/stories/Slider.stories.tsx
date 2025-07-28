@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { Stack } from '@styled-system/jsx'
 import { Slider } from '../ui/slider'
 
 const meta: Meta<typeof Slider> = {
@@ -19,3 +20,9 @@ export const Default: Story = {
     step: 1,
   },
 }
+
+export const Disabled = () => (
+  <Stack>
+    <Slider max={100} min={0} step={1} disabled />
+  </Stack>
+)
