@@ -7,18 +7,7 @@ export const combobox = defineSlotRecipe({
   base: {
     root: {},
     trigger: {
-      border: '{borders.input.deafultSm}',
-
-      _focus: {
-        border: '{borders.input.hover} !important',
-        shadow: '{shadows.input.default}',
-        outline: '0.8px solid {colors.primary.bgHover}',
-        outlineOffset: '2px',
-      },
-      _hover: {
-        border: '{borders.input.hover}',
-        color: '{colors.text} !important',
-      },
+      shadow: 'none',
       _disabled: {
         cursor: 'not-allowed',
         color: '{colors.text.disabled}',
@@ -40,42 +29,6 @@ export const combobox = defineSlotRecipe({
       },
       '& svg': {
         color: '{colors.text.tertiary}',
-      },
-
-      '&[data-status=error]': {
-        borderColor: '{colors.error.border} !important',
-        '&:is(:hover, [data-hover])': {
-          borderColor: '{colors.error.borderHover}',
-        },
-        '&:is(:focus, [data-focus])': {
-          borderColor: '{colors.error.borderHover} !important',
-          shadow: '{shadows.input.error}',
-          outline: '0.8px solid {colors.error.bgHover}',
-        },
-      },
-
-      '&[data-status=success]': {
-        borderColor: '{colors.success.border} !important',
-        '&:is(:hover, [data-hover])': {
-          borderColor: '{colors.success.borderHover}',
-        },
-        '&:is(:focus, [data-focus])': {
-          borderColor: '{colors.success.borderHover} !important',
-          shadow: '{shadows.input.success}',
-          outline: '0.8px solid {colors.success.bgHover}',
-        },
-      },
-
-      '&[data-status=warning]': {
-        borderColor: '{colors.warning.border} !important',
-        '&:is(:hover, [data-hover])': {
-          borderColor: '{colors.warning.borderHover}',
-        },
-        '&:is(:focus, [data-focus])': {
-          borderColor: '{colors.warning.borderHover} !important',
-          shadow: '{shadows.input.warning}',
-          outline: '0.8px solid {colors.warning.bgHover}',
-        },
       },
     },
     content: {},
@@ -121,6 +74,155 @@ export const combobox = defineSlotRecipe({
     },
   },
   variants: {
+    styling: {
+      outline: {
+        trigger: {
+          border: '{borders.input.defaultSm}',
+          _hover: {
+            border: '{borders.input.hover}',
+            color: '{colors.text} !important',
+          },
+          _focus: {
+            border: '{borders.input.hover} !important',
+            shadow: '{shadows.input.default}',
+            outline: '0.8px solid {colors.primary.bgHover}',
+            outlineOffset: '2px',
+          },
+
+          '&[data-status=error]': {
+            borderColor: '{colors.error.border} !important',
+            _hover: {
+              borderColor: '{colors.error.borderHover} !important',
+
+              color: '{colors.text} !important',
+            },
+            _focus: {
+              borderColor: '{colors.error.borderHover} !important',
+              shadow: '{shadows.input.error}',
+              outline: '0.8px solid {colors.error.bgHover}',
+            },
+          },
+
+          '&[data-status=success]': {
+            borderColor: '{colors.success.border} !important',
+            _hover: {
+              borderColor: '{colors.success.borderHover} !important',
+            },
+            _focus: {
+              borderColor: '{colors.success.borderHover} !important',
+              shadow: '{shadows.input.success}',
+              outline: '0.8px solid {colors.success.bgHover}',
+            },
+          },
+
+          '&[data-status=warning]': {
+            borderColor: '{colors.warning.border} !important',
+            _hover: {
+              borderColor: '{colors.warning.borderHover} !important',
+            },
+            _focus: {
+              borderColor: '{colors.warning.borderHover} !important',
+              shadow: '{shadows.input.warning}',
+              outline: '0.8px solid {colors.warning.bgHover}',
+            },
+          },
+        },
+      },
+      underlined: {
+        trigger: {
+          borderColor: 'transparent !important',
+          position: 'relative',
+          _after: {
+            content: '""',
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            h: '{sizes.underlineHeight.default}',
+            bg: {
+              base: '{colors.border}',
+              '[data-status="error"]&': '{colors.error.border}',
+              '[data-status="success"]&': '{colors.success.border}',
+              '[data-status="warning"]&': '{colors.warning.border}',
+            },
+          },
+          _hover: {
+            _after: {
+              bg: {
+                base: '{colors.primary.hover}',
+                '[data-status="error"]&': '{colors.error.hover}',
+                '[data-status="success"]&': '{colors.success.hover}',
+                '[data-status="warning"]&': '{colors.warning.hover}',
+              },
+            },
+          },
+          _focus: {
+            outline: '0.8px solid transparent',
+            _after: {
+              h: '{sizes.underlineHeight.active}',
+              bg: {
+                base: '{colors.primary.hover}',
+                '[data-status="error"]&': '{colors.error.hover}',
+                '[data-status="success"]&': '{colors.success.hover}',
+                '[data-status="warning"]&': '{colors.warning.hover}',
+              },
+            },
+          },
+        },
+      },
+      filled: {
+        trigger: {
+          bg: '{colors.fill.secondary} !important',
+          borderColor: 'transparent !important',
+
+          _hover: {
+            bg: '{colors.fill} !important',
+            '& span': {
+              color: {
+                '[data-status="error"]&': '{colors.error.text}',
+                ' [data-status="warning"]&': '{colors.warning.text}',
+                ' [data-status="success"]&': '{colors.success.text}',
+              },
+            },
+          },
+          _focus: {
+            bg: '{colors.surface.elevated} !important',
+            border: '{borders.input.hover} !important',
+            outline: '0.8px solid transparent',
+          },
+
+          '&[data-status="success"]': {
+            bg: '{colors.success.bg} !important',
+            _hover: { bg: '{colors.success.bgHover} !important' },
+            _focus: { border: '{borders.input.success} !important' },
+          },
+
+          '&[data-status="error"]': {
+            bg: '{colors.error.bg} !important',
+            _hover: { bg: '{colors.error.bgHover} !important' },
+            _focus: { border: '{borders.input.error} !important' },
+          },
+
+          '&[data-status="warning"]': {
+            bg: '{colors.warning.bg} !important',
+            _hover: { bg: '{colors.warning.bgHover} !important' },
+            _focus: { border: '{borders.input.warning} !important' },
+          },
+        },
+      },
+      borderless: {
+        trigger: {
+          borderColor: 'transparent !important',
+          '& span': {
+            color: {
+              '[data-status="error"]&': '{colors.error.text}',
+              ' [data-status="warning"]&': '{colors.warning.text}',
+              ' [data-status="success"]&': '{colors.success.text}',
+            },
+          },
+        },
+      },
+    },
     size: {
       sm: {
         trigger: {
@@ -161,6 +263,7 @@ export const combobox = defineSlotRecipe({
     },
   },
   defaultVariants: {
+    styling: 'outline',
     size: 'md',
   },
   staticCss: [{ size: ['*'] }],

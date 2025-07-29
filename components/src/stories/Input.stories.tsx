@@ -132,3 +132,70 @@ export const InputDayPicker = () => (
     </Stack>
   </Stack>
 )
+
+export const StylingVariants = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Outline</Label>
+      <Input size="md">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md">
+        <Input.Text status="warning" placeholder="Warning" />
+      </Input>
+    </Stack>
+
+    <Stack align="flex-start" gap="1">
+      <Label>Underlined</Label>
+      <Input size="md" styling="underlined">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md" styling="underlined">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md" styling="underlined">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md" styling="underlined">
+        <Input.Text status="warning" placeholder="Warning" />
+      </Input>
+    </Stack>
+
+    <Stack align="flex-start" gap="1">
+      <Label>Filled</Label>
+      <Input size="md" styling="filled">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md" styling="filled">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md" styling="filled">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md" styling="filled">
+        <Input.Text status="warning" placeholder="Warning" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Borderless</Label>
+      <Input size="md" styling="borderless">
+        <Input.Text placeholder="Enter" />
+      </Input>
+      <Input size="md" styling="borderless">
+        <Input.Text status="error" placeholder="Error" />
+      </Input>
+      <Input size="md" styling="borderless">
+        <Input.Text status="success" placeholder="Success" />
+      </Input>
+      <Input size="md" styling="borderless">
+        <Input.Text status="warning" placeholder="Warning" />
+      </Input>
+    </Stack>
+  </Stack>
+)

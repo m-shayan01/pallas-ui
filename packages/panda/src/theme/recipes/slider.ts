@@ -48,8 +48,8 @@ export const slider = defineSlotRecipe({
       },
 
       _focusVisible: {
-        outline: '2px solid transparent',
-        outlineOffset: '2px',
+        outline: 'none',
+        // outlineOffset: '2px',
         border: '{borders.sliderThumb.hover}',
         shadow: '{shadows.sliderThumb}',
         // focusRingWidth: '2',

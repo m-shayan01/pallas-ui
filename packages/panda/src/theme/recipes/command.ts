@@ -117,7 +117,7 @@ export const command = defineSlotRecipe({
         root: {
           "& [data-slot='command-input-icon']": {
             ml: '{spacing.padding.inline.xs}',
-            size: '{sizes.icon.xl} !important',
+            size: '{sizes.icon.md} !important',
           },
           '& [cmdk-input]': {
             height: '{sizes.12}',

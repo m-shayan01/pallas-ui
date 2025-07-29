@@ -20,8 +20,8 @@ export const Variants = () => (
       <Textarea id="message-1" placeholder="Type Message 1 here" />
     </Stack>
     <Stack align="flex-start" gap="2">
-      <Label htmlFor="message-2">Message 2</Label>
-      <Textarea id="message-2" placeholder="Type Message 2 here" disabled />
+      <Label htmlFor="message-2">Disabled</Label>
+      <Textarea id="message-2" placeholder="This textarea is disabled" disabled />
     </Stack>
   </Grid>
 )

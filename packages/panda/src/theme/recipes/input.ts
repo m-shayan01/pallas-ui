@@ -22,51 +22,6 @@ export const input = defineSlotRecipe({
       color: '{colors.text.secondary}',
       textStyle: 'sm',
 
-      border: '{borders.input.default}',
-      _inputHover: {
-        border: '{borders.input.hover}',
-      },
-      _inputFocus: {
-        border: '{borders.input.hover}',
-        shadow: '{shadows.input.default}',
-      },
-
-      // Success state
-      _inputSuccess: {
-        border: '{borders.input.success}',
-      },
-      _inputSuccessHover: {
-        border: '{borders.input.successHover}',
-      },
-      _inputSuccessFocus: {
-        border: '{borders.input.successHover}',
-        shadow: '{shadows.input.success}',
-      },
-
-      // Error state
-      _inputError: {
-        border: '{borders.input.error}',
-      },
-      _inputErrorHover: {
-        border: '{borders.input.errorHover}',
-      },
-      _inputErrorFocus: {
-        border: '{borders.input.errorHover}',
-        shadow: '{shadows.input.error}',
-      },
-
-      // Warning state
-      _inputWarning: {
-        border: '{borders.input.warning}',
-      },
-      _inputWarningHover: {
-        border: '{borders.input.warningHover}',
-      },
-      _inputWarningFocus: {
-        border: '{borders.input.warningHover}',
-        shadow: '{shadows.input.warning}',
-      },
-
       // Disabled state
       _inputDisabled: {
         cursor: 'not-allowed',
@@ -174,6 +129,157 @@ export const input = defineSlotRecipe({
     },
   },
   variants: {
+    styling: {
+      outline: {
+        root: {
+          border: '{borders.input.default}',
+          _inputHover: {
+            border: '{borders.input.hover}',
+          },
+          _inputFocus: {
+            border: '{borders.input.hover}',
+            shadow: '{shadows.input.default}',
+          },
+
+          // Success state
+          _inputSuccess: {
+            border: '{borders.input.success}',
+          },
+          _inputSuccessHover: {
+            border: '{borders.input.successHover}',
+          },
+          _inputSuccessFocus: {
+            border: '{borders.input.successHover}',
+            shadow: '{shadows.input.success}',
+          },
+
+          // Error state
+          _inputError: {
+            border: '{borders.input.error}',
+          },
+          _inputErrorHover: {
+            border: '{borders.input.errorHover}',
+          },
+          _inputErrorFocus: {
+            border: '{borders.input.errorHover}',
+            shadow: '{shadows.input.error}',
+          },
+
+          // Warning state
+          _inputWarning: {
+            border: '{borders.input.warning}',
+          },
+          _inputWarningHover: {
+            border: '{borders.input.warningHover}',
+          },
+          _inputWarningFocus: {
+            border: '{borders.input.warningHover}',
+            shadow: '{shadows.input.warning}',
+          },
+        },
+      },
+      underlined: {
+        root: {
+          borderBottom: '{borders.input.default}',
+          rounded: '0',
+          _inputHover: {
+            borderBottom: '{borders.input.hover}',
+          },
+          _inputFocus: {
+            borderBottom: '{borders.input.hover}',
+          },
+
+          // Success state
+          _inputSuccess: {
+            borderBottom: '{borders.input.success}',
+          },
+          _inputSuccessHover: {
+            borderBottom: '{borders.input.successHover}',
+          },
+          _inputSuccessFocus: {
+            borderBottom: '{borders.input.successHover}',
+          },
+
+          // Error state
+          _inputError: {
+            borderBottom: '{borders.input.error}',
+          },
+          _inputErrorHover: {
+            borderBottom: '{borders.input.errorHover}',
+          },
+          _inputErrorFocus: {
+            borderBottom: '{borders.input.errorHover}',
+          },
+
+          // Warning state
+          _inputWarning: {
+            borderBottom: '{borders.input.warning}',
+          },
+          _inputWarningHover: {
+            borderBottom: '{borders.input.warningHover}',
+          },
+          _inputWarningFocus: {
+            borderBottom: '{borders.input.warningHover}',
+          },
+        },
+      },
+      filled: {
+        root: {
+          bg: '{colors.fill.secondary}',
+          border: '{borders.input.default}',
+          borderColor: 'transparent',
+          _inputHover: {
+            bg: '{colors.fill}',
+          },
+          _inputFocus: {
+            bg: '{colors.surface.elevated} !important',
+            border: '{borders.input.hover}',
+          },
+
+          // Success state
+          _inputSuccess: {
+            bg: '{colors.success.bg}',
+          },
+          _inputSuccessHover: {
+            bg: '{colors.success.bgHover}',
+          },
+          _inputSuccessFocus: {
+            border: '{borders.input.success}',
+          },
+
+          // Error state
+          _inputError: {
+            bg: '{colors.error.bg}',
+          },
+          _inputErrorHover: {
+            bg: '{colors.error.bgHover}',
+          },
+          _inputErrorFocus: {
+            border: '{borders.input.error}',
+          },
+
+          // Warning state
+          _inputWarning: {
+            bg: '{colors.warning.bg}',
+          },
+          _inputWarningHover: {
+            bg: '{colors.warning.bgHover}',
+          },
+          _inputWarningFocus: {
+            border: '{borders.input.warning}',
+          },
+        },
+      },
+      borderless: {
+        root: {
+          color: {
+            _inputSuccess: '{colors.success.text}',
+            _inputError: '{colors.error.text}',
+            _inputWarning: '{colors.warning.text}',
+          },
+        },
+      },
+    },
     size: {
       sm: {
         root: {
@@ -205,7 +311,7 @@ export const input = defineSlotRecipe({
           py: '0',
         },
         field: {
-          textStyle: 'sm',
+          textStyle: 'md',
           py: '{spacing.padding.block.md}',
         },
         control: {
@@ -227,7 +333,7 @@ export const input = defineSlotRecipe({
           py: '0',
         },
         field: {
-          textStyle: 'md',
+          textStyle: 'lg',
           py: '{spacing.padding.block.lg}',
         },
         control: {
@@ -261,6 +367,7 @@ export const input = defineSlotRecipe({
     },
   },
   defaultVariants: {
+    styling: 'outline',
     size: 'md',
     shape: 'default',
   },

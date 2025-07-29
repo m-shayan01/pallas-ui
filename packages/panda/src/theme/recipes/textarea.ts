@@ -31,12 +31,15 @@ export const textarea = defineRecipe({
       outlineOffset: '2px',
     },
 
-    _disabled: {
+    '&:disabled': {
       cursor: 'not-allowed',
       // opacity: '0.5',
       color: '{colors.text.disabled}',
       bg: '{colors.fill.disabled}',
       border: '{borders.input.disabled}',
+      _hover: {
+        border: '{borders.input.disabled}',
+      },
     },
   },
 })
