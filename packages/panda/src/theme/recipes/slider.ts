@@ -40,7 +40,7 @@ export const slider = defineSlotRecipe({
       border: '{borders.sliderThumb.default}',
       bg: '{colors.surface.elevated}',
       focusRingOffsetColor: '{colors.surface.elevated}',
-      // transition: 'colors',
+      transition: 'common',
 
       _hover: {
         border: '{borders.sliderThumb.hover}',

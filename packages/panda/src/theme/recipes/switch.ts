@@ -14,7 +14,7 @@ export const switchRecipe = defineSlotRecipe({
       alignItems: 'center',
       rounded: 'full',
       border: '{borders.switch}',
-      // transition: 'colors',
+      transition: 'common',
 
       _focusVisible: {
         outline: '2px solid transparent',
@@ -31,10 +31,16 @@ export const switchRecipe = defineSlotRecipe({
 
       _checked: {
         bg: '{colors.primary}',
+        _hover: {
+          bg: '{colors.primary.hover}',
+        },
       },
 
       _unchecked: {
-        bg: '{colors.fill.secondary}',
+        bg: '{colors.fill}',
+        _hover: {
+          bg: 'rgba(0, 0, 0, 0.35)',
+        },
       },
     },
     thumb: {

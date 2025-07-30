@@ -7,13 +7,10 @@ export const radioGroup = defineSlotRecipe({
   base: {
     root: {
       display: 'grid',
-      gap: '{spacing.gap.inline.sm}',
     },
     item: {
       aspectRatio: 'square',
-      h: '{sizes.selectionControl.md}',
-      w: '{sizes.selectionControl.md}',
-      rounded: 'full',
+      rounded: '{radii.full}',
       border: '{borders.input.defaultSm}',
       color: '{colors.text}',
       cursor: 'pointer',
@@ -22,8 +19,7 @@ export const radioGroup = defineSlotRecipe({
         border: '{borders.input.hover}',
       },
       _focusVisible: {
-        outline: '1px solid {colors.primary.bgHover}',
-        outlineOffset: '2px',
+        outline: 'none',
       },
 
       _disabled: {
@@ -35,6 +31,8 @@ export const radioGroup = defineSlotRecipe({
           border: '{borders.input.disabledSm}',
         },
       },
+
+      transition: 'common',
     },
     indicator: {
       display: 'flex',
@@ -43,12 +41,13 @@ export const radioGroup = defineSlotRecipe({
       width: '100%',
       height: '100%',
       _after: {
+        w: '60%',
+        h: '60%',
         content: '""',
         display: 'block',
-        w: '57%',
-        h: '57%',
-        borderRadius: '50%',
+        rounded: '{radii.full}',
         backgroundColor: '{colors.primary}',
+        animationStyle: 'fadeInScale',
       },
     },
     icon: {
@@ -89,5 +88,8 @@ export const radioGroup = defineSlotRecipe({
         },
       },
     },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 })

@@ -14,17 +14,16 @@ export const input = defineSlotRecipe({
       '&:has(input[type=number])': {
         appearance: 'textfield',
       },
+      transition: 'common',
 
       // Base styles
       focusRingOffsetColor: '{colors.fill.secondary}',
-      rounded: '{radii.md}',
       bg: '{colors.surface.elevated}',
       color: '{colors.text.secondary}',
-      textStyle: 'sm',
 
       // Disabled state
       _inputDisabled: {
-        cursor: 'not-allowed',
+        cursor: 'not-allowed !important',
         opacity: '0.5',
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled}',
@@ -88,7 +87,7 @@ export const input = defineSlotRecipe({
         },
 
       _disabled: {
-        cursor: 'not-allowed',
+        cursor: 'not-allowed !important',
       },
     },
     charCount: {
@@ -235,6 +234,7 @@ export const input = defineSlotRecipe({
             bg: '{colors.surface.elevated} !important',
             border: '{borders.input.hover}',
           },
+          transition: 'common',
 
           // Success state
           _inputSuccess: {
@@ -286,7 +286,7 @@ export const input = defineSlotRecipe({
           h: '{sizes.controlHeight.sm}',
           pl: '{spacing.padding.inline.sm}',
           pr: '{spacing.padding.inline.sm}',
-          py: '0',
+          rounded: '{radii.sm}',
         },
         field: {
           textStyle: 'sm',
@@ -308,7 +308,7 @@ export const input = defineSlotRecipe({
           h: '{sizes.controlHeight.md}',
           pl: '{spacing.padding.inline.md}',
           pr: '{spacing.padding.inline.md}',
-          py: '0',
+          rounded: '{radii.md}',
         },
         field: {
           textStyle: 'md',
@@ -330,7 +330,7 @@ export const input = defineSlotRecipe({
           h: '{sizes.controlHeight.lg}',
           pl: '{spacing.padding.inline.lg}',
           pr: '{spacing.padding.inline.lg}',
-          py: '0',
+          rounded: '{radii.lg}',
         },
         field: {
           textStyle: 'lg',
@@ -348,18 +348,23 @@ export const input = defineSlotRecipe({
         },
       },
     },
-    shape: {
-      default: {
+    radii: {
+      sm: {
+        root: {
+          rounded: '{radii.sm}',
+        },
+      },
+      md: {
         root: {
           rounded: '{radii.md}',
         },
       },
-      rounded: {
+      lg: {
         root: {
-          rounded: '{radii.4xl}',
+          rounded: '{radii.lg}',
         },
       },
-      circle: {
+      full: {
         root: {
           rounded: '{radii.full}',
         },
@@ -369,6 +374,6 @@ export const input = defineSlotRecipe({
   defaultVariants: {
     styling: 'outline',
     size: 'md',
-    shape: 'default',
+    radii: 'md',
   },
 })

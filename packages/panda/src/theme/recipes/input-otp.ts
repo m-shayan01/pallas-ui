@@ -6,7 +6,7 @@ export const inputOTP = defineSlotRecipe({
   slots: ['root', 'group', 'slot', 'separator'],
   base: {
     root: {
-      _disabled: {
+      '&[data-disabled="true"]': {
         '& input[data-input-otp="true"]': {
           cursor: 'not-allowed',
         },
@@ -33,7 +33,6 @@ export const inputOTP = defineSlotRecipe({
 
       bg: '{colors.surface.elevated}',
       color: '{colors.text.secondary}',
-      rounded: '{radii.md}',
 
       '& [data-slot="input-otp-placeholder"]': {
         opacity: 0.2,
@@ -50,6 +49,8 @@ export const inputOTP = defineSlotRecipe({
         bg: '{colors.fill.disabled} !important',
         border: '{borders.input.disabled}',
       },
+
+      transition: 'common',
     },
     separator: {
       py: '{spacing.padding.block.sm}',
@@ -99,6 +100,8 @@ export const inputOTP = defineSlotRecipe({
             right: 0,
             bottom: 0,
             h: '{sizes.underlineHeight.default}',
+            transition: 'common',
+
             bg: {
               base: '{colors.border}',
               '[data-status="error"] &': '{colors.error.border}',
@@ -191,8 +194,23 @@ export const inputOTP = defineSlotRecipe({
         },
       },
     },
-    shape: {
-      rounded: {
+    radii: {
+      sm: {
+        slot: {
+          rounded: '{radii.sm}',
+        },
+      },
+      md: {
+        slot: {
+          rounded: '{radii.md}',
+        },
+      },
+      lg: {
+        slot: {
+          rounded: '{radii.lg}',
+        },
+      },
+      full: {
         slot: {
           rounded: '{radii.full}',
         },
@@ -202,5 +220,6 @@ export const inputOTP = defineSlotRecipe({
   defaultVariants: {
     styling: 'outline',
     slotSize: 'md',
+    radii: 'md',
   },
 })

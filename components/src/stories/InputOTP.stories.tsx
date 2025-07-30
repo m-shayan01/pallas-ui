@@ -25,10 +25,10 @@ export const Default: Story = {
       control: 'inline-radio',
       options: ['sm', 'md', 'lg'],
     },
-    shape: {
+    radii: {
       description: 'Shape of Slots',
       control: 'inline-check',
-      options: ['rounded'],
+      options: ['sm', 'md', 'lg', 'full'],
     },
     maxLength: {
       description: 'Number of input slots',
@@ -61,6 +61,7 @@ export const Default: Story = {
   args: {
     styling: 'outline',
     slotSize: 'md',
+    radii: 'md',
     maxLength: 6,
     pattern: '^[a-zA-Z0-9]*$',
     dataStatus: 'none',
@@ -76,7 +77,7 @@ export const Default: Story = {
             pattern={props['pattern']}
             styling={props['styling']}
             slotSize={props['slotSize']}
-            shape={props['shape']}
+            radii={props['radii']}
             dataStatus={props['dataStatus']}
             disabled={props['disabled']}
             placeholder={props['placeholder']}
@@ -197,12 +198,12 @@ export const SizeVariants = () => {
   )
 }
 
-export const ShapeVariants = () => {
+export const RadiiVariants = () => {
   return (
     <Stack align="flex-start" gap="6">
       <Stack align="flex-start" gap="1">
-        <Label>Default</Label>
-        <InputOTP.Root maxLength={maxLength}>
+        <Label>Small</Label>
+        <InputOTP.Root maxLength={maxLength} radii="sm">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />
@@ -211,8 +212,28 @@ export const ShapeVariants = () => {
         </InputOTP.Root>
       </Stack>
       <Stack align="flex-start" gap="1">
-        <Label>Rounded</Label>
-        <InputOTP.Root maxLength={maxLength} shape="rounded">
+        <Label>Medium</Label>
+        <InputOTP.Root maxLength={maxLength} radii="md">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+      <Stack align="flex-start" gap="1">
+        <Label>Large</Label>
+        <InputOTP.Root maxLength={maxLength} radii="lg">
+          <InputOTP.Group>
+            {Array.from({ length: maxLength }).map((_, i) => (
+              <InputOTP.Slot key={i} index={i} />
+            ))}
+          </InputOTP.Group>
+        </InputOTP.Root>
+      </Stack>
+      <Stack align="flex-start" gap="1">
+        <Label>Full</Label>
+        <InputOTP.Root maxLength={maxLength} radii="full">
           <InputOTP.Group>
             {Array.from({ length: maxLength }).map((_, i) => (
               <InputOTP.Slot key={i} index={i} />

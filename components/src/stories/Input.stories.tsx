@@ -94,15 +94,37 @@ export const InputSizes = () => (
   </Stack>
 )
 
-export const InputStyles = () => (
+export const InputBorderRadii = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
-      <Label>Rounded Input</Label>
-      <Input size="md" shape="rounded">
-        <Input.Text placeholder="Rounded input" />
+      <Label>Small</Label>
+      <Input size="md" radii="sm">
+        <Input.Text placeholder="Enter" />
       </Input>
     </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Medium</Label>
+      <Input size="md" radii="md">
+        <Input.Text placeholder="Enter" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Large</Label>
+      <Input size="md" radii="lg">
+        <Input.Text placeholder="Enter" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Full</Label>
+      <Input size="md" radii="full">
+        <Input.Text placeholder="Enter" />
+      </Input>
+    </Stack>
+  </Stack>
+)
 
+export const InputStyles = () => (
+  <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">
       <Label>With Icon Prefix</Label>
       <Input size="md">

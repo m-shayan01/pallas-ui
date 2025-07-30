@@ -8,14 +8,17 @@ export const combobox = defineSlotRecipe({
     root: {},
     trigger: {
       shadow: 'none',
-      _disabled: {
+      '[disabled]&': {
         cursor: 'not-allowed',
         color: '{colors.text.disabled}',
-        bg: '{colors.fill.disabled}',
+        bg: '{colors.fill.disabled} !important',
         borderColor: '{colors.border}',
         _hover: {
           borderColor: '{colors.border} !important',
         },
+      },
+      _focus: {
+        outline: 'none',
       },
       justifyContent: 'start',
       '& span': {
@@ -30,8 +33,13 @@ export const combobox = defineSlotRecipe({
       '& svg': {
         color: '{colors.text.tertiary}',
       },
+      px: '{spacing.padding.inline.md} !important',
+      py: '{spacing.padding.block.md} !important',
+      transition: 'common',
     },
-    content: {},
+    content: {
+      animationStyle: 'slideFadeIn',
+    },
     input: {},
     group: {},
     item: {
@@ -44,8 +52,8 @@ export const combobox = defineSlotRecipe({
       py: '{spacing.padding.block.md}',
       pl: '{spacing.gap.component.lg}',
       pr: '{spacing.gap.inline.sm}',
-      textStyle: 'sm',
-      outline: '2px solid transparent',
+      outline: 'none',
+      transition: 'common',
 
       _focus: {
         bg: '{colors.primary.bg}',
@@ -85,8 +93,6 @@ export const combobox = defineSlotRecipe({
           _focus: {
             border: '{borders.input.hover} !important',
             shadow: '{shadows.input.default}',
-            outline: '0.8px solid {colors.primary.bgHover}',
-            outlineOffset: '2px',
           },
 
           '&[data-status=error]': {
@@ -99,7 +105,6 @@ export const combobox = defineSlotRecipe({
             _focus: {
               borderColor: '{colors.error.borderHover} !important',
               shadow: '{shadows.input.error}',
-              outline: '0.8px solid {colors.error.bgHover}',
             },
           },
 
@@ -111,7 +116,6 @@ export const combobox = defineSlotRecipe({
             _focus: {
               borderColor: '{colors.success.borderHover} !important',
               shadow: '{shadows.input.success}',
-              outline: '0.8px solid {colors.success.bgHover}',
             },
           },
 
@@ -123,7 +127,6 @@ export const combobox = defineSlotRecipe({
             _focus: {
               borderColor: '{colors.warning.borderHover} !important',
               shadow: '{shadows.input.warning}',
-              outline: '0.8px solid {colors.warning.bgHover}',
             },
           },
         },
@@ -157,7 +160,6 @@ export const combobox = defineSlotRecipe({
             },
           },
           _focus: {
-            outline: '0.8px solid transparent',
             _after: {
               h: '{sizes.underlineHeight.active}',
               bg: {
@@ -188,7 +190,6 @@ export const combobox = defineSlotRecipe({
           _focus: {
             bg: '{colors.surface.elevated} !important',
             border: '{borders.input.hover} !important',
-            outline: '0.8px solid transparent',
           },
 
           '&[data-status="success"]': {
@@ -231,11 +232,12 @@ export const combobox = defineSlotRecipe({
           '& *': {
             textStyle: 'sm',
           },
-          px: '{spacing.padding.inline.sm} !important',
-          py: '{spacing.padding.block.sm} !important',
+          rounded: '{radii.sm}',
         },
-        item: {
-          py: '{spacing.padding.block.sm}',
+        content: {
+          '& *': {
+            textStyle: 'sm',
+          },
         },
       },
       md: {
@@ -243,10 +245,14 @@ export const combobox = defineSlotRecipe({
           minH: '{sizes.controlHeight.md}',
           maxH: '{sizes.controlHeight.md}',
           '& *': {
-            textStyle: 'sm',
+            textStyle: 'md',
           },
-          px: '{spacing.padding.inline.md} !important',
-          py: '{spacing.padding.block.md} !important',
+          rounded: '{radii.md}',
+        },
+        content: {
+          '& *': {
+            textStyle: 'md',
+          },
         },
       },
       lg: {
@@ -254,10 +260,36 @@ export const combobox = defineSlotRecipe({
           minH: '{sizes.controlHeight.lg}',
           maxH: '{sizes.controlHeight.lg}',
           '& *': {
-            textStyle: 'md',
+            textStyle: 'lg',
           },
-          px: '{spacing.padding.inline.md} !important',
-          py: '{spacing.padding.block.md} !important',
+          rounded: '{radii.lg}',
+        },
+        content: {
+          '& *': {
+            textStyle: 'lg',
+          },
+        },
+      },
+    },
+    radii: {
+      sm: {
+        trigger: {
+          rounded: '{radii.sm}',
+        },
+      },
+      md: {
+        trigger: {
+          rounded: '{radii.md}',
+        },
+      },
+      lg: {
+        trigger: {
+          rounded: '{radii.lg}',
+        },
+      },
+      full: {
+        trigger: {
+          rounded: '{radii.full}',
         },
       },
     },

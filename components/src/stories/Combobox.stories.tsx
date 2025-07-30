@@ -264,7 +264,7 @@ export const Variants: Story = {
             open={openBorderless}
             onOpenChange={setOpenBorderless}
           >
-            <ComboboxInner setOpen={setOpenLg} />
+            <ComboboxInner setOpen={setOpenBorderless} />
           </Combobox.Root>
         </Stack>
       </Stack>
@@ -312,35 +312,58 @@ export const ValidationStates: Story = {
         <h3>Combobox Validation states</h3>
         <Stack>
           <Label>Error</Label>
-          <Combobox.Root
-            data-status="error"
-            styling="underlined"
-            open={openErr}
-            onOpenChange={setOpenErr}
-          >
+          <Combobox.Root data-status="error" open={openErr} onOpenChange={setOpenErr}>
             <ComboboxInner setOpen={setOpenErr} />
           </Combobox.Root>
         </Stack>
         <Stack>
           <Label>Success</Label>
-          <Combobox.Root
-            data-status="success"
-            styling="filled"
-            open={openSuccess}
-            onOpenChange={setOpenSuccess}
-          >
+          <Combobox.Root data-status="success" open={openSuccess} onOpenChange={setOpenSuccess}>
             <ComboboxInner setOpen={setOpenSuccess} />
           </Combobox.Root>
         </Stack>
         <Stack>
           <Label>Warning</Label>
-          <Combobox.Root
-            data-status="warning"
-            styling="outline"
-            open={openWarn}
-            onOpenChange={setOpenWarn}
-          >
+          <Combobox.Root data-status="warning" open={openWarn} onOpenChange={setOpenWarn}>
             <ComboboxInner setOpen={setOpenWarn} />
+          </Combobox.Root>
+        </Stack>
+      </Stack>
+    )
+  },
+}
+
+export const Radii: Story = {
+  render: (_args) => {
+    const [openErr, setOpenErr] = useState(false)
+    const [openSuccess, setOpenSuccess] = useState(false)
+    const [openWarn, setOpenWarn] = useState(false)
+    const [openFull, setOpenFull] = useState(false)
+    return (
+      <Stack>
+        <h3>Combobox border radii</h3>
+        <Stack>
+          <Label>Small</Label>
+          <Combobox.Root radii="sm" open={openErr} onOpenChange={setOpenErr}>
+            <ComboboxInner setOpen={setOpenErr} />
+          </Combobox.Root>
+        </Stack>
+        <Stack>
+          <Label>Medium</Label>
+          <Combobox.Root radii="md" open={openSuccess} onOpenChange={setOpenSuccess}>
+            <ComboboxInner setOpen={setOpenSuccess} />
+          </Combobox.Root>
+        </Stack>
+        <Stack>
+          <Label>Large</Label>
+          <Combobox.Root radii="lg" open={openWarn} onOpenChange={setOpenWarn}>
+            <ComboboxInner setOpen={setOpenWarn} />
+          </Combobox.Root>
+        </Stack>
+        <Stack>
+          <Label>Full</Label>
+          <Combobox.Root radii="full" open={openFull} onOpenChange={setOpenFull}>
+            <ComboboxInner setOpen={setOpenFull} />
           </Combobox.Root>
         </Stack>
       </Stack>
