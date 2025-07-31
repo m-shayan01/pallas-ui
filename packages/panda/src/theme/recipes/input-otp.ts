@@ -46,7 +46,7 @@ export const inputOTP = defineSlotRecipe({
 
       '[data-disabled="true"] &': {
         color: '{colors.text.disabled}',
-        bg: '{colors.fill.disabled} !important',
+        bg: '{colors.fill.disabled}',
         border: '{borders.input.disabled}',
       },
 

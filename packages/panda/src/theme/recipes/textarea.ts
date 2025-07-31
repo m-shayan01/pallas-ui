@@ -21,13 +21,9 @@ export const textarea = defineRecipe({
 
     '&:disabled': {
       cursor: 'not-allowed',
-      // opacity: '0.5',
       color: '{colors.text.disabled}',
       bg: '{colors.fill.disabled}',
-      border: '{borders.input.disabled} !important',
-      _hover: {
-        border: '{borders.input.disabled} !important',
-      },
+      border: '{borders.input.disabled}!',
     },
   },
 
@@ -130,7 +126,7 @@ export const textarea = defineRecipe({
           bg: '{colors.fill}',
         },
         _focus: {
-          bg: '{colors.surface.elevated} !important',
+          bg: '{colors.surface.elevated}!',
           border: '{borders.input.hover}',
         },
 

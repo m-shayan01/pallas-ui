@@ -11,10 +11,10 @@ export const combobox = defineSlotRecipe({
       '[disabled]&': {
         cursor: 'not-allowed',
         color: '{colors.text.disabled}',
-        bg: '{colors.fill.disabled} !important',
+        bg: '{colors.fill.disabled}!',
         borderColor: '{colors.border}',
         _hover: {
-          borderColor: '{colors.border} !important',
+          borderColor: '{colors.border}!',
         },
       },
       _focus: {
@@ -33,8 +33,8 @@ export const combobox = defineSlotRecipe({
       '& svg': {
         color: '{colors.text.tertiary}',
       },
-      px: '{spacing.padding.inline.md} !important',
-      py: '{spacing.padding.block.md} !important',
+      px: '{spacing.padding.inline.md}!',
+      py: '{spacing.padding.block.md}!',
       transition: 'common',
     },
     content: {
@@ -88,44 +88,41 @@ export const combobox = defineSlotRecipe({
           border: '{borders.input.defaultSm}',
           _hover: {
             border: '{borders.input.hover}',
-            color: '{colors.text} !important',
           },
           _focus: {
-            border: '{borders.input.hover} !important',
+            border: '{borders.input.hover}!',
             shadow: '{shadows.input.default}',
           },
 
           '&[data-status=error]': {
-            borderColor: '{colors.error.border} !important',
+            borderColor: '{colors.error.border}!',
             _hover: {
-              borderColor: '{colors.error.borderHover} !important',
-
-              color: '{colors.text} !important',
+              borderColor: '{colors.error.borderHover}!',
             },
             _focus: {
-              borderColor: '{colors.error.borderHover} !important',
+              borderColor: '{colors.error.borderHover}!',
               shadow: '{shadows.input.error}',
             },
           },
 
           '&[data-status=success]': {
-            borderColor: '{colors.success.border} !important',
+            borderColor: '{colors.success.border}!',
             _hover: {
-              borderColor: '{colors.success.borderHover} !important',
+              borderColor: '{colors.success.borderHover}!',
             },
             _focus: {
-              borderColor: '{colors.success.borderHover} !important',
+              borderColor: '{colors.success.borderHover}!',
               shadow: '{shadows.input.success}',
             },
           },
 
           '&[data-status=warning]': {
-            borderColor: '{colors.warning.border} !important',
+            borderColor: '{colors.warning.border}!',
             _hover: {
-              borderColor: '{colors.warning.borderHover} !important',
+              borderColor: '{colors.warning.borderHover}!',
             },
             _focus: {
-              borderColor: '{colors.warning.borderHover} !important',
+              borderColor: '{colors.warning.borderHover}!',
               shadow: '{shadows.input.warning}',
             },
           },
@@ -133,7 +130,7 @@ export const combobox = defineSlotRecipe({
       },
       underlined: {
         trigger: {
-          borderColor: 'transparent !important',
+          borderColor: 'transparent!',
           position: 'relative',
           _after: {
             content: '""',
@@ -174,11 +171,11 @@ export const combobox = defineSlotRecipe({
       },
       filled: {
         trigger: {
-          bg: '{colors.fill.secondary} !important',
-          borderColor: 'transparent !important',
+          bg: '{colors.fill.secondary}!',
+          borderColor: 'transparent!',
 
           _hover: {
-            bg: '{colors.fill} !important',
+            bg: '{colors.fill}!',
             '& span': {
               color: {
                 '[data-status="error"]&': '{colors.error.text}',
@@ -188,32 +185,32 @@ export const combobox = defineSlotRecipe({
             },
           },
           _focus: {
-            bg: '{colors.surface.elevated} !important',
-            border: '{borders.input.hover} !important',
+            bg: '{colors.surface.elevated}!',
+            border: '{borders.input.hover}!',
           },
 
           '&[data-status="success"]': {
-            bg: '{colors.success.bg} !important',
-            _hover: { bg: '{colors.success.bgHover} !important' },
-            _focus: { border: '{borders.input.success} !important' },
+            bg: '{colors.success.bg}!',
+            _hover: { bg: '{colors.success.bgHover}!' },
+            _focus: { border: '{borders.input.success}!' },
           },
 
           '&[data-status="error"]': {
-            bg: '{colors.error.bg} !important',
-            _hover: { bg: '{colors.error.bgHover} !important' },
-            _focus: { border: '{borders.input.error} !important' },
+            bg: '{colors.error.bg} !',
+            _hover: { bg: '{colors.error.bgHover}!' },
+            _focus: { border: '{borders.input.error}!' },
           },
 
           '&[data-status="warning"]': {
-            bg: '{colors.warning.bg} !important',
-            _hover: { bg: '{colors.warning.bgHover} !important' },
-            _focus: { border: '{borders.input.warning} !important' },
+            bg: '{colors.warning.bg}!',
+            _hover: { bg: '{colors.warning.bgHover}!' },
+            _focus: { border: '{borders.input.warning}!' },
           },
         },
       },
       borderless: {
         trigger: {
-          borderColor: 'transparent !important',
+          borderColor: 'transparent!',
           '& span': {
             color: {
               '[data-status="error"]&': '{colors.error.text}',

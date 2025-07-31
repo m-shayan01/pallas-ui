@@ -23,7 +23,7 @@ export const input = defineSlotRecipe({
 
       // Disabled state
       _inputDisabled: {
-        cursor: 'not-allowed !important',
+        cursor: 'not-allowed',
         opacity: '0.5',
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled}',
@@ -86,8 +86,8 @@ export const input = defineSlotRecipe({
           WebkitTextFillColor: '{colors.text.secondary} !important',
         },
 
-      _disabled: {
-        cursor: 'not-allowed !important',
+      '&[disabled]': {
+        cursor: 'not-allowed',
       },
     },
     charCount: {
@@ -231,7 +231,7 @@ export const input = defineSlotRecipe({
             bg: '{colors.fill}',
           },
           _inputFocus: {
-            bg: '{colors.surface.elevated} !important',
+            bg: '{colors.surface.elevated}',
             border: '{borders.input.hover}',
           },
           transition: 'common',
