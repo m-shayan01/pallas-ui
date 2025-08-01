@@ -27,9 +27,11 @@ export const checkbox = defineSlotRecipe({
       },
       _checked: {
         bg: '{colors.primary}',
+        border: '{borders.input.hover}',
       },
       _indeterminate: {
         bg: '{colors.primary}',
+        border: '{borders.input.hover}',
       },
       transition: 'common',
     },
@@ -46,21 +48,18 @@ export const checkbox = defineSlotRecipe({
         root: {
           h: '{sizes.selectionControl.sm}',
           w: '{sizes.selectionControl.sm}',
-          rounded: '{radii.sm}',
         },
       },
       md: {
         root: {
           h: '{sizes.selectionControl.md}',
           w: '{sizes.selectionControl.md}',
-          rounded: '{radii.md}',
         },
       },
       lg: {
         root: {
           h: '{sizes.selectionControl.lg}',
           w: '{sizes.selectionControl.lg}',
-          rounded: '{radii.lg}',
         },
       },
     },

@@ -30,6 +30,53 @@ export const Default = () => (
   </Stack>
 )
 
+export const NumberInputVariants = () => (
+  <Stack align="flex-start" gap="6">
+    <Stack align="flex-start" gap="1">
+      <Label>Basic Number Input</Label>
+      <Input size="md">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Disabled</Label>
+      <Input size="md">
+        <Input.Number placeholder="Enter number" disabled />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Filled</Label>
+      <Input size="md" styling="filled">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Underlined</Label>
+      <Input size="md" styling="underlined">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Borderless</Label>
+      <Input size="md" styling="borderless">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Small</Label>
+      <Input size="sm">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Large and Full radii</Label>
+      <Input size="lg" radii="full">
+        <Input.Number placeholder="Enter number" />
+      </Input>
+    </Stack>
+  </Stack>
+)
+
 export const TextInputVariants = () => (
   <Stack align="flex-start" gap="6">
     <Stack align="flex-start" gap="1">

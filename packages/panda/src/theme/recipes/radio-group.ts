@@ -32,6 +32,10 @@ export const radioGroup = defineSlotRecipe({
         },
       },
 
+      '&[data-state="checked"]': {
+        border: '{borders.input.hover}',
+      },
+
       transition: 'common',
     },
     indicator: {

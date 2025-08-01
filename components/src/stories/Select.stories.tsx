@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { Stack } from '@styled-system/jsx'
 import { Label } from '~/ui/label'
 import Select from '../ui/select'
@@ -120,6 +120,69 @@ export const Sizes = () => (
     </Stack>
   </Stack>
 )
+
+export const Test: StoryObj = {
+  render: (_args) => {
+    return (
+      <>
+        <Stack align="flex-start" gap="1">
+          <Label htmlFor="terms">Small</Label>
+          <Select.Root size="sm">
+            <Select.Trigger>
+              <Select.Value placeholder="Select a fruit" />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.Group>
+                <Select.Label>Fruits</Select.Label>
+                <Select.Item value="apple">Apple</Select.Item>
+                <Select.Item value="banana">Banana</Select.Item>
+                <Select.Item value="blueberry">Blueberry</Select.Item>
+                <Select.Item value="grapes">Grapes</Select.Item>
+                <Select.Item value="pineapple">Pineapple</Select.Item>
+              </Select.Group>
+            </Select.Content>
+          </Select.Root>
+        </Stack>
+        <Stack align="flex-start" gap="1">
+          <Label htmlFor="terms">Medium</Label>
+          <Select.Root size="md">
+            <Select.Trigger>
+              <Select.Value placeholder="Select a fruit" />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.Group>
+                <Select.Label>Fruits</Select.Label>
+                <Select.Item value="apple">Apple</Select.Item>
+                <Select.Item value="banana">Banana</Select.Item>
+                <Select.Item value="blueberry">Blueberry</Select.Item>
+                <Select.Item value="grapes">Grapes</Select.Item>
+                <Select.Item value="pineapple">Pineapple</Select.Item>
+              </Select.Group>
+            </Select.Content>
+          </Select.Root>
+        </Stack>
+        <Stack align="flex-start" gap="1">
+          <Label htmlFor="terms">Large</Label>
+          <Select.Root size="lg">
+            <Select.Trigger>
+              <Select.Value placeholder="Select a fruit" />
+            </Select.Trigger>
+            <Select.Content>
+              <Select.Group>
+                <Select.Label>Fruits</Select.Label>
+                <Select.Item value="apple">Apple</Select.Item>
+                <Select.Item value="banana">Banana</Select.Item>
+                <Select.Item value="blueberry">Blueberry</Select.Item>
+                <Select.Item value="grapes">Grapes</Select.Item>
+                <Select.Item value="pineapple">Pineapple</Select.Item>
+              </Select.Group>
+            </Select.Content>
+          </Select.Root>
+        </Stack>
+      </>
+    )
+  },
+}
 
 export const StylingVariants = () => (
   <Stack align="flex-start" gap="4">

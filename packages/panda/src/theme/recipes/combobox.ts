@@ -8,6 +8,7 @@ export const combobox = defineSlotRecipe({
     root: {},
     trigger: {
       shadow: 'none',
+      rounded: '{radii.md}',
       '[disabled]&': {
         cursor: 'not-allowed',
         color: '{colors.text.disabled}',
@@ -33,8 +34,6 @@ export const combobox = defineSlotRecipe({
       '& svg': {
         color: '{colors.text.tertiary}',
       },
-      px: '{spacing.padding.inline.md}!',
-      py: '{spacing.padding.block.md}!',
       transition: 'common',
     },
     content: {
@@ -49,7 +48,6 @@ export const combobox = defineSlotRecipe({
       userSelect: 'none',
       alignItems: 'center',
       rounded: '{radii.sm}',
-      py: '{spacing.padding.block.md}',
       pl: '{spacing.gap.component.lg}',
       pr: '{spacing.gap.inline.sm}',
       outline: 'none',
@@ -226,45 +224,58 @@ export const combobox = defineSlotRecipe({
         trigger: {
           minH: '{sizes.controlHeight.sm}',
           maxH: '{sizes.controlHeight.sm}',
+          px: '{spacing.padding.inline.sm}!',
+          py: '{spacing.padding.block.sm}!',
           '& *': {
             textStyle: 'sm',
           },
-          rounded: '{radii.sm}',
         },
         content: {
           '& *': {
             textStyle: 'sm',
           },
+        },
+        item: {
+          py: '{spacing.padding.block.sm}',
         },
       },
       md: {
         trigger: {
           minH: '{sizes.controlHeight.md}',
           maxH: '{sizes.controlHeight.md}',
+          px: '{spacing.padding.inline.md}',
+          py: '{spacing.padding.block.md}',
           '& *': {
             textStyle: 'md',
           },
-          rounded: '{radii.md}',
         },
         content: {
           '& *': {
             textStyle: 'md',
           },
+        },
+        item: {
+          py: '{spacing.padding.block.md}',
         },
       },
       lg: {
         trigger: {
           minH: '{sizes.controlHeight.lg}',
           maxH: '{sizes.controlHeight.lg}',
+          px: '{spacing.padding.inline.lg}!',
+          py: '{spacing.padding.block.lg}!',
+
           '& *': {
             textStyle: 'lg',
           },
-          rounded: '{radii.lg}',
         },
         content: {
           '& *': {
             textStyle: 'lg',
           },
+        },
+        item: {
+          py: '{spacing.padding.block.lg}',
         },
       },
     },

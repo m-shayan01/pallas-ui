@@ -23,8 +23,7 @@ export const select = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'space-between',
       bg: '{colors.surface.elevated}',
-      px: '{spacing.padding.inline.md}',
-      py: '{spacing.padding.block.md}',
+      rounded: '{radii.md}',
       cursor: 'pointer',
       transition: 'common',
       outline: 'none',
@@ -49,6 +48,10 @@ export const select = defineSlotRecipe({
           },
         },
       },
+
+      '& > svg': {
+        ml: '{spacing.padding.inline.md}',
+      },
     },
     viewport: {
       p: '{spacing.padding.block.sm}',
@@ -69,6 +72,7 @@ export const select = defineSlotRecipe({
       bg: '{colors.surface.elevated}',
       color: '{colors.text}',
       shadow: 'md',
+      mt: '{spacing.layout.default.2xs}',
 
       animationStyle: 'slideFadeIn',
       animationDuration: '{durations.normal}',
@@ -88,7 +92,6 @@ export const select = defineSlotRecipe({
       userSelect: 'none',
       alignItems: 'center',
       rounded: '{radii.sm}',
-      py: '{spacing.padding.block.md}',
       pl: '{spacing.gap.component.lg}',
       pr: '{spacing.gap.inline.sm}',
       outline: 'none',
@@ -225,7 +228,7 @@ export const select = defineSlotRecipe({
             },
           },
           _focus: {
-            bg: '{colors.surface.elevated}',
+            bg: '{colors.surface.elevated}!',
             border: '{borders.input.hover}',
           },
 
@@ -267,13 +270,16 @@ export const select = defineSlotRecipe({
           h: '{sizes.controlHeight.sm}',
           textStyle: 'sm',
           px: '{spacing.padding.inline.sm}',
-          py: '{spacing.padding.block.sm}',
-          rounded: '{radii.sm}',
+          py: '{spacing.padding.block.xs}',
+          // rounded: '{radii.sm}',
         },
         content: {
           '& *': {
             textStyle: 'sm',
           },
+        },
+        item: {
+          py: '{spacing.padding.block.xs}',
         },
       },
       md: {
@@ -281,27 +287,33 @@ export const select = defineSlotRecipe({
           h: '{sizes.controlHeight.md}',
           textStyle: 'md',
           px: '{spacing.padding.inline.md}',
-          py: '{spacing.padding.block.md}',
-          rounded: '{radii.md}',
+          py: '{spacing.padding.block.sm}',
+          // rounded: '{radii.md}',
         },
         content: {
           '& *': {
             textStyle: 'md',
           },
         },
+        item: {
+          py: '{spacing.padding.block.sm}',
+        },
       },
       lg: {
         trigger: {
           h: '{sizes.controlHeight.lg}',
           textStyle: 'lg',
-          px: '{spacing.padding.inline.md}',
+          px: '{spacing.padding.inline.lg}',
           py: '{spacing.padding.block.md}',
-          rounded: '{radii.lg}',
+          // rounded: '{radii.lg}',
         },
         content: {
           '& *': {
             textStyle: 'lg',
           },
+        },
+        item: {
+          py: '{spacing.padding.block.md}',
         },
       },
     },

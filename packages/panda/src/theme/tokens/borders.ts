@@ -6,4 +6,6 @@ export const borders = defineTokens.borders({
   sm: { value: '1px solid' },
   md: { value: '2px solid' },
   lg: { value: '3px solid' },
+  xl: { value: '4px solid' },
+  '2xl': { value: '5px solid' },
 })

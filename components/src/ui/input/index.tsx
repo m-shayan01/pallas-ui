@@ -129,6 +129,7 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
   ({ className, controls = true, step = 1, min, max, value, onChange, ...props }, ref) => {
     const { id, dataStatus, styling, size, radii } = useInputContext()
     const { field, control } = input({ styling, size, radii })
+    const { disabled } = props
     const [localValue, setLocalValue] = React.useState<number | undefined>(
       value !== undefined ? Number(value) : undefined,
     )
@@ -172,7 +173,9 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
     }
 
     return (
-      <div className={css({ display: 'flex', alignItems: 'center', width: '100%' })}>
+      <div
+        className={css({ display: 'flex', alignItems: 'center', width: '100%', height: '100%' })}
+      >
         <Slot className={css({ flexGrow: 1, position: 'relative' })}>
           <input
             id={id}
@@ -201,13 +204,17 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
             className={css({
               display: 'flex',
               flexDirection: 'column',
-              gap: '0.125rem',
+              justifyContent: 'space-between',
+              height: '100%',
             })}
           >
             <button
               type="button"
               onClick={increment}
-              disabled={localValue !== undefined && localValue >= (max ?? Number.POSITIVE_INFINITY)}
+              disabled={
+                disabled ||
+                (localValue !== undefined && localValue >= (max ?? Number.POSITIVE_INFINITY))
+              }
               className={control}
             >
               <ChevronUp size={14} />
@@ -215,7 +222,10 @@ const InputNumber = React.forwardRef<HTMLInputElement, InputNumberProps>(
             <button
               type="button"
               onClick={decrement}
-              disabled={localValue !== undefined && localValue <= (min ?? Number.NEGATIVE_INFINITY)}
+              disabled={
+                disabled ||
+                (localValue !== undefined && localValue <= (min ?? Number.NEGATIVE_INFINITY))
+              }
               className={control}
             >
               <ChevronDown size={14} />

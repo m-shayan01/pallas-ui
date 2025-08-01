@@ -23,6 +23,7 @@ export const textarea = defineRecipe({
       cursor: 'not-allowed',
       color: '{colors.text.disabled}',
       bg: '{colors.fill.disabled}',
+      opacity: 0.75,
       border: '{borders.input.disabled}!',
     },
   },
@@ -174,12 +175,14 @@ export const textarea = defineRecipe({
     size: {
       sm: {
         textStyle: 'sm',
+        px: '{spacing.padding.inline.sm}',
       },
       md: {
         textStyle: 'md',
       },
       lg: {
         textStyle: 'lg',
+        px: '{spacing.padding.inline.lg}',
       },
     },
     radii: {

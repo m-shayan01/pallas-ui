@@ -3,6 +3,7 @@ import { defineSemanticTokens } from '@pandacss/dev'
 export const spacing = defineSemanticTokens.spacing({
   layout: {
     default: {
+      '2xs': { value: '{spacing.1}' },
       sm: { value: '{spacing.9}' },
       md: { value: '{spacing.10}' },
       lg: { value: '{spacing.12}' },

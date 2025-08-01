@@ -29,6 +29,10 @@ export const input = defineSlotRecipe({
         bg: '{colors.fill.disabled}',
         border: '{borders.input.disabled}',
       },
+
+      '&:has(input[type="number"])': {
+        pr: '0!',
+      },
     },
     prefix: {
       display: 'flex',
@@ -108,11 +112,7 @@ export const input = defineSlotRecipe({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '6',
-      height: '3',
-      rounded: '{radii.sm}',
-      border: '{borders.control}',
-      bg: '{colors.surface.elevated}',
+      flex: '1',
       color: '{colors.text.secondary}',
       cursor: 'pointer',
       _hover: {
@@ -121,9 +121,18 @@ export const input = defineSlotRecipe({
       _active: {
         bg: '{colors.fill}',
       },
-      _disabled: {
+      '&[disabled]': {
         opacity: 0.5,
         cursor: 'not-allowed',
+        _hover: {
+          bg: 'revert',
+        },
+      },
+      _first: {
+        borderTopRightRadius: '{radii.md}',
+      },
+      _last: {
+        borderBottomRightRadius: '{radii.md}',
       },
     },
   },
@@ -221,6 +230,9 @@ export const input = defineSlotRecipe({
             borderBottom: '{borders.input.warningHover}',
           },
         },
+        control: {
+          rounded: '0',
+        },
       },
       filled: {
         root: {
@@ -231,7 +243,7 @@ export const input = defineSlotRecipe({
             bg: '{colors.fill}',
           },
           _inputFocus: {
-            bg: '{colors.surface.elevated}',
+            bg: '{colors.surface.elevated}!',
             border: '{borders.input.hover}',
           },
           transition: 'common',
@@ -278,23 +290,23 @@ export const input = defineSlotRecipe({
             _inputWarning: '{colors.warning.text}',
           },
         },
+        control: {
+          rounded: '0',
+        },
       },
     },
     size: {
       sm: {
         root: {
           h: '{sizes.controlHeight.sm}',
-          pl: '{spacing.padding.inline.sm}',
-          pr: '{spacing.padding.inline.sm}',
-          rounded: '{radii.sm}',
+          px: '{spacing.padding.inline.sm}',
         },
         field: {
           textStyle: 'sm',
           py: '{spacing.padding.block.sm}',
         },
         control: {
-          width: '4',
-          height: '2',
+          width: '6',
         },
         prefix: {
           pr: '{spacing.padding.inline.xs}',
@@ -306,17 +318,14 @@ export const input = defineSlotRecipe({
       md: {
         root: {
           h: '{sizes.controlHeight.md}',
-          pl: '{spacing.padding.inline.md}',
-          pr: '{spacing.padding.inline.md}',
-          rounded: '{radii.md}',
+          px: '{spacing.padding.inline.md}',
         },
         field: {
           textStyle: 'md',
           py: '{spacing.padding.block.md}',
         },
         control: {
-          width: '5',
-          height: '3',
+          width: '7',
         },
         prefix: {
           pr: '{spacing.padding.inline.sm}',
@@ -328,17 +337,14 @@ export const input = defineSlotRecipe({
       lg: {
         root: {
           h: '{sizes.controlHeight.lg}',
-          pl: '{spacing.padding.inline.lg}',
-          pr: '{spacing.padding.inline.lg}',
-          rounded: '{radii.lg}',
+          px: '{spacing.padding.inline.lg}',
         },
         field: {
           textStyle: 'lg',
           py: '{spacing.padding.block.lg}',
         },
         control: {
-          width: '6',
-          height: '4',
+          width: '8',
         },
         prefix: {
           pr: '{spacing.padding.inline.md}',
@@ -353,6 +359,14 @@ export const input = defineSlotRecipe({
         root: {
           rounded: '{radii.sm}',
         },
+        control: {
+          _first: {
+            borderTopRightRadius: '{radii.sm}',
+          },
+          _last: {
+            borderBottomRightRadius: '{radii.sm}',
+          },
+        },
       },
       md: {
         root: {
@@ -363,10 +377,24 @@ export const input = defineSlotRecipe({
         root: {
           rounded: '{radii.lg}',
         },
+        _first: {
+          borderTopRightRadius: '{radii.lg}',
+        },
+        _last: {
+          borderBottomRightRadius: '{radii.lg}',
+        },
       },
       full: {
         root: {
           rounded: '{radii.full}',
+        },
+        control: {
+          _first: {
+            borderTopRightRadius: '{radii.full}',
+          },
+          _last: {
+            borderBottomRightRadius: '{radii.full}',
+          },
         },
       },
     },

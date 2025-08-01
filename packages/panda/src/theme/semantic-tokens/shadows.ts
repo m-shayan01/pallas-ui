@@ -19,4 +19,6 @@ export const shadows = defineSemanticTokens.shadows({
   },
 
   sliderThumb: { value: '{shadows.xxl}' },
+  sliderThumbMd: { value: '{shadows.3xl}' },
+  sliderThumbLg: { value: '{shadows.4xl}' },
 })

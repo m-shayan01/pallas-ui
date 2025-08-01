@@ -13,7 +13,6 @@ export const slider = defineSlotRecipe({
       userSelect: 'none',
       alignItems: 'center',
       _disabled: {
-        // pointerEvents: 'none',
         cursor: 'not-allowed',
       },
     },
@@ -25,16 +24,27 @@ export const slider = defineSlotRecipe({
       overflow: 'hidden',
       rounded: 'full',
       bg: '{colors.fill.secondary}',
+      _hover: {
+        cursor: 'pointer',
+        bg: '{colors.fill}',
+        // '& > [class="slider__range"]': {
+        //   bg: '{colors.primary.active}',
+        // },
+      },
+      transition: 'common',
     },
     range: {
       position: 'absolute',
       h: 'full',
       bg: '{colors.primary}',
+      _hover: {
+        bg: '{colors.primary.active}',
+      },
     },
     thumb: {
       display: 'block',
-      h: '{sizes.icon.sm}',
-      w: '{sizes.icon.sm}',
+      // h: '{sizes.icon.sm}',
+      // w: '{sizes.icon.sm}',
       cursor: 'pointer',
       rounded: 'full',
       border: '{borders.sliderThumb.default}',
@@ -49,12 +59,8 @@ export const slider = defineSlotRecipe({
 
       _focusVisible: {
         outline: 'none',
-        // outlineOffset: '2px',
         border: '{borders.sliderThumb.hover}',
         shadow: '{shadows.sliderThumb}',
-        // focusRingWidth: '2',
-        // focusRingColor: 'ring',
-        // focusRingOffsetWidth: '2',
       },
 
       _disabled: {
@@ -64,8 +70,66 @@ export const slider = defineSlotRecipe({
           shadow: 'none',
           border: '{borders.input.default}',
         },
-        // opacity: '0.5',
       },
     },
+  },
+  variants: {
+    thumbSize: {
+      sm: {
+        thumb: {
+          h: '{sizes.icon.sm}',
+          w: '{sizes.icon.sm}',
+        },
+      },
+      md: {
+        thumb: {
+          h: '{sizes.icon.md}',
+          w: '{sizes.icon.md}',
+          _hover: {
+            border: '{borders.sliderThumb.hoverMd}',
+            shadow: '{shadows.sliderThumbMd}',
+          },
+          _focusVisible: {
+            border: '{borders.sliderThumb.hoverMd}',
+            shadow: '{shadows.sliderThumbMd}',
+          },
+        },
+      },
+      lg: {
+        thumb: {
+          h: '{sizes.icon.lg}',
+          w: '{sizes.icon.lg}',
+          _hover: {
+            border: '{borders.sliderThumb.hoverLg}',
+            shadow: '{shadows.sliderThumbLg}',
+          },
+          _focusVisible: {
+            border: '{borders.sliderThumb.hoverLg}',
+            shadow: '{shadows.sliderThumbLg}',
+          },
+        },
+      },
+    },
+    trackSize: {
+      sm: {
+        track: {
+          h: 1,
+        },
+      },
+      md: {
+        track: {
+          h: 2,
+        },
+      },
+      lg: {
+        track: {
+          h: 3,
+        },
+      },
+    },
+  },
+  defaultVariants: {
+    thumbSize: 'sm',
+    trackSize: 'sm',
   },
 })

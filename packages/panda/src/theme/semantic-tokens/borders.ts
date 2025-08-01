@@ -33,6 +33,9 @@ export const borders = defineSemanticTokens.borders({
   sliderThumb: {
     default: { value: '{borders.md} {colors.primary}' },
     hover: { value: '{borders.lg} {colors.primary}' },
+    hoverMd: { value: '{borders.xl} {colors.primary}' },
+    hoverLg: { value: '{borders.2xl} {colors.primary}' },
+
     disabled: { value: '{borders.md} {colors.border.secondary}' },
   },
 
