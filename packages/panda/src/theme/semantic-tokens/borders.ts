@@ -10,6 +10,9 @@ export const borders = defineSemanticTokens.borders({
   date: {
     value: '{borders.sm} {colors.primary}',
   },
+  checkbox: {
+    checked: { value: '{borders.sm} {colors.primary}' },
+  },
   input: {
     default: { value: '{borders.xs} {colors.border}' },
     defaultSm: { value: '{borders.sm} {colors.border}' },

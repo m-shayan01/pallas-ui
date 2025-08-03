@@ -16,7 +16,7 @@ export const radioGroup = defineSlotRecipe({
       cursor: 'pointer',
       boxShadow: '{shadows.insetMinimal}',
       _hover: {
-        border: '{borders.input.hover}',
+        border: '{borders.input.hoverSm}',
       },
       _focusVisible: {
         outline: 'none',
@@ -33,7 +33,7 @@ export const radioGroup = defineSlotRecipe({
       },
 
       '&[data-state="checked"]': {
-        border: '{borders.input.hover}',
+        border: '{borders.input.hoverSm}',
       },
 
       transition: 'common',

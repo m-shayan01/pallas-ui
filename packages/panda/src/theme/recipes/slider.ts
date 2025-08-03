@@ -12,9 +12,6 @@ export const slider = defineSlotRecipe({
       touchAction: 'none',
       userSelect: 'none',
       alignItems: 'center',
-      _disabled: {
-        cursor: 'not-allowed',
-      },
     },
     track: {
       position: 'relative',
@@ -27,11 +24,16 @@ export const slider = defineSlotRecipe({
       _hover: {
         cursor: 'pointer',
         bg: '{colors.fill}',
-        // '& > [class="slider__range"]': {
-        //   bg: '{colors.primary.active}',
-        // },
       },
       transition: 'common',
+      _disabled: {
+        cursor: 'not-allowed!',
+        bg: '{colors.fill.disabled}',
+        border: '{borders.input.disabled}',
+        _hover: {
+          bg: '{colors.fill.disabled}',
+        },
+      },
     },
     range: {
       position: 'absolute',
@@ -40,11 +42,15 @@ export const slider = defineSlotRecipe({
       _hover: {
         bg: '{colors.primary.active}',
       },
+      _disabled: {
+        bg: '{colors.fill.tertiary}',
+        _hover: {
+          bg: '{colors.fill.tertiary}',
+        },
+      },
     },
     thumb: {
       display: 'block',
-      // h: '{sizes.icon.sm}',
-      // w: '{sizes.icon.sm}',
       cursor: 'pointer',
       rounded: 'full',
       border: '{borders.sliderThumb.default}',
@@ -65,10 +71,10 @@ export const slider = defineSlotRecipe({
 
       _disabled: {
         cursor: 'not-allowed',
-        border: '{borders.input.default}',
+        border: '{borders.input.disabled}',
         _hover: {
-          shadow: 'none',
-          border: '{borders.input.default}',
+          shadow: 'none!',
+          border: '{borders.input.disabled}!',
         },
       },
     },

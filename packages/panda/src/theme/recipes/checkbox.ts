@@ -12,7 +12,7 @@ export const checkbox = defineSlotRecipe({
       cursor: 'pointer',
       boxShadow: '{shadows.insetMinimal}',
       _hover: {
-        border: '{borders.input.hover}',
+        border: '{borders.input.hoverSm}',
       },
       _focusVisible: {
         outline: 'none',
@@ -27,11 +27,11 @@ export const checkbox = defineSlotRecipe({
       },
       _checked: {
         bg: '{colors.primary}',
-        border: '{borders.input.hover}',
+        border: '{borders.checkbox.checked}',
       },
       _indeterminate: {
         bg: '{colors.primary}',
-        border: '{borders.input.hover}',
+        border: '{borders.checkbox.checked}',
       },
       transition: 'common',
     },

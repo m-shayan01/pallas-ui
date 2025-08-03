@@ -8,7 +8,6 @@ export const combobox = defineSlotRecipe({
     root: {},
     trigger: {
       shadow: 'none',
-      rounded: '{radii.md}',
       '[disabled]&': {
         cursor: 'not-allowed',
         color: '{colors.text.disabled}',
@@ -44,10 +43,9 @@ export const combobox = defineSlotRecipe({
     item: {
       position: 'relative',
       display: 'flex',
-      cursor: 'default',
+      cursor: 'pointer!',
       userSelect: 'none',
       alignItems: 'center',
-      rounded: '{radii.sm}',
       pl: '{spacing.gap.component.lg}',
       pr: '{spacing.gap.inline.sm}',
       outline: 'none',
@@ -174,6 +172,7 @@ export const combobox = defineSlotRecipe({
 
           _hover: {
             bg: '{colors.fill}!',
+            color: '{colors.text}!',
             '& span': {
               color: {
                 '[data-status="error"]&': '{colors.error.text}',
@@ -284,20 +283,52 @@ export const combobox = defineSlotRecipe({
         trigger: {
           rounded: '{radii.sm}',
         },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.sm}',
+          },
+        },
+        item: {
+          rounded: '{radii.xs}',
+        },
       },
       md: {
         trigger: {
           rounded: '{radii.md}',
+        },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.md}',
+          },
+        },
+        item: {
+          rounded: '{radii.sm}',
         },
       },
       lg: {
         trigger: {
           rounded: '{radii.lg}',
         },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.lg}',
+          },
+        },
+        item: {
+          rounded: '{radii.md}',
+        },
       },
       full: {
         trigger: {
           rounded: '{radii.full}',
+        },
+        content: {
+          '& [cmdk-root]': {
+            rounded: '{radii.xl}',
+          },
+        },
+        item: {
+          rounded: '{radii.lg}',
         },
       },
     },
@@ -305,6 +336,7 @@ export const combobox = defineSlotRecipe({
   defaultVariants: {
     styling: 'outline',
     size: 'md',
+    radii: 'md',
   },
   staticCss: [{ size: ['*'] }],
 })

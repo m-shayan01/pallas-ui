@@ -24,7 +24,41 @@ export const Default: Story = {
 
 export const Disabled = () => (
   <Stack>
-    <Slider max={100} min={0} step={1} disabled />
+    <Stack gap="7">
+      <Stack>
+        <Slider
+          thumbSize="sm"
+          trackSize="sm"
+          defaultValue={[25]}
+          max={100}
+          min={0}
+          step={1}
+          disabled
+        />
+      </Stack>
+      <Stack>
+        <Slider
+          thumbSize="md"
+          trackSize="md"
+          defaultValue={[50]}
+          max={100}
+          min={0}
+          step={1}
+          disabled
+        />
+      </Stack>
+      <Stack>
+        <Slider
+          thumbSize="lg"
+          trackSize="lg"
+          defaultValue={[75]}
+          max={100}
+          min={0}
+          step={1}
+          disabled
+        />
+      </Stack>
+    </Stack>
   </Stack>
 )
 

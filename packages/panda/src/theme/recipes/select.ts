@@ -23,7 +23,7 @@ export const select = defineSlotRecipe({
       alignItems: 'center',
       justifyContent: 'space-between',
       bg: '{colors.surface.elevated}',
-      rounded: '{radii.md}',
+      // rounded: '{radii.md}',
       cursor: 'pointer',
       transition: 'common',
       outline: 'none',
@@ -67,12 +67,13 @@ export const select = defineSlotRecipe({
       zIndex: 50,
       minW: '8rem',
       overflow: 'hidden',
-      rounded: '{radii.md}',
+      // rounded: '{radii.md}',
       border: '{borders.input.defaultSm}',
       bg: '{colors.surface.elevated}',
       color: '{colors.text}',
       shadow: 'md',
       mt: '{spacing.layout.default.2xs}',
+      mb: '{spacing.layout.default.2xs}',
 
       animationStyle: 'slideFadeIn',
       animationDuration: '{durations.normal}',
@@ -88,10 +89,10 @@ export const select = defineSlotRecipe({
     item: {
       position: 'relative',
       display: 'flex',
-      cursor: 'default',
+      cursor: 'pointer',
       userSelect: 'none',
       alignItems: 'center',
-      rounded: '{radii.sm}',
+      // rounded: '{radii.sm}',
       pl: '{spacing.gap.component.lg}',
       pr: '{spacing.gap.inline.sm}',
       outline: 'none',
@@ -271,7 +272,6 @@ export const select = defineSlotRecipe({
           textStyle: 'sm',
           px: '{spacing.padding.inline.sm}',
           py: '{spacing.padding.block.xs}',
-          // rounded: '{radii.sm}',
         },
         content: {
           '& *': {
@@ -288,7 +288,6 @@ export const select = defineSlotRecipe({
           textStyle: 'md',
           px: '{spacing.padding.inline.md}',
           py: '{spacing.padding.block.sm}',
-          // rounded: '{radii.md}',
         },
         content: {
           '& *': {
@@ -305,7 +304,6 @@ export const select = defineSlotRecipe({
           textStyle: 'lg',
           px: '{spacing.padding.inline.lg}',
           py: '{spacing.padding.block.md}',
-          // rounded: '{radii.lg}',
         },
         content: {
           '& *': {
@@ -322,20 +320,44 @@ export const select = defineSlotRecipe({
         trigger: {
           rounded: '{radii.sm}',
         },
+        content: {
+          rounded: '{radii.sm}',
+        },
+        item: {
+          rounded: '{radii.xs}',
+        },
       },
       md: {
         trigger: {
           rounded: '{radii.md}',
+        },
+        content: {
+          rounded: '{radii.md}',
+        },
+        item: {
+          rounded: '{radii.sm}',
         },
       },
       lg: {
         trigger: {
           rounded: '{radii.lg}',
         },
+        content: {
+          rounded: '{radii.lg}',
+        },
+        item: {
+          rounded: '{radii.md}',
+        },
       },
       full: {
         trigger: {
           rounded: '{radii.full}',
+        },
+        content: {
+          rounded: '{radii.xl}',
+        },
+        item: {
+          rounded: '{radii.lg}',
         },
       },
     },
@@ -343,5 +365,6 @@ export const select = defineSlotRecipe({
   defaultVariants: {
     styling: 'outline',
     size: 'md',
+    radii: 'md',
   },
 })
