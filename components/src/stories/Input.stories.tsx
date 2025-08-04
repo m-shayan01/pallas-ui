@@ -113,6 +113,49 @@ export const TextInputVariants = () => (
   </Stack>
 )
 
+export const FileInputVariants = () => (
+  <Stack align="flex-start" gap="6">
+    <h3>Input Sizes</h3>
+    <Stack align="flex-start" gap="1">
+      <Label>Medium</Label>
+      <Input size="md">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Small</Label>
+      <Input size="sm">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Large</Label>
+      <Input size="lg">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <h3>Input Styles</h3>
+    <Stack align="flex-start" gap="1">
+      <Label>Filled</Label>
+      <Input styling="filled">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Underlined</Label>
+      <Input styling="underlined">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+    <Stack align="flex-start" gap="1">
+      <Label>Borderless</Label>
+      <Input styling="borderless">
+        <Input.Text type="file" placeholder="Search..." />
+      </Input>
+    </Stack>
+  </Stack>
+)
+
 export const InputSizes = () => (
   <Stack align="flex-start" gap="6">
     <h3>Input Sizes</h3>

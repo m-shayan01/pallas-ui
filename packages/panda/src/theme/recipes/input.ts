@@ -15,6 +15,7 @@ export const input = defineSlotRecipe({
         appearance: 'textfield',
       },
       transition: 'common',
+      position: 'relative',
 
       // Base styles
       focusRingOffsetColor: '{colors.fill.secondary}',
@@ -65,15 +66,19 @@ export const input = defineSlotRecipe({
         outline: 'none',
         border: 'none',
       },
+
       _file: {
         border: 'none',
         bg: 'transparent',
         color: '{colors.text.secondary}',
         textStyle: 'sm',
-        lineHeight: '1',
         fontWeight: 'semibold',
         marginRight: '{spacing.layout.internal.xs}',
         transform: 'translateY(-2px)',
+      },
+
+      '&[type="file"]': {
+        cursor: 'pointer',
       },
 
       _placeholder: {
@@ -304,6 +309,10 @@ export const input = defineSlotRecipe({
         field: {
           textStyle: 'sm',
           py: '{spacing.padding.block.sm}',
+
+          _file: {
+            textStyle: 'xs',
+          },
         },
         control: {
           width: '6',
@@ -323,6 +332,10 @@ export const input = defineSlotRecipe({
         field: {
           textStyle: 'md',
           py: '{spacing.padding.block.md}',
+
+          '&[type="file"]': {
+            lineHeight: '0',
+          },
         },
         control: {
           width: '7',
@@ -342,6 +355,13 @@ export const input = defineSlotRecipe({
         field: {
           textStyle: 'lg',
           py: '{spacing.padding.block.lg}',
+
+          _file: {
+            textStyle: 'md',
+          },
+          '&[type="file"]': {
+            lineHeight: '0',
+          },
         },
         control: {
           width: '8',
