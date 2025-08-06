@@ -13,7 +13,7 @@ export const switchRecipe = defineSlotRecipe({
       cursor: 'pointer',
       alignItems: 'center',
       rounded: 'full',
-      border: '{borders.switch}',
+      border: '{borders.md} transparent',
       transition: 'common',
 
       _focusVisible: {

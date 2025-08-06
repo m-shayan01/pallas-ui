@@ -47,7 +47,7 @@ export const inputOTP = defineSlotRecipe({
       '[data-disabled="true"] &': {
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled}',
-        border: '{borders.input.disabled}',
+        border: '{borders.disabled.xs}',
       },
 
       transition: 'common',
@@ -60,30 +60,30 @@ export const inputOTP = defineSlotRecipe({
     styling: {
       outline: {
         slot: {
-          border: '{borders.input.default}',
+          border: '{borders.default.xs}',
           _active: {
-            border: '{borders.input.hover}',
-            shadow: '{shadows.input.default}',
+            border: '{borders.hover.xs}',
+            shadow: '{shadows.primary.2xs}',
           },
           '[data-status="success"] &': {
-            border: '{borders.input.success}',
+            border: '{borders.success.xs}',
             _active: {
-              border: '{borders.input.success}',
-              shadow: '{shadows.input.success}',
+              border: '{borders.success.xs}',
+              shadow: '{shadows.success.2xs}',
             },
           },
           '[data-status="error"] &': {
-            border: '{borders.input.error}',
+            border: '{borders.error.xs}',
             _active: {
-              border: '{borders.input.error}',
-              shadow: '{shadows.input.error}',
+              border: '{borders.error.xs}',
+              shadow: '{shadows.error.2xs}',
             },
           },
           '[data-status="warning"] &': {
-            border: '{borders.input.warning}',
+            border: '{borders.warning.xs}',
             _active: {
-              border: '{borders.input.warning}',
-              shadow: '{shadows.input.warning}',
+              border: '{borders.warning.xs}',
+              shadow: '{shadows.warning.2xs}',
             },
           },
         },
@@ -128,25 +128,25 @@ export const inputOTP = defineSlotRecipe({
 
           _active: {
             bg: '{colors.surface.elevated}',
-            border: '{borders.input.hover}',
+            border: '{borders.hover.xs}',
           },
 
           '[data-status="success"] &': {
             bg: '{colors.success.bg}',
             _active: {
-              border: '{borders.input.success}',
+              border: '{borders.success.xs}',
             },
           },
           '[data-status="error"] &': {
             bg: '{colors.error.bg}',
             _active: {
-              border: '{borders.input.error}',
+              border: '{borders.error.xs}',
             },
           },
           '[data-status="warning"] &': {
             bg: '{colors.warning.bg}',
             _active: {
-              border: '{borders.input.warning}',
+              border: '{borders.warning.xs}',
             },
           },
         },

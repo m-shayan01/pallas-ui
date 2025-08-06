@@ -28,7 +28,7 @@ export const input = defineSlotRecipe({
         opacity: '0.5',
         color: '{colors.text.disabled}',
         bg: '{colors.fill.disabled}',
-        border: '{borders.input.disabled}',
+        border: '{borders.disabled.xs}',
       },
 
       '&:has(input[type="number"])': {
@@ -145,94 +145,94 @@ export const input = defineSlotRecipe({
     styling: {
       outline: {
         root: {
-          border: '{borders.input.default}',
+          border: '{borders.default.xs}',
           _inputHover: {
-            border: '{borders.input.hover}',
+            border: '{borders.hover.xs}',
           },
           _inputFocus: {
-            border: '{borders.input.hover}',
-            shadow: '{shadows.input.default}',
+            border: '{borders.hover.xs}',
+            shadow: '{shadows.primary.2xs}',
           },
 
           // Success state
           _inputSuccess: {
-            border: '{borders.input.success}',
+            border: '{borders.success.xs}',
           },
           _inputSuccessHover: {
-            border: '{borders.input.successHover}',
+            border: '{borders.successHover.xs}',
           },
           _inputSuccessFocus: {
-            border: '{borders.input.successHover}',
-            shadow: '{shadows.input.success}',
+            border: '{borders.successHover.xs}',
+            shadow: '{shadows.success.2xs}',
           },
 
           // Error state
           _inputError: {
-            border: '{borders.input.error}',
+            border: '{borders.error.xs}',
           },
           _inputErrorHover: {
-            border: '{borders.input.errorHover}',
+            border: '{borders.errorHover.xs}',
           },
           _inputErrorFocus: {
-            border: '{borders.input.errorHover}',
-            shadow: '{shadows.input.error}',
+            border: '{borders.errorHover.xs}',
+            shadow: '{shadows.error.2xs}',
           },
 
           // Warning state
           _inputWarning: {
-            border: '{borders.input.warning}',
+            border: '{borders.warning.xs}',
           },
           _inputWarningHover: {
-            border: '{borders.input.warningHover}',
+            border: '{borders.warningHover.xs}',
           },
           _inputWarningFocus: {
-            border: '{borders.input.warningHover}',
-            shadow: '{shadows.input.warning}',
+            border: '{borders.warningHover.xs}',
+            shadow: '{shadows.warning.2xs}',
           },
         },
       },
       underlined: {
         root: {
-          borderBottom: '{borders.input.default}',
+          borderBottom: '{borders.default.xs}',
           rounded: '0',
           _inputHover: {
-            borderBottom: '{borders.input.hover}',
+            borderBottom: '{borders.hover.xs}',
           },
           _inputFocus: {
-            borderBottom: '{borders.input.hover}',
+            borderBottom: '{borders.hover.xs}',
           },
 
           // Success state
           _inputSuccess: {
-            borderBottom: '{borders.input.success}',
+            borderBottom: '{borders.success.xs}',
           },
           _inputSuccessHover: {
-            borderBottom: '{borders.input.successHover}',
+            borderBottom: '{borders.successHover.xs}',
           },
           _inputSuccessFocus: {
-            borderBottom: '{borders.input.successHover}',
+            borderBottom: '{borders.successHover.xs}',
           },
 
           // Error state
           _inputError: {
-            borderBottom: '{borders.input.error}',
+            borderBottom: '{borders.error.xs}',
           },
           _inputErrorHover: {
-            borderBottom: '{borders.input.errorHover}',
+            borderBottom: '{borders.errorHover.xs}',
           },
           _inputErrorFocus: {
-            borderBottom: '{borders.input.errorHover}',
+            borderBottom: '{borders.errorHover.xs}',
           },
 
           // Warning state
           _inputWarning: {
-            borderBottom: '{borders.input.warning}',
+            borderBottom: '{borders.warning.xs}',
           },
           _inputWarningHover: {
-            borderBottom: '{borders.input.warningHover}',
+            borderBottom: '{borders.warningHover.xs}',
           },
           _inputWarningFocus: {
-            borderBottom: '{borders.input.warningHover}',
+            borderBottom: '{borders.warningHover.xs}',
           },
         },
         control: {
@@ -242,14 +242,14 @@ export const input = defineSlotRecipe({
       filled: {
         root: {
           bg: '{colors.fill.secondary}',
-          border: '{borders.input.default}',
+          border: '{borders.default.xs}',
           borderColor: 'transparent',
           _inputHover: {
             bg: '{colors.fill}',
           },
           _inputFocus: {
             bg: '{colors.surface.elevated}!',
-            border: '{borders.input.hover}',
+            border: '{borders.hover.xs}',
           },
           transition: 'common',
 
@@ -261,7 +261,7 @@ export const input = defineSlotRecipe({
             bg: '{colors.success.bgHover}',
           },
           _inputSuccessFocus: {
-            border: '{borders.input.success}',
+            border: '{borders.success.xs}',
           },
 
           // Error state
@@ -272,7 +272,7 @@ export const input = defineSlotRecipe({
             bg: '{colors.error.bgHover}',
           },
           _inputErrorFocus: {
-            border: '{borders.input.error}',
+            border: '{borders.error.xs}',
           },
 
           // Warning state
@@ -283,7 +283,7 @@ export const input = defineSlotRecipe({
             bg: '{colors.warning.bgHover}',
           },
           _inputWarningFocus: {
-            border: '{borders.input.warning}',
+            border: '{borders.warning.xs}',
           },
         },
       },

@@ -11,14 +11,22 @@ export const shadows = defineSemanticTokens.shadows({
   minimal: { value: '0px 2px 0px 0px rgba(0, 0, 0, 0.02)' },
   insetMinimal: { value: 'inset 0px 1px 0px 0px rgba(0, 0, 0, 0.04)' },
 
-  input: {
-    default: { value: '{shadows.2xs} {colors.primary.bgHover}' },
-    success: { value: '{shadows.2xs} {colors.success.bgHover}' },
-    error: { value: '{shadows.2xs} {colors.error.bgHover}' },
-    warning: { value: '{shadows.2xs} {colors.warning.bgHover}' },
+  primary: {
+    '2xs': { value: '{shadows.2xs} {colors.primary.bgHover}' },
+  },
+  success: {
+    '2xs': { value: '{shadows.2xs} {colors.success.bgHover}' },
+  },
+  error: {
+    '2xs': { value: '{shadows.2xs} {colors.error.bgHover}' },
+  },
+  warning: {
+    '2xs': { value: '{shadows.2xs} {colors.warning.bgHover}' },
   },
 
-  sliderThumb: { value: '{shadows.xxl}' },
-  sliderThumbMd: { value: '{shadows.3xl}' },
-  sliderThumbLg: { value: '{shadows.4xl}' },
+  primaryLight: {
+    xxl: { value: '{shadows.xxl} rgb(145, 202, 255, 0.5)' },
+    '3xl': { value: '{shadows.3xl} rgb(145, 202, 255, 0.5)' },
+    '4xl': { value: '{shadows.4xl} rgb(145, 202, 255, 0.5)' },
+  },
 })

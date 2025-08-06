@@ -11,12 +11,12 @@ export const radioGroup = defineSlotRecipe({
     item: {
       aspectRatio: 'square',
       rounded: '{radii.full}',
-      border: '{borders.input.defaultSm}',
+      border: '{borders.default.sm}',
       color: '{colors.text}',
       cursor: 'pointer',
       boxShadow: '{shadows.insetMinimal}',
       _hover: {
-        border: '{borders.input.hoverSm}',
+        border: '{borders.hover.sm}',
       },
       _focusVisible: {
         outline: 'none',
@@ -26,14 +26,14 @@ export const radioGroup = defineSlotRecipe({
         cursor: 'not-allowed',
         // opacity: 0.5,
         fill: '{colors.fill.disabled}',
-        border: '{borders.input.disabledSm}',
+        border: '{borders.disabled.sm}',
         _hover: {
-          border: '{borders.input.disabledSm}',
+          border: '{borders.disabled.sm}',
         },
       },
 
       '&[data-state="checked"]': {
-        border: '{borders.input.hoverSm}',
+        border: '{borders.hover.sm}',
       },
 
       transition: 'common',

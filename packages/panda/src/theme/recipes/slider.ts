@@ -29,7 +29,7 @@ export const slider = defineSlotRecipe({
       _disabled: {
         cursor: 'not-allowed!',
         bg: '{colors.fill.disabled}',
-        border: '{borders.input.disabled}',
+        border: '{borders.disabled.xs}',
         _hover: {
           bg: '{colors.fill.disabled}',
         },
@@ -53,28 +53,28 @@ export const slider = defineSlotRecipe({
       display: 'block',
       cursor: 'pointer',
       rounded: 'full',
-      border: '{borders.sliderThumb.default}',
+      border: '{borders.primary.md}',
       bg: '{colors.surface.elevated}',
       focusRingOffsetColor: '{colors.surface.elevated}',
       transition: 'common',
 
       _hover: {
-        border: '{borders.sliderThumb.hover}',
-        shadow: '{shadows.sliderThumb}',
+        border: '{borders.primary.lg}',
+        shadow: '{shadows.primaryLight.xxl}',
       },
 
       _focusVisible: {
         outline: 'none',
-        border: '{borders.sliderThumb.hover}',
-        shadow: '{shadows.sliderThumb}',
+        border: '{borders.primary.lg}',
+        shadow: '{shadows.primaryLight.xxl}',
       },
 
       _disabled: {
         cursor: 'not-allowed',
-        border: '{borders.input.disabled}',
+        border: '{borders.disabled.xs}',
         _hover: {
           shadow: 'none!',
-          border: '{borders.input.disabled}!',
+          border: '{borders.disabled.xs}!',
         },
       },
     },
@@ -92,12 +92,12 @@ export const slider = defineSlotRecipe({
           h: '{sizes.icon.md}',
           w: '{sizes.icon.md}',
           _hover: {
-            border: '{borders.sliderThumb.hoverMd}',
-            shadow: '{shadows.sliderThumbMd}',
+            border: '{borders.primary.xl}',
+            shadow: '{shadows.primaryLight.3xl}',
           },
           _focusVisible: {
-            border: '{borders.sliderThumb.hoverMd}',
-            shadow: '{shadows.sliderThumbMd}',
+            border: '{borders.primary.xl}',
+            shadow: '{shadows.primaryLight.3xl}',
           },
         },
       },
@@ -106,12 +106,12 @@ export const slider = defineSlotRecipe({
           h: '{sizes.icon.lg}',
           w: '{sizes.icon.lg}',
           _hover: {
-            border: '{borders.sliderThumb.hoverLg}',
-            shadow: '{shadows.sliderThumbLg}',
+            border: '{borders.primary.2xl}',
+            shadow: '{shadows.primaryLight.4xl}',
           },
           _focusVisible: {
-            border: '{borders.sliderThumb.hoverLg}',
-            shadow: '{shadows.sliderThumbLg}',
+            border: '{borders.primary.2xl}',
+            shadow: '{shadows.primaryLight.4xl}',
           },
         },
       },

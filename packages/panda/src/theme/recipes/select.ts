@@ -68,7 +68,7 @@ export const select = defineSlotRecipe({
       minW: '8rem',
       overflow: 'hidden',
       // rounded: '{radii.md}',
-      border: '{borders.input.defaultSm}',
+      border: '{borders.default.xs}',
       bg: '{colors.surface.elevated}',
       color: '{colors.text}',
       shadow: 'md',
@@ -128,13 +128,13 @@ export const select = defineSlotRecipe({
     styling: {
       outline: {
         trigger: {
-          border: '{borders.input.defaultSm}',
+          border: '{borders.default.xs}',
           _hover: {
-            border: '{borders.input.hover}',
+            border: '{borders.hover.xs}',
             color: '{colors.text} ',
           },
           _focus: {
-            border: '{borders.input.hover}',
+            border: '{borders.hover.xs}',
             shadow: '{shadows.input.default}',
           },
 
@@ -145,7 +145,7 @@ export const select = defineSlotRecipe({
             },
             _focus: {
               borderColor: '{colors.error.borderHover}',
-              shadow: '{shadows.input.error}',
+              shadow: '{shadows.error.2xs}',
             },
           },
 
@@ -156,7 +156,7 @@ export const select = defineSlotRecipe({
             },
             _focus: {
               borderColor: '{colors.success.borderHover}',
-              shadow: '{shadows.input.success}',
+              shadow: '{shadows.success.2xs}',
             },
           },
 
@@ -167,7 +167,7 @@ export const select = defineSlotRecipe({
             },
             _focus: {
               borderColor: '{colors.warning.borderHover}',
-              shadow: '{shadows.input.warning}',
+              shadow: '{shadows.warning.2xs}',
             },
           },
         },
@@ -215,7 +215,7 @@ export const select = defineSlotRecipe({
       filled: {
         trigger: {
           bg: '{colors.fill.secondary}',
-          border: '{borders.input.default}',
+          border: '{borders.default.xs}',
           borderColor: 'transparent',
 
           _hover: {
@@ -230,25 +230,25 @@ export const select = defineSlotRecipe({
           },
           _focus: {
             bg: '{colors.surface.elevated}!',
-            border: '{borders.input.hover}',
+            border: '{borders.hover.xs}',
           },
 
           '&[data-status="success"]': {
             bg: '{colors.success.bg}',
             _hover: { bg: '{colors.success.bgHover}' },
-            _focus: { border: '{borders.input.success}' },
+            _focus: { border: '{borders.success.xs}' },
           },
 
           '&[data-status="error"]': {
             bg: '{colors.error.bg}',
             _hover: { bg: '{colors.error.bgHover}' },
-            _focus: { border: '{borders.input.error}' },
+            _focus: { border: '{borders.error.xs}' },
           },
 
           '&[data-status="warning"]': {
             bg: '{colors.warning.bg}',
             _hover: { bg: '{colors.warning.bgHover}' },
-            _focus: { border: '{borders.input.warning}' },
+            _focus: { border: '{borders.warning.xs}' },
           },
         },
       },

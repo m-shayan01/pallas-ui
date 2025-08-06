@@ -7,40 +7,49 @@ export const borders = defineSemanticTokens.borders({
   control: {
     value: '{borders.sm} {colors.border}',
   },
-  date: {
-    value: '{borders.sm} {colors.primary}',
-  },
-  checkbox: {
-    checked: { value: '{borders.sm} {colors.primary}' },
-  },
-  input: {
-    default: { value: '{borders.xs} {colors.border}' },
-    defaultSm: { value: '{borders.sm} {colors.border}' },
-
-    hover: { value: '{borders.xs} {colors.primary.hover}' },
-    hoverSm: { value: '{borders.sm} {colors.primary.hover}' },
-
-    disabled: { value: '{borders.xs} {colors.border.secondary}' },
-    disabledSm: { value: '{borders.sm} {colors.border.secondary}' },
-
-    success: { value: '{borders.xs} {colors.success.border}' },
-    successHover: { value: '{borders.xs} {colors.success.borderHover}' },
-
-    error: { value: '{borders.xs} {colors.error.border}' },
-    errorHover: { value: '{borders.xs} {colors.error.borderHover}' },
-
-    warning: { value: '{borders.xs} {colors.warning.border}' },
-    warningHover: { value: '{borders.xs} {colors.warning.borderHover}' },
+  primary: {
+    sm: { value: '{borders.sm} {colors.primary}' },
+    md: { value: '{borders.md} {colors.primary}' },
+    lg: { value: '{borders.lg} {colors.primary}' },
+    xl: { value: '{borders.xl} {colors.primary}' },
+    '2xl': { value: '{borders.2xl} {colors.primary}' },
   },
 
-  sliderThumb: {
-    default: { value: '{borders.md} {colors.primary}' },
-    hover: { value: '{borders.lg} {colors.primary}' },
-    hoverMd: { value: '{borders.xl} {colors.primary}' },
-    hoverLg: { value: '{borders.2xl} {colors.primary}' },
-
-    disabled: { value: '{borders.md} {colors.border.secondary}' },
+  secondary: {
+    md: { value: '{borders.md} {colors.border.secondary}' },
   },
 
-  switch: { value: '{borders.md} transparent' },
+  default: {
+    xs: { value: '{borders.xs} {colors.border}' },
+    sm: { value: '{borders.sm} {colors.border}' },
+  },
+
+  hover: {
+    xs: { value: '{borders.xs} {colors.primary.hover}' },
+    sm: { value: '{borders.sm} {colors.primary.hover}' },
+  },
+
+  disabled: {
+    xs: { value: '{borders.xs} {colors.border.secondary}' },
+    sm: { value: '{borders.sm} {colors.border.secondary}' },
+  },
+
+  success: {
+    xs: { value: '{borders.xs} {colors.success.border}' },
+  },
+  successHover: {
+    xs: { value: '{borders.xs} {colors.success.borderHover}' },
+  },
+  error: {
+    xs: { value: '{borders.xs} {colors.error.border}' },
+  },
+  errorHover: {
+    xs: { value: '{borders.xs} {colors.error.borderHover}' },
+  },
+  warning: {
+    xs: { value: '{borders.xs} {colors.warning.border}' },
+  },
+  warningHover: {
+    xs: { value: '{borders.xs} {colors.warning.borderHover}' },
+  },
 })

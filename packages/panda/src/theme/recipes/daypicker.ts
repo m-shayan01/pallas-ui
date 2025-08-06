@@ -131,7 +131,7 @@ export const daypicker = defineSlotRecipe({
       },
     },
     today: {
-      border: '{borders.date}',
+      border: '{borders.primary.sm}',
     },
     outside: {
       color: '{colors.text.secondary}',
