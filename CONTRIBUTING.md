@@ -1,4 +1,4 @@
-# Contributing to PallasUI
+# PallasUI Contribution Guide
 
 Thank you for considering contributing to **PallasUI**! This guide will help you get started.
 
@@ -80,7 +80,6 @@ pnpm storybook
 pnpm build
 ```
 
-
 ### 6. Previews used in docs
 - **Directory**: `apps/docs/components/previews/`
 - MDX-based documentation content used in the docs site.
@@ -103,7 +102,7 @@ fix: correct typo in login error
 
 **3. Submit a pull request with a clear description.**
 
-- Tag PRs with Closes #\<issue-number>
+- Tag PRs with "Closes #\<issue-number>"
 
 ## Coding Style
 
@@ -116,7 +115,7 @@ For issues other than these, refer to the code style and conventions of the exis
 
 ## Component Styling Checklist
 
-Use the given token system and utilites (see `packages/panda/src/theme/{tokens, recipes, utilities, semantic-tokens}/` for more options/making other tokens). You can use the following list as a checklist.
+Use the given token system and utilites (see `packages/panda/src/theme/{tokens, recipes, utilities, semantic-tokens}/` for more options or for making other tokens). You can use the following list as a checklist.
 
 ### colors
 - Background: `colors.surface.elevated`
@@ -216,14 +215,13 @@ references:
   [Ref name]:
     link: [Ref link]
   …
-  [Another ref]:
-    link: …
+  [Repeat for multiple references]
 ---
 
 <ContentContainer>
 
 <Section gap="1">
-[Component name]
+# [Component name]
 <Paragraph size={'extraLarge'} color={'tertiary'}>[Short description of component]</Paragraph>
 <ComponentPreview name="[Component preview folder]" withRecipe/>
 </Section>
@@ -262,7 +260,7 @@ references:
 ## Examples
 
 ### Default
-<ComponentPreview name="input-otp" />
+<ComponentPreview name="[Component preview folder]" />
 
 ### [Variant name]
 <ComponentPreview name="[Component preview folder]" file="[Variant preview file]" />
@@ -279,12 +277,12 @@ references:
 ### [Subcomponent name]
 [Subcomponent description]
 
-### Props
+#### Props
 | Property | Type | Default | Description | Options |
 |----------|------|---------|-------------|----------|
 |          |      |         |             |          |
 
-### Data attributes
+#### Data attributes
 | Attribute | Values |
 | --------- | ------ |
 |           |        |
@@ -301,19 +299,17 @@ references:
 
 - For **[Variant preview file]** in `<ComponentPreview>` do not include file extension
 
+- You can refer to the **Sidebar** docs as an example.
+
 - In **Data Entry components**, follow these headings in this order for the variant examples (If there are variants other than these, put them after this list):
-```mdx
-### Default
-### Style Variants
-### Radii
-### Sizes
-### With [Optional subcomponent for eg. Separator]
-### Disabled
-### Validation States ( and show all style variants validation states)
-### Form
-
-```
-
+    1. Default
+    2. Style Variants
+    3. Radii
+    4. Sizes
+    5. With [Optional subcomponent for eg. Separator]
+    6. Disabled
+    7. Validation States [Show all style variants' validation states as well]
+    8. Form
 
 ## License
 By contributing, you agree that your contributions will be licensed under the MIT License.
