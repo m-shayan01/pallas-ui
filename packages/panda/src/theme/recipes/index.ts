@@ -39,6 +39,7 @@ import { tabs } from './tabs'
 import { textarea } from './textarea'
 import { toast } from './toast'
 import { tooltip } from './tooltip'
+import { chat } from './chat'
 
 export const recipes: Record<string, Partial<RecipeConfig<RecipeVariantRecord>>> = {
   icon,
@@ -85,4 +86,5 @@ export const slotRecipes: Record<string, Partial<SlotRecipeConfig>> = {
   tooltip,
   sidebar,
   form,
+  chat,
 }

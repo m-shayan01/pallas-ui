@@ -75,5 +75,10 @@ export const createPreset = (options: ThemeOptions) => {
         },
       },
     },
+    staticCss: {
+      recipes: {
+        chat: ['*'],
+      },
+    },
   })
 }
