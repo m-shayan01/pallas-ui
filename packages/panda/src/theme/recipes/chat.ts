@@ -3,40 +3,54 @@ import { defineSlotRecipe } from '@pandacss/dev'
 export const chat = defineSlotRecipe({
   className: 'chat',
   description: 'Accessible chat component',
-  slots: ['root', 'message', 'avatar', 'bubble', 'time', 'input', 'textarea', 'inputActions'],
+  slots: [
+    'root',
+    'message',
+    'avatar',
+    'bubble',
+    'metadata',
+    'input',
+    'textarea',
+    'inputActions',
+    'suggestions',
+    'suggestion',
+  ],
   base: {
     root: {
       display: 'flex',
       flexDirection: 'column',
+      width: 'full',
       gap: 'gap.component.md',
       p: 'padding.block.lg',
     },
     message: {
-      display: 'flex',
-      gap: 'gap.inline.sm',
-      maxW: 'lg',
+      display: 'grid',
+      gridTemplateColumns: 'auto 1fr',
+      columnGap: 'gap.inline.sm',
     },
     avatar: {
+      gridArea: 'avatar',
       flexShrink: 0,
       overflow: 'hidden',
     },
     bubble: {
+      gridArea: 'bubble',
+      width: 'fit-content',
+      maxWidth: '3/4',
       p: 'padding.block.lg',
       py: 'padding.block.md',
       rounded: 'md',
       color: 'text',
       cursor: 'text',
     },
-    time: {
+    metadata: {
+      gridArea: 'meta',
       textStyle: 'xs',
       color: 'text.tertiary',
-      ml: 'padding.inline.sm',
     },
     input: {
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'flex-end',
-      gap: 'gap.inline.xs',
+      gap: 'gap.inline.sm',
       px: 'padding.block.md',
       py: 'padding.block.lg',
       border: '1px solid {colors.border}',
@@ -48,14 +62,17 @@ export const chat = defineSlotRecipe({
       },
     },
     textarea: {
+      '--textarea-min-height': '30px',
+      '--textarea-max-height': '120px',
+
       w: 'full',
-      minH: '40px',
-      maxH: '120px',
+      minH: 'var(--textarea-min-height)',
+      maxH: 'var(--textarea-max-height)',
       resize: 'none',
       border: 'none',
-      pl: 'padding.inline.md',
       rounded: 'md',
       textStyle: 'sm',
+      transition: 'height 0.1s ease',
 
       _placeholder: {
         color: 'text.tertiary',
@@ -66,31 +83,153 @@ export const chat = defineSlotRecipe({
     },
     inputActions: {
       display: 'flex',
-      w: 'full',
       justifyContent: 'space-between',
       alignItems: 'center',
       gap: 'gap.inline.xs',
       flexShrink: 0,
     },
+    suggestions: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+      gap: 'gap.inline.xs',
+      p: 'padding.block.md',
+    },
+    suggestion: {
+      border: '1px solid {colors.border.secondary}',
+      textStyle: 'sm',
+      fontWeight: 'medium',
+      color: 'text.secondary',
+      cursor: 'pointer',
+      transition: 'all 0.2s ease-in-out',
+      userSelect: 'none',
+      whiteSpace: 'nowrap',
+
+      _hover: {
+        border: '1px solid {colors.primary.border}',
+      },
+
+      _active: {
+        transform: 'scale(0.98)',
+        outline: '2px solid {colors.primary.border}',
+      },
+    },
   },
   variants: {
     variant: {
       user: {
-        message: { flexDirection: 'row-reverse' },
-        bubble: { bg: 'primary.bg', color: 'text' },
+        message: {
+          gridTemplateColumns: '1fr auto',
+          gridTemplateAreas: '"bubble avatar" "meta ...."',
+          justifyItems: 'end',
+        },
+        bubble: {
+          bg: 'primary.bg',
+          color: 'text',
+        },
       },
       assistant: {
-        bubble: { bg: 'fill.tertiary', color: 'text' },
+        message: {
+          gridTemplateAreas: '"avatar bubble" ".... meta"',
+        },
+        bubble: {
+          bg: 'fill.tertiary',
+          color: 'text',
+        },
       },
     },
-    streaming: {
-      true: {
-        bubble: { ariaBusy: 'true' },
+    layout: {
+      vertical: {
+        input: {
+          flexDirection: 'column',
+        },
+        textarea: {
+          pl: 'padding.inline.md',
+        },
+        inputActions: {
+          w: 'full',
+        },
+      },
+      horizontal: {
+        input: {
+          flexDirection: 'row',
+          alignItems: 'flex-end',
+          gap: 'gap.inline.xs',
+          p: 'padding.block.md',
+        },
+        textarea: {
+          p: '0',
+        },
+        inputActions: {
+          w: 'fit',
+          h: 'fit',
+          gap: 'gap.inline.xs',
+          alignItems: 'flex-end',
+        },
+      },
+    },
+    suggestionVariant: {
+      filled: {
+        suggestion: {
+          bg: 'fill.tertiary',
+          color: 'text.secondary',
+
+          _hover: {
+            bg: 'fill.secondary',
+            color: 'text',
+          },
+        },
+      },
+      primary: {
+        suggestion: {
+          bg: 'primary.bg',
+          color: 'primary.text',
+
+          _hover: {
+            bg: 'primary.bgHover',
+            color: 'primary.textHover',
+          },
+        },
+      },
+      outlined: {
+        suggestion: {
+          bg: 'transparent',
+          border: '1px solid {colors.border}',
+          color: 'text.secondary',
+
+          _hover: {
+            bg: 'fill.secondary',
+            borderColor: 'primary.border',
+            color: 'text',
+          },
+          _active: {
+            bg: 'fill.tertiary',
+          },
+        },
+      },
+    },
+    suggestionShape: {
+      pill: {
+        suggestion: {
+          rounded: 'full',
+          px: 'padding.block.lg',
+          py: 'padding.block.sm',
+        },
+      },
+      card: {
+        suggestion: {
+          rounded: 'md',
+          px: 'padding.block.lg',
+          py: 'padding.block.md',
+        },
       },
     },
   },
   defaultVariants: {
     variant: 'assistant',
-    streaming: false,
+    layout: 'vertical',
+    suggestionVariant: 'outlined',
+    suggestionShape: 'pill',
   },
 })

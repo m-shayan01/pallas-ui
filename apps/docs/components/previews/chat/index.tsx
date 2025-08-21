@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import Chat from '@/components/ui/chat'
-import { Bot, Send, Upload, User, Plus, ArrowUp, MoveUp, SendHorizonal } from 'lucide-react'
+import { ArrowUp, Bot, MoveUp, Plus, Send, SendHorizonal, Upload, User } from 'lucide-react'
 import { useState } from 'react'
 
 interface Message {
@@ -38,6 +38,15 @@ export default function ChatDemo() {
 
   const [newMessage, setNewMessage] = useState('')
   const [isStreaming, setIsStreaming] = useState(false)
+  const [showSuggestions, setShowSuggestions] = useState(true)
+  const [suggestions] = useState([
+    { text: 'How can I help you today?', variant: 'pill' as const },
+    { text: 'Tell me about your services', variant: 'card' as const },
+    { text: 'Schedule a meeting', variant: 'outline' as const },
+    { text: 'Show pricing information', variant: 'solid' as const },
+    { text: 'Get technical support', variant: 'ghost' as const },
+    { text: 'Quick question', variant: 'minimal' as const },
+  ])
 
   const addMessage = (message?: string) => {
     const messageText = message || newMessage
@@ -53,6 +62,11 @@ export default function ChatDemo() {
     setMessages((prev) => [...prev, userMessage])
     setNewMessage('')
     setIsStreaming(true)
+
+    // Hide suggestions after first message
+    if (showSuggestions) {
+      setShowSuggestions(false)
+    }
 
     // Simulate AI response
     setTimeout(() => {
@@ -77,16 +91,20 @@ export default function ChatDemo() {
     addMessage()
   }
 
+  const handleSuggestionClick = (suggestion: string) => {
+    addMessage(suggestion)
+  }
+
   return (
     <>
       <Chat.Root>
         {messages.map((message) => (
-          <Chat.Message key={message.id} variant={message.variant} error={true}>
+          <Chat.Message key={message.id} variant={message.variant}>
             <Chat.Avatar
               fallback={message.variant === 'user' ? <User size={20} /> : <Bot size={20} />}
             />
             <Chat.Bubble>{message.content}</Chat.Bubble>
-            {/* <Chat.Time timestamp={message.timestamp} /> */}
+            {/* <Chat.Metadata>{message.timestamp.toLocaleTimeString()}</Chat.Metadata> */}
           </Chat.Message>
         ))}
 
@@ -99,24 +117,46 @@ export default function ChatDemo() {
           </Chat.Message>
         )}
 
-        <Chat.Input>
+        {showSuggestions && (
+          <>
+            <Chat.Suggestions suggestionVariant="outlined" suggestionShape="pill">
+              {suggestions.map((suggestion, index) => (
+                <Chat.Suggestion key={index} onClick={() => handleSuggestionClick(suggestion.text)}>
+                  {suggestion.text}
+                </Chat.Suggestion>
+              ))}
+            </Chat.Suggestions>
+
+            <Chat.Suggestions suggestionVariant="filled" suggestionShape="card">
+              {suggestions.map((suggestion, index) => (
+                <Chat.Suggestion key={index} onClick={() => handleSuggestionClick(suggestion.text)}>
+                  {suggestion.text}            
+                </Chat.Suggestion>
+              ))}
+            </Chat.Suggestions>
+
+             <Chat.Suggestions suggestionVariant="primary" suggestionShape="card">
+              {suggestions.map((suggestion, index) => (
+                <Chat.Suggestion key={index} onClick={() => handleSuggestionClick(suggestion.text)}>
+                  {suggestion.text}            
+                </Chat.Suggestion>
+              ))}
+            </Chat.Suggestions>
+          </>
+        )}
+
+        <Chat.Input layout="vertical">
           <Chat.TextArea
             onSend={addMessage}
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
-            placeholder="Type your message..."
+            placeholder="Type your message... (Try typing multiple lines)"
           />
           <Chat.InputActions>
-            <Button size="icon" variant="text" shape="circle" onClick={handleUpload} aria-label="Upload file">
+            <Button size="icon" variant="text" shape="circle" onClick={handleUpload}>
               <Plus size={16} />
             </Button>
-            <Button
-              size="icon"
-              shape="circle"
-              onClick={handleSend}
-              disabled={!newMessage.trim()}
-              aria-label="Send message"
-            >
+            <Button size="icon" shape="circle" onClick={handleSend} disabled={!newMessage.trim()}>
               <SendHorizonal size={16} />
             </Button>
           </Chat.InputActions>
