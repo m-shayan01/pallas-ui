@@ -14,6 +14,15 @@ export const chat = defineSlotRecipe({
     'inputActions',
     'suggestions',
     'suggestion',
+    // Widget slots
+    'widget',
+    'widgetHeader',
+    'widgetContent',
+    'widgetActions',
+    'options',
+    'option',
+    'optionGroup',
+    'optionGroupLabel',
   ],
   base: {
     root: {
@@ -22,6 +31,7 @@ export const chat = defineSlotRecipe({
       width: 'full',
       gap: 'gap.component.md',
       p: 'padding.block.lg',
+      textStyle: 'sm',
     },
     message: {
       display: 'grid',
@@ -35,10 +45,13 @@ export const chat = defineSlotRecipe({
     },
     bubble: {
       gridArea: 'bubble',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'gap.inline.md',
       width: 'fit-content',
       maxWidth: '3/4',
-      p: 'padding.block.lg',
-      py: 'padding.block.md',
+      px: 'padding.inline.lg',
+      py: 'padding.block.lg',
       rounded: 'md',
       color: 'text',
       cursor: 'text',
@@ -71,7 +84,6 @@ export const chat = defineSlotRecipe({
       resize: 'none',
       border: 'none',
       rounded: 'md',
-      textStyle: 'sm',
       transition: 'height 0.1s ease',
 
       _placeholder: {
@@ -98,7 +110,6 @@ export const chat = defineSlotRecipe({
     },
     suggestion: {
       border: '1px solid {colors.border.secondary}',
-      textStyle: 'sm',
       fontWeight: 'medium',
       color: 'text.secondary',
       cursor: 'pointer',
@@ -114,6 +125,62 @@ export const chat = defineSlotRecipe({
         transform: 'scale(0.98)',
         outline: '2px solid {colors.primary.border}',
       },
+    },
+    widget: {
+      maxW: 'md',
+      border: '1px solid {colors.border}',
+      rounded: 'md',
+      transition: 'all 0.2s ease-in-out',
+    },
+    widgetHeader: {
+      p: 'padding.block.lg',
+      borderBottom: '1px solid {colors.border.secondary}',
+      bg: 'fill.tertiary',
+      fontWeight: 'semibold',
+      color: 'text',
+    },
+    widgetContent: {
+      p: 'padding.block.lg',
+    },
+    widgetActions: {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      gap: 'gap.inline.xs',
+      p: 'padding.block.lg',
+      borderTop: '1px solid {colors.border.secondary}',
+      bg: 'fill.tertiary',
+    },
+    options: {
+      display: 'flex',
+      gap: 'gap.inline.xs',
+    },
+    option: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'gap.inline.xs',
+      p: 'padding.block.md',
+      rounded: 'md',
+      cursor: 'pointer',
+      transition: 'all 0.2s ease-in-out',
+      color: 'text.secondary',
+      border: '1px solid transparent',
+
+      _active: {
+        transform: 'scale(0.98)',
+      },
+    },
+    optionGroup: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 'gap.inline.xs',
+    },
+    optionGroupLabel: {
+      textStyle: 'xs',
+      fontWeight: 'medium',
+      color: 'text.tertiary',
+      textTransform: 'uppercase',
+      letterSpacing: 'wide',
+      px: 'padding.block.sm',
     },
   },
   variants: {
@@ -225,11 +292,71 @@ export const chat = defineSlotRecipe({
         },
       },
     },
+    optionLayout: {
+      list: {
+        options: {
+          flexDirection: 'column',
+        },
+      },
+      grid: {
+        options: {
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        },
+      },
+      inline: {
+        options: {
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          gap: 'gap.inline.xs',
+        },
+        option: {
+          px: 'padding.block.lg',
+          py: 'padding.block.sm',
+          rounded: 'full',
+          border: '1px solid {colors.border}',
+          whiteSpace: 'nowrap',
+        },
+      },
+    },
+    optionVariant: {
+      default: {
+        option: {
+          _hover: {
+            bg: 'fill.secondary',
+            color: 'text',
+          },
+
+          '&[data-selected]': {
+            bg: 'fill.secondary',
+            borderColor: 'primary.border',
+            color: 'text',
+          },
+        },
+      },
+      primary: {
+        option: {
+          _hover: {
+            bg: 'primary.bgHover',
+            borderColor: 'primary.borderHover',
+            color: 'primary.textHover',
+          },
+
+          '&[data-selected]': {
+            bg: 'primary.bg',
+            borderColor: 'primary.border',
+            color: 'primary.text',
+          },
+        },
+      },
+    },
   },
   defaultVariants: {
     variant: 'assistant',
     layout: 'vertical',
     suggestionVariant: 'outlined',
     suggestionShape: 'pill',
+    optionLayout: 'list',
+    optionVariant: 'default',
   },
 })

@@ -5,7 +5,7 @@ import { chat } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
 import * as React from 'react'
 import PallasAvatar from '../avatar'
-import { Button } from '../button'
+import { Check } from 'lucide-react'
 
 const { withProvider, withContext } = createStyleContext(chat)
 
@@ -147,55 +147,147 @@ const CustomTextArea = React.forwardRef<
 })
 CustomTextArea.displayName = 'TextArea'
 
-// // Context for passing variant and shape from Suggestions to Suggestion
-// const SuggestionButtonStyleContext = React.createContext<{
-//   variant?: 'default' | 'outlined'
-//   shape?: 'default' | 'rounded'
-// }>({})
+// Widget Context for managing selection state - now used by Options
+const OptionsContext = React.createContext<{
+  selectedOptions: Set<string>
+  onOptionSelect?: (optionId: string, isMultiple?: boolean) => void
+  isMultiple?: boolean
+  showCheck?: boolean
+}>({
+  selectedOptions: new Set(),
+})
 
-// // Custom Suggestions component that provides context to children
-// const CustomSuggestions = React.forwardRef<
-//   HTMLDivElement,
-//   React.HTMLAttributes<HTMLDivElement> & {
-//     variant?: 'outlined' | 'solid'
-//     shape?: 'pill' | 'card'
-//   }
-// >(({ variant, shape, children, ...props }, ref) => {
-//   console.log('CustomSuggestions rendered with variant:', variant, 'and shape:', shape)
-//   const buttonVariant = variant === 'outlined' ? 'outlined' : 'default'
-//   const buttonShape = shape === 'pill' ? 'rounded' : 'default'
+// Custom Options component that manages selection state
+const CustomOptions = React.forwardRef<
+  HTMLUListElement,
+  React.HTMLAttributes<HTMLUListElement> & {
+    selectedOptions?: string[]
+    onOptionSelect?: (optionId: string) => void
+    multiple?: boolean
+    showCheck?: boolean
+  }
+>(
+  (
+    {
+      children,
+      selectedOptions = [],
+      onOptionSelect,
+      multiple = false,
+      showCheck = false,
+      ...props
+    },
+    ref,
+  ) => {
+    const [internalSelected, setInternalSelected] = React.useState<Set<string>>(
+      new Set(selectedOptions),
+    )
 
-//   return (
-//     <SuggestionButtonStyleContext.Provider value={{ variant: buttonVariant, shape: buttonShape }}>
-//       <div ref={ref} {...props}>
-//         {children}
-//       </div>
-//     </SuggestionButtonStyleContext.Provider>
-//   )
-// })
-// CustomSuggestions.displayName = 'CustomSuggestions'
+    const handleOptionSelect = React.useCallback(
+      (optionId: string) => {
+        setInternalSelected((prev) => {
+          const newSelected = new Set(prev)
 
-// // Custom Suggestion component
-// const CustomSuggestion = React.forwardRef<
-//   HTMLButtonElement,
-//   React.ButtonHTMLAttributes<HTMLButtonElement>
-// >(({ className, children, onClick, ...props }, ref) => {
-//   const { variant, shape } = React.useContext(SuggestionButtonStyleContext)
+          if (multiple) {
+            if (newSelected.has(optionId)) {
+              newSelected.delete(optionId)
+            } else {
+              newSelected.add(optionId)
+            }
+          } else {
+            newSelected.clear()
+            newSelected.add(optionId)
+          }
 
-//   return (
-//     <Button
-//       ref={ref}
-//       variant={variant}
-//       shape={shape}
-//       className={className}
-//       onClick={onClick}
-//       {...props}
-//     >
-//       {children}
-//     </Button>
-//   )
-// })
-// CustomSuggestion.displayName = 'Suggestion'
+          return newSelected
+        })
+
+        onOptionSelect?.(optionId)
+      },
+      [multiple, onOptionSelect],
+    )
+
+    const contextValue = React.useMemo(
+      () => ({
+        selectedOptions: internalSelected,
+        onOptionSelect: handleOptionSelect,
+        isMultiple: multiple,
+        showCheck,
+      }),
+      [internalSelected, handleOptionSelect, multiple, showCheck],
+    )
+
+    return (
+      <OptionsContext.Provider value={contextValue}>
+        <ul ref={ref} {...props}>
+          {children}
+        </ul>
+      </OptionsContext.Provider>
+    )
+  },
+)
+CustomOptions.displayName = 'Options'
+
+// Individual Option component
+const CustomOption = React.forwardRef<
+  HTMLLIElement,
+  React.LiHTMLAttributes<HTMLLIElement> & {
+    value: string
+    disabled?: boolean
+  }
+>(({ children, value, disabled = false, onClick, ...props }, ref) => {
+  const { selectedOptions, onOptionSelect, isMultiple, showCheck } =
+    React.useContext(OptionsContext)
+  const isSelected = selectedOptions.has(value)
+
+  const handleClick = React.useCallback(
+    (e: React.MouseEvent<HTMLLIElement>) => {
+      if (disabled) return
+
+      onOptionSelect?.(value, isMultiple)
+      onClick?.(e)
+    },
+    [disabled, onOptionSelect, value, isMultiple, onClick],
+  )
+
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent<HTMLLIElement>) => {
+      if (disabled) return
+
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+
+        const syntheticEvent = {
+          ...e,
+          type: 'click',
+          button: 0,
+          buttons: 1,
+          detail: 1,
+        } as unknown as React.MouseEvent<HTMLLIElement>
+        handleClick(syntheticEvent)
+      }
+    },
+    [disabled, handleClick],
+  )
+
+  return (
+    <li
+      ref={ref}
+      role={isMultiple ? 'checkbox' : 'radio'}
+      aria-checked={isSelected}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : 0}
+      data-selected={isSelected ? '' : undefined}
+      data-disabled={disabled ? '' : undefined}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      {...props}
+    >
+      {showCheck && isSelected && <Check size={16} />}
+      {children}
+    </li>
+  )
+})
+CustomOption.displayName = 'Option'
 
 export type RootProps = WithFixedClassName<React.HTMLAttributes<HTMLDivElement>>
 
@@ -233,7 +325,9 @@ export const Metadata = withContext<
 export const Input = withProvider<
   HTMLDivElement,
   Assign<
-    React.HTMLAttributes<HTMLDivElement> & { layout?: 'vertical' | 'horizontal' },
+    React.HTMLAttributes<HTMLDivElement> & {
+      layout?: 'vertical' | 'horizontal'
+    },
     JsxStyleProps
   >
 >('div', 'input')
@@ -264,15 +358,52 @@ export const Suggestion = withContext<
   Assign<React.ButtonHTMLAttributes<HTMLButtonElement>, JsxStyleProps>
 >('button', 'suggestion')
 
-// export const Suggestions = withProvider<
-//   React.ComponentRef<typeof CustomSuggestions>,
-//   Assign<React.ComponentPropsWithoutRef<typeof CustomSuggestions>, JsxStyleProps>
-// >(CustomSuggestions, 'suggestions')
+// Widget exports
+export const Widget = withProvider<
+  HTMLDivElement,
+  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+>('div', 'widget')
 
-// export const Suggestion = withContext<
-//   React.ComponentRef<typeof CustomSuggestion>,
-//   Assign<React.ComponentPropsWithoutRef<typeof CustomSuggestion>, JsxStyleProps>
-// >(CustomSuggestion, 'suggestion')
+export const WidgetHeader = withContext<
+  HTMLDivElement,
+  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+>('div', 'widgetHeader')
+
+export const WidgetContent = withContext<
+  HTMLDivElement,
+  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+>('div', 'widgetContent')
+
+export const WidgetActions = withContext<
+  HTMLDivElement,
+  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+>('div', 'widgetActions')
+
+export const Options = withProvider<
+  React.ComponentRef<typeof CustomOptions>,
+  Assign<
+    React.ComponentPropsWithoutRef<typeof CustomOptions> & {
+      optionLayout?: 'list' | 'grid' | 'inline'
+      optionVariant?: 'default' | 'primary' | 'checkbox'
+    },
+    JsxStyleProps
+  >
+>(CustomOptions, 'options')
+
+export const Option = withContext<
+  React.ComponentRef<typeof CustomOption>,
+  Assign<React.ComponentPropsWithoutRef<typeof CustomOption>, JsxStyleProps>
+>(CustomOption, 'option')
+
+export const OptionGroup = withContext<
+  HTMLDivElement,
+  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+>('ul', 'optionGroup')
+
+export const OptionGroupLabel = withContext<
+  HTMLDivElement,
+  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+>('p', 'optionGroupLabel')
 
 const Chat = {
   Root,
@@ -285,6 +416,14 @@ const Chat = {
   InputActions,
   Suggestions,
   Suggestion,
+  Widget,
+  WidgetHeader,
+  WidgetContent,
+  WidgetActions,
+  Options,
+  OptionGroup,
+  OptionGroupLabel,
+  Option,
 }
 
 export default Chat
