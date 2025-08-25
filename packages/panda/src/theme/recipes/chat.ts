@@ -358,4 +358,5 @@ export const chat = defineSlotRecipe({
     optionLayout: 'list',
     optionVariant: 'default',
   },
+  staticCss: [{variant: ['*']}]
 })
