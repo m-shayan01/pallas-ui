@@ -14,7 +14,6 @@ export const chat = defineSlotRecipe({
     'inputActions',
     'suggestions',
     'suggestion',
-    // Widget slots
     'widget',
     'widgetHeader',
     'widgetContent',
@@ -68,6 +67,7 @@ export const chat = defineSlotRecipe({
       py: 'padding.block.lg',
       border: '1px solid {colors.border}',
       rounded: 'md',
+      mt: 'padding.block.md',
 
       _focusWithin: {
         borderColor: 'primary.border',
@@ -95,7 +95,6 @@ export const chat = defineSlotRecipe({
     },
     inputActions: {
       display: 'flex',
-      justifyContent: 'space-between',
       alignItems: 'center',
       gap: 'gap.inline.xs',
       flexShrink: 0,

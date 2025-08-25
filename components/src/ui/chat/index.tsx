@@ -1,11 +1,11 @@
 'use client'
 
 import { type Assign, type WithFixedClassName, createStyleContext } from '@pallas-ui/style-context'
-import { chat } from '@styled-system/recipes'
+import { type ChatVariantProps, chat } from '@styled-system/recipes'
 import type { JsxStyleProps } from '@styled-system/types'
-import * as React from 'react'
-import PallasAvatar from '../avatar'
 import { Check } from 'lucide-react'
+import * as React from 'react'
+import PallasAvatar from '../avatar' // adjust the path
 
 const { withProvider, withContext } = createStyleContext(chat)
 
@@ -25,7 +25,7 @@ const CustomAvatar = React.forwardRef<
 ))
 CustomAvatar.displayName = 'Avatar'
 
-// Custom TextArea component with enhanced functionality and auto-resize
+// Custom TextArea component
 const CustomTextArea = React.forwardRef<
   HTMLTextAreaElement,
   React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
@@ -37,7 +37,6 @@ const CustomTextArea = React.forwardRef<
 >(({ onSend, onKeyDown, minHeight, maxHeight, ...props }, ref) => {
   const textareaRef = React.useRef<HTMLTextAreaElement>(null)
 
-  // Merge refs
   React.useImperativeHandle(ref, () => textareaRef.current as HTMLTextAreaElement)
 
   // Get min/max heights from CSS custom properties or fallback to props/defaults
@@ -94,7 +93,6 @@ const CustomTextArea = React.forwardRef<
 
       textarea.style.height = `${newHeight}px`
 
-      // Handle overflow for max height
       if (scrollHeight > max) {
         textarea.style.overflowY = 'auto'
       } else {
@@ -103,7 +101,6 @@ const CustomTextArea = React.forwardRef<
     }
   }, [getHeightValues])
 
-  // Adjust height on mount and when value changes
   React.useEffect(() => {
     adjustHeight()
   }, [adjustHeight])
@@ -147,7 +144,83 @@ const CustomTextArea = React.forwardRef<
 })
 CustomTextArea.displayName = 'TextArea'
 
-// Widget Context for managing selection state - now used by Options
+// Custom Bubble component with typing effect support
+const CustomBubble = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & {
+    typingSpeed?: number
+    showTypingEffect?: boolean
+  }
+>(({ children, typingSpeed = 20, showTypingEffect = false, ...props }, ref) => {
+  const [displayedText, setDisplayedText] = React.useState('')
+  const [currentWordIndex, setCurrentWordIndex] = React.useState(0)
+
+  // Extract text content from children and split into words
+  const { textContent, words } = React.useMemo(() => {
+    let text = ''
+    if (typeof children === 'string') {
+      text = children
+    } else if (React.isValidElement(children)) {
+      // Extract text from React element
+      const elementProps = children.props as { children?: React.ReactNode }
+      if (elementProps && typeof elementProps.children === 'string') {
+        text = elementProps.children
+      } else {
+        text = String(children)
+      }
+    } else {
+      text = String(children || '')
+    }
+
+    const wordArray = text.split(/(\s+)/)
+    return { textContent: text, words: wordArray }
+  }, [children])
+
+  // Typing effect logic
+  React.useEffect(() => {
+    if (!showTypingEffect) {
+      setDisplayedText(textContent)
+      setCurrentWordIndex(words.length)
+      return
+    }
+
+    if (textContent && words.length > 0) {
+      setDisplayedText('')
+      setCurrentWordIndex(0)
+
+      const interval = setInterval(() => {
+        setCurrentWordIndex((prevIndex) => {
+          const nextIndex = prevIndex + 1
+
+          if (nextIndex >= words.length) {
+            clearInterval(interval)
+            return words.length
+          }
+
+          return nextIndex
+        })
+      }, typingSpeed)
+
+      return () => clearInterval(interval)
+    }
+  }, [textContent, words, typingSpeed, showTypingEffect])
+
+  // Update displayed text based on current word index
+  React.useEffect(() => {
+    if (showTypingEffect && words.length > 0) {
+      setDisplayedText(words.slice(0, currentWordIndex).join(''))
+    }
+  }, [currentWordIndex, words, showTypingEffect])
+
+  return (
+    <div ref={ref} {...props}>
+      {showTypingEffect ? <>{displayedText}</> : children}
+    </div>
+  )
+})
+CustomBubble.displayName = 'Bubble'
+
+// Widget Context for managing selection state
 const OptionsContext = React.createContext<{
   selectedOptions: Set<string>
   onOptionSelect?: (optionId: string, isMultiple?: boolean) => void
@@ -157,7 +230,7 @@ const OptionsContext = React.createContext<{
   selectedOptions: new Set(),
 })
 
-// Custom Options component that manages selection state
+// Custom Options component that manages option selection
 const CustomOptions = React.forwardRef<
   HTMLUListElement,
   React.HTMLAttributes<HTMLUListElement> & {
@@ -293,17 +366,14 @@ export type RootProps = WithFixedClassName<React.HTMLAttributes<HTMLDivElement>>
 
 export const Root = withProvider<
   HTMLDivElement,
-  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
+  Assign<React.HTMLAttributes<HTMLDivElement>, ChatVariantProps & JsxStyleProps>
 >('div', 'root')
 
 export const Message = withProvider<
   HTMLDivElement,
   Assign<
-    React.HTMLAttributes<HTMLDivElement> & {
-      variant?: 'user' | 'assistant'
-      streaming?: boolean
-    },
-    JsxStyleProps
+    React.HTMLAttributes<HTMLDivElement>,
+    Pick<ChatVariantProps, 'variant'> & JsxStyleProps
   >
 >('div', 'message')
 
@@ -313,9 +383,9 @@ export const Avatar = withContext<
 >(CustomAvatar, 'avatar')
 
 export const Bubble = withContext<
-  HTMLDivElement,
-  Assign<React.HTMLAttributes<HTMLDivElement>, JsxStyleProps>
->('div', 'bubble')
+  React.ComponentRef<typeof CustomBubble>,
+  Assign<React.ComponentPropsWithoutRef<typeof CustomBubble>, JsxStyleProps>
+>(CustomBubble, 'bubble')
 
 export const Metadata = withContext<
   HTMLSpanElement,
@@ -325,10 +395,8 @@ export const Metadata = withContext<
 export const Input = withProvider<
   HTMLDivElement,
   Assign<
-    React.HTMLAttributes<HTMLDivElement> & {
-      layout?: 'vertical' | 'horizontal'
-    },
-    JsxStyleProps
+    React.HTMLAttributes<HTMLDivElement>,
+    Pick<ChatVariantProps, 'layout'> & JsxStyleProps
   >
 >('div', 'input')
 
@@ -345,11 +413,8 @@ export const InputActions = withContext<
 export const Suggestions = withProvider<
   HTMLDivElement,
   Assign<
-    React.HTMLAttributes<HTMLDivElement> & {
-      suggestionVariant?: 'outlined' | 'filled' | 'primary'
-      suggestionShape?: 'pill' | 'card'
-    },
-    JsxStyleProps
+    React.HTMLAttributes<HTMLDivElement>,
+    Pick<ChatVariantProps, 'suggestionVariant' | 'suggestionShape'> & JsxStyleProps
   >
 >('div', 'suggestions')
 
@@ -382,11 +447,8 @@ export const WidgetActions = withContext<
 export const Options = withProvider<
   React.ComponentRef<typeof CustomOptions>,
   Assign<
-    React.ComponentPropsWithoutRef<typeof CustomOptions> & {
-      optionLayout?: 'list' | 'grid' | 'inline'
-      optionVariant?: 'default' | 'primary' | 'checkbox'
-    },
-    JsxStyleProps
+    React.ComponentPropsWithoutRef<typeof CustomOptions>,
+    Pick<ChatVariantProps, 'optionLayout' | 'optionVariant'> & JsxStyleProps
   >
 >(CustomOptions, 'options')
 
