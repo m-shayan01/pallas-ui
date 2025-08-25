@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Box, Grid, HStack, VStack } from '@styled-system/jsx'
-import { Bot, Mic, Plus, SendHorizonal, User } from 'lucide-react'
+import { Bot, Mic, Plus, SendHorizontal, User } from 'lucide-react'
 import { useState } from 'react'
 import { css } from '@styled-system/css'
 
@@ -133,7 +133,7 @@ export default function ChatPreview() {
           ))}
 
           {showSuggestions && (
-            <Chat.Suggestions suggestionVariant=' outlined'  suggestionShape=' pill' >
+            <Chat.Suggestions suggestionVariant='outlined'  suggestionShape='pill' >
               {suggestions.map((suggestion, index) => (
                 <Chat.Suggestion key={index} onClick={() => handleSuggestionClick(suggestion)}>
                   {suggestion}
@@ -142,22 +142,22 @@ export default function ChatPreview() {
             </Chat.Suggestions>
           )}
 
-          <Chat.Input layout=' vertical' >
+          <Chat.Input layout='vertical' >
             <Chat.TextArea
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
-              placeholder=' Type your message...' 
+              placeholder='Type your message...' 
               onSend={addMessage}
             />
             <Chat.InputActions>
-              <Button size=' icon'  variant=' text'  shape=' circle' >
+              <Button size='icon'  variant='text'  shape='circle' >
                 <Plus size={16} />
               </Button>
-              <Button size=' icon'  variant=' text'  shape=' circle'  css={{ marginLeft: 'auto' }}>
+              <Button size='icon'  variant='text'  shape='circle'  css={{ marginLeft: 'auto' }}>
                 <Mic size={16} />
               </Button>
-              <Button size=' icon'  shape=' circle'  onClick={addMessage} disabled={!newMessage.trim()}>
-                <SendHorizonal size={16} />
+              <Button size='icon'  variant='text'  shape='circle'  onClick={addMessage} disabled={!newMessage.trim()}>
+                <SendHorizontal size={16} />
               </Button>
             </Chat.InputActions>
           </Chat.Input>
