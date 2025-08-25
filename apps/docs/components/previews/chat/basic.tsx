@@ -19,10 +19,6 @@ interface Message {
   isNew: boolean
 }
 
-// Helper to format time as HH:MM
-const formatTime = (date: Date) =>
-  date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
-
 export default function ChatPreview() {
   const [showTypingEffect, setShowTypingEffect] = useState(true)
   const [typingSpeed, setTypingSpeed] = useState(20)
